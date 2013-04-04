@@ -56,6 +56,10 @@ _ReSharper*/
 #NuGet
 packages/
 
+#Must include NuGet.exe so MSBUILD can find it
+!.nuget/NuGet.exe
+
+
 #ncrunch
 *ncrunch*
 *crunch*.local.xml
