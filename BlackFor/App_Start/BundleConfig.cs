@@ -1,5 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
+using BundleTransformer.Core.Orderers;
+using BundleTransformer.Core.Transformers;
 
 namespace BlackFor
 {
@@ -8,6 +9,13 @@ namespace BlackFor
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+            var cssTransformer = new CssTransformer();
+            var jsTransformer = new JsTransformer();
+            var nullOrderer = new NullOrderer();
+
+            // Script Bundles
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -23,7 +31,10 @@ namespace BlackFor
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+
+
+
+            // Style Bundles
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
@@ -38,6 +49,18 @@ namespace BlackFor
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            var lessBundle = new Bundle("~/Content/css").Include("~/Content/less/bootstrap/bootstrap.less", "~/Content/less/blackfor.less");
+            lessBundle.Transforms.Add(cssTransformer);
+            lessBundle.Transforms.Add(new CssMinify());
+            lessBundle.Orderer = nullOrderer;
+            bundles.Add(lessBundle);
+
+//            BundleTable.EnableOptimizations = true;  // executing this line will force bundling and minification by overwriting whatever stands in web.config
+//            #if DEBUG
+//                BundleTable.EnableOptimizations = false;
+//            #endif
+
         }
     }
 }
