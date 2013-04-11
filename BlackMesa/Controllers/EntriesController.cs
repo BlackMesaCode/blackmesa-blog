@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace BlackFor.Controllers
+namespace BlackMesa.Controllers
 {
     public class EntriesController : Controller
     {

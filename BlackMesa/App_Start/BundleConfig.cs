@@ -2,7 +2,7 @@
 using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Transformers;
 
-namespace BlackFor
+namespace BlackMesa
 {
     public class BundleConfig
     {
