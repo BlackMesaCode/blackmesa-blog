@@ -10,6 +10,7 @@ namespace BlackMesa
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new CheckUnderConstruction());
+            filters.Add(new CheckUnderMaintenance());
         }
     }
 }

@@ -146,6 +146,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CssTestController.cs" />
+    <Compile Include="Controllers\UnderMaintenanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UnderConstructionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -154,6 +156,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\EntriesController.cs" />
     <Compile Include="Utilities\CheckUnderConstruction.cs" />
+    <Compile Include="Utilities\CheckUnderMaintenance.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\blackmesa_logo.png" />
@@ -299,6 +302,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Entries\Index.cshtml" />
     <Content Include="Views\UnderConstruction\Index.cshtml" />
+    <Content Include="Views\UnderMaintenance\Index.cshtml" />
+    <Content Include="Views\CssTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
