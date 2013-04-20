@@ -170,6 +170,7 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\pattern.png" />
+    <Content Include="Content\images\yellow_stripes_small.png" />
     <Content Include="Utilities\app_offline.htm" />
     <Content Include="Global.asax" />
     <None Include="BundleTransformer.Configuration.xsd">
@@ -267,6 +268,7 @@
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Entry.cshtml" />
+    <Content Include="Views\Shared\_SectionHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
