@@ -5,6 +5,10 @@
 [Tt]humbs.db
 *.DS_Store
 
+#LocalDb Files
+*.mdf
+*.ldf
+
 #Visual Studio files
 *.[Oo]bj
 *.user
