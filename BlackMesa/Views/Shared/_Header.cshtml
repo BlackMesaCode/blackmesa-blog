@@ -1,11 +1,11 @@
-﻿<div class="pull-left clearfix"><img src="~/content/images/blackmesa_logo.png"/></div>  @*<h1 style="font-size: 70px;">BLACKMESA</h1>*@
+﻿<div class="pull-left clearfix"><a href="@Url.Action("Index", "Entry")"><img src="~/content/images/blackmesa_logo.png"/></a></div>
 <nav class="pull-right floatflip clearfix" style="margin-top: 5px; margin-bottom: 20px">
     <div class="pull-right" style="margin-left: 20px">@Html.Partial("_Navigation")</div>
     <div class="pull-right">
         <form class="form-search">
             <div class="input-append">
                  <input type="text" class="span2 search-query" id="search-query-input" placeholder="Suchbegriff eingeben">
-@*                <span class="input-medium uneditable-input">Suchbegriff eingeben</span>*@
+@*               <span class="input-medium uneditable-input">Suchbegriff eingeben</span>*@
                 <button type="submit" class="btn">Suchen</button>
             </div>
         </form>

@@ -27,6 +27,9 @@ namespace BlackMesa
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
                 .Include("~/Scripts/bootstrap.js", "~/Scripts/bootstrap-datetimepicker.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/texteditor")
+                .Include("~/Scripts/ckeditor/ckeditor.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

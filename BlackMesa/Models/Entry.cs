@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BlackMesa.Models
 {
+//    [ValidateInput(false)]
     public class Entry
     {
         public int Id { get; set; }
@@ -15,6 +17,7 @@ namespace BlackMesa.Models
 
         [Required]
         [DataType(DataType.MultilineText)]
+        [AllowHtml]
         public string Content { get; set; }
 
         [Required]

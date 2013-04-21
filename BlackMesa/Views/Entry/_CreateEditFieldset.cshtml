@@ -1,48 +1,4 @@
-﻿@using BlackMesa.Utilities
-@model BlackMesa.Models.Entry
-
-
-
-@section Scripts {
-    
-<script type="text/javascript">
-    $(function () {
-        // Initialize DateCreatedPicker
-        $('#DateCreatedPicker').datetimepicker({
-            language: 'en-US'
-        });
-        var dateCreatedPicker = $('#DateCreatedPicker').data('datetimepicker');
-        
-        // Initialize DateEditedPicker
-        $('#DateEditedPicker').datetimepicker({
-            language: 'en-US'
-        });
-        var dateEditedPicker = $('#DateEditedPicker').data('datetimepicker');
-        
-        // If we are about to create a new Entry, the initial value for the datetime fields should be the current date. 
-        // If we are changing an existing entry we want the datetime fields to be initialized we the data from the database.
-        @{
-            long dateCreatedToUse;
-            long dateEditedToUse;
-            if (Model == null)
-            {
-                dateCreatedToUse = DateTime.Now.ToJavaScriptMilliseconds();
-                dateEditedToUse = DateTime.Now.ToJavaScriptMilliseconds();
-            }
-            else
-            {
-                dateCreatedToUse = Model.DateCreated.ToJavaScriptMilliseconds();
-                dateEditedToUse = Model.DateEdited.ToJavaScriptMilliseconds();
-            }
-        }
-        
-        dateCreatedPicker.setLocalDate(new Date(@dateCreatedToUse));
-        dateEditedPicker.setLocalDate(new Date(@dateEditedToUse));
-    });
-</script>
-
-}
-
+﻿@model BlackMesa.Models.Entry
 
 
 <div class="editor-label">
@@ -53,13 +9,16 @@
     @Html.ValidationMessageFor(model => model.Title)
 </div>
 
+
 <div class="editor-label">
     @Html.LabelFor(model => model.Content)
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.Content)
+    @*    <div id="Content"></div>*@  @* Wird vom Modelbinder nicht erkannt, bzw nicht über die Form übertragen - müsse man untersuchen *@
     @Html.ValidationMessageFor(model => model.Content)
 </div>
+
 
         
 <div class="editor-label">

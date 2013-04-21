@@ -9,7 +9,6 @@
         <div style="display:inline-block; vertical-align: middle">
             <div style="font-size: 26px; font-family: 'bebas'">
                 @CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Model.DateCreated.Month)     
-                @* JAN/FEB/MRZ/APR/MAI/JUN/JUL/AUG/SEP/OKT/NOV/DEZ  *@
             </div>
             <div style="font-size: 18px; font-family: 'bebas'">
                 @Model.DateCreated.Year
@@ -20,13 +19,13 @@
                 @Html.ActionLink(Model.Title, "Details", "Entry", new { id=Model.Id }, null)
             </div>
             <div style="font-size: 11px">
-                <i class="icon-comment"></i> 3
+                <i class="icon-comment"></i> @Model.Comments.Count
                 <i class="icon-tags"></i> Tags: Web Development, ASP.NET, Improvements 
             </div>
         </div>
     </div>
 
-    @Model.Content @Html.ActionLink("More", "Details", "Entry", new { id=Model.Id }, new { @class="btn btn-mini" })
+    @Html.Raw(Model.Content) @Html.ActionLink("More", "Details", "Entry", new { id=Model.Id }, new { @class="btn btn-mini" })
 
     
     <div class="btn-group">
