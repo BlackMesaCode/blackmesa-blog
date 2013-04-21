@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BlackMesa.Models.Entry>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@foreach (var item in Model) {
+    @Html.Partial("_EntryPreview", item)
+}
+
+<div>
+    <a class="btn btn-primary" href="@Url.Action("Create")">
+        <i class="icon-plus-sign"></i> Add Entry
+    </a>
+  
+    <div class="pagination pull-right">
+        <ul>
+            <li><a href="#">Prev</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="row-fluid">
+    <div class="span4">
+        <section>
+            @Html.Partial("_SectionHeader")
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. </p>
+        </section>
+    </div>
+    <div class="span4">
+        <section>
+            @Html.Partial("_SectionHeader")
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. </p>
+        </section>
+    </div>
+    <div class="span4">
+        <section>
+            @Html.Partial("_SectionHeader")
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. </p>
+        </section>
+    </div>
+</div>
+
+ 

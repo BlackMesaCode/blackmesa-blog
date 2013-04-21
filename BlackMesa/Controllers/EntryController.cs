@@ -9,24 +9,21 @@ using BlackMesa.Models;
 
 namespace BlackMesa.Controllers
 {
-    public class BlogController : Controller
+    public class EntryController : Controller
     {
-        private BlackMesaDb db = new BlackMesaDb();
+        private readonly BlackMesaDb _db = new BlackMesaDb();
 
-        //
-        // GET: /Blog/
-
+        
         public ActionResult Index()
         {
-            return View(db.Entries.ToList());
+            return View(_db.Entries.ToList());
         }
 
-        //
-        // GET: /Blog/Details/5
 
+        [HttpGet]
         public ActionResult Details(int id = 0)
         {
-            Entry entry = db.Entries.Find(id);
+            Entry entry = _db.Entries.Find(id);
             if (entry == null)
             {
                 return HttpNotFound();
@@ -34,37 +31,47 @@ namespace BlackMesa.Controllers
             return View(entry);
         }
 
-        //
-        // GET: /Blog/Create
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Comments.Add(comment);
+                _db.SaveChanges();
+                return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
+            }
+
+            return View("Details", comment.Entry);
+        }
+
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /Blog/Create
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Entry entry)
         {
             if (ModelState.IsValid)
             {
-                db.Entries.Add(entry);
-                db.SaveChanges();
+                _db.Entries.Add(entry);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(entry);
         }
 
-        //
-        // GET: /Blog/Edit/5
-
+        
         public ActionResult Edit(int id = 0)
         {
-            Entry entry = db.Entries.Find(id);
+            Entry entry = _db.Entries.Find(id);
             if (entry == null)
             {
                 return HttpNotFound();
@@ -72,28 +79,24 @@ namespace BlackMesa.Controllers
             return View(entry);
         }
 
-        //
-        // POST: /Blog/Edit/5
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Entry entry)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(entry).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(entry).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(entry);
         }
 
-        //
-        // GET: /Blog/Delete/5
-
+        
         public ActionResult Delete(int id = 0)
         {
-            Entry entry = db.Entries.Find(id);
+            Entry entry = _db.Entries.Find(id);
             if (entry == null)
             {
                 return HttpNotFound();
@@ -101,22 +104,22 @@ namespace BlackMesa.Controllers
             return View(entry);
         }
 
-        //
-        // POST: /Blog/Delete/5
+        
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Entry entry = db.Entries.Find(id);
-            db.Entries.Remove(entry);
-            db.SaveChanges();
+            Entry entry = _db.Entries.Find(id);
+            _db.Entries.Remove(entry);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
+
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }

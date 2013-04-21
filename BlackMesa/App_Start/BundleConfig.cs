@@ -18,15 +18,14 @@ namespace BlackMesa
 
 //            const string jQueryCdnPath = "http://code.jquery.com/jquery-1.9.1.min.js";
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery")
+                .Include("~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval")
+                .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-            "~/Scripts/bootstrap.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap")
+                .Include("~/Scripts/bootstrap.js", "~/Scripts/bootstrap-datetimepicker.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -39,7 +38,10 @@ namespace BlackMesa
 
             // Style Bundles
 
-            var lessBundle = new Bundle("~/Content/css").Include("~/Content/less/bootstrap.less").Include("~/Content/less/responsive.less")
+            var lessBundle = new Bundle("~/Content/css")
+                .Include("~/Content/less/bootstrap.less")
+                .Include("~/Content/less/bootstrap-datetimepicker.less")
+                .Include("~/Content/less/responsive.less")
                 .Include("~/Content/less/custom.less");
             lessBundle.Transforms.Add(cssTransformer);
             lessBundle.Transforms.Add(new CssMinify());

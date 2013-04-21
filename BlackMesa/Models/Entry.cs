@@ -14,6 +14,7 @@ namespace BlackMesa.Models
         public string Title { get; set; }
 
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
         [Required]

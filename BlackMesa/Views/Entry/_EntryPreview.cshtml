@@ -1,0 +1,44 @@
+﻿@using System.Globalization
+@model BlackMesa.Models.Entry 
+
+<article style="margin-bottom: 20px">
+    <div id="article-date">
+        <div style="display:inline-block; font-size: 50px; vertical-align: middle;">
+            @Model.DateCreated.ToString("dd")
+        </div>
+        <div style="display:inline-block; vertical-align: middle">
+            <div style="font-size: 26px; font-family: 'bebas'">
+                @CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Model.DateCreated.Month)     
+                @* JAN/FEB/MRZ/APR/MAI/JUN/JUL/AUG/SEP/OKT/NOV/DEZ  *@
+            </div>
+            <div style="font-size: 18px; font-family: 'bebas'">
+                @Model.DateCreated.Year
+            </div>
+        </div>
+        <div style="display:inline-block; vertical-align: middle; margin-top: 5px; margin-left: 10px">
+            <div style="font-size: 30px; font-family: 'bebas'; line-height: 80%">
+                @Html.ActionLink(Model.Title, "Details", "Entry", new { id=Model.Id }, null)
+            </div>
+            <div style="font-size: 11px">
+                <i class="icon-comment"></i> 3
+                <i class="icon-tags"></i> Tags: Web Development, ASP.NET, Improvements 
+            </div>
+        </div>
+    </div>
+
+    @Model.Content @Html.ActionLink("More", "Details", "Entry", new { id=Model.Id }, new { @class="btn btn-mini" })
+
+    
+    <div class="btn-group">
+        <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="icon-cog"></i> Entry
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })"><i class="icon-pencil"></i> Edit</a></li>
+            <li><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })"><i class="icon-trash"></i> Delete</a></li>
+        </ul>
+    </div>
+    
+
+</article>

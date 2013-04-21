@@ -1,0 +1,86 @@
+﻿@using BlackMesa.Utilities
+@model BlackMesa.Models.Entry
+
+
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Title)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Title)
+    @Html.ValidationMessageFor(model => model.Title)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Content)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Content)
+    @Html.ValidationMessageFor(model => model.Content)
+</div>
+
+        
+<div class="editor-label">
+    @Html.LabelFor(model => model.DateCreated)
+</div>
+<div class="editor-field">
+    <div id="DateCreatedPicker" class="input-append date">
+        <input id="DateCreated" name="DateCreated" data-format="dd/MM/yyyy hh:mm:ss" type="text" readonly></input>
+        <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+            </i>
+        </span>
+    </div>
+    @Html.ValidationMessageFor(model => model.DateCreated)
+</div>
+        
+        
+<div class="editor-label">
+    @Html.LabelFor(model => model.DateEdited)
+</div>
+<div class="editor-field">
+    <div id="DateEditedPicker" class="input-append date">
+        <input id="DateEdited" name="DateEdited" data-format="dd/MM/yyyy hh:mm:ss" type="text" readonly></input>
+        <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+            </i>
+        </span>
+    </div>
+    @Html.ValidationMessageFor(model => model.DateEdited)
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        // Initialize DateCreatedPicker
+        $('#DateCreatedPicker').datetimepicker({
+            language: 'en-US'
+        });
+        var dateCreatedPicker = $('#DateCreatedPicker').data('datetimepicker');
+        
+        // Initialize DateEditedPicker
+        $('#DateEditedPicker').datetimepicker({
+            language: 'en-US'
+        });
+        var dateEditedPicker = $('#DateEditedPicker').data('datetimepicker');
+        
+        @{
+            long dateCreatedToUse;
+            long dateEditedToUse;
+            if (Model == null)
+            {
+                dateCreatedToUse = DateTime.Now.ToJavaScriptMilliseconds();
+                dateEditedToUse = DateTime.Now.ToJavaScriptMilliseconds();
+            }
+            else
+            {
+                dateCreatedToUse = Model.DateCreated.ToJavaScriptMilliseconds();
+                dateEditedToUse = Model.DateEdited.ToJavaScriptMilliseconds();
+            }
+        }
+
+        
+        dateCreatedPicker.setLocalDate(new Date(@dateCreatedToUse));
+        dateEditedPicker.setLocalDate(new Date(@dateEditedToUse));
+    });
+</script>
+

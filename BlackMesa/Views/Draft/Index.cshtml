@@ -1,0 +1,10 @@
+﻿@model List<FileInfo>
+
+@foreach(var item in Model)
+{
+    var nameWithoutEnding = item.Name.Split('.').First();
+    <p>
+    @Html.ActionLink(nameWithoutEnding, "Details", new { viewName = nameWithoutEnding }, null);
+    </p>
+}
+

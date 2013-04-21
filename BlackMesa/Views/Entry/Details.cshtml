@@ -1,0 +1,16 @@
+﻿@using BlackMesa.Models
+@model BlackMesa.Models.Entry
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@Html.Partial("_EntryPreview", Model)
+
+@Html.Partial("Comment/_Index", Model.Comments)
+
+@Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id, DateCreated = DateTime.Now, DateEdited = DateTime.Now} )
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
