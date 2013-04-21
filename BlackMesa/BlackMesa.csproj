@@ -304,6 +304,7 @@
     <Content Include="Views\Comment\Delete.cshtml" />
     <Content Include="Views\Entry\Comment\_Index.cshtml" />
     <Content Include="Views\Entry\_CreateEditFieldset.cshtml" />
+    <Content Include="Views\Entry\_DateTimePickerJavascript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
