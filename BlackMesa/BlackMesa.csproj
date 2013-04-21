@@ -160,8 +160,7 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\CssTestController.cs" />
-    <Compile Include="Controllers\UnderMaintenanceController.cs" />
-    <Compile Include="Controllers\UnderConstructionController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,8 +171,7 @@
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\DraftController.cs" />
-    <Compile Include="Utilities\CheckUnderConstruction.cs" />
-    <Compile Include="Utilities\CheckUnderMaintenance.cs" />
+    <Compile Include="Utilities\CheckForMaintenance.cs" />
     <Compile Include="Utilities\DateTimeJavaScript.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
   </ItemGroup>
@@ -441,8 +439,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Draft\Index.cshtml" />
-    <Content Include="Views\UnderConstruction\Index.cshtml" />
-    <Content Include="Views\UnderMaintenance\Index.cshtml" />
+    <Content Include="Views\Maintenance\Index.cshtml" />
     <Content Include="Views\CssTest\Index.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />

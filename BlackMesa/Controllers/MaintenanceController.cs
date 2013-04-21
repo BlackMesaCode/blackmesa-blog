@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BlackMesa.Controllers
 {
-    public class UnderConstructionController : Controller
+    public class MaintenanceController : Controller
     {
         //
         // GET: /UnderConstruction/

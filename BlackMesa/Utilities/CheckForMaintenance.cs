@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BlackMesa.Utilities
 {
-    public sealed class CheckUnderMaintenance : ActionFilterAttribute
+    public sealed class CheckForMaintenance : ActionFilterAttribute
     {
 
         private static List<string> _allowedIps = new List<string>
@@ -17,11 +17,11 @@ namespace BlackMesa.Utilities
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (ConfigurationManager.AppSettings["UnderMaintenance"] == "true" && !filterContext.RouteData.Values["controller"].Equals("UnderMaintenance"))
+            if (ConfigurationManager.AppSettings["Maintenance"] == "true" && !filterContext.RouteData.Values["controller"].Equals("Maintenance"))
             {
                 if (!filterContext.HttpContext.Request.IsLocal && !_allowedIps.Contains(filterContext.HttpContext.Request.UserHostAddress))
                 {
-                    filterContext.HttpContext.Response.RedirectToRoute(new { controller = "UnderMaintenance", action = "Index" });
+                    filterContext.HttpContext.Response.RedirectToRoute(new { controller = "Maintenance", action = "Index" });
                 }
             }
 

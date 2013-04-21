@@ -9,8 +9,7 @@ namespace BlackMesa
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new CheckUnderConstruction());
-            filters.Add(new CheckUnderMaintenance());
+            filters.Add(new CheckForMaintenance());
         }
     }
 }
