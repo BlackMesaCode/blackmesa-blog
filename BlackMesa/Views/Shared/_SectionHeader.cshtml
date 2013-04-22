@@ -1,14 +1,7 @@
-﻿<style>
-    #outer2{ position: relative; height:auto; width:200px;}
-    #inner2{ position:absolute; height:100%; margin-right: 5px;}
-</style>
+﻿@model String
 
-<div id="outer2" style="width: 100%; font-family: 'bebas'; font-size: 24px">
-    <div style="display:inline-block; vertical-align: middle; color: white; padding: 4px; padding-left: 10px; padding-right: 10px; background-color: black;">
-        <i class="icon-double-angle-down"></i> SECTION HEADING 
-        
+<div class="section-header">
+    <div class="black-bg-overlay">
+        <i class="icon-double-angle-down"></i> @Model
     </div>
-    <div id="inner2" style="display: inline-block; vertical-align: middle; width: 10px; background-color: #ff9500; color: #ff9500;"></div>
 </div>
-
-

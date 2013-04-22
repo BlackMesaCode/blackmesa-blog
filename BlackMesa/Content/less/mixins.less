@@ -6,6 +6,28 @@
 // UTILITY MIXINS
 // --------------------------------------------------
 
+// Rotation
+// --------
+// Rotate element by 90 degree counterclockwise
+.rotate {
+
+    /* Safari */
+    -webkit-transform: rotate(-90deg);
+
+    /* Firefox */
+    -moz-transform: rotate(-90deg);
+
+    /* IE */
+    -ms-transform: rotate(-90deg);
+
+    /* Opera */
+    -o-transform: rotate(-90deg);
+
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+
 // Clearfix
 // --------
 // For clearing floats like a boss h5bp.com/q

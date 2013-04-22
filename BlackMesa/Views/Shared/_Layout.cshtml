@@ -9,11 +9,19 @@
 
 </head>
     <body>
-        <div class="container-fluid">
-            <header class="clearfix" style="margin-bottom: 20px; margin-top: 10px">
-                @Html.Partial("_Header")
-            </header>
-            @RenderBody()
+        <div class="my-container">
+            <div id="left-column">
+                <header>
+                    @Html.Partial("_Header")
+                </header>
+                @RenderBody()
+            </div>
+            <div id="right-column">
+                @Html.Partial("_Sidebar")
+            </div>
+            <footer>
+                @Html.Partial("_Footer")
+            </footer>
         </div>
 
 

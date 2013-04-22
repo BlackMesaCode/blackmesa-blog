@@ -178,9 +178,14 @@
   <ItemGroup>
     <Content Include="Content\fonts\bebasneue-webfont.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\images\asp_dotnet_logo.png" />
+    <Content Include="Content\images\asp_dotnet_logo_hover.png" />
+    <Content Include="Content\images\azure_logo.png" />
+    <Content Include="Content\images\azure_logo_hover.png" />
     <Content Include="Content\images\blackmesa_logo.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\license.png" />
     <Content Include="Content\images\pattern.png" />
     <Content Include="Content\images\yellow_stripes_small.png" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
@@ -458,6 +463,8 @@
     <Content Include="Views\Entry\Comment\_Index.cshtml" />
     <Content Include="Views\Entry\_CreateEditFieldset.cshtml" />
     <Content Include="Views\Entry\_DateTimePickerJavascript.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

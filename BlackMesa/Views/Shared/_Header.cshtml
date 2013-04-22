@@ -1,13 +1,36 @@
-﻿<div class="pull-left clearfix"><a href="@Url.Action("Index", "Entry")"><img src="~/content/images/blackmesa_logo.png"/></a></div>
-<nav class="pull-right floatflip clearfix" style="margin-top: 5px; margin-bottom: 20px">
-    <div class="pull-right" style="margin-left: 20px">@Html.Partial("_Navigation")</div>
-    <div class="pull-right">
+﻿<div id="blackmesa-logo">
+    <a href="@Url.Action("Index", "Entry")">
+        <img src="~/content/images/blackmesa_logo.png" alt="BlackMesa IT-Blog"/>
+    </a>
+</div>
+
+<div id="nav-and-authorization">
+    <nav>
+        @Html.Partial("_Navigation")
+    </nav>
+
+    <div id="authorization">
+        <div class="btn-group">
+            <button class="btn"><i class="icon-user"></i> Guest</button>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-home"></i> Login</a></li>
+                <li><a href="#"><i class="icon-user"></i> Register</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        @*
         <form class="form-search">
             <div class="input-append">
-                 <input type="text" class="span2 search-query" id="search-query-input" placeholder="Suchbegriff eingeben">
-@*               <span class="input-medium uneditable-input">Suchbegriff eingeben</span>*@
+                <input type="text" class="span2 search-query" id="search-query-input" placeholder="Suchbegriff eingeben" readonly="readonly">
+                               <span class="input-medium uneditable-input">Suchbegriff eingeben</span>
                 <button type="submit" class="btn">Suchen</button>
             </div>
-        </form>
-    </div>
-</nav>
+</form>
+    *@
+    
+

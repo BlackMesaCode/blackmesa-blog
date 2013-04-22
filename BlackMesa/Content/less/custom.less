@@ -1,52 +1,159 @@
-﻿.container-fluid {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 850px;
-}
+﻿/* Import core variables and mixins */
 
-@font-face {
-    font-family: 'bebas';
-    src: url('../fonts/bebasneue-webfont.eot');
-    src: url('../fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/bebasneue-webfont.woff') format('woff'),
-         url('../fonts/bebasneue-webfont.ttf') format('truetype'),
-         url('../fonts/bebasneue-webfont.svg#bebas_neueregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
+@import "variables.less";
+@import "mixins.less";
+@import "utilities.less";
 
 
-.rotate {
+/* Layout */
 
-    /* Safari */
-    -webkit-transform: rotate(-90deg);
-
-    /* Firefox */
-    -moz-transform: rotate(-90deg);
-
-    /* IE */
-    -ms-transform: rotate(-90deg);
-
-    /* Opera */
-    -o-transform: rotate(-90deg);
-
-    /* Internet Explorer */
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-}
-
-
-@media all and (max-width: 640px)  {
-    .floatflip {
-        float: left !important;
-    }
-}
+@left-column-width: 740px; /* 740px is the size that is available on tablets in portrait mode */
 
 
 body{
     background-image: url("../images/pattern.png");
 }
 
+.my-container {
+    .clearfix;
+    margin: 8px auto;
+    max-width: 979px; /* 979px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
+    @media (max-width: 978px) {
+        max-width: @left-column-width;
+    }
+}
+
+#left-column {
+    .pull-left;
+    .clearfix;
+    width: 100%;
+    max-width: @left-column-width;
+    margin-right: 15px;
+    margin-bottom: 10px;
+
+    @media (max-width: 978px) {
+        margin-right: 0px;
+        float: none;
+    }
+}
+
+#right-column {
+    .pull-right;
+    .clearfix;
+    width: 220px;
+
+    // Landscape phone to portrait tablet
+    @media (max-width: 978px) {
+        width: auto;
+        max-width: @left-column-width;
+        float: none;
+    }
+}
+
+// Adaptions for responsiveness
+
+
+
+
+
+/* Header */
+
+header {
+    margin-bottom: 20px; 
+    .clearfix;
+
+    #blackmesa-logo {
+        .pull-left;
+        .clearfix;
+    }
+
+    #nav-and-authorization {
+        .pull-right;
+        /* .floatflip; */
+        .clearfix;
+        margin-bottom: 20px;
+
+        nav {
+            .pull-right;
+            margin-left: 10px;
+
+            .btn-primary {
+                width: 136px;
+            }
+        }
+
+        #authorization {
+            .pull-right;
+        }
+
+        @media (max-width: 755px) {
+            .pull-left;
+        }
+
+    }
+
+}
+
+
+/* Sections */
+
+section {
+
+}
+
+.section-header {
+    background-color: @orange;
+    color: #fdfdfd;
+    font-family: 'bebas';
+    font-size: 20px;
+    margin-bottom: 10px;
+
+    i {
+        margin-right: 5px
+    }
+
+    .black-bg-overlay {
+        padding: 4px 10px;
+        margin-right: 10px;
+        background-color: @grayDarker;
+    }
+
+
+}
+
+
+/* Main Sections */
+
+#entry-index {
+    .clearfix;
+    .pagination {
+        .pull-right;
+        margin: 0;
+    }
+
+}
+
+
+
+/* Sidebar Sections */
+
+#about {
+
+}
+
+#archive {
+
+}
+
+#recent-comments {
+
+}
+
+
+
+/* About */
+
+/* Archive */
 
 .form-search {
     margin-bottom: 0px;
@@ -56,9 +163,98 @@ body{
     width: 180px;
 }
 
-.pagination {
-    margin: 0;
+/* Latest Comments */
+
+
+
+
+
+/* Footer */
+
+footer {
+    .pull-left;
+    background-color: @grayDarker;
+    color: white;
+    font-family: 'bebas';
+    font-size: 13px;
+    width: 100%;
+    max-width: @left-column-width;
+
+    span {
+        display: inline-block;
+        padding: 5px;
+    }
+
+    a {
+        color: white;
+        &:hover {
+            color: @orange;
+            text-decoration: none;
+        }
+    }
+
+
+    #license-image {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        width: 57px;
+        height: 20px;
+        background-image: url(/Content/images/license.png);
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        &:hover {
+            background-position-y: top;
+        }
+    }
+
+    #powered-by {
+        .pull-right;
+
+        span {
+            margin-right: 5px;
+        }
+    }
+
+    #azure-logo {
+        display: inline-block;
+        vertical-align: middle;
+        width: 109px;
+        height: 20px;
+        background-image: url(/Content/images/azure_logo.png);
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        &:hover {
+            background-position-y: top;
+        }
+    }
+
+    #asp-dotnet-logo {
+        display: inline-block;
+        vertical-align: middle;
+        width: 64px;
+        height: 16px;
+        margin-right: 5px;
+        background-repeat: no-repeat;
+        background-image: url(/Content/images/asp_dotnet_logo.png);
+        background-position-y: bottom;
+        &:hover {
+            background-position-y: top;
+        }
+    }
+
+
+    #backtotop {
+        margin-right: 80px;
+        i {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+
 }
+
+
 
 
 
