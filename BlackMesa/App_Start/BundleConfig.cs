@@ -44,7 +44,7 @@ namespace BlackMesa
             var lessBundle = new Bundle("~/Content/css")
                 .Include("~/Content/less/bootstrap.less")
                 .Include("~/Content/less/bootstrap-datetimepicker.less")
-                .Include("~/Content/less/responsive.less")
+                //.Include("~/Content/less/responsive.less")
                 .Include("~/Content/less/custom.less");
             lessBundle.Transforms.Add(cssTransformer);
             lessBundle.Transforms.Add(new CssMinify());

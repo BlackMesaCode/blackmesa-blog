@@ -1,0 +1,6 @@
+﻿@model IEnumerable<BlackMesa.Models.Comment>
+
+@foreach(var comment in Model)
+{
+    @Html.Partial("_CommentPreview", comment)
+}

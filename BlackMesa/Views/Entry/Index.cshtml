@@ -6,8 +6,13 @@
 
 
 <section id="entry-index">
+    
+    <div style="text-align: right; background-color: whitesmoke; border: 1px solid #dddddd; font-family: 'bebas'; margin-bottom: 10px">
+        <i class="icon-reorder"></i> Sort by: <a href="#">Most Recent | Most Viewed | Most commented
+            </a>
+    </div>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     @Html.Partial("_EntryPreview", item)
 }
 

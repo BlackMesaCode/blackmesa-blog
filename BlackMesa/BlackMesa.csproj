@@ -183,10 +183,21 @@
     <Content Include="Content\images\azure_logo.png" />
     <Content Include="Content\images\azure_logo_hover.png" />
     <Content Include="Content\images\blackmesa_logo.png" />
+    <Content Include="Content\images\blackmesa_logo_block.png" />
+    <Content Include="Content\images\blackmesa_logo_block2.png" />
+    <Content Include="Content\images\blackmesa_logo_inverted.png" />
+    <Content Include="Content\images\blackmesa_logo_multiline.png" />
+    <Content Include="Content\images\blackmesa_logo_rotated.png" />
+    <Content Include="Content\images\blackmesa_logo_rotated2.png" />
+    <Content Include="Content\images\blackmesa_logo_stretched.png" />
+    <Content Include="Content\images\email.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\license.png" />
     <Content Include="Content\images\pattern.png" />
+    <Content Include="Content\images\portrait.jpg" />
+    <Content Include="Content\images\portrait_inverted.jpg" />
+    <Content Include="Content\images\portrait_real.jpg" />
     <Content Include="Content\images\yellow_stripes_small.png" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
@@ -465,6 +476,8 @@
     <Content Include="Views\Entry\_DateTimePickerJavascript.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Views\Comment\_CommentPreview.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

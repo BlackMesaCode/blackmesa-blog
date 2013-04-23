@@ -1,0 +1,10 @@
+﻿@model BlackMesa.Models.Comment
+
+<article class="comment-preview">
+    <a href="@Url.Action("Details", "Entry", new { Id = Model.EntryId })">
+        @Model.Content
+        <br/>
+    </a>
+    <span class="comment-author">By @Model.Email, </span>
+    <span class="comment-date-created">@Model.DateCreated.ToString("g")</span>
+</article>

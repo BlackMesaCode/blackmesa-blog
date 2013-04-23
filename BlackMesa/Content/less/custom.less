@@ -42,6 +42,10 @@ body{
     .clearfix;
     width: 220px;
 
+    section {
+        margin-bottom: 20px;
+    }
+
     // Landscape phone to portrait tablet
     @media (max-width: 978px) {
         width: auto;
@@ -50,72 +54,91 @@ body{
     }
 }
 
-// Adaptions for responsiveness
-
-
-
 
 
 /* Header */
 
 header {
-    margin-bottom: 20px; 
+    margin-bottom: 10px;
     .clearfix;
 
-    #blackmesa-logo {
-        .pull-left;
-        .clearfix;
+    color: white;
+    font-family: 'bebas';
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 30px;
+    background-color: @grayDarker;
+
+    nav {
+        display: inline-block;
+        margin-right: 15px;
+
+        .btn {
+            color: @grayDarker !important;
+            text-shadow: none;
+            width: 100px;
+            font-family: 'bebas';
+            font-size: 17px !important;
+            letter-spacing: 1px !important;
+        }
+
+        ul {
+            font-size: 15px !important;
+        }
+
+        .caret {
+            border-top-color: @grayDarker !important;
+        }
     }
 
-    #nav-and-authorization {
+    #user-status {
+        margin-right: 5px;
+    }
+
+    #authorization {
         .pull-right;
-        /* .floatflip; */
-        .clearfix;
-        margin-bottom: 20px;
 
-        nav {
-            .pull-right;
-            margin-left: 10px;
-
-            .btn-primary {
-                width: 136px;
-            }
+        .btn {
+            width: 86px;
+            font-family: 'bebas';
+            font-size: 14px;
+            letter-spacing: 1px;
         }
 
-        #authorization {
-            .pull-right;
+        .dropdown-toggle {
+            width: auto;
         }
-
-        @media (max-width: 755px) {
-            .pull-left;
-        }
-
     }
+   
 
+    @media (max-width: 755px) {
+        .pull-left;
+    }
 }
+
 
 
 /* Sections */
 
-section {
-
-}
 
 .section-header {
-    background-color: @orange;
+    background-color: @grayDarker;
     color: #fdfdfd;
-    font-family: 'bebas';
-    font-size: 20px;
+    padding-left: 10px;
     margin-bottom: 10px;
+    height: 30px;
+
+    h1 {
+        display: inline;
+        font-family: 'bebas';
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 30px;
+        margin: 0px;
+    }
 
     i {
         margin-right: 5px
-    }
-
-    .black-bg-overlay {
-        padding: 4px 10px;
-        margin-right: 10px;
-        background-color: @grayDarker;
     }
 
 
@@ -137,33 +160,74 @@ section {
 
 /* Sidebar Sections */
 
-#about {
-
+#blackmesa-logo {
+    margin-bottom: 15px;
 }
 
-#archive {
+#subscribe{
+    .clearfix;
+    .btn {
+        width: 100%;
+        max-width: 220px;
+        .box-sizing(border-box);
+    }
+}
 
+
+#archive {
+    .clearfix;
+
+    h2 {
+        font-size: 14px;
+        margin: 5px 0;
+        line-height: 0px;
+        font-weight: bold;
+    }
+
+    .form-search {
+        margin-bottom: 0px;
+    }
+
+
+    #fulltext-search {
+        margin-top: 15px;
+        margin-bottom: 20px;
+
+        input {
+            width: 162px;
+        }
+    }
+
+    #search-by-month {
+        margin-bottom: 20px;
+        max-width: 220px;
+
+        select {
+            width: 176px;
+        }
+    }
+
+    #search-by-tags {
+
+    }
 }
 
 #recent-comments {
+    .clearfix;
 
+    .comment-preview {
+        margin-bottom: 10px;
+
+        .comment-author{
+            font-size: 11px;
+        }
+
+        .comment-date-created {
+            font-size: 11px;
+        }
+    }
 }
 
-
-
-/* About */
-
-/* Archive */
-
-.form-search {
-    margin-bottom: 0px;
-}
-
-#search-query-input {
-    width: 180px;
-}
-
-/* Latest Comments */
 
 
 
@@ -177,6 +241,7 @@ footer {
     color: white;
     font-family: 'bebas';
     font-size: 13px;
+    letter-spacing: 0.08em;
     width: 100%;
     max-width: @left-column-width;
 
