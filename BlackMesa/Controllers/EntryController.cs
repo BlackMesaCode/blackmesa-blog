@@ -46,7 +46,7 @@ namespace BlackMesa.Controllers
                 return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
             }
 
-            return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
+            return View("Details", comment.Entry);
         }
 
 
