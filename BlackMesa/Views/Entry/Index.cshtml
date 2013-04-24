@@ -7,16 +7,22 @@
 
 <section id="entry-index">
     
-    <div style="text-align: right; background-color: whitesmoke; border: 1px solid #dddddd; font-family: 'bebas'; margin-bottom: 10px">
-        <i class="icon-reorder"></i> Sort by: <a href="#">Most Recent | Most Viewed | Most commented
-            </a>
+
+    <div id="entries-top-bar">
+        <i class="icon-info-sign"></i> Total entries: @Model.Count()
+        
+        <div id="sort-bar">
+            <i class="icon-reorder"></i> Sort by: 
+            <a href="#">Most Recent</a> | <a href="#">Most Viewed</a> | <a href="#">Most commented</a>
+        </div>
+ 
     </div>
 
     @foreach (var item in Model) {
     @Html.Partial("_EntryPreview", item)
 }
 
-    <div>
+    <div id="entries-bottom-bar">
         <a class="btn btn-primary" href="@Url.Action("Create")">
             <i class="icon-plus-sign"></i> Add Entry
         </a>

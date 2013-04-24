@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using BlackMesa.Models;
 
 namespace BlackMesa.ViewModels
@@ -12,13 +9,20 @@ namespace BlackMesa.ViewModels
         public int Id { get; set; }
 
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
-        public string Email { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateEdited { get; set; }
+        [DefaultValue("Anon")]
+        [StringLength(255)]
+        public string Name { get; set; }
 
-        public int EntryId { get; set; }  // Having both the ForeignKey and the navigation property in place, will make EntryId a not nullable ForeignKey in the database
-        public virtual Entry Entry { get; set; }
+        [StringLength(254)]
+        public string Email { get; set; }
+
+        [Required]
+        public int EntryId { get; set; }
+
+        [Required]
+        public Entry Entry { get; set; }
     }
 }

@@ -36,6 +36,9 @@ namespace BlackMesa.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Details(Comment comment)
         {
+            comment.DateCreated = DateTime.Now;
+            comment.DateEdited = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 _db.Comments.Add(comment);
@@ -43,7 +46,7 @@ namespace BlackMesa.Controllers
                 return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
             }
 
-            return View("Details", comment.Entry);
+            return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
         }
 
 

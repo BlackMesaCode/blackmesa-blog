@@ -173,7 +173,9 @@
     <Compile Include="Controllers\DraftController.cs" />
     <Compile Include="Utilities\CheckForMaintenance.cs" />
     <Compile Include="Utilities\DateTimeJavaScript.cs" />
-    <Compile Include="ViewModels\CommentViewModel.cs" />
+    <Compile Include="ViewModels\CommentViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\bebasneue-webfont.svg" />
@@ -478,6 +480,7 @@
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Comment\_CommentPreview.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
+    <Content Include="Views\Entry\Comment\_CreateEditFieldset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

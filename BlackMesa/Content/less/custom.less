@@ -14,7 +14,7 @@ body{
     background-image: url("../images/pattern.png");
 }
 
-.my-container {
+.container {
     .clearfix;
     margin: 8px auto;
     max-width: 979px; /* 979px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
@@ -91,6 +91,8 @@ header {
         }
     }
 
+    #datetime-now {}
+
     #user-status {
         margin-right: 5px;
     }
@@ -147,14 +149,56 @@ header {
 
 /* Main Sections */
 
+
+.section-text-header {
+    font-family: 'bebas';
+    font-size: 30px;
+}
+
+fieldset > legend {
+    .section-text-header;
+}
+
+
 #entry-index {
     .clearfix;
-    .pagination {
-        .pull-right;
-        margin: 0;
+
+    #entries-top-bar {
+        background-color: whitesmoke;
+        border: 1px solid #dddddd;
+        font-family: 'bebas';
+        padding-left: 5px;
+        margin-bottom: 10px;
+
+        #sort-bar {
+            .clearfix;
+            float: right;
+            a {
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+        }
+
     }
 
+    #entries-bottom-bar {
+        .pagination {
+            .pull-right;
+            margin: 0;
+        }
+    }
 }
+
+
+#entry-edit {
+
+}
+
+#entry-delete {
+
+}
+
+
 
 
 

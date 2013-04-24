@@ -9,7 +9,7 @@
 
 @Html.Partial("Comment/_Index", Model.Comments)
 
-@Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id, DateCreated = DateTime.Now, DateEdited = DateTime.Now} )
+@Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id } )
 
 <p>
     @Html.ActionLink("Back to List", "Index")

@@ -23,7 +23,7 @@ namespace BlackMesa.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Comment comment = _db.Comments.Find(id);
+            var comment = _db.Comments.Find(id);
             if (comment == null)
             {
                 return HttpNotFound();

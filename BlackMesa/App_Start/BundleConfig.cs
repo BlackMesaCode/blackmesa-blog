@@ -1,4 +1,5 @@
 ﻿using System.Web.Optimization;
+using BundleTransformer.Core.Minifiers;
 using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Transformers;
 
@@ -29,6 +30,8 @@ namespace BlackMesa
 
             bundles.Add(new ScriptBundle("~/bundles/texteditor")
                 .Include("~/Scripts/ckeditor/ckeditor.js"));
+       
+            
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -43,9 +46,8 @@ namespace BlackMesa
 
             var lessBundle = new Bundle("~/Content/css")
                 .Include("~/Content/less/bootstrap.less")
-                .Include("~/Content/less/bootstrap-datetimepicker.less")
+                .Include("~/Content/less/bootstrap-datetimepicker.less");
                 //.Include("~/Content/less/responsive.less")
-                .Include("~/Content/less/custom.less");
             lessBundle.Transforms.Add(cssTransformer);
             lessBundle.Transforms.Add(new CssMinify());
             lessBundle.Orderer = nullOrderer;

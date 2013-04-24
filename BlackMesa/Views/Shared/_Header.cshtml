@@ -1,8 +1,11 @@
 ﻿<nav>
     @Html.Partial("_Navigation")
 </nav>
-<i class="icon-time"></i> 
-@DateTime.Now.ToLongDateString(), @DateTime.Now.ToShortTimeString()
+
+<span id="datetime-now">
+    <i class="icon-time"></i> 
+    @DateTime.Now.ToLongDateString(), @DateTime.Now.ToShortTimeString()
+</span>
 
 <div id="authorization">
     <span id="user-status">Your status: </span>
@@ -17,13 +20,3 @@
         </ul>
     </div>
 </div>
-
-
-
-@*
-<div id="nav-and-authorization">
-    <nav>
-        @Html.Partial("_Navigation")
-    </nav>
-</div>
-*@
