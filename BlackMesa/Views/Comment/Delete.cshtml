@@ -42,6 +42,6 @@
     @Html.AntiForgeryToken()
     <p>
         <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Details", "Entry", new { Id = Model.EntryId }, null)
+        @Html.ActionLink("Back to List", "Details", "Entry", new { Id = Model.EntryId }, new { @class = "btn" })
     </p>
 }

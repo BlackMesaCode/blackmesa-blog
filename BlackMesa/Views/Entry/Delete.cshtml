@@ -40,7 +40,7 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input class="btn btn-primary" type="submit" value="Delete" />
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
     </p>
 }

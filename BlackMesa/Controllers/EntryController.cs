@@ -13,7 +13,7 @@ namespace BlackMesa.Controllers
     {
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
-        
+
         public ActionResult Index()
         {
             return View(_db.Entries.ToList());
@@ -46,7 +46,7 @@ namespace BlackMesa.Controllers
                 return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
             }
 
-            return View("Details", comment.Entry);
+            return View("Details", _db.Entries.Single(c => c.Id == comment.EntryId));
         }
 
 
@@ -56,7 +56,7 @@ namespace BlackMesa.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Entry entry)
@@ -71,7 +71,7 @@ namespace BlackMesa.Controllers
             return View(entry);
         }
 
-        
+
         public ActionResult Edit(int id = 0)
         {
             Entry entry = _db.Entries.Find(id);
@@ -82,7 +82,7 @@ namespace BlackMesa.Controllers
             return View(entry);
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Entry entry)
@@ -96,7 +96,7 @@ namespace BlackMesa.Controllers
             return View(entry);
         }
 
-        
+
         public ActionResult Delete(int id = 0)
         {
             Entry entry = _db.Entries.Find(id);
@@ -107,7 +107,7 @@ namespace BlackMesa.Controllers
             return View(entry);
         }
 
-        
+
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -155,8 +155,35 @@ header {
     font-size: 30px;
 }
 
-fieldset > legend {
-    .section-text-header;
+#left-column {
+    fieldset {
+
+        .editor-label > label {
+            font-weight: bold;
+        }
+
+        input {
+            max-width: 730px;
+        }
+
+        textarea {
+            max-width: 730px;
+        }
+
+        .field-validation-error {
+            font-weight: bold;
+            color: orange;
+        }
+
+        #title-input {
+            width: 100% !important;
+            max-width: 300px;
+        }
+
+        legend {
+            .section-text-header;
+        }
+    }
 }
 
 
@@ -365,6 +392,14 @@ footer {
 
 
 
+
+
+@media (min-width: 979px) {
+    html {
+        overflow-y: scroll;
+    }
+
+}
 
 
 /* Large desktop */

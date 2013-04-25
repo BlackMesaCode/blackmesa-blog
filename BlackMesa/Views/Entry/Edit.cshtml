@@ -25,12 +25,11 @@
             @Html.Partial("_CreateEditFieldset")
 
             <p>
-                <input type="submit" value="Save" />
+                <input class="btn btn-primary" type="submit" value="Save" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
             </p>
         </fieldset>
     }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+        
 </section>

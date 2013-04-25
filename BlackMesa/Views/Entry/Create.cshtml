@@ -13,16 +13,13 @@
         <legend>Create Entry</legend>
 
         @Html.Partial("_CreateEditFieldset")  @* no model is passed so the parents viewmodel is passed by default *@
+        
+        <br/>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <input class="btn btn-primary" type="submit" value="Create" />
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

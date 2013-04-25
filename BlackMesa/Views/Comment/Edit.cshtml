@@ -16,14 +16,12 @@
         @Html.Partial("../Entry/Comment/_CreateEditFieldset", Model)
 
         <p>
-            <input type="submit" value="Save" />
+            <input class="btn btn-primary" type="submit" value="Save" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
         </p>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Details", "Entry", new { Id = Model.EntryId }, null)
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
