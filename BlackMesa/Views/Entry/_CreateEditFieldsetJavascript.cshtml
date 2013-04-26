@@ -39,13 +39,8 @@
 
     CKEDITOR.replace('Content');
 
-
-    jQuery(".tagManager").tagsManager({
-        @if (Model != null)
-        {
-            @:prefilled: [@Html.Raw(String.Join(", ", Model.Tags.Select(t=> "\"" + t.Name + "\"")))]
-        }
-            
+    $(".tag-input").magicSuggest({
+        selectionPosition: 'right',
     });
     
     

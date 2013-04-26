@@ -21,8 +21,13 @@
     </fieldset>
 }
 
+@section Styles {
+    @Styles.Render("~/Content/admin")
+}
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/texteditor")
+    @Scripts.Render("~/bundles/magicsuggest")
     @Html.Partial("_CreateEditFieldsetJavascript", Model)
 }

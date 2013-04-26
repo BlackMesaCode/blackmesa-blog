@@ -26,11 +26,14 @@ namespace BlackMesa
                 .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
-                .Include("~/Scripts/bootstrap.js", "~/Scripts/bootstrap-datetimepicker.js",
-                "~/Scripts/bootstrap-tagmanager.js"));
+                .Include("~/Scripts/bootstrap.js", "~/Scripts/bootstrap-datetimepicker.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/texteditor")
                 .Include("~/Scripts/ckeditor/ckeditor.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/magicsuggest")
+                .Include("~/Scripts/magicsuggest-1.2.7.js"));
+            
        
             
 
@@ -45,15 +48,21 @@ namespace BlackMesa
 
             // Style Bundles
 
-            var lessBundle = new Bundle("~/Content/css")
-                .Include("~/Content/less/bootstrap.less")
+            var mainBundle = new Bundle("~/Content/main")
+                .Include("~/Content/less/bootstrap.less");
+            mainBundle.Transforms.Add(cssTransformer);
+            mainBundle.Transforms.Add(new CssMinify());
+            mainBundle.Orderer = nullOrderer;
+            bundles.Add(mainBundle);
+
+            var adminBundle = new Bundle("~/Content/admin")
                 .Include("~/Content/less/bootstrap-datetimepicker.less")
-                .Include("~/Content/less/bootstrap-tagmanager.less");
-                //.Include("~/Content/less/responsive.less")
-            lessBundle.Transforms.Add(cssTransformer);
-            lessBundle.Transforms.Add(new CssMinify());
-            lessBundle.Orderer = nullOrderer;
-            bundles.Add(lessBundle);
+                .Include("~/Content/less/magicsuggest-1.2.7.less");
+            mainBundle.Transforms.Add(cssTransformer);
+            mainBundle.Transforms.Add(new CssMinify());
+            mainBundle.Orderer = nullOrderer;
+            bundles.Add(adminBundle);
+
 
 //            BundleTable.EnableOptimizations = true;  // executing this line will force bundling and minification by overwriting whatever stands in web.config
 //            #if DEBUG
