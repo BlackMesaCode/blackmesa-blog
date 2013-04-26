@@ -4,11 +4,12 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<section id="comment-delete">
 
-<h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>Comment</legend>
+    <legend>Delete Comment</legend>
+    
+    <p>Are you sure you want to delete this?</p>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Content)
@@ -45,3 +46,5 @@
         @Html.ActionLink("Back to List", "Details", "Entry", new { Id = Model.EntryId }, new { @class = "btn" })
     </p>
 }
+    
+</section>
