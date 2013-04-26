@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<BlackMesa.Models.Comment>
 
+<section id="comment-index">
 
 @foreach(var comment in Model)
 {
     @Html.Partial("Comment/_Details", comment)
-
 }
+
+</section>

@@ -159,6 +159,52 @@ header {
             .section-text-header;
         }
     }
+
+
+    .article {
+        margin-bottom: 20px;
+
+        .article-head {
+
+            .article-date-day {
+                display: inline-block;
+                font-size: 50px;
+                line-height: 50px;
+            }
+
+            .article-month-year-container {
+                display: inline-block;
+
+                .article-date-month {
+                    font-size: 26px;
+                    font-family: 'bebas';
+                }
+
+                .article-date-year {
+                    font-size: 18px;
+                    font-family: 'bebas';
+                }
+            }
+
+            .article-title-subtitle-container {
+                display: inline-block;
+                margin-left: 10px;
+
+                .article-title {
+                    font-size: 30px;
+                    font-family: 'bebas';
+                    line-height: 80%;
+                }
+
+                .article-subtitle {
+                    font-size: 11px;
+                }
+            }
+        }
+        // end of .article-head
+    }// end of .article
+
+
     // Entry index
     #entry-index {
         .clearfix;
@@ -182,51 +228,8 @@ header {
         }
 
         article {
-
-            margin-bottom: 20px;
-
-            .article-head {
-
-                .article-date-day {
-                    display:inline-block;
-                    font-size: 50px;
-                    line-height: 50px;
-                }
-
-                .article-month-year-container {
-                    display: inline-block;
-
-                    .article-date-month {
-                        font-size: 26px;
-                        font-family: 'bebas';
-                    }
-
-                    .article-date-year {
-                        font-size: 18px;
-                        font-family: 'bebas';
-                    }
-                }
-
-
-
-
-                .article-title-subtitle-container {
-                    display:inline-block;
-                    margin-left: 10px;
-
-                    .article-title {
-                        font-size: 30px;
-                        font-family: 'bebas';
-                        line-height: 80%;
-                    }
-
-                    .article-subtitle {
-                        font-size: 11px;
-                    }
-                }
-            } // end of .article-head
-        } // end of article
-
+            .article;
+        }
 
         #entries-bottom-bar {
             .pagination {
@@ -235,11 +238,23 @@ header {
             }
         }
     }
+
+    // Entry details
+    #entry-details {
+        article {
+            .article;
+        }
+    }
+
+
     // Entry edit
     #entry-edit {
+
     }
+
     // Edit delete
     #entry-delete {
+
     }
 }
 

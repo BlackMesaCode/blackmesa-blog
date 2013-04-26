@@ -1,4 +1,7 @@
 ﻿@model BlackMesa.Models.Comment
+
+<section id="comment-create">
+
 @using (Html.BeginForm("Details", "Entry")) {
     
     @Html.AntiForgeryToken()
@@ -18,3 +21,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+    
+</section>

@@ -5,8 +5,12 @@
     ViewBag.Title = "Details";
 }
 
+<section id="entry-details">
+
 @Html.Partial("_EntryPreview", Model)
 
 @Html.Partial("Comment/_Index", Model.Comments)
 
 @Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id } )
+
+</section>

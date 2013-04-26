@@ -4,20 +4,20 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<section id="comment-edit">
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Comment</legend>
+        <legend>Edit Comment</legend>
         
         @Html.Partial("../Entry/Comment/_CreateEditFieldset", Model)
 
         <p>
             <input class="btn btn-primary" type="submit" value="Save" />
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+            @Html.ActionLink("Back to List", "Details", "Entry", new { Id = Model.EntryId }, new { @class = "btn" })
         </p>
     </fieldset>
 }
@@ -26,3 +26,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+    
+</section>
