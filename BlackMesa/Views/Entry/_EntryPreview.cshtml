@@ -1,24 +1,23 @@
 ﻿@using System.Globalization
 @model BlackMesa.Models.Entry 
 
-<article style="margin-bottom: 20px">
-    <div id="article-date">
-        <div style="display:inline-block; font-size: 50px; vertical-align: middle;">
+<article>
+    <div class="article-head">
+        <div class="article-date-day">
             @Model.DateCreated.ToString("dd")
         </div>
-        <div style="display:inline-block; vertical-align: middle">
-            <div style="font-size: 26px; font-family: 'bebas'">
-                @CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Model.DateCreated.Month)     
+        <div class="article-month-year-container">
+            <div class="article-date-month">@CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Model.DateCreated.Month)
             </div>
-            <div style="font-size: 18px; font-family: 'bebas'">
+            <div class="article-date-year">
                 @Model.DateCreated.Year
             </div>
         </div>
-        <div style="display:inline-block; vertical-align: middle; margin-top: 5px; margin-left: 10px">
-            <div style="font-size: 30px; font-family: 'bebas'; line-height: 80%">
+        <div class="article-title-subtitle-container">
+            <div class="article-title">
                 @Html.ActionLink(Model.Title, "Details", "Entry", new { id=Model.Id }, null)
             </div>
-            <div style="font-size: 11px">
+            <div class="article-subtitle">
                 <i class="icon-comment"></i> @Model.Comments.Count
                 <i class="icon-tags"></i> Tags: Web Development, ASP.NET, Improvements 
             </div>

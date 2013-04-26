@@ -120,42 +120,17 @@ header {
 
 
 
-/* Sections */
 
 
-.section-header {
-    background-color: @grayDarker;
-    color: #fdfdfd;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    height: 30px;
+/* Content  (RenderBody) */
 
-    h1 {
-        display: inline;
+#content {
+
+    .section-text-header {
         font-family: 'bebas';
-        font-weight: normal;
-        font-size: 20px;
-        line-height: 30px;
-        margin: 0px;
+        font-size: 30px;
     }
 
-    i {
-        margin-right: 5px
-    }
-
-
-}
-
-
-/* Main Sections */
-
-
-.section-text-header {
-    font-family: 'bebas';
-    font-size: 30px;
-}
-
-#left-column {
     fieldset {
 
         .editor-label > label {
@@ -184,121 +159,189 @@ header {
             .section-text-header;
         }
     }
-}
+    // Entry index
+    #entry-index {
+        .clearfix;
 
+        #entries-top-bar {
+            background-color: whitesmoke;
+            border: 1px solid #dddddd;
+            font-family: 'bebas';
+            padding-left: 5px;
+            margin-bottom: 10px;
 
-#entry-index {
-    .clearfix;
+            #sort-bar {
+                .clearfix;
+                float: right;
 
-    #entries-top-bar {
-        background-color: whitesmoke;
-        border: 1px solid #dddddd;
-        font-family: 'bebas';
-        padding-left: 5px;
-        margin-bottom: 10px;
-
-        #sort-bar {
-            .clearfix;
-            float: right;
-            a {
-                padding-left: 6px;
-                padding-right: 6px;
+                a {
+                    padding-left: 6px;
+                    padding-right: 6px;
+                }
             }
         }
 
-    }
+        article {
 
-    #entries-bottom-bar {
-        .pagination {
-            .pull-right;
-            margin: 0;
+            margin-bottom: 20px;
+
+            .article-head {
+
+                .article-date-day {
+                    display:inline-block;
+                    font-size: 50px;
+                    line-height: 50px;
+                }
+
+                .article-month-year-container {
+                    display: inline-block;
+
+                    .article-date-month {
+                        font-size: 26px;
+                        font-family: 'bebas';
+                    }
+
+                    .article-date-year {
+                        font-size: 18px;
+                        font-family: 'bebas';
+                    }
+                }
+
+
+
+
+                .article-title-subtitle-container {
+                    display:inline-block;
+                    margin-left: 10px;
+
+                    .article-title {
+                        font-size: 30px;
+                        font-family: 'bebas';
+                        line-height: 80%;
+                    }
+
+                    .article-subtitle {
+                        font-size: 11px;
+                    }
+                }
+            } // end of .article-head
+        } // end of article
+
+
+        #entries-bottom-bar {
+            .pagination {
+                .pull-right;
+                margin: 0;
+            }
         }
     }
-}
-
-
-#entry-edit {
-
-}
-
-#entry-delete {
-
-}
-
-
-
-
-
-/* Sidebar Sections */
-
-#blackmesa-logo {
-    margin-bottom: 15px;
-}
-
-#subscribe{
-    .clearfix;
-    .btn {
-        width: 100%;
-        max-width: 220px;
-        .box-sizing(border-box);
+    // Entry edit
+    #entry-edit {
+    }
+    // Edit delete
+    #entry-delete {
     }
 }
 
 
-#archive {
-    .clearfix;
-
-    h2 {
-        font-size: 14px;
-        margin: 5px 0;
-        line-height: 0px;
-        font-weight: bold;
-    }
-
-    .form-search {
-        margin-bottom: 0px;
-    }
 
 
-    #fulltext-search {
-        margin-top: 15px;
-        margin-bottom: 20px;
+/* Right Column (Sidebar) */
 
-        input {
-            width: 162px;
-        }
-    }
 
-    #search-by-month {
-        margin-bottom: 20px;
-        max-width: 220px;
+#right-column {
 
-        select {
-            width: 176px;
-        }
-    }
-
-    #search-by-tags {
-
-    }
-}
-
-#recent-comments {
-    .clearfix;
-
-    .comment-preview {
+    .section-header {
+        background-color: @grayDarker;
+        color: #fdfdfd;
+        padding-left: 10px;
         margin-bottom: 10px;
+        height: 30px;
 
-        .comment-author{
-            font-size: 11px;
+        h1 {
+            display: inline;
+            font-family: 'bebas';
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 30px;
+            margin: 0px;
         }
 
-        .comment-date-created {
-            font-size: 11px;
+        i {
+            margin-right: 5px;
         }
     }
-}
 
+
+    #blackmesa-logo {
+        margin-bottom: 15px;
+    }
+
+    #subscribe {
+        .clearfix;
+
+        .btn {
+            width: 100%;
+            max-width: 220px;
+            .box-sizing(border-box);
+        }
+    }
+
+
+    #archive {
+        .clearfix;
+
+        h2 {
+            font-size: 14px;
+            margin: 5px 0;
+            line-height: 0px;
+            font-weight: bold;
+        }
+
+        .form-search {
+            margin-bottom: 0px;
+        }
+
+
+        #fulltext-search {
+            margin-top: 15px;
+            margin-bottom: 20px;
+
+            input {
+                width: 162px;
+            }
+        }
+
+        #search-by-month {
+            margin-bottom: 20px;
+            max-width: 220px;
+
+            select {
+                width: 176px;
+            }
+        }
+
+        #search-by-tags {
+        }
+    }
+
+    #recent-comments {
+        .clearfix;
+
+        .comment-preview {
+            margin-bottom: 10px;
+
+            .comment-author {
+                font-size: 11px;
+            }
+
+            .comment-date-created {
+                font-size: 11px;
+            }
+        }
+    }
+
+}
 
 
 
