@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="SHORTCUT ICON" href="@Url.Content("~/Content/images/favicon.ico")"/>
-    <title>@WebConfigurationManager.AppSettings.Get("SiteTitle") | @ViewBag.Title</title>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/x-icon"/>
+    <link rel="icon" href="@Url.Content("~/Content/Images/favicon.jpg")" type="image/png"/>
+    <title>@ViewBag.Title | @WebConfigurationManager.AppSettings.Get("SiteTitle")</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
