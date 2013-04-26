@@ -13,8 +13,8 @@ namespace BlackMesa.Models
             
         }
 
-
         public DbSet<Entry> Entries { get; set; }
+        public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
 

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BlackMesa.Models
 {
-//    [ValidateInput(false)]
+    //    [ValidateInput(false)]  // disables request validation on complete model or view model
     public class Entry
     {
         public int Id { get; set; }

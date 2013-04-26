@@ -1,0 +1,8 @@
+﻿@model IEnumerable<BlackMesa.Models.Tag>
+
+@foreach (var tag in Model)
+{
+    @Html.ActionLink(tag.Name, "Index", null, null) 
+    
+}
+

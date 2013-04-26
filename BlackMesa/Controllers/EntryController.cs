@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using BlackMesa.Models;
+using BlackMesa.ViewModels;
 
 namespace BlackMesa.Controllers
 {
@@ -16,6 +21,22 @@ namespace BlackMesa.Controllers
 
         public ActionResult Index()
         {
+//            var model = new List<EntryViewModel>();
+//
+//            foreach (var entry in _db.Entries.ToList())
+//            {
+//                model.Add(new EntryViewModel
+//                                  {
+//                                    Id = entry.Id,
+//                                    Title = entry.Title,
+//                                    Tags = entry.Tags, // String.Join(", ", entry.Tags.Select(e => e.Name)),
+//                                    Content = entry.Content,
+//                                    DateCreated = entry.DateCreated,
+//                                    DateEdited = entry.DateEdited,
+//                                    Comments = entry.Comments,
+//                                  });
+//            }
+
             return View(_db.Entries.ToList());
         }
 
@@ -57,12 +78,55 @@ namespace BlackMesa.Controllers
         }
 
 
+        private Entry UpdateEntryTags(Entry entry, string hiddenTagList)
+        {
+            var tagList = hiddenTagList.Split(',').ToList();
+            foreach (var tag in tagList)
+            {
+                // Create tag if not existing already
+                if (!_db.Tags.Select(t => t.Name).Contains(tag))
+                    _db.Tags.Add(new Tag { Name = tag });
+            }
+
+            try
+            {
+                _db.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+
+            }
+
+            entry.Tags = new Collection<Tag>();
+            foreach (var tag in tagList)
+            {
+                // Search tag in tags table. connect the found tag with the entry
+                var dbTag = _db.Tags.Single(t => t.Name == tag);
+                entry.Tags.Add(dbTag);
+            }
+            return entry;
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Entry entry)
         {
             if (ModelState.IsValid)
             {
+                var hiddenTagList = HttpContext.Request.Form["hidden-TagList"];
+                if (!String.IsNullOrEmpty(hiddenTagList))
+                {
+                    entry = UpdateEntryTags(entry, hiddenTagList);
+                }
+
                 _db.Entries.Add(entry);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
@@ -89,6 +153,12 @@ namespace BlackMesa.Controllers
         {
             if (ModelState.IsValid)
             {
+                var hiddenTagList = HttpContext.Request.Form["hidden-TagList"];
+                if (!String.IsNullOrEmpty(hiddenTagList))
+                {
+                    entry = UpdateEntryTags(entry, hiddenTagList);
+                }
+
                 _db.Entry(entry).State = EntityState.Modified;
                 _db.SaveChanges();
                 return RedirectToAction("Index");

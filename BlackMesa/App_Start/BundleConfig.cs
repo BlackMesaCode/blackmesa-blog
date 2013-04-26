@@ -26,7 +26,8 @@ namespace BlackMesa
                 .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
-                .Include("~/Scripts/bootstrap.js", "~/Scripts/bootstrap-datetimepicker.js"));
+                .Include("~/Scripts/bootstrap.js", "~/Scripts/bootstrap-datetimepicker.js",
+                "~/Scripts/bootstrap-tagmanager.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/texteditor")
                 .Include("~/Scripts/ckeditor/ckeditor.js"));
@@ -46,7 +47,8 @@ namespace BlackMesa
 
             var lessBundle = new Bundle("~/Content/css")
                 .Include("~/Content/less/bootstrap.less")
-                .Include("~/Content/less/bootstrap-datetimepicker.less");
+                .Include("~/Content/less/bootstrap-datetimepicker.less")
+                .Include("~/Content/less/bootstrap-tagmanager.less");
                 //.Include("~/Content/less/responsive.less")
             lessBundle.Transforms.Add(cssTransformer);
             lessBundle.Transforms.Add(new CssMinify());

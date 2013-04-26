@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-@model BlackMesa.Models.Entry 
+@model BlackMesa.Models.Entry
 
 <article>
     <div class="article-head">
@@ -19,7 +19,11 @@
             </div>
             <div class="article-subtitle">
                 <i class="icon-comment"></i> @Model.Comments.Count
-                <i class="icon-tags"></i> Tags: Web Development, ASP.NET, Improvements 
+                <i class="icon-tags"></i> Tags: 
+                @foreach(var tag in Model.Tags)
+                {
+                    @Html.ActionLink(tag.Name, "Index", "Entry")
+                }
             </div>
         </div>
     </div>
