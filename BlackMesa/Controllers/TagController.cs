@@ -16,6 +16,13 @@ namespace BlackMesa.Controllers
             return PartialView("_Index", _db.Tags.ToList());
         }
 
+        
+        public ActionResult Json()
+        {
+            return Json(_db.Tags.Select(t => t.Name).ToList());
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();

@@ -43,9 +43,6 @@ namespace BlackMesa
                         "~/Scripts/modernizr-*"));
 
 
-
-
-
             // Style Bundles
 
             var mainBundle = new Bundle("~/Content/main")
@@ -57,7 +54,7 @@ namespace BlackMesa
 
             var adminBundle = new Bundle("~/Content/admin")
                 .Include("~/Content/less/bootstrap-datetimepicker.less")
-                .Include("~/Content/less/magicsuggest-1.2.7.less");
+                .Include("~/Content/less/bootstrap-tagmanager.less");
             mainBundle.Transforms.Add(cssTransformer);
             mainBundle.Transforms.Add(new CssMinify());
             mainBundle.Orderer = nullOrderer;

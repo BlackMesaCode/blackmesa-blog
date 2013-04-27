@@ -19,7 +19,7 @@
 <div class="editor-label">
     @Html.LabelFor(model => model.Content)
 </div>
-<div class="editor-field">
+<div class="editor-field clearfix">
     @Html.EditorFor(model => model.Content)
     @*    <div id="Content"></div>*@  @* Wird vom Modelbinder nicht erkannt, bzw nicht über die Form übertragen - müsse man untersuchen *@
     @Html.ValidationMessageFor(model => model.Content)
