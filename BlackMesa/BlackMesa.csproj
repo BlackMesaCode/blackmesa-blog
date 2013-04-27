@@ -316,6 +316,7 @@
     <Content Include="Views\Comment\Index.cshtml" />
     <Content Include="Views\Entry\Comment\_CreateEditFieldset.cshtml" />
     <Content Include="Views\Tag\_Index.cshtml" />
+    <Content Include="Views\Entry\Disqus\_Disqus.cshtml.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

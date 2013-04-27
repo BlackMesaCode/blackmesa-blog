@@ -15,10 +15,12 @@
         </div>
         <div class="article-title-subtitle-container">
             <div class="article-title">
-                @Html.ActionLink(Model.Title, "Details", "Entry", new { id=Model.Id }, null)
+                @Html.ActionLink(Model.Title, "Details", "Entry", null, null, "disqus_thread", new { id = Model.Id },
+                new { data_disqus_identifier = Model.Id.ToString() })
             </div>
             <div class="article-subtitle">
-                <i class="icon-comment"></i> @Model.Comments.Count
+                @*<i class="icon-comment"></i>
+                @Model.Comments.Count*@
                 <i class="icon-tags"></i> Tags:
                 @foreach(var tag in Model.Tags)
                 {
