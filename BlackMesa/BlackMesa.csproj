@@ -181,7 +181,6 @@
     <Content Include="Content\images\license.png" />
     <Content Include="Content\images\pattern.png" />
     <Content Include="Content\less\bootstrap-tagmanager.less" />
-    <None Include="Content\less\magicsuggest-1.2.7.less" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap-tagmanager.js" />
@@ -339,7 +338,6 @@
     <Content Include="Scripts\ckeditor\skins\moono\images\close.png" />
     <Content Include="Scripts\ckeditor\skins\moono\images\mini.png" />
     <Content Include="Scripts\ckeditor\styles.js" />
-    <Content Include="Scripts\magicsuggest-1.2.7.js" />
     <Content Include="Utilities\app_offline.htm" />
     <Content Include="Global.asax" />
     <None Include="BundleTransformer.Configuration.xsd">

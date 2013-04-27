@@ -35,14 +35,16 @@
         dateCreatedPicker.setLocalDate(new Date(@dateCreatedToUse));
         dateEditedPicker.setLocalDate(new Date(@dateEditedToUse));
         
+        CKEDITOR.basePath = '/Scripts/ckeditor/';
         CKEDITOR.replace('Content');
 
-        jQuery(".tag-input").tagsManager();
-
-    @*Html.Raw(Model != null ? Model.Tags.Select(t => t.Name).ToJson() : ""),*@
-
-        @* :prefilled: [@Html.Raw(String.Join(", ", Model.Tags.Select(t=> "\"" + t.Name + "\"")))]  *@
-
+        jQuery(".tag-input").tagsManager({
+            prefilled: [@Html.Raw(Model != null ? String.Join(", ", Model.Tags.Select(t=> "\"" + t.Name + "\"")) : "")],
+            typeahead: true,
+            typeaheadAjaxSource: "@Url.Action("Json","Tag")",
+            typeaheadAjaxPolling: true,
+        });
+        
     });
 
     
