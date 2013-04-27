@@ -22,13 +22,13 @@ namespace BlackMesa
 //            const string jQueryCdnPath = "http://code.jquery.com/jquery-1.9.1.min.js";
 
             bundles.Add(new ScriptBundle("~/bundles/main")
-                .Include("~/Scripts/jquery-{version}.js", "~/Scripts/bootstrap.js"));
+                .Include("~/Scripts/jquery-{version}.js", "~/Scripts/bootstrap.js", "~/Scripts/shCore.js", "~/Scripts/shAutoloader.js", "~/Scripts/shLegacy.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval")
                 .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin")
-                .Include("~/Scripts/ckeditor/ckeditor.js", "~/Scripts/bootstrap-tagmanager.js", "~/Scripts/bootstrap-datetimepicker.js"));
+                .Include("~/Scripts/bootstrap-tagmanager.js", "~/Scripts/bootstrap-datetimepicker.js"));
             
  
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -40,15 +40,17 @@ namespace BlackMesa
             // Style Bundles
 
             var mainBundle = new Bundle("~/Content/main")
-                .Include("~/Content/less/bootstrap.less");
+                .Include("~/Content/styles/bootstrap.less")
+                .Include("~/Content/styles/shCoreDefault.less")
+                .Include("~/Content/styles/shThemeDefault.less");
             mainBundle.Transforms.Add(cssTransformer);
             mainBundle.Transforms.Add(cssMinifier);
             mainBundle.Orderer = nullOrderer;
             bundles.Add(mainBundle);
 
             var adminBundle = new Bundle("~/Content/admin")
-                .Include("~/Content/less/bootstrap-datetimepicker.less")
-                .Include("~/Content/less/bootstrap-tagmanager.less");
+                .Include("~/Content/styles/bootstrap-datetimepicker.less")
+                .Include("~/Content/styles/bootstrap-tagmanager.less");
             adminBundle.Transforms.Add(cssTransformer);
             mainBundle.Transforms.Add(cssMinifier);
             adminBundle.Orderer = nullOrderer;

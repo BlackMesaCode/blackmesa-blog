@@ -7,10 +7,30 @@
 
 <section id="entry-details">
 
-@Html.Partial("_EntryPreview", Model)
+    @Html.Partial("_EntryPreview", Model)
 
-@Html.Partial("Comment/_Index", Model.Comments)
+    @Html.Partial("Comment/_Index", Model.Comments)
 
-@Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id } )
+    @Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id } )
 
 </section>
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+        
+        SyntaxHighlighter.autoloader(
+          'js jscript javascript            /Scripts/shBrushes/shBrushJScript.js',
+          'c-sharp, csharp	                /Scripts/shBrushes/shBrushCSharp.js',
+          'ps, powershell	                /Scripts/shBrushes/shBrushPowerShell.js',
+          'xml, xhtml, xslt, html, xhtml	/Scripts/shBrushes/shBrushXml.js',
+          'sql                              /Scripts/shBrushes/shBrushSql.js',
+          'bash, shell	                    /Scripts/shBrushes/shBrushBash.js',
+          'plain, text	                    /Scripts/shBrushes/shBrushPlain.js'
+        );
+
+        SyntaxHighlighter.all();
+    </script>
+
+}
