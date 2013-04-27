@@ -19,7 +19,7 @@
             </div>
             <div class="article-subtitle">
                 <i class="icon-comment"></i> @Model.Comments.Count
-                <i class="icon-tags"></i> Tags: 
+                <i class="icon-tags"></i> Tags:
                 @foreach(var tag in Model.Tags)
                 {
                     @Html.ActionLink(tag.Name, "Index", "Entry")
