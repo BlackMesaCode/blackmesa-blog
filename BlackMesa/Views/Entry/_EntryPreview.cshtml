@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+@using BlackMesa.Utilities
 @model BlackMesa.Models.Entry
 
 <article>
@@ -15,33 +16,38 @@
         </div>
         <div class="article-title-subtitle-container">
             <div class="article-title">
-                @Html.ActionLink(Model.Title, "Details", "Entry", null, null, "disqus_thread", new { id = Model.Id },
-                new { data_disqus_identifier = Model.Id.ToString() })
+                @Html.ActionLink(Model.Title, "Details", "Entry", new { id = Model.Id, title = Utilities.MakeUrlFriendly(Model.Title)  }, null )
             </div>
+
             <div class="article-subtitle">
                 @*<i class="icon-comment"></i>
                 @Model.Comments.Count*@
-                <i class="icon-tags"></i> Tags:
-                @foreach(var tag in Model.Tags)
-                {
-                    @Html.ActionLink(tag.Name, "Index", "Entry")
-                }
+                <span class="tags">
+                    <i class="icon-tags"></i> Tags:
+                    @foreach(var tag in Model.Tags)
+                    {
+                        @Html.ActionLink(tag.Name, "Index", "Entry")
+                    }
+                </span>
+                <div class="btn-group">
+                    <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="icon-cog"></i> Entry
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })"><i class="icon-pencil"></i> Edit</a></li>
+                        <li><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })"><i class="icon-trash"></i> Delete</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-
-    @Html.Raw(Model.Content) @Html.ActionLink("More", "Details", "Entry", new { id=Model.Id }, new { @class="btn btn-mini" })
-
     
-    <div class="btn-group">
-        <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="icon-cog"></i> Entry
-            <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })"><i class="icon-pencil"></i> Edit</a></li>
-            <li><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })"><i class="icon-trash"></i> Delete</a></li>
-        </ul>
+    <div class="@(ViewContext.RouteData.Values["action"] == "Index" ? "article-content-preview" : "")">
+        @Html.Raw(Model.Content) 
+        <div class="@(ViewContext.RouteData.Values["action"] == "Details" ? "hide-more-button" : "show-more-button")">
+            @Html.ActionLink("... More", "Details", "Entry", new { id=Model.Id }, new { @class="btn btn-mini" })
+        </div>
     </div>
     
 

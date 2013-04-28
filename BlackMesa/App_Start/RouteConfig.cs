@@ -13,12 +13,12 @@ namespace BlackMesa
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
-//            routes.MapRoute(
-//                name: "BlogRoute",
-//                url: "blog/{action}/{id}",
-//                defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional }
-//            );
+            routes.MapRoute(
+                name: "Entry",
+                url: "entry/{id}/{title}",
+                defaults: new { controller = "Entry", action = "Details", title = UrlParameter.Optional },
+                constraints: new { id = @"\d+" }
+            );
 
             routes.MapRoute(
                 name: "Default",

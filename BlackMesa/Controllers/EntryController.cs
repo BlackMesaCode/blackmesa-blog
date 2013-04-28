@@ -10,6 +10,8 @@ using System.Web;
 using System.Web.Mvc;
 using BlackMesa.Models;
 using BlackMesa.ViewModels;
+using WWB.DisqusSharp.Infrastructure.HammockWrappers;
+using WWB.DisqusSharp.Model.DisqusService;
 
 namespace BlackMesa.Controllers
 {
@@ -18,7 +20,7 @@ namespace BlackMesa.Controllers
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
 
-        public ActionResult Index()
+        public ActionResult Index(string orderBy = "date")
         {
 //            var model = new List<EntryViewModel>();
 //
@@ -36,7 +38,35 @@ namespace BlackMesa.Controllers
 //                                  });
 //            }
 
-            return View(_db.Entries.ToList());
+            var model = _db.Entries.Select(e => e);
+            switch (orderBy)
+            {
+                case "date":
+                    model = model.OrderByDescending(e => e.DateCreated);
+                    break;
+                case "comments":
+                    model = model.OrderByDescending(e => e.Comments.Count);
+
+                    IDisqusService disqus = new HammockDisqusService("9yFKmSp2JbKYOg946HhcGwkmZ5V9jx29dKx0AW6kDonE3VYuCrQolQ7d1xddwjln");
+                    var limits = new StartLimitArgs {Start = 0, Limit = 5};
+                    IEnumerable<string> threadIds = disqus.GetThreadList("2315150", limits)
+                                      .Payload.Select(disqusThread => disqusThread.Id);
+
+                    var threads = disqus.GetThreadList("2315150", limits)
+                                      .Payload.Select(disqusThread => disqusThread);
+
+                    foreach (var threadId in threadIds)
+                    {
+                        var irgendwas = disqus.GetThreadPosts(threadId).Payload.Select(p => p.Thread.Id);
+                    }
+                    
+                    break;
+                case "views":
+                    model = model.OrderByDescending(e => e.Comments.Count);
+                    break;
+            }
+
+            return View(model.ToList());
         }
 
 

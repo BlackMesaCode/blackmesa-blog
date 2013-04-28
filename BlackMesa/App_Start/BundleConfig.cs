@@ -28,7 +28,7 @@ namespace BlackMesa
                 .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin")
-                .Include("~/Scripts/bootstrap-tagmanager.js", "~/Scripts/bootstrap-datetimepicker.js"));
+                .Include("~/Scripts/bootstrap-tagmanager.js", "~/Scripts/bootstrap-datetimepicker.js", "~/Scripts/jquery-autogrow-textarea.js"));
             
  
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

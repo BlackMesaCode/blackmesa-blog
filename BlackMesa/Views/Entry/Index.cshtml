@@ -12,14 +12,14 @@
         
         <div id="sort-bar">
             <i class="icon-reorder"></i> Sort by: 
-            <a href="#">Most Recent</a> | <a href="#">Most Viewed</a> | <a href="#">Most commented</a>
+            @Html.ActionLink("Most Recent", "Index", new { orderBy = "date" })  | @Html.ActionLink("Most Viewed", "Index", new { orderBy = "views" }) | @Html.ActionLink("Most Commented", "Index", new { orderBy = "comments" })
         </div>
  
     </div>
 
     @foreach (var item in Model) {
-    @Html.Partial("_EntryPreview", item)
-}
+        @Html.Partial("_EntryPreview", item)
+    }
 
     <div id="entries-bottom-bar">
         <a class="btn btn-primary" href="@Url.Action("Create")">
@@ -39,3 +39,51 @@
     </div>
 
 </section>
+
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(function () {
+            
+            /* SyntaxHighlighter */
+
+            SyntaxHighlighter.autoloader(
+                'js jscript javascript            /Scripts/shBrushes/shBrushJScript.js',
+                'c-sharp, csharp	                /Scripts/shBrushes/shBrushCSharp.js',
+                'ps, powershell	                /Scripts/shBrushes/shBrushPowerShell.js',
+                'xml, xhtml, xslt, html, xhtml	/Scripts/shBrushes/shBrushXml.js',
+                'sql                              /Scripts/shBrushes/shBrushSql.js',
+                'bash, shell	                    /Scripts/shBrushes/shBrushBash.js',
+                'plain, text	                    /Scripts/shBrushes/shBrushPlain.js'
+            );
+
+            var elementsToBeHighlighted = SyntaxHighlighter.findElements().length,
+                highlightedElements = 0;
+
+            SyntaxHighlighter.complete = function(callback) {
+
+                (function recountHighlightedElements() {
+                    setTimeout(function() {
+                        highlightedElements = $('.syntaxhighlighter');
+                        if (highlightedElements.length < elementsToBeHighlighted) {
+                            recountHighlightedElements();
+                        } else {
+                            callback();
+                        }
+                    }, 200);
+                })();
+            };
+
+            SyntaxHighlighter.complete(function() {
+                $(".syntaxhighlighter").parent().addClass("sh-padding-right");
+            });
+                
+            SyntaxHighlighter.all();
+        });
+
+    </script>
+    
+
+}

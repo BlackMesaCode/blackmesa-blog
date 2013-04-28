@@ -46,5 +46,16 @@
 <section id="recent-comments">
     @Html.Partial("_SectionHeader",
     new { Heading = "Recent comments", Icon = "icon-comments" })
+    
+    @*
     @Html.Action("Index", "Comment")
+    *@
+
+    <div id="recentcomments">
+        <script type="text/javascript" src="http://blackmesa.disqus.com/recent_comments_widget.js?num_items=3&hide_avatars=1&avatar_size=32&excerpt_length=100">
+        </script>
+    </div>
+
 </section>
+
+    

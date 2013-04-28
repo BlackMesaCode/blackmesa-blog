@@ -142,7 +142,8 @@ header {
         }
 
         textarea {
-            max-width: 730px;
+            width: 100%;
+            max-width: 726px;
         }
 
         .field-validation-error {
@@ -199,20 +200,45 @@ header {
                 .article-subtitle {
                     font-size: 11px;
 
-                    a {
-                        color: @grayDarker;
-                        text-decoration: underline;
-                        margin-right: 6px;
-
-                        &:hover {
+                    .tags {
+                       a {
                             color: @grayDarker;
-                            text-decoration: none;
+                            text-decoration: underline;
+                            margin-right: 6px;
+
+                            &:hover {
+                                color: @grayDarker;
+                                text-decoration: none;
+                            }
                         }
                     }
+
                 }
             }
+        }// end of .article-head
+
+        .article-content-preview {
+            width: 100%; 
+            max-height: 10em; 
+            text-overflow: ellipsis; 
+            overflow:hidden; 
+            white-space: normal; 
+            display:inline-block; 
+            position: relative;
+
+            .show-more-button {
+                position: absolute; 
+                bottom: 0; 
+                right: 0; 
+                padding-left: 5px; 
+                /* background-image: url("../images/pattern.png");*/
+            }
         }
-        // end of .article-head
+
+        .hide-more-button {
+            display: none;
+        }
+
     }// end of .article
 
 
@@ -348,7 +374,7 @@ header {
         }
 
         #search-by-tags {
-            font-size: 11px;
+            font-size: 12px;
 
             a {
                 float: left;
@@ -377,6 +403,14 @@ header {
             .comment-date-created {
                 font-size: 11px;
             }
+        }
+
+        .dsq-widget-list {
+            margin-left: 0 !important;
+        }
+
+        .dsq-widget-comment {
+            font-size: 12px;
         }
     }
 
