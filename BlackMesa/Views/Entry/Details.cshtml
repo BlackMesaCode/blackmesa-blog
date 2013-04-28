@@ -9,15 +9,11 @@
 
     @Html.Partial("_EntryPreview", Model)
     
-    <div id="disqus_thread"></div>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     
-    @*
     @Html.Partial("Comment/_Index", Model.Comments)
 
     @Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id } )
-    *@
-
+    
 </section>
 
 @section Scripts
@@ -61,19 +57,6 @@
                 
             SyntaxHighlighter.all();
         });
-        
-        /* Disqus */
-
-        var disqus_shortname = 'blackmesa';
-        var disqus_identifier = '@Model.Id';
-        var disqus_title = '@Model.Title';
-        var disqus_url = '@Url.Action("Details", "Entry", new { id=Model.Id }, Request.Url.Scheme)';
-        
-        (function () {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
 
     </script>
     

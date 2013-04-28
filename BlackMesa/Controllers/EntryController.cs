@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using BlackMesa.Models;
-using BlackMesa.ViewModels;
-using WWB.DisqusSharp.Infrastructure.HammockWrappers;
-using WWB.DisqusSharp.Model.DisqusService;
 
 namespace BlackMesa.Controllers
 {
@@ -45,21 +39,7 @@ namespace BlackMesa.Controllers
                     model = model.OrderByDescending(e => e.DateCreated);
                     break;
                 case "comments":
-                    model = model.OrderByDescending(e => e.Comments.Count);
-
-                    IDisqusService disqus = new HammockDisqusService("9yFKmSp2JbKYOg946HhcGwkmZ5V9jx29dKx0AW6kDonE3VYuCrQolQ7d1xddwjln");
-                    var limits = new StartLimitArgs {Start = 0, Limit = 5};
-                    IEnumerable<string> threadIds = disqus.GetThreadList("2315150", limits)
-                                      .Payload.Select(disqusThread => disqusThread.Id);
-
-                    var threads = disqus.GetThreadList("2315150", limits)
-                                      .Payload.Select(disqusThread => disqusThread);
-
-                    foreach (var threadId in threadIds)
-                    {
-                        var irgendwas = disqus.GetThreadPosts(threadId).Payload.Select(p => p.Thread.Id);
-                    }
-                    
+                    model = model.OrderByDescending(e => e.Comments.Count);       
                     break;
                 case "views":
                     model = model.OrderByDescending(e => e.Comments.Count);
