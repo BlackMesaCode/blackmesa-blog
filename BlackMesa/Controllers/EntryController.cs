@@ -33,6 +33,7 @@ namespace BlackMesa.Controllers
 //            }
 
             var model = _db.Entries.Select(e => e);
+
             switch (orderBy)
             {
                 case "date":
@@ -46,7 +47,22 @@ namespace BlackMesa.Controllers
                     break;
             }
 
-            return View(model.ToList());
+            var modelMaterialized = model.ToList();
+            var htmlContent = modelMaterialized.First().Content;
+            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+            htmlDoc.LoadHtml(htmlContent);
+
+            if (htmlDoc.DocumentNode != null)
+            {
+                HtmlAgilityPack.HtmlNode bodyNode = htmlDoc.DocumentNode.SelectSingleNode("//article");
+
+                if (bodyNode != null)
+                {
+                    // Do something with bodyNode
+                }
+            }
+
+            return View(modelMaterialized);
         }
 
 
