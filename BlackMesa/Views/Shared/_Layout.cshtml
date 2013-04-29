@@ -14,20 +14,20 @@
 </head>
     <body>
         <div class="container">
-            <div id="left-column">
-                <header>
-                    @Html.Partial("_Header")
-                </header>
-                <div id="content">
-                    @RenderBody()
-                </div>
+            <header>
+                @Html.Partial("_Header")
+            </header>
+            <nav>
+                @Html.Partial("_Navigation")
+            </nav>
+            <div id="content">
+                @RenderBody()
             </div>
-            <div id="right-column">
-                @Html.Partial("_Sidebar")
-            </div>
+            @*
             <footer>
                 @Html.Partial("_Footer")
             </footer>
+            @Html.Partial("_Sidebar")*@
         </div>
 
 

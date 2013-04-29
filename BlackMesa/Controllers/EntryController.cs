@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Entity.Validation;
@@ -103,42 +104,6 @@ namespace BlackMesa.Controllers
         }
 
 
-        private Entry UpdateEntryTags(Entry entry, string hiddenTagList)
-        {
-            var tagList = hiddenTagList.Split(',').ToList();
-            foreach (var tag in tagList)
-            {
-                // Create tag if not existing already
-                if (!_db.Tags.Select(t => t.Name).Contains(tag))
-                    _db.Tags.Add(new Tag { Name = tag });
-            }
-
-            try
-            {
-                _db.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
-                    }
-                }
-
-            }
-
-            entry.Tags = new Collection<Tag>();
-            foreach (var tag in tagList)
-            {
-                // Search tag in tags table. connect the found tag with the entry
-                var dbTag = _db.Tags.Single(t => t.Name == tag);
-                entry.Tags.Add(dbTag);
-            }
-            return entry;
-        }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -149,9 +114,23 @@ namespace BlackMesa.Controllers
                 var hiddenTagList = HttpContext.Request.Form["hidden-TagList"];
                 if (!String.IsNullOrEmpty(hiddenTagList))
                 {
-                    entry = UpdateEntryTags(entry, hiddenTagList);
-                }
+                    var tagList = hiddenTagList.Split(',').ToList();
 
+                    entry.Tags = new Collection<Tag>();
+                    foreach (var tag in tagList)
+                    {
+                        if (!_db.Tags.Select(t => t.Name).Contains(tag))
+                        {
+                            var newTag = new Tag { Name = tag };
+                            _db.Tags.Add(newTag);
+                            entry.Tags.Add(newTag);
+                        }
+                        else
+                        {
+                            entry.Tags.Add(_db.Tags.Single(t => t.Name == tag));
+                        }
+                    }
+                }
                 _db.Entries.Add(entry);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
@@ -179,12 +158,40 @@ namespace BlackMesa.Controllers
             if (ModelState.IsValid)
             {
                 var hiddenTagList = HttpContext.Request.Form["hidden-TagList"];
+
+                var dbEntry = _db.Entries.Find(entry.Id);
+
+                TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed model - this is the lazy way to go, instead of manually mapping all the properties
+
+                dbEntry.Tags.Clear();
+
                 if (!String.IsNullOrEmpty(hiddenTagList))
                 {
-                    entry = UpdateEntryTags(entry, hiddenTagList);
-                }
+                    var tagList = hiddenTagList.Split(',').ToList();
 
-                _db.Entry(entry).State = EntityState.Modified;
+                    foreach (var tag in tagList)
+                    {
+                        if (!_db.Tags.Select(t => t.Name).Contains(tag))
+                        {
+                            var newTag = new Tag { Name = tag };
+                            _db.Tags.Add(newTag);
+                            dbEntry.Tags.Add(newTag);
+                        }
+                        else
+                        {
+                            dbEntry.Tags.Add(_db.Tags.Single(t => t.Name == tag));
+                        }
+                    }
+                }
+                _db.Entry(dbEntry).State = EntityState.Modified;
+                _db.SaveChanges();
+
+                var tagsToDelete = _db.Tags.Where(tag => tag.Entries.Count == 0);
+                foreach (var tag in tagsToDelete)
+                {
+                    _db.Tags.Remove(tag);
+                    //_db.Entry(tag).State = EntityState.Deleted;
+                }
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }

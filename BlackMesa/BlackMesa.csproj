@@ -188,7 +188,7 @@
     <Content Include="Content\images\asp_dotnet_logo_hover.png" />
     <Content Include="Content\images\azure_logo.png" />
     <Content Include="Content\images\azure_logo_hover.png" />
-    <Content Include="Content\images\blackmesa_logo_multiline.png" />
+    <Content Include="Content\images\blackmesa_logo.png" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\favicon.jpg" />
     <Content Include="Content\images\license.png" />

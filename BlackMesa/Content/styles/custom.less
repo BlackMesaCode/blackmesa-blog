@@ -7,7 +7,8 @@
 
 /* Layout */
 
-@left-column-width: 740px; /* 740px is the size that is available on tablets in portrait mode */
+@left-column-width: 740px; /* 740px is the size that is available on tablets in portrait mode 
+    max-width: 979px; /* 979px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
 
 
 body{
@@ -16,109 +17,54 @@ body{
 
 .container {
     .clearfix;
-    margin: 8px auto;
-    max-width: 979px; /* 979px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
-    @media (max-width: 978px) {
-        max-width: @left-column-width;
-    }
-}
-
-#left-column {
-    .pull-left;
-    .clearfix;
-    width: 100%;
-    max-width: @left-column-width;
-    margin-right: 15px;
-    margin-bottom: 10px;
-
-    @media (max-width: 978px) {
-        margin-right: 0px;
-        float: none;
-    }
-}
-
-#right-column {
-    .pull-right;
-    .clearfix;
-    width: 220px;
-
-    section {
-        margin-bottom: 20px;
-    }
-
-    // Landscape phone to portrait tablet
-    @media (max-width: 978px) {
-        width: auto;
-        max-width: @left-column-width;
-        float: none;
-    }
+    margin-left: 250px;
+    max-width: 1000px;
 }
 
 
-
-/* Header */
+/* Header (Logo) */
 
 header {
-    margin-bottom: 10px;
-    .clearfix;
-
-    color: white;
-    font-family: 'bebas';
-    font-size: 14px;
-    letter-spacing: 1px;
-    line-height: 30px;
-    background-color: @grayDarker;
-
-    nav {
-        display: inline-block;
-        margin-right: 15px;
-
-        .btn {
-            color: @grayDarker !important;
-            text-shadow: none;
-            width: 100px;
-            font-family: 'bebas';
-            font-size: 17px !important;
-            letter-spacing: 1px !important;
-        }
-
-        ul {
-            font-size: 15px !important;
-        }
-
-        .caret {
-            border-top-color: @grayDarker !important;
-        }
-    }
-
-    #datetime-now {}
-
-    #user-status {
-        margin-right: 5px;
-    }
-
-    #authorization {
-        .pull-right;
-
-        .btn {
-            width: 86px;
-            font-family: 'bebas';
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-        .dropdown-toggle {
-            width: auto;
-        }
-    }
-   
-
-    @media (max-width: 755px) {
-        .pull-left;
-    }
+    margin-top: 30px;
+    margin-bottom: 40px;
+    text-align: right;
 }
 
+/* Navigation */
 
+nav {
+
+    ul {
+        position: fixed;
+        font-size: 30px;
+        list-style-type: none;
+        left: 0px;
+        top: 200px;
+        margin-left: -20px;
+
+        li {
+            background-color: @grayDarker;
+            text-align: right;
+            width: 70px;
+            &:hover {
+                margin-left: 18px;
+            }
+
+        }
+
+        a {
+            color: whitesmoke;
+            font-size: 24px;
+            display: block;
+            padding: 10px;
+            &:hover {
+                color: whitesmoke;
+                text-decoration: none;
+            }
+        }
+    }
+
+}
 
 
 
@@ -298,214 +244,12 @@ header {
 
 
 
-/* Right Column (Sidebar) */
-
-
-#right-column {
-
-    .section-header {
-        background-color: @grayDarker;
-        color: #fdfdfd;
-        padding-left: 10px;
-        margin-bottom: 10px;
-        height: 30px;
-
-        h1 {
-            display: inline;
-            font-family: 'bebas';
-            font-weight: normal;
-            font-size: 20px;
-            line-height: 30px;
-            margin: 0px;
-        }
-
-        i {
-            margin-right: 5px;
-        }
-    }
-
-
-    #blackmesa-logo {
-        margin-bottom: 15px;
-    }
-
-    #subscribe {
-        .clearfix;
-
-        .btn {
-            width: 100%;
-            max-width: 220px;
-            .box-sizing(border-box);
-        }
-    }
-
-
-    #archive {
-        .clearfix;
-
-        h2 {
-            font-size: 14px;
-            margin: 5px 0;
-            line-height: 0px;
-            font-weight: bold;
-        }
-
-        .form-search {
-            margin-bottom: 0px;
-        }
-
-
-        #fulltext-search {
-            margin-top: 15px;
-            margin-bottom: 20px;
-
-            input {
-                width: 162px;
-            }
-        }
-
-        #search-by-month {
-            margin-bottom: 20px;
-            max-width: 220px;
-
-            select {
-                width: 176px;
-            }
-        }
-
-        #search-by-tags {
-            font-size: 12px;
-
-            a {
-                float: left;
-                color: @grayDarker;
-                text-decoration: underline;
-                margin-right: 6px;
-
-                &:hover {
-                    color: @grayDarker;
-                    text-decoration: none;
-                }
-            }
-        }
-    }
-
-    #recent-comments {
-        .clearfix;
-
-        .comment-preview {
-            margin-bottom: 10px;
-
-            .comment-author {
-                font-size: 11px;
-            }
-
-            .comment-date-created {
-                font-size: 11px;
-            }
-        }
-
-        .dsq-widget-list {
-            margin-left: 0 !important;
-        }
-
-        .dsq-widget-comment {
-            font-size: 12px;
-        }
-    }
-
-}
-
-
-
-
-
 /* Footer */
 
 footer {
-    .pull-left;
-    background-color: @grayDarker;
-    color: white;
-    font-family: 'bebas';
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    width: 100%;
-    max-width: @left-column-width;
 
-    span {
-        display: inline-block;
-        padding: 5px;
-    }
-
-    a {
-        color: white;
-        &:hover {
-            color: @orange;
-            text-decoration: none;
-        }
-    }
-
-
-    #license-image {
-        display: inline-block;
-        vertical-align: middle;
-        margin-left: 10px;
-        width: 57px;
-        height: 20px;
-        background-image: url(/Content/images/license.png);
-        background-repeat: no-repeat;
-        background-position-y: bottom;
-        &:hover {
-            background-position-y: top;
-        }
-    }
-
-    #powered-by {
-        .pull-right;
-
-        span {
-            margin-right: 5px;
-        }
-    }
-
-    #azure-logo {
-        display: inline-block;
-        vertical-align: middle;
-        width: 109px;
-        height: 20px;
-        background-image: url(/Content/images/azure_logo.png);
-        background-repeat: no-repeat;
-        background-position-y: bottom;
-        &:hover {
-            background-position-y: top;
-        }
-    }
-
-    #asp-dotnet-logo {
-        display: inline-block;
-        vertical-align: middle;
-        width: 64px;
-        height: 16px;
-        margin-right: 5px;
-        background-repeat: no-repeat;
-        background-image: url(/Content/images/asp_dotnet_logo.png);
-        background-position-y: bottom;
-        &:hover {
-            background-position-y: top;
-        }
-    }
-
-
-    #backtotop {
-        margin-right: 80px;
-        i {
-            margin-left: 5px;
-            margin-right: 5px;
-        }
-    }
 
 }
-
 
 
 
@@ -514,7 +258,6 @@ footer {
     html {
         overflow-y: scroll;
     }
-
 }
 
 
