@@ -26,7 +26,9 @@
                     <i class="icon-tags"></i> Tags:
                     @foreach(var tag in Model.Tags)
                     {
-                        @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, null)
+@*                        @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, null)*@
+                        @Ajax.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, 
+                        new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "entry-index-articles" })
                     }
                 </span>
             </div>
@@ -35,7 +37,7 @@
     
     
         @Html.Raw(Model.Content) 
-        @Html.ActionLink("... More", "Details", "Entry", new { id=Model.Id }, new { @class="btn btn-mini" })
+        @Html.ActionLink("More", "Details", "Entry", new { id=Model.Id }, new { @class="btn btn-mini" })
         <div class="btn-group">
             <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="icon-cog"></i> Entry

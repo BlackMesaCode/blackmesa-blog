@@ -81,6 +81,9 @@
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.15.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.2.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -201,6 +204,7 @@
     <Content Include="Content\images\tag_remove.cur" />
     <Content Include="Content\images\tag_remove.png" />
     <Content Include="Content\images\tag_update.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\styles\jquery.taghandler.less" />
     <Content Include="Content\fonts\newmedia-webfont.eot" />
     <Content Include="Content\fonts\newmedia-webfont.ttf" />
@@ -387,7 +391,7 @@
     <Content Include="Views\CssTest\Index.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Entry\_EntryPreview.cshtml" />
+    <Content Include="Views\Entry\_Entry.cshtml" />
     <Content Include="Views\Shared\_SectionHeader.cshtml" />
     <Content Include="Views\Entry\Index.cshtml" />
     <Content Include="Views\Entry\Details.cshtml" />
@@ -408,7 +412,7 @@
     <Content Include="Views\Comment\Index.cshtml" />
     <Content Include="Views\Entry\Comment\_CreateEditFieldset.cshtml" />
     <Content Include="Views\Tag\_Index.cshtml" />
-    <Content Include="Views\Entry\Disqus\_Disqus.cshtml.cshtml" />
+    <Content Include="Views\Entry\_Entries.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

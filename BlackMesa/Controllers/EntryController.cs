@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 using BlackMesa.Models;
 using BlackMesa.ViewModels;
+using PagedList;
 
 namespace BlackMesa.Controllers
 {
@@ -13,21 +14,25 @@ namespace BlackMesa.Controllers
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
 
-        [HttpPost]
         public ActionResult Index(EntryIndexViewModel viewModel)
         {
             var model = _db.Entries.Select(e => e);
+            
+
+            // Filter
             var selectedTags = viewModel.SelectedTags;
 
-            // filter by selected tags
-            // var selectedTags = HttpContext.Request.Form["SelectedTags"];
             if (!String.IsNullOrEmpty(selectedTags))
             {
                 var selectedTagList = selectedTags.Split(',').ToList();
 
                 model = model.Where(e => selectedTagList.All(tagString => (e.Tags.Select(t => t.Name).Contains(tagString))));
             }
+            /* SelectedTags has to be stored in the ViewBag to make it accessible in a PartialView */
+            ViewBag.SelectedTags = viewModel.SelectedTags; 
 
+
+            // Order
             switch (viewModel.OrderBy)
             {
                 case "date":
@@ -44,43 +49,36 @@ namespace BlackMesa.Controllers
                     break;
             }
 
-            viewModel.Entries = model.ToList();
+            // Paging
+            const int pageSize = 3;
+            var pageNumber = (viewModel.Page ?? 1);
+            viewModel.Page = pageNumber;
+            viewModel.Entries = model.ToPagedList(pageNumber, pageSize);
 
-            return View(viewModel);
-        }
-
-
-        [HttpGet]
-        public ActionResult Index()
-        {
-            var model = _db.Entries.Select(e => e);
-            model = model.OrderByDescending(e => e.DateCreated);
-
-            var viewModel = new EntryIndexViewModel
-                                {
-                                    Entries = model.ToList(),
-                                    SelectedTags = "",
-                                    OrderBy = "",
-                                };
+            
+            /*   */
+            if (Request.IsAjaxRequest())
+                return PartialView("_Entries", viewModel.Entries);
 
             return View(viewModel);
 
-            //            var htmlContent = modelMaterialized.First().Content;
-            //            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
-            //            htmlDoc.LoadHtml(htmlContent);
-            //
-            //            if (htmlDoc.DocumentNode != null)
-            //            {
-            //                HtmlAgilityPack.HtmlNode bodyNode = htmlDoc.DocumentNode.SelectSingleNode("//article");
-            //
-            //                if (bodyNode != null)
-            //                {
-            //                    // Do something with bodyNode
-            //                }
-            //            }
 
+//            var htmlContent = modelMaterialized.First().Content;
+//            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+//            htmlDoc.LoadHtml(htmlContent);
+//
+//            if (htmlDoc.DocumentNode != null)
+//            {
+//                HtmlAgilityPack.HtmlNode bodyNode = htmlDoc.DocumentNode.SelectSingleNode("//article");
+//
+//                if (bodyNode != null)
+//                {
+//                    // Do something with bodyNode
+//                }
+//            }
 
         }
+
 
 
         [HttpGet]

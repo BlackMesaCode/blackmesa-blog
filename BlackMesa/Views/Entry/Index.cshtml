@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-
 <section id="entry-index">
     
     <div class="clearfix" id="entries-top-bar">
@@ -16,11 +15,8 @@
 
         <span style="float: right; line-height: 30px; min-height: 30px; vertical-align: middle; margin-right: 10px; margin-left: 20px;"><i class="icon-tags"></i> Filter by tag: </span>
         
-
         <div style="float: right; line-height: 30px" id="sort-bar">
-            <i class="icon-info-sign"></i> Entries found: @Model.Entries.Count() 
             
-
             @*<i class="icon-reorder"></i> Sort by: 
             @Html.ActionLink("Most Recent", "Index", new { orderBy = "date" })  | @Html.ActionLink("Most Viewed", "Index", new { orderBy = "views" }) | @Html.ActionLink("Most Commented", "Index", new { orderBy = "comments" })*@
             
@@ -28,48 +24,40 @@
         </div>
     </div>
     
-
-
-    @foreach (var item in Model.Entries)
-    {
-        @Html.Partial("_EntryPreview", item)
-    }
-
-    <div id="entries-bottom-bar">
-        <a class="btn btn-primary" href="@Url.Action("Create")">
-            <i class="icon-plus-sign"></i> Add Entry
-        </a>
-  
-        <div class="pagination">
-            <ul>
-                <li><a href="#">Prev</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">Next</a></li>
-            </ul>
-        </div>
+    <div id="entry-index-articles">
+        @Html.Partial("_Entries",  Model.Entries)
     </div>
+    
 
 </section>
 
 
+
 @section Scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
+
     <script type="text/javascript">
 
-        var submitForm = function() {
-            var serializedTags = $(".tag-input").tagHandler("getSerializedTags");
-            $('#SelectedTags').val(serializedTags);
-            $("#entry-filter-form").submit();
+        var sendAjaxRequest = function () {
+            var data = { SelectedTags: $(".tag-input").tagHandler("getSerializedTags") };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Index", "Entry")',
+                data: data,
+                success: function (htmlString) {
+                    $("#entry-index-articles").html(htmlString);
+                    $(".ui-autocomplete").hide();
+                },
+                dataType: 'html',
+            });
         };
 
         $(".tag-input").tagHandler({
             getData: { selectedTags: '@Model.SelectedTags' },
             getURL: '@Url.Action("JsonIndex", "Tag")',
-            afterAdd: submitForm,
-            afterDelete: submitForm,
+            afterAdd: sendAjaxRequest,
+            afterDelete: sendAjaxRequest,
             allowAdd: false,
             msgNoNewTag: "Please select an existing tag from the list.",
             autocomplete: true,

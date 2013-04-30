@@ -1,3 +1,53 @@
+/* jQuery UI AutoComplete: Dropdown menu */
+
+@import "variables.less";
+
+.ui-autocomplete-input {
+    margin: 0px !important;
+    font-family: 'bebas';
+    padding: 0;
+    height: 26px;
+}
+
+.ui-autocomplete {
+    background-color: @white;
+    border: 1px solid @blue;
+    width: 120px;
+    font-family: 'bebas';
+
+    .ui-menu-item {
+        
+        margin-top: 2px;
+        list-style-type: none;
+        text-decoration: none;
+
+        a {
+            display: block;
+            color: @grayDarker;
+            padding: 4px;
+            cursor: hand; 
+            cursor: pointer;
+            line-height: 14px;
+            font-size: 14px;
+            letter-spacing: 1px;
+
+            &:hover {
+                color: white;
+                text-decoration: none;
+                background-color: @blue;
+            }
+        }
+    }
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+
+
+/* TagHandler: Input field  and tag badges */
+
 .tagHandler {
     display: inline;
 }
@@ -6,14 +56,15 @@
     cursor: text;
     line-height: 30px;
     min-height: 30px;
-    font-family: verdana, arial, helvetica, sans-serif;
+    font-family: 'bebas';
     margin: 0px 0px;
     display: inline-block;
 }
 .tagHandler ul.tagHandlerContainer li {
     height: 14px;
     line-height: 14px;
-    font-size: 12px;
+    font-size: 14px;
+    letter-spacing: 1px;
     display: block;
     float: left;
     
@@ -21,13 +72,14 @@
     white-space: nowrap;
 }
 .tagHandler ul.tagHandlerContainer li.tagItem {
-    background-color: #0066bd;
+    background-color: @blue;
     color: #FFF;
     padding: 3px 8px;
+    font-family: 'bebas';
     cursor: url('../images/tag_remove.cur'), pointer;
 }
 .tagHandler ul.tagHandlerContainer li.tagItem:hover {
-    background-color: #008afb;
+    background-color: @blueLight;
 }
 
 .tagHandler ul.tagHandlerContainer input.tagInputField {
@@ -37,7 +89,9 @@
     width: inherit;
     background-color: #FFF;
     color: #666;
-    font-size: 12px;
+    line-height: 14px;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 .tagHandler div.tagLoader {
     position: absolute;
