@@ -19,7 +19,7 @@ namespace BlackMesa.Controllers
         
         public ActionResult Json()
         {
-            return Json(new { tags = _db.Tags.Select(t => new { tag = t.Name }).ToList() });
+            return Json(new { availableTags = _db.Tags.Select(t => t.Name).ToArray(), assignedTags = new string[0] }, JsonRequestBehavior.AllowGet);
         }
 
 

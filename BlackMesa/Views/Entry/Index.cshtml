@@ -7,15 +7,18 @@
 
 <section id="entry-index">
     
-    <div id="entries-top-bar">
-        <i class="icon-info-sign"></i> Total entries: @Model.Count()
-        
-        <div id="sort-bar">
-            <i class="icon-reorder"></i> Sort by: 
-            @Html.ActionLink("Most Recent", "Index", new { orderBy = "date" })  | @Html.ActionLink("Most Viewed", "Index", new { orderBy = "views" }) | @Html.ActionLink("Most Commented", "Index", new { orderBy = "comments" })
+    <div class="clearfix" id="entries-top-bar">
+            <div style="vertical-align: middle; float: right" class="btn btn-mini">Filter</div>
+            <ul style="float: right" class="tag-input"></ul>
+            <span style="float: right; line-height: 30px; min-height: 30px; vertical-align: middle; margin-right: 10px; margin-left: 20px;"><i class="icon-tags"></i> Filter by tag: </span>
+        <div style="float: right; line-height: 30px" id="sort-bar">
+            <i class="icon-info-sign"></i> Entries found: @Model.Count() 
+            @*<i class="icon-reorder"></i> Sort by: 
+            @Html.ActionLink("Most Recent", "Index", new { orderBy = "date" })  | @Html.ActionLink("Most Viewed", "Index", new { orderBy = "views" }) | @Html.ActionLink("Most Commented", "Index", new { orderBy = "comments" })*@
         </div>
- 
     </div>
+    
+
 
     @foreach (var item in Model) {
         @Html.Partial("_EntryPreview", item)
@@ -39,3 +42,18 @@
     </div>
 
 </section>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+            $(".tag-input").tagHandler({
+                getURL: '@Url.Action("Json","Tag")',
+                allowAdd: false,
+                msgNoNewTag: "Please select an existing tag from the list.",
+                autocomplete: true,
+            });
+    </script>
+
+}

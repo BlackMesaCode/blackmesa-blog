@@ -22,13 +22,13 @@ namespace BlackMesa
 //            const string jQueryCdnPath = "http://code.jquery.com/jquery-1.9.1.min.js";
 
             bundles.Add(new ScriptBundle("~/bundles/main")
-                .Include("~/Scripts/jquery-{version}.js", "~/Scripts/bootstrap.js", "~/Scripts/shCore.js", "~/Scripts/shAutoloader.js", "~/Scripts/shLegacy.js"));
+                .Include("~/Scripts/jquery-{version}.js", "~/Scripts/jquery-ui-{version}.js", "~/Scripts/bootstrap.js", "~/Scripts/shCore.js", "~/Scripts/shAutoloader.js", "~/Scripts/shLegacy.js", "~/Scripts/jquery.taghandler.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval")
                 .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin")
-                .Include("~/Scripts/bootstrap-tagmanager.js", "~/Scripts/bootstrap-datetimepicker.js", "~/Scripts/jquery-autogrow-textarea.js"));
+                .Include("~/Scripts/bootstrap-datetimepicker.js", "~/Scripts/jquery-autogrow-textarea.js"));
             
  
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -42,7 +42,9 @@ namespace BlackMesa
             var mainBundle = new Bundle("~/Content/main")
                 .Include("~/Content/styles/bootstrap.less")
                 .Include("~/Content/styles/shCoreDefault.less")
-                .Include("~/Content/styles/shThemeDefault.less");
+                .Include("~/Content/styles/shThemeDefault.less")
+                .Include("~/Content/styles/jquery.taghandler.less");
+                
             mainBundle.Transforms.Add(cssTransformer);
             mainBundle.Transforms.Add(cssMinifier);
             mainBundle.Orderer = nullOrderer;
@@ -57,7 +59,7 @@ namespace BlackMesa
             bundles.Add(adminBundle);
 
 
-            BundleTable.EnableOptimizations = true;  // executing this line will force bundling and minification by overwriting whatever stands in web.config
+//            BundleTable.EnableOptimizations = true;  // executing this line will force bundling and minification by overwriting whatever stands in web.config
 //            #if DEBUG
 //                BundleTable.EnableOptimizations = false;
 //            #endif

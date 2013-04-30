@@ -40,7 +40,7 @@
         jQuery(".tag-input").tagsManager({
             prefilled: [@Html.Raw(Model != null ? String.Join(", ", Model.Tags.Select(t=> "\"" + t.Name + "\"")) : "")],
             typeahead: true,
-            typeaheadAjaxSource: "@Url.Action("Json","Tag")",
+            
             typeaheadAjaxPolling: true,
         });
         
