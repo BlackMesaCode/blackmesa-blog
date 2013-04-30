@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Data.Entity.Validation;
-using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 using BlackMesa.Models;
+using BlackMesa.ViewModels;
 
 namespace BlackMesa.Controllers
 {
@@ -15,55 +13,73 @@ namespace BlackMesa.Controllers
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
 
-        public ActionResult Index(string orderBy = "date")
+        [HttpPost]
+        public ActionResult Index(EntryIndexViewModel viewModel)
         {
-//            var model = new List<EntryViewModel>();
-//
-//            foreach (var entry in _db.Entries.ToList())
-//            {
-//                model.Add(new EntryViewModel
-//                                  {
-//                                    Id = entry.Id,
-//                                    Title = entry.Title,
-//                                    Tags = entry.Tags, // String.Join(", ", entry.Tags.Select(e => e.Name)),
-//                                    Content = entry.Content,
-//                                    DateCreated = entry.DateCreated,
-//                                    DateEdited = entry.DateEdited,
-//                                    Comments = entry.Comments,
-//                                  });
-//            }
-
             var model = _db.Entries.Select(e => e);
+            var selectedTags = viewModel.SelectedTags;
 
-            switch (orderBy)
+            // filter by selected tags
+            // var selectedTags = HttpContext.Request.Form["SelectedTags"];
+            if (!String.IsNullOrEmpty(selectedTags))
+            {
+                var selectedTagList = selectedTags.Split(',').ToList();
+
+                model = model.Where(e => selectedTagList.All(tagString => (e.Tags.Select(t => t.Name).Contains(tagString))));
+            }
+
+            switch (viewModel.OrderBy)
             {
                 case "date":
                     model = model.OrderByDescending(e => e.DateCreated);
                     break;
                 case "comments":
-                    model = model.OrderByDescending(e => e.Comments.Count);       
+                    model = model.OrderByDescending(e => e.Comments.Count);
                     break;
                 case "views":
                     model = model.OrderByDescending(e => e.Comments.Count);
                     break;
+                default:
+                    model = model.OrderByDescending(e => e.DateCreated);
+                    break;
             }
 
-            var modelMaterialized = model.ToList();
-            var htmlContent = modelMaterialized.First().Content;
-            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
-            htmlDoc.LoadHtml(htmlContent);
+            viewModel.Entries = model.ToList();
 
-            if (htmlDoc.DocumentNode != null)
-            {
-                HtmlAgilityPack.HtmlNode bodyNode = htmlDoc.DocumentNode.SelectSingleNode("//article");
+            return View(viewModel);
+        }
 
-                if (bodyNode != null)
-                {
-                    // Do something with bodyNode
-                }
-            }
 
-            return View(modelMaterialized);
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var model = _db.Entries.Select(e => e);
+            model = model.OrderByDescending(e => e.DateCreated);
+
+            var viewModel = new EntryIndexViewModel
+                                {
+                                    Entries = model.ToList(),
+                                    SelectedTags = "",
+                                    OrderBy = "",
+                                };
+
+            return View(viewModel);
+
+            //            var htmlContent = modelMaterialized.First().Content;
+            //            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+            //            htmlDoc.LoadHtml(htmlContent);
+            //
+            //            if (htmlDoc.DocumentNode != null)
+            //            {
+            //                HtmlAgilityPack.HtmlNode bodyNode = htmlDoc.DocumentNode.SelectSingleNode("//article");
+            //
+            //                if (bodyNode != null)
+            //                {
+            //                    // Do something with bodyNode
+            //                }
+            //            }
+
+
         }
 
 
@@ -111,13 +127,13 @@ namespace BlackMesa.Controllers
         {
             if (ModelState.IsValid)
             {
-                var hiddenTagList = HttpContext.Request.Form["hidden-TagList"];
-                if (!String.IsNullOrEmpty(hiddenTagList))
+                var selectedTags = HttpContext.Request.Form["SelectedTags"];
+                if (!String.IsNullOrEmpty(selectedTags))
                 {
-                    var tagList = hiddenTagList.Split(',').ToList();
+                    var selectedTagsList = selectedTags.Split(',').ToList();
 
                     entry.Tags = new Collection<Tag>();
-                    foreach (var tag in tagList)
+                    foreach (var tag in selectedTagsList)
                     {
                         if (!_db.Tags.Select(t => t.Name).Contains(tag))
                         {
@@ -157,7 +173,7 @@ namespace BlackMesa.Controllers
         {
             if (ModelState.IsValid)
             {
-                var hiddenTagList = HttpContext.Request.Form["hidden-TagList"];
+                var selectedTags = HttpContext.Request.Form["SelectedTags"];
 
                 var dbEntry = _db.Entries.Find(entry.Id);
 
@@ -165,11 +181,11 @@ namespace BlackMesa.Controllers
 
                 dbEntry.Tags.Clear();
 
-                if (!String.IsNullOrEmpty(hiddenTagList))
+                if (!String.IsNullOrEmpty(selectedTags))
                 {
-                    var tagList = hiddenTagList.Split(',').ToList();
+                    var selectedTagsList = selectedTags.Split(',').ToList();
 
-                    foreach (var tag in tagList)
+                    foreach (var tag in selectedTagsList)
                     {
                         if (!_db.Tags.Select(t => t.Name).Contains(tag))
                         {

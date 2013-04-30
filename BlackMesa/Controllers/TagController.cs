@@ -17,9 +17,21 @@ namespace BlackMesa.Controllers
         }
 
         
-        public ActionResult Json()
+        public ActionResult Json(int id)
         {
-            return Json(new { availableTags = _db.Tags.Select(t => t.Name).ToArray(), assignedTags = new string[0] }, JsonRequestBehavior.AllowGet);
+            var assignedTags = new string[0];
+            if (id != 0)
+                assignedTags = _db.Entries.Find(id).Tags.Select(t => t.Name).ToArray();
+            return Json(new { availableTags = _db.Tags.Select(t => t.Name).ToArray(), assignedTags = assignedTags }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult JsonIndex(string selectedTags)
+        {
+            var assignedTags = new string[0];
+            if (!String.IsNullOrEmpty(selectedTags))
+               assignedTags = selectedTags.Split(',').ToArray();
+            var availableTags = _db.Tags.Select(t => t.Name).ToArray();
+            return Json(new { availableTags = availableTags, assignedTags = assignedTags }, JsonRequestBehavior.AllowGet);
         }
 
 

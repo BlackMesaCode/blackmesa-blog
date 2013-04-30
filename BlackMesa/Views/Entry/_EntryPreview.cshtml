@@ -26,7 +26,7 @@
                     <i class="icon-tags"></i> Tags:
                     @foreach(var tag in Model.Tags)
                     {
-                        @Html.ActionLink(tag.Name, "Index", "Entry")
+                        @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, null)
                     }
                 </span>
             </div>

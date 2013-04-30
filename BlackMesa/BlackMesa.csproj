@@ -179,7 +179,7 @@
     <Compile Include="ViewModels\CommentViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\EntryViewModel.cs" />
+    <Compile Include="ViewModels\EntryIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\bebasneue-webfont.svg" />

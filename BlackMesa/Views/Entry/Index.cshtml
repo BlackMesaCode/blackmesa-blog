@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BlackMesa.Models.Entry>
+﻿@model BlackMesa.ViewModels.EntryIndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -8,19 +8,30 @@
 <section id="entry-index">
     
     <div class="clearfix" id="entries-top-bar">
-            <div style="vertical-align: middle; float: right" class="btn btn-mini">Filter</div>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "entry-filter-form" }))
+        {
             <ul style="float: right" class="tag-input"></ul>
-            <span style="float: right; line-height: 30px; min-height: 30px; vertical-align: middle; margin-right: 10px; margin-left: 20px;"><i class="icon-tags"></i> Filter by tag: </span>
+            <input id="SelectedTags" name="SelectedTags" type="hidden" value="" />
+        }
+
+        <span style="float: right; line-height: 30px; min-height: 30px; vertical-align: middle; margin-right: 10px; margin-left: 20px;"><i class="icon-tags"></i> Filter by tag: </span>
+        
+
         <div style="float: right; line-height: 30px" id="sort-bar">
-            <i class="icon-info-sign"></i> Entries found: @Model.Count() 
+            <i class="icon-info-sign"></i> Entries found: @Model.Entries.Count() 
+            
+
             @*<i class="icon-reorder"></i> Sort by: 
             @Html.ActionLink("Most Recent", "Index", new { orderBy = "date" })  | @Html.ActionLink("Most Viewed", "Index", new { orderBy = "views" }) | @Html.ActionLink("Most Commented", "Index", new { orderBy = "comments" })*@
+            
+
         </div>
     </div>
     
 
 
-    @foreach (var item in Model) {
+    @foreach (var item in Model.Entries)
+    {
         @Html.Partial("_EntryPreview", item)
     }
 
@@ -48,12 +59,21 @@
 {
     <script type="text/javascript">
 
-            $(".tag-input").tagHandler({
-                getURL: '@Url.Action("Json","Tag")',
-                allowAdd: false,
-                msgNoNewTag: "Please select an existing tag from the list.",
-                autocomplete: true,
-            });
+        var submitForm = function() {
+            var serializedTags = $(".tag-input").tagHandler("getSerializedTags");
+            $('#SelectedTags').val(serializedTags);
+            $("#entry-filter-form").submit();
+        };
+
+        $(".tag-input").tagHandler({
+            getData: { selectedTags: '@Model.SelectedTags' },
+            getURL: '@Url.Action("JsonIndex", "Tag")',
+            afterAdd: submitForm,
+            afterDelete: submitForm,
+            allowAdd: false,
+            msgNoNewTag: "Please select an existing tag from the list.",
+            autocomplete: true,
+        });
     </script>
 
 }

@@ -13,7 +13,9 @@
     @Html.LabelFor(model => model.Tags)
 </div>
 <div class="editor-field clearfix">
-    <input type="text" name="TagList" placeholder="Enter Tags" class="tag-input"/>
+    <ul class="tag-input"></ul>
+    <input id="SelectedTags" name="SelectedTags" type="hidden" value="" />
+@*    <input type="text" name="TagList" placeholder="Enter Tags" class="tag-input"/>*@
 </div>
 
 <div class="editor-label">
