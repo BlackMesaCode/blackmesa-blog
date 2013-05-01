@@ -162,7 +162,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\CssTestController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
@@ -391,7 +393,6 @@
     <Content Include="Views\CssTest\Index.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Entry\_Entry.cshtml" />
     <Content Include="Views\Shared\_SectionHeader.cshtml" />
     <Content Include="Views\Entry\Index.cshtml" />
     <Content Include="Views\Entry\Details.cshtml" />
@@ -413,6 +414,10 @@
     <Content Include="Views\Entry\Comment\_CreateEditFieldset.cshtml" />
     <Content Include="Views\Tag\_Index.cshtml" />
     <Content Include="Views\Entry\_Entries.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Entry\_EntryHead.cshtml" />
+    <Content Include="Views\Entry\_EntryPreview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

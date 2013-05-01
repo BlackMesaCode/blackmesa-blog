@@ -217,32 +217,39 @@ nav {
             }
 
 
-
             article {
                 .article;
             }
 
 
-            .pagination {
-                float: right;
+            #entries-bottom-bar {
+                .clearfix;
+
+                #back-to-top {
+                    float: left;
+                    line-height: 20px;
+
+                    i {
+                        margin-right: 10px;
+                    }
+                }
+
+                .pagination {
+                    float: right;
+                    margin-top: 10px;
+                }
             }
-        }
 
-
-
-        #entries-bottom-bar {
-            .pagination {
-                .pull-right;
-                margin: 0;
-            }
         }
     }
+
     // Entry details
     #entry-details {
         article {
             .article;
         }
     }
+
     // Entry edit
     #entry-edit {
     }
@@ -252,15 +259,28 @@ nav {
 }
 
 
-
-
 /* Footer */
 
 footer {
+    height: 60px;
 
+    #back-to-top {
+        display: none;
+        position: fixed;
+        bottom: 60px;
+        right: 180px;
+        z-index: 10;
+        font-size: 60px;
+        
+        a {
+            padding: 15px;
+        }
 
+        a:hover {
+            text-decoration: none;
+        }
+    }
 }
-
 
 
 

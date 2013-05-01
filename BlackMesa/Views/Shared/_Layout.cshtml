@@ -23,15 +23,39 @@
             <div id="content">
                 @RenderBody()
             </div>
-
-            @*<footer>
+            <footer>
                 @Html.Partial("_Footer")
             </footer>
-            @Html.Partial("_Sidebar")*@
         </div>
-
 
         @Scripts.Render("~/bundles/main")
         @RenderSection("Scripts", required: false)
+        <script type='text/javascript'>
+        //<![CDATA[
+         $(document).ready(function(){
+              // hide #back-top 
+             $("#back-to-top").hide();
+             
+             // fade in #back-top
+             $(function () {
+                 $(window).scroll(function () {
+                     if ($(this).scrollTop() > 200) {
+                         $('#back-to-top').fadeIn();
+                     } else {
+                         $('#back-to-top').fadeOut();
+                     }
+                 });
+
+                 // scroll body to 0px 
+                 $('#back-to-top a').click(function () {
+                     $('body,html').animate({
+                         scrollTop: 0
+                     }, 800);
+                     return false;
+                 });
+             });
+         });
+        //]]>
+        </script>
     </body>
 </html>

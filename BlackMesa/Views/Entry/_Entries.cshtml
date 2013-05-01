@@ -23,8 +23,17 @@
 
 @foreach (var item in Model)
 {
-    @Html.Partial("_Entry", item)
+    @Html.Partial("_EntryPreview", item)
 }
 
-@Html.PagedListPager(Model, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.ClassicPlusFirstAndLast, 
-    new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "entry-index-articles" }))
+<div id="entries-bottom-bar">
+    
+    @*
+    <div id="back-to-top">
+        <a href="#"><i class="icon-chevron-up"></i>Back to top</a>
+    </div>
+    *@
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.ClassicPlusFirstAndLast, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "entry-index-articles" }))
+    
+</div>
