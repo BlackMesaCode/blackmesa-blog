@@ -41,6 +41,7 @@ namespace BlackMesa
 
             var mainBundle = new Bundle("~/Content/main")
                 .Include("~/Content/styles/bootstrap.less")
+                .Include("~/Content/themes/base/jquery-ui.css")
                 .Include("~/Content/styles/shCoreDefault.less")
                 .Include("~/Content/styles/shThemeDefault.less")
                 .Include("~/Content/styles/jquery.taghandler.less");

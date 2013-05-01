@@ -290,7 +290,6 @@
     <Content Include="Scripts\jquery-ui-1.10.2.js" />
     <Content Include="Scripts\jquery-ui-1.10.2.min.js" />
     <Content Include="Scripts\jquery.taghandler.js" />
-    <Content Include="Scripts\jquery.taghandler.min.js" />
     <Content Include="Scripts\shAutoloader.js" />
     <Content Include="Scripts\shBrushes\shBrushBash.js" />
     <Content Include="Scripts\shBrushes\shBrushCSharp.js" />

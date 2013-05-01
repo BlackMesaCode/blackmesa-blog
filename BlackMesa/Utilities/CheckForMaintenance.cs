@@ -12,7 +12,8 @@ namespace BlackMesa.Utilities
 
         private static List<string> _allowedIps = new List<string>
                                                       {
-                                                          "134.3.100.237"
+                                                          "134.3.100.237",
+                                                          "46.128.19.14"
                                                       };
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
