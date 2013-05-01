@@ -1,11 +1,29 @@
 ﻿using System;
+using System.IO;
 using System.Text;
+using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
 namespace BlackMesa.Utilities
 {
     public static class Utilities
     {
+
+
+        public static HtmlHelper GetHtmlHelper(this Controller controller)
+        {
+            var viewContext = new ViewContext(controller.ControllerContext, new FakeView(), controller.ViewData, controller.TempData, TextWriter.Null);
+            return new HtmlHelper(viewContext, new ViewPage());
+        }
+
+        public class FakeView : IView
+        {
+            public void Render(ViewContext viewContext, TextWriter writer)
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
         private static readonly long DatetimeMinTimeTicks =
            (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).Ticks;
 

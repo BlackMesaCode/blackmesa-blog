@@ -3,7 +3,9 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using BlackMesa.Models;
+using BlackMesa.Utilities;
 using BlackMesa.ViewModels;
 using PagedList;
 
@@ -59,6 +61,9 @@ namespace BlackMesa.Controllers
             viewModel.Entries = model.ToPagedList(pageNumber, pageSize);
 
             
+            // Parse content for preview
+            ParseEntryIndexContent(viewModel);
+
             /*  Problem: Ajax requests wont trigger the RenderScripts in the above view */
             if (Request.IsAjaxRequest())
                 return PartialView("_Entries", viewModel.Entries);
@@ -66,20 +71,83 @@ namespace BlackMesa.Controllers
             return View(viewModel);
 
 
-//            var htmlContent = modelMaterialized.First().Content;
-//            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
-//            htmlDoc.LoadHtml(htmlContent);
-//
-//            if (htmlDoc.DocumentNode != null)
-//            {
-//                HtmlAgilityPack.HtmlNode bodyNode = htmlDoc.DocumentNode.SelectSingleNode("//article");
-//
-//                if (bodyNode != null)
-//                {
-//                    // Do something with bodyNode
-//                }
-//            }
+        }
 
+
+        private void ParseEntryIndexContent(EntryIndexViewModel viewModel)
+        {
+            foreach (var entry in viewModel.Entries)
+            {
+                var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+                htmlDoc.LoadHtml(entry.Content);
+
+                if (htmlDoc.DocumentNode != null)
+                {
+                    
+//                    var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
+//                    var lastParagraph = htmlDoc.DocumentNode.SelectSingleNode("article/section[last()]/p[last()]");
+//                    var sectionNodes = htmlDoc.DocumentNode.SelectNodes("article/section");
+
+                    var summaryNode = htmlDoc.DocumentNode.SelectSingleNode("article/section[1]");
+                    if (summaryNode != null)
+                    {
+                        var summaryNodeHeading = summaryNode.SelectSingleNode("h2");
+                        summaryNode.RemoveChild(summaryNodeHeading);
+
+                        var helper = this.GetHtmlHelper();
+//                        var entryManagmentButton = helper.Partial("_EntryManagmentButton", entry).ToHtmlString();
+                        var moreButton = helper.ActionLink("More", "Details", "Entry", new { id = entry.Id }, new { @class = "btn btn-mini" }).ToHtmlString();
+
+                        summaryNode.SelectSingleNode("p[last()]").InnerHtml += moreButton;
+//                      summaryNode.SelectSingleNode("p[last()]").SetAttributeValue("class", "last-paragraph");
+                        entry.Content = summaryNode.OuterHtml;
+                    }
+                    else
+                    {
+                        entry.Content = "Invalid article structure. sections could not be retreived.";
+                    }
+                }
+                else
+                {
+                    entry.Content = "Article root could not be retreived.";
+                }
+            }
+        }
+
+
+        private void ParseEntryDetailsContent(Entry entry)
+        {
+            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+            htmlDoc.LoadHtml(entry.Content);
+
+            if (htmlDoc.DocumentNode != null)
+            {
+
+//              var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
+//              var lastParagraph = htmlDoc.DocumentNode.SelectSingleNode("article/section[last()]/p[last()]");
+                var sectionNodes = htmlDoc.DocumentNode.SelectNodes("article/section");
+
+                if (sectionNodes != null)
+                {
+                    entry.Content = string.Empty;
+                    foreach (var sectionNode in sectionNodes)
+                    {
+                        entry.Content += sectionNode.OuterHtml;
+                    }
+                }
+                else
+                {
+                    entry.Content = "Invalid article structure. sections could not be retreived.";
+                }
+
+//                var helper = this.GetHtmlHelper();
+//                var entryManagmentButton = helper.Partial("_EntryManagmentButton", entry).ToHtmlString();
+//                var moreButton = helper.ActionLink("More", "Details", "Entry", new {id = entry.Id}, new {@class = "btn btn-mini"});
+            }
+            else
+            {
+                entry.Content = "Article root could not be retreived.";
+            }
         }
 
 
@@ -91,6 +159,7 @@ namespace BlackMesa.Controllers
             {
                 return HttpNotFound();
             }
+            ParseEntryDetailsContent(entry);
             return View(entry);
         }
 

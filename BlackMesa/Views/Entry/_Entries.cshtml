@@ -34,6 +34,12 @@
     </div>
     *@
 
+    <div id="add-entry-button">
+        <a class="btn btn-primary" href="@Url.Action("Create")">
+            <i class="icon-plus-sign"></i> Add Entry
+        </a>
+    </div>
+
     @Html.PagedListPager(Model, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.ClassicPlusFirstAndLast, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "entry-index-articles" }))
     
 </div>
