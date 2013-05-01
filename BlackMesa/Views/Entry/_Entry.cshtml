@@ -38,13 +38,24 @@
 @*                        @Ajax.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, *@
 @*                        new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "entry-index-articles" })*@
 
-                        var formId = tag.Name + "-form";
-                        using(Html.BeginForm("Index", "Entry", null, FormMethod.Post, new { Id = formId, Class = "tag-form"}))
-                        {
-                            
-                            <input type="hidden" name="SelectedTags" value="@tag.Name" id="SelectedTags"/>
-                            <a href="#" onclick="$('#@formId').submit()">@tag.Name</a>
-                        }
+@*                        var formId = tag.Name + "-form";*@
+@*                        using(Html.BeginForm("Index", "Entry", null, FormMethod.Post, new { Id = formId, Class = "tag-form"}))*@
+@*                        {*@
+@*                            *@
+@*                            <input type="hidden" name="SelectedTags" value="@tag.Name" id="SelectedTags"/>*@
+@*                            <a href="#" onclick="$('#@formId').submit()">@tag.Name</a>*@
+@*                        }*@
+                        
+                        <a href="#" onclick="test('@tag.Name')">@tag.Name</a>
+                          
+                        <script>
+                            var test = function (selectedTags) {
+
+                                $('#filter-by-tag').empty();
+                                $('#filter-by-tag').append('<ul class="tag-input"></ul>');
+                                initTagHandler(selectedTags);
+                            };
+                        </script>
                     }
                 </span>
             </div>

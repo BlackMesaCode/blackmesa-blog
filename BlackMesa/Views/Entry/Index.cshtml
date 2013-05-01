@@ -7,20 +7,12 @@
 <section id="entry-index">
     
     <div id="entries-top-bar">
-        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "entry-filter-form" }))
-        {
-            <ul style="float: right" class="tag-input"></ul>
-            <input id="SelectedTags" name="SelectedTags" type="hidden" value="" />
-        }
-
-        <div id="filter-by-tag"><i class="icon-tags"></i> Filter by tag: </div>
-        
-        @*
-        <div id="sort-bar">
-            <i class="icon-reorder"></i> Sort by: 
-            @Html.ActionLink("Most Recent", "Index", new { orderBy = "date" })  | @Html.ActionLink("Most Viewed", "Index", new { orderBy = "views" }) | @Html.ActionLink("Most Commented", "Index", new { orderBy = "comments" })
+        <div id="filter-by-tag">
+            <ul class="tag-input"></ul>
         </div>
-        *@
+        <div id="filter-by-tag-caption"><i class="icon-tags"></i> Filter by tag: </div>
+        
+        
     </div>
     
     <div id="entry-index-articles">
@@ -51,15 +43,23 @@
             });
         };
 
-        $(".tag-input").tagHandler({
-            getData: { selectedTags: '@Model.SelectedTags' },
-            getURL: '@Url.Action("JsonIndex", "Tag")',
-            afterAdd: sendAjaxRequest,
-            afterDelete: sendAjaxRequest,
-            allowAdd: false,
-            msgNoNewTag: "Please select an existing tag from the list.",
-            autocomplete: true,
-        });
-    </script>
+        var initTagHandler = function (selectedTags) {
 
+            $(".tag-input").tagHandler({
+                getData: { selectedTags: selectedTags },
+                getURL: '@Url.Action("JsonIndex", "Tag")',
+                afterAdd: sendAjaxRequest,
+                afterDelete: sendAjaxRequest,
+                allowAdd: false,
+                msgNoNewTag: "Please select an existing tag from the list.",
+                autocomplete: true,
+            });
+
+        };
+
+        initTagHandler('@Model.SelectedTags');
+        
+    </script>
+    
+    
 }

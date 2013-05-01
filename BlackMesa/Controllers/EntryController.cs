@@ -29,7 +29,8 @@ namespace BlackMesa.Controllers
                 model = model.Where(e => selectedTagList.All(tagString => (e.Tags.Select(t => t.Name).Contains(tagString))));
             }
             /* SelectedTags has to be stored in the ViewBag to make it accessible in a PartialView */
-            ViewBag.SelectedTags = viewModel.SelectedTags; 
+            ViewBag.SelectedTags = viewModel.SelectedTags;
+            ViewBag.EntriesFound = model.Count();
 
 
             // Order
@@ -48,9 +49,11 @@ namespace BlackMesa.Controllers
                     model = model.OrderByDescending(e => e.DateCreated);
                     break;
             }
+            ViewBag.OrderBy = viewModel.OrderBy; 
 
             // Paging
             const int pageSize = 3;
+            ViewBag.PageSize = pageSize;
             var pageNumber = (viewModel.Page ?? 1);
             viewModel.Page = pageNumber;
             viewModel.Entries = model.ToPagedList(pageNumber, pageSize);
