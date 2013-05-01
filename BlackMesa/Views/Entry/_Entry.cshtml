@@ -26,36 +26,31 @@
                     <i class="icon-tags"></i> Tags:
                     @foreach(var tag in Model.Tags)
                     {
-@*                        @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, null)*@
-                        
-                        /*  todo we can create links to multi tag search results:  e.g. ?SelectedTags=less%2Csecurity */
-                        
-                        
-                        /* best solution would be to call a tagHandler.AddTag function which then handles the ajax call, but apparently there is no AddTag API function available :( */
-                        
-@*                        <a href="#" onclick="$('.tag-input').tagHandler();">@tag.Name</a>*@
-                        
-@*                        @Ajax.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, *@
-@*                        new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "entry-index-articles" })*@
+                        /* This solution triggers a normal HttpGet request with a query string in the url bar
 
-@*                        var formId = tag.Name + "-form";*@
-@*                        using(Html.BeginForm("Index", "Entry", null, FormMethod.Post, new { Id = formId, Class = "tag-form"}))*@
-@*                        {*@
-@*                            *@
-@*                            <input type="hidden" name="SelectedTags" value="@tag.Name" id="SelectedTags"/>*@
-@*                            <a href="#" onclick="$('#@formId').submit()">@tag.Name</a>*@
-@*                        }*@
+                        @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, null)
                         
-                        <a href="#" onclick="test('@tag.Name')">@tag.Name</a>
-                          
-                        <script>
-                            var test = function (selectedTags) {
+                         * we can create links to multi tag search results this way:  e.g. ?SelectedTags=less%2Csecurity */
+                        
 
-                                $('#filter-by-tag').empty();
-                                $('#filter-by-tag').append('<ul class="tag-input"></ul>');
-                                initTagHandler(selectedTags);
-                            };
-                        </script>
+                        /* This solution uses Post-Form to avoid query strings in url - but its an own request - no ajax here
+
+                        var formId = tag.Name + "-form";
+                        using(Html.BeginForm("Index", "Entry", null, FormMethod.Post, new { Id = formId, Class = "tag-form"}))
+                        {
+                            
+                            <input type="hidden" name="SelectedTags" value="@tag.Name" id="SelectedTags"/>
+                            <a href="#" onclick="$('#@formId').submit()">@tag.Name</a>
+                        }
+                        
+                        */
+                        
+                        
+                        /* 
+                            best solution would be to call a tagHandler.AddTag function which then handles the ajax call, but apparently there is no AddTag API function available :( therefore i reinitialize the tagHandler on click, forcing him to trigger the afterAdd event. reinitialization has some sideeffects to the DOM structure, i have taken care of with those two jquery statements found in the js script tag in the index.cshtml
+                        
+                        */
+                        <a href="#" onclick="onTagClick('@tag.Name')">@tag.Name</a>
                     }
                 </span>
             </div>

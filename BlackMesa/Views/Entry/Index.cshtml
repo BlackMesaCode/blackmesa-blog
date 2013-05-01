@@ -29,6 +29,14 @@
 
     <script type="text/javascript">
 
+
+        var onTagClick = function (selectedTags) {
+
+            $('#filter-by-tag').empty();
+            $('#filter-by-tag').append('<ul class="tag-input"></ul>');
+            initTagHandler(selectedTags);
+        };
+
         var sendAjaxRequest = function () {
             var data = { SelectedTags: $(".tag-input").tagHandler("getSerializedTags") };
             $.ajax({
