@@ -21,14 +21,30 @@
 
             <div class="article-subtitle">
                 <i class="icon-comment"></i>
-                @Model.Comments.Count
+                @Model.Comments.Count @* Todo optimize database call *@
                 <span class="tags">
                     <i class="icon-tags"></i> Tags:
                     @foreach(var tag in Model.Tags)
                     {
 @*                        @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, null)*@
-                        @Ajax.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, 
-                        new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "entry-index-articles" })
+                        
+                        /*  todo we can create links to multi tag search results:  e.g. ?SelectedTags=less%2Csecurity */
+                        
+                        
+                        /* best solution would be to call a tagHandler.AddTag function which then handles the ajax call, but apparently there is no AddTag API function available :( */
+                        
+@*                        <a href="#" onclick="$('.tag-input').tagHandler();">@tag.Name</a>*@
+                        
+@*                        @Ajax.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, *@
+@*                        new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "entry-index-articles" })*@
+
+                        var formId = tag.Name + "-form";
+                        using(Html.BeginForm("Index", "Entry", null, FormMethod.Post, new { Id = formId, Class = "tag-form"}))
+                        {
+                            
+                            <input type="hidden" name="SelectedTags" value="@tag.Name" id="SelectedTags"/>
+                            <a href="#" onclick="$('#@formId').submit()">@tag.Name</a>
+                        }
                     }
                 </span>
             </div>
@@ -36,18 +52,18 @@
     </div>
     
     
-        @Html.Raw(Model.Content) 
-        @Html.ActionLink("More", "Details", "Entry", new { id=Model.Id }, new { @class="btn btn-mini" })
-        <div class="btn-group">
-            <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-cog"></i> Entry
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })"><i class="icon-pencil"></i> Edit</a></li>
-                <li><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })"><i class="icon-trash"></i> Delete</a></li>
-            </ul>
-        </div>
-    
+    @Html.Raw(Model.Content) 
+    @Html.ActionLink("More", "Details", "Entry", new { id=Model.Id }, new { @class="btn btn-mini" })
 
+    <div class="btn-group">
+        <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="icon-cog"></i> Entry
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })"><i class="icon-pencil"></i> Edit</a></li>
+            <li><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })"><i class="icon-trash"></i> Delete</a></li>
+        </ul>
+    </div>
+    
 </article>

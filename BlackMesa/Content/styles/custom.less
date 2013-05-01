@@ -148,7 +148,7 @@ nav {
                     font-size: 11px;
 
                     .tags {
-                       a {
+                        a {
                             color: @grayDarker;
                             text-decoration: underline;
                             margin-right: 6px;
@@ -159,49 +159,37 @@ nav {
                             }
                         }
                     }
-
                 }
             }
         }// end of .article-head
-
-        .article-content-preview {
-            width: 100%; 
-            max-height: 10em; 
-            text-overflow: ellipsis; 
-            overflow:hidden; 
-            white-space: normal; 
-            display:inline-block; 
-            position: relative;
-
-            .show-more-button {
-                position: absolute; 
-                bottom: 0; 
-                right: 0; 
-                padding-left: 5px; 
-                /* background-image: url("../images/pattern.png");*/
-            }
-        }
-
-        .hide-more-button {
-            display: none;
-        }
-
     }// end of .article
-
+    
 
     // Entry index
     #entry-index {
         .clearfix;
 
         #entries-top-bar {
-
+            .clearfix;
             font-family: 'bebas';
             padding-left: 5px;
             margin-bottom: 10px;
 
+            #filter-by-tag {
+                float: right;
+                line-height: 30px;
+                min-height: 30px;
+                vertical-align: middle;
+                margin-right: 10px;
+                margin-left: 20px;
+            }
+
+            // styling of tag-handler (input box, badges and autocomplete) in external file
+
             #sort-bar {
                 .clearfix;
                 float: right;
+                line-height: 30px;
 
                 a {
                     padding-left: 6px;
@@ -210,9 +198,20 @@ nav {
             }
         }
 
-        article {
-            .article;
+
+        #entry-index-articles {
+
+            article {
+                .article;
+            }
+
+
+            .pagination {
+                float: right;
+            }
         }
+
+
 
         #entries-bottom-bar {
             .pagination {
@@ -221,23 +220,17 @@ nav {
             }
         }
     }
-
     // Entry details
     #entry-details {
         article {
             .article;
         }
     }
-
-
     // Entry edit
     #entry-edit {
-
     }
-
     // Edit delete
     #entry-delete {
-
     }
 }
 

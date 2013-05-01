@@ -2,7 +2,11 @@
 @model PagedList.IPagedList<BlackMesa.Models.Entry>
 
 
-<i class="icon-info-sign"></i> Entries found: @Model.Count() 
+@*  todo implement entries count ?
+<div id="entries-count">
+    <i class="icon-info-sign"></i> Entries found: @Model.Count() 
+</div>
+*@
 
 @foreach (var item in Model)
 {

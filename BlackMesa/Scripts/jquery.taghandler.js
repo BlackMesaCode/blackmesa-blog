@@ -206,6 +206,43 @@ along with this program.  If not, see < http://www.gnu.org/licenses/ >.
         },
         version: function () {
             return "1.3.0";
+        },
+        addTag: function (passedTag) {
+            if (passedTag !== "" && !checkTag($.trim(passedTag), tags.assignedTags)) {
+
+                // check if the tag is in availableTags
+                if (!opts.allowAdd && !checkTag($.trim(passedTag), tags.availableTags)) {
+                    alert(opts.msgNoNewTag);
+                    return;
+                }
+
+                if (opts.maxTags > 0 && tags.assignedTags.length >= opts.maxTags) {
+                    alert('Maximum tags allowed: ' + opts.maxTags);
+                }
+                else {
+                    var newTag = $.trim(passedTag);
+
+                    // allow addition onAdd return code to control whether
+                    // addition is allowed to go through
+                    var rc = 1;
+                    if (typeof (opts.onAdd) == "function") {
+                        rc = opts.onAdd.call(this, newTag);
+                    }
+
+                    if (rc || typeof (rc) == "undefined") {
+                        tags = addTag(this, newTag, tags, opts.sorttags);
+//                        if (opts.updateURL !== '' && opts.autoUpdate) {
+//                            saveTags(tags, opts, tagContainer.id);
+//                        }
+//                        if (opts.autocomplete && typeof ($.fn.autocomplete) == 'function' && opts.initload) {
+//                            $(inputField).autocomplete("option", "source", tags.availableTags);
+//                        }
+                        if (typeof (opts.afterAdd) == "function") {
+                            opts.afterAdd.call(this, newTag);
+                        }
+                    }
+                }
+            }
         }
     };
 

@@ -56,7 +56,7 @@ namespace BlackMesa.Controllers
             viewModel.Entries = model.ToPagedList(pageNumber, pageSize);
 
             
-            /*   */
+            /*  Problem: Ajax requests wont trigger the RenderScripts in the above view */
             if (Request.IsAjaxRequest())
                 return PartialView("_Entries", viewModel.Entries);
 
@@ -78,7 +78,6 @@ namespace BlackMesa.Controllers
 //            }
 
         }
-
 
 
         [HttpGet]
