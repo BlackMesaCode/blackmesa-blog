@@ -200,7 +200,6 @@
     <Content Include="Content\styles\jquery.taghandler.less" />
     <None Include="Content\styles\shCoreDefault.less" />
     <None Include="Content\styles\shThemeDefault.less" />
-    <None Include="Content\styles\jquery.ui.autocomplete.less" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\entry-index.js" />
     <Content Include="Scripts\jquery-autogrow-textarea.js" />

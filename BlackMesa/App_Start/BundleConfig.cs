@@ -60,7 +60,7 @@ namespace BlackMesa
             bundles.Add(adminBundle);
 
 
-            BundleTable.EnableOptimizations = true;  // executing this line will force bundling and minification by overwriting whatever stands in web.config
+//            BundleTable.EnableOptimizations = true;  // executing this line will force bundling and minification by overwriting whatever stands in web.config
 //            #if DEBUG
 //                BundleTable.EnableOptimizations = false;
 //            #endif
