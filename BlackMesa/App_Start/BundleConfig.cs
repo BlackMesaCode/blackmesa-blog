@@ -22,7 +22,7 @@ namespace BlackMesa
 //            const string jQueryCdnPath = "http://code.jquery.com/jquery-1.9.1.min.js";
 
             bundles.Add(new ScriptBundle("~/bundles/main")
-                .Include("~/Scripts/jquery-{version}.js", "~/Scripts/jquery-ui-{version}.js", "~/Scripts/bootstrap.js", "~/Scripts/shCore.js", "~/Scripts/shAutoloader.js", "~/Scripts/shLegacy.js", "~/Scripts/jquery.taghandler.js"));
+                .Include("~/Scripts/jquery-{version}.js", "~/Scripts/jquery-ui-1.10.2.custom.js", "~/Scripts/bootstrap.js", "~/Scripts/shCore.js", "~/Scripts/shAutoloader.js", "~/Scripts/shLegacy.js", "~/Scripts/jquery.taghandler.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval")
                 .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*"));
@@ -41,7 +41,7 @@ namespace BlackMesa
 
             var mainBundle = new Bundle("~/Content/main")
                 .Include("~/Content/styles/bootstrap.less")
-                .Include("~/Content/themes/base/jquery-ui.css")
+                .Include("~/Content/styles/jquery-ui-1.10.2.custom.less")
                 .Include("~/Content/styles/shCoreDefault.less")
                 .Include("~/Content/styles/shThemeDefault.less")
                 .Include("~/Content/styles/jquery.taghandler.less");
