@@ -200,6 +200,8 @@
     <Content Include="Content\styles\jquery.taghandler.less" />
     <None Include="Content\styles\shCoreDefault.less" />
     <None Include="Content\styles\shThemeDefault.less" />
+    <Content Include="Scripts\global.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\entry-index.js" />
     <Content Include="Scripts\jquery-autogrow-textarea.js" />
@@ -283,7 +285,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\entry-details.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

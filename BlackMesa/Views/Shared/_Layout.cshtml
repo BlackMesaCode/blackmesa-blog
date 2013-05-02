@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/x-icon"/>
     <link rel="icon" href="@Url.Content("~/Content/Images/favicon.jpg")" type="image/png"/>
     <title>@ViewBag.Title | @WebConfigurationManager.AppSettings.Get("SiteTitle")</title>
-    @Styles.Render("~/Content/main")
+    @Styles.Render("~/Content/global")
     @RenderSection("Styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -28,34 +28,7 @@
             </footer>
         </div>
 
-        @Scripts.Render("~/bundles/main")
+        @Scripts.Render("~/bundles/global")
         @RenderSection("Scripts", required: false)
-        <script type='text/javascript'>
-        //<![CDATA[
-         $(document).ready(function(){
-              // hide #back-top 
-             $("#back-to-top").hide();
-             
-             // fade in #back-top
-             $(function () {
-                 $(window).scroll(function () {
-                     if ($(this).scrollTop() > 200) {
-                         $('#back-to-top').fadeIn();
-                     } else {
-                         $('#back-to-top').fadeOut();
-                     }
-                 });
-
-                 // scroll body to 0px 
-                 $('#back-to-top a').click(function () {
-                     $('body,html').animate({
-                         scrollTop: 0
-                     }, 800);
-                     return false;
-                 });
-             });
-         });
-        //]]>
-        </script>
     </body>
 </html>

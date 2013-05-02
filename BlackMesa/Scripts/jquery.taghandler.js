@@ -289,7 +289,9 @@ along with this program.  If not, see < http://www.gnu.org/licenses/ >.
                             if (opts.autocomplete && typeof($.fn.autocomplete) == 'function' && opts.allowEdit) {
                                 $(inputField).autocomplete("option", "source", tags.availableTags);
                             }
-                            opts.afterAdd.call(this, "");
+                            if (opts.initWithInitialAjax) {
+                                opts.afterAdd.call(this, "");
+                            } 
                         },
                         error: function (xhr, text, error) {
                             debug(xhr, text, error);

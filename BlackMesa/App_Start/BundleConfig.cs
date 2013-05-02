@@ -21,11 +21,8 @@ namespace BlackMesa
 
 //            const string jQueryCdnPath = "http://code.jquery.com/jquery-1.9.1.min.js";
 
-            bundles.Add(new ScriptBundle("~/bundles/main")
-                .Include("~/Scripts/jquery-{version}.js", "~/Scripts/jquery-ui-1.10.2.custom.js", "~/Scripts/bootstrap.js", "~/Scripts/shCore.js", "~/Scripts/shAutoloader.js", "~/Scripts/shLegacy.js", "~/Scripts/jquery.taghandler.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval")
-                .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/global")
+                .Include("~/Scripts/jquery-{version}.js", "~/Scripts/jquery-ui-1.10.2.custom.js", "~/Scripts/bootstrap.js", "~/Scripts/shCore.js", "~/Scripts/shAutoloader.js", "~/Scripts/shLegacy.js", "~/Scripts/jquery.taghandler.js", "~/Scripts/global.js", "~/Scripts/jquery.unobtrusive*", "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin")
                 .Include("~/Scripts/bootstrap-datetimepicker.js", "~/Scripts/jquery-autogrow-textarea.js"));
@@ -39,7 +36,7 @@ namespace BlackMesa
 
             // Style Bundles
 
-            var mainBundle = new Bundle("~/Content/main")
+            var mainBundle = new Bundle("~/Content/global")
                 .Include("~/Content/styles/bootstrap.less")
                 .Include("~/Content/styles/jquery-ui-1.10.2.custom.less")
                 .Include("~/Content/styles/shCoreDefault.less")
@@ -60,7 +57,7 @@ namespace BlackMesa
             bundles.Add(adminBundle);
 
 
-//            BundleTable.EnableOptimizations = true;  // executing this line will force bundling and minification by overwriting whatever stands in web.config
+            BundleTable.EnableOptimizations = true;  // executing this line will force bundling and minification by overwriting whatever stands in web.config
 //            #if DEBUG
 //                BundleTable.EnableOptimizations = false;
 //            #endif
