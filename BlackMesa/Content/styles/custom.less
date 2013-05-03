@@ -172,12 +172,19 @@ nav {
         }
 
         #title-input {
+            max-width: none;
             width: 100%;
-            max-width: 990px;
+
             input {
-                max-width: 970px;
+                display: block;
+                max-width: none;
                 width: 100%;
-                /* todo box model border model box sizing */
+                padding: 5px;
+                padding-left: 10px;
+                height:auto;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
             }
         }
 
@@ -191,6 +198,16 @@ nav {
 
         #DateCreatedPicker {
             margin-right: 15px;
+        }
+
+        #DateEditedPicker {
+            margin-right: 15px;
+        }
+
+        #published {
+            input {
+                -webkit-appearance: checkbox;
+            }
         }
     }
 

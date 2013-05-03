@@ -26,6 +26,8 @@ namespace BlackMesa.Models
         [Required]
         public DateTime DateEdited { get; set; }
 
+        [Required]
+        public bool Published { get; set; }
 
          // Any ICollections tagged as 'virtual' will be lazy-loaded unless you specifically mark them otherwise.
         public virtual ICollection<Tag> Tags { get; set; }
