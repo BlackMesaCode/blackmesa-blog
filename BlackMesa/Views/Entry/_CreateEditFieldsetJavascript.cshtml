@@ -36,14 +36,6 @@
         dateEditedPicker.setLocalDate(new Date(@dateEditedToUse));
 
 
-        // Initialize TagManager //
-//        jQuery(".tag-input").tagsManager({
-//            prefilled: [@Html.Raw(Model != null ? String.Join(", ", Model.Tags.Select(t=> "\"" + t.Name + "\"")) : "")],
-//            typeahead: true,
-//            
-//            typeaheadAjaxPolling: true,
-//        });
-
 
         var updateHiddenTagList = function () {
             var serializedTags = $(".tag-input").tagHandler("getSerializedTags");
