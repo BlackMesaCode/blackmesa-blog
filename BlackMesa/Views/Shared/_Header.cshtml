@@ -1,14 +1,16 @@
 ﻿<div id="logo">
     <a href="@Url.Action("Index", "Entry")"><img src="/Content/images/blackmesa_logo.png" alt="BlackMesa Logo"/></a>    
 </div>
-<nav>
-    @Html.Partial("_Navigation")
-</nav>
-<div id="filter-by-tag">
-    <div id="filter-by-tag-input">
-        <ul class="tag-input"></ul>
+<div id="nav-filter-container">
+    <nav>
+        @Html.Partial("_Navigation")
+    </nav>
+    <div id="filter-by-tag">
+        <div id="filter-by-tag-input">
+            <ul class="tag-input"></ul>
+        </div>
+        <div id="filter-by-tag-caption"><i class="icon-tags"></i> Filter by tag: </div>
     </div>
-    <div id="filter-by-tag-caption"><i class="icon-tags"></i> Filter by tag: </div>
 </div>
 
 

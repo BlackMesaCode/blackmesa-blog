@@ -27,12 +27,13 @@ body{
 header {
     margin-top: 30px;
     margin-bottom: 30px;
-    display: table;
-    width:100%;
-    height:100%;
+    font-family: 'bebas';
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: @grayDarker;
 
     #logo {
-        display: table-cell;
+        display: inline-block;
         min-width: 400px;
         vertical-align: middle;
 
@@ -41,50 +42,57 @@ header {
         }
     }
 
-    nav {
-        background-color: @blue;
-        display: table-cell;
+    #nav-filter-container {
+        display: inline-block;
         width: 100%;
-        padding: 0;
-        margin: 0;
-        vertical-align: middle;
-        box-sizing: border-box;
+        max-width: 580px;
 
-        ul {
-            list-style-type: none;
+
+        nav {
+            float: left;
             padding: 0;
             margin: 0;
-            li {
-                display: inline-block;
-                padding: 5px;
+            vertical-align: middle;
+            box-sizing: border-box;
 
-                a {
-                    color: white;
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                li {
+                    display: inline-block;
+                    padding: 5px;
+
+                    a {
+                        color: @grayDarker;
+                    }
                 }
             }
         }
+
+        #filter-by-tag {
+            float: right;
+            min-width: 300px;
+            vertical-align: middle;
+
+            #filter-by-tag-caption {
+                float: right;
+                line-height: 30px;
+                min-height: 30px;
+                vertical-align: middle;
+                margin-right: 10px;
+                margin-left: 20px;
+            }
+
+            #filter-by-tag-input  {
+                float: right;
+            }
+
+            // styling of tag-handler (input box, badges and autocomplete) in external file
+        }
     }
 
-    #filter-by-tag {
-        display: table-cell;
-        min-width: 300px;
-        vertical-align: middle;
-
-        #filter-by-tag-caption {
-            float: right;
-            line-height: 30px;
-            min-height: 30px;
-            vertical-align: middle;
-            margin-right: 10px;
-            margin-left: 20px;
-        }
-
-        #filter-by-tag-input  {
-            float: right;
-        }
-
-        // styling of tag-handler (input box, badges and autocomplete) in external file
-    } 
+ 
 
 
 }
