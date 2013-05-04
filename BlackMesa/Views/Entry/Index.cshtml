@@ -1,4 +1,5 @@
-﻿@model BlackMesa.ViewModels.EntryIndexViewModel
+﻿@using PagedList.Mvc
+@model BlackMesa.ViewModels.EntryIndexViewModel
 
 @{
     ViewBag.Title = "Home";
@@ -6,26 +7,50 @@
 
 
 <section id="entry-index">
-    
+    @*
     <div id="entries-top-bar">
-        <div id="filter-by-tag">
-            <ul class="tag-input"></ul>
+        <div id="entries-sort">
+            <i class="icon-reorder"></i> Sort by: 
+            @Ajax.ActionLink("Most Recent", "Index", "Entry", new { ViewBag.SelectedTags, ViewBag.Page, OrderBy = "date" }, 
+                                new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content" }) | 
+            @Ajax.ActionLink("Most viewed", "Index", "Entry", new { ViewBag.SelectedTags, ViewBag.Page, OrderBy = "views" }, 
+                                new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content" }) |
+            @Ajax.ActionLink("Most commented", "Index", "Entry", new { ViewBag.SelectedTags, ViewBag.Page, OrderBy = "comments" }, 
+                                new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content" })
         </div>
-        <div id="filter-by-tag-caption"><i class="icon-tags"></i> Filter by tag: </div>
-        
-        
-    </div>
     
+        <div id="entries-count">
+            <i class="icon-info-sign"></i> @ViewBag.EntriesFound entries found
+        </div>
+    </div>
+    *@
     <div id="entry-index-articles">
-        @Html.Partial("_Entries",  Model.Entries)
+
+
+        @foreach (var item in Model.Entries)
+        {
+            @Html.Partial("_EntryPreview", item)
+        }
+
+        <div id="entries-bottom-bar">
+    
+            @*
+            <div id="back-to-top">
+                <a href="#"><i class="icon-chevron-up"></i>Back to top</a>
+            </div>
+            *@
+
+            <div id="add-entry-button">
+                <a class="btn btn-primary" href="@Url.Action("Create")">
+                    <i class="icon-plus-sign"></i> Add Entry
+                </a>
+            </div>
+
+            @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.ClassicPlusFirstAndLast, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "content" }))
+    
+        </div>
     </div>
     
 </section>
 
 
-
-@section Scripts
-{
-    @Scripts.Render("~/Scripts/entry-index.js")
-    
-}

@@ -53,6 +53,7 @@ namespace BlackMesa.Controllers
             }
             ViewBag.OrderBy = viewModel.OrderBy; 
 
+
             // Paging
             const int pageSize = 3;
             ViewBag.PageSize = pageSize;
@@ -64,9 +65,9 @@ namespace BlackMesa.Controllers
             // Parse content for preview
             ParseEntryIndexContent(viewModel);
 
-            /*  Problem: Ajax requests wont trigger the RenderScripts in the above view */
+
             if (Request.IsAjaxRequest())
-                return PartialView("_Entries", viewModel.Entries);
+                return PartialView(viewModel);
 
             return View(viewModel);
 
@@ -96,7 +97,7 @@ namespace BlackMesa.Controllers
 
                         var helper = this.GetHtmlHelper();
 //                        var entryManagmentButton = helper.Partial("_EntryManagmentButton", entry).ToHtmlString();
-                        var moreButton = helper.ActionLink("More", "Details", "Entry", new { id = entry.Id }, new { @class = "btn btn-mini" }).ToHtmlString();
+                        var moreButton = helper.ActionLink("More", "Details", "Entry", new { id = entry.Id }, new { @class = "btn btn-mini more-button" }).ToHtmlString();
 
                         summaryNode.SelectSingleNode("p[last()]").InnerHtml += moreButton;
 //                      summaryNode.SelectSingleNode("p[last()]").SetAttributeValue("class", "last-paragraph");
