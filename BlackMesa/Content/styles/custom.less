@@ -17,52 +17,98 @@ body{
 
 .container {
     .clearfix;
-    margin-left: 250px;
-    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1100px;
 }
 
 
-/* Header (Logo) */
 
 header {
-    margin-top: 30px;
+    .clearfix;
+    margin-top: 40px;
     margin-bottom: 30px;
     text-align: right;
-}
 
-/* Navigation */
+    #logo {
+        /* float: right; */
+        margin-bottom: 10px;
+        
+    }
 
-nav {
+    #header-bar {
+        /* float: left; */
+        font-family: 'bebas';
+        font-size: 15px;
+        letter-spacing: 1px;
+        text-align: right;
 
-    ul {
-        position: fixed;
-        font-size: 30px;
-        list-style-type: none;
-        left: 0px;
-        top: 200px;
-        margin-left: -20px;
+        nav {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 30px;
+            height: 30px;
 
-        li {
-            background-color: @grayDarker;
-            text-align: right;
-            width: 70px;
-            &:hover {
-                margin-left: 18px;
+            ul {
+                height: 30px;
+                margin: 0px;
+                padding: 0px;
+                list-style-type: none;
+
+                li {
+                    display: inline-block;
+                    margin-right: 10px; 
+                    a {
+                        span {
+                            color: @blue;
+                        }
+                        display: block;
+                        color: @grayDarker;
+
+                        &:hover {
+                            text-decoration: none;
+                            span {
+                                color: @blueLight;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
             }
-
         }
 
-        a {
-            color: whitesmoke;
-            font-size: 24px;
-            display: block;
-            padding: 10px;
-            &:hover {
-                color: whitesmoke;
-                text-decoration: none;
+        #filter-by-tag {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 30px;
+            height: 30px;
+            text-align: right;
+
+            #filter-by-tag-caption {
+                display: inline-block;
+                line-height: 30px;
+                min-height: 30px;
+                vertical-align: middle;
+                margin-right: 10px;
+                margin-left: 20px;
+                vertical-align: middle;
+            }
+
+            #filter-by-tag-input {
+                display: inline-block;
+                line-height: 30px;
+                min-height: 30px;
+                vertical-align: middle;
+                .tagHandler {
+                    height: 30px;
+                }
+
             }
         }
     }
+
+
+
 
 }
 
@@ -110,7 +156,7 @@ nav {
 
 
     .article {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
 
         .article-head {
 
@@ -152,6 +198,8 @@ nav {
                             color: @grayDarker;
                             text-decoration: underline;
                             margin-right: 6px;
+                            cursor: hand;
+                            cursor: pointer;
 
                             &:hover {
                                 color: @grayDarker;
@@ -162,6 +210,11 @@ nav {
                 }
             }
         }// end of .article-head
+
+
+        .more-button {
+            margin-left: 10px;
+        }
     }// end of .article
     
     #entry-create-edit {
@@ -219,51 +272,29 @@ nav {
 
         #entries-top-bar {
             .clearfix;
+            line-height: 30px;
             font-family: 'bebas';
             padding-left: 5px;
+            margin-bottom: 30px;
 
-            #filter-by-tag-caption {
+            #entries-count {
                 float: right;
-                line-height: 30px;
-                min-height: 30px;
-                vertical-align: middle;
-                margin-right: 10px;
-                margin-left: 20px;
+                margin-right: 30px;
             }
 
-            #filter-by-tag {
+            #entries-sort {
                 float: right;
+
+                a {
+                    padding-left: 4px;
+                    padding-right: 4px;
+                }
             }
-
-            // styling of tag-handler (input box, badges and autocomplete) in external file
-
-
         }
 
 
+
         #entry-index-articles {
-
-            #entries-info-bar {
-                .clearfix;
-                line-height: 30px;
-                font-family: 'bebas';
-                padding-left: 5px;
-
-                #entries-count {
-                    float: right;
-                    margin-right: 30px;
-                }
-
-                #entries-sort {
-                    float: right;
-
-                    a {
-                        padding-left: 4px;
-                        padding-right: 4px;
-                    }
-                }
-            }
-
 
             article {
                 .article;

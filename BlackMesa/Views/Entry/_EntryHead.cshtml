@@ -20,8 +20,10 @@
             </div>
 
             <div class="article-subtitle">
+                @*
                 <i class="icon-comment"></i>
-                @Model.Comments.Count @* Todo optimize database call *@
+                @Model.Comments.Count  Todo optimize database call
+                *@
                 <span class="tags">
                     <i class="icon-tags"></i> Tags:
                     @foreach(var tag in Model.Tags)
@@ -50,7 +52,7 @@
                             best solution would be to call a tagHandler.AddTag function which then handles the ajax call, but apparently there is no AddTag API function available :( therefore i reinitialize the tagHandler on click, forcing him to trigger the afterAdd event. reinitialization has some sideeffects to the DOM structure, i have taken care of with those two jquery statements found in the js script tag in the index.cshtml
                         
                         */
-                        <a href="#" onclick="onTagClick('@tag.Name')">@tag.Name</a>
+                        <a onclick="onTagClick('@tag.Name')">@tag.Name</a>
                     }
                 </span>
             </div>

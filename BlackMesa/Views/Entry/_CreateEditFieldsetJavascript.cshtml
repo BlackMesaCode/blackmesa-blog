@@ -38,12 +38,12 @@
 
 
         var updateHiddenTagList = function () {
-            var serializedTags = $(".tag-input").tagHandler("getSerializedTags");
+            var serializedTags = $(".tag-input-form").tagHandler("getSerializedTags");
             $('#SelectedTags').val(serializedTags);
         };
 
         // Initialize TagHandler //
-        $(".tag-input").tagHandler({
+        $(".tag-input-form").tagHandler({
             getData: { id: '@(Model != null ? Model.Id : 0)' },
             afterAdd: updateHiddenTagList,
             afterDelete: updateHiddenTagList,
