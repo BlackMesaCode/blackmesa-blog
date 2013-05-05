@@ -9,11 +9,12 @@ using BlackMesa.Models;
 
 namespace BlackMesa.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CommentController : Controller
     {
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
-
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var comments = _db.Comments.OrderByDescending(comment => comment.DateCreated).Take(3);

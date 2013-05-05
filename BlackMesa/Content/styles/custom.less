@@ -26,14 +26,40 @@ body{
 
 header {
     .clearfix;
-    margin-top: 40px;
     margin-bottom: 40px;
     text-align: right;
 
+    #membership {
+
+        #hidden-login-link {
+            display: inline-block; 
+            height: 30px; 
+            width: 30px;
+        }
+
+        #membership-managment-button {
+           .btn {
+                background-color: transparent;
+                border: 0;
+
+                a {
+                    background-color: transparent;
+                }
+            }
+        }
+
+        a {
+            color: @grayDarker;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
     #logo {
         /* float: right; */
+        margin-top: 50px;
         margin-bottom: 10px;
-        
     }
 
     #header-bar {
@@ -41,7 +67,6 @@ header {
         font-family: 'bebas';
         font-size: 15px;
         letter-spacing: 1px;
-        text-align: right;
 
         nav {
             display: inline-block;
@@ -118,6 +143,12 @@ header {
 
 
 #content {
+
+    >section {
+        h1 {
+            margin-bottom: 30px;
+        }
+    }
 
     .section-text-header {
         font-family: 'bebas';
@@ -381,6 +412,7 @@ header {
     // Edit delete
     #entry-delete {
     }
+
 }
 
 
@@ -405,6 +437,12 @@ footer {
             text-decoration: none;
         }
     }
+}
+
+
+input[type=checkbox] {
+    display: inline-block;
+    -webkit-appearance: checkbox;
 }
 
 

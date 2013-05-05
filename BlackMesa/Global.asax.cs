@@ -16,7 +16,6 @@ namespace BlackMesa
         protected void Application_Start()
         {
             EntityFrameworkProfilerBootstrapper.PreStart();
-            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
             AreaRegistration.RegisterAllAreas();
 

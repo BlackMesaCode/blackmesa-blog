@@ -1,4 +1,14 @@
-﻿<div id="logo">
+﻿<div id="membership">
+    @if (Request.IsAuthenticated)
+    {
+         @Html.Partial("_LoggedIn")
+    }
+    else
+    {
+        <a id="hidden-login-link" href="@Url.Action("Login", "Account")"></a>
+    }
+</div>
+<div id="logo">
     <a href="@Url.Action("Index", "Entry")"><img src="/Content/images/blackmesa_logo.png" alt="BlackMesa Logo"/></a>
 </div>
 <div id="header-bar">
@@ -13,4 +23,3 @@
     </div>
 </div>
 
-        

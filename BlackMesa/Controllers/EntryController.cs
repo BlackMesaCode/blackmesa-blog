@@ -11,15 +11,19 @@ using PagedList;
 
 namespace BlackMesa.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class EntryController : Controller
     {
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
-
+        [AllowAnonymous]
         public ActionResult Index(EntryIndexViewModel viewModel)
         {
-            var model = _db.Entries.Select(e => e);
-            
+            IQueryable<Entry> model;
+            if (User.IsInRole("Admin"))
+                model = _db.Entries.Select(e => e);
+            else
+                model = _db.Entries.Where(e => e.Published);
 
             // Filter
             var selectedTags = viewModel.SelectedTags;
@@ -144,10 +148,11 @@ namespace BlackMesa.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Details(int id = 0)
         {
             Entry entry = _db.Entries.Find(id);
-            if (entry == null)
+            if (entry == null || (!entry.Published && !User.IsInRole("Admin")))
             {
                 return HttpNotFound();
             }
@@ -157,6 +162,7 @@ namespace BlackMesa.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public ActionResult Details(Comment comment)
         {
             comment.DateCreated = DateTime.Now;

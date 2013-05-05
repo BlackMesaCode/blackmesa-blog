@@ -12,7 +12,7 @@ using BlackMesa.Models;
 
 namespace BlackMesa.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         //
@@ -46,8 +46,6 @@ namespace BlackMesa.Controllers
         //
         // POST: /Account/LogOff
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
@@ -58,7 +56,6 @@ namespace BlackMesa.Controllers
         //
         // GET: /Account/Register
 
-        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -68,7 +65,7 @@ namespace BlackMesa.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        [AllowAnonymous]
+        
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {

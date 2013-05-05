@@ -11,12 +11,7 @@ namespace BlackMesa.Controllers
     {
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
-        public ActionResult Index()
-        {
-            return PartialView("_Index", _db.Tags.ToList());
-        }
-
-        
+        [AjaxOnly]
         public ActionResult Json(int id)
         {
             var assignedTags = new string[0];
@@ -25,6 +20,7 @@ namespace BlackMesa.Controllers
             return Json(new { availableTags = _db.Tags.Select(t => t.Name).ToArray(), assignedTags = assignedTags }, JsonRequestBehavior.AllowGet);
         }
 
+        [AjaxOnly]
         public ActionResult JsonIndex(string selectedTags)
         {
             var assignedTags = new string[0];

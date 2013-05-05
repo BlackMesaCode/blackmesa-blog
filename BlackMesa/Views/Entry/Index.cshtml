@@ -39,18 +39,24 @@
                 <a href="#"><i class="icon-chevron-up"></i>Back to top</a>
             </div>
             *@
-
-            <div id="add-entry-button">
-                <a class="btn btn-primary" href="@Url.Action("Create")">
-                    <i class="icon-plus-sign"></i> Add Entry
-                </a>
-            </div>
             
-            <div id="reparse-button">
-                <a class="btn" href="@Url.Action("ReparseAllEntries")">
-                    <i class="icon-refresh"></i> Reparse All
-                </a>
-            </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <div id="add-entry-button">
+                    <a class="btn btn-primary" href="@Url.Action("Create")">
+                        <i class="icon-plus-sign"></i> Add Entry
+                    </a>
+                </div>
+            
+                <div id="reparse-button">
+                    <a class="btn" href="@Url.Action("ReparseAllEntries")">
+                        <i class="icon-refresh"></i> Reparse All
+                    </a>
+                </div>
+                
+            }
+
+
 
             @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.ClassicPlusFirstAndLast, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "content" }))
     

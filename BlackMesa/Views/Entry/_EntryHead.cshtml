@@ -24,8 +24,14 @@
                 <i class="icon-comment"></i>
                 @Model.Comments.Count  Todo optimize database call
                 *@
-
-                @Html.Partial("_EntryManagmentButton", Model)
+                @if(!Model.Published)
+                {
+                    <i class="icon-eye-close" alt="Article not published yet."></i>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.Partial("_EntryManagmentButton", Model);
+                }
 
                 <span class="tags">
                     <i class="icon-tags"></i> Tags:

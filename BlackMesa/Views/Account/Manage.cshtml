@@ -3,9 +3,7 @@
     ViewBag.Title = "Manage Account";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
+<h1>@ViewBag.Title.</h1>
 
 <p class="message-success">@ViewBag.StatusMessage</p>
 
@@ -20,6 +18,7 @@ else
     @Html.Partial("_SetPasswordPartial")
 }
 
+@*
 <section id="externalLogins">
     @Html.Action("RemoveExternalLogins")
 
@@ -27,6 +26,4 @@ else
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+*@

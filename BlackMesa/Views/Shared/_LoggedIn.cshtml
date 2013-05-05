@@ -1,0 +1,27 @@
+﻿@if (Request.IsAuthenticated) {
+    <text>
+        
+        <div id="membership-managment-button">
+            <div class="btn-group">
+                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-unlock"></i>
+                    @* <span class="caret"></span> *@
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="@Url.Action("Manage", "Account")"><i class="icon-cogs"></i> Manage </a></li>
+                    <li><a href="@Url.Action("LogOff", "Account")"><i class="icon-signout"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </text>
+} 
+
+@*
+else {
+    <ul>
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+*@
