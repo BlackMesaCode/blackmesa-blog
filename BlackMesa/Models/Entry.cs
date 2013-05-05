@@ -16,6 +16,12 @@ namespace BlackMesa.Models
         public string Title { get; set; }
 
         [Required]
+        public string Preview { get; set; }
+
+        [Required]
+        public string Body { get; set; }
+
+        [Required]
         [DataType(DataType.MultilineText)]
         [AllowHtml]
         public string Content { get; set; }

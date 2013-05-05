@@ -4,8 +4,8 @@
     
     @Html.Partial("_EntryHead", Model)
 
-    @Html.Raw(Model.Content) 
-    
-    @Html.Partial("_EntryManagmentButton", Model)
+    <div class="preview-article-body">
+        @Html.Raw(Model.Preview)
+    </div>
 
 </article>

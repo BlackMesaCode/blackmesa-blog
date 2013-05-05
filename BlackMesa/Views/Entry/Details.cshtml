@@ -9,10 +9,10 @@
     <article>
     
         @Html.Partial("_EntryHead", Model)
-
-        @Html.Raw(Model.Content) 
-
-        @Html.Partial("_EntryManagmentButton", Model)
+        
+        <div id="article-body">
+            @Html.Raw(Model.Body)
+        </div>
 
         <div id="disqus_thread"></div>
         <noscript>Please enable JavaScript to view the comments.</noscript>

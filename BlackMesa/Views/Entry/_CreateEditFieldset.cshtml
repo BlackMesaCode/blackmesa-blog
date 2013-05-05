@@ -2,16 +2,19 @@
 
 <div id="entry-create-edit">
     
+    @Html.ValidationMessageFor(model => model.Title)
+    @Html.ValidationMessageFor(model => model.Preview)
+    @Html.ValidationMessageFor(model => model.Body)
+
     <div class="editor-label">
         @Html.LabelFor(model => model.Tags)
     </div>
     <div class="editor-field clearfix">
         <ul class="tag-input-form"></ul>
         <input id="SelectedTags" name="SelectedTags" type="hidden" value="" />
-    @*    <input type="text" name="TagList" placeholder="Enter Tags" class="tag-input"/>*@
     </div>
     
-
+    @*
     <div class="editor-label">
         @Html.LabelFor(model => model.Title)
     </div>
@@ -19,7 +22,7 @@
         @Html.EditorFor(model => model.Title)
         @Html.ValidationMessageFor(model => model.Title)
     </div>
-
+    *@
 
     <div class="editor-label">
         @Html.LabelFor(model => model.Content)

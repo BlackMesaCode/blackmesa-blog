@@ -61,10 +61,6 @@ namespace BlackMesa.Controllers
             viewModel.Page = pageNumber;
             viewModel.Entries = model.ToPagedList(pageNumber, pageSize);
 
-            
-            // Parse content for preview
-            ParseEntryIndexContent(viewModel);
-
 
             if (Request.IsAjaxRequest())
                 return PartialView(viewModel);
@@ -75,81 +71,48 @@ namespace BlackMesa.Controllers
         }
 
 
-        private void ParseEntryIndexContent(EntryIndexViewModel viewModel)
-        {
-            foreach (var entry in viewModel.Entries)
-            {
-                var htmlDoc = new HtmlAgilityPack.HtmlDocument();
-                htmlDoc.LoadHtml(entry.Content);
-
-                if (htmlDoc.DocumentNode != null)
-                {
-                    
-//                    var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
-//                    var lastParagraph = htmlDoc.DocumentNode.SelectSingleNode("article/section[last()]/p[last()]");
-//                    var sectionNodes = htmlDoc.DocumentNode.SelectNodes("article/section");
-
-                    var summaryNode = htmlDoc.DocumentNode.SelectSingleNode("article/section[1]");
-                    if (summaryNode != null)
-                    {
-                        var summaryNodeHeading = summaryNode.SelectSingleNode("h2");
-                        summaryNode.RemoveChild(summaryNodeHeading);
-
-                        var helper = this.GetHtmlHelper();
-//                        var entryManagmentButton = helper.Partial("_EntryManagmentButton", entry).ToHtmlString();
-                        var moreButton = helper.ActionLink("More", "Details", "Entry", new { id = entry.Id }, new { @class = "btn btn-mini more-button" }).ToHtmlString();
-
-                        summaryNode.SelectSingleNode("p[last()]").InnerHtml += moreButton;
-//                      summaryNode.SelectSingleNode("p[last()]").SetAttributeValue("class", "last-paragraph");
-                        entry.Content = summaryNode.OuterHtml;
-                    }
-                    else
-                    {
-                        entry.Content = "Invalid article structure. sections could not be retreived.";
-                    }
-                }
-                else
-                {
-                    entry.Content = "Article root could not be retreived.";
-                }
-            }
-        }
 
 
-        private void ParseEntryDetailsContent(Entry entry)
+        private void ParseEntry(Entry entry)
         {
             var htmlDoc = new HtmlAgilityPack.HtmlDocument();
             htmlDoc.LoadHtml(entry.Content);
 
             if (htmlDoc.DocumentNode != null)
             {
+                    
+                var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
+                if (headerNode != null)
+                {
+                    var headerNodeHeading = headerNode.SelectSingleNode("h1");
+                    headerNode.RemoveChild(headerNodeHeading);
+                    entry.Preview = headerNode.OuterHtml;
+                    entry.Body = headerNode.OuterHtml;
 
-//              var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
-//              var lastParagraph = htmlDoc.DocumentNode.SelectSingleNode("article/section[last()]/p[last()]");
+                    if (headerNodeHeading != null)
+                    {
+                        entry.Title = headerNodeHeading.InnerHtml;
+                    }
+                }
+
                 var sectionNodes = htmlDoc.DocumentNode.SelectNodes("article/section");
 
                 if (sectionNodes != null)
                 {
-                    entry.Content = string.Empty;
                     foreach (var sectionNode in sectionNodes)
                     {
-                        entry.Content += sectionNode.OuterHtml;
+                        entry.Body += sectionNode.OuterHtml;
                     }
                 }
-                else
-                {
-                    entry.Content = "Invalid article structure. sections could not be retreived.";
-                }
+            }
 
-//                var helper = this.GetHtmlHelper();
-//                var entryManagmentButton = helper.Partial("_EntryManagmentButton", entry).ToHtmlString();
-//                var moreButton = helper.ActionLink("More", "Details", "Entry", new {id = entry.Id}, new {@class = "btn btn-mini"});
-            }
-            else
-            {
-                entry.Content = "Article root could not be retreived.";
-            }
+            //              var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
+            //              var lastParagraph = htmlDoc.DocumentNode.SelectSingleNode("article/section[last()]/p[last()]");
+            //                var helper = this.GetHtmlHelper();
+            //                var entryManagmentButton = helper.Partial("_EntryManagmentButton", entry).ToHtmlString();
+            //                var moreButton = helper.ActionLink("More", "Details", "Entry", new {id = entry.Id}, new {@class = "btn btn-mini"});
         }
+
 
 
         [HttpGet]
@@ -160,7 +123,6 @@ namespace BlackMesa.Controllers
             {
                 return HttpNotFound();
             }
-            ParseEntryDetailsContent(entry);
             return View(entry);
         }
 
@@ -195,6 +157,18 @@ namespace BlackMesa.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Entry entry)
         {
+            ParseEntry(entry);
+
+            if (entry.Title != null)
+                ModelState["Title"].Errors.Clear();
+
+            if (entry.Preview != null)
+                ModelState["Preview"].Errors.Clear();
+
+            if (entry.Body != null)
+                ModelState["Body"].Errors.Clear();
+
+
             if (ModelState.IsValid)
             {
                 var selectedTags = HttpContext.Request.Form["SelectedTags"];
@@ -233,6 +207,8 @@ namespace BlackMesa.Controllers
             {
                 return HttpNotFound();
             }
+            var selectedTags = string.Join(",", entry.Tags.Select(t => t.Name));
+            ViewBag.SelectedTags = selectedTags;
             return View(entry);
         }
 
@@ -241,13 +217,33 @@ namespace BlackMesa.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Entry entry)
         {
+            ParseEntry(entry);
+
+            if (entry.Title != null)
+                ModelState["Title"].Errors.Clear();
+
+            if (entry.Preview != null)
+                ModelState["Preview"].Errors.Clear();
+
+            if (entry.Body != null)
+                ModelState["Body"].Errors.Clear();
+
+
             if (ModelState.IsValid)
             {
                 var selectedTags = HttpContext.Request.Form["SelectedTags"];
 
                 var dbEntry = _db.Entries.Find(entry.Id);
 
-                TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed model - this is the lazy way to go, instead of manually mapping all the properties
+//                TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed model - this is the lazy way to go, instead of manually mapping all the properties
+
+                dbEntry.Title = entry.Title;
+                dbEntry.Preview = entry.Preview;
+                dbEntry.Body = entry.Body;
+                dbEntry.Content = entry.Content;
+                dbEntry.DateCreated = entry.DateCreated;
+                dbEntry.DateEdited = entry.DateEdited;
+                dbEntry.Published = entry.Published;
 
                 dbEntry.Tags.Clear();
 
