@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using BlackMesa.App_Start;
+using WebMatrix.WebData;
 
 namespace BlackMesa
 {
@@ -20,6 +16,7 @@ namespace BlackMesa
         protected void Application_Start()
         {
             EntityFrameworkProfilerBootstrapper.PreStart();
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
             AreaRegistration.RegisterAllAreas();
 
@@ -27,6 +24,7 @@ namespace BlackMesa
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AuthConfig.RegisterAuth();
         }
 
 

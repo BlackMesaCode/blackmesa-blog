@@ -8,11 +8,12 @@ namespace BlackMesa.Models
 {
     public class BlackMesaDb : DbContext
     {
-        public BlackMesaDb() : base("BlackMesaLocalDb")
+        public BlackMesaDb() : base("DefaultConnection")
         {
             
         }
 
+        public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Entry> Entries { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
