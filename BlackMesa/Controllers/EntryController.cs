@@ -7,6 +7,7 @@ using System.Web.Mvc.Html;
 using BlackMesa.Models;
 using BlackMesa.Utilities;
 using BlackMesa.ViewModels;
+using HtmlAgilityPack;
 using PagedList;
 
 namespace BlackMesa.Controllers
@@ -71,6 +72,18 @@ namespace BlackMesa.Controllers
         }
 
 
+        public ActionResult ReparseAllEntries()
+        {
+            var entries = _db.Entries;
+
+            foreach (var entry in entries)
+            {
+                ParseEntry(entry);
+            }
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
 
         private void ParseEntry(Entry entry)
@@ -82,15 +95,28 @@ namespace BlackMesa.Controllers
             {
                     
                 var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
+                var headerNodeCopy = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
+
                 if (headerNode != null)
                 {
-                    var headerNodeHeading = headerNode.SelectSingleNode("h1");
-                    headerNode.RemoveChild(headerNodeHeading);
-                    entry.Preview = headerNode.OuterHtml;
-                    entry.Body = headerNode.OuterHtml;
 
+                    var headerNodeHeadingCopy = headerNodeCopy.SelectSingleNode("h1");
+                    if (headerNodeHeadingCopy != null)
+                    {
+                        headerNodeCopy.RemoveChild(headerNodeHeadingCopy);
+                        entry.Body = headerNodeCopy.OuterHtml;
+                    }
+
+
+                    var headerNodeHeading = headerNode.SelectSingleNode("h1");
                     if (headerNodeHeading != null)
                     {
+                        headerNode.RemoveChild(headerNodeHeading);
+
+                        var helper = this.GetHtmlHelper();
+                        headerNode.SelectSingleNode("p[last()]").InnerHtml += "<span class=\"read-more\"><i class=\"read-more-icon icon-double-angle-right\"></i>" + helper.ActionLink("Read more.", "Details", new { Id = entry.Id }, new { @class = "read-more-link" }) + "</span>";
+                        entry.Preview = headerNode.OuterHtml;
+
                         entry.Title = headerNodeHeading.InnerHtml;
                     }
                 }

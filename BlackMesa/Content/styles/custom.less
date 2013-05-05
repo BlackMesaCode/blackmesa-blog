@@ -27,7 +27,7 @@ body{
 header {
     .clearfix;
     margin-top: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     text-align: right;
 
     #logo {
@@ -168,6 +168,7 @@ header {
 
             .article-month-year-container {
                 display: inline-block;
+                margin-right: 5px;
 
                 .article-date-month {
                     font-size: 26px;
@@ -175,14 +176,13 @@ header {
                 }
 
                 .article-date-year {
-                    font-size: 18px;
+                    font-size: 20px;
                     font-family: 'bebas';
                 }
             }
 
             .article-title-subtitle-container {
                 display: inline-block;
-                margin-left: 10px;
 
                 .article-title {
                     font-size: 30px;
@@ -221,13 +221,28 @@ header {
             margin-bottom: 60px;
 
             h2, h3, h4 {
-                margin-top: 35px;
+                margin-top: 25px;
                 margin-bottom: 15px;
             }
         }
 
         .preview-article-body {
             margin-top: 4px;
+
+            .read-more {
+                display: inline-block;
+
+                .read-more-link {
+                    margin-left: 5px;
+                }
+
+                .read-more-icon {
+                    margin-left: 5px;
+                }
+            }
+
+
+
         }
 
         .entry-managment-button {
@@ -243,9 +258,6 @@ header {
             }
         }
 
-        .more-button {
-            margin-left: 10px;
-        }
     }
     // end of .article
     #entry-create-edit {
@@ -344,6 +356,11 @@ header {
 
                 #add-entry-button {
                     float: left;
+                    margin-right: 5px;
+                }
+
+                #reparse-button {
+                    float: left;
                 }
 
                 .pagination {
@@ -376,7 +393,7 @@ footer {
         display: none;
         position: fixed;
         bottom: 60px;
-        right: 180px;
+        right: 60px;
         z-index: 10;
         font-size: 60px;
         
