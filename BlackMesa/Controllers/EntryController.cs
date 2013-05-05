@@ -7,7 +7,6 @@ using System.Web.Mvc.Html;
 using BlackMesa.Models;
 using BlackMesa.Utilities;
 using BlackMesa.ViewModels;
-using HtmlAgilityPack;
 using PagedList;
 
 namespace BlackMesa.Controllers
@@ -88,40 +87,49 @@ namespace BlackMesa.Controllers
 
         private void ParseEntry(Entry entry)
         {
+            // Read entry.Title and entry.Preview
             var htmlDoc = new HtmlAgilityPack.HtmlDocument();
             htmlDoc.LoadHtml(entry.Content);
 
             if (htmlDoc.DocumentNode != null)
             {
-                    
                 var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
-                var headerNodeCopy = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
-
                 if (headerNode != null)
                 {
-
-                    var headerNodeHeadingCopy = headerNodeCopy.SelectSingleNode("h1");
-                    if (headerNodeHeadingCopy != null)
-                    {
-                        headerNodeCopy.RemoveChild(headerNodeHeadingCopy);
-                        entry.Body = headerNodeCopy.OuterHtml;
-                    }
-
-
                     var headerNodeHeading = headerNode.SelectSingleNode("h1");
                     if (headerNodeHeading != null)
                     {
+                        entry.Title = headerNodeHeading.InnerHtml;
                         headerNode.RemoveChild(headerNodeHeading);
 
                         var helper = this.GetHtmlHelper();
                         headerNode.SelectSingleNode("p[last()]").InnerHtml += "<span class=\"read-more\"><i class=\"read-more-icon icon-double-angle-right\"></i>" + helper.ActionLink("Read more.", "Details", new { Id = entry.Id }, new { @class = "read-more-link" }) + "</span>";
                         entry.Preview = headerNode.OuterHtml;
+                    }
+                }
+            }
 
-                        entry.Title = headerNodeHeading.InnerHtml;
+
+            // Read entry.Body
+            var htmlDoc2 = new HtmlAgilityPack.HtmlDocument();
+            htmlDoc2.LoadHtml(entry.Content);
+
+            if (htmlDoc2.DocumentNode != null)
+            {
+                var headerNode = htmlDoc2.DocumentNode.SelectSingleNode("article/header[1]");
+                if (headerNode != null)
+                {
+                    var headerNodeHeading = headerNode.SelectSingleNode("h1");
+                    if (headerNodeHeading != null)
+                    {
+                        headerNode.RemoveChild(headerNodeHeading);
+
+                        entry.Body = headerNode.OuterHtml;
                     }
                 }
 
-                var sectionNodes = htmlDoc.DocumentNode.SelectNodes("article/section");
+
+                var sectionNodes = htmlDoc2.DocumentNode.SelectNodes("article/section");
 
                 if (sectionNodes != null)
                 {
@@ -131,12 +139,6 @@ namespace BlackMesa.Controllers
                     }
                 }
             }
-
-            //              var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
-            //              var lastParagraph = htmlDoc.DocumentNode.SelectSingleNode("article/section[last()]/p[last()]");
-            //                var helper = this.GetHtmlHelper();
-            //                var entryManagmentButton = helper.Partial("_EntryManagmentButton", entry).ToHtmlString();
-            //                var moreButton = helper.ActionLink("More", "Details", "Entry", new {id = entry.Id}, new {@class = "btn btn-mini"});
         }
 
 
