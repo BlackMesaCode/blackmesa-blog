@@ -81,7 +81,7 @@ namespace BlackMesa.Controllers
 
             foreach (var entry in entries)
             {
-                ParseEntry(entry);
+                ParseEntry(entry, entry.Id);
             }
             _db.SaveChanges();
 
@@ -89,7 +89,7 @@ namespace BlackMesa.Controllers
         }
 
 
-        private void ParseEntry(Entry entry)
+        private void ParseEntry(Entry entry, int nextId = 0)
         {
             // Read entry.Title and entry.Preview
             var htmlDoc = new HtmlAgilityPack.HtmlDocument();
@@ -107,7 +107,8 @@ namespace BlackMesa.Controllers
                         headerNode.RemoveChild(headerNodeHeading);
 
                         var helper = this.GetHtmlHelper();
-                        headerNode.SelectSingleNode("p[last()]").InnerHtml += "<span class=\"read-more\"><i class=\"read-more-icon icon-double-angle-right\"></i>" + helper.ActionLink("Read more.", "Details", new { Id = entry.Id }, new { @class = "read-more-link" }) + "</span>";
+
+                        headerNode.SelectSingleNode("p[last()]").InnerHtml += "<span class=\"read-more\"><i class=\"read-more-icon icon-double-angle-right\"></i>" + helper.ActionLink("Read more.", "Details", new { Id = nextId, Title = Utilities.Utilities.MakeUrlFriendly(entry.Title) }, new { @class = "read-more-link" }) + "</span>";
                         entry.Preview = headerNode.OuterHtml;
                     }
                 }
@@ -146,12 +147,19 @@ namespace BlackMesa.Controllers
         }
 
 
-
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(string title, int id = 0)
         {
             Entry entry = _db.Entries.Find(id);
+
+            /* if the title passed with the http-request doesnt equal the current entry title - we response with a moved permanent code to 
+             * inform the search engines */
+
+            var currentSeoFriendlyTitle = Utilities.Utilities.MakeUrlFriendly(entry.Title);
+            if (title != currentSeoFriendlyTitle)
+                return RedirectToActionPermanent("Details", new { Id = id, Title = currentSeoFriendlyTitle });
+
             if (entry == null || (!entry.Published && !User.IsInRole("Admin")))
             {
                 return HttpNotFound();
@@ -191,7 +199,11 @@ namespace BlackMesa.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Entry entry)
         {
-            ParseEntry(entry);
+            /* we need to get the value of the next id, because before we add the new entry to the database, 
+             * i create the "read-more" link, which relies on the entry id */
+            var nextId = _db.Entries.Select(e => e.Id).Max() + 1;
+
+            ParseEntry(entry, nextId);
 
             if (entry.Title != null)
                 ModelState["Title"].Errors.Clear();
@@ -251,7 +263,7 @@ namespace BlackMesa.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Entry entry)
         {
-            ParseEntry(entry);
+            ParseEntry(entry, entry.Id);
 
             if (entry.Title != null)
                 ModelState["Title"].Errors.Clear();

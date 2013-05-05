@@ -37,16 +37,9 @@
 
 
 
-        var updateHiddenTagList = function () {
-            var serializedTags = $(".tag-input-form").tagHandler("getSerializedTags");
-            $('#SelectedTags').val(serializedTags);
-        };
-
         // Initialize TagHandler //
         $(".tag-input-form").tagHandler({
             getData: { id: '@(Model != null ? Model.Id : 0)' },
-            afterAdd: updateHiddenTagList,
-            afterDelete: updateHiddenTagList,
             getURL: '@Url.Action("Json", "Tag")',
             allowAdd: true,
             autocomplete: true,

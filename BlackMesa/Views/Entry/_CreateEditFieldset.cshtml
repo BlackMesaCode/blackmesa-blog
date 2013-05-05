@@ -31,7 +31,7 @@
         @* @Html.EditorFor(model => model.Content) *@
         <input type="hidden" name="Content" id="Content"/>
         <div id="editor-container">
-            <div id="editor">@(Model != null ? Model.Content : "")</div>
+            <div id="editor">@(Model != null ? Model.Content : Html.Partial("_ArticleTemplate").ToHtmlString())</div>
         </div>
         @Html.ValidationMessageFor(model => model.Content)
     </div>
