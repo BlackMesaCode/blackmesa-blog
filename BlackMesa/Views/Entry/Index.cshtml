@@ -1,8 +1,9 @@
 ﻿@using PagedList.Mvc
+@using BlackMesa.Resources;
 @model BlackMesa.ViewModels.EntryIndexViewModel
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = Strings.Home;
 }
 
 
@@ -44,13 +45,13 @@
             {
                 <div id="add-entry-button">
                     <a class="btn btn-primary" href="@Url.Action("Create")">
-                        <i class="icon-plus-sign"></i> Add Entry
+                        <i class="icon-plus-sign"></i> @Strings.AddEntry
                     </a>
                 </div>
             
                 <div id="reparse-button">
                     <a class="btn" href="@Url.Action("ReparseAllEntries")">
-                        <i class="icon-refresh"></i> Reparse All
+                        <i class="icon-refresh"></i> @Strings.ReparseAll
                     </a>
                 </div>
                 

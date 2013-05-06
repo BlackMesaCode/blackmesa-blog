@@ -17,7 +17,7 @@ namespace BlackMesa.Controllers
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
         [AllowAnonymous]
-        public ActionResult Index(EntryIndexViewModel viewModel)
+        public ActionResult Index(EntryIndexViewModel viewModel, string language)
         {
             IQueryable<Entry> model;
             if (User.IsInRole("Admin"))
@@ -81,7 +81,7 @@ namespace BlackMesa.Controllers
 
             foreach (var entry in entries)
             {
-                ParseEntry(entry, entry.Id);
+                ParseEntry(entry);
             }
             _db.SaveChanges();
 
@@ -89,7 +89,7 @@ namespace BlackMesa.Controllers
         }
 
 
-        private void ParseEntry(Entry entry, int nextId = 0)
+        private void ParseEntry(Entry entry)
         {
             // Read entry.Title and entry.Preview
             var htmlDoc = new HtmlAgilityPack.HtmlDocument();
@@ -106,10 +106,8 @@ namespace BlackMesa.Controllers
                         entry.Title = headerNodeHeading.InnerHtml;
                         headerNode.RemoveChild(headerNodeHeading);
 
-                        var helper = this.GetHtmlHelper();
-
-                        headerNode.SelectSingleNode("p[last()]").InnerHtml += "<span class=\"read-more\"><i class=\"read-more-icon icon-double-angle-right\"></i>" + helper.ActionLink("Read more.", "Details", new { Id = nextId, Title = Utilities.Utilities.MakeUrlFriendly(entry.Title) }, new { @class = "read-more-link" }) + "</span>";
-                        entry.Preview = headerNode.OuterHtml;
+                        headerNode.SelectSingleNode("p[last()]").SetAttributeValue("class", "last-paragraph");
+                        entry.Preview = headerNode.InnerHtml;
                     }
                 }
             }
@@ -199,11 +197,7 @@ namespace BlackMesa.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Entry entry)
         {
-            /* we need to get the value of the next id, because before we add the new entry to the database, 
-             * i create the "read-more" link, which relies on the entry id */
-            var nextId = _db.Entries.Select(e => e.Id).Max() + 1;
-
-            ParseEntry(entry, nextId);
+            ParseEntry(entry);
 
             if (entry.Title != null)
                 ModelState["Title"].Errors.Clear();
@@ -263,7 +257,7 @@ namespace BlackMesa.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Entry entry)
         {
-            ParseEntry(entry, entry.Id);
+            ParseEntry(entry);
 
             if (entry.Title != null)
                 ModelState["Title"].Errors.Clear();

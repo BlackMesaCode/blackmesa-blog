@@ -1,5 +1,7 @@
-﻿<ul>
-    <li><a href="@Url.Action("Index", "Entry")"><i class="icon-home"></i> <span>Home</span></a></li>
-    <li><a href="@Url.Action("Index", "About")"><i class="icon-user"></i> <span>About</span></a></li>
-    <li><a href="@Url.Action("Index", "Contact")"><i class="icon-envelope-alt"></i> <span>Contact</span></a></li>
+﻿@using BlackMesa.Resources;
+
+<ul>
+    <li><a href="@Url.Action("Index", "Entry")"><i class="icon-home"></i> <span>@Strings.Home</span></a></li>
+    <li><a href="@Url.Action("Index", "About")"><i class="icon-user"></i> <span>@Strings.About</span></a></li>
+    <li><a href="@Url.Action("Index", "Contact")"><i class="icon-envelope-alt"></i> <span>@Strings.Contact</span></a></li>
 </ul>

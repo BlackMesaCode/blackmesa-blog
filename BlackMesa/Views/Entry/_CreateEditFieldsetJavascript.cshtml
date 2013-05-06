@@ -40,7 +40,7 @@
         // Initialize TagHandler //
         $(".tag-input-form").tagHandler({
             getData: { id: '@(Model != null ? Model.Id : 0)' },
-            getURL: '@Url.Action("Json", "Tag")',
+            getURL: '@Url.Action("Json", "Tag", new { language = "de" })',
             allowAdd: true,
             autocomplete: true,
         });

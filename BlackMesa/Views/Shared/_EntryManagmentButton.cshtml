@@ -1,4 +1,5 @@
-﻿@model BlackMesa.Models.Entry
+﻿@using BlackMesa.Resources
+@model BlackMesa.Models.Entry
 
 <div class="entry-managment-button">
     <div class="btn-group">
@@ -7,8 +8,8 @@
             @* <span class="caret"></span> *@
         </a>
         <ul class="dropdown-menu">
-            <li><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })"><i class="icon-pencil"></i> Edit</a></li>
-            <li><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })"><i class="icon-trash"></i> Delete</a></li>
+            <li><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })"><i class="icon-pencil"></i> @Strings.Edit</a></li>
+            <li><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })"><i class="icon-trash"></i> @Strings.Delete</a></li>
         </ul>
     </div>
 </div>
