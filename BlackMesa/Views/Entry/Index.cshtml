@@ -27,42 +27,53 @@
     *@
     <div id="entry-index-articles">
 
-
-        @foreach (var item in Model.Entries)
+        @if(Model.Entries.Count > 0)
         {
-            @Html.Partial("_EntryPreview", item)
+            foreach (var item in Model.Entries)
+            {
+                @Html.Partial("_EntryPreview", item)
+            }
         }
-
-        <div id="entries-bottom-bar">
+        else
+        {
+            <div id="no-entries-found">
+                @Strings.NoEntriesFound
+            </div>
+            
+        }
+       
+    </div>
     
-            @*
+    <div id="entries-bottom-bar">
+    
+        @*
             <div id="back-to-top">
                 <a href="#"><i class="icon-chevron-up"></i>Back to top</a>
             </div>
             *@
             
-            @if (User.IsInRole("Admin"))
-            {
-                <div id="add-entry-button">
-                    <a class="btn btn-primary" href="@Url.Action("Create")">
-                        <i class="icon-plus-sign"></i> @Strings.AddEntry
-                    </a>
-                </div>
+        @if (User.IsInRole("Admin"))
+        {
+            <div id="add-entry-button">
+                <a class="btn btn-primary" href="@Url.Action("Create")">
+                    <i class="icon-plus-sign"></i> @Strings.AddEntry
+                </a>
+            </div>
             
-                <div id="reparse-button">
-                    <a class="btn" href="@Url.Action("ReparseAllEntries")">
-                        <i class="icon-refresh"></i> @Strings.ReparseAll
-                    </a>
-                </div>
+            <div id="reparse-button">
+                <a class="btn" href="@Url.Action("ReparseAllEntries")">
+                    <i class="icon-refresh"></i> @Strings.ReparseAll
+                </a>
+            </div>
                 
-            }
+        }
 
 
 
-            @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.ClassicPlusFirstAndLast, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "content" }))
+        @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.ClassicPlusFirstAndLast, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "content" }))
     
-        </div>
     </div>
+
     
 </section>
 

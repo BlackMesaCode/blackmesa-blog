@@ -142,6 +142,15 @@ namespace BlackMesa.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No entries found.
+        /// </summary>
+        public static string NoEntriesFound {
+            get {
+                return ResourceManager.GetString("NoEntriesFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Read more.
         /// </summary>
         public static string ReadMore {

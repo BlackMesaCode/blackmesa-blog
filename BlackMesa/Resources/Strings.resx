@@ -144,6 +144,9 @@
   <data name="Manage" xml:space="preserve">
     <value>Manage</value>
   </data>
+  <data name="NoEntriesFound" xml:space="preserve">
+    <value>No entries found</value>
+  </data>
   <data name="ReadMore" xml:space="preserve">
     <value>Read more</value>
   </data>
