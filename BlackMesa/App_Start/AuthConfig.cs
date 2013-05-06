@@ -12,7 +12,8 @@ namespace BlackMesa
     {
         public static void RegisterAuth()
         {
-            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            if (!WebSecurity.Initialized)
+                WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
 
             // To let users of this site log in using their accounts from other sites such as Microsoft, Facebook, and Twitter,

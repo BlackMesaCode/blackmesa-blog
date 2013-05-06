@@ -35,30 +35,22 @@ namespace BlackMesa.Migrations
             var membership = (SimpleMembershipProvider) Membership.Provider;
 
             if (!Roles.RoleExists("Admin"))
-            {
                 roles.CreateRole("Admin");
+
+            if (!Roles.RoleExists("RegisteredUser"))
                 roles.CreateRole("RegisteredUser");
-            }
 
             if (membership.GetUser("sum@live.de", false) == null)
-            {
                 membership.CreateUserAndAccount("sum@live.de", "r3volTec");
-            }
 
             if (membership.GetUser("test", false) == null)
-            {
                 membership.CreateUserAndAccount("test", "test");
-            }
 
             if (!new List<string>(roles.GetRolesForUser("sum@live.de")).Contains("Admin"))
-            {
                 roles.AddUsersToRoles(new [] {"sum@live.de"}, new[] { "Admin" } );
-            }
 
             if (!new List<string>(roles.GetRolesForUser("test")).Contains("Admin"))
-            {
                 roles.AddUsersToRoles(new[] { "test" }, new[] { "Admin" });
-            }
 
         }
     }
