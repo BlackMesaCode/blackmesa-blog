@@ -13,7 +13,7 @@ using BlackMesa.Models;
 namespace BlackMesa.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         //
         // GET: /Account/Login

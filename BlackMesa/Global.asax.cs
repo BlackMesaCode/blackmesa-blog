@@ -1,14 +1,20 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using BlackMesa.App_Start;
-using WebMatrix.WebData;
 
 namespace BlackMesa
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
+    public static class Global
+    {
+        public static readonly string CultureConstraints = @"\w{2,3}(-\w{4})?(-\w{2,3})?";
+        public static readonly object IdConstraints = @"\d+";
+        public static readonly List<string> AllowedCultures = new List<string> { "en-US", "de-DE", "de-CH", "de-AT", "de-LI", "de-LU" };
+        public static readonly TimeZoneInfo ApplicationTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
+    }
 
     public class MvcApplication : System.Web.HttpApplication
     {

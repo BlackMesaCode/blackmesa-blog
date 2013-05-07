@@ -7,7 +7,7 @@ using BlackMesa.Models;
 
 namespace BlackMesa.Controllers
 {
-    public class TagController : Controller
+    public class TagController : BaseController
     {
         private readonly BlackMesaDb _db = new BlackMesaDb();
 

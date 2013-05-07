@@ -10,7 +10,7 @@ using BlackMesa.Models;
 namespace BlackMesa.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class CommentController : Controller
+    public class CommentController : BaseController
     {
         private readonly BlackMesaDb _db = new BlackMesaDb();
 

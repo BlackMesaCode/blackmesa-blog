@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BlackMesa.Controllers
 {
-    public class CssTestController : Controller
+    public class CssTestController : BaseController
     {
         //
         // GET: /CssTest/

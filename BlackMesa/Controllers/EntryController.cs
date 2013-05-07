@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Threading;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using BlackMesa.Models;
@@ -12,18 +13,14 @@ using PagedList;
 namespace BlackMesa.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class EntryController : Controller
+    public class EntryController : BaseController
     {
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
         [AllowAnonymous]
-        public ActionResult Index(EntryIndexViewModel viewModel, string language)
+        public ActionResult Index(EntryIndexViewModel viewModel, string culture)
         {
-            IQueryable<Entry> model;
-            if (User.IsInRole("Admin"))
-                model = _db.Entries.Select(e => e);
-            else
-                model = _db.Entries.Where(e => e.Published);
+            var model = User.IsInRole("Admin") ? _db.Entries.Select(e => e) : _db.Entries.Where(e => e.Published);
 
             // Filter
             var selectedTags = viewModel.SelectedTags;
@@ -308,16 +305,22 @@ namespace BlackMesa.Controllers
                 _db.Entry(dbEntry).State = EntityState.Modified;
                 _db.SaveChanges();
 
-                var tagsToDelete = _db.Tags.Where(tag => tag.Entries.Count == 0);
-                foreach (var tag in tagsToDelete)
-                {
-                    _db.Tags.Remove(tag);
-                    //_db.Entry(tag).State = EntityState.Deleted;
-                }
+                DeleteTagsWithNoEntries();
+
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(entry);
+        }
+
+
+        private void DeleteTagsWithNoEntries()
+        {
+            var tagsToDelete = _db.Tags.Where(tag => tag.Entries.Count == 0);
+            foreach (var tag in tagsToDelete)
+            {
+                _db.Tags.Remove(tag);
+            }
         }
 
 
@@ -340,6 +343,10 @@ namespace BlackMesa.Controllers
             Entry entry = _db.Entries.Find(id);
             _db.Entries.Remove(entry);
             _db.SaveChanges();
+
+            DeleteTagsWithNoEntries();
+            _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

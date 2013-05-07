@@ -293,10 +293,12 @@ along with this program.  If not, see < http://www.gnu.org/licenses/ >.
                                 opts.afterAdd.call(this, "");
                             } 
                         },
+                        /*
                         error: function (xhr, text, error) {
                             debug(xhr, text, error);
                             alert(opts.msgError);
                         }
+                        */
                     });
                     // show assigned tags only if we load the data as we write
                 }
