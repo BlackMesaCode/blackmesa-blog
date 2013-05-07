@@ -29,40 +29,52 @@ header {
     margin-bottom: 40px;
     text-align: right;
 
-    #membership {
+    #top-header-bar {
+        .clearfix;
 
-        #hidden-login-link {
-            display: inline-block; 
-            height: 30px; 
-            width: 30px;
+        #language-selection {
+            float: left;
         }
 
-        #membership-managment-button {
-            li {
-                text-align: center;
 
-                a:hover {
-                    color: white;
-                }
+        #membership {
+            float: right;
+
+            #hidden-login-link {
+                display: inline-block;
+                height: 30px;
+                width: 30px;
             }
 
-           .btn {
-                background-color: transparent;
-                border: 0;
+            #membership-managment-button {
+                li {
+                    text-align: center;
 
-                a {
+                    a:hover {
+                        color: white;
+                    }
+                }
+
+                .btn {
                     background-color: transparent;
+                    border: 0;
+
+                    a {
+                        background-color: transparent;
+                    }
                 }
             }
-        }
 
-        a {
-            color: @grayDarker;
-            &:hover {
-                text-decoration: none;
+            a {
+                color: @grayDarker;
+
+                &:hover {
+                    text-decoration: none;
+                }
             }
         }
     }
+
 
     #logo {
         /* float: right; */
@@ -70,7 +82,7 @@ header {
         margin-bottom: 10px;
     }
 
-    #header-bar {
+    #bottom-header-bar {
         /* float: left; */
         font-family: 'bebas';
         font-size: 15px;
@@ -90,16 +102,19 @@ header {
 
                 li {
                     display: inline-block;
-                    margin-right: 10px; 
+                    margin-right: 10px;
+
                     a {
                         span {
                             color: @blue;
                         }
+
                         display: block;
                         color: @grayDarker;
 
                         &:hover {
                             text-decoration: none;
+
                             span {
                                 color: @blueLight;
                                 text-decoration: underline;
@@ -132,17 +147,13 @@ header {
                 line-height: 30px;
                 min-height: 30px;
                 vertical-align: middle;
+
                 .tagHandler {
                     height: 30px;
                 }
-
             }
         }
     }
-
-
-
-
 }
 
 
@@ -302,6 +313,12 @@ header {
     }
     // end of .article
     #entry-create-edit {
+
+        #language-dropdown {
+            width: auto;
+            margin-right: 30px;
+        }
+
         #editor-container {
             position: relative;
             width: 100%;

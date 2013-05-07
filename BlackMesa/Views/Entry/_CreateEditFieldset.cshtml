@@ -1,18 +1,34 @@
-﻿@model BlackMesa.Models.Entry
+﻿@using BlackMesa
+@model BlackMesa.Models.Entry
 
 <div id="entry-create-edit">
     
     @Html.ValidationMessageFor(model => model.Title)
     @Html.ValidationMessageFor(model => model.Preview)
     @Html.ValidationMessageFor(model => model.Body)
+    
+    <div class="clearfix">
+        <div class="pull-left">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Language)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(e => e.Language, Global.AllowedLanguages.
+                Select(l => new SelectListItem { Selected = l == (Model != null ? Model.Language : ViewBag.CurrentLanguage), Text = l, Value = l}), new { @id = "language-dropdown"})
+                @Html.ValidationMessageFor(model => model.Language)
+            </div>
+        </div>
+        <div class="pull-left">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Tags)
+            </div>
+            <div class="editor-field clearfix">
+                <ul class="tag-input-form"></ul>
+                <input id="SelectedTags" name="SelectedTags" type="hidden" value="" />
+            </div>
+        </div>
+    </div>
 
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Tags)
-    </div>
-    <div class="editor-field clearfix">
-        <ul class="tag-input-form"></ul>
-        <input id="SelectedTags" name="SelectedTags" type="hidden" value="" />
-    </div>
     
     @*
     <div class="editor-label">

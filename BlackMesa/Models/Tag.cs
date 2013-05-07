@@ -13,6 +13,9 @@ namespace BlackMesa.Models
         [Required]
         public string Name { get; set; }
 
+        [Required]
+        public string Language { get; set; }
+
         public virtual ICollection<Entry> Entries { get; set; }
     }
 }

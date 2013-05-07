@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Web.Mvc;
@@ -18,9 +19,10 @@ namespace BlackMesa.Controllers
         private readonly BlackMesaDb _db = new BlackMesaDb();
 
         [AllowAnonymous]
-        public ActionResult Index(EntryIndexViewModel viewModel, string culture)
+        public ActionResult Index(EntryIndexViewModel viewModel)
         {
-            var model = User.IsInRole("Admin") ? _db.Entries.Select(e => e) : _db.Entries.Where(e => e.Published);
+            var language = ViewBag.CurrentLanguage as string;
+            var model = User.IsInRole("Admin") ? _db.Entries.Where(e => e.Language == language) : _db.Entries.Where(e => e.Published && e.Language == language);
 
             // Filter
             var selectedTags = viewModel.SelectedTags;
@@ -216,9 +218,9 @@ namespace BlackMesa.Controllers
                     entry.Tags = new Collection<Tag>();
                     foreach (var tag in selectedTagsList)
                     {
-                        if (!_db.Tags.Select(t => t.Name).Contains(tag))
+                        if (!_db.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(tag))
                         {
-                            var newTag = new Tag { Name = tag };
+                            var newTag = new Tag { Name = tag, Language = entry.Language };
                             _db.Tags.Add(newTag);
                             entry.Tags.Add(newTag);
                         }
@@ -281,6 +283,7 @@ namespace BlackMesa.Controllers
                 dbEntry.DateCreated = entry.DateCreated;
                 dbEntry.DateEdited = entry.DateEdited;
                 dbEntry.Published = entry.Published;
+                dbEntry.Language = entry.Language;
 
                 dbEntry.Tags.Clear();
 
@@ -290,9 +293,9 @@ namespace BlackMesa.Controllers
 
                     foreach (var tag in selectedTagsList)
                     {
-                        if (!_db.Tags.Select(t => t.Name).Contains(tag))
+                        if (!_db.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(tag))
                         {
-                            var newTag = new Tag { Name = tag };
+                            var newTag = new Tag { Name = tag, Language = entry.Language };
                             _db.Tags.Add(newTag);
                             dbEntry.Tags.Add(newTag);
                         }

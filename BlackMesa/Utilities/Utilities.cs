@@ -46,6 +46,20 @@ namespace BlackMesa.Utilities
         }
 
 
+        private static String ReplaceGermanUmlauts(String s)
+        {
+            String t = s;
+            t = t.Replace("ä", "ae");
+            t = t.Replace("ö", "oe");
+            t = t.Replace("ü", "ue");
+            t = t.Replace("Ä", "Ae");
+            t = t.Replace("Ö", "Oe");
+            t = t.Replace("Ü", "Ue");
+            t = t.Replace("ß", "ss");
+            return t;
+        }
+
+
         /// <summary>
         /// Produces optional, URL-friendly version of a title, "like-this-one". 
         /// hand-tuned for speed, reflects performance refactoring contributed
@@ -54,7 +68,7 @@ namespace BlackMesa.Utilities
         public static string MakeUrlFriendly(string title)
         {
             if (title == null) return "";
-
+            title = ReplaceGermanUmlauts(title);
             const int maxlen = 80;
             int len = title.Length;
             bool prevdash = false;

@@ -1,18 +1,43 @@
-﻿@using BlackMesa.Resources
-<div id="membership">
-    @if (Request.IsAuthenticated)
-    {
-         @Html.Partial("_LoggedIn")
-    }
-    else
-    {
-        <a id="hidden-login-link" href="@Url.Action("Login", "Account")"></a>
-    }
+﻿@using System.Globalization
+@using System.Threading
+@using BlackMesa
+@using BlackMesa.Resources
+
+<div id="top-header-bar">
+    <div id="language-selection">
+        <div class="btn-group">
+            <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-globe"></i> @Thread.CurrentThread.CurrentCulture.NativeName
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                @foreach(var language in Global.AllowedLanguages)
+                {
+                    var culture = CultureInfo.CreateSpecificCulture(language);
+                    <li><a href="@Url.Action(HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString(), HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), new { id = (HttpContext.Current.Request.RequestContext.RouteData.Values["id"] ?? "" ),culture = culture.Name })"> @culture.EnglishName</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+    
+    <div id="membership">
+        @if (Request.IsAuthenticated)
+        {
+             @Html.Partial("_LoggedIn")
+        }
+        else
+        {
+            <a id="hidden-login-link" href="@Url.Action("Login", "Account")"></a>
+        }
+    </div>
 </div>
+
+
 <div id="logo">
     <a href="@Url.Action("Index", "Entry")"><img src="/Content/images/blackmesa_logo.png" alt="BlackMesa Logo"/></a>
 </div>
-<div id="header-bar">
+
+<div id="bottom-header-bar">
     <nav>
         @Html.Partial("_Navigation")
     </nav>

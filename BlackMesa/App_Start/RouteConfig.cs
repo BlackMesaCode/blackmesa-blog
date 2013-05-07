@@ -29,6 +29,8 @@ namespace BlackMesa
                 constraints: new { culture = Global.CultureConstraints }
             );
 
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

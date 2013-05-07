@@ -44,6 +44,15 @@ namespace BlackMesa.Controllers
             ViewBag.AllowedCultures = Global.AllowedCultures;
             ViewBag.CurrentCulture = culture;
 
+            CultureInfo ci = CultureInfo.GetCultureInfo(culture);
+
+            var language = ci.IsNeutralCulture ? ci.TwoLetterISOLanguageName : ci.Parent.TwoLetterISOLanguageName;
+
+            // set the language value into route data
+            RouteData.Values["language"] = language;
+
+            ViewBag.CurrentLanguage = language;
+
         }
 
 
