@@ -226,7 +226,7 @@ namespace BlackMesa.Controllers
                         }
                         else
                         {
-                            entry.Tags.Add(_db.Tags.Single(t => t.Name == tag));
+                            entry.Tags.Add(_db.Tags.Single(t => t.Name == tag && t.Language == entry.Language));
                         }
                     }
                 }
@@ -301,7 +301,7 @@ namespace BlackMesa.Controllers
                         }
                         else
                         {
-                            dbEntry.Tags.Add(_db.Tags.Single(t => t.Name == tag));
+                            dbEntry.Tags.Add(_db.Tags.Single(t => t.Name == tag && t.Language == entry.Language));
                         }
                     }
                 }

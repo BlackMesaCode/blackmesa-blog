@@ -11,7 +11,7 @@
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                @foreach(var language in Global.AllowedLanguages)
+                @foreach(var language in Global.AllowedLanguages.Where(l => l != ViewBag.CurrentLanguage))
                 {
                     var culture = CultureInfo.CreateSpecificCulture(language);
                     <li><a href="@Url.Action(HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString(), HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), new { id = (HttpContext.Current.Request.RequestContext.RouteData.Values["id"] ?? "" ),culture = culture.Name })"> @culture.EnglishName</a></li>
@@ -20,18 +20,45 @@
         </div>
     </div>
     
+    <div id="datetime">
+        <i class="icon-time"></i> @DateTime.Now.ToLongDateString(), @DateTime.Now.ToShortTimeString()
+    </div>
+
+    
     <div id="membership">
         @if (Request.IsAuthenticated)
         {
-             @Html.Partial("_LoggedIn")
+            @* @Html.Partial("_LoggedIn")*@
+
+            <div class="btn-group">
+                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-unlock"></i> @User.Identity.Name
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="@Url.Action("Manage", "Account")"><i class="icon-cogs"></i> @Strings.Manage</a></li>
+                    <li><a href="@Url.Action("LogOff", "Account")"><i class="icon-signout"></i> @Strings.Logout</a></li>
+                </ul>
+            </div>
+            
         }
         else
         {
-            <a id="hidden-login-link" href="@Url.Action("Login", "Account")"></a>
+            <div class="btn-group">
+                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-lock"></i> Guest
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="@Url.Action("Login", "Account")"><i class="icon-signin"></i> Login</a></li>
+                </ul>
+            </div>
+           
         }
     </div>
 </div>
 
+<hr/>
 
 <div id="logo">
     <a href="@Url.Action("Index", "Entry")"><img src="/Content/images/blackmesa_logo.png" alt="BlackMesa Logo"/></a>

@@ -19,7 +19,7 @@ body{
     .clearfix;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1100px;
+    max-width: 1050px;
 }
 
 
@@ -34,35 +34,44 @@ header {
 
         #language-selection {
             float: left;
+            margin-right: 30px;
+            .btn {
+                color: #999999;
+                font-family: 'bebas';
+                letter-spacing: 1px;
+                font-size: 13px;
+            }
+
+            li {
+                text-align: left;
+            }
+
+            .caret {
+                border-top-color: #999999;
+            }
         }
 
+        #datetime {
+            line-height: 22px;
+            float: left;
+            color: #999999;
+            font-family: 'bebas';
+            letter-spacing: 1px;
+            font-size: 13px;
+        }
 
         #membership {
             float: right;
 
-            #hidden-login-link {
-                display: inline-block;
-                height: 30px;
-                width: 30px;
+            .caret {
+                border-top-color: #999999;
             }
 
-            #membership-managment-button {
-                li {
-                    text-align: center;
-
-                    a:hover {
-                        color: white;
-                    }
-                }
-
-                .btn {
-                    background-color: transparent;
-                    border: 0;
-
-                    a {
-                        background-color: transparent;
-                    }
-                }
+            .btn {
+                color: #999999;
+                font-family: 'bebas';
+                letter-spacing: 1px;
+                font-size: 13px;
             }
 
             a {
@@ -72,9 +81,22 @@ header {
                     text-decoration: none;
                 }
             }
+
+            li {
+                a:hover {
+                    color: @white;
+                }
+            }
         }
     }
 
+    hr {
+        margin: 0;
+        margin-top: 4px;
+        border: 0;
+        height: 1px;
+        background-color: #DDD;
+    }
 
     #logo {
         /* float: right; */
@@ -454,7 +476,34 @@ header {
 /* Footer */
 
 footer {
-    height: 60px;
+    margin-top: 40px;
+    color: #999999;
+    font-family: 'bebas';
+    font-size: 13px;
+    letter-spacing: 1px;
+    width: 100%;
+
+    hr {
+        border: 0;
+        padding: 0;
+        background-color: #DDD;
+        height: 1px;
+        margin: 0px;
+    }
+
+    span {
+        display: inline-block;
+        padding: 5px;
+    }
+
+    a {
+        color: #999999;
+        &:hover {
+            color: @orange;
+            text-decoration: none;
+        }
+    }
+
 
     #back-to-top {
         display: none;
@@ -472,7 +521,54 @@ footer {
             text-decoration: none;
         }
     }
+
+
+    #powered-by {
+        .pull-right;
+
+        span {
+            margin-right: 5px;
+        }
+    }
+
+    #azure-logo {
+        display: inline-block;
+        vertical-align: middle;
+        width: 109px;
+        height: 20px;
+        background-image: url(/Content/images/azure_logo_gray.png);
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        &:hover {
+            background-position-y: top;
+        }
+    }
+
+    #asp-dotnet-logo {
+        display: inline-block;
+        vertical-align: middle;
+        width: 64px;
+        height: 16px;
+        margin-right: 5px;
+        background-repeat: no-repeat;
+        background-image: url(/Content/images/asp_dotnet_logo_gray.png);
+        background-position-y: bottom;
+        &:hover {
+            background-position-y: top;
+        }
+    }
+
+
+    #backtotop {
+        margin-right: 30px;
+        i {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+
 }
+
 
 
 input[type=checkbox] {
