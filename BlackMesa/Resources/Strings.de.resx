@@ -135,6 +135,9 @@
   <data name="FilterByTag" xml:space="preserve">
     <value>Nach Tags filtern</value>
   </data>
+  <data name="FooterLicence" xml:space="preserve">
+    <value>Wenn nicht anderweitig ausgezeichnet, sind die Inhalte dieser Seite lizenziert unter </value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Startseite</value>
   </data>

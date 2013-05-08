@@ -115,6 +115,15 @@ namespace BlackMesa.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Except where otherwise noted, content on this site is licensed under .
+        /// </summary>
+        public static string FooterLicence {
+            get {
+                return ResourceManager.GetString("FooterLicence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
