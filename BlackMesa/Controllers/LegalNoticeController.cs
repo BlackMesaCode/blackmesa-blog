@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BlackMesa.Controllers
 {
-    public class ContactController : BaseController
+    public class LegalNoticeController : BaseController
     {
         //
         // GET: /Contact/

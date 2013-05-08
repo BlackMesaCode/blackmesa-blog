@@ -79,6 +79,15 @@ namespace BlackMesa.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to top.
+        /// </summary>
+        public static string BackToTop {
+            get {
+                return ResourceManager.GetString("BackToTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact.
         /// </summary>
         public static string Contact {
@@ -129,6 +138,15 @@ namespace BlackMesa.Resources {
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legal notice.
+        /// </summary>
+        public static string LegalNotice {
+            get {
+                return ResourceManager.GetString("LegalNotice", resourceCulture);
             }
         }
         

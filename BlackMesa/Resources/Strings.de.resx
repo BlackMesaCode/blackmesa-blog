@@ -123,6 +123,9 @@
   <data name="AddEntry" xml:space="preserve">
     <value>Eintrag hinzufügen</value>
   </data>
+  <data name="BackToTop" xml:space="preserve">
+    <value>Nach oben</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Kontakt</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Home" xml:space="preserve">
     <value>Startseite</value>
+  </data>
+  <data name="LegalNotice" xml:space="preserve">
+    <value>Impressum</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Ausloggen</value>

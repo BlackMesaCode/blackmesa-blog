@@ -123,6 +123,9 @@
   <data name="AddEntry" xml:space="preserve">
     <value>AddEntry</value>
   </data>
+  <data name="BackToTop" xml:space="preserve">
+    <value>Back to top</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="LegalNotice" xml:space="preserve">
+    <value>Legal notice</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
