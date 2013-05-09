@@ -14,7 +14,15 @@
                 @foreach(var language in Global.AllowedLanguages.Where(l => l != ViewBag.CurrentLanguage))
                 {
                     var culture = CultureInfo.CreateSpecificCulture(language);
-                    <li><a href="@Url.Action(HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString(), HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), new { id = (HttpContext.Current.Request.RequestContext.RouteData.Values["id"] ?? "" ),culture = culture.Name })"> @culture.EnglishName</a></li>
+                    
+                    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "Details" && HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Entry")
+                    {
+                        <li><a href="@Url.Action("Index", "Entry", new { culture = culture.Name })"> @culture.EnglishName</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action(HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString(), HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), new { id = (HttpContext.Current.Request.RequestContext.RouteData.Values["id"] ?? "" ),culture = culture.Name })"> @culture.EnglishName</a></li>
+                    }
                 }
             </ul>
         </div>
