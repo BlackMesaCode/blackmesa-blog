@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+@using BlackMesa.Resources
 @using BlackMesa.Utilities
 
 @model BlackMesa.Models.Entry
@@ -32,6 +33,15 @@
                 {
                     @Html.Partial("_EntryManagmentButton", Model);
                 }
+                
+                
+                @if (Model.DateCreated != Model.DateEdited)
+                {
+                    <span class="revised-on">
+                        <i class="icon-edit"></i> @(Strings.RevisedOn +": " + Model.DateEdited.ToShortDateString())
+                    </span>
+                }
+                
 
                 <span class="tags">
                     

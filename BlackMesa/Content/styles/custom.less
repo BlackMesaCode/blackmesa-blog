@@ -264,13 +264,25 @@ header {
                 }
 
                 .article-subtitle {
+                    display: inline-block;
                     font-size: 11px;
 
+                    .icon-eye-close {
+                        margin-right: 7px;
+                    }
+
+                    .revised-on {
+                        display: inline-block;
+                        margin-right: 7px;
+                    }
+
                     .tags {
+                        display: inline-block;
+
                         a {
                             color: @grayDarker;
                             text-decoration: underline;
-                            margin-right: 6px;
+                            margin-right: 7px;
                             cursor: hand;
                             cursor: pointer;
 
@@ -322,10 +334,18 @@ header {
 
         .entry-managment-button {
             display: inline-block;
+            margin-left: 0px; 
+            margin-right: 7px;
+
+            .btn-group {
+                line-height: 0;
+            }
 
             .btn {
                 background-color: transparent;
                 border: 0;
+                padding: 0;
+                line-height: 0;
 
                 a {
                     background-color: transparent;

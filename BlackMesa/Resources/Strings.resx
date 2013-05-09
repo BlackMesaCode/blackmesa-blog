@@ -126,6 +126,9 @@
   <data name="BackToTop" xml:space="preserve">
     <value>Back to top</value>
   </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="ReparseAll" xml:space="preserve">
     <value>Reparse all</value>
+  </data>
+  <data name="RevisedOn" xml:space="preserve">
+    <value>Revised on</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>
