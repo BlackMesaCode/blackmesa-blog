@@ -1,0 +1,202 @@
+---------------------------------------------------------------------------------
+ToDo
+---------------------------------------------------------------------------------
+
+Erster Blog Eintrag überarbeiten
+Final Commit mit Tag
+Google Analytics resetten
+Vollständiger Article Template sowie BlackMesa ToDo und Info in Source Control mitaufnehmen und aus c9 entfernen
+
+Schrift vergrößern
+
+Assoziationstabelle - welche Entries unterschiedlicher Sprachen gehören zusammen: entry id -> entry ids
+Architekturdokumentation
+    in Doku mitaufnehmen:  Enscheiden zwischen Migrator in global.asax/App_Start oder Migrationen automatisch ausführt oder Migration über die Publish-Funktion
+    Lokalisierungskonzept
+    in seperate TXT alles reinschreiben, die aber im Projekt liegt
+    web.config einträge dokumentieren usw
+    
+Browser Vor- und Zurück Funktion bei Ajax Calls verfügbar machen
+
+ViewModels für Entry und Comment erstellen
+Checken ob in der Release-Version auch die ganzen Modernizr artefakte im html tag zu finden sind
+Responsiveness tweaken
+Browserkompatibilität testen
+
+RSS Feed
+Rss Subscribe um E-Mail Subscribe ergänzen
+Image Sprite aus allen Bildern generieren und über CSS zugreifen
+
+YSlow Verbesserungsvorschläge umsetzen
+Suchmaschinenoptimierung / Crawler-Stop
+    Webmaster Tools von Google
+Caching
+
+Recherche: typische Homepagebreiten -> Containerbreite ermitteln und Breakpoints für Mobile Geräte ermitteln
+SSL bei Forms Authentification
+Add OAuth Authentification
+
+
+Seitenmodule
+    Breadcrumbs
+    Future Posts
+    Quote Roll
+    Sites I Like
+    Infobox anzeige bei Click auf den User-Name z.B. Guest
+    Volltextsuche
+
+Eigene Kommentarfunktion
+    Notification Email beim Erhalt eines neuen Kommentars
+    DisplayAnnotations in den ViewModels überarbeiten z.B. [Display(Name="")] oder [DisplayFormat(NullDisplayText="")]
+    DatenValidierung - z.B. email check
+    CAPTCHA für Comments notwendig?  da gibt es sicherlich Helper funktionen
+    IP speichern in eigener datenbank oder event definieren und über google analytics speichern lassen?
+
+
+Bilder in Artikel einfügen
+    Überlegen: Wo speichere ich Bilder? 
+    Wie stelle ich Bilder dar? Thumbnails im Fließtext + Lightbox? 
+    Screenshot Tool downloaden!
+    Blob-Storage recherche
+    Hosting dropbox ?
+
+
+
+
+---------------------------------------------------------------------------------
+Themen für den Blog
+---------------------------------------------------------------------------------
+
+Wie funktioniert jqueryval(idation) genau und wie die validierung über data-annotations
+
+*.less für ASP.NET
+    <link href="~/Content/less/bootstrap.less" rel="stylesheet"/>
+korrekte Pfadangaben in ASP.NET Umgebung
+BestPractise Schrift-Einheiten
+Bundling und Minification allgemein und in asp.net und für less dateien
+
+
+Generell die Themen die ich bisher nur oberflächlich im Informatik-Folder angerissen habe
+    z.B. HtmlX Html5 Unterschied etc
+    Caching
+        Browser Caching
+        ASP.NET Caching
+
+Bedeutung Websicherer Farben heute
+
+Unterschied zwischen Build und Publish
+
+Content Delivery Networks - richtiges einbinden von externen Ressourcen - evtl in diesem Zusammenhang auch async besprechen
+
+Grundlagen zu Http Requests -> Ablauf und Verarbeitung von Http Anfragen - auch im Hinblick auf Webserver + ASP.NET
+
+Responsive Design Grundlagen + Optimierung für Tablets
+    z.B. keine Fixed-Content-Areas für Smartphones
+
+Inversion of Control und Dependancy Injection erklären
+
+Maintenance Mode: entweder über ActionFilter oder app_offline.htm
+
+AllowHtml vs ValidateRequest
+
+Motivation Software-Entwicklung / IT-Administration / Informationstechnologie
+
+.NET Datenstrukturen in der Übersicht
+
+---------------------------------------------------------------------------------
+Sonstiges
+---------------------------------------------------------------------------------
+
+
+gute Domains zum reservieren: 
+    blackforest-it.de
+    mind-log.eu
+    blackfor.de
+    blackfor.eu
+    blackbyte.eu
+    byterage.de
+    coderage.de
+
+
+Der Name BlackMesa ist eine Widmung an eines meiner Lieblingscomputerspiele. BlackMesa ist die Forschungsanstalt, in der sich die Handlung von Half-Life 1 abspielt.
+
+Seitenbeschreibung www (kurz):
+
+Hey ^_^ - Welcome to the BlackMesa Transit System :) Auf BlackMesa findest du Beiträge zu allerlei IT-Themen, 
+die mir als Informatikstudent so über den Weg laufen.
+(die mir im Rahmen meines Informatiker-Daseins so über den Weg laufen.)
+
+
+
+    
+<h2>Hallo Welt</h2>
+
+
+<p>Willkommen auf BlackMesa. Ich bin Stephan, komme aus der Schwarzwaldstadt Freiburg und zähle die Tage an dem ich mit dem Informatikstudium fertig bin ;)</p>
+<p>Ich beginne diesen Blog eigentlich aus mehreren Gründen. Zum Einen ganz klassisch als Plattform, um über diverse Themen aus der IT-Welt schreiben und diskutieren zu können. 
+Zum Anderen, um meine manchmal recht theoretischen Inhalte aus meinem Informatikstudium aufzuarbeiten. Es kann nicht schaden, die Studieninhalte etwas zusammenzufassen 
+und vielleicht stolpert der ein oder andere Kommilitone ja mal drüber und kann damit was anfangen. Zu guter Letzt ist der Aufbau dieser Homepage selbst, ein kleines Projekt, 
+um meine ASP.NET Kenntnisse aus dem Praxissemester etwas zu festigen. Ich hab also ganz bewusst auf den Einsatz eines fertigen CMS-Systems verzichtet, 
+nicht um das Rad neu zu erfinden, sondern ganz einfach aus Freude an der Webentwicklung :)</p><p>Okay genug geredet - Let's get to it.</p>
+
+
+<h2>Hello World</h2>
+
+<p>Welcome on BlackMesa. I'm Stephan, living in Freiburg near the Black Forest and counting the days until I'm done with my information science studies ;)</p>
+<p>Actually I am starting this blog out of multiple reasons. For one, classically as a plattform to write and discuss about various IT related topics.
+On the other hand to review all those theoretical contents of my IT studies. It shouldnt hurt to sum up the subject matters a little bit and maybe the one or other fellow student will be able to make use it. 
+Last but not least, the development of this website is a small project of its own, to tighten the ASP.NET skills i gathered during my last internship. So it is a deliberate decision to go without a finished CMS-system, no to reinvent the wheel, but out of joy for web development :)</p><p>Okay nuff said - Let's get to it.</p>
+
+
+
+    
+<!-- blackmesa parser should encode < and add brush class (class=brush: {language e.g. xhtml, csharp, etc}) to parent pre tag, in order to make syntaxhighligter working -->
+
+
+
+Definitions:
+
+
+Figure
+The figure element represents a unit of content, optionally with a caption, that is self-contained, that is typically referenced as a single unit from the main flow of the document, and that can be moved away from the main flow of the document without affecting the document’s meaning.
+(http://dev.w3.org/html5/markup/figure.html)
+
+
+Aside
+The aside element represents content that is tangentially related to the content that forms the main textual flow of a document.
+Complementary context related information, e.g. further explanations, quotes etc.
+(http://dev.w3.org/html5/markup/aside.html)
+
+Legend
+The HTML legend element assigns a title for a fieldset (HTML fieldset element)
+
+Caption
+The caption element represents the title of the table that is its parent.
+
+Label
+The label element represents a caption for a form control.
+
+Code
+The code element represents a fragment of computer code.
+
+Pre
+The pre element represents a block of preformatted text, in which structure is represented by typographic conventions rather than by elements.
+
+Div
+The div element is a generic container for flow content that by itself does not represent anything.
+
+
+Header
+The header element represents the header of a section. Can contain nav.
+
+HGroup (REMOVED FROM HTML 5 STANDARD)
+The hgroup element represents a group of headings.
+
+rel attribute ?
+    
+    
+    
+    
+    
+    
+    

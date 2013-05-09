@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BlackMesa.Resources;
 
 namespace BlackMesa.Models
 {
@@ -27,15 +28,19 @@ namespace BlackMesa.Models
         [Required]
         [DataType(DataType.MultilineText)]
         [AllowHtml]
+        [Display(ResourceType = typeof(Strings), Name = "Content")]
         public string Content { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Strings), Name = "DateCreated")]
         public DateTime DateCreated { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Strings), Name = "DateEdited")]
         public DateTime DateEdited { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Strings), Name = "Published")]
         public bool Published { get; set; }
 
          // Any ICollections tagged as 'virtual' will be lazy-loaded unless you specifically mark them otherwise.

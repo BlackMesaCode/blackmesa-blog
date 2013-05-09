@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
+using BlackMesa.Resources;
 
 namespace BlackMesa.Models
 {
@@ -21,7 +22,7 @@ namespace BlackMesa.Models
     public class RegisterExternalLoginModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(ResourceType = typeof(Strings), Name = "UserName")]
         public string UserName { get; set; }
 
         public string ExternalLoginData { get; set; }
@@ -31,17 +32,17 @@ namespace BlackMesa.Models
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(ResourceType = typeof(Strings), Name = "CurrentPassword")]
         public string OldPassword { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(ResourceType = typeof(Strings), Name = "NewPassword")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
+        [Display(ResourceType = typeof(Strings), Name = "ConfirmPassword")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
@@ -49,32 +50,32 @@ namespace BlackMesa.Models
     public class LoginModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(ResourceType = typeof(Strings), Name = "UserName")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(ResourceType = typeof(Strings), Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(ResourceType = typeof(Strings), Name = "RememberMe")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(ResourceType = typeof(Strings), Name = "UserName")]
         public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(ResourceType = typeof(Strings), Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(ResourceType = typeof(Strings), Name = "ConfirmPassword")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }

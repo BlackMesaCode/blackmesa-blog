@@ -129,8 +129,23 @@
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
   </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="DateCreated" xml:space="preserve">
+    <value>Date created</value>
+  </data>
+  <data name="DateEdited" xml:space="preserve">
+    <value>Date edited</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
@@ -144,11 +159,17 @@
   <data name="FooterLicence" xml:space="preserve">
     <value>Except where otherwise noted, content on this site is licensed under </value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Guest</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="LegalNotice" xml:space="preserve">
     <value>Legal notice</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Log in</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
@@ -156,11 +177,23 @@
   <data name="Manage" xml:space="preserve">
     <value>Manage</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
   <data name="NoEntriesFound" xml:space="preserve">
     <value>No entries found</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Published</value>
+  </data>
   <data name="ReadMore" xml:space="preserve">
     <value>Read more</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me?</value>
   </data>
   <data name="ReparseAll" xml:space="preserve">
     <value>Reparse all</value>
@@ -170,5 +203,8 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User name</value>
   </data>
 </root>

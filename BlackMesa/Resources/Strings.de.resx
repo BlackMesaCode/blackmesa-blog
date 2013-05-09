@@ -129,8 +129,23 @@
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
   </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Passwort bestätigen</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Kontakt</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Inhalt</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Derzeitiges Passwort</value>
+  </data>
+  <data name="DateCreated" xml:space="preserve">
+    <value>Erstellungsdatum</value>
+  </data>
+  <data name="DateEdited" xml:space="preserve">
+    <value>Überarbeitungsdatum</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Löschen</value>
@@ -144,11 +159,17 @@
   <data name="FooterLicence" xml:space="preserve">
     <value>Wenn nicht anderweitig ausgezeichnet, sind die Inhalte dieser Seite lizenziert unter </value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Gast</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Startseite</value>
   </data>
   <data name="LegalNotice" xml:space="preserve">
     <value>Impressum</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Einloggen</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Ausloggen</value>
@@ -156,11 +177,23 @@
   <data name="Manage" xml:space="preserve">
     <value>Verwalten</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Neues Passwort</value>
+  </data>
   <data name="NoEntriesFound" xml:space="preserve">
     <value>Keine Einträge vorhanden</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Passwort</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Veröffentlicht</value>
+  </data>
   <data name="ReadMore" xml:space="preserve">
     <value>Weiterlesen</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Angemeldet bleiben?</value>
   </data>
   <data name="ReparseAll" xml:space="preserve">
     <value>Erneut parsen</value>
@@ -170,5 +203,8 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Benutzername</value>
   </data>
 </root>
