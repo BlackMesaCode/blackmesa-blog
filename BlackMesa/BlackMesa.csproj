@@ -527,6 +527,7 @@
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Entry\_ArticleTemplate.cshtml" />
     <Content Include="Views\Shared\_GlobalJavascript.cshtml" />
+    <Content Include="Views\Entry\ArticleTemplateFull.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

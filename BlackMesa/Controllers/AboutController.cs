@@ -13,7 +13,7 @@ namespace BlackMesa.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToActionPermanent("Details", "Entry", new {Id = 1});
         }
 
     }

@@ -199,4 +199,43 @@ rel attribute ?
     
     
     
-    
+I'm starting this blog to journal all the interesting things I learn everyday in my job as a 
+software developer. I've decided to build my own blog engine as an excuse to try new technologies. 
+I know what you're thinking, that I'm re-inventing the wheel, and you're absolutely right! Is this a wise thing to do, considering I could just install Wordpress in a few clicks, select a snazzy theme and start blogging nearly immediately? Probably not, but then I wouldn't get to build stuff :) Because I'll need a reasonable tool to blog with, it should give me the incentive (i.e. kick in the ass) I need to actually ship something. On the tech side, I'm basically a .NET guy, but I like what the Alt.NET community stands for, and I also want to dabble with new technologies, maybe Ruby and Python to get a feel for what it's like to build stuff in those environments.
+
+It would be awesome to get feedback from anyone taking the time out to read my blog, so please feel free to comment on my posts, or if you'd like to get in touch, you can email me on jonoward[at]gmail.com
+
+
+Hallo zusammen! 
+
+
+<article>
+    <header>
+        <h1>Hallo Welt</h1>
+        <p>So, nach gut zwei Wochen mit viel zu vielen Rückenschmerzen und viel zu wenig Schlaf ist es nun soweit. BlackMesa - mein kleiner, aber feiner Blog ist endlich fertig. Ihr findet hier Beiträge zu all jenen interessanten Themen, die mich privat oder im Rahmen meines Studiums beschäftigen. Ich heiße Stephan und studiere derzeit "Angewandte Informatik", aber das Einzige was daran angewandt ist, ist das Adjektiv im Namen. Gut möglich also, dass ich hier und da auch theoretische Grundlagen aus dem Studium in meine Beiträge packe. Das hilft mir beim Lernen und im Idealfall auch dem ein oder anderen Leidensgenossen.</p>
+		<p>
+		Jenseits des Uni-Lehrplans interessiere ich mich vorwiegend für (Web-)Entwicklung im (ASP).NET Umfeld, System-Administration, Digital Art und Praktische Philosophie.</p>
+		</header>
+		<section>
+		<p>Mit BlackMesa habe ich mich entschieden meine eigene "Blogging-Enginge" zu schreiben. Ich weiß was ihr jetzt denkt - dass ich das Rad neu erfinde und dass man doch mit Wordpress oder Ähnlichem innerhalb von wenigen Minuten sein eigenes Blog zusammen geklickt hat. Das ist sicher richtig, aber für mich ist dieses Blog ein willkommener Anlass, um unterschiedliche Web-Technologien anzuwenden und ausprobieren zu können. Man kann viel über Technologien lesen, aber bevor man sie nicht selbst angewendet hat, bleibt meiner Meinung nach relativ wenig davon hängen. </p>
+		<p> BlackMesa ist prinzipiell zweisprachig angelegt. Inwieweit ich dann tatsächlich dazu komme, meine Beiträge ins Englische zu übersetzen, wird sich zeigen.</p>
+		<p>Ich freue mich über Feedback von Jedem, der sich die Zeit nimmt mein Blog zu lesen. Und nun viel Spaß beim Stöbern!</p>
+    </section>
+</article>
+
+
+<article>
+    <header>
+        <h1>Hello World</h1>
+        <p>Finally, after two weeks of way too much back pain and way too less sleep it is accomplished. BlackMesa - my small but fine blog is finally done.</p>
+        <p>Here you will find posts on all those interesting topics, that concern me privately or as part of my studies. I am Stephan and currently studying "Applied Computer Sciences" but the only thing that is "applied" is the adjective in its name. So it might very well be possible that i am going to write about those theoretical fundamentals of my studies here and there. That is going to help me with learning and ideally its helping other fellow sufferers too.</p>
+		<p>
+		Beyond university curriculum i am mainly interested in (web-)development with (ASP).NET, system administration, digital art and practical philosophy.</p>
+		</header>
+		<section>
+        <p>With BlackMesa i decided to write my own blogging-engine. I know what you're thinking, that I'm re-inventing the wheel and that one could create its own blog with wordpress or similiar within minutes. You're absolutely right, but for me the blog is a welcome excuse to apply and try different web-technologies. It is one thing to read about technologies, but before you did not try them yourself, in my opinion very little will get caught.</p>
+		<p>
+		BlackMesa is basically designed multilingual. To which extent i am actually be able to translate my articles from german to english remains to be seen.
+		</p><p>It would be awesome to get feedback from anyone taking the time out to read my blog. And now have fun browsing!</p>
+		</section>
+</article>

@@ -150,6 +150,11 @@ namespace BlackMesa.Controllers
         {
             Entry entry = _db.Entries.Find(id);
 
+            if (entry == null || (!entry.Published && !User.IsInRole("Admin")))
+            {
+                return HttpNotFound();
+            }
+
             /* if the title passed with the http-request doesnt equal the current entry title - we response with a moved permanent code to 
              * inform the search engines */
 
@@ -157,10 +162,6 @@ namespace BlackMesa.Controllers
             if (title != currentSeoFriendlyTitle)
                 return RedirectToActionPermanent("Details", new { Id = id, Title = currentSeoFriendlyTitle });
 
-            if (entry == null || (!entry.Published && !User.IsInRole("Admin")))
-            {
-                return HttpNotFound();
-            }
             return View(entry);
         }
 

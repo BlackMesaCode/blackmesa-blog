@@ -43,14 +43,14 @@ namespace BlackMesa.Migrations
             if (membership.GetUser("sum@live.de", false) == null)
                 membership.CreateUserAndAccount("sum@live.de", "r3volTec");
 
-            if (membership.GetUser("test", false) == null)
-                membership.CreateUserAndAccount("test", "test");
+            if (membership.GetUser("Tester", false) == null)
+                membership.CreateUserAndAccount("Tester", "go4testing");
 
             if (!new List<string>(roles.GetRolesForUser("sum@live.de")).Contains("Admin"))
                 roles.AddUsersToRoles(new [] {"sum@live.de"}, new[] { "Admin" } );
 
-            if (!new List<string>(roles.GetRolesForUser("test")).Contains("Admin"))
-                roles.AddUsersToRoles(new[] { "test" }, new[] { "Admin" });
+            if (!new List<string>(roles.GetRolesForUser("Tester")).Contains("Admin"))
+                roles.AddUsersToRoles(new[] { "Tester" }, new[] { "Admin" });
 
         }
     }
