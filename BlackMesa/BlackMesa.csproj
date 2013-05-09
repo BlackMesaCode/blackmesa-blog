@@ -220,6 +220,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305091223280_Initialization.cs" />
+    <Compile Include="Migrations\201305091223280_Initialization.Designer.cs">
+      <DependentUpon>201305091223280_Initialization.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\BlackMesaDb.cs" />
@@ -538,6 +542,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201305091223280_Initialization.resx">
+      <DependentUpon>201305091223280_Initialization.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.de.Designer.cs</LastGenOutput>
