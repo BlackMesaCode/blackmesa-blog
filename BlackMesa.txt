@@ -2,56 +2,21 @@
 ToDo
 ---------------------------------------------------------------------------------
 
-Erster Blog Eintrag überarbeiten
-Final Commit mit Tag
-Google Analytics resetten
-Vollständiger Article Template sowie BlackMesa ToDo und Info in Source Control mitaufnehmen und aus c9 entfernen
-
-Schrift vergrößern
 
 Assoziationstabelle - welche Entries unterschiedlicher Sprachen gehören zusammen: entry id -> entry ids
 Architekturdokumentation
-    in Doku mitaufnehmen:  Enscheiden zwischen Migrator in global.asax/App_Start oder Migrationen automatisch ausführt oder Migration über die Publish-Funktion
-    Lokalisierungskonzept
-    in seperate TXT alles reinschreiben, die aber im Projekt liegt
-    web.config einträge dokumentieren usw
-    
-Browser Vor- und Zurück Funktion bei Ajax Calls verfügbar machen
+	web.config einträge dokumentieren usw
 
 ViewModels für Entry und Comment erstellen
+Überlegen wo Paging/SelectedTags/Cultur/Language Infos gespeichert werden
+
 Checken ob in der Release-Version auch die ganzen Modernizr artefakte im html tag zu finden sind
+Meta Tags setzen
 Responsiveness tweaken
+	Recherche: typische Homepagebreiten -> Containerbreite ermitteln und Breakpoints für Mobile Geräte ermitteln
 Browserkompatibilität testen
 
 RSS Feed
-Rss Subscribe um E-Mail Subscribe ergänzen
-Image Sprite aus allen Bildern generieren und über CSS zugreifen
-
-YSlow Verbesserungsvorschläge umsetzen
-Suchmaschinenoptimierung / Crawler-Stop
-    Webmaster Tools von Google
-Caching
-
-Recherche: typische Homepagebreiten -> Containerbreite ermitteln und Breakpoints für Mobile Geräte ermitteln
-SSL bei Forms Authentification
-Add OAuth Authentification
-
-
-Seitenmodule
-    Breadcrumbs
-    Future Posts
-    Quote Roll
-    Sites I Like
-    Infobox anzeige bei Click auf den User-Name z.B. Guest
-    Volltextsuche
-
-Eigene Kommentarfunktion
-    Notification Email beim Erhalt eines neuen Kommentars
-    DisplayAnnotations in den ViewModels überarbeiten z.B. [Display(Name="")] oder [DisplayFormat(NullDisplayText="")]
-    DatenValidierung - z.B. email check
-    CAPTCHA für Comments notwendig?  da gibt es sicherlich Helper funktionen
-    IP speichern in eigener datenbank oder event definieren und über google analytics speichern lassen?
-
 
 Bilder in Artikel einfügen
     Überlegen: Wo speichere ich Bilder? 
@@ -59,6 +24,22 @@ Bilder in Artikel einfügen
     Screenshot Tool downloaden!
     Blob-Storage recherche
     Hosting dropbox ?
+
+Artikelstrukturierung / Formatierung
+	wieviel styling <-> wieviel semantik
+	<!-- blackmesa parser should encode < and add brush class (class=brush: {language e.g. xhtml, csharp, etc}) to parent pre tag, in order to make syntaxhighligter working -->
+
+
+
+Rss Subscribe um E-Mail Subscribe ergänzen
+
+
+Browser Vor- und Zurück Funktion bei Ajax Calls verfügbar machen
+YSlow Verbesserungsvorschläge umsetzen
+Suchmaschinenoptimierung / Crawler-Stop
+    Webmaster Tools von Google
+Caching
+
 
 
 
@@ -126,31 +107,8 @@ Hey ^_^ - Welcome to the BlackMesa Transit System :) Auf BlackMesa findest du Be
 die mir als Informatikstudent so über den Weg laufen.
 (die mir im Rahmen meines Informatiker-Daseins so über den Weg laufen.)
 
+ 
 
-
-    
-<h2>Hallo Welt</h2>
-
-
-<p>Willkommen auf BlackMesa. Ich bin Stephan, komme aus der Schwarzwaldstadt Freiburg und zähle die Tage an dem ich mit dem Informatikstudium fertig bin ;)</p>
-<p>Ich beginne diesen Blog eigentlich aus mehreren Gründen. Zum Einen ganz klassisch als Plattform, um über diverse Themen aus der IT-Welt schreiben und diskutieren zu können. 
-Zum Anderen, um meine manchmal recht theoretischen Inhalte aus meinem Informatikstudium aufzuarbeiten. Es kann nicht schaden, die Studieninhalte etwas zusammenzufassen 
-und vielleicht stolpert der ein oder andere Kommilitone ja mal drüber und kann damit was anfangen. Zu guter Letzt ist der Aufbau dieser Homepage selbst, ein kleines Projekt, 
-um meine ASP.NET Kenntnisse aus dem Praxissemester etwas zu festigen. Ich hab also ganz bewusst auf den Einsatz eines fertigen CMS-Systems verzichtet, 
-nicht um das Rad neu zu erfinden, sondern ganz einfach aus Freude an der Webentwicklung :)</p><p>Okay genug geredet - Let's get to it.</p>
-
-
-<h2>Hello World</h2>
-
-<p>Welcome on BlackMesa. I'm Stephan, living in Freiburg near the Black Forest and counting the days until I'm done with my information science studies ;)</p>
-<p>Actually I am starting this blog out of multiple reasons. For one, classically as a plattform to write and discuss about various IT related topics.
-On the other hand to review all those theoretical contents of my IT studies. It shouldnt hurt to sum up the subject matters a little bit and maybe the one or other fellow student will be able to make use it. 
-Last but not least, the development of this website is a small project of its own, to tighten the ASP.NET skills i gathered during my last internship. So it is a deliberate decision to go without a finished CMS-system, no to reinvent the wheel, but out of joy for web development :)</p><p>Okay nuff said - Let's get to it.</p>
-
-
-
-    
-<!-- blackmesa parser should encode < and add brush class (class=brush: {language e.g. xhtml, csharp, etc}) to parent pre tag, in order to make syntaxhighligter working -->
 
 
 
