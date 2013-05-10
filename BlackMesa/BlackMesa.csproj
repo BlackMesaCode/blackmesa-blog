@@ -254,9 +254,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\address.png" />
     <Content Include="Content\images\asp_dotnet_logo_gray.png" />
-    <Content Include="Content\images\asp_dotnet_logo_regular.png" />
     <Content Include="Content\images\azure_logo_gray.png" />
-    <Content Include="Content\images\azure_logo_regular.png" />
     <Content Include="Content\images\blackmesa_logo.png" />
     <Content Include="Content\images\contact_de.png" />
     <Content Include="Content\images\contact_en.png" />
