@@ -48,6 +48,45 @@ Caching
 Themen für den Blog
 ---------------------------------------------------------------------------------
 
+IIS Grundlagen-Serie
+	Überblick
+		Versionen, Editionen (IIS Express), Verteilung (Win8, Win2012 Server etc)
+		Definition, Aufgaben des IIS, Verweis auf MS Welt
+		Was sind ISAPI Filter
+		Webserver Alternativen z.B. APACHI
+	Architektur und Aufforderungsverarbeitung
+		Google nach iis 7.0 architektur pdf
+	Konfiguration
+		Beispiele
+	Verarbeitung / Lebenszyklus von ASP.NET Anfragen
+		
+	
+Performance-Serie
+	Caching
+	CDN
+	Async
+	Cookies in Bildern
+	YSlow usw
+
+.NET Datenstrukturen-Serien
+
+SEO-Serie
+
+Sicherheit-Serie
+	XSS
+	Authentifizierungslösungen usw
+
+Datenbank-Grundlagen Serie
+
+Entity Framework Serie
+
+
+Architektur von .NET / Managed Code vs Unmanaged
+Wie funktionieren DLLS etc, wie wird Code ausgeführt in Windows etc
+
+
+Unterschied zwischen Benutzermodus und Kernelmodus
+
 Wie funktioniert jqueryval(idation) genau und wie die validierung über data-annotations
 
 *.less für ASP.NET
@@ -82,7 +121,9 @@ AllowHtml vs ValidateRequest
 
 Motivation Software-Entwicklung / IT-Administration / Informationstechnologie
 
-.NET Datenstrukturen in der Übersicht
+HTML 5 Canvas Element
+
+
 
 ---------------------------------------------------------------------------------
 Sonstiges
