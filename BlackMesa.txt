@@ -85,8 +85,6 @@ Architektur von .NET / Managed Code vs Unmanaged
 Wie funktionieren DLLS etc, wie wird Code ausgeführt in Windows etc
 
 
-Unterschied zwischen Benutzermodus und Kernelmodus
-
 Wie funktioniert jqueryval(idation) genau und wie die validierung über data-annotations
 
 *.less für ASP.NET
