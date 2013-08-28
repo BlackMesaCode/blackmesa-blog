@@ -306,7 +306,7 @@ namespace BlackMesa.Controllers
                         }
                     }
                 }
-                _db.Entry(dbEntry).State = EntityState.Modified;
+//                _db.Entry(dbEntry).State = EntityState.Modified; // not necessary cause dbEntry is tracked by the dbContext
                 _db.SaveChanges();
 
                 DeleteTagsWithNoEntries();
