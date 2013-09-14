@@ -256,8 +256,10 @@
     <Content Include="Content\images\asp_dotnet_logo_gray.png" />
     <Content Include="Content\images\azure_logo_gray.png" />
     <Content Include="Content\images\blackmesa_logo.png" />
+    <Content Include="Content\images\blackmesa_logo_simple.png" />
     <Content Include="Content\images\contact_de.png" />
     <Content Include="Content\images\contact_en.png" />
+    <Content Include="Content\images\devblog_logo.png" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\favicon.jpg" />
     <Content Include="Content\images\pattern.png" />
