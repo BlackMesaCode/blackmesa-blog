@@ -1,4 +1,35 @@
 ---------------------------------------------------------------------------------
+Most Important
+---------------------------------------------------------------------------------
+
+Namensaufbau: BlackMesa -> Blog/devLog ??
+Logoverteilung
+Mehrsprachige Artikel verbinden
+Neue Menüstruktur
+	About Section + Impressum + Welcome Artikel rausnehmen
+	Dafür Kontakt Section reinnehmen + Archiv mit Suchfunktion
+	Final: Home - Archiv - Kontakt
+Disqus wieder einbauen
+statische links für Suchergebnisse (kein AJAX mehr)
+ebenfalls statische links für den Pager
+die Startseite ist im Prinzip nichts anderes als das Suchergebnis beschränkt auf die neusten Artikel
+Lösung für Bilder in den Artiekln
+Seiten
+Tag autovervollständigung erst nach Eingabe des ersten Zeichens - Multitagging noch möglich, bei statischen Urls ?
+
+
+Archiv-Seite
+	Volltextsuche
+	Suche nach Datum
+	TagWolke
+
+Hosting erstmal nur Lokal - erst später Azure reaktivieren
+
+Bildern in Artikel über Dropbox einbinden - ggfs Dropbox API verwenden
+
+
+
+---------------------------------------------------------------------------------
 ToDo
 ---------------------------------------------------------------------------------
 
