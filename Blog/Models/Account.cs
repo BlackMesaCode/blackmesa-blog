@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
-using BlackMesa.Resources;
+using BlackMesa.Blog.Resources;
 
 namespace BlackMesa.Models
 {
