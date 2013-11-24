@@ -1,12 +1,12 @@
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Web.Security;
-using BlackMesa.Models;
+using BlackMesa.Blog.App_Start;
+using BlackMesa.Blog.Models;
 using WebMatrix.WebData;
 
-namespace BlackMesa.Migrations
+namespace BlackMesa.Blog.Migrations
 {
-    using System.Data.Entity.Migrations;
-
     internal sealed class Configuration : DbMigrationsConfiguration<BlackMesaDb>
     {
         public Configuration()

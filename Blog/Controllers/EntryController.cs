@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Data;
-using System.Globalization;
 using System.Linq;
-using System.Threading;
 using System.Web.Mvc;
-using System.Web.Mvc.Html;
-using BlackMesa.Models;
-using BlackMesa.Utilities;
-using BlackMesa.ViewModels;
+using BlackMesa.Blog.Models;
+using BlackMesa.Blog.ViewModels;
 using PagedList;
 
-namespace BlackMesa.Controllers
+namespace BlackMesa.Blog.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class EntryController : BaseController

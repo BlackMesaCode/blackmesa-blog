@@ -1,7 +1,7 @@
-﻿using BlackMesa.Models;
+﻿using BlackMesa.Blog.Models;
 using PagedList;
 
-namespace BlackMesa.ViewModels
+namespace BlackMesa.Blog.ViewModels
 {
     public class EntryIndexViewModel
     {

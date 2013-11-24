@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace BlackMesa
+namespace BlackMesa.Blog.App_Start
 {
     public class RouteConfig
     {

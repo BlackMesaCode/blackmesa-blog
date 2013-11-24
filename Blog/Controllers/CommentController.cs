@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using BlackMesa.Models;
+using BlackMesa.Blog.Models;
 
-namespace BlackMesa.Controllers
+namespace BlackMesa.Blog.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CommentController : BaseController

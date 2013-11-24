@@ -1,8 +1,7 @@
-namespace BlackMesa.Migrations
+using System.Data.Entity.Migrations;
+
+namespace BlackMesa.Blog.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class Initialization : DbMigration
     {
         public override void Up()

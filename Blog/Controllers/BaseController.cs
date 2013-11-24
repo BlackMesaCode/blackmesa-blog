@@ -1,11 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System.Globalization;
 using System.Linq;
 using System.Threading;
-using System.Globalization;
+using System.Web.Mvc;
 using System.Web.Routing;
 
-
-namespace BlackMesa.Controllers
+namespace BlackMesa.Blog.Controllers
 {
     public abstract class BaseController : Controller
     {

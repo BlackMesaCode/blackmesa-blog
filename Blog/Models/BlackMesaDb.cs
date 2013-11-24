@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 
-namespace BlackMesa.Models
+namespace BlackMesa.Blog.Models
 {
     public class BlackMesaDb : DbContext
     {

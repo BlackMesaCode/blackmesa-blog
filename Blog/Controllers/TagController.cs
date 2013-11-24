@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using BlackMesa.Models;
+using BlackMesa.Blog.Models;
+using BlackMesa.Blog.Utilities;
 
-namespace BlackMesa.Controllers
+namespace BlackMesa.Blog.Controllers
 {
     public class TagController : BaseController
     {

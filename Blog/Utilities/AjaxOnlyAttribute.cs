@@ -1,15 +1,18 @@
 ﻿using System.Web.Mvc;
 
-public class AjaxOnlyAttribute : ActionFilterAttribute
+namespace BlackMesa.Blog.Utilities
 {
-    public override void OnActionExecuting(ActionExecutingContext filterContext)
+    public class AjaxOnlyAttribute : ActionFilterAttribute
     {
-        if (!filterContext.HttpContext.Request.IsAjaxRequest())
-            filterContext.HttpContext.Response.Redirect("/error/404");
-    }
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (!filterContext.HttpContext.Request.IsAjaxRequest())
+                filterContext.HttpContext.Response.Redirect("/error/404");
+        }
 
-    public override void OnActionExecuted(ActionExecutedContext filterContext)
-    {
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
 
+        }
     }
 }

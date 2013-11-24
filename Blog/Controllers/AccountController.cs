@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using BlackMesa.Blog.Models;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using BlackMesa.Models;
 
-namespace BlackMesa.Controllers
+namespace BlackMesa.Blog.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class AccountController : BaseController

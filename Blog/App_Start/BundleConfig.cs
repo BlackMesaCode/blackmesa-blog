@@ -1,9 +1,8 @@
 ﻿using System.Web.Optimization;
-using BundleTransformer.Core.Minifiers;
 using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Transformers;
 
-namespace BlackMesa
+namespace BlackMesa.Blog.App_Start
 {
     public class BundleConfig
     {

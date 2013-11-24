@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Web.WebPages.OAuth;
-using BlackMesa.Models;
-using WebMatrix.WebData;
+﻿using WebMatrix.WebData;
 
-namespace BlackMesa
+namespace BlackMesa.Blog.App_Start
 {
     public static class AuthConfig
     {
