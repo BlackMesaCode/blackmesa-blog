@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa", "BlackMesa\BlackMesa.csproj", "{FCBFD8B5-6A41-4342-8BA4-D504F867EA48}"
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog", "Blog\Blog.csproj", "{FCBFD8B5-6A41-4342-8BA4-D504F867EA48}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DFDCF2E6-9339-493C-B9AF-FBBAA99FC92D}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DFDCF2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9A777D46-31FA-4B6A-8D6D-2B3F919F4055}"
 	ProjectSection(SolutionItems) = preProject
-		BlackMesa.txt = BlackMesa.txt
+		ToDo.txt = ToDo.txt
 	EndProjectSection
 EndProject
 Global
