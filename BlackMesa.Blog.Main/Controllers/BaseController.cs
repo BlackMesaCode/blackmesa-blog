@@ -6,6 +6,7 @@ using System.Web.Routing;
 
 namespace BlackMesa.Blog.Main.Controllers
 {
+
     public abstract class BaseController : Controller
     {
 

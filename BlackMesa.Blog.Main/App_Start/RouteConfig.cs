@@ -16,6 +16,7 @@ namespace BlackMesa.Blog.Main.App_Start
                 name: "EntryWithLanguage",
                 url: "{culture}/{id}/{title}",
                 defaults: new { controller = "Entry", action = "Details", title = UrlParameter.Optional },
+                namespaces: new[] { "BlackMesa.Blog.Main.Controllers" },
                 constraints: new { culture = Global.CultureConstraints, id = Global.IdConstraints }
             );
 
@@ -23,6 +24,7 @@ namespace BlackMesa.Blog.Main.App_Start
                 name: "DefaultWithLanguage",
                 url: "{culture}/{controller}/{action}/{id}",
                 defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "BlackMesa.Blog.Main.Controllers" },
                 constraints: new { culture = Global.CultureConstraints }
             );
 
@@ -31,7 +33,8 @@ namespace BlackMesa.Blog.Main.App_Start
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "BlackMesa.Blog.Main.Controllers" }
             );
 
         }

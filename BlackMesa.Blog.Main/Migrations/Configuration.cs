@@ -7,11 +7,11 @@ using WebMatrix.WebData;
 
 namespace BlackMesa.Blog.Main.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<BlackMesaDb>
+    public sealed class Configuration : DbMigrationsConfiguration<BlackMesaDb>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(BlackMesaDb context)
@@ -31,8 +31,8 @@ namespace BlackMesa.Blog.Main.Migrations
 
             AuthConfig.RegisterAuth();
 
-            var roles = (SimpleRoleProvider) Roles.Provider;
-            var membership = (SimpleMembershipProvider) Membership.Provider;
+            var roles = (SimpleRoleProvider)Roles.Provider;
+            var membership = (SimpleMembershipProvider)Membership.Provider;
 
             if (!Roles.RoleExists("Admin"))
                 roles.CreateRole("Admin");
@@ -47,7 +47,7 @@ namespace BlackMesa.Blog.Main.Migrations
                 membership.CreateUserAndAccount("Tester", "go4testing");
 
             if (!new List<string>(roles.GetRolesForUser("sum@live.de")).Contains("Admin"))
-                roles.AddUsersToRoles(new [] {"sum@live.de"}, new[] { "Admin" } );
+                roles.AddUsersToRoles(new[] { "sum@live.de" }, new[] { "Admin" });
 
             if (!new List<string>(roles.GetRolesForUser("Tester")).Contains("Admin"))
                 roles.AddUsersToRoles(new[] { "Tester" }, new[] { "Admin" });

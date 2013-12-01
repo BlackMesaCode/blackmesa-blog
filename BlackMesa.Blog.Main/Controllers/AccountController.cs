@@ -12,6 +12,7 @@ using WebMatrix.WebData;
 
 namespace BlackMesa.Blog.Main.Controllers
 {
+
     [Authorize(Roles = "Admin")]
     public class AccountController : BaseController
     {

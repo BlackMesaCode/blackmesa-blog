@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using BlackMesa.Blog.DataLayer;
 using BlackMesa.Blog.Main.App_Start;
+using BlackMesa.Blog.Main.Migrations;
 
 namespace BlackMesa.Blog.Main
 {
@@ -23,12 +26,17 @@ namespace BlackMesa.Blog.Main
 
         protected void Application_Start()
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlackMesaDb, Configuration>());
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // we can only call it here, if the database is already created
+            // so if we create the database the first time, we have to comment out the line below
             AuthConfig.RegisterAuth();
         }
 

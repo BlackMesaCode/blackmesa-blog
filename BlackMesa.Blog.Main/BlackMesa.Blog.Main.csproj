@@ -216,10 +216,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201305091223280_Initialization.cs" />
-    <Compile Include="Migrations\201305091223280_Initialization.Designer.cs">
-      <DependentUpon>201305091223280_Initialization.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\AjaxOnlyAttribute.cs" />
@@ -521,11 +517,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201305091223280_Initialization.resx">
-      <DependentUpon>201305091223280_Initialization.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlackMesa.Blog.DataLayer\BlackMesa.Blog.DataLayer.csproj">

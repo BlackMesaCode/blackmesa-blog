@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using BlackMesa.Blog.Resources;
 
 namespace BlackMesa.Blog.Model
@@ -24,7 +25,7 @@ namespace BlackMesa.Blog.Model
 
         [Required]
         [DataType(DataType.MultilineText)]
-        // [AllowHtml]  todo AllowHtml has to be allowed in another way to avoid referencing Mvc in our Model project
+        [AllowHtml]
         [Display(ResourceType = typeof(Strings), Name = "Content")]
         public string Content { get; set; }
 
