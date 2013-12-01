@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Blog.Main.Models
+namespace BlackMesa.Blog.Model
 {
     public class Tag
     {

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
-using Blog.Main.Resources;
 
-namespace Blog.Main.Models
+namespace BlackMesa.Blog.Model
 {
     //    [ValidateInput(false)]  // disables request validation on complete model or view model
     public class Entry

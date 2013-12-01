@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using Blog.Main.Utilities;
+using BlackMesa.Blog.Main.Utilities;
 
-namespace Blog.Main.App_Start
+namespace BlackMesa.Blog.Main.App_Start
 {
     public class FilterConfig
     {

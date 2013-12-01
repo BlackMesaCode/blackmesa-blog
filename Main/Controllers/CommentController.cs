@@ -1,9 +1,7 @@
 ﻿using System.Data;
-using System.Linq;
 using System.Web.Mvc;
-using Blog.Main.Models;
 
-namespace Blog.Main.Controllers
+namespace BlackMesa.Blog.Main.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CommentController : BaseController

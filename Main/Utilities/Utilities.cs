@@ -4,7 +4,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
-namespace Blog.Main.Utilities
+namespace BlackMesa.Blog.Main.Utilities
 {
     public static class Utilities
     {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Blog.Main.App_Start
+namespace BlackMesa.Blog.Main.App_Start
 {
     public static class WebApiConfig
     {

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using Blog.Main.Models;
-using Blog.Main.Utilities;
+using BlackMesa.Blog.Main.Utilities;
 
-namespace Blog.Main.Controllers
+namespace BlackMesa.Blog.Main.Controllers
 {
     public class TagController : BaseController
     {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Blog.Main.Resources;
+using BlackMesa.Blog.Resources;
 
-namespace Blog.Main.Models
+namespace BlackMesa.Blog.Model
 {
 
     [Table("UserProfile")]

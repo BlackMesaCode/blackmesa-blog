@@ -2,7 +2,7 @@
 using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Transformers;
 
-namespace Blog.Main.App_Start
+namespace BlackMesa.Blog.Main.App_Start
 {
     public class BundleConfig
     {

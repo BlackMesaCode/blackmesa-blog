@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Blog.Main.Controllers
+namespace BlackMesa.Blog.Main.Controllers
 {
     public class LegalNoticeController : BaseController
     {

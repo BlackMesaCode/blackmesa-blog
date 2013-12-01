@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
+using BlackMesa.Blog.Model;
 
-namespace Blog.Main.Models
+namespace BlackMesa.Blog.DataLayer
 {
     public class BlackMesaDb : DbContext
     {

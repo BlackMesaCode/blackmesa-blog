@@ -4,9 +4,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Blog.Main.App_Start;
+using BlackMesa.Blog.Main.App_Start;
 
-namespace Blog.Main
+namespace BlackMesa.Blog.Main
 {
     public static class Global
     {

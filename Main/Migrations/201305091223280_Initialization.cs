@@ -1,6 +1,6 @@
 using System.Data.Entity.Migrations;
 
-namespace Blog.Main.Migrations
+namespace BlackMesa.Blog.Main.Migrations
 {
     public partial class Initialization : DbMigration
     {

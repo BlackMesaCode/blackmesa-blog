@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Blog.Main.Models;
 
-namespace Blog.Main.ViewModels
+namespace BlackMesa.Blog.Main.ViewModels
 {
     public class CommentViewModel
     {

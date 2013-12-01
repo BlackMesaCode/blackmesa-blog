@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Web.Mvc;
 
-namespace Blog.Main.Utilities
+namespace BlackMesa.Blog.Main.Utilities
 {
     public sealed class CheckForMaintenance : ActionFilterAttribute
     {

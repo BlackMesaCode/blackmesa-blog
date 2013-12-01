@@ -3,7 +3,7 @@
 using System.Data.Entity.Migrations.Infrastructure;
 using System.Resources;
 
-namespace Blog.Main.Migrations
+namespace BlackMesa.Blog.Main.Migrations
 {
     public sealed partial class Initialization : IMigrationMetadata
     {

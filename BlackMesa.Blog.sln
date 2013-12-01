@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", "{FCBFD8B5-6A41-4342-8BA4-D504F867EA48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Blog.Main", "Main\BlackMesa.Blog.Main.csproj", "{FCBFD8B5-6A41-4342-8BA4-D504F867EA48}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DFDCF2E6-9339-493C-B9AF-FBBAA99FC92D}"
 	ProjectSection(SolutionItems) = preProject
@@ -39,6 +39,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Experimental", "http://loca
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Blog.Model", "Model\BlackMesa.Blog.Model.csproj", "{6B4803BE-C717-47D0-B243-621BC92DDCF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Blog.DataLayer", "DataLayer\BlackMesa.Blog.DataLayer.csproj", "{238F3174-7AFA-4EA8-A536-494E4FDEBEEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Blog.Resources", "Ressources\BlackMesa.Blog.Resources.csproj", "{CE4BC338-BD91-4F2A-B7ED-D2DBF67A9670}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +59,18 @@ Global
 		{F66EA933-CD04-4E8D-8723-0B38EF21765A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F66EA933-CD04-4E8D-8723-0B38EF21765A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{F66EA933-CD04-4E8D-8723-0B38EF21765A}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{6B4803BE-C717-47D0-B243-621BC92DDCF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B4803BE-C717-47D0-B243-621BC92DDCF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B4803BE-C717-47D0-B243-621BC92DDCF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B4803BE-C717-47D0-B243-621BC92DDCF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238F3174-7AFA-4EA8-A536-494E4FDEBEEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238F3174-7AFA-4EA8-A536-494E4FDEBEEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238F3174-7AFA-4EA8-A536-494E4FDEBEEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238F3174-7AFA-4EA8-A536-494E4FDEBEEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4BC338-BD91-4F2A-B7ED-D2DBF67A9670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4BC338-BD91-4F2A-B7ED-D2DBF67A9670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4BC338-BD91-4F2A-B7ED-D2DBF67A9670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4BC338-BD91-4F2A-B7ED-D2DBF67A9670}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,11 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web.Mvc;
-using Blog.Main.Models;
-using Blog.Main.ViewModels;
-using PagedList;
+using BlackMesa.Blog.Main.ViewModels;
 
-namespace Blog.Main.Controllers
+namespace BlackMesa.Blog.Main.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class EntryController : BaseController

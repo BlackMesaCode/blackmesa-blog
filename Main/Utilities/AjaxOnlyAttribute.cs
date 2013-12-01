@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Blog.Main.Utilities
+namespace BlackMesa.Blog.Main.Utilities
 {
     public class AjaxOnlyAttribute : ActionFilterAttribute
     {

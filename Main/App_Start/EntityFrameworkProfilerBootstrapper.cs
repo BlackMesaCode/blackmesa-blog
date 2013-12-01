@@ -1,8 +1,8 @@
-using Blog.Main.App_Start;
+using BlackMesa.Blog.Main.App_Start;
 using HibernatingRhinos.Profiler.Appender.EntityFramework;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(EntityFrameworkProfilerBootstrapper), "PreStart")]
-namespace Blog.Main.App_Start
+namespace BlackMesa.Blog.Main.App_Start
 {
 	public static class EntityFrameworkProfilerBootstrapper
 	{

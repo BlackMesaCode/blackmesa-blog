@@ -4,7 +4,7 @@ using System.Threading;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Blog.Main.Controllers
+namespace BlackMesa.Blog.Main.Controllers
 {
     public abstract class BaseController : Controller
     {
