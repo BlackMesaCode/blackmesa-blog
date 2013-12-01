@@ -1,5 +1,9 @@
 ﻿using System.Data;
+using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
+using BlackMesa.Blog.DataLayer;
+using BlackMesa.Blog.Model;
 
 namespace BlackMesa.Blog.Main.Controllers
 {

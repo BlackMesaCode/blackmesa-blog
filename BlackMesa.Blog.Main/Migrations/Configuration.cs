@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Web.Security;
+using BlackMesa.Blog.DataLayer;
 using BlackMesa.Blog.Main.App_Start;
 using WebMatrix.WebData;
 

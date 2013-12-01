@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using BlackMesa.Blog.Model;
 
 namespace BlackMesa.Blog.Main.ViewModels
 {

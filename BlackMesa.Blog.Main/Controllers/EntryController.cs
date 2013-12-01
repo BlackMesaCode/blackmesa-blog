@@ -2,7 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web.Mvc;
+using BlackMesa.Blog.DataLayer;
 using BlackMesa.Blog.Main.ViewModels;
+using BlackMesa.Blog.Model;
+using PagedList;
 
 namespace BlackMesa.Blog.Main.Controllers
 {
