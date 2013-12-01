@@ -1,0 +1,87 @@
+﻿@using System.Globalization
+@using BlackMesa.Blog.Utilities
+@using BlackMesa.Main.Utilities
+@using BlackMesa.Resources
+@using BlackMesa.Utilities
+@using Blog.Main.Utilities
+
+@model Blog.Main.Models.Entry
+
+<div class="article-head">
+        <div class="article-date-day">
+            @Model.DateCreated.ToString("dd")
+        </div>
+        <div class="article-month-year-container">
+            <div class="article-date-month">@CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Model.DateCreated.Month)
+            </div>
+            <div class="article-date-year">
+                @Model.DateCreated.Year
+            </div>
+        </div>
+        <div class="article-title-subtitle-container">
+            <div class="article-title">
+                @Html.ActionLink(Model.Title, "Details", "Entry", new { id = Model.Id, title = Utilities.MakeUrlFriendly(Model.Title)  }, null )
+            </div>
+
+            <div class="article-subtitle">
+                @*
+                <i class="icon-comment"></i>
+                @Model.Comments.Count  Todo optimize database call
+                *@
+                @if(!Model.Published)
+                {
+                    <i class="icon-eye-close" alt="Article not published yet."></i>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.Partial("_EntryManagmentButton", Model);
+                }
+                
+                
+                @if (Model.DateCreated != Model.DateEdited)
+                {
+                    <span class="revised-on">
+                        <i class="icon-edit"></i> @(Strings.RevisedOn +": " + Model.DateEdited.ToShortDateString())
+                    </span>
+                }
+                
+
+                <span class="tags">
+                    
+                    @if (Model.Tags.Count > 0)
+                    {
+                        <i class="icon-tags"></i> @:Tags:
+                        foreach(var tag in Model.Tags)
+                        {
+                            /* This solution triggers a normal HttpGet request with a query string in the url bar
+
+                            @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, null)
+                        
+                             * we can create links to multi tag search results this way:  e.g. ?SelectedTags=less%2Csecurity */
+                        
+
+                            /* This solution uses Post-Form to avoid query strings in url - but its an own request - no ajax here
+
+                            var formId = tag.Name + "-form";
+                            using(Html.BeginForm("Index", "Entry", null, FormMethod.Post, new { Id = formId, Class = "tag-form"}))
+                            {
+                            
+                                <input type="hidden" name="SelectedTags" value="@tag.Name" id="SelectedTags"/>
+                                <a href="#" onclick="$('#@formId').submit()">@tag.Name</a>
+                            }
+                        
+                            */
+                        
+                        
+                            /* 
+                                best solution would be to call a tagHandler.AddTag function which then handles the ajax call, but apparently there is no AddTag API function available :( therefore i reinitialize the tagHandler on click, forcing him to trigger the afterAdd event. reinitialization has some sideeffects to the DOM structure, i have taken care of with those two jquery statements found in the js script tag in the index.cshtml
+                        
+                            */
+                            
+                            <a onclick="onTagClick('@tag.Name')">@tag.Name</a>
+                        }
+                    }
+                </span>
+            </div>
+        </div>
+    </div>

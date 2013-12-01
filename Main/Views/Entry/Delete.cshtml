@@ -1,0 +1,29 @@
+﻿@model Blog.Main.Models.Entry
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<fieldset>
+    <legend>Delete Entry</legend>
+
+    <p>Are you sure you want to delete this?</p>
+
+    <div class="display-field">
+        <strong>@Html.DisplayFor(model => model.Title)</strong>
+    </div>
+
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateCreated)
+    </div>
+</fieldset>
+
+<br/>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input class="btn btn-primary" type="submit" value="Delete" />
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+    </p>
+}

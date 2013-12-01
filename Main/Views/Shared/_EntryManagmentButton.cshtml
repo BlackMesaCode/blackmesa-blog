@@ -1,0 +1,15 @@
+﻿@using BlackMesa.Resources
+@model Blog.Main.Models.Entry
+
+<div class="entry-managment-button">
+    <div class="btn-group">
+        <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="icon-cog"></i>
+            @* <span class="caret"></span> *@
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })"><i class="icon-pencil"></i> @Strings.Edit</a></li>
+            <li><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })"><i class="icon-trash"></i> @Strings.Delete</a></li>
+        </ul>
+    </div>
+</div>

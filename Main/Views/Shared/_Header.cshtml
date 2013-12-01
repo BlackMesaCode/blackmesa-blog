@@ -1,0 +1,90 @@
+﻿@using System.Globalization
+@using System.Threading
+@using BlackMesa
+@using BlackMesa.Blog
+@using BlackMesa.Main
+@using BlackMesa.Resources
+@using Blog.Main
+
+<div id="top-header-bar">
+    <img id="header-logo" src="/Content/images/blackmesa_logo_simple.png" alt="BlackMesa Logo"/>
+    <div id="language-selection">
+        <div class="btn-group">
+            <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-globe"></i> @Thread.CurrentThread.CurrentCulture.NativeName
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                @foreach(var language in Global.AllowedLanguages.Where(l => l != ViewBag.CurrentLanguage))
+                {
+                    var culture = CultureInfo.CreateSpecificCulture(language);
+                    
+                    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "Details" && HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Entry")
+                    {
+                        <li><a href="@Url.Action("Index", "Entry", new { culture = culture.Name })"> @culture.EnglishName</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action(HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString(), HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), new { id = (HttpContext.Current.Request.RequestContext.RouteData.Values["id"] ?? "" ),culture = culture.Name })"> @culture.EnglishName</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    
+    <div id="datetime">
+        <i class="icon-time"></i> @DateTime.Now.ToLongDateString(), @DateTime.Now.ToShortTimeString()
+    </div>
+
+    
+    <div id="membership">
+        @if (Request.IsAuthenticated)
+        {
+            @* @Html.Partial("_LoggedIn")*@
+
+            <div class="btn-group">
+                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-unlock"></i> @User.Identity.Name
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="@Url.Action("Manage", "Account")"><i class="icon-cogs"></i> @Strings.Manage</a></li>
+                    <li><a href="@Url.Action("LogOff", "Account")"><i class="icon-signout"></i> @Strings.Logout</a></li>
+                </ul>
+            </div>
+            
+        }
+        else
+        {
+            <div class="btn-group">
+                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-lock"></i> @Strings.Guest
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="@Url.Action("Login", "Account")"><i class="icon-signin"></i> @Strings.LogIn</a></li>
+                </ul>
+            </div>
+           
+        }
+    </div>
+</div>
+
+<hr/>
+
+<div id="logo">
+    <a href="@Url.Action("Index", "Entry")"><img src="/Content/images/devblog_logo.png" alt="BlackMesa Logo"/></a>
+</div>
+
+<div id="bottom-header-bar">
+    <nav>
+        @Html.Partial("_Navigation")
+    </nav>
+    <div id="filter-by-tag">
+        <div id="filter-by-tag-caption"><i class="icon-tags"></i> @Strings.FilterByTag: </div>
+        <div id="filter-by-tag-input">
+            <ul class="tag-input"></ul>
+        </div>
+    </div>
+</div>
+

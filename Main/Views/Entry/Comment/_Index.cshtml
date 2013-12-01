@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Blog.Main.Models.Comment>
+
+<section id="comment-index">
+    <h1>Comments (@Model.Count())</h1>
+
+    @foreach(var comment in Model)
+    {
+        @Html.Partial("Comment/_Details", comment)
+    }
+
+</section>
