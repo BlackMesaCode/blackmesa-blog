@@ -23,8 +23,6 @@ namespace BlackMesa.Blog.Main
 
         protected void Application_Start()
         {
-            EntityFrameworkProfilerBootstrapper.PreStart();
-
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
