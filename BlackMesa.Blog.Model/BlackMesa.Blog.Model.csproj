@@ -45,7 +45,7 @@
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ressources\BlackMesa.Blog.Resources.csproj">
+    <ProjectReference Include="..\BlackMesa.Blog.Ressources\BlackMesa.Blog.Resources.csproj">
       <Project>{ce4bc338-bd91-4f2a-b7ed-d2dbf67a9670}</Project>
       <Name>BlackMesa.Blog.Resources</Name>
     </ProjectReference>
