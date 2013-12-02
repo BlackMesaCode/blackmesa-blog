@@ -1,7 +1,26 @@
-﻿/* Import core variables and mixins */
+﻿
 
-@import "../../bootstrap/less/mixins.less";
-@import "../../bootstrap/less/utilities.less";
+/* Clearfix */
+
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+  &:after {
+    clear: both;
+  }
+}
 
 
 /* Custom Colors */
@@ -11,6 +30,78 @@
 @blue:  #006dcc;
 @blueLight: #008afb;
 @orange: #ff9500;
+
+
+
+/* Typography */
+
+@font-face {
+    font-family: 'bebas';
+    src: url('../fonts/bebasneue-webfont.eot');
+    src: url('../fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bebasneue-webfont.woff') format('woff'),
+         url('../fonts/bebasneue-webfont.ttf') format('truetype'),
+         url('../fonts/bebasneue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*
+@font-face {
+    font-family: 'newmedia';
+    src: url('../fonts/newmedia-webfont.eot');
+    src: url('../fonts/newmedia-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/newmedia-webfont.woff') format('woff'),
+         url('../fonts/newmedia-webfont.ttf') format('truetype'),
+         url('../fonts/newmedia-webfont.svg#newmediaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'newmediabold';
+    src: url('../fonts/newmedia_fett-webfont.eot');
+    src: url('../fonts/newmedia_fett-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/newmedia_fett-webfont.woff') format('woff'),
+         url('../fonts/newmedia_fett-webfont.ttf') format('truetype'),
+         url('../fonts/newmedia_fett-webfont.svg#newmediabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'newmediafett_kursiv';
+    src: url('../fonts/newmedia_fett_kursiv-webfont.eot');
+    src: url('../fonts/newmedia_fett_kursiv-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/newmedia_fett_kursiv-webfont.woff') format('woff'),
+         url('../fonts/newmedia_fett_kursiv-webfont.ttf') format('truetype'),
+         url('../fonts/newmedia_fett_kursiv-webfont.svg#newmediafett_kursiv') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'newmediaregular_italic';
+    src: url('../fonts/newmedia_kursiv-webfont.eot');
+    src: url('../fonts/newmedia_kursiv-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/newmedia_kursiv-webfont.woff') format('woff'),
+         url('../fonts/newmedia_kursiv-webfont.ttf') format('truetype'),
+         url('../fonts/newmedia_kursiv-webfont.svg#newmediaregular_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+*/
+
+
 
 
 /* Layout */
@@ -568,7 +659,7 @@ footer {
 
 
     #powered-by {
-        .pull-right;
+        float: right !important;
 
         span {
             margin-right: 5px;
