@@ -19,16 +19,14 @@ body{
 
 
 header {
-    .clearfix;
     margin-bottom: 40px;
-    text-align: right;
 
     #top-header-bar {
         .clearfix;
         margin-top: 4px;
 
         #header-logo {
-            float: left; 
+            float: left;
             margin-right: 20px;
         }
 
@@ -100,26 +98,32 @@ header {
         background-color: #DDD;
     }
 
-    #logo {
-        /* float: right; */
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
 
     #bottom-header-bar {
-        /* float: left; */
-        font-family: 'bebas';
-        font-size: 15px;
-        letter-spacing: 1px;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+        align-items: center;
+        margin-top: 50px;
+        margin-bottom: 10px;
+
+        #logo {
+        }
+
+        
 
         nav {
-            display: inline-block;
-            vertical-align: middle;
-            line-height: 30px;
-            height: 30px;
-
+            flex-grow: 1;
+            font-family: 'bebas';
+            font-size: 18px;
+            letter-spacing: 1px;
+            height: 40px;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-end;
+            align-items: center;
             ul {
-                height: 30px;
+
                 margin: 0px;
                 padding: 0px;
                 list-style-type: none;
@@ -141,7 +145,7 @@ header {
 
                             span {
                                 color: @blue-light;
-                                text-decoration: underline;
+                                text-decoration: none;
                             }
                         }
                     }

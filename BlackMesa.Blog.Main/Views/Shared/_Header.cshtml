@@ -3,6 +3,7 @@
 @using BlackMesa.Blog.Main
 @using BlackMesa.Blog.Resources
 
+<!--
 <div id="top-header-bar">
     <img id="header-logo" src="/Content/custom/images/blackmesa_logo_simple.png" alt="BlackMesa Logo"/>
     <div id="language-selection">
@@ -69,19 +70,23 @@
 
 <hr/>
 
-<div id="logo">
-    <a href="@Url.Action("Index", "Entry")"><img src="/Content/custom/images/devblog_logo.png" alt="BlackMesa Logo"/></a>
-</div>
+-->
+
+
 
 <div id="bottom-header-bar">
+    <div id="logo">
+        <a href="@Url.Action("Index", "Entry")"><img src="/Content/custom/images/blackmesa_logo.png" alt="BlackMesa Logo" /></a>
+    </div>
+
     <nav>
         @Html.Partial("_Navigation")
     </nav>
-    <div id="filter-by-tag">
+    @*<div id="filter-by-tag">
         <div id="filter-by-tag-caption"><i class="fa fa-tags"></i> @Strings.FilterByTag: </div>
         <div id="filter-by-tag-input">
             <ul class="tag-input"></ul>
         </div>
-    </div>
+    </div>*@
 </div>
 
