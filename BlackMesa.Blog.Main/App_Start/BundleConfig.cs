@@ -21,36 +21,30 @@ namespace BlackMesa.Blog.Main.App_Start
 //            const string jQueryCdnPath = "http://code.jquery.com/jquery-1.9.1.min.js";
 
             bundles.Add(new ScriptBundle("~/bundles/global")
-                .Include("~/Content/scripts/jquery-{version}.js", "~/Content/scripts/jquery-ui-1.10.2.custom.js", "~/Content/bootstrap/js/bootstrap.js", "~/Content/scripts/shCore.js", "~/Content/scripts/shAutoloader.js", "~/Content/scripts/shLegacy.js", "~/Content/scripts/jquery.taghandler.js", "~/Content/scripts/global.js", "~/Content/scripts/jquery.unobtrusive*", "~/Content/scripts/jquery.validate*", "~/Content/scripts/google-analytics.js"));
+                .Include("~/Content/custom/scripts/global.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin")
-                .Include("~/Content/bootstrap-datepicker/js/bootstrap-datepicker.js", "~/Content/scripts/jquery-autogrow-textarea.js", "~/Content/scripts/ace/ace.js", "~/Content/scripts/ace/theme-clouds.js", "~/Content/scripts/ace/mode-html.js"));
+                //.Include("~/Content/scripts/jquery-autogrow-textarea.js")
+                .Include("~/Content/scripts/ace/ace.js")
+                .Include("~/Content/scripts/ace/theme-clouds.js")
+                .Include("~/Content/scripts/ace/mode-html.js"));
             
- 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr")
-                .Include("~/Content/scripts/modernizr-*"));
-
 
             // Style Bundles
 
             var mainBundle = new Bundle("~/Content/global")
                 .Include("~/Content/font-awesome/css/font-awesome.min.css")
                 .Include("~/Content/custom/less/custom.less")
-                .Include("~/Content/custom/less/jquery-ui-1.10.2.custom.less")
                 .Include("~/Content/custom/less/shCoreDefault.less")
-                .Include("~/Content/custom/less/shThemeDefault.less")
-                .Include("~/Content/custom/less/jquery.taghandler.less");
+                .Include("~/Content/custom/less/shThemeDefault.less");
                 
             mainBundle.Transforms.Add(cssTransformer);
             mainBundle.Transforms.Add(cssMinifier);
             mainBundle.Orderer = nullOrderer;
             bundles.Add(mainBundle);
 
-            var adminBundle = new Bundle("~/Content/admin")
-                .Include("~/Content/bootstrap-datepicker/css/datepicker.css");
-                //.Include("~/Content/styles/bootstrap-tagmanager.less");
+            var adminBundle = new Bundle("~/Content/admin");
+                
             adminBundle.Transforms.Add(cssTransformer);
             mainBundle.Transforms.Add(cssMinifier);
             adminBundle.Orderer = nullOrderer;

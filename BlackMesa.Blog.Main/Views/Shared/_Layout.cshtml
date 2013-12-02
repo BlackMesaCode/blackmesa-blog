@@ -1,31 +1,37 @@
 ﻿@using System.Web.Configuration
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/x-icon"/>
-    <link rel="icon" href="@Url.Content("~/Content/Images/favicon.jpg")" type="image/png"/>
+
+    <link rel="shortcut icon" href="@Url.Content("~/Content/custom/images/favicon.ico")" type="image/x-icon" />
+    <link rel="icon" href="@Url.Content("~/Content/custom/images/favicon.jpg")" type="image/png" />
+
     <title>@ViewBag.Title | @WebConfigurationManager.AppSettings.Get("SiteTitle")</title>
-    @Styles.Render("~/Content/global")
+
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/normalize/normalize.css" rel="stylesheet" />
+    <link href="~/Content/custom/less/custom.less" rel="stylesheet" />
+    <link href="~/Content/pagedlist/PagedList.css" rel="stylesheet" />
+
     @RenderSection("Styles", required: false)
-    @Scripts.Render("~/bundles/modernizr")
 </head>
-    <body>
-        <div class="container">
-            <header>
-                @Html.Partial("_Header")
-            </header>
-            <div id="content">
-                @RenderBody()
-            </div>
-            <footer>
-                @Html.Partial("_Footer")
-            </footer>
+<body>
+    <div class="container">
+        <header>
+            @Html.Partial("_Header")
+        </header>
+        <div id="content">
+            @RenderBody()
         </div>
-        @Html.Partial("_GlobalJavascript")
-        @Scripts.Render("~/bundles/global")
-        @RenderSection("Scripts", required: false)
-    </body>
+        <footer>
+            @Html.Partial("_Footer")
+        </footer>
+    </div>
+
+    <script src="~/Content/custom/scripts/global.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
 </html>

@@ -17,28 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ToDo.txt = ToDo.txt
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BlackMesa.Blog.Experimental", "http://localhost:1224", "{F66EA933-CD04-4E8D-8723-0B38EF21765A}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_1224"
-		Debug.AspNetCompiler.PhysicalPath = "BlackMesa.Blog.Experimental\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1224\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_1224"
-		Release.AspNetCompiler.PhysicalPath = "BlackMesa.Blog.Experimental\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1224\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "BlackMesa.Blog.Experimental\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Blog.Model", "BlackMesa.Blog.Model\BlackMesa.Blog.Model.csproj", "{6B4803BE-C717-47D0-B243-621BC92DDCF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Blog.DataLayer", "BlackMesa.Blog.DataLayer\BlackMesa.Blog.DataLayer.csproj", "{238F3174-7AFA-4EA8-A536-494E4FDEBEEA}"
@@ -55,10 +33,6 @@ Global
 		{FCBFD8B5-6A41-4342-8BA4-D504F867EA48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCBFD8B5-6A41-4342-8BA4-D504F867EA48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCBFD8B5-6A41-4342-8BA4-D504F867EA48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F66EA933-CD04-4E8D-8723-0B38EF21765A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F66EA933-CD04-4E8D-8723-0B38EF21765A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F66EA933-CD04-4E8D-8723-0B38EF21765A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{F66EA933-CD04-4E8D-8723-0B38EF21765A}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{6B4803BE-C717-47D0-B243-621BC92DDCF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B4803BE-C717-47D0-B243-621BC92DDCF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B4803BE-C717-47D0-B243-621BC92DDCF2}.Release|Any CPU.ActiveCfg = Release|Any CPU

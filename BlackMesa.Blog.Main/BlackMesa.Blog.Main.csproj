@@ -22,8 +22,8 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <TargetFrameworkProfile />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,13 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">
-      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="BundleTransformer.Core">
-      <HintPath>..\packages\BundleTransformer.Core.1.8.12\lib\net40\BundleTransformer.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="BundleTransformer.Less">
-      <HintPath>..\packages\BundleTransformer.Less.1.8.12\lib\net40\BundleTransformer.Less.dll</HintPath>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="dotless.Core, Version=1.3.1.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -85,12 +79,6 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="JavaScriptEngineSwitcher.Core">
-      <HintPath>..\packages\JavaScriptEngineSwitcher.Core.0.9.2\lib\net40\JavaScriptEngineSwitcher.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="JavaScriptEngineSwitcher.Msie">
-      <HintPath>..\packages\JavaScriptEngineSwitcher.Msie.0.9.2\lib\net40\JavaScriptEngineSwitcher.Msie.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -105,9 +93,6 @@
     <Reference Include="Microsoft.Web.WebPages.OAuth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.3.0.0\lib\net45\Microsoft.Web.WebPages.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="MsieJavaScriptEngine">
-      <HintPath>..\packages\MsieJavaScriptEngine.1.1.3\lib\net40\MsieJavaScriptEngine.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -160,8 +145,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -196,8 +180,7 @@
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
     <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -211,7 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AuthConfig.cs" />
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -238,78 +220,6 @@
     <Compile Include="ViewModels\EntryIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-datepicker\css\datepicker.css" />
-    <Content Include="Content\bootstrap-datepicker\css\datepicker3.css" />
-    <Content Include="Content\bootstrap-datepicker\js\bootstrap-datepicker.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ar.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.bg.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ca.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.cs.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.cy.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.da.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.de.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.el.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.es.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.et.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.fa.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.fi.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.fr.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.gl.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.he.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.hr.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.hu.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.id.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.is.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.it.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ja.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ka.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.kk.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.kr.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.lt.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.lv.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.mk.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ms.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.nb.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.nl-BE.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.nl.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.no.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.pl.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.pt-BR.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.pt.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ro.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.rs-latin.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.rs.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ru.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sk.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sl.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sq.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sv.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sw.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.th.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.tr.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ua.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.uk.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.zh-CN.js" />
-    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.zh-TW.js" />
-    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap\css\bootstrap.css" />
-    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\bootstrap\js\affix.js" />
-    <Content Include="Content\bootstrap\js\alert.js" />
-    <Content Include="Content\bootstrap\js\bootstrap.js" />
-    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Content\bootstrap\js\button.js" />
-    <Content Include="Content\bootstrap\js\carousel.js" />
-    <Content Include="Content\bootstrap\js\collapse.js" />
-    <Content Include="Content\bootstrap\js\dropdown.js" />
-    <Content Include="Content\bootstrap\js\modal.js" />
-    <Content Include="Content\bootstrap\js\popover.js" />
-    <Content Include="Content\bootstrap\js\scrollspy.js" />
-    <Content Include="Content\bootstrap\js\tab.js" />
-    <Content Include="Content\bootstrap\js\tooltip.js" />
-    <Content Include="Content\bootstrap\js\transition.js" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.svg" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\custom\images\address.png" />
@@ -327,10 +237,8 @@
     <Content Include="Content\custom\images\tag_remove.cur" />
     <Content Include="Content\custom\images\tag_remove.png" />
     <Content Include="Content\custom\images\tag_update.png" />
-    <None Include="BundleTransformer.Configuration.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Content\normalize\normalize.css" />
+    <Content Include="Content\pagedlist\PagedList.css" />
     <Content Include="Content\Sicherung\bootstrap-datetimepicker.less" />
     <Content Include="Content\Sicherung\bootstrap.less" />
     <Content Include="Content\Sicherung\button-groups.less" />
@@ -345,269 +253,196 @@
     <Content Include="Content\Sicherung\forms.less" />
     <Content Include="Content\Sicherung\grid.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Content\custom\less\jquery-ui-1.10.2.custom.less" />
-    <Content Include="Content\custom\less\jquery.taghandler.less" />
     <Content Include="Content\Sicherung\layouts.less" />
     <Content Include="Content\Sicherung\mixins.less" />
     <Content Include="Content\Sicherung\pagination.less" />
     <Content Include="Content\Sicherung\reset.less" />
     <Content Include="Content\Sicherung\scaffolding.less" />
-    <Content Include="Content\custom\less\shCoreDefault.less" />
-    <Content Include="Content\custom\less\shThemeDefault.less" />
+    <Content Include="Content\Sicherung\shCoreDefault.less" />
+    <Content Include="Content\Sicherung\shThemeDefault.less" />
     <Content Include="Content\Sicherung\tables.less" />
     <Content Include="Content\Sicherung\type.less" />
     <Content Include="Content\Sicherung\utilities.less" />
     <Content Include="Content\Sicherung\variables.less" />
-    <Content Include="Content\scripts\ace\ace.js" />
-    <Content Include="Content\scripts\ace\ext-elastic_tabstops_lite.js" />
-    <Content Include="Content\scripts\ace\ext-emmet.js" />
-    <Content Include="Content\scripts\ace\ext-searchbox.js" />
-    <Content Include="Content\scripts\ace\ext-spellcheck.js" />
-    <Content Include="Content\scripts\ace\ext-static_highlight.js" />
-    <Content Include="Content\scripts\ace\ext-textarea.js" />
-    <Content Include="Content\scripts\ace\ext-whitespace.js" />
-    <Content Include="Content\scripts\ace\keybinding-emacs.js" />
-    <Content Include="Content\scripts\ace\keybinding-vim.js" />
-    <Content Include="Content\scripts\ace\mode-abap.js" />
-    <Content Include="Content\scripts\ace\mode-asciidoc.js" />
-    <Content Include="Content\scripts\ace\mode-c9search.js" />
-    <Content Include="Content\scripts\ace\mode-clojure.js" />
-    <Content Include="Content\scripts\ace\mode-coffee.js" />
-    <Content Include="Content\scripts\ace\mode-coldfusion.js" />
-    <Content Include="Content\scripts\ace\mode-csharp.js" />
-    <Content Include="Content\scripts\ace\mode-css.js" />
-    <Content Include="Content\scripts\ace\mode-curly.js" />
-    <Content Include="Content\scripts\ace\mode-c_cpp.js" />
-    <Content Include="Content\scripts\ace\mode-dart.js" />
-    <Content Include="Content\scripts\ace\mode-diff.js" />
-    <Content Include="Content\scripts\ace\mode-django.js" />
-    <Content Include="Content\scripts\ace\mode-dot.js" />
-    <Content Include="Content\scripts\ace\mode-ftl.js" />
-    <Content Include="Content\scripts\ace\mode-glsl.js" />
-    <Content Include="Content\scripts\ace\mode-golang.js" />
-    <Content Include="Content\scripts\ace\mode-groovy.js" />
-    <Content Include="Content\scripts\ace\mode-haml.js" />
-    <Content Include="Content\scripts\ace\mode-haxe.js" />
-    <Content Include="Content\scripts\ace\mode-html.js" />
-    <Content Include="Content\scripts\ace\mode-jade.js" />
-    <Content Include="Content\scripts\ace\mode-java.js" />
-    <Content Include="Content\scripts\ace\mode-javascript.js" />
-    <Content Include="Content\scripts\ace\mode-json.js" />
-    <Content Include="Content\scripts\ace\mode-jsp.js" />
-    <Content Include="Content\scripts\ace\mode-jsx.js" />
-    <Content Include="Content\scripts\ace\mode-latex.js" />
-    <Content Include="Content\scripts\ace\mode-less.js" />
-    <Content Include="Content\scripts\ace\mode-liquid.js" />
-    <Content Include="Content\scripts\ace\mode-lisp.js" />
-    <Content Include="Content\scripts\ace\mode-livescript.js" />
-    <Content Include="Content\scripts\ace\mode-logiql.js" />
-    <Content Include="Content\scripts\ace\mode-lsl.js" />
-    <Content Include="Content\scripts\ace\mode-lua.js" />
-    <Content Include="Content\scripts\ace\mode-luapage.js" />
-    <Content Include="Content\scripts\ace\mode-lucene.js" />
-    <Content Include="Content\scripts\ace\mode-makefile.js" />
-    <Content Include="Content\scripts\ace\mode-markdown.js" />
-    <Content Include="Content\scripts\ace\mode-mushcode.js" />
-    <Content Include="Content\scripts\ace\mode-mushcode_high_rules.js" />
-    <Content Include="Content\scripts\ace\mode-objectivec.js" />
-    <Content Include="Content\scripts\ace\mode-ocaml.js" />
-    <Content Include="Content\scripts\ace\mode-pascal.js" />
-    <Content Include="Content\scripts\ace\mode-perl.js" />
-    <Content Include="Content\scripts\ace\mode-pgsql.js" />
-    <Content Include="Content\scripts\ace\mode-php.js" />
-    <Content Include="Content\scripts\ace\mode-powershell.js" />
-    <Content Include="Content\scripts\ace\mode-python.js" />
-    <Content Include="Content\scripts\ace\mode-r.js" />
-    <Content Include="Content\scripts\ace\mode-rdoc.js" />
-    <Content Include="Content\scripts\ace\mode-rhtml.js" />
-    <Content Include="Content\scripts\ace\mode-ruby.js" />
-    <Content Include="Content\scripts\ace\mode-sass.js" />
-    <Content Include="Content\scripts\ace\mode-scad.js" />
-    <Content Include="Content\scripts\ace\mode-scala.js" />
-    <Content Include="Content\scripts\ace\mode-scheme.js" />
-    <Content Include="Content\scripts\ace\mode-scss.js" />
-    <Content Include="Content\scripts\ace\mode-sh.js" />
-    <Content Include="Content\scripts\ace\mode-sql.js" />
-    <Content Include="Content\scripts\ace\mode-stylus.js" />
-    <Content Include="Content\scripts\ace\mode-svg.js" />
-    <Content Include="Content\scripts\ace\mode-tcl.js" />
-    <Content Include="Content\scripts\ace\mode-tex.js" />
-    <Content Include="Content\scripts\ace\mode-text.js" />
-    <Content Include="Content\scripts\ace\mode-textile.js" />
-    <Content Include="Content\scripts\ace\mode-tmsnippet.js" />
-    <Content Include="Content\scripts\ace\mode-toml.js" />
-    <Content Include="Content\scripts\ace\mode-typescript.js" />
-    <Content Include="Content\scripts\ace\mode-vbscript.js" />
-    <Content Include="Content\scripts\ace\mode-velocity.js" />
-    <Content Include="Content\scripts\ace\mode-xml.js" />
-    <Content Include="Content\scripts\ace\mode-xquery.js" />
-    <Content Include="Content\scripts\ace\mode-yaml.js" />
-    <Content Include="Content\scripts\ace\theme-ambiance.js" />
-    <Content Include="Content\scripts\ace\theme-chaos.js" />
-    <Content Include="Content\scripts\ace\theme-chrome.js" />
-    <Content Include="Content\scripts\ace\theme-clouds.js" />
-    <Content Include="Content\scripts\ace\theme-clouds_midnight.js" />
-    <Content Include="Content\scripts\ace\theme-cobalt.js" />
-    <Content Include="Content\scripts\ace\theme-crimson_editor.js" />
-    <Content Include="Content\scripts\ace\theme-dawn.js" />
-    <Content Include="Content\scripts\ace\theme-dreamweaver.js" />
-    <Content Include="Content\scripts\ace\theme-eclipse.js" />
-    <Content Include="Content\scripts\ace\theme-github.js" />
-    <Content Include="Content\scripts\ace\theme-idle_fingers.js" />
-    <Content Include="Content\scripts\ace\theme-kr.js" />
-    <Content Include="Content\scripts\ace\theme-merbivore.js" />
-    <Content Include="Content\scripts\ace\theme-merbivore_soft.js" />
-    <Content Include="Content\scripts\ace\theme-monokai.js" />
-    <Content Include="Content\scripts\ace\theme-mono_industrial.js" />
-    <Content Include="Content\scripts\ace\theme-pastel_on_dark.js" />
-    <Content Include="Content\scripts\ace\theme-solarized_dark.js" />
-    <Content Include="Content\scripts\ace\theme-solarized_light.js" />
-    <Content Include="Content\scripts\ace\theme-terminal.js" />
-    <Content Include="Content\scripts\ace\theme-textmate.js" />
-    <Content Include="Content\scripts\ace\theme-tomorrow.js" />
-    <Content Include="Content\scripts\ace\theme-tomorrow_night.js" />
-    <Content Include="Content\scripts\ace\theme-tomorrow_night_blue.js" />
-    <Content Include="Content\scripts\ace\theme-tomorrow_night_bright.js" />
-    <Content Include="Content\scripts\ace\theme-tomorrow_night_eighties.js" />
-    <Content Include="Content\scripts\ace\theme-twilight.js" />
-    <Content Include="Content\scripts\ace\theme-vibrant_ink.js" />
-    <Content Include="Content\scripts\ace\theme-xcode.js" />
-    <Content Include="Content\scripts\ace\worker-coffee.js" />
-    <Content Include="Content\scripts\ace\worker-css.js" />
-    <Content Include="Content\scripts\ace\worker-javascript.js" />
-    <Content Include="Content\scripts\ace\worker-json.js" />
-    <Content Include="Content\scripts\ace\worker-lua.js" />
-    <Content Include="Content\scripts\ace\worker-php.js" />
-    <Content Include="Content\scripts\ace\worker-xquery.js" />
-    <Content Include="Content\scripts\google-analytics.js" />
-    <Content Include="Content\scripts\entry-create-edit.js" />
-    <Content Include="Content\scripts\global.js" />
+    <Content Include="Content\ace\ace.js" />
+    <Content Include="Content\ace\ext-elastic_tabstops_lite.js" />
+    <Content Include="Content\ace\ext-emmet.js" />
+    <Content Include="Content\ace\ext-searchbox.js" />
+    <Content Include="Content\ace\ext-spellcheck.js" />
+    <Content Include="Content\ace\ext-static_highlight.js" />
+    <Content Include="Content\ace\ext-textarea.js" />
+    <Content Include="Content\ace\ext-whitespace.js" />
+    <Content Include="Content\ace\keybinding-emacs.js" />
+    <Content Include="Content\ace\keybinding-vim.js" />
+    <Content Include="Content\ace\mode-abap.js" />
+    <Content Include="Content\ace\mode-asciidoc.js" />
+    <Content Include="Content\ace\mode-c9search.js" />
+    <Content Include="Content\ace\mode-clojure.js" />
+    <Content Include="Content\ace\mode-coffee.js" />
+    <Content Include="Content\ace\mode-coldfusion.js" />
+    <Content Include="Content\ace\mode-csharp.js" />
+    <Content Include="Content\ace\mode-css.js" />
+    <Content Include="Content\ace\mode-curly.js" />
+    <Content Include="Content\ace\mode-c_cpp.js" />
+    <Content Include="Content\ace\mode-dart.js" />
+    <Content Include="Content\ace\mode-diff.js" />
+    <Content Include="Content\ace\mode-django.js" />
+    <Content Include="Content\ace\mode-dot.js" />
+    <Content Include="Content\ace\mode-ftl.js" />
+    <Content Include="Content\ace\mode-glsl.js" />
+    <Content Include="Content\ace\mode-golang.js" />
+    <Content Include="Content\ace\mode-groovy.js" />
+    <Content Include="Content\ace\mode-haml.js" />
+    <Content Include="Content\ace\mode-haxe.js" />
+    <Content Include="Content\ace\mode-html.js" />
+    <Content Include="Content\ace\mode-jade.js" />
+    <Content Include="Content\ace\mode-java.js" />
+    <Content Include="Content\ace\mode-javascript.js" />
+    <Content Include="Content\ace\mode-json.js" />
+    <Content Include="Content\ace\mode-jsp.js" />
+    <Content Include="Content\ace\mode-jsx.js" />
+    <Content Include="Content\ace\mode-latex.js" />
+    <Content Include="Content\ace\mode-less.js" />
+    <Content Include="Content\ace\mode-liquid.js" />
+    <Content Include="Content\ace\mode-lisp.js" />
+    <Content Include="Content\ace\mode-livescript.js" />
+    <Content Include="Content\ace\mode-logiql.js" />
+    <Content Include="Content\ace\mode-lsl.js" />
+    <Content Include="Content\ace\mode-lua.js" />
+    <Content Include="Content\ace\mode-luapage.js" />
+    <Content Include="Content\ace\mode-lucene.js" />
+    <Content Include="Content\ace\mode-makefile.js" />
+    <Content Include="Content\ace\mode-markdown.js" />
+    <Content Include="Content\ace\mode-mushcode.js" />
+    <Content Include="Content\ace\mode-mushcode_high_rules.js" />
+    <Content Include="Content\ace\mode-objectivec.js" />
+    <Content Include="Content\ace\mode-ocaml.js" />
+    <Content Include="Content\ace\mode-pascal.js" />
+    <Content Include="Content\ace\mode-perl.js" />
+    <Content Include="Content\ace\mode-pgsql.js" />
+    <Content Include="Content\ace\mode-php.js" />
+    <Content Include="Content\ace\mode-powershell.js" />
+    <Content Include="Content\ace\mode-python.js" />
+    <Content Include="Content\ace\mode-r.js" />
+    <Content Include="Content\ace\mode-rdoc.js" />
+    <Content Include="Content\ace\mode-rhtml.js" />
+    <Content Include="Content\ace\mode-ruby.js" />
+    <Content Include="Content\ace\mode-sass.js" />
+    <Content Include="Content\ace\mode-scad.js" />
+    <Content Include="Content\ace\mode-scala.js" />
+    <Content Include="Content\ace\mode-scheme.js" />
+    <Content Include="Content\ace\mode-scss.js" />
+    <Content Include="Content\ace\mode-sh.js" />
+    <Content Include="Content\ace\mode-sql.js" />
+    <Content Include="Content\ace\mode-stylus.js" />
+    <Content Include="Content\ace\mode-svg.js" />
+    <Content Include="Content\ace\mode-tcl.js" />
+    <Content Include="Content\ace\mode-tex.js" />
+    <Content Include="Content\ace\mode-text.js" />
+    <Content Include="Content\ace\mode-textile.js" />
+    <Content Include="Content\ace\mode-tmsnippet.js" />
+    <Content Include="Content\ace\mode-toml.js" />
+    <Content Include="Content\ace\mode-typescript.js" />
+    <Content Include="Content\ace\mode-vbscript.js" />
+    <Content Include="Content\ace\mode-velocity.js" />
+    <Content Include="Content\ace\mode-xml.js" />
+    <Content Include="Content\ace\mode-xquery.js" />
+    <Content Include="Content\ace\mode-yaml.js" />
+    <Content Include="Content\ace\theme-ambiance.js" />
+    <Content Include="Content\ace\theme-chaos.js" />
+    <Content Include="Content\ace\theme-chrome.js" />
+    <Content Include="Content\ace\theme-clouds.js" />
+    <Content Include="Content\ace\theme-clouds_midnight.js" />
+    <Content Include="Content\ace\theme-cobalt.js" />
+    <Content Include="Content\ace\theme-crimson_editor.js" />
+    <Content Include="Content\ace\theme-dawn.js" />
+    <Content Include="Content\ace\theme-dreamweaver.js" />
+    <Content Include="Content\ace\theme-eclipse.js" />
+    <Content Include="Content\ace\theme-github.js" />
+    <Content Include="Content\ace\theme-idle_fingers.js" />
+    <Content Include="Content\ace\theme-kr.js" />
+    <Content Include="Content\ace\theme-merbivore.js" />
+    <Content Include="Content\ace\theme-merbivore_soft.js" />
+    <Content Include="Content\ace\theme-monokai.js" />
+    <Content Include="Content\ace\theme-mono_industrial.js" />
+    <Content Include="Content\ace\theme-pastel_on_dark.js" />
+    <Content Include="Content\ace\theme-solarized_dark.js" />
+    <Content Include="Content\ace\theme-solarized_light.js" />
+    <Content Include="Content\ace\theme-terminal.js" />
+    <Content Include="Content\ace\theme-textmate.js" />
+    <Content Include="Content\ace\theme-tomorrow.js" />
+    <Content Include="Content\ace\theme-tomorrow_night.js" />
+    <Content Include="Content\ace\theme-tomorrow_night_blue.js" />
+    <Content Include="Content\ace\theme-tomorrow_night_bright.js" />
+    <Content Include="Content\ace\theme-tomorrow_night_eighties.js" />
+    <Content Include="Content\ace\theme-twilight.js" />
+    <Content Include="Content\ace\theme-vibrant_ink.js" />
+    <Content Include="Content\ace\theme-xcode.js" />
+    <Content Include="Content\ace\worker-coffee.js" />
+    <Content Include="Content\ace\worker-css.js" />
+    <Content Include="Content\ace\worker-javascript.js" />
+    <Content Include="Content\ace\worker-json.js" />
+    <Content Include="Content\ace\worker-lua.js" />
+    <Content Include="Content\ace\worker-php.js" />
+    <Content Include="Content\ace\worker-xquery.js" />
+    <Content Include="Content\custom\scripts\google-analytics.js" />
+    <Content Include="Content\custom\scripts\entry-create-edit.js" />
+    <Content Include="Content\custom\scripts\global.js" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="Content\bootstrap-datepicker\less\datepicker.less" />
-    <Content Include="Content\bootstrap-datepicker\less\datepicker3.less" />
-    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\bootstrap\less\alerts.less" />
-    <Content Include="Content\bootstrap\less\badges.less" />
-    <Content Include="Content\bootstrap\less\bootstrap.less" />
-    <Content Include="Content\bootstrap\less\breadcrumbs.less" />
-    <Content Include="Content\bootstrap\less\button-groups.less" />
-    <Content Include="Content\bootstrap\less\buttons.less" />
-    <Content Include="Content\bootstrap\less\carousel.less" />
-    <Content Include="Content\bootstrap\less\close.less" />
-    <Content Include="Content\bootstrap\less\code.less" />
-    <Content Include="Content\bootstrap\less\component-animations.less" />
-    <Content Include="Content\bootstrap\less\dropdowns.less" />
-    <Content Include="Content\bootstrap\less\forms.less" />
-    <Content Include="Content\bootstrap\less\glyphicons.less" />
-    <Content Include="Content\bootstrap\less\grid.less" />
-    <Content Include="Content\bootstrap\less\input-groups.less" />
-    <Content Include="Content\bootstrap\less\jumbotron.less" />
-    <Content Include="Content\bootstrap\less\labels.less" />
-    <Content Include="Content\bootstrap\less\list-group.less" />
-    <Content Include="Content\bootstrap\less\media.less" />
-    <Content Include="Content\bootstrap\less\mixins.less" />
-    <Content Include="Content\bootstrap\less\modals.less" />
-    <Content Include="Content\bootstrap\less\navbar.less" />
-    <Content Include="Content\bootstrap\less\navs.less" />
-    <Content Include="Content\bootstrap\less\normalize.less" />
-    <Content Include="Content\bootstrap\less\pager.less" />
-    <Content Include="Content\bootstrap\less\pagination.less" />
-    <Content Include="Content\bootstrap\less\panels.less" />
-    <Content Include="Content\bootstrap\less\popovers.less" />
-    <Content Include="Content\bootstrap\less\print.less" />
-    <Content Include="Content\bootstrap\less\progress-bars.less" />
-    <Content Include="Content\bootstrap\less\responsive-utilities.less" />
-    <Content Include="Content\bootstrap\less\scaffolding.less" />
-    <Content Include="Content\bootstrap\less\tables.less" />
-    <Content Include="Content\bootstrap\less\theme.less" />
-    <Content Include="Content\bootstrap\less\thumbnails.less" />
-    <Content Include="Content\bootstrap\less\tooltip.less" />
-    <Content Include="Content\bootstrap\less\type.less" />
-    <Content Include="Content\bootstrap\less\utilities.less" />
-    <Content Include="Content\bootstrap\less\variables.less" />
-    <Content Include="Content\bootstrap\less\wells.less" />
-    <Content Include="Content\custom\less\layout.less" />
-    <Content Include="Content\custom\less\bootstrap-overwrites.less" />
-    <None Include="Content\scripts\jquery-2.0.3.intellisense.js" />
-    <Content Include="Content\scripts\jquery-2.0.3.js" />
-    <Content Include="Content\scripts\jquery-2.0.3.min.js" />
-    <Content Include="Content\scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Content\scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Content\scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Content\scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Content\scripts\less-1.4.2.js" />
-    <Content Include="Content\scripts\less-1.4.2.min.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.ar.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.bg.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.ca.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.cs.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.cy.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.da.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.de.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.el.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.es.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.et.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.fa.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.fi.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.fr.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.gl.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.he.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.hr.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.hu.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.id.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.is.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.it.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.ja.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.ka.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.kk.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.kr.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.lt.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.lv.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.mk.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.ms.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.nb.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.nl-BE.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.nl.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.no.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.pl.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.pt-BR.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.pt.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.ro.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.rs-latin.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.rs.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.ru.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.sk.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.sl.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.sq.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.sv.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.sw.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.th.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.tr.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.ua.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.uk.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.zh-CN.js" />
-    <Content Include="Content\scripts\locales\bootstrap-datepicker.zh-TW.js" />
-    <Content Include="Content\scripts\_references.js" />
-    <Content Include="Content\scripts\bootstrap-datetimepicker.js" />
-    <Content Include="Content\scripts\entry-index.js" />
-    <Content Include="Content\scripts\jquery-autogrow-textarea.js" />
-    <Content Include="Content\scripts\jquery-ui-1.10.2.custom.js" />
-    <Content Include="Content\scripts\jquery.taghandler.js" />
-    <Content Include="Content\scripts\shAutoloader.js" />
-    <Content Include="Content\scripts\shBrushes\shBrushBash.js" />
-    <Content Include="Content\scripts\shBrushes\shBrushCSharp.js" />
-    <Content Include="Content\scripts\shBrushes\shBrushJScript.js" />
-    <Content Include="Content\scripts\shBrushes\shBrushPlain.js" />
-    <Content Include="Content\scripts\shBrushes\shBrushPowerShell.js" />
-    <Content Include="Content\scripts\shBrushes\shBrushSql.js" />
-    <Content Include="Content\scripts\shBrushes\shBrushXml.js" />
-    <Content Include="Content\scripts\shCore.js" />
-    <Content Include="Content\scripts\shLegacy.js" />
+    <Content Include="Content\custom\less\variables.less" />
+    <Content Include="Content\custom\scripts\entry-index.js" />
+    <Content Include="Content\jquery-autogrow-textarea\jquery-autogrow-textarea.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shAutoloader.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushAppleScript.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushAS3.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushBash.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushColdFusion.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushCpp.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushCSharp.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushCss.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushDelphi.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushDiff.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushErlang.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushGroovy.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushJava.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushJavaFX.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushJScript.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushPerl.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushPhp.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushPlain.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushPowerShell.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushPython.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushRuby.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushSass.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushScala.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushSql.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushVb.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shBrushXml.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shCore.js" />
+    <Content Include="Content\syntaxhighlighter\scripts\shLegacy.js" />
+    <Content Include="Content\syntaxhighlighter\src\shAutoloader.js" />
+    <Content Include="Content\syntaxhighlighter\src\shCore.js" />
+    <Content Include="Content\syntaxhighlighter\src\shLegacy.js" />
+    <Content Include="Content\syntaxhighlighter\styles\shCore.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shCoreDefault.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shCoreDjango.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shCoreEclipse.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shCoreEmacs.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shCoreFadeToGrey.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shCoreMDUltra.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shCoreMidnight.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shCoreRDark.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shThemeDefault.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shThemeDjango.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shThemeEclipse.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shThemeEmacs.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shThemeFadeToGrey.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shThemeMDUltra.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shThemeMidnight.css" />
+    <Content Include="Content\syntaxhighlighter\styles\shThemeRDark.css" />
     <Content Include="Utilities\app_offline.htm" />
     <Content Include="Global.asax" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.eot" />
@@ -626,17 +461,11 @@
     <Content Include="Content\font-awesome\less\spinning.less" />
     <Content Include="Content\font-awesome\less\stacked.less" />
     <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\custom\less\clearfix.less" />
     <None Include="Properties\PublishProfiles\blackmesa - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\blackmesa - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
-    <None Include="Content\scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Content\scripts\jquery-1.9.1.js" />
-    <Content Include="Content\scripts\jquery-2.0.3.min.map" />
-    <None Include="Content\scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Content\scripts\jquery.validate.js" />
-    <Content Include="Content\scripts\jquery.validate.min.js" />
-    <Content Include="Content\scripts\modernizr-2.6.2.js" />
-    <Content Include="Content\scripts\entry-details.js" />
+    <Content Include="Content\custom\scripts\entry-details.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -687,7 +516,6 @@
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Entry\_ArticleTemplate.cshtml" />
-    <Content Include="Views\Shared\_GlobalJavascript.cshtml" />
     <Content Include="Views\Entry\ArticleTemplateFull.cshtml" />
   </ItemGroup>
   <ItemGroup>
