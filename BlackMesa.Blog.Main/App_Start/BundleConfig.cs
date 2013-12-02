@@ -36,21 +36,21 @@ namespace BlackMesa.Blog.Main.App_Start
             // Style Bundles
 
             var mainBundle = new Bundle("~/Content/global")
+                .Include("~/Content/normalize/normalize.css")
                 .Include("~/Content/font-awesome/css/font-awesome.min.css")
-                .Include("~/Content/bootstrap/css/bootstrap.min.css")
                 .Include("~/Content/custom/less/custom.less")
-                .Include("~/Content/custom/less/jquery-ui-1.10.2.custom.less")
-                .Include("~/Content/custom/less/shCoreDefault.less")
-                .Include("~/Content/custom/less/shThemeDefault.less")
-                .Include("~/Content/custom/less/jquery.taghandler.less");
+                .Include("~/Content/custom/less/jquery-ui-1.10.2.custom.less");
+                //.Include("~/Content/custom/less/shCoreDefault.less")
+                //.Include("~/Content/custom/less/shThemeDefault.less")
+                //.Include("~/Content/custom/less/jquery.taghandler.less");
                 
             mainBundle.Transforms.Add(cssTransformer);
             mainBundle.Transforms.Add(cssMinifier);
             mainBundle.Orderer = nullOrderer;
             bundles.Add(mainBundle);
 
-            var adminBundle = new Bundle("~/Content/admin")
-                .Include("~/Content/bootstrap-datepicker/css/datepicker.css");
+            var adminBundle = new Bundle("~/Content/admin");
+                //.Include("~/Content/bootstrap-datepicker/css/datepicker.css");
                 //.Include("~/Content/styles/bootstrap-tagmanager.less");
             adminBundle.Transforms.Add(cssTransformer);
             mainBundle.Transforms.Add(cssMinifier);

@@ -8,7 +8,7 @@
     <div id="language-selection">
         <div class="btn-group">
             <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-globe"></i> @Thread.CurrentThread.CurrentCulture.NativeName
+                <i class="fa fa-globe"></i> @Thread.CurrentThread.CurrentCulture.NativeName
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -30,7 +30,7 @@
     </div>
     
     <div id="datetime">
-        <i class="icon-time"></i> @DateTime.Now.ToLongDateString(), @DateTime.Now.ToShortTimeString()
+        <i class="fa fa-clock-o"></i> @DateTime.Now.ToLongDateString(), @DateTime.Now.ToShortTimeString()
     </div>
 
     
@@ -41,12 +41,12 @@
 
             <div class="btn-group">
                 <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="icon-unlock"></i> @User.Identity.Name
+                    <i class="fa fa-unlock"></i> @User.Identity.Name
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="@Url.Action("Manage", "Account")"><i class="icon-cogs"></i> @Strings.Manage</a></li>
-                    <li><a href="@Url.Action("LogOff", "Account")"><i class="icon-signout"></i> @Strings.Logout</a></li>
+                    <li><a href="@Url.Action("Manage", "Account")"><i class="fa fa-cogs"></i> @Strings.Manage</a></li>
+                    <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-signout"></i> @Strings.Logout</a></li>
                 </ul>
             </div>
             
@@ -55,11 +55,11 @@
         {
             <div class="btn-group">
                 <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="icon-lock"></i> @Strings.Guest
+                    <i class="fa fa-lock"></i> @Strings.Guest
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="@Url.Action("Login", "Account")"><i class="icon-signin"></i> @Strings.LogIn</a></li>
+                    <li><a href="@Url.Action("Login", "Account")"><i class="fa fa-signin"></i> @Strings.LogIn</a></li>
                 </ul>
             </div>
            
@@ -78,7 +78,7 @@
         @Html.Partial("_Navigation")
     </nav>
     <div id="filter-by-tag">
-        <div id="filter-by-tag-caption"><i class="icon-tags"></i> @Strings.FilterByTag: </div>
+        <div id="filter-by-tag-caption"><i class="fa fa-tags"></i> @Strings.FilterByTag: </div>
         <div id="filter-by-tag-input">
             <ul class="tag-input"></ul>
         </div>

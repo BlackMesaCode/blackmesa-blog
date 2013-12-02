@@ -11,7 +11,7 @@
     @*
     <div id="entries-top-bar">
         <div id="entries-sort">
-            <i class="icon-reorder"></i> Sort by: 
+            <i class="fa fa-reorder"></i> Sort by: 
             @Ajax.ActionLink("Most Recent", "Index", "Entry", new { ViewBag.SelectedTags, ViewBag.Page, OrderBy = "date" }, 
                                 new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content" }) | 
             @Ajax.ActionLink("Most viewed", "Index", "Entry", new { ViewBag.SelectedTags, ViewBag.Page, OrderBy = "views" }, 
@@ -21,7 +21,7 @@
         </div>
     
         <div id="entries-count">
-            <i class="icon-info-sign"></i> @ViewBag.EntriesFound entries found
+            <i class="fa fa-info-sign"></i> @ViewBag.EntriesFound entries found
         </div>
     </div>
     *@
@@ -48,7 +48,7 @@
     
         @*
             <div id="back-to-top">
-                <a href="#"><i class="icon-chevron-up"></i>Back to top</a>
+                <a href="#"><i class="fa fa-chevron-up"></i>Back to top</a>
             </div>
             *@
             
@@ -56,13 +56,13 @@
         {
             <div id="add-entry-button">
                 <a class="btn btn-primary" href="@Url.Action("Create")">
-                    <i class="icon-plus-sign"></i> @Strings.AddEntry
+                    <i class="fa fa-plus-sign"></i> @Strings.AddEntry
                 </a>
             </div>
             
             <div id="reparse-button">
                 <a class="btn" href="@Url.Action("ReparseAllEntries")">
-                    <i class="icon-refresh"></i> @Strings.ReparseAll
+                    <i class="fa fa-refresh"></i> @Strings.ReparseAll
                 </a>
             </div>
                 

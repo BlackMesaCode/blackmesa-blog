@@ -22,12 +22,12 @@
 
             <div class="article-subtitle">
                 @*
-                <i class="icon-comment"></i>
+                <i class="fa fa-comment"></i>
                 @Model.Comments.Count  Todo optimize database call
                 *@
                 @if(!Model.Published)
                 {
-                    <i class="icon-eye-close" alt="Article not published yet."></i>
+                    <i class="fa fa-eye-close" alt="Article not published yet."></i>
                 }
                 @if (User.IsInRole("Admin"))
                 {
@@ -38,7 +38,7 @@
                 @if (Model.DateCreated != Model.DateEdited)
                 {
                     <span class="revised-on">
-                        <i class="icon-edit"></i> @(Strings.RevisedOn +": " + Model.DateEdited.ToShortDateString())
+                        <i class="fa fa-edit"></i> @(Strings.RevisedOn +": " + Model.DateEdited.ToShortDateString())
                     </span>
                 }
                 
@@ -47,7 +47,7 @@
                     
                     @if (Model.Tags.Count > 0)
                     {
-                        <i class="icon-tags"></i> @:Tags:
+                        <i class="fa fa-tags"></i> @:Tags:
                         foreach(var tag in Model.Tags)
                         {
                             /* This solution triggers a normal HttpGet request with a query string in the url bar
