@@ -1,0 +1,147 @@
+/* jQuery UI AutoComplete: Dropdown menu */
+
+
+/* Custom Colors */
+
+@grayDarker: #222;
+@white: #FFF;
+@blue:  #006dcc;
+@blueLight: #008afb;
+@orange: #ff9500;
+
+
+
+.ui-autocomplete-input {
+    margin: 0;
+    padding: 0;
+    font-family: 'bebas';
+}
+
+.ui-corner-all {
+    border-radius: 0;
+}
+
+.ui-autocomplete {
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: default;
+    margin-top: 4px;
+    background-color: @white;
+    border: 1px solid @blue;
+    padding: 0px;
+    width: 120px;
+    font-family: 'bebas';
+    background-image: none;
+    line-height: 16px;
+    list-style: none;
+    z-index:30 !important;
+
+    .ui-menu-item {
+        
+        margin: 0;
+        background-image: none;
+        padding: 0;
+        border: 0;
+        line-height: 18px;
+        z-index: 30;
+
+        a {
+            display: block;
+            color: @grayDarker;
+            padding: 4px;
+            font-size: 14px;
+            line-height: 16px;
+            letter-spacing: 1px;
+            background-image: none;
+            background-color: transparent;
+            border: 0;
+
+            &:hover, &:visited,  &:focus {
+                border: 0;
+                margin: 0;
+                font-size: 14px;
+                line-height: 16px;
+                color: white;
+                text-decoration: none;
+                background-color: @blue;
+                letter-spacing: 1px;
+            }
+
+        }
+    }
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+
+
+/* TagHandler: Input field  and tag badges */
+
+.tagHandler {
+    width: 100%;
+    position: relative;
+}
+.tagHandler ul.tagHandlerContainer {
+    overflow: hidden;
+    cursor: text;
+    line-height: 30px;
+    min-height: 30px;
+    font-family: 'bebas';
+    margin: 0px 0px;
+    display: inline-block;
+}
+.tagHandler ul.tagHandlerContainer li {
+    height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: block;
+    float: left;
+    
+    margin: 5px 5px 5px 0;
+    white-space: nowrap;
+}
+.tagHandler ul.tagHandlerContainer li.tagItem {
+    background-color: @blue;
+    color: #FFF;
+    padding: 3px 8px;
+    font-family: 'bebas';
+    cursor: url('../images/tag_remove.cur'), pointer;
+}
+.tagHandler ul.tagHandlerContainer li.tagItem:hover {
+    background-color: @blueLight;
+}
+
+.tagHandler ul.tagHandlerContainer input.tagInputField {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: inherit;
+    background-color: #FFF;
+    color: #666;
+    line-height: 14px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.tagHandler div.tagLoader {
+    position: absolute;
+    right: -24px;
+    top: 12px;
+    display: none;
+    background: url('../images/loader.gif') center center no-repeat;
+    width: 16px;
+    height: 18px;
+    cursor: default;
+}
+.tagHandler div.tagUpdate {
+    position: absolute;
+    right: -24px;
+    top: 14px;
+    background: url('../images/tag_update.png') center center no-repeat;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}

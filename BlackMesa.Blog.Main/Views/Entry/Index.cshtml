@@ -70,10 +70,6 @@
 
 
 
-
-
-
-
         @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.ClassicPlusFirstAndLast, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "content" }))
     
     </div>
