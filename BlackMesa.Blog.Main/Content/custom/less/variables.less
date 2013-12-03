@@ -126,12 +126,8 @@ a {
 // Unordered and Ordered lists
 ul,
 ol {
-  margin-top: 0;
-  margin-bottom: (@line-height-computed / 2);
-  ul,
-  ol {
-    margin-bottom: 0;
-  }
+    padding: 0px;
+    margin: 0px;
 }
 
 
@@ -166,7 +162,108 @@ ol {
 
 
 
+// Button
 
+.btn-blue {
+    border: 1px solid @gray;
+    background-color: @blue;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+
+    color: @white;
+
+    &:hover{
+        color: @white;
+        background-color: @blue-light;
+    }
+}
+
+.btn-gray {
+    border: 1px solid @gray-light;
+    background-color: @gray-lighter-alternative;
+    padding: 4px;
+
+    color: @gray-light;
+    &:hover { 
+        color: @gray-light; 
+        background-color: @white;
+    }
+}
+
+.btn-gray-light {
+    border: 1px solid @gray-light-alternative;
+    border-bottom-color: @gray-light;
+    border-right-color: @gray-light;
+    background-color: @gray-lighter-alternative;
+    padding: 4px;
+
+    color: @gray-light;
+    &:hover { 
+        color: @gray-light; 
+    }
+}
+
+
+
+// Dropdown-Menu
+
+.dropdown-menu {
+    position: relative;
+
+    @menu-offset: 10px;
+    padding-bottom: @menu-offset;  // we enlarge the hover area, by adding a nonvisual bottom padding
+
+    &.align-right ul {
+        right: 0px;
+    }
+
+    ul {
+
+        display: none;
+        position: absolute;
+        width: 98%; // width relates to content width. as we have a border we go for 98% here to not exceed 100%
+        list-style-type: none;
+    
+        background-color: @white;
+        color: @gray-darker !important;
+        a { color: @gray-darker !important; }
+
+        border: 1px solid @gray-darker;
+
+        margin-top: @menu-offset;
+        padding-top: 5px;
+        padding-bottom: 5px;
+            
+        li {
+
+            text-align: center !important;
+
+            padding-left: 2px;
+            padding-right: 2px;
+
+            a {
+                display: inline-block;
+                width: 100%;
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+            &:hover {
+                background-color: @blue-light;
+            }
+
+            a:hover {
+                color: @white !important;
+            }
+        }
+    }
+
+    &:hover ul {
+        display:block;
+    }
+    
+}
 
 
 

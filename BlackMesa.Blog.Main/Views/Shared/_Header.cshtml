@@ -3,20 +3,19 @@
 @using BlackMesa.Blog.Main
 @using BlackMesa.Blog.Resources
 
-<!--
+
 <div id="top-header-bar">
-    <img id="header-logo" src="/Content/custom/images/blackmesa_logo_simple.png" alt="BlackMesa Logo"/>
     <div id="language-selection">
-        <div class="btn-group">
-            <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+        <div class="dropdown-menu align-right">
+            <a class="btn-gray-light" href="#">
                 <i class="fa fa-globe"></i> @Thread.CurrentThread.CurrentCulture.NativeName
-                <span class="caret"></span>
+                <span class="fa fa-caret-down"></span>
             </a>
-            <ul class="dropdown-menu">
-                @foreach(var language in Global.AllowedLanguages.Where(l => l != ViewBag.CurrentLanguage))
+            <ul>
+                @foreach (var language in Global.AllowedLanguages.Where(l => l != ViewBag.CurrentLanguage))
                 {
                     var culture = CultureInfo.CreateSpecificCulture(language);
-                    
+
                     if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "Details" && HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Entry")
                     {
                         <li><a href="@Url.Action("Index", "Entry", new { culture = culture.Name })"> @culture.EnglishName</a></li>
@@ -28,6 +27,7 @@
                 }
             </ul>
         </div>
+
     </div>
     
     <div id="datetime">
@@ -40,37 +40,36 @@
         {
             @* @Html.Partial("_LoggedIn")*@
 
-            <div class="btn-group">
-                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-unlock"></i> @User.Identity.Name
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu pull-right">
-                    <li><a href="@Url.Action("Manage", "Account")"><i class="fa fa-cogs"></i> @Strings.Manage</a></li>
-                    <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-signout"></i> @Strings.Logout</a></li>
-                </ul>
-            </div>
-            
+    <div class="dropdown-menu align-right">
+        <a class="btn-gray-light" href="#">
+            <i class="fa fa-unlock"></i> @User.Identity.Name
+            <span class="fa fa-caret-down"></span>
+        </a>
+        <ul>
+            <li><a href="@Url.Action("Manage", "Account")"><i class="fa fa-cogs"></i> @Strings.Manage</a></li>
+            <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-sign-out"></i> @Strings.Logout</a></li>
+        </ul>
+    </div>
+
         }
         else
         {
-            <div class="btn-group">
-                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+            <div class="dropdown-menu align-right">
+                <a class="btn-gray-light" href="#">
                     <i class="fa fa-lock"></i> @Strings.Guest
-                    <span class="caret"></span>
+                    <span class="fa fa-caret-down"></span>
                 </a>
-                <ul class="dropdown-menu pull-right">
-                    <li><a href="@Url.Action("Login", "Account")"><i class="fa fa-signin"></i> @Strings.LogIn</a></li>
+                <ul>
+                    <li><a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-out"></i> @Strings.LogIn</a></li>
                 </ul>
             </div>
-           
+
         }
     </div>
 </div>
 
 <hr/>
 
--->
 
 
 

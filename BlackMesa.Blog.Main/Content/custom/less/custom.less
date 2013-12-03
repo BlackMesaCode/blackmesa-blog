@@ -21,71 +21,32 @@ body{
 header {
     margin-bottom: 40px;
 
+    font-family: 'bebas';
+    letter-spacing: 1px;
+
     #top-header-bar {
         .clearfix;
-        margin-top: 4px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
 
-        #header-logo {
-            float: left;
-            margin-right: 20px;
+        &, a, a:hover, a:focus {
+            color: @gray-light;
         }
 
+        margin-top: 4px;
+
         #language-selection {
-            float: left;
             margin-right: 30px;
-
-            .btn {
-                color: #999999;
-                font-family: 'bebas';
-                letter-spacing: 1px;
-                font-size: 13px;
-            }
-
-            li {
-                text-align: left;
-            }
-
-            .caret {
-                border-top-color: #999999;
-            }
         }
 
         #datetime {
-            line-height: 22px;
-            margin-top: 2px;
-            float: left;
-            color: #999999;
-            font-family: 'bebas';
-            letter-spacing: 1px;
-            font-size: 13px;
+            flex-grow: 1;
         }
 
         #membership {
-            float: right;
-
-            .caret {
-                border-top-color: #999999;
-            }
-
-            .btn {
-                color: #999999;
-                font-family: 'bebas';
-                letter-spacing: 1px;
-                font-size: 13px;
-            }
-
-            a {
-                color: @gray-darker;
-
-                &:hover {
-                    text-decoration: none;
-                }
-            }
-
-            li {
-                a:hover {
-                    color: @white;
-                }
+            ul {
+                width: 140%;
             }
         }
     }
@@ -114,14 +75,14 @@ header {
 
         nav {
             flex-grow: 1;
-            font-family: 'bebas';
-            font-size: 18px;
-            letter-spacing: 1px;
+            font-size: 20px;
             height: 40px;
+
             display: flex;
             flex-flow: row wrap;
             justify-content: flex-end;
             align-items: center;
+
             ul {
 
                 margin: 0px;
@@ -339,23 +300,9 @@ header {
 
         .entry-managment-button {
             display: inline-block;
-            margin-left: 0px; 
-            margin-right: 7px;
-
-            .btn-group {
-                line-height: 0;
-            }
-
-            .btn {
-                background-color: transparent;
-                border: 0;
-                padding: 0;
-                line-height: 0;
-
-                a {
-                    background-color: transparent;
-                }
-            }
+            padding-right: 10px;
+            a { color: @gray-darker; }
+            ul { width: 300%; }
         }
 
     }

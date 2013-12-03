@@ -32,13 +32,13 @@
         @if (User.IsInRole("Admin"))
         {
             <div id="add-entry-button">
-                <a class="btn btn-primary" href="@Url.Action("Create")">
+                <a class="btn-blue" href="@Url.Action("Create")">
                     <i class="fa fa-plus-sign"></i> @Strings.AddEntry
                 </a>
             </div>
             
             <div id="reparse-button">
-                <a class="btn" href="@Url.Action("ReparseAllEntries")">
+                <a class="btn-gray" href="@Url.Action("ReparseAllEntries")">
                     <i class="fa fa-refresh"></i> @Strings.ReparseAll
                 </a>
             </div>
