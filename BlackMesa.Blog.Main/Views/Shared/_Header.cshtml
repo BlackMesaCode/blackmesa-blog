@@ -38,32 +38,14 @@
     <div id="membership">
         @if (Request.IsAuthenticated)
         {
-            @* @Html.Partial("_LoggedIn")*@
-
-    <div class="dropdown-menu align-right">
-        <a class="btn-gray-light" href="#">
-            <i class="fa fa-unlock"></i> @User.Identity.Name
-            <span class="fa fa-caret-down"></span>
-        </a>
-        <ul>
-            <li><a href="@Url.Action("Manage", "Account")"><i class="fa fa-cogs"></i> @Strings.Manage</a></li>
-            <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-sign-out"></i> @Strings.Logout</a></li>
-        </ul>
-    </div>
-
+            <i class="fa fa-unlock-alt"></i><span id="user-name">@User.Identity.Name<text>: </text></span>
+            <span id="manage"><a href="@Url.Action("Manage", "Account")"><i class="fa fa-cogs"></i>@Strings.Manage</a></span>
+            <a href="@Url.Action("LogOff", "Account")"><i class="fa fa-sign-out"></i>@Strings.Logout</a>
         }
         else
         {
-            <div class="dropdown-menu align-right">
-                <a class="btn-gray-light" href="#">
-                    <i class="fa fa-lock"></i> @Strings.Guest
-                    <span class="fa fa-caret-down"></span>
-                </a>
-                <ul>
-                    <li><a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-out"></i> @Strings.LogIn</a></li>
-                </ul>
-            </div>
-
+            <i class="fa fa-lock"></i><span id="user-name">@Strings.Guest<text>: </text></span>
+            <a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-out"></i> @Strings.LogIn</a>
         }
     </div>
 </div>
@@ -75,7 +57,7 @@
 
 <div id="bottom-header-bar">
     <div id="logo">
-        <a href="@Url.Action("Index", "Entry")"><img src="/Content/custom/images/blackmesa_logo.png" alt="BlackMesa Logo" /></a>
+        <a href="@Url.Action("Index", "Entry")"><img src="/Content/custom/images/blackmesa_logo.png" alt="BlackMesa Logo" height="55" /></a>
     </div>
 
     <nav>

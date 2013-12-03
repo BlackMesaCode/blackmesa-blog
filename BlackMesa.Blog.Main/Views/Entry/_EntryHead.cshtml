@@ -27,11 +27,12 @@
                 *@
                 @if(!Model.Published)
                 {
-                    <i class="fa fa-eye-close" alt="Article not published yet."></i>
+                    <i class="fa fa-eye-slash"></i>
                 }
                 @if (User.IsInRole("Admin"))
                 {
-                    @Html.Partial("_EntryManagmentButton", Model);
+                    <i class="fa fa-pencil"></i><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })">@Strings.Edit</a>
+                    <i class="fa fa-trash-o"></i><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })">@Strings.Delete</a>
                 }
                 
                 
