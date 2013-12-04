@@ -123,6 +123,9 @@
   <data name="AddEntry" xml:space="preserve">
     <value>Eintrag hinzufügen</value>
   </data>
+  <data name="Archive" xml:space="preserve">
+    <value>Archiv</value>
+  </data>
   <data name="BackToTop" xml:space="preserve">
     <value>Nach oben</value>
   </data>

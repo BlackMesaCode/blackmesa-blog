@@ -19,18 +19,21 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <header id="header">
             @Html.Partial("_Header")
         </header>
         <div id="content">
             @RenderBody()
         </div>
-        <footer>
+        <footer id="footer">
             @Html.Partial("_Footer")
         </footer>
     </div>
 
     <script src="~/Content/custom/scripts/global.js"></script>
+    <script src="~/Content/ace/ace.js"></script>
+    <script src="~/Content/ace/mode-html.js"></script>
+    <script src="~/Content/ace/theme-clouds.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

@@ -21,9 +21,6 @@ namespace BlackMesa.Blog.Model
         public string Preview { get; set; }
 
         [Required]
-        public string Body { get; set; }
-
-        [Required]
         [DataType(DataType.MultilineText)]
         [AllowHtml]
         [Display(ResourceType = typeof(Strings), Name = "Content")]

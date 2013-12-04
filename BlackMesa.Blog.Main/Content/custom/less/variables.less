@@ -153,12 +153,29 @@ ol {
 @input-padding-vertical:         2px;
 @input-height-base:              (@line-height-computed + (@input-padding-vertical * 2) + 2);
 
-@legend-color:                   @gray-dark;
-@legend-border-color:            @gray-lighter;
 
-@input-group-addon-bg:           @gray-lighter;
-@input-group-addon-border-color: @input-border;
 
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+}
+
+label {
+    display: inline-block;
+}
+
+
+.editor-field {
+    margin-bottom: 15px;
+}
 
 
 
@@ -226,11 +243,11 @@ ol {
         width: 98%; // width relates to content width. as we have a border we go for 98% here to not exceed 100%
         list-style-type: none;
     
-        background-color: @white;
-        color: @gray-darker !important;
-        a { color: @gray-darker !important; }
+        background-color: @gray-lighter-alternative;
+        color: @gray-light !important;
+        a { color: @gray-light !important; }
 
-        border: 1px solid @gray-darker;
+        border: 1px solid @gray-light-alternative;
 
         margin-top: @menu-offset;
         padding-top: 5px;
@@ -250,12 +267,10 @@ ol {
                 padding-bottom: 2px;
             }
             &:hover {
-                background-color: @blue-light;
+                background-color: @white;
             }
 
-            a:hover {
-                color: @white !important;
-            }
+
         }
     }
 

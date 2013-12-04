@@ -34,11 +34,6 @@
                 <i class="fa fa-plus-circle"></i><a href="@Url.Action("Create")">@Strings.AddEntry</a>
             </div>
 
-            <div id="reparse-button">
-                <i class="fa fa-refresh"></i>
-                <a href="@Url.Action("ReparseAllEntries")">@Strings.ReparseAll</a>
-            </div>
-
         }
 
         @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.Classic)

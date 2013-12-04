@@ -70,76 +70,6 @@ namespace BlackMesa.Blog.Main.Controllers
         }
 
 
-        public ActionResult ReparseAllEntries()
-        {
-            var entries = _db.Entries;
-
-            foreach (var entry in entries)
-            {
-                ParseEntry(entry);
-            }
-            _db.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
-
-
-        private void ParseEntry(Entry entry)
-        {
-            // Read entry.Title and entry.Preview
-            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
-            htmlDoc.LoadHtml(entry.Content);
-
-            if (htmlDoc.DocumentNode != null)
-            {
-                var headerNode = htmlDoc.DocumentNode.SelectSingleNode("article/header[1]");
-                if (headerNode != null)
-                {
-                    var headerNodeHeading = headerNode.SelectSingleNode("h1");
-                    if (headerNodeHeading != null)
-                    {
-                        entry.Title = headerNodeHeading.InnerHtml;
-                        headerNode.RemoveChild(headerNodeHeading);
-
-                        headerNode.SelectSingleNode("p[last()]").SetAttributeValue("class", "last-paragraph");
-                        entry.Preview = headerNode.InnerHtml;
-                    }
-                }
-            }
-
-
-            // Read entry.Body
-            var htmlDoc2 = new HtmlAgilityPack.HtmlDocument();
-            htmlDoc2.LoadHtml(entry.Content);
-
-            if (htmlDoc2.DocumentNode != null)
-            {
-                var headerNode = htmlDoc2.DocumentNode.SelectSingleNode("article/header[1]");
-                if (headerNode != null)
-                {
-                    var headerNodeHeading = headerNode.SelectSingleNode("h1");
-                    if (headerNodeHeading != null)
-                    {
-                        headerNode.RemoveChild(headerNodeHeading);
-
-                        entry.Body = headerNode.OuterHtml;
-                    }
-                }
-
-
-                var sectionNodes = htmlDoc2.DocumentNode.SelectNodes("article/section");
-
-                if (sectionNodes != null)
-                {
-                    foreach (var sectionNode in sectionNodes)
-                    {
-                        entry.Body += sectionNode.OuterHtml;
-                    }
-                }
-            }
-        }
-
-
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Details(string title, int id = 0)
@@ -193,18 +123,6 @@ namespace BlackMesa.Blog.Main.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Entry entry)
         {
-            ParseEntry(entry);
-
-            if (entry.Title != null)
-                ModelState["Title"].Errors.Clear();
-
-            if (entry.Preview != null)
-                ModelState["Preview"].Errors.Clear();
-
-            if (entry.Body != null)
-                ModelState["Body"].Errors.Clear();
-
-
             if (ModelState.IsValid)
             {
                 var selectedTags = HttpContext.Request.Form["SelectedTags"];
@@ -253,16 +171,9 @@ namespace BlackMesa.Blog.Main.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Entry entry)
         {
-            ParseEntry(entry);
 
-            if (entry.Title != null)
-                ModelState["Title"].Errors.Clear();
-
-            if (entry.Preview != null)
-                ModelState["Preview"].Errors.Clear();
-
-            if (entry.Body != null)
-                ModelState["Body"].Errors.Clear();
+            //if (entry.Preview != null)
+            //    ModelState["Preview"].Errors.Clear();
 
 
             if (ModelState.IsValid)
@@ -271,11 +182,10 @@ namespace BlackMesa.Blog.Main.Controllers
 
                 var dbEntry = _db.Entries.Find(entry.Id);
 
-//                TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed model - this is the lazy way to go, instead of manually mapping all the properties
+//                TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed dbmodel - this is the lazy way to go, instead of manually mapping all the properties
 
                 dbEntry.Title = entry.Title;
                 dbEntry.Preview = entry.Preview;
-                dbEntry.Body = entry.Body;
                 dbEntry.Content = entry.Content;
                 dbEntry.DateCreated = entry.DateCreated;
                 dbEntry.DateEdited = entry.DateEdited;

@@ -16,8 +16,8 @@
         
         <br/>
 
-        <input class="entry-create-edit-submit btn btn-primary" type="submit" value="Create" />
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+        <input class="entry-create-edit-submit" type="submit" value="Create" />
+        @Html.ActionLink("Back to List", "Index")
     </fieldset>
 }
 
@@ -27,6 +27,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/admin")
-    @Scripts.Render("~/scripts/entry-create-edit.js")
-    @Html.Partial("_CreateEditFieldsetJavascript", Model)
+    @Scripts.Render("~/Content/custom/scripts/entry-create-edit.js")
 }

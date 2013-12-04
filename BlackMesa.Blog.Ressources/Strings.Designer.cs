@@ -79,6 +79,15 @@ namespace BlackMesa.Blog.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Archive ähnelt.
+        /// </summary>
+        public static string Archive {
+            get {
+                return ResourceManager.GetString("Archive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back to top ähnelt.
         /// </summary>
         public static string BackToTop {

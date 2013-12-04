@@ -18,8 +18,8 @@
             @Html.Partial("_CreateEditFieldset")
 
             <p>
-                <input class="entry-create-edit-submit btn btn-primary" type="submit" value="Save" />
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+                <input class="entry-create-edit-submit" type="submit" value="Save" />
+                @Html.ActionLink("Back to List", "Index")
             </p>
         </fieldset>
     }
@@ -33,6 +33,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/admin")
-    @Scripts.Render("~/scripts/entry-create-edit.js") 
-    @Html.Partial("_CreateEditFieldsetJavascript", Model)  @* We only use the PartialView solution here, because the regular external js file cant take a model and we need the model data  *@
+    @Scripts.Render("~/Content/custom/scripts/entry-create-edit.js") 
+    
 }
