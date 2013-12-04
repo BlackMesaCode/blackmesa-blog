@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201312041433324_Init.Designer.cs">
       <DependentUpon>201312041433324_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312042016468_UpdatedEntry.cs" />
+    <Compile Include="Migrations\201312042016468_UpdatedEntry.Designer.cs">
+      <DependentUpon>201312042016468_UpdatedEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\AjaxOnlyAttribute.cs" />
@@ -243,6 +247,7 @@
     <Content Include="Content\custom\images\tag_remove.cur" />
     <Content Include="Content\custom\images\tag_remove.png" />
     <Content Include="Content\custom\images\tag_update.png" />
+    <Content Include="Content\jquery\jquery-2.0.3.min.js" />
     <Content Include="Content\normalize\normalize.css" />
     <Content Include="Content\pagedlist\PagedList.css" />
     <Content Include="Content\Sicherung\bootstrap-datetimepicker.less" />
@@ -547,6 +552,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201312041433324_Init.resx">
       <DependentUpon>201312041433324_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312042016468_UpdatedEntry.resx">
+      <DependentUpon>201312042016468_UpdatedEntry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

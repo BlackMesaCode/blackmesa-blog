@@ -326,21 +326,25 @@ body{
             height: 500px;
         }
 
-        #title-input {
-            max-width: none;
-            width: 100%;
-
-            input {
+        input, textarea {
                 display: block;
                 max-width: none;
                 width: 100%;
-                padding: 5px;
-                padding-left: 10px;
+                padding: 3px;
+                padding-left: 8px;
                 height: auto;
                 -moz-box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 box-sizing: border-box;
-            }
+        }
+
+        textarea {
+            overflow:hidden;
+        }
+
+        #title-input {
+            max-width: none;
+            width: 100%;
         }
 
         #editor {

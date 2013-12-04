@@ -7,6 +7,7 @@ using BlackMesa.Blog.DataLayer;
 using BlackMesa.Blog.Main.Utilities;
 using BlackMesa.Blog.Main.ViewModels;
 using BlackMesa.Blog.Model;
+using Microsoft.Ajax.Utilities;
 using PagedList;
 
 namespace BlackMesa.Blog.Main.Controllers
@@ -128,11 +129,13 @@ namespace BlackMesa.Blog.Main.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)] 
         public ActionResult Create(Entry entry)
         {
 
             if (ModelState.IsValid)
             {
+                AddTags(entry.TagsAsString, entry);
                 _db.Entries.Add(entry);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
@@ -155,75 +158,20 @@ namespace BlackMesa.Blog.Main.Controllers
         }
 
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit(Entry entry)
         {
-
-            //if (entry.Preview != null)
-            //    ModelState["Preview"].Errors.Clear();
-            //var selectedTags = HttpContext.Request.Form["SelectedTags"];
-            //var selectedTags = string.Join(",", entry.Tags.Select(t => t.Name));
-            //ViewBag.SelectedTags = selectedTags;
-            //var selectedTags = HttpContext.Request.Form["SelectedTags"];
-            //if (!String.IsNullOrEmpty(selectedTags))
-            //{
-            //    var selectedTagsList = selectedTags.Split(',').ToList();
-
-            //    entry.Tags = new Collection<Tag>();
-            //    foreach (var tag in selectedTagsList)
-            //    {
-            //        if (!_db.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(tag))
-            //        {
-            //            var newTag = new Tag { Name = tag, Language = entry.Language };
-            //            _db.Tags.Add(newTag);
-            //            entry.Tags.Add(newTag);
-            //        }
-            //        else
-            //        {
-            //            entry.Tags.Add(_db.Tags.Single(t => t.Name == tag && t.Language == entry.Language));
-            //        }
-            //    }
-            //}
-
-            //if (!String.IsNullOrEmpty(selectedTags))
-            //{
-            //    var selectedTagsList = selectedTags.Split(',').ToList();
-
-            //    foreach (var tag in selectedTagsList)
-            //    {
-            //        if (!_db.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(tag))
-            //        {
-            //            var newTag = new Tag { Name = tag, Language = entry.Language };
-            //            _db.Tags.Add(newTag);
-            //            dbEntry.Tags.Add(newTag);
-            //        }
-            //        else
-            //        {
-            //            dbEntry.Tags.Add(_db.Tags.Single(t => t.Name == tag && t.Language == entry.Language));
-            //        }
-            //    }
-            //}
-
-
             if (ModelState.IsValid)
             {
                 var dbEntry = _db.Entries.Find(entry.Id);
 
                 TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed dbmodel - this is the lazy way to go, instead of manually mapping all the properties
 
-                //dbEntry.Title = entry.Title;
-                //dbEntry.Preview = entry.Preview;
-                //dbEntry.Content = entry.Content;
-                //dbEntry.DateCreated = entry.DateCreated;
-                //dbEntry.DateEdited = entry.DateEdited;
-                //dbEntry.Published = entry.Published;
-                //dbEntry.Language = entry.Language;
-
-                //dbEntry.Tags.Clear();
-
-
-//                _db.Entry(dbEntry).State = EntityState.Modified; // not necessary cause dbEntry is tracked by the dbContext
+                AddTags(entry.TagsAsString, dbEntry);
+                
                 _db.SaveChanges();
 
                 DeleteTagsWithNoEntries();
@@ -232,6 +180,31 @@ namespace BlackMesa.Blog.Main.Controllers
                 return RedirectToAction("Index");
             }
             return View(entry);
+        }
+
+        
+        private void AddTags(string tagsAsString, Entry entry)
+        {
+            var tags = tagsAsString.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            entry.Tags.Clear(); // this line seems redundant, but is necessary, as otherwise, the existing tags wont be removed from the entry object
+            entry.Tags = new Collection<Tag>();
+
+            foreach (var tag in tags.Where(tag => !tag.IsNullOrWhiteSpace())) // RemoveEmptyEntries does only remove strings with NO conent, but not string with only spaces as content
+            {
+                var trimmedTag = tag.TrimStart().TrimEnd(); // Remove leading and ending spaces from string
+
+                if (!_db.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(trimmedTag))
+                {
+                    var newTag = new Tag { Name = trimmedTag, Language = entry.Language };
+                    _db.Tags.Add(newTag);
+                    entry.Tags.Add(newTag);
+                }
+                else
+                {
+                    entry.Tags.Add(_db.Tags.Single(t => t.Name == trimmedTag && t.Language == entry.Language));
+                }
+            }
         }
 
 

@@ -1,77 +1,56 @@
-;(function ($) {
-    'use strict';
-
-    // Plugin interface
-    $.fn.autoGrowTextarea = autoGrowTextArea;
-    $.fn.autoGrowTextArea = autoGrowTextArea;
-
-    // Shorthand alias
-    if (!('autoGrow' in $.fn)) {
-        $.fn.autoGrow = autoGrowTextArea;
-    }
-
+(function ($) {
     /**
-     * Initialization on each element
+     * Auto-growing textareas; technique ripped from Facebook
+     *
+     * http://github.com/jaz303/jquery-grab-bag/tree/master/javascripts/jquery.autogrow-textarea.js
      */
-    function autoGrowTextArea() {
-        return this.each(init);
-    }
+    $.fn.autogrow = function (options) {
+        return this.filter('textarea').each(function () {
+            var self = this;
+            var $self = $(self);
+            var minHeight = $self.height();
+            var noFlickerPad = $self.hasClass('autogrow-short') ? 0 : parseInt($self.css('lineHeight')) || 0;
 
-    /**
-     * Actual initialization
-     */
-    function init() {
-        var $textarea, $origin, origin, hasOffset, innerHeight, height, offset = 0;
+            var shadow = $('<div></div>').css({
+                position: 'absolute',
+                top: -10000,
+                left: -10000,
+                width: $self.width(),
+                fontSize: $self.css('fontSize'),
+                fontFamily: $self.css('fontFamily'),
+                fontWeight: $self.css('fontWeight'),
+                lineHeight: $self.css('lineHeight'),
+                resize: 'none',
+                'word-wrap': 'break-word'
+            }).appendTo(document.body);
 
-        $textarea = $(this).css({overflow: 'hidden', resize: 'none'});
+            var update = function (event) {
+                var times = function (string, number) {
+                    for (var i = 0, r = ''; i < number; i++) r += string;
+                    return r;
+                };
 
-        if ($textarea.data('autogrow-origin')) {
-            return;
-        }
+                var val = self.value.replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/&/g, '&amp;')
+                                    .replace(/\n$/, '<br/>&nbsp;')
+                                    .replace(/\n/g, '<br/>')
+                                    .replace(/ {2,}/g, function (space) { return times('&nbsp;', space.length - 1) + ' ' });
 
-        $origin = $textarea.clone().val('').appendTo($textarea.parent());
-        origin = $origin.get(0);
+                // Did enter get pressed?  Resize in this keydown event so that the flicker doesn't occur.
+                if (event && event.data && event.data.event === 'keydown' && event.keyCode === 13) {
+                    val += '<br />';
+                }
 
-        height = $origin.height();
-        origin.scrollHeight; // necessary for IE6-8. @see http://bit.ly/LRl3gf
-        hasOffset = (origin.scrollHeight !== height);
+                shadow.css('width', $self.width());
+                shadow.html(val + (noFlickerPad === 0 ? '...' : '')); // Append '...' to resize pre-emptively.
+                $self.height(Math.max(shadow.height() + noFlickerPad, minHeight));
+            }
 
-        // `hasOffset` detects whether `.scrollHeight` includes padding.
-        // This behavior differs between browsers.
-        if (hasOffset) {
-            innerHeight = $origin.innerHeight();
-            offset = innerHeight - height;
-        }
+            $self.change(update).keyup(update).keydown({ event: 'keydown' }, update);
+            $(window).resize(update);
 
-        $origin.hide();
-
-        $textarea
-            .data('autogrow-origin', $origin)
-            .on('keyup change input paste', function () {
-                grow($textarea, $origin, origin, height, offset);
-            });
-
-        grow($textarea, $origin, origin, height, offset);
-    }
-
-    /**
-     * grow textarea height if its value changed
-     */
-    function grow($textarea, $origin, origin, initialHeight, offset) {
-        var current, prev, scrollHeight, height;
-
-        current = $textarea.val();
-        prev = grow.prev;
-        if (current === prev) return;
-
-        grow.prev = current;
-
-        $origin.val(current).show();
-        origin.scrollHeight; // necessary for IE6-8. @see http://bit.ly/LRl3gf
-        scrollHeight = origin.scrollHeight;
-        height = scrollHeight - offset;
-        $origin.hide();
-
-        $textarea.height(height > initialHeight ? height : initialHeight);
-    }
-}(jQuery));
+            update();
+        });
+    };
+})(jQuery);
