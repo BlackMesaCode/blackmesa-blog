@@ -18,6 +18,7 @@ namespace BlackMesa.Blog.Model
         public string Title { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(Strings), Name = "Tags")]
         public string TagsAsString { get; set; }
 
         [AllowHtml]
