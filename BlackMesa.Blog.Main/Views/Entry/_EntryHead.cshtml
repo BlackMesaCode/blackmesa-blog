@@ -5,60 +5,63 @@
 @model BlackMesa.Blog.Model.Entry
 
 <div class="article-head">
+    <div class="article-date">
         <div class="article-date-day">
             @Model.DateCreated.ToString("dd")
         </div>
-        <div class="article-month-year-container">
-            <div class="article-date-month">@CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Model.DateCreated.Month)
-            </div>
+            <div class="article-month-year-container">
+                <div class="article-date-month">
+                    @CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Model.DateCreated.Month)
+                </div>
             <div class="article-date-year">
                 @Model.DateCreated.Year
             </div>
         </div>
-        <div class="article-title-subtitle-container">
-            <div class="article-title">
-                @Html.ActionLink(Model.Title, "Details", "Entry", new { id = Model.Id, title = Utilities.MakeUrlFriendly(Model.Title)  }, null )
-            </div>
+    </div>
+    <div class="article-title-subtitle-container">
+        <div class="article-title">
+            @Html.ActionLink(Model.Title, "Details", "Entry", new { id = Model.Id, title = Utilities.MakeUrlFriendly(Model.Title)  }, null )
+        </div>
 
-            <div class="article-subtitle">
-                @*
+        <div class="article-subtitle">
+            @*
                 <i class="fa fa-comment"></i>
                 @Model.Comments.Count  Todo optimize database call
                 *@
-                @if(!Model.Published)
-                {
-                    <i class="fa fa-eye-slash"></i>
-                }
-                @if (User.IsInRole("Admin"))
-                {
-                    <i class="fa fa-pencil"></i><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })">@Strings.Edit</a>
-                    <i class="fa fa-trash-o"></i><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })">@Strings.Delete</a>
-                }
+            @if(!Model.Published)
+            {
+                <i class="fa fa-eye-slash"></i>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <i class="fa fa-pencil"></i><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })">@Strings.Edit</a>
+                <i class="fa fa-trash-o"></i><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })">@Strings.Delete</a>
+            }
                 
                 
-                @if (Model.DateCreated != Model.DateEdited)
-                {
-                    <span class="revised-on">
-                        <i class="fa fa-edit"></i> @(Strings.RevisedOn +": " + Model.DateEdited.ToShortDateString())
-                    </span>
-                }
+            @if (Model.DateCreated != Model.DateEdited)
+            {
+                <span class="revised-on">
+                    <i class="fa fa-edit"></i> @(Strings.RevisedOn +": " + Model.DateEdited.ToShortDateString())
+                </span>
+            }
                 
 
-                <span class="tags">
+            <span class="tags">
                     
-                    @if (Model.Tags.Count > 0)
+                @if (Model.Tags.Count > 0)
+                {
+                    <i class="fa fa-tags"></i> @:Tags:
+                    foreach(var tag in Model.Tags)
                     {
-                        <i class="fa fa-tags"></i> @:Tags:
-                        foreach(var tag in Model.Tags)
-                        {
-                            /* This solution triggers a normal HttpGet request with a query string in the url bar
+                        /* This solution triggers a normal HttpGet request with a query string in the url bar
 
                             @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, null)
                         
                              * we can create links to multi tag search results this way:  e.g. ?SelectedTags=less%2Csecurity */
                         
 
-                            /* This solution uses Post-Form to avoid query strings in url - but its an own request - no ajax here
+                        /* This solution uses Post-Form to avoid query strings in url - but its an own request - no ajax here
 
                             var formId = tag.Name + "-form";
                             using(Html.BeginForm("Index", "Entry", null, FormMethod.Post, new { Id = formId, Class = "tag-form"}))
@@ -71,15 +74,15 @@
                             */
                         
                         
-                            /* 
+                        /* 
                                 best solution would be to call a tagHandler.AddTag function which then handles the ajax call, but apparently there is no AddTag API function available :( therefore i reinitialize the tagHandler on click, forcing him to trigger the afterAdd event. reinitialization has some sideeffects to the DOM structure, i have taken care of with those two jquery statements found in the js script tag in the index.cshtml
                         
                             */
                             
-                            <a onclick="onTagClick('@tag.Name')">@tag.Name</a>
-                        }
+                        <a onclick="onTagClick('@tag.Name')">@tag.Name</a>
                     }
-                </span>
-            </div>
+                }
+            </span>
         </div>
     </div>
+</div>

@@ -198,42 +198,48 @@ header {
         margin-bottom: 40px;
 
         .article-head {
+            display: flex;
+            flex-flow: row wrap;
+            line-height: 1;
 
-            .article-date-day {
-                display: inline-block;
-                font-size: 50px;
-                line-height: 50px;
-            }
+            .article-date {
+                font-family: 'bebas';
+                display: flex;
+                flex-flow: row wrap;
+                margin-right: 17px;
 
-            .article-month-year-container {
-                display: inline-block;
-                margin-right: 5px;
-
-                .article-date-month {
-                    font-size: 26px;
-                    font-family: 'bebas';
+                .article-date-day {
+                    font-size: 58px;
+                    line-height: 0.9;
+                    margin-right: 6px;
                 }
 
-                .article-date-year {
-                    font-size: 20px;
-                    font-family: 'bebas';
+                .article-month-year-container {
+                    .article-date-month {
+                        font-size: 30px;
+                    }
+
+                    .article-date-year {
+                        font-size: 20px;
+                    }
                 }
             }
 
             .article-title-subtitle-container {
-                display: inline-block;
+                flex-grow: 1;
 
                 .article-title {
                     font-size: 30px;
                     font-family: 'bebas';
-                    line-height: 80%;
+                    margin-bottom: 3px;
                 }
 
                 .article-subtitle {
-                    display: inline-block;
                     font-size: 11px;
 
-                    i { margin-right: 5px; }
+                    i {
+                        margin-right: 5px;
+                    }
 
                     a {
                         color: @gray-darker;
@@ -260,6 +266,7 @@ header {
                     }
                 }
             }
+            // end of .article-title-subtitle-container
         }
         // end of .article-head
         header {
@@ -287,24 +294,27 @@ header {
             .read-more {
                 display: inline-block;
 
-                .read-more-link { }
+                .read-more-link {
+                }
 
                 .read-more-icon {
                     margin-left: 5px;
                 }
             }
-
-
-
         }
 
         .entry-managment-button {
             display: inline-block;
             padding-right: 10px;
-            a { color: @gray-darker; }
-            ul { width: 300%; }
-        }
 
+            a {
+                color: @gray-darker;
+            }
+
+            ul {
+                width: 300%;
+            }
+        }
     }
     // end of .article
     #entry-create-edit {
@@ -383,7 +393,6 @@ header {
                     padding-right: 4px;
                 }
             }
-
         }
 
 
@@ -405,18 +414,13 @@ header {
             .clearfix;
             margin-top: 10px;
 
-            #back-to-top {
-                float: left;
-                line-height: 20px;
-
-                i {
-                    margin-right: 10px;
-                }
+            i {
+                margin-right: 5px;
             }
 
             #add-entry-button {
                 float: left;
-                margin-right: 5px;
+                margin-right: 15px;
             }
 
             #reparse-button {
@@ -427,8 +431,6 @@ header {
                 float: right;
             }
         }
-
-
     }
     // Entry details
     #entry-details {
@@ -447,10 +449,8 @@ header {
         h2 {
             margin-top: 25px;
             margin-bottom: 15px;
-
         }
     }
-
 }
 
 

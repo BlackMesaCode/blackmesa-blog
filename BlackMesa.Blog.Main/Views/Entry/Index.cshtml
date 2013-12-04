@@ -9,8 +9,7 @@
 
 <section id="entry-index">
     <div id="entry-index-articles">
-
-        @if(Model.Entries.Count > 0)
+        @if (Model.Entries.Count > 0)
         {
             foreach (var item in Model.Entries)
             {
@@ -22,36 +21,30 @@
             <div id="no-entries-found">
                 @Strings.NoEntriesFound
             </div>
-            
+
         }
-       
+
     </div>
-    
+
     <div id="entries-bottom-bar">
-            
+
         @if (User.IsInRole("Admin"))
         {
             <div id="add-entry-button">
-                <a class="" href="@Url.Action("Create")">
-                    <i class="fa fa-plus-circle"></i> @Strings.AddEntry
-                </a>
+                <i class="fa fa-plus-circle"></i><a href="@Url.Action("Create")">@Strings.AddEntry</a>
             </div>
-            
+
             <div id="reparse-button">
-                <a class="" href="@Url.Action("ReparseAllEntries")">
-                    <i class="fa fa-refresh"></i> @Strings.ReparseAll
-                </a>
+                <i class="fa fa-refresh"></i>
+                <a href="@Url.Action("ReparseAllEntries")">@Strings.ReparseAll</a>
             </div>
-                
+
         }
 
-
-
         @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.Classic)
-    
+
     </div>
 
-    
 </section>
 
 
