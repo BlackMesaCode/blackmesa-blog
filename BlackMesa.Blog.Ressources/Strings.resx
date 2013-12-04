@@ -189,6 +189,9 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
   <data name="Published" xml:space="preserve">
     <value>Published</value>
   </data>

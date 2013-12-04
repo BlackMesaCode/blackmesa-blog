@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Web.Mvc;
@@ -27,17 +28,18 @@ namespace BlackMesa.Blog.Main.Controllers
 
             // Try to determine the user culture in different ways
             // Try to get the culture from the route data (url)
-            if (RouteData.Values["culture"] != null && !string.IsNullOrWhiteSpace(RouteData.Values["culture"].ToString()))
+            if (RouteData.Values["culture"] != null &&
+                !string.IsNullOrWhiteSpace(RouteData.Values["culture"].ToString()))
                 culture = SetCulture(RouteData.Values["culture"].ToString());
 
-            // Try to set the culture based on the browser settings
-            else if(HttpContext.Request.UserLanguages != null)
+                // Try to set the culture based on the browser settings
+            else if (HttpContext.Request.UserLanguages != null)
                 culture = SetCulture(HttpContext.Request.UserLanguages[0]);
 
-            //If nothing works, take the default culture
+                //If nothing works, take the default culture
             else
                 culture = SetCulture("");
-               
+
             // set the culture value into route data
             RouteData.Values["culture"] = culture;
 
@@ -64,7 +66,9 @@ namespace BlackMesa.Blog.Main.Controllers
         private static string SetCulture(string cultureName)
         {
             //Check if languange is allowed, otherwise replace it with the default
-            string selectedCultureName = Global.AllowedCultures.Any(c => c.ToLower() == cultureName.ToLower()) ? cultureName : Global.AllowedCultures.First();
+            string selectedCultureName = Global.AllowedCultures.Any(c => c.ToLower() == cultureName.ToLower())
+                ? cultureName
+                : Global.AllowedCultures.First();
 
             CultureInfo culture = CultureInfo.CreateSpecificCulture(selectedCultureName);
             //The CurrentCulture is responsible for the renderung of DateTimes and floating point numbers
@@ -74,8 +78,6 @@ namespace BlackMesa.Blog.Main.Controllers
 
             return selectedCultureName;
         }
-
-
     }
 }
 

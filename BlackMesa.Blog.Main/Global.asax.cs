@@ -25,7 +25,9 @@ namespace BlackMesa.Blog.Main
 
         protected void Application_Start()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlackMesaDb, Configuration>());
+            // We dont need the initializer as we dont use AutomaticMigrations 
+            // but instead manually add-migrations via the package manager console and also manually update-database
+            //Database.SetInitializer(new CreateDatabaseIfNotExists<BlackMesaDb>());  
 
             AreaRegistration.RegisterAllAreas();
 

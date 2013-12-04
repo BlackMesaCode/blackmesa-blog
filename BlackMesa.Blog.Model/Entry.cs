@@ -6,7 +6,7 @@ using BlackMesa.Blog.Resources;
 
 namespace BlackMesa.Blog.Model
 {
-    //    [ValidateInput(false)]  // disables request validation on complete model or view model
+    //[ValidateInput(false)]  // disables request validation on complete model or view model
     public class Entry
     {
         public int Id { get; set; }
@@ -18,6 +18,9 @@ namespace BlackMesa.Blog.Model
         public string Title { get; set; }
 
         [Required]
+        [DataType(DataType.MultilineText)]
+        [AllowHtml]
+        [Display(ResourceType = typeof(Strings), Name = "Preview")]
         public string Preview { get; set; }
 
         [Required]

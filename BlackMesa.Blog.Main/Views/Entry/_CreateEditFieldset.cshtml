@@ -23,29 +23,29 @@
         @Html.LabelFor(model => model.Preview)
     </div>
     <div class="editor-field">
-        @Html.TextAreaFor(model => model.Preview)
+        @Html.EditorFor(model => model.Preview)
     </div>
     
     <div class="editor-label">
-        @Html.LabelFor(model => model.DateCreated)
+        <i class="fa fa-calendar"></i>@Html.LabelFor(model => model.DateCreated)
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.DateCreated)
     </div>
     
     <div class="editor-label">
-        @Html.LabelFor(model => model.DateEdited)
+        <i class="fa fa-calendar"></i>@Html.LabelFor(model => model.DateEdited)
     </div>
     <div class="editor-field">
-        <i class="fa fa-calender"></i>@Html.EditorFor(model => model.DateEdited)
+        @Html.EditorFor(model => model.DateEdited)
     </div>
     
-    <div class="editor-label">
+    @*<div class="editor-label">
         @Html.LabelFor(model => model.Tags)
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.Tags)
-    </div>
+    </div>*@
     
     <div class="editor-label">
         @Html.LabelFor(model => model.Published)
@@ -60,7 +60,7 @@
     <div class="editor-field">
         <input type="hidden" name="Content" id="Content"/>
         @*@Html.HiddenFor(model => model.Content)*@
-        @Html.TextBoxFor(model => model.Content)
+        @Html.EditorFor(model => model.Content)
         @*<div id="editor-container">
             <div id="editor">@(Model != null ? Model.Content : Html.Partial("_ContentTemplate").ToHtmlString())</div>
         </div>*@

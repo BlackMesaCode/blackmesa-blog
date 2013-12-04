@@ -2,7 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using BlackMesa.Blog.DataLayer;
+using BlackMesa.Blog.Main.Utilities;
 using BlackMesa.Blog.Main.ViewModels;
 using BlackMesa.Blog.Model;
 using PagedList;
@@ -114,7 +116,12 @@ namespace BlackMesa.Blog.Main.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            var entry = new Entry();
+            entry.DateCreated = DateTime.Now;
+            entry.DateEdited = DateTime.Now;
+            entry.Content = this.GetHtmlHelper().Partial("_ContentTemplate").ToHtmlString();
+
+            return View(entry);
         }
 
 
@@ -123,28 +130,9 @@ namespace BlackMesa.Blog.Main.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Entry entry)
         {
+
             if (ModelState.IsValid)
             {
-                var selectedTags = HttpContext.Request.Form["SelectedTags"];
-                if (!String.IsNullOrEmpty(selectedTags))
-                {
-                    var selectedTagsList = selectedTags.Split(',').ToList();
-
-                    entry.Tags = new Collection<Tag>();
-                    foreach (var tag in selectedTagsList)
-                    {
-                        if (!_db.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(tag))
-                        {
-                            var newTag = new Tag { Name = tag, Language = entry.Language };
-                            _db.Tags.Add(newTag);
-                            entry.Tags.Add(newTag);
-                        }
-                        else
-                        {
-                            entry.Tags.Add(_db.Tags.Single(t => t.Name == tag && t.Language == entry.Language));
-                        }
-                    }
-                }
                 _db.Entries.Add(entry);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
@@ -157,12 +145,12 @@ namespace BlackMesa.Blog.Main.Controllers
         public ActionResult Edit(int id = 0)
         {
             Entry entry = _db.Entries.Find(id);
+            entry.DateEdited = DateTime.Now;
+
             if (entry == null)
             {
                 return HttpNotFound();
             }
-            var selectedTags = string.Join(",", entry.Tags.Select(t => t.Name));
-            ViewBag.SelectedTags = selectedTags;
             return View(entry);
         }
 
@@ -174,44 +162,67 @@ namespace BlackMesa.Blog.Main.Controllers
 
             //if (entry.Preview != null)
             //    ModelState["Preview"].Errors.Clear();
+            //var selectedTags = HttpContext.Request.Form["SelectedTags"];
+            //var selectedTags = string.Join(",", entry.Tags.Select(t => t.Name));
+            //ViewBag.SelectedTags = selectedTags;
+            //var selectedTags = HttpContext.Request.Form["SelectedTags"];
+            //if (!String.IsNullOrEmpty(selectedTags))
+            //{
+            //    var selectedTagsList = selectedTags.Split(',').ToList();
+
+            //    entry.Tags = new Collection<Tag>();
+            //    foreach (var tag in selectedTagsList)
+            //    {
+            //        if (!_db.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(tag))
+            //        {
+            //            var newTag = new Tag { Name = tag, Language = entry.Language };
+            //            _db.Tags.Add(newTag);
+            //            entry.Tags.Add(newTag);
+            //        }
+            //        else
+            //        {
+            //            entry.Tags.Add(_db.Tags.Single(t => t.Name == tag && t.Language == entry.Language));
+            //        }
+            //    }
+            //}
+
+            //if (!String.IsNullOrEmpty(selectedTags))
+            //{
+            //    var selectedTagsList = selectedTags.Split(',').ToList();
+
+            //    foreach (var tag in selectedTagsList)
+            //    {
+            //        if (!_db.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(tag))
+            //        {
+            //            var newTag = new Tag { Name = tag, Language = entry.Language };
+            //            _db.Tags.Add(newTag);
+            //            dbEntry.Tags.Add(newTag);
+            //        }
+            //        else
+            //        {
+            //            dbEntry.Tags.Add(_db.Tags.Single(t => t.Name == tag && t.Language == entry.Language));
+            //        }
+            //    }
+            //}
 
 
             if (ModelState.IsValid)
             {
-                var selectedTags = HttpContext.Request.Form["SelectedTags"];
-
                 var dbEntry = _db.Entries.Find(entry.Id);
 
-//                TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed dbmodel - this is the lazy way to go, instead of manually mapping all the properties
+                TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed dbmodel - this is the lazy way to go, instead of manually mapping all the properties
 
-                dbEntry.Title = entry.Title;
-                dbEntry.Preview = entry.Preview;
-                dbEntry.Content = entry.Content;
-                dbEntry.DateCreated = entry.DateCreated;
-                dbEntry.DateEdited = entry.DateEdited;
-                dbEntry.Published = entry.Published;
-                dbEntry.Language = entry.Language;
+                //dbEntry.Title = entry.Title;
+                //dbEntry.Preview = entry.Preview;
+                //dbEntry.Content = entry.Content;
+                //dbEntry.DateCreated = entry.DateCreated;
+                //dbEntry.DateEdited = entry.DateEdited;
+                //dbEntry.Published = entry.Published;
+                //dbEntry.Language = entry.Language;
 
-                dbEntry.Tags.Clear();
+                //dbEntry.Tags.Clear();
 
-                if (!String.IsNullOrEmpty(selectedTags))
-                {
-                    var selectedTagsList = selectedTags.Split(',').ToList();
 
-                    foreach (var tag in selectedTagsList)
-                    {
-                        if (!_db.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(tag))
-                        {
-                            var newTag = new Tag { Name = tag, Language = entry.Language };
-                            _db.Tags.Add(newTag);
-                            dbEntry.Tags.Add(newTag);
-                        }
-                        else
-                        {
-                            dbEntry.Tags.Add(_db.Tags.Single(t => t.Name == tag && t.Language == entry.Language));
-                        }
-                    }
-                }
 //                _db.Entry(dbEntry).State = EntityState.Modified; // not necessary cause dbEntry is tracked by the dbContext
                 _db.SaveChanges();
 

@@ -211,6 +211,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312041433324_Init.cs" />
+    <Compile Include="Migrations\201312041433324_Init.Designer.cs">
+      <DependentUpon>201312041433324_Init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\AjaxOnlyAttribute.cs" />
@@ -539,6 +543,11 @@
       <Project>{ce4bc338-bd91-4f2a-b7ed-d2dbf67a9670}</Project>
       <Name>BlackMesa.Blog.Resources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312041433324_Init.resx">
+      <DependentUpon>201312041433324_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

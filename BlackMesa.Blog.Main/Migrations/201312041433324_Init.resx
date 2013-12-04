@@ -117,100 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About" xml:space="preserve">
-    <value>Über</value>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
   </data>
-  <data name="AddEntry" xml:space="preserve">
-    <value>Eintrag hinzufügen</value>
-  </data>
-  <data name="Archive" xml:space="preserve">
-    <value>Archiv</value>
-  </data>
-  <data name="BackToTop" xml:space="preserve">
-    <value>Nach oben</value>
-  </data>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
-  </data>
-  <data name="ConfirmPassword" xml:space="preserve">
-    <value>Passwort bestätigen</value>
-  </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Inhalt</value>
-  </data>
-  <data name="CurrentPassword" xml:space="preserve">
-    <value>Derzeitiges Passwort</value>
-  </data>
-  <data name="DateCreated" xml:space="preserve">
-    <value>Erstellungsdatum</value>
-  </data>
-  <data name="DateEdited" xml:space="preserve">
-    <value>Überarbeitungsdatum</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="FilterByTag" xml:space="preserve">
-    <value>Nach Tags filtern</value>
-  </data>
-  <data name="FooterLicence" xml:space="preserve">
-    <value>Wenn nicht anderweitig ausgezeichnet, sind die Inhalte dieser Seite lizenziert unter </value>
-  </data>
-  <data name="Guest" xml:space="preserve">
-    <value>Gast</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Startseite</value>
-  </data>
-  <data name="LegalNotice" xml:space="preserve">
-    <value>Impressum</value>
-  </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>Einloggen</value>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Ausloggen</value>
-  </data>
-  <data name="Manage" xml:space="preserve">
-    <value>Verwalten</value>
-  </data>
-  <data name="NewPassword" xml:space="preserve">
-    <value>Neues Passwort</value>
-  </data>
-  <data name="NoEntriesFound" xml:space="preserve">
-    <value>Keine Einträge vorhanden</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Passwort</value>
-  </data>
-  <data name="Preview" xml:space="preserve">
-    <value>Vorschau</value>
-  </data>
-  <data name="Published" xml:space="preserve">
-    <value>Veröffentlicht</value>
-  </data>
-  <data name="ReadMore" xml:space="preserve">
-    <value>Weiterlesen</value>
-  </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Angemeldet bleiben?</value>
-  </data>
-  <data name="ReparseAll" xml:space="preserve">
-    <value>Erneut parsen</value>
-  </data>
-  <data name="RevisedOn" xml:space="preserve">
-    <value>Überarbeitet am</value>
-  </data>
-  <data name="Tags" xml:space="preserve">
-    <value>Tags</value>
-  </data>
-  <data name="UserName" xml:space="preserve">
-    <value>Benutzername</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>
