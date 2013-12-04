@@ -169,12 +169,28 @@ legend {
 }
 
 label {
-    display: inline-block;
+    display: block;
+    font-weight: bold;
 }
 
 
-.editor-field {
+input, textarea {
+    display: block;
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
     margin-bottom: 15px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+
+input[type='submit'], button {
+    display: inline-block;
+}
+
+textarea {
+    overflow:hidden;
 }
 
 

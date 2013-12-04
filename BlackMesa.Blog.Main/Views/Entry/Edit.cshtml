@@ -1,4 +1,6 @@
-﻿@model BlackMesa.Blog.Model.Entry
+﻿
+@using BlackMesa.Blog.Resources
+@model BlackMesa.Blog.Model.Entry
 
 @{
     ViewBag.Title = "Edit";
@@ -18,7 +20,9 @@
             @Html.Partial("_CreateEditFieldset")
 
             <p>
-                <input class="entry-create-edit-submit" type="submit" value="Save" />
+                <button type="submit">
+                    @Strings.Save
+                </button>
                 @Html.ActionLink("Back to List", "Index")
             </p>
         </fieldset>

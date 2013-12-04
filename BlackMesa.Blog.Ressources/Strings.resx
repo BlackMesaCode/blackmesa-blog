@@ -207,6 +207,9 @@
   <data name="RevisedOn" xml:space="preserve">
     <value>Revised on</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>
   </data>
