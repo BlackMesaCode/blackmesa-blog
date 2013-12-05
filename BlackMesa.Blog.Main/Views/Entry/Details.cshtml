@@ -7,14 +7,14 @@
 <section id="entry-details">
 
     <article>
-    
-        @Html.Partial("_EntryHead", Model)
-        
-        <div id="article-body">
+        <header>
+            @Html.Partial("_EntryHead", Model)
             @Model.Preview
+        </header>
+        <div id="article-body">
             @Html.Raw(Model.Content)
         </div>
-
+        
         <div id="disqus_thread"></div>
         <noscript>Please enable JavaScript to view the comments.</noscript>
         
