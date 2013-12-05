@@ -1,0 +1,60 @@
+﻿@using System.Globalization
+@using System.Threading
+@using BlackMesa.Blog.Main
+@using BlackMesa.Blog.Resources
+@using BlackMesa.Website.Main
+
+
+<div id="top-header-bar">
+    <div id="language-selection">
+        <div class="dropdown-menu align-right">
+            <a class="btn-gray-light" href="#">
+                <i class="fa fa-globe"></i> @Thread.CurrentThread.CurrentCulture.NativeName
+                <span class="fa fa-caret-down"></span>
+            </a>
+            <ul>
+                @foreach (var language in Global.AllowedLanguages.Where(l => l != ViewBag.CurrentLanguage))
+                {
+                    var culture = CultureInfo.CreateSpecificCulture(language);
+                    <li><a href="@Url.Action("Index", "Entry", new { culture = culture.Name })"> @culture.EnglishName</a></li>
+                }
+            </ul>
+        </div>
+
+    </div>
+    
+    <div id="datetime">
+        <i class="fa fa-clock-o"></i> @DateTime.Now.ToLongDateString(), @DateTime.Now.ToShortTimeString()
+    </div>
+
+    
+    <div id="membership">
+        @if (Request.IsAuthenticated)
+        {
+            <i class="fa fa-unlock-alt"></i><span id="user-name">@User.Identity.Name<text>: </text></span>
+            <span id="manage"><a href="@Url.Action("Manage", "Account")"><i class="fa fa-cogs"></i>@Strings.Manage</a></span>
+            <a href="@Url.Action("LogOff", "Account")"><i class="fa fa-sign-out"></i>@Strings.Logout</a>
+        }
+        else
+        {
+            <i class="fa fa-lock"></i><span id="user-name">@Strings.Guest<text>: </text></span>
+            <a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-out"></i> @Strings.LogIn</a>
+        }
+    </div>
+</div>
+
+<hr/>
+
+
+
+
+<div id="bottom-header-bar">
+    <div id="logo">
+        <a href="@Url.Action("Index", "Entry")"><img src="/Content/custom/images/blackmesa_logo.png" alt="BlackMesa Logo" /></a>
+    </div>
+
+    <nav>
+        @Html.Partial("_Navigation")
+    </nav>
+</div>
+

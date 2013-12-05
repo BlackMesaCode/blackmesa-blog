@@ -1,0 +1,44 @@
+﻿@using PagedList.Mvc
+@using BlackMesa.Website.Resources;
+@model BlackMesa.Website.Main.ViewModels.EntryIndexViewModel
+
+@{
+    ViewBag.Title = Strings.Home;
+}
+
+
+<section id="entry-index">
+    <div id="entry-index-articles">
+        @if (Model.Entries.Count > 0)
+        {
+            foreach (var item in Model.Entries)
+            {
+                @Html.Partial("_EntryPreview", item)
+            }
+        }
+        else
+        {
+            <div id="no-entries-found">
+                @Strings.NoEntriesFound
+            </div>
+
+        }
+
+    </div>
+
+    <div id="entries-bottom-bar">
+
+        @if (User.IsInRole("Admin"))
+        {
+            <div id="add-entry-button">
+                <i class="fa fa-plus-circle"></i><a href="@Url.Action("Create")">@Strings.AddEntry</a>
+            </div>
+        }
+
+        @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, ViewBag.SelectedTags, ViewBag.OrderBy }), PagedListRenderOptions.Classic)
+
+    </div>
+
+</section>
+
+

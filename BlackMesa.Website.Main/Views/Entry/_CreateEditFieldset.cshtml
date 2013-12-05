@@ -1,0 +1,41 @@
+﻿@model BlackMesa.Blog.Model.Entry
+
+<div id="entry-create-edit">
+
+    @Html.ValidationMessageFor(model => model.Language)
+    @Html.ValidationMessageFor(model => model.Title)
+    @Html.ValidationMessageFor(model => model.Preview)
+    @Html.ValidationMessageFor(model => model.DateCreated)
+    @Html.ValidationMessageFor(model => model.DateEdited)
+    @Html.ValidationMessageFor(model => model.TagsAsString)
+    @Html.ValidationMessageFor(model => model.Content)
+
+    <input name="Language" type="hidden" value="@ViewBag.CurrentLanguage" />
+
+    @Html.LabelFor(model => model.Title)
+    @Html.EditorFor(model => model.Title)
+
+    @Html.LabelFor(model => model.TagsAsString)
+    @Html.EditorFor(model => model.TagsAsString)
+
+    @Html.LabelFor(model => model.Preview)
+    @Html.EditorFor(model => model.Preview)
+
+    @Html.LabelFor(model => model.Content)
+    @Html.HiddenFor(model => model.Content)
+    <div id="editor-container">
+        <div id="editor">
+            @Model.Content
+        </div>
+    </div>
+
+    @Html.LabelFor(model => model.DateCreated)
+    @Html.EditorFor(model => model.DateCreated)
+
+    @Html.LabelFor(model => model.DateEdited)
+    @Html.EditorFor(model => model.DateEdited)
+
+    @Html.LabelFor(model => model.Published)
+    @Html.CheckBoxFor(model => model.Published)
+
+</div>
