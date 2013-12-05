@@ -37,9 +37,9 @@
 						'Variant When While With WithEvents WriteOnly Xor';
 
 		this.regexList = [
-			{ regex: /'.*$/gm,										css: 'comments' },			// one line comments
+			{ regex: /'.*$/gm,										css: 'BlogComments' },			// one line BlogComments
 			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,	css: 'string' },			// strings
-			{ regex: /^\s*#.*$/gm,									css: 'preprocessor' },		// preprocessor tags like #region and #endregion
+			{ regex: /^\s*#.*$/gm,									css: 'preprocessor' },		// preprocessor BlogTags like #region and #endregion
 			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),	css: 'keyword' }			// vb keyword
 			];
 

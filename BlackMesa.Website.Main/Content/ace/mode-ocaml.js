@@ -163,9 +163,9 @@ var OcamlHighlightRules = function() {
         "get_all_formatter_output_functions|get_approx_printing|get_copy|" +
         "get_ellipsis_text|get_error_when_null_denominator|get_floating_precision|" +
         "get_formatter_output_functions|get_formatter_tag_functions|get_image|" +
-        "get_margin|get_mark_tags|get_max_boxes|get_max_indent|get_method|" +
+        "get_margin|get_mark_BlogTags|get_max_boxes|get_max_indent|get_method|" +
         "get_method_label|get_normalize_ratio|get_normalize_ratio_when_printing|" +
-        "get_print_tags|get_state|get_variable|getcwd|getegid|getegid|getenv|" +
+        "get_print_BlogTags|get_state|get_variable|getcwd|getegid|getegid|getenv|" +
         "getenv|getenv|geteuid|geteuid|getgid|getgid|getgrgid|getgrgid|getgrnam|" +
         "getgrnam|getgroups|gethostbyaddr|gethostbyname|gethostname|getitimer|" +
         "getlogin|getpeername|getpid|getppid|getprotobyname|getprotobynumber|" +
@@ -213,17 +213,17 @@ var OcamlHighlightRules = function() {
         "pp_close_box|pp_close_tag|pp_close_tbox|pp_force_newline|" +
         "pp_get_all_formatter_output_functions|pp_get_ellipsis_text|" +
         "pp_get_formatter_output_functions|pp_get_formatter_tag_functions|" +
-        "pp_get_margin|pp_get_mark_tags|pp_get_max_boxes|pp_get_max_indent|" +
-        "pp_get_print_tags|pp_open_box|pp_open_hbox|pp_open_hovbox|pp_open_hvbox|" +
+        "pp_get_margin|pp_get_mark_BlogTags|pp_get_max_boxes|pp_get_max_indent|" +
+        "pp_get_print_BlogTags|pp_open_box|pp_open_hbox|pp_open_hovbox|pp_open_hvbox|" +
         "pp_open_tag|pp_open_tbox|pp_open_vbox|pp_over_max_boxes|pp_print_as|" +
         "pp_print_bool|pp_print_break|pp_print_char|pp_print_cut|pp_print_float|" +
         "pp_print_flush|pp_print_if_newline|pp_print_int|pp_print_newline|" +
         "pp_print_space|pp_print_string|pp_print_tab|pp_print_tbreak|" +
         "pp_set_all_formatter_output_functions|pp_set_ellipsis_text|" +
         "pp_set_formatter_out_channel|pp_set_formatter_output_functions|" +
-        "pp_set_formatter_tag_functions|pp_set_margin|pp_set_mark_tags|" +
-        "pp_set_max_boxes|pp_set_max_indent|pp_set_print_tags|pp_set_tab|" +
-        "pp_set_tags|pred|pred_big_int|pred_num|prerr_char|prerr_endline|" +
+        "pp_set_formatter_tag_functions|pp_set_margin|pp_set_mark_BlogTags|" +
+        "pp_set_max_boxes|pp_set_max_indent|pp_set_print_BlogTags|pp_set_tab|" +
+        "pp_set_BlogTags|pred|pred_big_int|pred_num|prerr_char|prerr_endline|" +
         "prerr_float|prerr_int|prerr_newline|prerr_string|print|print_as|" +
         "print_bool|print_break|print_char|print_cut|print_endline|print_float|" +
         "print_flush|print_if_newline|print_int|print_newline|print_space|" +
@@ -244,10 +244,10 @@ var OcamlHighlightRules = function() {
         "set_close_on_exec|set_color|set_ellipsis_text|" +
         "set_error_when_null_denominator|set_field|set_floating_precision|" +
         "set_font|set_formatter_out_channel|set_formatter_output_functions|" +
-        "set_formatter_tag_functions|set_line_width|set_margin|set_mark_tags|" +
+        "set_formatter_tag_functions|set_line_width|set_margin|set_mark_BlogTags|" +
         "set_max_boxes|set_max_indent|set_method|set_nonblock|set_nonblock|" +
-        "set_normalize_ratio|set_normalize_ratio_when_printing|set_print_tags|" +
-        "set_signal|set_state|set_tab|set_tag|set_tags|set_text_size|" +
+        "set_normalize_ratio|set_normalize_ratio_when_printing|set_print_BlogTags|" +
+        "set_signal|set_state|set_tab|set_tag|set_BlogTags|set_text_size|" +
         "set_window_title|setgid|setgid|setitimer|setitimer|setsid|setsid|" +
         "setsockopt|setsockopt|setsockopt_float|setsockopt_float|setsockopt_int|" +
         "setsockopt_int|setsockopt_optint|setsockopt_optint|setuid|setuid|" +

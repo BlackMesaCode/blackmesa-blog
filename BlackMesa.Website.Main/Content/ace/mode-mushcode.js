@@ -477,7 +477,7 @@ var MushCodeRules = function() {
  "fbhset|"+
  "fblist|"+
  "fbstats|"+
- "qentries|"+
+ "qBlogEntries|"+
  "qentry|"+
  "play|"+
  "ansi|"+

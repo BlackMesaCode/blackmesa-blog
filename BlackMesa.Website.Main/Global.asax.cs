@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.Http;
+using System.Configuration;
+using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Routing;
+using BlackMesa.Blog.DataLayer;
 using BlackMesa.Website.Main.App_Start;
 
 namespace BlackMesa.Website.Main
@@ -24,17 +26,12 @@ namespace BlackMesa.Website.Main
         {
             // We dont need the initializer as we dont use AutomaticMigrations 
             // but instead manually add-migrations via the package manager console and also manually update-database
-            //Database.SetInitializer(new CreateDatabaseIfNotExists<BlogDbContext>());  
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogDbContext, BlackMesa.Blog.DataLayer.Migrations.Configuration>());  
 
             AreaRegistration.RegisterAllAreas();
-
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            // we can only call it here, if the database is already created
-            // so if we create the database the first time, we have to comment out the line below
-            AuthConfig.RegisterAuth();
         }
 
 

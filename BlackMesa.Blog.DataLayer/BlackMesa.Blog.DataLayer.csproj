@@ -54,6 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogDbContext.cs" />
+    <Compile Include="Migrations\201312051738263_Init.cs" />
+    <Compile Include="Migrations\201312051738263_Init.Designer.cs">
+      <DependentUpon>201312051738263_Init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +69,11 @@
       <Project>{6b4803be-c717-47d0-b243-621bc92ddcf2}</Project>
       <Name>BlackMesa.Blog.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312051738263_Init.resx">
+      <DependentUpon>201312051738263_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

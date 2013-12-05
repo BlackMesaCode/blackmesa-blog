@@ -35,8 +35,8 @@
 						;
 	
 		this.regexList = [
-			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	css: 'comments' },		// one line comments
-			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'comments' },		// multiline comments
+			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	css: 'BlogComments' },		// one line BlogComments
+			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'BlogComments' },		// multiline BlogComments
 			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },		// double quoted strings
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },		// single quoted strings
 			{ regex: /\b([\d]+(\.[\d]+)?|0x[a-f0-9]+)\b/gi,				css: 'value' },			// numbers

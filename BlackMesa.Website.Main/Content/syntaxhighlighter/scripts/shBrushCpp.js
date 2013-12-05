@@ -76,8 +76,8 @@
 						'clock ctime difftime gmtime localtime mktime strftime time';
 
 		this.regexList = [
-			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	css: 'comments' },			// one line comments
-			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'comments' },			// multiline comments
+			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	css: 'BlogComments' },			// one line BlogComments
+			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'BlogComments' },			// multiline BlogComments
 			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },			// strings
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },			// strings
 			{ regex: /^ *#.*/gm,										css: 'preprocessor' },

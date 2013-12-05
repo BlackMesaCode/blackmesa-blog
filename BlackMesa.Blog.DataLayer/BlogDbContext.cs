@@ -10,7 +10,6 @@ namespace BlackMesa.Blog.DataLayer
             
         }
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Entry> BlogEntries { get; set; }
         public DbSet<Tag> BlogTags { get; set; }
         public DbSet<Comment> BlogComments { get; set; }

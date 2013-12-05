@@ -33,19 +33,19 @@
 		{
 			var css = (match[0].indexOf("///") == 0)
 				? 'color1'
-				: 'comments'
+				: 'BlogComments'
 				;
 			
 			return [new SyntaxHighlighter.Match(match[0], match.index, css)];
 		}
 
 		this.regexList = [
-			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	func : fixComments },		// one line comments
-			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'comments' },			// multiline comments
+			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	func : fixComments },		// one line BlogComments
+			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'BlogComments' },			// multiline BlogComments
 			{ regex: /@"(?:[^"]|"")*"/g,								css: 'string' },			// @-quoted strings
 			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },			// strings
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },			// strings
-			{ regex: /^\s*#.*/gm,										css: 'preprocessor' },		// preprocessor tags like #region and #endregion
+			{ regex: /^\s*#.*/gm,										css: 'preprocessor' },		// preprocessor BlogTags like #region and #endregion
 			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),		css: 'keyword' },			// c# keyword
 			{ regex: /\bpartial(?=\s+(?:class|interface|struct)\b)/g,	css: 'keyword' },			// contextual keyword: 'partial'
 			{ regex: /\byield(?=\s+(?:return|break)\b)/g,				css: 'keyword' }			// contextual keyword: 'yield'

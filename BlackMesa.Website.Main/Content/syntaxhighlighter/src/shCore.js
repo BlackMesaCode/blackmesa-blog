@@ -81,7 +81,7 @@ var sh = {
 	config : {
 		space : '&nbsp;',
 		
-		/** Enables use of <SCRIPT type="syntaxhighlighter" /> tags. */
+		/** Enables use of <SCRIPT type="syntaxhighlighter" /> BlogTags. */
 		useScriptTags : true,
 		
 		/** Blogger mode flag. */
@@ -125,13 +125,13 @@ var sh = {
 		xmlComments					: /(&lt;|<)!--[\s\S]*?--(&gt;|>)/gm,
 		url							: /\w+:\/\/[\w-.\/?%&=:@;]*/g,
 		
-		/** <?= ?> tags. */
+		/** <?= ?> BlogTags. */
 		phpScriptTags 				: { left: /(&lt;|<)\?=?/g, right: /\?(&gt;|>)/g },
 		
-		/** <%= %> tags. */
+		/** <%= %> BlogTags. */
 		aspScriptTags				: { left: /(&lt;|<)%=?/g, right: /%(&gt;|>)/g },
 		
-		/** <script></script> tags. */
+		/** <script></script> BlogTags. */
 		scriptScriptTags			: { left: /(&lt;|<)\s*script.*?(&gt;|>)/gi, right: /(&lt;|<)\/\s*script\s*(&gt;|>)/gi }
 	},
 
@@ -340,7 +340,7 @@ var sh = {
 			
 			code = target[propertyName];
 			
-			// remove CDATA from <SCRIPT/> tags if it's present
+			// remove CDATA from <SCRIPT/> BlogTags if it's present
 			if (conf.useScriptTags)
 				code = stripCData(code);
 				
@@ -1037,9 +1037,9 @@ function getMatches(code, regexInfo)
 };
 
 /**
- * Turns all URLs in the code into <a/> tags.
+ * Turns all URLs in the code into <a/> BlogTags.
  * @param {String} code Input code.
- * @return {String} Returns code with </a> tags.
+ * @return {String} Returns code with </a> BlogTags.
  */
 function processUrls(code)
 {
@@ -1067,7 +1067,7 @@ function processUrls(code)
 
 /**
  * Finds all <SCRIPT TYPE="syntaxhighlighter" /> elementss.
- * @return {Array} Returns array of all found SyntaxHighlighter tags.
+ * @return {Array} Returns array of all found SyntaxHighlighter BlogTags.
  */
 function getSyntaxHighlighterScriptTags()
 {
@@ -1086,7 +1086,7 @@ function getSyntaxHighlighterScriptTags()
  * Strips <![CDATA[]]> from <SCRIPT /> content because it should be used
  * there in most cases for XHTML compliance.
  * @param {String} original	Input code.
- * @return {String} Returns code without leading <![CDATA[]]> tags.
+ * @return {String} Returns code without leading <![CDATA[]]> BlogTags.
  */
 function stripCData(original)
 {
@@ -1325,7 +1325,7 @@ sh.Highlighter.prototype = {
 	
 	/**
 	 * Checks to see if any of the matches are inside of other matches. 
-	 * This process would get rid of highligted strings inside comments, 
+	 * This process would get rid of highligted strings inside BlogComments, 
 	 * keywords inside strings and so on.
 	 */
 	removeNestedMatches: function(matches)

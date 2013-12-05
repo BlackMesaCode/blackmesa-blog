@@ -14,14 +14,14 @@ namespace BlackMesa.Website.Main.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            var comments = _blogDbContext.Comments.OrderByDescending(comment => comment.DateCreated).Take(3);
+            var comments = _blogDbContext.BlogComments.OrderByDescending(comment => comment.DateCreated).Take(3);
             return PartialView(comments.ToList());
         }
 
 
         public ActionResult Edit(int id = 0)
         {
-            var comment = _blogDbContext.Comments.Find(id);
+            var comment = _blogDbContext.BlogComments.Find(id);
             if (comment == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace BlackMesa.Website.Main.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Comment comment = _blogDbContext.Comments.Find(id);
+            Comment comment = _blogDbContext.BlogComments.Find(id);
             if (comment == null)
             {
                 return HttpNotFound();
@@ -61,8 +61,8 @@ namespace BlackMesa.Website.Main.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Comment comment = _blogDbContext.Comments.Find(id);
-            _blogDbContext.Comments.Remove(comment);
+            Comment comment = _blogDbContext.BlogComments.Find(id);
+            _blogDbContext.BlogComments.Remove(comment);
             _blogDbContext.SaveChanges();
             return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
         }

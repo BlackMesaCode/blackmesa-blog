@@ -1,4 +1,4 @@
-/**
+﻿/**
  * SyntaxHighlighter
  * http://alexgorbatchev.com/SyntaxHighlighter
  *
@@ -30,10 +30,10 @@
 		this.regexList = [
 
 			{ regex: /(--|#).*$/gm,
-			    css: 'comments' },
+			    css: 'BlogComments' },
 
-			{ regex: /\(\*(?:[\s\S]*?\(\*[\s\S]*?\*\))*[\s\S]*?\*\)/gm, // support nested comments
-			    css: 'comments' },
+			{ regex: /\(\*(?:[\s\S]*?\(\*[\s\S]*?\*\))*[\s\S]*?\*\)/gm, // support nested BlogComments
+			    css: 'BlogComments' },
 
 			{ regex: /"[\s\S]*?"/gm,
 			    css: 'string' },

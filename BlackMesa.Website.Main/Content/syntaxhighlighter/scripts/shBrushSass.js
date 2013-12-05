@@ -69,8 +69,8 @@
 		var r = SyntaxHighlighter.regexLib;
 		
 		this.regexList = [
-			{ regex: r.multiLineCComments,								css: 'comments' },		// multiline comments
-			{ regex: r.singleLineCComments,								css: 'comments' },		// singleline comments
+			{ regex: r.multiLineCComments,								css: 'BlogComments' },		// multiline BlogComments
+			{ regex: r.singleLineCComments,								css: 'BlogComments' },		// singleline BlogComments
 			{ regex: r.doubleQuotedString,								css: 'string' },		// double quoted strings
 			{ regex: r.singleQuotedString,								css: 'string' },		// single quoted strings
 			{ regex: /\#[a-fA-F0-9]{3,6}/g,								css: 'value' },			// html colors

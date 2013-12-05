@@ -74,7 +74,7 @@ var PgsqlHighlightRules = function() {
         "assignment|asymmetric|at|attribute|authorization|backward|before|begin|between|bigint|" +
         "binary|bit|bool|boolean|both|box|bpchar|by|bytea|cache|called|cascade|cascaded|case|cast|" +
         "catalog|chain|char|character|characteristics|check|checkpoint|cid|cidr|circle|class|close|" +
-        "cluster|coalesce|collate|collation|column|comment|comments|commit|committed|concurrently|" +
+        "cluster|coalesce|collate|collation|column|comment|BlogComments|commit|committed|concurrently|" +
         "configuration|connection|constraint|constraints|content|continue|conversion|copy|cost|" +
         "create|cross|cstring|csv|current|current_catalog|current_date|current_role|" +
         "current_schema|current_time|current_timestamp|current_user|cursor|cycle|data|database|" +

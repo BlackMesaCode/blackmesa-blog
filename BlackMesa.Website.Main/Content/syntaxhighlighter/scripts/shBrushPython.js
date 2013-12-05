@@ -39,9 +39,9 @@
 		var special =  'None True False self cls class_';
 
 		this.regexList = [
-				{ regex: SyntaxHighlighter.regexLib.singleLinePerlComments, css: 'comments' },
+				{ regex: SyntaxHighlighter.regexLib.singleLinePerlComments, css: 'BlogComments' },
 				{ regex: /^\s*@\w+/gm, 										css: 'decorator' },
-				{ regex: /(['\"]{3})([^\1])*?\1/gm, 						css: 'comments' },
+				{ regex: /(['\"]{3})([^\1])*?\1/gm, 						css: 'BlogComments' },
 				{ regex: /"(?!")(?:\.|\\\"|[^\""\n])*"/gm, 					css: 'string' },
 				{ regex: /'(?!')(?:\.|(\\\')|[^\''\n])*'/gm, 				css: 'string' },
 				{ regex: /\+|\-|\*|\/|\%|=|==/gm, 							css: 'keyword' },

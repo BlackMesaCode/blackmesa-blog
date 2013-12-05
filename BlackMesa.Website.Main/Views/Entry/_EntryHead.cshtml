@@ -1,6 +1,6 @@
 ﻿@using System.Globalization
-@using BlackMesa.Blog.Main.Utilities
-@using BlackMesa.Blog.Resources
+@using BlackMesa.Website.Main.Utilities
+@using BlackMesa.Website.Resources
 @using BlackMesa.Website.Main.Utilities
 
 @model BlackMesa.Blog.Model.Entry
@@ -52,7 +52,7 @@
                     
                 @if (Model.Tags.Count > 0)
                 {
-                    <i class="fa fa-tags"></i> @:Tags:
+                    <i class="fa fa-tags"></i> @:BlogTags:
                     foreach(var tag in Model.Tags)
                     {
                         @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTags = tag.Name }, null)

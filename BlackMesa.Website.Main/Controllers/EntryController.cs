@@ -21,7 +21,9 @@ namespace BlackMesa.Website.Main.Controllers
         public ActionResult Index(EntryIndexViewModel viewModel)
         {
             var language = ViewBag.CurrentLanguage as string;
-            var model = User.IsInRole("Admin") ? _blogDbContext.Entries.Where(e => e.Language == language) : _blogDbContext.Entries.Where(e => e.Published && e.Language == language);
+            var model = User.IsInRole("Admin") ? _blogDbContext.BlogEntries.Where(e => e.Language == language) : _blogDbContext.BlogEntries.Where(e => e.Published && e.Language == language);
+
+            //var model = _blogDbContext.BlogEntries.Where(e => e.Language == language);
 
             // Filter
             var selectedTags = viewModel.SelectedTags;
@@ -77,7 +79,7 @@ namespace BlackMesa.Website.Main.Controllers
         [AllowAnonymous]
         public ActionResult Details(string title, int id = 0)
         {
-            Entry entry = _blogDbContext.Entries.Find(id);
+            Entry entry = _blogDbContext.BlogEntries.Find(id);
 
             if (entry == null || (!entry.Published && !User.IsInRole("Admin")))
             {
@@ -105,12 +107,12 @@ namespace BlackMesa.Website.Main.Controllers
 
             if (ModelState.IsValid)
             {
-                _blogDbContext.Comments.Add(comment);
+                _blogDbContext.BlogComments.Add(comment);
                 _blogDbContext.SaveChanges();
                 return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
             }
 
-            return View("Details", _blogDbContext.Entries.Single(c => c.Id == comment.EntryId));
+            return View("Details", _blogDbContext.BlogEntries.Single(c => c.Id == comment.EntryId));
         }
 
 
@@ -136,7 +138,7 @@ namespace BlackMesa.Website.Main.Controllers
             if (ModelState.IsValid)
             {
                 AddTags(entry.TagsAsString, entry);
-                _blogDbContext.Entries.Add(entry);
+                _blogDbContext.BlogEntries.Add(entry);
                 _blogDbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -147,7 +149,7 @@ namespace BlackMesa.Website.Main.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Entry entry = _blogDbContext.Entries.Find(id);
+            Entry entry = _blogDbContext.BlogEntries.Find(id);
             entry.DateEdited = DateTime.Now;
 
             if (entry == null)
@@ -166,7 +168,7 @@ namespace BlackMesa.Website.Main.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dbEntry = _blogDbContext.Entries.Find(entry.Id);
+                var dbEntry = _blogDbContext.BlogEntries.Find(entry.Id);
 
                 TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed dbmodel - this is the lazy way to go, instead of manually mapping all the properties
 
@@ -195,15 +197,15 @@ namespace BlackMesa.Website.Main.Controllers
             {
                 var trimmedTag = tag.TrimStart().TrimEnd(); // Remove leading and ending spaces from string
 
-                if (!_blogDbContext.Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(trimmedTag))
+                if (!_blogDbContext.BlogTags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(trimmedTag))
                 {
                     var newTag = new Tag { Name = trimmedTag, Language = entry.Language };
-                    _blogDbContext.Tags.Add(newTag);
+                    _blogDbContext.BlogTags.Add(newTag);
                     entry.Tags.Add(newTag);
                 }
                 else
                 {
-                    entry.Tags.Add(_blogDbContext.Tags.Single(t => t.Name == trimmedTag && t.Language == entry.Language));
+                    entry.Tags.Add(_blogDbContext.BlogTags.Single(t => t.Name == trimmedTag && t.Language == entry.Language));
                 }
             }
         }
@@ -211,17 +213,17 @@ namespace BlackMesa.Website.Main.Controllers
 
         private void DeleteTagsWithNoEntries()
         {
-            var tagsToDelete = _blogDbContext.Tags.Where(tag => tag.Entries.Count == 0);
+            var tagsToDelete = _blogDbContext.BlogTags.Where(tag => tag.Entries.Count == 0);
             foreach (var tag in tagsToDelete)
             {
-                _blogDbContext.Tags.Remove(tag);
+                _blogDbContext.BlogTags.Remove(tag);
             }
         }
 
 
         public ActionResult Delete(int id = 0)
         {
-            Entry entry = _blogDbContext.Entries.Find(id);
+            Entry entry = _blogDbContext.BlogEntries.Find(id);
             if (entry == null)
             {
                 return HttpNotFound();
@@ -235,8 +237,8 @@ namespace BlackMesa.Website.Main.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Entry entry = _blogDbContext.Entries.Find(id);
-            _blogDbContext.Entries.Remove(entry);
+            Entry entry = _blogDbContext.BlogEntries.Find(id);
+            _blogDbContext.BlogEntries.Remove(entry);
             _blogDbContext.SaveChanges();
 
             DeleteTagsWithNoEntries();

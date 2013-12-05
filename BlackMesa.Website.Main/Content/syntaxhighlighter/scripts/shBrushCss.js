@@ -64,7 +64,7 @@
 		var fonts =		'[mM]onospace [tT]ahoma [vV]erdana [aA]rial [hH]elvetica [sS]ans-serif [sS]erif [cC]ourier mono sans serif';
 	
 		this.regexList = [
-			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'comments' },	// multiline comments
+			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'BlogComments' },	// multiline BlogComments
 			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },	// double quoted strings
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },	// single quoted strings
 			{ regex: /\#[a-fA-F0-9]{3,6}/g,								css: 'value' },		// html colors

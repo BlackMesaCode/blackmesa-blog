@@ -33,9 +33,9 @@
 		this.regexList = [
 			{ regex: r.multiLineDoubleQuotedString,					css: 'string' },			// double quoted strings
 			{ regex: r.multiLineSingleQuotedString,					css: 'string' },			// single quoted strings
-			{ regex: r.singleLineCComments,							css: 'comments' },			// one line comments
-			{ regex: r.multiLineCComments,							css: 'comments' },			// multiline comments
-			{ regex: /\s*#.*/gm,									css: 'preprocessor' },		// preprocessor tags like #region and #endregion
+			{ regex: r.singleLineCComments,							css: 'BlogComments' },			// one line BlogComments
+			{ regex: r.multiLineCComments,							css: 'BlogComments' },			// multiline BlogComments
+			{ regex: /\s*#.*/gm,									css: 'preprocessor' },		// preprocessor BlogTags like #region and #endregion
 			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),	css: 'keyword' }			// keywords
 			];
 	

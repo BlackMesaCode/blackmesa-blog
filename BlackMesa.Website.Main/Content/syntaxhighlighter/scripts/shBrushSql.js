@@ -46,7 +46,7 @@
 		var operators =	'all and any between cross in join like not null or outer some';
 
 		this.regexList = [
-			{ regex: /--(.*)$/gm,												css: 'comments' },			// one line and multiline comments
+			{ regex: /--(.*)$/gm,												css: 'BlogComments' },			// one line and multiline BlogComments
 			{ regex: SyntaxHighlighter.regexLib.multiLineDoubleQuotedString,	css: 'string' },			// double quoted strings
 			{ regex: SyntaxHighlighter.regexLib.multiLineSingleQuotedString,	css: 'string' },			// single quoted strings
 			{ regex: new RegExp(this.getKeywords(funcs), 'gmi'),				css: 'color2' },			// functions

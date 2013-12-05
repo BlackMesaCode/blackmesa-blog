@@ -77,7 +77,7 @@ sh.autoloader = function()
 		addBrush(aliases, url);
 	}
 	
-	// dynamically add <script /> tags to the document body
+	// dynamically add <script /> BlogTags to the document body
 	for (i = 0; i < elements.length; i++)
 	{
 		var url = brushes[elements[i].params.brush];
@@ -112,7 +112,7 @@ sh.autoloader = function()
 			}
 		};
 		
-		// sync way of adding script tags to the page
+		// sync way of adding script BlogTags to the page
 		document.body.appendChild(script);
 	};
 	

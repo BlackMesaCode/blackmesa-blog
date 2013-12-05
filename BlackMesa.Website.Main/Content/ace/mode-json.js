@@ -121,7 +121,7 @@ var JsonHighlightRules = function() {
                 token : "invalid.illegal", // single quoted strings are not allowed
                 regex : "['](?:(?:\\\\.)|(?:[^'\\\\]))*?[']"
             }, {
-                token : "invalid.illegal", // comments are not allowed
+                token : "invalid.illegal", // BlogComments are not allowed
                 regex : "\\/\\/.*$"
             }, {
                 token : "paren.lparen",

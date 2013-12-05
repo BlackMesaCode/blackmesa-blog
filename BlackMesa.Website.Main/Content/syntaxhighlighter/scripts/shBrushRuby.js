@@ -32,7 +32,7 @@
 						'ThreadGroup Thread Time TrueClass';
 
 		this.regexList = [
-			{ regex: SyntaxHighlighter.regexLib.singleLinePerlComments,	css: 'comments' },		// one line comments
+			{ regex: SyntaxHighlighter.regexLib.singleLinePerlComments,	css: 'BlogComments' },		// one line BlogComments
 			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },		// double quoted strings
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },		// single quoted strings
 			{ regex: /\b[A-Z0-9_]+\b/g,									css: 'constants' },		// constants

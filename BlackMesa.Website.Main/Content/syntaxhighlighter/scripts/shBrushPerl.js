@@ -50,7 +50,7 @@
 			'require return sub tie tied unless untie until use wantarray while';
     
 		this.regexList = [
-			{ regex: new RegExp('#[^!].*$', 'gm'),					css: 'comments' },
+			{ regex: new RegExp('#[^!].*$', 'gm'),					css: 'BlogComments' },
 			{ regex: new RegExp('^\\s*#!.*$', 'gm'),				css: 'preprocessor' }, // shebang
 			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,	css: 'string' },
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,	css: 'string' },
