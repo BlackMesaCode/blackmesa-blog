@@ -48,9 +48,9 @@
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlackMesa.Blog.Ressources\BlackMesa.Blog.Resources.csproj">
+    <ProjectReference Include="..\BlackMesa.Website.Ressources\BlackMesa.Website.Resources.csproj">
       <Project>{ce4bc338-bd91-4f2a-b7ed-d2dbf67a9670}</Project>
-      <Name>BlackMesa.Blog.Resources</Name>
+      <Name>BlackMesa.Website.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
