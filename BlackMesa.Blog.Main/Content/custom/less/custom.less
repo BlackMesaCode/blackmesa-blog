@@ -1,9 +1,6 @@
 ﻿@import "clearfix.less";
 @import "variables.less";
 
-@left-column-width: 740px; /* 740px is the size that is available on tablets in portrait mode 
-    max-width: 979px; /* 979px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
-
 
 body{
     background-image: url("../images/pattern.png");
@@ -14,7 +11,7 @@ body{
     .clearfix;
     margin-left: auto;
     margin-right: auto;
-    max-width: 979px;
+    max-width: 979px; /* 979px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
 }
 
 
@@ -71,6 +68,10 @@ body{
         margin-bottom: 55px;
 
         #logo {
+            img {
+                height: auto;
+                max-width: 100%;
+            }
         }
 
         nav {
@@ -111,39 +112,10 @@ body{
                         }
                     }
                 }
-            }
-        }
-
-        #filter-by-tag {
-            display: inline-block;
-            vertical-align: middle;
-            line-height: 30px;
-            height: 30px;
-            text-align: right;
-
-            #filter-by-tag-caption {
-                display: inline-block;
-                line-height: 30px;
-                min-height: 30px;
-                vertical-align: middle;
-                margin-right: 10px;
-                margin-left: 20px;
-                vertical-align: middle;
-            }
-
-            #filter-by-tag-input {
-                display: inline-block;
-                line-height: 30px;
-                min-height: 30px;
-                vertical-align: middle;
-
-                .tagHandler {
-                    height: 30px;
-                }
-            }
-        }
-    }
-}
+            } // end of ul
+        } // end of nav
+    } // end of bottom-header-bar
+} // end of header
 
 
 
@@ -155,27 +127,6 @@ body{
     >section {
         h1 {
             margin-bottom: 30px;
-        }
-    }
-
-    .section-text-header {
-        font-family: 'bebas';
-        font-size: 30px;
-    }
-
-    fieldset {
-
-        .editor-label > label {
-            font-weight: bold;
-        }
-
-        .field-validation-error {
-            font-weight: bold;
-            color: orange;
-        }
-
-        legend {
-            .section-text-header;
         }
     }
 
@@ -274,15 +225,8 @@ body{
         .preview-article-body {
             margin-top: 4px;
 
-            .last-paragraph {
-                display: inline;
-            }
-
             .read-more {
                 display: inline-block;
-
-                .read-more-link {
-                }
 
                 .read-more-icon {
                     margin-left: 5px;
@@ -318,32 +262,10 @@ body{
         }
 
     }
+
     // Entry index
     #entry-index {
         .clearfix;
-
-        #entries-top-bar {
-            .clearfix;
-            line-height: 30px;
-            font-family: 'bebas';
-            padding-left: 5px;
-            margin-bottom: 30px;
-
-            #entries-count {
-                float: right;
-                margin-right: 30px;
-            }
-
-            #entries-sort {
-                float: right;
-
-                a {
-                    padding-left: 4px;
-                    padding-right: 4px;
-                }
-            }
-        }
-
 
         #entry-index-articles {
 
@@ -372,24 +294,23 @@ body{
                 margin-right: 15px;
             }
 
-            #reparse-button {
-                float: left;
-            }
-
             .pagination {
                 float: right;
             }
         }
     }
+
     // Entry details
     #entry-details {
         article {
             .article;
         }
     }
+
     // Entry edit
     #entry-edit {
     }
+
     // Edit delete
     #entry-delete {
     }
@@ -434,25 +355,6 @@ body{
         }
     }
 
-
-    #back-to-top-jquery {
-        display: none;
-        position: fixed;
-        bottom: 60px;
-        right: 60px;
-        z-index: 10;
-        font-size: 60px;
-        
-        a {
-            padding: 15px;
-        }
-
-        a:hover {
-            text-decoration: none;
-        }
-    }
-
-
     #powered-by {
         float: right !important;
 
@@ -468,9 +370,9 @@ body{
         height: 20px;
         background-image: url(/Content/custom/images/azure_logo_gray.png);
         background-repeat: no-repeat;
-        background-position-y: bottom;
+        background-position: bottom;
         &:hover {
-            background-position-y: top;
+            background-position: top;
         }
     }
 
@@ -482,9 +384,9 @@ body{
         margin-right: 5px;
         background-repeat: no-repeat;
         background-image: url(/Content/custom/images/asp_dotnet_logo_gray.png);
-        background-position-y: bottom;
+        background-position: bottom;
         &:hover {
-            background-position-y: top;
+            background-position: top;
         }
     }
 

@@ -11,8 +11,8 @@
         
         @Html.Raw(Model.Preview)
 
-        <span class="read-more"><i class="read-more-icon icon-double-angle-right"></i>
-            @Html.ActionLink(Strings.ReadMore, "Details", new { Id = Model.Id, Title = Utilities.MakeUrlFriendly(Model.Title) }, new { @class = "read-more-link" })
+        <span class="read-more"><i class="fa fa-angle-double-right"></i>
+            @Html.ActionLink(Strings.ReadMore, "Details", new { Id = Model.Id, Title = Utilities.MakeUrlFriendly(Model.Title) })
         </span>
     </div>
 
