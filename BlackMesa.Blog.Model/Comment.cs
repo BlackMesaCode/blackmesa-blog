@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlackMesa.Blog.Model
 {
+    [Table("Blog_Comments")]
     public class Comment
     {
         public int Id { get; set; }

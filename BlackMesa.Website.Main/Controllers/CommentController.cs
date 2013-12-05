@@ -1,27 +1,27 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using BlackMesa.Blog.DataLayer;
 using BlackMesa.Blog.Model;
+using BlackMesa.Website.Main.DataLayer;
 
 namespace BlackMesa.Website.Main.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CommentController : BaseController
     {
-        private readonly BlogDbContext _blogDbContext = new BlogDbContext();
+        private readonly WebsiteDbContext _db = new WebsiteDbContext();
 
         [AllowAnonymous]
         public ActionResult Index()
         {
-            var comments = _blogDbContext.BlogComments.OrderByDescending(comment => comment.DateCreated).Take(3);
+            var comments = _db.Comments.OrderByDescending(comment => comment.DateCreated).Take(3);
             return PartialView(comments.ToList());
         }
 
 
         public ActionResult Edit(int id = 0)
         {
-            var comment = _blogDbContext.BlogComments.Find(id);
+            var comment = _db.Comments.Find(id);
             if (comment == null)
             {
                 return HttpNotFound();
@@ -37,8 +37,8 @@ namespace BlackMesa.Website.Main.Controllers
         {
             if (ModelState.IsValid)
             {
-                _blogDbContext.Entry(comment).State = EntityState.Modified;
-                _blogDbContext.SaveChanges();
+                _db.Entry(comment).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
             }
 
@@ -48,7 +48,7 @@ namespace BlackMesa.Website.Main.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Comment comment = _blogDbContext.BlogComments.Find(id);
+            Comment comment = _db.Comments.Find(id);
             if (comment == null)
             {
                 return HttpNotFound();
@@ -61,15 +61,15 @@ namespace BlackMesa.Website.Main.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Comment comment = _blogDbContext.BlogComments.Find(id);
-            _blogDbContext.BlogComments.Remove(comment);
-            _blogDbContext.SaveChanges();
+            Comment comment = _db.Comments.Find(id);
+            _db.Comments.Remove(comment);
+            _db.SaveChanges();
             return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
         }
 
         protected override void Dispose(bool disposing)
         {
-            _blogDbContext.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }

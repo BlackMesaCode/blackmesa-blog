@@ -1,9 +1,10 @@
 using System.Data.Entity.Migrations;
+using BlackMesa.Website.Main.DataLayer;
 
-namespace BlackMesa.Blog.DataLayer.Migrations
+namespace BlackMesa.Website.Main.Migrations
 {
 
-    public sealed class Configuration : DbMigrationsConfiguration<BlogDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<WebsiteDbContext>
     {
         public Configuration()
         {
@@ -11,7 +12,7 @@ namespace BlackMesa.Blog.DataLayer.Migrations
             AutomaticMigrationDataLossAllowed = false;
         }
 
-        protected override void Seed(BlogDbContext context)
+        protected override void Seed(WebsiteDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

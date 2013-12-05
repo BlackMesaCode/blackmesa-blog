@@ -1,4 +1,4 @@
-namespace BlackMesa.Blog.DataLayer.Migrations
+namespace BlackMesa.Website.Main.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -8,7 +8,17 @@ namespace BlackMesa.Blog.DataLayer.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Comments",
+                "dbo.Gallery_Categories",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Description = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Blog_Comments",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -20,19 +30,20 @@ namespace BlackMesa.Blog.DataLayer.Migrations
                         EntryId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Entries", t => t.EntryId, cascadeDelete: true)
+                .ForeignKey("dbo.Blog_Entries", t => t.EntryId, cascadeDelete: true)
                 .Index(t => t.EntryId);
             
             CreateTable(
-                "dbo.Entries",
+                "dbo.Blog_Entries",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Language = c.String(nullable: false),
+                        Prio = c.Int(nullable: false),
                         Title = c.String(nullable: false),
-                        TagsAsString = c.String(),
-                        Preview = c.String(),
-                        Content = c.String(),
+                        TagsAsString = c.String(nullable: false),
+                        Preview = c.String(nullable: false),
+                        Content = c.String(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         DateEdited = c.DateTime(nullable: false),
                         Published = c.Boolean(nullable: false),
@@ -40,7 +51,7 @@ namespace BlackMesa.Blog.DataLayer.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Tags",
+                "dbo.Blog_Tags",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -57,8 +68,8 @@ namespace BlackMesa.Blog.DataLayer.Migrations
                         Entry_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Tag_Id, t.Entry_Id })
-                .ForeignKey("dbo.Tags", t => t.Tag_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Entries", t => t.Entry_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Blog_Tags", t => t.Tag_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Blog_Entries", t => t.Entry_Id, cascadeDelete: true)
                 .Index(t => t.Tag_Id)
                 .Index(t => t.Entry_Id);
             
@@ -66,16 +77,17 @@ namespace BlackMesa.Blog.DataLayer.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.TagEntries", "Entry_Id", "dbo.Entries");
-            DropForeignKey("dbo.TagEntries", "Tag_Id", "dbo.Tags");
-            DropForeignKey("dbo.Comments", "EntryId", "dbo.Entries");
+            DropForeignKey("dbo.TagEntries", "Entry_Id", "dbo.Blog_Entries");
+            DropForeignKey("dbo.TagEntries", "Tag_Id", "dbo.Blog_Tags");
+            DropForeignKey("dbo.Blog_Comments", "EntryId", "dbo.Blog_Entries");
             DropIndex("dbo.TagEntries", new[] { "Entry_Id" });
             DropIndex("dbo.TagEntries", new[] { "Tag_Id" });
-            DropIndex("dbo.Comments", new[] { "EntryId" });
+            DropIndex("dbo.Blog_Comments", new[] { "EntryId" });
             DropTable("dbo.TagEntries");
-            DropTable("dbo.Tags");
-            DropTable("dbo.Entries");
-            DropTable("dbo.Comments");
+            DropTable("dbo.Blog_Tags");
+            DropTable("dbo.Blog_Entries");
+            DropTable("dbo.Blog_Comments");
+            DropTable("dbo.Gallery_Categories");
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Routing;
-using BlackMesa.Blog.DataLayer;
 using BlackMesa.Website.Main.App_Start;
 
 namespace BlackMesa.Website.Main

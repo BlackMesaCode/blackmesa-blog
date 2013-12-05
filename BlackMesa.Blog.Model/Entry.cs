@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations.Schema;
 using BlackMesa.Website.Resources;
 
 namespace BlackMesa.Blog.Model
 {
-
+    [Table("Blog_Entries")]
     public class Entry
     {
         public int Id { get; set; }
 
         [Required]
         public string Language { get; set; }
+
+        public int Prio { get; set; }
 
         [Required]
         public string Title { get; set; }
@@ -21,13 +23,11 @@ namespace BlackMesa.Blog.Model
         [Display(ResourceType = typeof(Strings), Name = "Tags")]
         public string TagsAsString { get; set; }
 
-        [AllowHtml]
         [Required]
         [DataType(DataType.MultilineText)]
         [Display(ResourceType = typeof(Strings), Name = "Preview")]
         public string Preview { get; set; }
 
-        [AllowHtml]
         [Required]
         [DataType(DataType.MultilineText)]
         [Display(ResourceType = typeof(Strings), Name = "Content")]

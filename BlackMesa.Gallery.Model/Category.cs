@@ -1,5 +1,8 @@
-﻿namespace BlackMesa.Gallery.Model
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BlackMesa.Gallery.Model
 {
+    [Table("Gallery_Categories")]
     public class Category
     {
         public int Id { get; set; }
