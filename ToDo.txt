@@ -1,76 +1,40 @@
 ---------------------------------------------------------------------------------
-Most Important
+ToDo
 ---------------------------------------------------------------------------------
 
-Namensaufbau: BlackMesa -> Blog/devLog ??
-Logoverteilung
-Mehrsprachige Artikel verbinden
-Neue Menüstruktur
-	About Section + Impressum + Welcome Artikel rausnehmen
-	Dafür Kontakt Section reinnehmen + Archiv mit Suchfunktion
-	Final: Home - Archiv - Kontakt
-Disqus wieder einbauen
-statische links für Suchergebnisse (kein AJAX mehr)
-ebenfalls statische links für den Pager
-die Startseite ist im Prinzip nichts anderes als das Suchergebnis beschränkt auf die neusten Artikel
-Lösung für Bilder in den Artiekln
-Seiten
-Tag autovervollständigung erst nach Eingabe des ersten Zeichens - Multitagging noch möglich, bei statischen Urls ?
-
-
+eigenes BlackMesa Account Managment schreiben / mit Account Manager vertraut werden
+Kommentarfunktion einbauen
+	entweder eigene oder disqus
+flex-flow in bestandteile gliedern
+Bundling wieder einführen
+	@import problem bedenken
+Filter optionen einbauen und route für tag und suchergebnisse besser anzeigen
+	ViewModels nachvollziehen
 Archiv-Seite
 	Volltextsuche
 	Suche nach Datum
 	TagWolke
-
-Hosting erstmal nur Lokal - erst später Azure reaktivieren
-
-Bildern in Artikel über Dropbox einbinden - ggfs Dropbox API verwenden
-
-
-
----------------------------------------------------------------------------------
-ToDo
----------------------------------------------------------------------------------
-
-
-Assoziationstabelle - welche Entries unterschiedlicher Sprachen gehören zusammen: entry id -> entry ids
-Architekturdokumentation
-	web.config einträge dokumentieren usw
-
-ViewModels für Entry und Comment erstellen
-Überlegen wo Paging/SelectedTags/Cultur/Language Infos gespeichert werden
-
-Checken ob in der Release-Version auch die ganzen Modernizr artefakte im html tag zu finden sind
+Menu hover farben verbessern
+Article-details
+	Beispielbilder in Projekt mit dropbox einbinden
+	Code-styling
+Neue Menüstruktur
+	die Startseite ist im Prinzip nichts anderes als das Suchergebnis beschränkt auf die neusten Artikel
+	About Section + Impressum + Welcome Artikel rausnehmen
+	Dafür Kontakt Section reinnehmen + Archiv mit Suchfunktion
+	Final: Home - Archiv - Kontakt
+google-analytics einbauen
 Meta Tags setzen
 Responsiveness tweaken
-	Recherche: typische Homepagebreiten -> Containerbreite ermitteln und Breakpoints für Mobile Geräte ermitteln
-Browserkompatibilität testen
-
 RSS Feed
-
-Bilder in Artikel einfügen
-    Überlegen: Wo speichere ich Bilder? 
-    Wie stelle ich Bilder dar? Thumbnails im Fließtext + Lightbox? 
-    Screenshot Tool downloaden!
-    Blob-Storage recherche
-    Hosting dropbox ?
-
-Artikelstrukturierung / Formatierung
-	wieviel styling <-> wieviel semantik
-	<!-- blackmesa parser should encode < and add brush class (class=brush: {language e.g. xhtml, csharp, etc}) to parent pre tag, in order to make syntaxhighligter working -->
-
-
-
-Rss Subscribe um E-Mail Subscribe ergänzen
-
-
-Browser Vor- und Zurück Funktion bei Ajax Calls verfügbar machen
+Architekturdokumentation
+	web.config einträge dokumentieren usw
+Browserkompatibilität testen
+CSS test passed?
 YSlow Verbesserungsvorschläge umsetzen
 Suchmaschinenoptimierung / Crawler-Stop
     Webmaster Tools von Google
 Caching
-
 
 
 
@@ -154,36 +118,10 @@ HTML 5 Canvas Element
 
 
 
+
 ---------------------------------------------------------------------------------
-Sonstiges
+Html Element Definitions:
 ---------------------------------------------------------------------------------
-
-
-gute Domains zum reservieren: 
-    blackforest-it.de
-    mind-log.eu
-    blackfor.de
-    blackfor.eu
-    blackbyte.eu
-    byterage.de
-    coderage.de
-
-
-Der Name BlackMesa ist eine Widmung an eines meiner Lieblingscomputerspiele. BlackMesa ist die Forschungsanstalt, in der sich die Handlung von Half-Life 1 abspielt.
-
-Seitenbeschreibung www (kurz):
-
-Hey ^_^ - Welcome to the BlackMesa Transit System :) Auf BlackMesa findest du Beiträge zu allerlei IT-Themen, 
-die mir als Informatikstudent so über den Weg laufen.
-(die mir im Rahmen meines Informatiker-Daseins so über den Weg laufen.)
-
- 
-
-
-
-
-Definitions:
-
 
 Figure
 The figure element represents a unit of content, optionally with a caption, that is self-contained, that is typically referenced as a single unit from the main flow of the document, and that can be moved away from the main flow of the document without affecting the document’s meaning.
@@ -225,7 +163,10 @@ rel attribute ?
     
     
     
-    
+---------------------------------------------------------------------------------
+Articles
+---------------------------------------------------------------------------------
+
     
 I'm starting this blog to journal all the interesting things I learn everyday in my job as a 
 software developer. I've decided to build my own blog engine as an excuse to try new technologies. 
