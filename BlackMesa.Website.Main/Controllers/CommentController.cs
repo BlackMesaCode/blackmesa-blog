@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using BlackMesa.Blog.DataLayer.DbContext;
-using BlackMesa.Blog.DataLayer.Models;
+using BlackMesa.Blog.Model;
 
 namespace BlackMesa.Website.Main.Controllers
 {

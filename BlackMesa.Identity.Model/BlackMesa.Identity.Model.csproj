@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{890E00C1-F7AF-4877-B472-2BAE1AEC13C5}</ProjectGuid>
+    <ProjectGuid>{9EF466D7-D2C2-405E-9F4D-72246C3BBB5C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlackMesa.Identity.DataLayer</RootNamespace>
-    <AssemblyName>BlackMesa.Identity.DataLayer</AssemblyName>
+    <RootNamespace>BlackMesa.Identity.Model</RootNamespace>
+    <AssemblyName>BlackMesa.Identity.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -54,28 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbContext\IdentityContext.cs" />
-    <Compile Include="Migrations\201312061226232_Init.cs" />
-    <Compile Include="Migrations\201312061226232_Init.Designer.cs">
-      <DependentUpon>201312061226232_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlackMesa.Website.Ressources\BlackMesa.Website.Resources.csproj">
+      <Project>{ce4bc338-bd91-4f2a-b7ed-d2dbf67a9670}</Project>
+      <Name>BlackMesa.Website.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BlackMesa.Identity.Model\BlackMesa.Identity.Model.csproj">
-      <Project>{9ef466d7-d2c2-405e-9f4d-72246c3bbb5c}</Project>
-      <Name>BlackMesa.Identity.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312061226232_Init.resx">
-      <DependentUpon>201312061226232_Init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

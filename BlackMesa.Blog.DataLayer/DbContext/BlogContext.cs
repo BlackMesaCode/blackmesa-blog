@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using BlackMesa.Blog.DataLayer.Models;
+using BlackMesa.Blog.Model;
 
 namespace BlackMesa.Blog.DataLayer.DbContext
 {

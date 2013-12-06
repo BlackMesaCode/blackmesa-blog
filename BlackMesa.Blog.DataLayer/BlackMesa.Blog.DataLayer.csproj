@@ -48,29 +48,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Entry.cs" />
-    <Compile Include="Migrations\201312061103457_Init.cs" />
-    <Compile Include="Migrations\201312061103457_Init.Designer.cs">
-      <DependentUpon>201312061103457_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201312061223156_Init.cs" />
+    <Compile Include="Migrations\201312061223156_Init.Designer.cs">
+      <DependentUpon>201312061223156_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DbContext\BlogContext.cs" />
-    <Compile Include="Models\Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlackMesa.Blog.Model\BlackMesa.Blog.Model.csproj">
+      <Project>{6b4803be-c717-47d0-b243-621bc92ddcf2}</Project>
+      <Name>BlackMesa.Blog.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlackMesa.Website.Ressources\BlackMesa.Website.Resources.csproj">
       <Project>{ce4bc338-bd91-4f2a-b7ed-d2dbf67a9670}</Project>
       <Name>BlackMesa.Website.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312061103457_Init.resx">
-      <DependentUpon>201312061103457_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312061223156_Init.resx">
+      <DependentUpon>201312061223156_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

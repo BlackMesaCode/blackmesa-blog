@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using BlackMesa.Blog.DataLayer.Models;
+using BlackMesa.Blog.Model;
 using BlackMesa.Blog.DataLayer.DbContext;
 using BlackMesa.Website.Main.Utilities;
 using BlackMesa.Website.Main.ViewModels;

@@ -1,5 +1,5 @@
 ﻿using BlackMesa.Blog.DataLayer;
-using BlackMesa.Blog.DataLayer.Models;
+using BlackMesa.Blog.Model;
 using PagedList;
 
 namespace BlackMesa.Website.Main.ViewModels

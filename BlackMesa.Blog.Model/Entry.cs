@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using BlackMesa.Website.Resources;
 
-namespace BlackMesa.Blog.DataLayer.Model
+namespace BlackMesa.Blog.Model
 {
     [Table("Blog_Entries")]
     public class Entry

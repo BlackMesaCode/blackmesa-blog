@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using BlackMesa.Identity.DataLayer.Models;
+using BlackMesa.Identity.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BlackMesa.Identity.DataLayer.DbContext
