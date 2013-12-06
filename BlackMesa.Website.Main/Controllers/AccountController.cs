@@ -11,7 +11,7 @@ using Microsoft.Owin.Security;
 namespace BlackMesa.Website.Main.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         public AccountController()
             : this(new UserManager<User>(new UserStore<User>(new IdentityContext())))

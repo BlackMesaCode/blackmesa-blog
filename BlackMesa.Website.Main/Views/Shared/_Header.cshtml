@@ -29,9 +29,15 @@
     <div id="membership">
         @if (Request.IsAuthenticated)
         {
-            <i class="fa fa-unlock-alt"></i><span id="user-name">@User.Identity.Name<text>: </text></span>
-            <span id="manage"><a href="@Url.Action("Manage", "Account")"><i class="fa fa-cogs"></i>@Strings.Manage</a></span>
-            <a href="@Url.Action("LogOff", "Account")"><i class="fa fa-sign-out"></i>@Strings.Logout</a>
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+            {
+                @Html.AntiForgeryToken()
+
+                <i class="fa fa-unlock"></i>
+                <span id="user-name">@User.Identity.Name<text>: </text></span>
+                <span id="manage"><a href="@Url.Action("Manage", "Account")"><i class="fa fa-cogs"></i>@Strings.Manage</a></span>
+                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i>@Strings.Logout</a>
+            }
         }
         else
         {
