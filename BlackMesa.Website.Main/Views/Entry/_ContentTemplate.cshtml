@@ -8,6 +8,15 @@
         </figure>
         <pre>
             <code class="language-js">
+               detach = function() {
+		            if ( document.addEventListener ) {
+			            document.removeEventListener( "DOMContentLoaded", completed, false );
+			            window.removeEventListener( "load", completed, false );
+		            } else {
+			            document.detachEvent( "onreadystatechange", completed );
+			            window.detachEvent( "onload", completed );
+		            }
+	            };
             </code>
         </pre>
     </section>

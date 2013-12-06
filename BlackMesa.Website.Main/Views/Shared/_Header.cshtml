@@ -2,8 +2,6 @@
 @using System.Threading
 @using BlackMesa.Website.Main
 @using BlackMesa.Website.Resources
-@using BlackMesa.Website.Main
-
 
 <div id="top-header-bar">
     <div id="language-selection">
@@ -39,6 +37,7 @@
         {
             <i class="fa fa-lock"></i><span id="user-name">@Strings.Guest<text>: </text></span>
             <a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-out"></i> @Strings.LogIn</a>
+            <i class="fa fa-pencil-square-o"></i>@Html.ActionLink("Registrieren", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
         }
     </div>
 </div>
