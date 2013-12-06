@@ -8,7 +8,7 @@ namespace BlackMesa.Blog.DataLayer.Migrations
 {
 
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BlogContext>
+    public sealed class Configuration : DbMigrationsConfiguration<BlogContext>
     {
         public Configuration()
         {

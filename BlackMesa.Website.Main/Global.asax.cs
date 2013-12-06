@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Routing;
+using BlackMesa.Blog.DataLayer.DbContext;
+using BlackMesa.Identity.DataLayer.DbContext;
 using BlackMesa.Website.Main.App_Start;
 
 namespace BlackMesa.Website.Main
@@ -25,7 +27,8 @@ namespace BlackMesa.Website.Main
         {
             // We dont need the initializer as we dont use AutomaticMigrations 
             // but instead manually add-migrations via the package manager console and also manually update-database
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogDbContext, BlackMesa.Blog.DataLayer.Migrations.Configuration>());  
+            //Database.SetInitializer(new CreateDatabaseIfNotExists<IdentityContext>());
+            //Database.SetInitializer(new CreateDatabaseIfNotExists<BlogContext>());  
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

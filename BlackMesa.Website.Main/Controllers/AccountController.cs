@@ -21,6 +21,7 @@ namespace BlackMesa.Website.Main.Controllers
         public AccountController(UserManager<User> userManager)
         {
             UserManager = userManager;
+
         }
 
         public UserManager<User> UserManager { get; private set; }

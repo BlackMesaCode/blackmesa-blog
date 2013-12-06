@@ -25,6 +25,7 @@ namespace BlackMesa.Identity.DataLayer.DbContext
 
             modelBuilder.Entity<IdentityUser>().ToTable("Identity_Users");
             modelBuilder.Entity<User>().ToTable("Identity_Users");
+            
 
         }
 
