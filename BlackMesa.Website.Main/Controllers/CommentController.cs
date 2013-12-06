@@ -1,15 +1,15 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using BlackMesa.Blog.Model;
-using BlackMesa.Website.Main.DataLayer;
+using BlackMesa.Blog.DataLayer.DbContext;
+using BlackMesa.Blog.DataLayer.Models;
 
 namespace BlackMesa.Website.Main.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CommentController : BaseController
     {
-        private readonly WebsiteDbContext _db = new WebsiteDbContext();
+        private readonly BlogContext _db = new BlogContext();
 
         [AllowAnonymous]
         public ActionResult Index()

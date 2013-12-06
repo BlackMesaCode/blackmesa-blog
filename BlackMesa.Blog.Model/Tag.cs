@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BlackMesa.Blog.Model
+namespace BlackMesa.Blog.DataLayer.Model
 {
     [Table("Blog_Tags")]
     public class Tag

@@ -23,10 +23,18 @@ namespace BlackMesa.Website.Main.DataLayer
         public DbSet<Category> Categories { get; set; }
 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //configure model with fluent API
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Tag>()
+        //        .HasMany(x => x.Entries)
+        //        .WithMany(x => x.Tags)
+        //        .Map(x =>
+        //        {
+        //            x.ToTable("Blog_TagEntries"); // name of association table
+        //            x.MapLeftKey("Tag_Id");
+        //            x.MapRightKey("Entry_Id");
+        //        });
+        //}
 
     }
 }
