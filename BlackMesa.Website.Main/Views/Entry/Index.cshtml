@@ -34,9 +34,10 @@
                 <i class="fa fa-plus-circle"></i><a href="@Url.Action("Create")">@Strings.AddEntry</a>
             </div>
         }
-
-        @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, Model.OrderBy, Model.SelectedTag }), PagedListRenderOptions.Classic)
-
+        
+        <div class="paged-list-pager">
+            @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, Model.OrderBy, Model.SelectedTag }), PagedListRenderOptions.Classic)
+        </div>
     </div>
 
 </section>

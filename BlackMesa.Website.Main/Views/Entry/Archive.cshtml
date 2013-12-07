@@ -1,0 +1,34 @@
+﻿@using System.Web.UI.WebControls
+@using BlackMesa.Website.Resources
+@{
+    ViewBag.Title = Strings.Archive;
+}
+@model BlackMesa.Website.Main.ViewModels.EntryArchiveViewModel
+
+<section id="entry-archive">
+    <h1>@ViewBag.Title</h1>
+    <section id="search-by-date">
+        <h2>Search by Date</h2>
+        @using (Html.BeginForm("Index", "Entry", FormMethod.Post, new {id = "search-by-date-form"}))
+        {
+            @Html.AntiForgeryToken()
+
+            <div id="entry-archive-available-months">
+                @Html.LabelFor(model => model.AvailableMonths)
+                @Html.DropDownListFor(model => model.AvailableMonths, Model.AvailableMonths)
+            </div>
+
+            <div id="entry-archive-available-years">
+                @Html.LabelFor(model => model.AvailableYears)
+                @Html.DropDownListFor(model => model.AvailableYears, Model.AvailableYears)
+            </div>
+
+            <input id="entry-archive-submit-button" type="submit" value="Go" />
+        }
+    </section>
+
+    <h2>Search by Tag</h2>
+
+    <h2>Search by Text</h2>
+
+</section>

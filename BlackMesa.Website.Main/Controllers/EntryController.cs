@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
@@ -9,6 +12,7 @@ using BlackMesa.Website.Main.Utilities;
 using BlackMesa.Website.Main.ViewModels;
 using Microsoft.Ajax.Utilities;
 using PagedList;
+using WebGrease.Css.Extensions;
 
 namespace BlackMesa.Website.Main.Controllers
 {
@@ -233,6 +237,33 @@ namespace BlackMesa.Website.Main.Controllers
             _blogContext.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Archive()
+        {
+
+            var viewModel = new EntryArchiveViewModel()
+            {
+                AvailableMonths = _blogContext.Entries.Select(e => e.DateCreated.Month).Distinct().ToList().Select(month =>
+                    new SelectListItem
+                    {
+                        Selected = true,
+                        Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(month),
+                        Value = month.ToString(),
+                    }
+                    ).Distinct().ToList(),
+                AvailableYears = _blogContext.Entries.Select(e => e.DateCreated.Year).Distinct().ToList().Select(year =>
+                                    new SelectListItem
+                                    {
+                                        Selected = true,
+                                        Text = year.ToString(),
+                                        Value = year.ToString(),
+                                    }
+                                    ),
+            };
+
+            return View(viewModel);
         }
 
 

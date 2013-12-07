@@ -169,7 +169,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ArchiveController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -188,6 +187,7 @@
     <Compile Include="ViewModels\CommentViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\EntryArchiveViewModel.cs" />
     <Compile Include="ViewModels\EntryIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +211,7 @@
     <Content Include="Content\custom\images\tag_update.png" />
     <Content Include="Content\jquery\jquery-2.0.3.min.js" />
     <Content Include="Content\normalize\normalize.css" />
+    <Content Include="Content\custom\less\colors.less" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -454,7 +455,7 @@
     <Content Include="Views\Entry\_EntryPreview.cshtml" />
     <Content Include="Views\Entry\_ContentTemplate.cshtml" />
     <Content Include="Views\Entry\ArticleTemplateFull.cshtml" />
-    <Content Include="Views\Archive\Index.cshtml" />
+    <Content Include="Views\Entry\Archive.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />

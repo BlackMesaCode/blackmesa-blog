@@ -1,4 +1,5 @@
 ﻿@import "clearfix.less";
+@import "colors.less";
 @import "variables.less";
 
 
@@ -125,13 +126,6 @@ body{
 
 
 #content {
-
-    >section {
-        h1 {
-            margin-bottom: 30px;
-        }
-    }
-
 
     .article {
         margin-bottom: 40px;
@@ -313,8 +307,31 @@ body{
     #entry-edit {
     }
 
-    // Edit delete
+    // Entry delete
     #entry-delete {
+    }
+
+    // Entry Archive
+    #entry-archive {
+
+        #search-by-date-form {
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+
+            #entry-archive-available-months {
+                margin-right: 30px;
+            }
+
+            #entry-archive-available-years {
+                margin-right: 30px;
+            }
+
+            #entry-archive-submit-button {
+                margin: 0;
+            }
+        }
+
     }
 
     #legal-notice-index {
