@@ -18,27 +18,21 @@ namespace BlackMesa.Website.Main.Controllers
         private readonly BlogContext _blogContext = new BlogContext();
 
         [AllowAnonymous]
-        public ActionResult Index(EntryIndexViewModel viewModel)
+        public ActionResult Index(int? page, string orderBy, string selectedTag)
         {
             var language = ViewBag.CurrentLanguage as string;
             var model = User.IsInRole("Admin") ? _blogContext.Entries.Where(e => e.Language == language) : _blogContext.Entries.Where(e => e.Published && e.Language == language);
 
             // Filter
-            var selectedTags = viewModel.SelectedTags;
-
-            if (!String.IsNullOrEmpty(selectedTags))
+            if (!String.IsNullOrEmpty(selectedTag))
             {
-                var selectedTagList = selectedTags.Split(',').ToList();
-
-                model = model.Where(e => selectedTagList.All(tagString => (e.Tags.Select(t => t.Name).Contains(tagString))));
+                model = model.Where(e => e.Tags.Select(t => t.Name).Contains(selectedTag));
             }
-            /* SelectedTags has to be stored in the ViewBag to make it accessible in a PartialView */
-            ViewBag.SelectedTags = viewModel.SelectedTags;
-            ViewBag.EntriesFound = model.Count();
 
 
             // Order
-            switch (viewModel.OrderBy)
+            orderBy = orderBy ?? "date"; // set default ordering
+            switch (orderBy)
             {
                 case "date":
                     model = model.OrderByDescending(e => e.DateCreated);
@@ -53,16 +47,15 @@ namespace BlackMesa.Website.Main.Controllers
                     model = model.OrderByDescending(e => e.DateCreated);
                     break;
             }
-            ViewBag.OrderBy = viewModel.OrderBy; 
 
+            var viewModel = new EntryIndexViewModel
+            {
+                OrderBy = orderBy,
+                SelectedTag = selectedTag,
+                EntriesFound = model.Count(),
+                Entries = model.ToPagedList(page ?? 1, 3),
 
-            // Paging
-            const int pageSize = 3;
-            ViewBag.PageSize = pageSize;
-            var pageNumber = (viewModel.Page ?? 1);
-            viewModel.Page = pageNumber;
-            viewModel.Entries = model.ToPagedList(pageNumber, pageSize);
-
+            };
 
             return View(viewModel);
 

@@ -2,10 +2,9 @@
 ToDo
 ---------------------------------------------------------------------------------
 
-eigenes BlackMesa Account Managment schreiben / mit Account Manager vertraut werden
 Kommentarfunktion einbauen
 	entweder eigene oder disqus
-flex-flow in bestandteile gliedern
+float durch flex ersetzen wo nötig
 Bundling wieder einführen
 	@import problem bedenken
 Filter optionen einbauen und route für tag und suchergebnisse besser anzeigen
@@ -116,7 +115,7 @@ Motivation Software-Entwicklung / IT-Administration / Informationstechnologie
 
 HTML 5 Canvas Element
 
-
+Flexbox vs Float
 
 
 ---------------------------------------------------------------------------------

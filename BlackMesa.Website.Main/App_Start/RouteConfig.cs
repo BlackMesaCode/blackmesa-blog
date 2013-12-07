@@ -16,15 +16,23 @@ namespace BlackMesa.Website.Main.App_Start
                 name: "EntryWithLanguage",
                 url: "{culture}/{id}/{title}",
                 defaults: new { controller = "Entry", action = "Details", title = UrlParameter.Optional },
-                namespaces: new[] { "BlackMesa.Blog.Main.Controllers" },
+                namespaces: new[] { "BlackMesa.Website.Main.Controllers" },
                 constraints: new { culture = Global.CultureConstraints, id = Global.IdConstraints }
+            );
+
+            routes.MapRoute(
+                name: "TagWithLanguage",
+                url: "{culture}/tag/{selectedTag}",
+                defaults: new { controller = "Entry", action = "Index", page = UrlParameter.Optional, orderBy = UrlParameter.Optional },
+                namespaces: new[] { "BlackMesa.Website.Main.Controllers" },
+                constraints: new { culture = Global.CultureConstraints }
             );
 
             routes.MapRoute(
                 name: "DefaultWithLanguage",
                 url: "{culture}/{controller}/{action}/{id}",
                 defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "BlackMesa.Blog.Main.Controllers" },
+                namespaces: new[] { "BlackMesa.Website.Main.Controllers" },
                 constraints: new { culture = Global.CultureConstraints }
             );
 
@@ -34,7 +42,7 @@ namespace BlackMesa.Website.Main.App_Start
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "BlackMesa.Blog.Main.Controllers" }
+                namespaces: new[] { "BlackMesa.Website.Main.Controllers" }
             );
 
         }

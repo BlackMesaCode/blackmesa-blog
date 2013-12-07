@@ -22,7 +22,8 @@ body{
 
     #top-header-bar {
         display: flex;
-        flex-flow: row wrap;
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         margin-top: 9px;
 
@@ -61,8 +62,8 @@ body{
 
     #bottom-header-bar {
         display: flex;
-        -ms-flex-flow: row wrap;
-        flex-flow: row wrap;
+        flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
         margin-top: 40px;
         margin-bottom: 55px;
@@ -80,7 +81,8 @@ body{
             height: 40px;
 
             display: flex;
-            flex-flow: row wrap;
+            flex-direction: row;
+            flex-wrap: wrap;
             justify-content: flex-end;
             align-items: center;
 
@@ -145,9 +147,9 @@ body{
                 font-family: 'bebas';
                 display: flex;
                 flex-direction: row;
-                flex-wrap: nowrap;
+                flex-wrap: nowrap; // in case we choose wrap here: article date items can only wrap if the article-date container allows shrinking
                 margin-right: 17px;
-                flex-shrink: 0;
+                flex-shrink: 0; 
 
                 .article-date-day {
                     flex-shrink: 0;
