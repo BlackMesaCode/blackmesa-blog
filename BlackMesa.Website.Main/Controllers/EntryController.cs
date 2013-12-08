@@ -33,9 +33,13 @@ namespace BlackMesa.Website.Main.Controllers
             {
                 model = model.Where(e => e.Tags.Select(t => t.Name).Contains(selectedTag));
             }
-            else if (selectedYear.HasValue && selectedMonth.HasValue) // by date
+            else if (selectedYear.HasValue) // by date
             {
-                model = model.Where(e => e.DateCreated.Year == selectedYear && e.DateCreated.Month == selectedMonth);
+                model = model.Where(e => e.DateCreated.Year == selectedYear);
+                if (selectedMonth.HasValue)
+                {
+                    model = model.Where(e => e.DateCreated.Month == selectedMonth);
+                }
             }
 
 
@@ -255,17 +259,17 @@ namespace BlackMesa.Website.Main.Controllers
                 AvailableYears = _blogContext.Entries.Where(e => e.Language == language).Select(e => e.DateCreated.Year).Distinct().ToList().Select(year =>
                                     new SelectListItem
                                     {
-                                        Selected = true,
+                                        Selected = false,
                                         Text = year.ToString(),
                                         Value = year.ToString(),
                                     }
                                     ),
-                AvailableMonths = DateTimeFormatInfo.CurrentInfo.MonthNames.Where(month => !String.IsNullOrEmpty(month)).Select(month =>
+                AvailableMonths = DateTimeFormatInfo.CurrentInfo.MonthNames.Select(month =>  //.Where(month => !String.IsNullOrEmpty(month))
                                     new SelectListItem
                                     {
-                                        Selected = true,
+                                        Selected = String.IsNullOrEmpty(month),
                                         Text = month,
-                                        Value = DateTime.ParseExact(month, "MMMM", CultureInfo.CurrentCulture).Month.ToString(),
+                                        Value = !String.IsNullOrEmpty(month) ? DateTime.ParseExact(month, "MMMM", CultureInfo.CurrentCulture).Month.ToString() : String.Empty,
                                     }
                                     ),
                 Tags = _blogContext.Tags.Where(e => e.Language == language).OrderByDescending(tag => tag.Entries.Count).
