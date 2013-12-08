@@ -142,7 +142,6 @@ namespace BlackMesa.Website.Main.Controllers
         public ActionResult Edit(int id = 0)
         {
             Entry entry = _blogContext.Entries.Find(id);
-            entry.DateEdited = DateTime.Now;
 
             if (entry == null)
             {
@@ -261,6 +260,7 @@ namespace BlackMesa.Website.Main.Controllers
                                         Value = year.ToString(),
                                     }
                                     ),
+                Tags = _blogContext.Tags.OrderByDescending(tag => tag.Entries.Count).ToDictionary(tag => tag.Name, tag => tag.Entries.Count),
             };
 
             return View(viewModel);

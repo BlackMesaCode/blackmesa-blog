@@ -7,5 +7,6 @@ namespace BlackMesa.Website.Main.ViewModels
     {
         public IEnumerable<SelectListItem> AvailableMonths { get; set; }
         public IEnumerable<SelectListItem> AvailableYears { get; set; }
+        public Dictionary<string, int> Tags { get; set; }
     }
 }

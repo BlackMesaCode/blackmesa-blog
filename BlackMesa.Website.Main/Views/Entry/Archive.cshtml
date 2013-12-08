@@ -11,24 +11,33 @@
         <h2>Search by Date</h2>
         @using (Html.BeginForm("Index", "Entry", FormMethod.Post, new {id = "search-by-date-form"}))
         {
-            @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-            <div id="entry-archive-available-months">
-                @Html.LabelFor(model => model.AvailableMonths)
-                @Html.DropDownListFor(model => model.AvailableMonths, Model.AvailableMonths)
-            </div>
+        <div id="entry-archive-available-months">
+            @Html.LabelFor(model => model.AvailableMonths)
+            @Html.DropDownListFor(model => model.AvailableMonths, Model.AvailableMonths)
+        </div>
 
-            <div id="entry-archive-available-years">
-                @Html.LabelFor(model => model.AvailableYears)
-                @Html.DropDownListFor(model => model.AvailableYears, Model.AvailableYears)
-            </div>
+        <div id="entry-archive-available-years">
+            @Html.LabelFor(model => model.AvailableYears)
+            @Html.DropDownListFor(model => model.AvailableYears, Model.AvailableYears)
+        </div>
 
-            <input id="entry-archive-submit-button" type="submit" value="Go" />
+        <input id="entry-archive-submit-button" type="submit" value="Go" />
         }
     </section>
+    <section id="search-by-tag">
+        <h2>Search by Tag</h2>
+        @foreach (var tag in Model.Tags)
+        {
+            <span class="tag">
+                @Html.ActionLink(tag.Key + tag.Value, "Index", "Entry", new { SelectedTag = tag.Key}, null)
+                <span class="tag-count">(@tag.Value)</span>
+            </span>
+        }
+    </section>   
 
-    <h2>Search by Tag</h2>
+        <h2>Search by Text</h2>
 
-    <h2>Search by Text</h2>
-
+    
 </section>
