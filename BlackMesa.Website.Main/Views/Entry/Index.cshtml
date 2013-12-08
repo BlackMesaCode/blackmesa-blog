@@ -36,7 +36,7 @@
         }
         
         <div class="paged-list-pager">
-            @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, Model.OrderBy, Model.SelectedTag }), PagedListRenderOptions.Classic)
+            @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, Model.OrderBy, Model.SelectedTag, Model.SelectedMonth, Model.SelectedYear }), PagedListRenderOptions.Classic)
         </div>
     </div>
 

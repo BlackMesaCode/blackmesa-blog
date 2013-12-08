@@ -7,6 +7,8 @@ namespace BlackMesa.Website.Main.ViewModels
     {
         public string OrderBy { get; set; }
         public string SelectedTag { get; set; }
+        public int? SelectedYear { get; set; }
+        public int? SelectedMonth { get; set; }
         public int EntriesFound { get; set; }
         public IPagedList<Entry> Entries { get; set; }
     }

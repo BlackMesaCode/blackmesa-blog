@@ -22,16 +22,22 @@ namespace BlackMesa.Website.Main.Controllers
         private readonly BlogContext _blogContext = new BlogContext();
 
         [AllowAnonymous]
-        public ActionResult Index(int? page, string orderBy, string selectedTag)
+        public ActionResult Index(int? page, string orderBy, string selectedTag, int? selectedYear, int? selectedMonth)
         {
             var language = ViewBag.CurrentLanguage as string;
+
             var model = User.IsInRole("Admin") ? _blogContext.Entries.Where(e => e.Language == language) : _blogContext.Entries.Where(e => e.Published && e.Language == language);
 
             // Filter
-            if (!String.IsNullOrEmpty(selectedTag))
+            if (!String.IsNullOrEmpty(selectedTag)) // by tag
             {
                 model = model.Where(e => e.Tags.Select(t => t.Name).Contains(selectedTag));
             }
+            else if (selectedYear.HasValue && selectedMonth.HasValue) // by date
+            {
+                model = model.Where(e => e.DateCreated.Year == selectedYear && e.DateCreated.Month == selectedMonth);
+            }
+
 
 
             // Order
@@ -56,6 +62,8 @@ namespace BlackMesa.Website.Main.Controllers
             {
                 OrderBy = orderBy,
                 SelectedTag = selectedTag,
+                SelectedYear = selectedYear,
+                SelectedMonth = selectedMonth,
                 EntriesFound = model.Count(),
                 Entries = model.ToPagedList(page ?? 1, 3),
 
@@ -241,18 +249,10 @@ namespace BlackMesa.Website.Main.Controllers
 
         public ActionResult Archive()
         {
-
+            var language = RouteData.Values["language"].ToString();
             var viewModel = new EntryArchiveViewModel()
             {
-                AvailableMonths = _blogContext.Entries.Select(e => e.DateCreated.Month).Distinct().ToList().Select(month =>
-                    new SelectListItem
-                    {
-                        Selected = true,
-                        Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(month),
-                        Value = month.ToString(),
-                    }
-                    ).Distinct().ToList(),
-                AvailableYears = _blogContext.Entries.Select(e => e.DateCreated.Year).Distinct().ToList().Select(year =>
+                AvailableYears = _blogContext.Entries.Where(e => e.Language == language).Select(e => e.DateCreated.Year).Distinct().ToList().Select(year =>
                                     new SelectListItem
                                     {
                                         Selected = true,
@@ -260,7 +260,17 @@ namespace BlackMesa.Website.Main.Controllers
                                         Value = year.ToString(),
                                     }
                                     ),
-                Tags = _blogContext.Tags.OrderByDescending(tag => tag.Entries.Count).ToDictionary(tag => tag.Name, tag => tag.Entries.Count),
+                AvailableMonths = DateTimeFormatInfo.CurrentInfo.MonthNames.Where(month => !String.IsNullOrEmpty(month)).Select(month =>
+                                    new SelectListItem
+                                    {
+                                        Selected = true,
+                                        Text = month,
+                                        Value = DateTime.ParseExact(month, "MMMM", CultureInfo.CurrentCulture).Month.ToString(),
+                                    }
+                                    ),
+                Tags = _blogContext.Tags.Where(e => e.Language == language).OrderByDescending(tag => tag.Entries.Count).
+                                    ToDictionary(tag => tag.Name, tag => tag.Entries.Count),
+
             };
 
             return View(viewModel);

@@ -314,29 +314,58 @@ body{
     // Entry Archive
     #entry-archive {
 
-        #search-by-date-form {
-            display: flex;
-            flex-direction: row;
-            flex-wrap:wrap;
+        h1 {
+            margin-bottom: 25px;
+        }
 
-            #entry-archive-available-months {
-                margin-right: 30px;
-            }
+        h3 {
+            margin-bottom: 5px;
+        }
 
-            #entry-archive-available-years {
-                margin-right: 30px;
-            }
+        #search-by-date {
 
-            #entry-archive-submit-button {
-                margin: 0;
+            margin-bottom: 25px;
+
+            #search-by-date-form {
+                display: flex;
+                flex-direction: row;
+                flex-wrap:wrap;
+
+                #entry-archive-available-years {
+                    margin-right: 30px;
+                }
+
+               #entry-archive-available-months {
+                    margin-right: 30px;
+                }
+
+                #entry-archive-submit-button {
+                    margin: 0;
+                }
             }
         }
 
+
         #search-by-tag {
+
+            margin-bottom: 25px;
+
             .tag {
                 margin-right: 20px;
                 .tag-count {
                     font-weight: bold;
+                }
+            }
+        }
+
+        #search-by-text {
+            #search-by-text-form {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                #search-text-input {
+                    margin-right: 30px;
                 }
             }
         }

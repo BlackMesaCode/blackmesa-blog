@@ -51,15 +51,6 @@ body {
   background-color: @white;
 }
 
-// Reset fonts for relevant elements
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
 
 //Paragraph
 p {
@@ -161,7 +152,19 @@ label {
 }
 
 
-input, textarea {
+.field-validation-error {
+    font-weight: bold;
+    color: orange;
+}
+
+
+input,
+button,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+
     display: block;
     padding: 3px;
     padding-left: 8px;
@@ -172,10 +175,6 @@ input, textarea {
     box-sizing: border-box; 
 }
 
-.field-validation-error {
-    font-weight: bold;
-    color: orange;
-}
 
 input[type='submit'], button {
     
