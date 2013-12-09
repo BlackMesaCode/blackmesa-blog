@@ -9,8 +9,12 @@
     <link rel="icon" href="@Url.Content("~/Content/custom/images/favicon.jpg")" type="image/png" />
 
     <title>@ViewBag.Title | @WebConfigurationManager.AppSettings.Get("SiteTitle")</title>
-    
-    @Styles.Render("~/Global")
+
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/normalize/normalize.css" rel="stylesheet" />
+    <link href="~/Content/custom/less/custom.less" rel="stylesheet" />
+    <link href="~/Content/pagedlist/PagedList.less" rel="stylesheet" />
+
     @RenderSection("Styles", required: false)
 </head>
 <body>

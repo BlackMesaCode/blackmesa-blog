@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Web.Mvc;
-using System.Web.Optimization;
 using System.Web.Routing;
 using BlackMesa.Blog.DataLayer.DbContext;
 using BlackMesa.Identity.DataLayer.DbContext;
@@ -32,7 +31,6 @@ namespace BlackMesa.Website.Main
             //Database.SetInitializer(new CreateDatabaseIfNotExists<BlogContext>());  
 
             AreaRegistration.RegisterAllAreas();
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 

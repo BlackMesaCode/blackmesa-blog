@@ -167,7 +167,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EntityFrameworkProfilerBootstrapper.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -214,12 +213,16 @@
     <Content Include="Content\custom\images\tag_remove.png" />
     <Content Include="Content\custom\images\tag_update.png" />
     <Content Include="Content\normalize\normalize.css" />
+    <Content Include="Content\custom\less\colors.less" />
+    <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\custom\scripts\google-analytics.js" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\custom\less\variables.less" />
     <Content Include="Utilities\app_offline.htm" />
     <Content Include="Global.asax" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.eot" />
@@ -238,6 +241,7 @@
     <Content Include="Content\font-awesome\less\spinning.less" />
     <Content Include="Content\font-awesome\less\stacked.less" />
     <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\custom\less\clearfix.less" />
     <None Include="Properties\PublishProfiles\blackmesa - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\blackmesa - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
@@ -292,7 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\custom\scripts\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
