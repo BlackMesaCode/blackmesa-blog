@@ -16,9 +16,6 @@
             @Html.Raw(Model.Content)
         </div>
         
-        @*<div id="disqus_thread"></div>
-        <noscript>Please enable JavaScript to view the comments.</noscript>*@
-        
          @Html.Partial("Comment/_Index", Model.Comments) 
         
     </article>
@@ -26,15 +23,3 @@
      @Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id } ) 
     
 </section>
-
-@section Scripts
-{
-    @*<script type="text/javascript">
-        var disqus_shortname = 'blackmesa';
-        var disqus_identifier = '@Model.Id';
-        var disqus_title = '@Model.Title';
-        var disqus_url = '@Request.Url';
-    </script>*@
-
-    @Scripts.Render("~/Content/custom/scripts/entry-details.js")
-}
