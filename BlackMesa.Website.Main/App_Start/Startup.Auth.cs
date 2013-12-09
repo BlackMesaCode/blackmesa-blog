@@ -3,7 +3,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 
-namespace WebApplication1
+namespace BlackMesa.Website.Main
 {
     public partial class Startup
     {
@@ -32,7 +32,7 @@ namespace WebApplication1
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication();
+            app.UseGoogleAuthentication();
         }
     }
 }

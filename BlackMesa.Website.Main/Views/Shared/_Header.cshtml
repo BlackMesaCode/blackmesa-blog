@@ -29,14 +29,14 @@
     <div id="membership">
         @if (Request.IsAuthenticated)
         {
-            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logout-form"}))
             {
                 @Html.AntiForgeryToken()
 
                 <i class="fa fa-unlock"></i>
                 <span id="user-name">@User.Identity.Name<text>: </text></span>
-                <span id="manage"><a href="@Url.Action("Manage", "Account")"><i class="fa fa-cogs"></i>@Strings.Manage</a></span>
-                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i>@Strings.Logout</a>
+                <span id="manage"><i class="fa fa-cogs"></i><a href="@Url.Action("Manage", "Account")">@Strings.Manage</a></span>
+                <i class="fa fa-sign-out"></i><button type="submit">@Strings.Logout</button>
             }
         }
         else

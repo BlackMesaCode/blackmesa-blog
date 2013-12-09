@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
@@ -12,17 +10,16 @@ using BlackMesa.Website.Main.Utilities;
 using BlackMesa.Website.Main.ViewModels;
 using Microsoft.Ajax.Utilities;
 using PagedList;
-using WebGrease.Css.Extensions;
 
 namespace BlackMesa.Website.Main.Controllers
 {
-    [Authorize(Roles = "Admin")]
+
     public class EntryController : BaseController
     {
         private readonly BlogContext _blogContext = new BlogContext();
 
         [AllowAnonymous]
-        public ActionResult Index(int? page, string orderBy, string selectedTag, int? selectedYear, int? selectedMonth)
+        public ActionResult Index(int? page, string orderBy, string selectedTag, int? selectedYear, int? selectedMonth, string searchText)
         {
             var language = ViewBag.CurrentLanguage as string;
 
@@ -40,6 +37,14 @@ namespace BlackMesa.Website.Main.Controllers
                 {
                     model = model.Where(e => e.DateCreated.Month == selectedMonth);
                 }
+            }
+            else if (!String.IsNullOrEmpty(searchText)) // by search text
+            {
+                model =
+                    model.Where(
+                        e =>
+                            e.Title.Contains(searchText) || e.Preview.Contains(searchText) ||
+                            e.Content.Contains(searchText));
             }
 
 
@@ -68,6 +73,7 @@ namespace BlackMesa.Website.Main.Controllers
                 SelectedTag = selectedTag,
                 SelectedYear = selectedYear,
                 SelectedMonth = selectedMonth,
+                SearchText = searchText,
                 EntriesFound = model.Count(),
                 Entries = model.ToPagedList(page ?? 1, 3),
 
@@ -121,6 +127,7 @@ namespace BlackMesa.Website.Main.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             var entry = new Entry();
@@ -135,7 +142,8 @@ namespace BlackMesa.Website.Main.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateInput(false)] 
+        [ValidateInput(false)]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Entry entry)
         {
 
@@ -150,7 +158,7 @@ namespace BlackMesa.Website.Main.Controllers
             return View(entry);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id = 0)
         {
             Entry entry = _blogContext.Entries.Find(id);
@@ -167,6 +175,7 @@ namespace BlackMesa.Website.Main.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Entry entry)
         {
             if (ModelState.IsValid)
@@ -187,7 +196,7 @@ namespace BlackMesa.Website.Main.Controllers
             return View(entry);
         }
 
-        
+
         private void AddTags(string tagsAsString, Entry entry)
         {
             var tags = tagsAsString.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
@@ -223,7 +232,7 @@ namespace BlackMesa.Website.Main.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id = 0)
         {
             Entry entry = _blogContext.Entries.Find(id);
@@ -238,6 +247,7 @@ namespace BlackMesa.Website.Main.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Entry entry = _blogContext.Entries.Find(id);
@@ -250,7 +260,7 @@ namespace BlackMesa.Website.Main.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [AllowAnonymous]
         public ActionResult Archive()
         {
             var language = RouteData.Values["language"].ToString();

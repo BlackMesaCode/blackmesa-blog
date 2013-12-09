@@ -1,8 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using BlackMesa.Website.Main;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(WebApplication1.Startup))]
-namespace WebApplication1
+[assembly: OwinStartup(typeof(Startup))]
+namespace BlackMesa.Website.Main
 {
     public partial class Startup
     {

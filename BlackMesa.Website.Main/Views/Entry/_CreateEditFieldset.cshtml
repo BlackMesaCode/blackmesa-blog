@@ -22,12 +22,7 @@
     @Html.EditorFor(model => model.Preview)
 
     @Html.LabelFor(model => model.Content)
-    @Html.HiddenFor(model => model.Content)
-    <div id="editor-container">
-        <div id="editor">
-            @Model.Content
-        </div>
-    </div>
+    @Html.EditorFor(model => model.Content)
 
     @Html.LabelFor(model => model.DateCreated)
     @Html.EditorFor(model => model.DateCreated)
