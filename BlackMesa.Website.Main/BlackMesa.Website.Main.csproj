@@ -217,7 +217,6 @@
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Content\custom\scripts\google-analytics.js" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
@@ -296,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\custom\scripts\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -2,20 +2,10 @@
 <hr/>
 <div class="clearfix">
     <span id="back-to-top">
-        <a href="#"><i class="fa fa-chevron-up"></i> @Strings.BackToTop</a>
+        <i class="fa fa-chevron-up"></i><a href="#">@Strings.BackToTop</a>
     </span>
-    <span>
-        <i class="fa fa-legal"></i> @Strings.FooterLicence
-        
-        @if (ViewBag.CurrentLanguage == "de")
-        {
-            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.de" target="_blank"> CC BY-SA 3.0</a>
-        }
-        
-        @if (ViewBag.CurrentLanguage == "en")
-        {
-            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank"> CC BY-SA 3.0</a>
-        }
+    <span id="legal-notice">
+        <i class="fa fa-legal"></i>@Html.ActionLink(Strings.LegalNotice, "Index", "LegalNotice")
     </span>
 
     

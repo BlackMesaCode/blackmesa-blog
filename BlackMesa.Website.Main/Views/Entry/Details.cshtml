@@ -16,10 +16,10 @@
             @Html.Raw(Model.Content)
         </div>
         
-         @Html.Partial("Comment/_Index", Model.Comments) 
+         @*@Html.Partial("Comment/_Index", Model.Comments)*@ 
         
     </article>
 
-     @Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id } ) 
+     @*@Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id } )*@ 
     
 </section>
