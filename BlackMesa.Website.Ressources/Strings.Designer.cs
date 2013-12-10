@@ -466,6 +466,15 @@ namespace BlackMesa.Website.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search ähnelt.
+        /// </summary>
+        public static string ToSearch {
+            get {
+                return ResourceManager.GetString("ToSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die User name ähnelt.
         /// </summary>
         public static string UserName {

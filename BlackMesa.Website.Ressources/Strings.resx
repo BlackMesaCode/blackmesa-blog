@@ -219,7 +219,7 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="Search" xml:space="preserve">
+  <data name="ToSearch" xml:space="preserve">
     <value>Search</value>
   </data>
   <data name="SearchAgain" xml:space="preserve">
@@ -257,5 +257,8 @@
   </data>
   <data name="Year" xml:space="preserve">
     <value>Year</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
   </data>
 </root>

@@ -2,8 +2,11 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.ServiceModel.Syndication;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Web.Routing;
 using BlackMesa.Blog.Model;
 using BlackMesa.Blog.DataLayer.DbContext;
 using BlackMesa.Website.Main.Utilities;
@@ -21,7 +24,7 @@ namespace BlackMesa.Website.Main.Controllers
         [AllowAnonymous]
         public ActionResult IndexClean(int? page, string orderBy)
         {
-            return Index(page, orderBy, null, null, null, null);
+            return RedirectToActionPermanent("Index");
         }
 
 
@@ -293,6 +296,29 @@ namespace BlackMesa.Website.Main.Controllers
             };
 
             return View(viewModel);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Rss()
+        {
+            var language = RouteData.Values["language"].ToString();
+            var entries = _blogContext.Entries.Where(e => e.Language == language).OrderBy(e => e.DateCreated).Take(25).ToList()
+                .Select(e => new SyndicationItem
+                {
+                    Title = new TextSyndicationContent(e.Title),
+                    Content = new TextSyndicationContent(e.Preview),
+                    LastUpdatedTime = new DateTimeOffset(e.DateEdited),
+                    BaseUri = new Uri(Url.Action("Details", "Entry", new { Id = e.Id }, Request.Url.Scheme)), 
+                });
+
+            var feed = new SyndicationFeed(WebConfigurationManager.AppSettings.Get("SiteTitle"),
+                WebConfigurationManager.AppSettings.Get("SiteDescription"), new Uri(HttpContext.ApplicationInstance.Request.Url.GetLeftPart(UriPartial.Authority) + Url.Content("~/")), entries)
+            {
+                Copyright = new TextSyndicationContent(Url.Action("Index", "LegalNotice")),
+                Language = language
+            };
+
+            return new FeedResult(new Rss20FeedFormatter(feed));
         }
 
 

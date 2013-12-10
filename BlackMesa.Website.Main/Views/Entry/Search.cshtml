@@ -1,6 +1,6 @@
 ﻿@using BlackMesa.Website.Resources
 @{
-    ViewBag.Title = Strings.Archive;
+    ViewBag.Title = Strings.Search;
 }
 @model BlackMesa.Website.Main.ViewModels.EntryArchiveViewModel
 
@@ -23,7 +23,7 @@
                     @Html.DropDownListFor(model => model.SelectedMonth, Model.AvailableMonths)
                 </div>
 
-                <input id="entry-archive-submit-button" type="submit" value="@Strings.Search" />
+                <input id="entry-archive-submit-button" type="submit" value="@Strings.ToSearch" />
             }
         </section>
     }
@@ -48,7 +48,7 @@
         {
             @Html.AntiForgeryToken()
             <input name="searchText" id="search-text-input"/>
-            <input id="search-text-submit-button" type="submit" value="@Strings.Search" />
+            <input id="search-text-submit-button" type="submit" value="@Strings.ToSearch" />
             
         }
     </section>

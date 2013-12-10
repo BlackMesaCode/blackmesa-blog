@@ -110,6 +110,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -180,6 +181,7 @@
     <Compile Include="Controllers\CssTestController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\FeedResult.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

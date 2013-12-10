@@ -16,7 +16,6 @@ namespace BlackMesa.Website.Main.App_Start
                 name: "EntryWithLanguage",
                 url: "{culture}/{id}/{title}",
                 defaults: new { controller = "Entry", action = "Details", title = UrlParameter.Optional },
-                namespaces: new[] { "BlackMesa.Website.Main.Controllers" },
                 constraints: new { culture = Global.CultureConstraints, id = Global.IdConstraints }
             );
 
@@ -24,7 +23,6 @@ namespace BlackMesa.Website.Main.App_Start
                 name: "TagWithLanguage",
                 url: "{culture}/tag/{selectedTag}",
                 defaults: new { controller = "Entry", action = "Index", page = UrlParameter.Optional, orderBy = UrlParameter.Optional },
-                namespaces: new[] { "BlackMesa.Website.Main.Controllers" },
                 constraints: new { culture = Global.CultureConstraints }
             );
 
@@ -32,7 +30,6 @@ namespace BlackMesa.Website.Main.App_Start
                 name: "DefaultWithLanguage",
                 url: "{culture}/{controller}/{action}/{id}",
                 defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "BlackMesa.Website.Main.Controllers" },
                 constraints: new { culture = Global.CultureConstraints }
             );
 
@@ -41,8 +38,7 @@ namespace BlackMesa.Website.Main.App_Start
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "BlackMesa.Website.Main.Controllers" }
+                defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional }
             );
 
         }
