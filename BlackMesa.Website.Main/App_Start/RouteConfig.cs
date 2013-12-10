@@ -14,7 +14,7 @@ namespace BlackMesa.Website.Main.App_Start
 
             routes.MapRoute(
                 name: "EntryWithLanguage",
-                url: "{culture}/{id}/{title}",
+                url: "{culture}/entry/{id}/{title}",
                 defaults: new { controller = "Entry", action = "Details", title = UrlParameter.Optional },
                 constraints: new { culture = Global.CultureConstraints, id = Global.IdConstraints }
             );
