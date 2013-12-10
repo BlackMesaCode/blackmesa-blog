@@ -1,4 +1,6 @@
-﻿@using PagedList.Mvc
+﻿@using System.Globalization
+@using dotless.Core.Utils
+@using PagedList.Mvc
 @using BlackMesa.Website.Resources;
 @model BlackMesa.Website.Main.ViewModels.EntryIndexViewModel
 
@@ -10,28 +12,39 @@
 <section id="entry-index">
     <div id="entry-index-articles">
 
-        @if (!String.IsNullOrEmpty(Model.SelectedTag) || Model.SelectedYear.HasValue || !String.IsNullOrEmpty(Model.SearchText))
-        {
-            string searchOptions = "";
+
+        @{
+            var searchOptions = new List<string>();
+
             if (!String.IsNullOrEmpty(Model.SelectedTag))
             {
-                searchOptions += Strings.Tags + Model.SelectedTag;
+                searchOptions.Add(Strings.Tags + ": " + Model.SelectedTag);
             }
             if (Model.SelectedYear.HasValue)
             {
-                searchOptions += "Jahr: " + Model.SelectedYear;
+                searchOptions.Add(Strings.Year + ": " + Model.SelectedYear);
             }
             if (Model.SelectedMonth.HasValue)
             {
-                searchOptions += "Monat: " + Model.SelectedMonth;
+                searchOptions.Add(Strings.Month + ": " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.SelectedMonth.Value));
             }
             if (!String.IsNullOrEmpty(Model.SearchText))
             {
-                searchOptions += "Suchtext" + Model.SearchText;
+                searchOptions.Add(Strings.Text + ": " + Model.SearchText);
             }
-            
-            <h3>Ihre Suchoptionen: @searchOptions Gefundene Einträge: @Model.EntriesFound @Html.ActionLink("Erneut suchen","Archive","Entry")</h3>
         }
+        <div id="entry-index-submenu">
+            <span id="entry-index-count"><i class="fa fa-list"></i>@Model.EntriesFound @(Model.EntriesFound == 1 ? Strings.Entry : Strings.Entries)</span>
+            <span id="entry-index-criteria">
+                @if (searchOptions.Count > 0)
+                {
+                    <i class="fa fa-check-square-o"></i> @searchOptions.JoinStrings(", ")
+                }
+            </span>
+            <span id="entry-index-search"><i class="fa fa-search"></i>@Html.ActionLink(Strings.Search, "Search", "Entry")</span>
+            <span id="entry-index-rss"><i class="fa fa-rss"></i>@Html.ActionLink("RSS", "Search", "Entry")</span>
+            <hr />
+        </div>
 
         @if (Model.Entries.Count > 0)
         {

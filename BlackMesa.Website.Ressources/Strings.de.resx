@@ -156,6 +156,12 @@
   <data name="Edit" xml:space="preserve">
     <value>Bearbeiten</value>
   </data>
+  <data name="Entries" xml:space="preserve">
+    <value>Einträge</value>
+  </data>
+  <data name="Entry" xml:space="preserve">
+    <value>Eintrag</value>
+  </data>
   <data name="FilterByTag" xml:space="preserve">
     <value>Nach Tags filtern</value>
   </data>
@@ -179,6 +185,9 @@
   </data>
   <data name="Manage" xml:space="preserve">
     <value>Verwalten</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Monat</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>Neues Passwort</value>
@@ -210,10 +219,43 @@
   <data name="Save" xml:space="preserve">
     <value>Speichern</value>
   </data>
+  <data name="SearchAgain" xml:space="preserve">
+    <value>Erneut suchen</value>
+  </data>
+  <data name="SearchByDate" xml:space="preserve">
+    <value>Suche nach Datum</value>
+  </data>
+  <data name="SearchByTag" xml:space="preserve">
+    <value>Suche nach Tag</value>
+  </data>
+  <data name="SearchByText" xml:space="preserve">
+    <value>Suche nach Text</value>
+  </data>
+  <data name="SearchCriteria" xml:space="preserve">
+    <value>Suchkriterien</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Suchergebnis</value>
+  </data>
+  <data name="SearchResults" xml:space="preserve">
+    <value>Suchergebnisse</value>
+  </data>
+  <data name="Suchen" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>
   </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
   <data name="UserName" xml:space="preserve">
     <value>Benutzername</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Jahr</value>
   </data>
 </root>

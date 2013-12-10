@@ -281,7 +281,7 @@
     <Content Include="Views\Entry\_EntryHead.cshtml" />
     <Content Include="Views\Entry\_EntryPreview.cshtml" />
     <Content Include="Views\Entry\_ContentTemplate.cshtml" />
-    <Content Include="Views\Entry\Archive.cshtml" />
+    <Content Include="Views\Entry\Search.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />

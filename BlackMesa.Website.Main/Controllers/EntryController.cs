@@ -19,6 +19,13 @@ namespace BlackMesa.Website.Main.Controllers
         private readonly BlogContext _blogContext = new BlogContext();
 
         [AllowAnonymous]
+        public ActionResult IndexClean(int? page, string orderBy)
+        {
+            return Index(page, orderBy, null, null, null, null);
+        }
+
+
+        [AllowAnonymous]
         public ActionResult Index(int? page, string orderBy, string selectedTag, int? selectedYear, int? selectedMonth, string searchText)
         {
             var language = ViewBag.CurrentLanguage as string;
@@ -80,8 +87,6 @@ namespace BlackMesa.Website.Main.Controllers
             };
 
             return View(viewModel);
-
-
         }
 
 
@@ -261,7 +266,7 @@ namespace BlackMesa.Website.Main.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Archive()
+        public ActionResult Search()
         {
             var language = RouteData.Values["language"].ToString();
             var viewModel = new EntryArchiveViewModel()

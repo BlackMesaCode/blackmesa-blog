@@ -1,5 +1,4 @@
-﻿@using System.Web.UI.WebControls
-@using BlackMesa.Website.Resources
+﻿@using BlackMesa.Website.Resources
 @{
     ViewBag.Title = Strings.Archive;
 }
@@ -11,22 +10,20 @@
     @if(Model.AvailableYears.Any())
     {
         <section id="search-by-date">
-            <h3>Search by Date</h3>
+            <h3>@Strings.SearchByDate</h3>
             @using (Html.BeginForm("Index", "Entry", FormMethod.Post, new {id = "search-by-date-form"}))
             {
                 @Html.AntiForgeryToken()
 
                 <div id="entry-archive-available-years">
-                    @Html.LabelFor(model => model.AvailableYears)
                     @Html.DropDownListFor(model => model.SelectedYear, Model.AvailableYears)
                 </div>
             
                 <div id="entry-archive-available-months">
-                    @Html.LabelFor(model => model.AvailableMonths)
                     @Html.DropDownListFor(model => model.SelectedMonth, Model.AvailableMonths)
                 </div>
-            
-                <input id="entry-archive-submit-button" type="submit" value="Go" />
+
+                <input id="entry-archive-submit-button" type="submit" value="@Strings.Search" />
             }
         </section>
     }
@@ -34,7 +31,7 @@
     @if (Model.Tags.Any())
     {
         <section id="search-by-tag">
-            <h3>Search by Tag</h3>
+            <h3>@Strings.SearchByTag</h3>
             @foreach (var tag in Model.Tags)
             {
                 <span class="tag">
@@ -46,12 +43,12 @@
     }
     
     <section id="search-by-text">
-        <h3>Search by Text</h3>
+        <h3>@Strings.SearchByText</h3>
         @using (Html.BeginForm("Index", "Entry", FormMethod.Post, new { id = "search-by-text-form" }))
         {
             @Html.AntiForgeryToken()
-            <input name="searchText" id="search-text-input" value="Bitte Suchtext eingeben."/>
-            <input id="search-text-submit-button" type="submit" value="Go" />
+            <input name="searchText" id="search-text-input"/>
+            <input id="search-text-submit-button" type="submit" value="@Strings.Search" />
             
         }
     </section>
