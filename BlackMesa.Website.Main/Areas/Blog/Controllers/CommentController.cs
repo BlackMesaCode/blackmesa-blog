@@ -3,8 +3,9 @@ using System.Linq;
 using System.Web.Mvc;
 using BlackMesa.Blog.DataLayer.DbContext;
 using BlackMesa.Blog.Model;
+using BlackMesa.Website.Main.Controllers;
 
-namespace BlackMesa.Website.Main.Controllers
+namespace BlackMesa.Website.Main.Areas.Blog.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CommentController : BaseController

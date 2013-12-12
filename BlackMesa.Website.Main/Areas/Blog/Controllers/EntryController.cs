@@ -6,15 +6,15 @@ using System.ServiceModel.Syndication;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using System.Web.Routing;
-using BlackMesa.Blog.Model;
 using BlackMesa.Blog.DataLayer.DbContext;
+using BlackMesa.Blog.Model;
+using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.Utilities;
 using BlackMesa.Website.Main.ViewModels;
 using Microsoft.Ajax.Utilities;
 using PagedList;
 
-namespace BlackMesa.Website.Main.Controllers
+namespace BlackMesa.Website.Main.Areas.Blog.Controllers
 {
 
     public class EntryController : BaseController

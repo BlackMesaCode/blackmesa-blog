@@ -5,7 +5,7 @@
         <i class="fa fa-chevron-up"></i><a href="#">@Strings.BackToTop</a>
     </span>
     <span id="legal-notice">
-        <i class="fa fa-legal"></i>@Html.ActionLink(Strings.LegalNotice, "Index", "LegalNotice")
+        <i class="fa fa-legal"></i>@Html.RouteLink(Strings.LegalNotice, "Default", new { action = "Index", controller = "LegalNotice" })
     </span>
 
     

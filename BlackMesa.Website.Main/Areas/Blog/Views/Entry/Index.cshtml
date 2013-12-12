@@ -1,0 +1,82 @@
+﻿@using System.Globalization
+@using dotless.Core.Utils
+@using PagedList.Mvc
+@using BlackMesa.Website.Resources;
+@model BlackMesa.Website.Main.ViewModels.EntryIndexViewModel
+
+@{
+    ViewBag.Title = Strings.Home;
+}
+
+
+<section id="entry-index">
+    <div id="entry-index-articles">
+
+
+        @{
+            var searchOptions = new List<string>();
+
+            if (!String.IsNullOrEmpty(Model.SelectedTag))
+            {
+                searchOptions.Add(Strings.Tags + ": " + Model.SelectedTag);
+            }
+            if (Model.SelectedYear.HasValue)
+            {
+                searchOptions.Add(Strings.Year + ": " + Model.SelectedYear);
+            }
+            if (Model.SelectedMonth.HasValue)
+            {
+                searchOptions.Add(Strings.Month + ": " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.SelectedMonth.Value));
+            }
+            if (!String.IsNullOrEmpty(Model.SearchText))
+            {
+                searchOptions.Add(Strings.Text + ": " + Model.SearchText);
+            }
+        }
+        <div id="entry-index-submenu">
+            <span id="entry-index-count"><i class="fa fa-list"></i>@Model.EntriesFound @(Model.EntriesFound == 1 ? Strings.Entry : Strings.Entries)</span>
+            <span id="entry-index-criteria">
+                @if (searchOptions.Count > 0)
+                {
+                    <i class="fa fa-check-square-o"></i> @searchOptions.JoinStrings(", ")
+                }
+            </span>
+            <span id="entry-index-search"><i class="fa fa-search"></i>@Html.ActionLink(Strings.ToSearch, "Search", "Entry")</span>
+            <span id="entry-index-rss"><i class="fa fa-rss"></i>@Html.ActionLink("RSS", "Rss", "Entry")</span>
+            <hr />
+        </div>
+
+        @if (Model.Entries.Count > 0)
+        {
+            foreach (var item in Model.Entries)
+            {
+                @Html.Partial("_EntryPreview", item)
+            }
+        }
+        else
+        {
+            <div id="no-entries-found">
+                @Strings.NoEntriesFound
+            </div>
+
+        }
+
+    </div>
+
+    <div id="entries-bottom-bar">
+
+        @if (User.IsInRole("Admin"))
+        {
+            <div id="add-entry-button">
+                <i class="fa fa-plus-circle"></i><a href="@Url.Action("Create")">@Strings.AddEntry</a>
+            </div>
+        }
+
+        <div class="paged-list-pager">
+            @Html.PagedListPager(Model.Entries, page => Url.Action("Index", "Entry", new { page, Model.OrderBy, Model.SelectedTag, Model.SelectedMonth, Model.SelectedYear, Model.SearchText }), PagedListRenderOptions.Classic)
+        </div>
+    </div>
+
+</section>
+
+

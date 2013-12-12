@@ -11,35 +11,19 @@ namespace BlackMesa.Website.Main.App_Start
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
-            routes.MapRoute(
-                name: "EntryWithLanguage",
-                url: "{culture}/entry/{id}/{title}",
-                defaults: new { controller = "Entry", action = "Details", title = UrlParameter.Optional },
-                constraints: new { culture = Global.CultureConstraints, id = Global.IdConstraints }
-            );
-
-            routes.MapRoute(
-                name: "TagWithLanguage",
-                url: "{culture}/tag/{selectedTag}",
-                defaults: new { controller = "Entry", action = "Index", page = UrlParameter.Optional, orderBy = UrlParameter.Optional },
-                constraints: new { culture = Global.CultureConstraints }
-            );
-
-            routes.MapRoute(
-                name: "DefaultWithLanguage",
-                url: "{culture}/{controller}/{action}/{id}",
-                defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional },
-                constraints: new { culture = Global.CultureConstraints }
-            );
-
-
-
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Entry", action = "Index", id = UrlParameter.Optional }
+                url: "{culture}/{controller}/{action}/{id}",
+                defaults: new { culture = "de-DE", controller = "Home", action = "Index", id = UrlParameter.Optional },
+                constraints: new { culture = Global.CultureConstraints }
             );
+
+            //routes.MapRoute(
+            //    name: "LandingPage",
+            //    url: "{culture}/{area}/{controller}/{action}/{id}",
+            //    defaults: new { culture = "de-DE", area = "Blog", controller = "Entry", action = "Index", id = UrlParameter.Optional },
+            //    constraints: new { culture = Global.CultureConstraints }
+            //).DataTokens.Add("area", "Blog");
 
         }
     }

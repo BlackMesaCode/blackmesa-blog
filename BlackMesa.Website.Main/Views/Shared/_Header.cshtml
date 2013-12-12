@@ -29,21 +29,21 @@
     <div id="membership">
         @if (Request.IsAuthenticated)
         {
-            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logout-form"}))
+            using (Html.BeginForm("LogOff", "Account", new { area = "Identity" }, FormMethod.Post, new {id = "logout-form"}))
             {
                 @Html.AntiForgeryToken()
 
                 <i class="fa fa-unlock"></i>
                 <span id="user-name">@User.Identity.Name<text>: </text></span>
-                <span id="manage"><i class="fa fa-cogs"></i><a href="@Url.Action("Manage", "Account")">@Strings.Manage</a></span>
+                <span id="manage"><i class="fa fa-cogs"></i><a href="@Url.Action("Manage", "Account", new { area = "Identity" })">@Strings.Manage</a></span>
                 <i class="fa fa-sign-out"></i><button type="submit">@Strings.Logout</button>
             }
         }
         else
         {
             <i class="fa fa-lock"></i><span id="user-name">@Strings.Guest<text>: </text></span>
-            <a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-out"></i> @Strings.LogIn</a>
-            <i class="fa fa-pencil-square-o"></i>@Html.ActionLink("Registrieren", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+            <a href="@Url.Action("Login", "Account", new { area = "Identity" })"><i class="fa fa-sign-out"></i> @Strings.LogIn</a>
+            <i class="fa fa-pencil-square-o"></i>@Html.ActionLink("Registrieren", "Register", "Account", new { area = "Identity" }, htmlAttributes: new { id = "registerLink" })
         }
     </div>
 </div>
@@ -55,7 +55,7 @@
 
 <div id="bottom-header-bar">
     <div id="logo">
-        <a href="@Url.Action("IndexClean", "Entry")"><img src="/Content/custom/images/blackmesa_logo.png" alt="BlackMesa Logo" /></a>
+        <a href="@Url.Action("IndexClean", "Entry", new { area = "Blog"})"><img src="/Content/custom/images/blackmesa_logo.png" alt="BlackMesa Logo" /></a>
     </div>
 
     <nav>
