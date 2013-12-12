@@ -31,7 +31,7 @@ namespace BlackMesa.Website.Main.Controllers
                 !string.IsNullOrWhiteSpace(RouteData.Values["culture"].ToString()))
                 culture = SetCulture(RouteData.Values["culture"].ToString());
 
-                // Try to set the culture based on the browser settings
+            // Try to set the culture based on the browser settings
             else if (HttpContext.Request.UserLanguages != null)
                 culture = SetCulture(HttpContext.Request.UserLanguages[0]);
 
@@ -62,10 +62,10 @@ namespace BlackMesa.Website.Main.Controllers
         /// by cultureName. The name is checked against a list of allowed cultures.
         /// </summary>
         /// <param name="cultureName">The culture identifier, e.g. "en-us"</param>
-        private static string SetCulture(string cultureName)
+        public static string SetCulture(string cultureName)
         {
             //Check if languange is allowed, otherwise replace it with the default
-            string selectedCultureName = Global.AllowedCultures.Any(c => c.ToLower() == cultureName.ToLower())
+            var selectedCultureName = Global.AllowedCultures.Any(c => c.ToLower() == cultureName.ToLower())
                 ? cultureName
                 : Global.AllowedCultures.First();
 
