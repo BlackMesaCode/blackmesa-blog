@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using BlackMesa.Website.Resources;
 
 namespace BlackMesa.Website.Main.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Benutzername")]
+        [Display(ResourceType = typeof(Strings), Name = "UserName")]
         public string UserName { get; set; }
     }
 
@@ -13,51 +14,51 @@ namespace BlackMesa.Website.Main.ViewModels
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Aktuelles Kennwort")]
+        [Display(ResourceType = typeof(Strings), Name = "CurrentPassword")]
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "\"{0}\" muss mindestens {2} Zeichen lang sein.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "PasswordLengthInvalid", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Neues Kennwort")]
+        [Display(ResourceType = typeof(Strings), Name = "NewPassword")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Neues Kennwort bestätigen")]
-        [Compare("NewPassword", ErrorMessage = "Das neue Kennwort stimmt nicht mit dem Bestätigungskennwort überein.")]
+        [Display(ResourceType = typeof(Strings), Name = "ConfirmPassword")]
+        [Compare("NewPassword", ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName= "PasswordsDontMatch")]
         public string ConfirmPassword { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Benutzername")]
+        [Display(ResourceType = typeof(Strings), Name = "UserName")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Kennwort")]
+        [Display(ResourceType = typeof(Strings), Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Speichern?")]
+        [Display(ResourceType = typeof(Strings), Name = "Save")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Benutzername")]
+        [Display(ResourceType = typeof(Strings), Name = "UserName")]
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "\"{0}\" muss mindestens {2} Zeichen lang sein.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "PasswordLengthInvalid", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Kennwort")]
+        [Display(ResourceType = typeof(Strings), Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Kennwort bestätigen")]
-        [Compare("Password", ErrorMessage = "Das Kennwort stimmt nicht mit dem Bestätigungskennwort überein.")]
+        [Display(ResourceType = typeof(Strings), Name = "ConfirmPassword")]
+        [Compare("Password", ErrorMessageResourceType = typeof(Strings), ErrorMessageResourceName = "PasswordsDontMatch")]
         public string ConfirmPassword { get; set; }
     }
 }

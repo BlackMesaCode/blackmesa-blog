@@ -33,17 +33,17 @@
             {
                 @Html.AntiForgeryToken()
 
-                <i class="fa fa-unlock"></i>
-                <span id="user-name">@User.Identity.Name<text>: </text></span>
+                
+                <span id="user-name"><i class="fa fa-unlock"></i>@User.Identity.Name<text>: </text></span>
                 <span id="manage"><i class="fa fa-cogs"></i><a href="@Url.Action("Manage", "Account", new { area = "Identity" })">@Strings.Manage</a></span>
                 <i class="fa fa-sign-out"></i><button type="submit">@Strings.Logout</button>
             }
         }
         else
         {
-            <i class="fa fa-lock"></i><span id="user-name">@Strings.Guest<text>: </text></span>
-            <a href="@Url.Action("Login", "Account", new { area = "Identity" })"><i class="fa fa-sign-out"></i> @Strings.LogIn</a>
-            <i class="fa fa-pencil-square-o"></i>@Html.ActionLink("Registrieren", "Register", "Account", new { area = "Identity" }, htmlAttributes: new { id = "registerLink" })
+            <span id="user-name"><i class="fa fa-lock"></i>@Strings.Guest<text>: </text></span>
+            <span id="login"><i class="fa fa-sign-out"></i><a href="@Url.Action("Login", "Account", new { area = "Identity" })">@Strings.LogIn</a></span>
+            <i class="fa fa-pencil-square-o"></i>@Html.ActionLink("Registrieren", "Register", "Account", new { area = "Identity" })
         }
     </div>
 </div>

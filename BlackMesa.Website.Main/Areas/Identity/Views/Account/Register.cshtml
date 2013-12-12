@@ -1,41 +1,28 @@
-﻿@model BlackMesa.Website.Main.ViewModels.RegisterViewModel
+﻿@using BlackMesa.Website.Resources
+@model BlackMesa.Website.Main.ViewModels.RegisterViewModel
 @{
-    ViewBag.Title = "Registrieren";
+    ViewBag.Title = Strings.Register;
 }
 
-<h2>@ViewBag.Title.</h2>
+<h1>@ViewBag.Title</h1>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <h4>Neues Konto erstellen.</h4>
-    <hr />
+    
     @Html.ValidationSummary()
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Registrieren" />
-        </div>
-    </div>
-}
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @Html.LabelFor(m => m.UserName)
+
+    @Html.TextBoxFor(m => m.UserName)
+
+    @Html.LabelFor(m => m.Password)
+
+    @Html.PasswordFor(m => m.Password)
+
+    @Html.LabelFor(m => m.ConfirmPassword)
+
+    @Html.PasswordFor(m => m.ConfirmPassword)
+
+    <input type="submit" value="@Strings.Register" />
 }

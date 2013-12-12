@@ -132,6 +132,9 @@
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Passwort bestätigen</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>Inhalt</value>
+  </data>
+  <data name="CreateLocalAccount" xml:space="preserve">
+    <value>Lokales Konto erstellen</value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Derzeitiges Passwort</value>
@@ -177,6 +183,9 @@
   <data name="LegalNotice" xml:space="preserve">
     <value>Impressum</value>
   </data>
+  <data name="LinkedThirdPartyAccounts" xml:space="preserve">
+    <value>Verknüpfte Drittanbieter Konten</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Einloggen</value>
   </data>
@@ -195,6 +204,9 @@
   <data name="NoEntriesFound" xml:space="preserve">
     <value>Keine Einträge vorhanden</value>
   </data>
+  <data name="NoLocalAccount" xml:space="preserve">
+    <value>Falls Sie noch kein lokales Konto besitzen</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Passwort</value>
   </data>
@@ -207,8 +219,14 @@
   <data name="ReadMore" xml:space="preserve">
     <value>Weiterlesen</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrieren</value>
+  </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Angemeldet bleiben?</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Entfernen</value>
   </data>
   <data name="ReparseAll" xml:space="preserve">
     <value>Erneut parsen</value>
@@ -255,10 +273,25 @@
   <data name="ToSearch" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="UseLocalAccount" xml:space="preserve">
+    <value>Lokales Konto verwenden</value>
+  </data>
   <data name="UserName" xml:space="preserve">
     <value>Benutzername</value>
   </data>
+  <data name="UseThirdPartyAccount" xml:space="preserve">
+    <value>Drittanbieter Konto verwenden</value>
+  </data>
   <data name="Year" xml:space="preserve">
     <value>Jahr</value>
+  </data>
+  <data name="PasswordLengthInvalid" xml:space="preserve">
+    <value>"{0}" muss mindestens {2} Zeichen lang sein.</value>
+  </data>
+  <data name="PasswordsDontMatch" xml:space="preserve">
+    <value>Das neue Kennwort stimmt nicht mit dem Bestätigungskennwort überein.</value>
+  </data>
+  <data name="SetPassForLocalAccount" xml:space="preserve">
+    <value>Passwort für lokales Konto festlegen</value>
   </data>
 </root>

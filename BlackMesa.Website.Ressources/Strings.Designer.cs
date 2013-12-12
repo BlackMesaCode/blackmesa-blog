@@ -106,6 +106,15 @@ namespace BlackMesa.Website.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Change password ähnelt.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Confirm password ähnelt.
         /// </summary>
         public static string ConfirmPassword {
@@ -129,6 +138,15 @@ namespace BlackMesa.Website.Resources {
         public static string Content {
             get {
                 return ResourceManager.GetString("Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create local account ähnelt.
+        /// </summary>
+        public static string CreateLocalAccount {
+            get {
+                return ResourceManager.GetString("CreateLocalAccount", resourceCulture);
             }
         }
         
@@ -241,6 +259,15 @@ namespace BlackMesa.Website.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Linked third party accounts ähnelt.
+        /// </summary>
+        public static string LinkedThirdPartyAccounts {
+            get {
+                return ResourceManager.GetString("LinkedThirdPartyAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Log in ähnelt.
         /// </summary>
         public static string LogIn {
@@ -295,11 +322,38 @@ namespace BlackMesa.Website.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die If you dont have a local account already ähnelt.
+        /// </summary>
+        public static string NoLocalAccount {
+            get {
+                return ResourceManager.GetString("NoLocalAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Password ähnelt.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die &quot;{0}&quot; must be at least {2} characters long. ähnelt.
+        /// </summary>
+        public static string PasswordLengthInvalid {
+            get {
+                return ResourceManager.GetString("PasswordLengthInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Your new password does not match the confirmation password. ähnelt.
+        /// </summary>
+        public static string PasswordsDontMatch {
+            get {
+                return ResourceManager.GetString("PasswordsDontMatch", resourceCulture);
             }
         }
         
@@ -331,11 +385,29 @@ namespace BlackMesa.Website.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Register ähnelt.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Remember me? ähnelt.
         /// </summary>
         public static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remove ähnelt.
+        /// </summary>
+        public static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
             }
         }
         
@@ -439,6 +511,15 @@ namespace BlackMesa.Website.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set password for local account ähnelt.
+        /// </summary>
+        public static string SetPassForLocalAccount {
+            get {
+                return ResourceManager.GetString("SetPassForLocalAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Tag ähnelt.
         /// </summary>
         public static string Tag {
@@ -475,11 +556,29 @@ namespace BlackMesa.Website.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Use local account ähnelt.
+        /// </summary>
+        public static string UseLocalAccount {
+            get {
+                return ResourceManager.GetString("UseLocalAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die User name ähnelt.
         /// </summary>
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Use third party account ähnelt.
+        /// </summary>
+        public static string UseThirdPartyAccount {
+            get {
+                return ResourceManager.GetString("UseThirdPartyAccount", resourceCulture);
             }
         }
         

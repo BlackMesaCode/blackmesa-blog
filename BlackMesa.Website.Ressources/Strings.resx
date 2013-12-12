@@ -261,4 +261,37 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="CreateLocalAccount" xml:space="preserve">
+    <value>Create local account</value>
+  </data>
+  <data name="LinkedThirdPartyAccounts" xml:space="preserve">
+    <value>Linked third party accounts</value>
+  </data>
+  <data name="NoLocalAccount" xml:space="preserve">
+    <value>If you dont have a local account already</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="UseLocalAccount" xml:space="preserve">
+    <value>Use local account</value>
+  </data>
+  <data name="UseThirdPartyAccount" xml:space="preserve">
+    <value>Use third party account</value>
+  </data>
+  <data name="PasswordLengthInvalid" xml:space="preserve">
+    <value>"{0}" must be at least {2} characters long.</value>
+  </data>
+  <data name="PasswordsDontMatch" xml:space="preserve">
+    <value>Your new password does not match the confirmation password.</value>
+  </data>
+  <data name="SetPassForLocalAccount" xml:space="preserve">
+    <value>Set password for local account</value>
+  </data>
 </root>

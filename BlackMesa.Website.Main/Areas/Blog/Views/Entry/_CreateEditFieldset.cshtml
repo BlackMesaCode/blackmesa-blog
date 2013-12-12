@@ -2,13 +2,7 @@
 
 <div id="entry-create-edit">
 
-    @Html.ValidationMessageFor(model => model.Language)
-    @Html.ValidationMessageFor(model => model.Title)
-    @Html.ValidationMessageFor(model => model.Preview)
-    @Html.ValidationMessageFor(model => model.DateCreated)
-    @Html.ValidationMessageFor(model => model.DateEdited)
-    @Html.ValidationMessageFor(model => model.TagsAsString)
-    @Html.ValidationMessageFor(model => model.Content)
+    @Html.ValidationSummary()
 
     <input name="Language" type="hidden" value="@ViewBag.CurrentLanguage" />
 
