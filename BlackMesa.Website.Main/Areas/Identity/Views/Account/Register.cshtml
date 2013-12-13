@@ -4,25 +4,33 @@
     ViewBag.Title = Strings.Register;
 }
 
-<h1>@ViewBag.Title</h1>
+<section id="register">
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+    <h1>@ViewBag.Title</h1>
     
-    @Html.ValidationSummary()
+    <section id="register-local-account">
 
-    @Html.LabelFor(m => m.UserName)
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
 
-    @Html.TextBoxFor(m => m.UserName)
+            <h3>@Strings.UseLocalAccount</h3>
+            
+            @Html.ValidationSummary()
 
-    @Html.LabelFor(m => m.Password)
+            @Html.LabelFor(m => m.UserName)
+            @Html.TextBoxFor(m => m.UserName)
 
-    @Html.PasswordFor(m => m.Password)
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password)
 
-    @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.PasswordFor(m => m.ConfirmPassword)
 
-    @Html.PasswordFor(m => m.ConfirmPassword)
+            <input type="submit" value="@Strings.Register" />
+        }
+    </section>
+    
+    @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
 
-    <input type="submit" value="@Strings.Register" />
-}
+</section>

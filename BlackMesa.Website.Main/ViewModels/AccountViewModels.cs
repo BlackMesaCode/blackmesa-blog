@@ -40,7 +40,7 @@ namespace BlackMesa.Website.Main.ViewModels
         [Display(ResourceType = typeof(Strings), Name = "Password")]
         public string Password { get; set; }
 
-        [Display(ResourceType = typeof(Strings), Name = "Save")]
+        [Display(ResourceType = typeof(Strings), Name = "StaySignedIn")]
         public bool RememberMe { get; set; }
     }
 

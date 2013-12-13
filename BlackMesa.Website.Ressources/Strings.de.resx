@@ -294,4 +294,7 @@
   <data name="SetPassForLocalAccount" xml:space="preserve">
     <value>Passwort für lokales Konto festlegen</value>
   </data>
+  <data name="StaySignedIn" xml:space="preserve">
+    <value>Eingeloggt bleiben</value>
+  </data>
 </root>

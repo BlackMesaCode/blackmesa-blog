@@ -322,7 +322,7 @@ namespace BlackMesa.Website.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die If you dont have a local account already ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die If you do not yet have a local account ähnelt.
         /// </summary>
         public static string NoLocalAccount {
             get {
@@ -516,6 +516,15 @@ namespace BlackMesa.Website.Resources {
         public static string SetPassForLocalAccount {
             get {
                 return ResourceManager.GetString("SetPassForLocalAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stay signed in ähnelt.
+        /// </summary>
+        public static string StaySignedIn {
+            get {
+                return ResourceManager.GetString("StaySignedIn", resourceCulture);
             }
         }
         

@@ -271,7 +271,7 @@
     <value>Linked third party accounts</value>
   </data>
   <data name="NoLocalAccount" xml:space="preserve">
-    <value>If you dont have a local account already</value>
+    <value>If you do not yet have a local account</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
@@ -293,5 +293,8 @@
   </data>
   <data name="SetPassForLocalAccount" xml:space="preserve">
     <value>Set password for local account</value>
+  </data>
+  <data name="StaySignedIn" xml:space="preserve">
+    <value>Stay signed in</value>
   </data>
 </root>
