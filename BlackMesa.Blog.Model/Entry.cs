@@ -42,7 +42,7 @@ namespace BlackMesa.Blog.Model
         public DateTime DateEdited { get; set; }
 
         [Required]
-        [Display(ResourceType = typeof(Strings), Name = "Published")]
+        [Display(ResourceType = typeof(Strings), Name = "Publish")]
         public bool Published { get; set; }
 
          // Any ICollections tagged as 'virtual' will be lazy-loaded unless you specifically mark them otherwise.

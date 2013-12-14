@@ -297,4 +297,7 @@
   <data name="StaySignedIn" xml:space="preserve">
     <value>Stay signed in</value>
   </data>
+  <data name="Publish" xml:space="preserve">
+    <value>Publish</value>
+  </data>
 </root>
