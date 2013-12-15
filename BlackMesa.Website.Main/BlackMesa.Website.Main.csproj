@@ -110,6 +110,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
@@ -120,6 +124,14 @@
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -172,9 +184,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
-    <Compile Include="Areas\Cards\CardsAreaRegistration.cs" />
     <Compile Include="Areas\Identity\IdentityAreaRegistration.cs" />
+    <Compile Include="Areas\Learning\Api\Controllers\FoldersController.cs" />
+    <Compile Include="Areas\Learning\Controllers\FoldersController.cs" />
+    <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -222,10 +239,11 @@
     <Content Include="Content\custom\less\colors.less" />
     <Content Include="Areas\Blog\Views\web.config" />
     <Content Include="Areas\Blog\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Cards\Views\web.config" />
-    <Content Include="Areas\Cards\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Identity\Views\web.config" />
     <Content Include="Areas\Identity\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Learning\Views\Folders\Index.cshtml" />
+    <Content Include="Areas\Learning\Views\web.config" />
+    <Content Include="Areas\Learning\Views\_ViewStart.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -309,12 +327,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Blog\Models\" />
-    <Folder Include="Areas\Blog\Views\Shared\" />
-    <Folder Include="Areas\Cards\Controllers\" />
-    <Folder Include="Areas\Cards\Models\" />
-    <Folder Include="Areas\Cards\Views\Shared\" />
     <Folder Include="Areas\Identity\Models\" />
-    <Folder Include="Areas\Identity\Views\Shared\" />
+    <Folder Include="Areas\Learning\Models\" />
     <Folder Include="Content\custom\scripts\" />
     <Folder Include="Models\" />
   </ItemGroup>

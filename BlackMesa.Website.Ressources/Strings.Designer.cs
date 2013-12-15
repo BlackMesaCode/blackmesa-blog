@@ -250,6 +250,15 @@ namespace BlackMesa.Website.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Learning ähnelt.
+        /// </summary>
+        public static string Learning {
+            get {
+                return ResourceManager.GetString("Learning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Legal notice ähnelt.
         /// </summary>
         public static string LegalNotice {

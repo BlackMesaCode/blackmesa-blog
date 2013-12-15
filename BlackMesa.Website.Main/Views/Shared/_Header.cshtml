@@ -14,7 +14,14 @@
                 @foreach (var language in Global.AllowedLanguages.Where(l => l != ViewBag.CurrentLanguage))
                 {
                     var culture = CultureInfo.CreateSpecificCulture(language);
-                    <li><a href="@Url.Action("Index", "Entry", new { culture = culture.Name })"> @culture.EnglishName</a></li>
+
+                    var newCulture = culture.ToString();
+                    var newArea = ViewContext.RouteData.DataTokens["Area"] != null ? ViewContext.RouteData.DataTokens["Area"].ToString() : String.Empty;
+                    var newController = ViewContext.RouteData.Values["Controller"] != null ? ViewContext.RouteData.Values["Controller"].ToString() : String.Empty;
+                    var newAction = ViewContext.RouteData.Values["Action"] != null ? ViewContext.RouteData.Values["Action"].ToString() : String.Empty;
+                    var newId = ViewContext.RouteData.Values["Id"] != null ? ViewContext.RouteData.Values["Id"].ToString() : String.Empty;
+                    
+                    <li><a href="@Url.Action(newAction, newController, new { area = newArea, culture = newCulture, id = newId })"> @culture.EnglishName</a></li>
                 }
             </ul>
         </div>
@@ -43,7 +50,7 @@
         {
             <span id="user-name"><i class="fa fa-lock"></i>@Strings.Guest<text>: </text></span>
             <span id="login"><i class="fa fa-sign-out"></i><a href="@Url.Action("Login", "Account", new { area = "Identity" })">@Strings.LogIn</a></span>
-            <i class="fa fa-pencil-square-o"></i>@Html.ActionLink("Registrieren", "Register", "Account", new { area = "Identity" })
+            <i class="fa fa-pencil-square-o"></i>@Html.ActionLink(Strings.Register, "Register", "Account", new { area = "Identity" }, null)
         }
     </div>
 </div>

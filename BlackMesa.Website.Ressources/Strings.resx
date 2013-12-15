@@ -300,4 +300,7 @@
   <data name="Publish" xml:space="preserve">
     <value>Publish</value>
   </data>
+  <data name="Learning" xml:space="preserve">
+    <value>Learning</value>
+  </data>
 </root>
