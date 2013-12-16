@@ -1,5 +1,5 @@
 ﻿@using BlackMesa.Blog.Model
-@model BlackMesa.Blog.Model.Entry
+@model BlackMesa.Website.Main.Models.Blog.Entry
 
 @{
     ViewBag.Title = Model.Title;
@@ -16,7 +16,7 @@
             @Html.Raw(Model.Content)
         </div>
         
-         @*@Html.Partial("Comment/_Index", Model.Comments)*@ 
+         @*@Html.Partial("Comment/_Index", Model.Blog_Comments)*@ 
         
     </article>
 

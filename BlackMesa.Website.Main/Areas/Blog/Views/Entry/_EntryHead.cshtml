@@ -1,8 +1,8 @@
 ﻿@using System.Globalization
 @using BlackMesa.Website.Main.Utilities
-@using BlackMesa.Website.Resources
+@using BlackMesa.Website.Main.Resources
 
-@model BlackMesa.Blog.Model.Entry
+@model BlackMesa.Website.Main.Models.Blog.Entry
 
 <div class="article-head">
     <div class="article-date">
@@ -26,7 +26,7 @@
         <div class="article-subtitle">
             @*
                 <i class="fa fa-comment"></i>
-                @Model.Comments.Count  Todo optimize database call
+                @Model.Blog_Comments.Count  Todo optimize database call
                 *@
             @if(!Model.Published)
             {
@@ -51,7 +51,7 @@
                     
                 @if (Model.Tags.Count > 0)
                 {
-                    <i class="fa fa-tags"></i> @:Tags:
+                    <i class="fa fa-tags"></i> @:Blog_Tags:
                     foreach(var tag in Model.Tags)
                     {
                         @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTag = tag.Name }, null)

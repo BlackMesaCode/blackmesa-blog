@@ -1,28 +1,28 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using BlackMesa.Blog.DataLayer.DbContext;
-using BlackMesa.Blog.Model;
 using BlackMesa.Website.Main.Controllers;
+using BlackMesa.Website.Main.DataLayer;
+using BlackMesa.Website.Main.Models.Blog;
 
 namespace BlackMesa.Website.Main.Areas.Blog.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CommentController : BaseController
     {
-        private readonly BlogContext _db = new BlogContext();
+        private readonly BlackMesaDbContext _db = new BlackMesaDbContext();
 
         [AllowAnonymous]
         public ActionResult Index()
         {
-            var comments = _db.Comments.OrderByDescending(comment => comment.DateCreated).Take(3);
+            var comments = _db.Blog_Comments.OrderByDescending(comment => comment.DateCreated).Take(3);
             return PartialView(comments.ToList());
         }
 
 
         public ActionResult Edit(int id = 0)
         {
-            var comment = _db.Comments.Find(id);
+            var comment = _db.Blog_Comments.Find(id);
             if (comment == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Comment comment = _db.Comments.Find(id);
+            Comment comment = _db.Blog_Comments.Find(id);
             if (comment == null)
             {
                 return HttpNotFound();
@@ -62,8 +62,8 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Comment comment = _db.Comments.Find(id);
-            _db.Comments.Remove(comment);
+            Comment comment = _db.Blog_Comments.Find(id);
+            _db.Blog_Comments.Remove(comment);
             _db.SaveChanges();
             return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
         }

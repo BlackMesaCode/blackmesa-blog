@@ -17,7 +17,7 @@ namespace BlackMesa.Website.Main.Areas.Learning
             context.MapRoute(
                 "LearningDefault",
                 "{culture}/Learning/{controller}/{action}/{id}",
-                new { culture = "de-DE", controller = "Folders", action = "Index", id = UrlParameter.Optional }
+                new { culture = "de-DE", controller = "Learning_Folders", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

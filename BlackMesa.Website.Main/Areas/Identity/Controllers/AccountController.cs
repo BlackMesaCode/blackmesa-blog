@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using BlackMesa.Identity.DataLayer.DbContext;
-using BlackMesa.Identity.Model;
 using BlackMesa.Website.Main.Controllers;
+using BlackMesa.Website.Main.DataLayer;
+using BlackMesa.Website.Main.Models.Identity;
 using BlackMesa.Website.Main.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -15,7 +15,7 @@ namespace BlackMesa.Website.Main.Areas.Identity.Controllers
     public class AccountController : BaseController
     {
         public AccountController()
-            : this(new UserManager<User>(new UserStore<User>(new IdentityContext())))
+            : this(new UserManager<User>(new UserStore<User>(new BlackMesaDbContext())))
         {
         }
 

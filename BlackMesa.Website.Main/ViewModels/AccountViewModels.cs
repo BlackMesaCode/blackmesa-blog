@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using BlackMesa.Website.Resources;
+using BlackMesa.Website.Main.Resources;
 
 namespace BlackMesa.Website.Main.ViewModels
 {

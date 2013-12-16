@@ -201,6 +201,24 @@
     <Compile Include="Areas\Blog\Controllers\EntryController.cs" />
     <Compile Include="Controllers\CssTestController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
+    <Compile Include="DataLayer\DbContext.cs" />
+    <Compile Include="Models\Blog\Comment.cs" />
+    <Compile Include="Models\Blog\Entry.cs" />
+    <Compile Include="Models\Blog\Tag.cs" />
+    <Compile Include="Models\Identity\User.cs" />
+    <Compile Include="Models\Learning\Folder.cs" />
+    <Compile Include="Models\Learning\FreeText.cs" />
+    <Compile Include="Models\Learning\Unit.cs" />
+    <Compile Include="Resources\Strings.de.Designer.cs">
+      <DependentUpon>Strings.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Strings.Designer.cs">
+      <DependentUpon>Strings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\FeedResult.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -330,7 +348,6 @@
     <Folder Include="Areas\Identity\Models\" />
     <Folder Include="Areas\Learning\Models\" />
     <Folder Include="Content\custom\scripts\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -338,26 +355,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlackMesa.Blog.DataLayer\BlackMesa.Blog.DataLayer.csproj">
-      <Project>{f41f6d9d-7aaf-4bf5-bb6c-66c043ae942f}</Project>
-      <Name>BlackMesa.Blog.DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BlackMesa.Blog.Model\BlackMesa.Blog.Model.csproj">
-      <Project>{6b4803be-c717-47d0-b243-621bc92ddcf2}</Project>
-      <Name>BlackMesa.Blog.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BlackMesa.Identity.DataLayer\BlackMesa.Identity.DataLayer.csproj">
-      <Project>{890e00c1-f7af-4877-b472-2bae1aec13c5}</Project>
-      <Name>BlackMesa.Identity.DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BlackMesa.Identity.Model\BlackMesa.Identity.Model.csproj">
-      <Project>{9ef466d7-d2c2-405e-9f4d-72246c3bbb5c}</Project>
-      <Name>BlackMesa.Identity.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BlackMesa.Website.Ressources\BlackMesa.Website.Resources.csproj">
-      <Project>{ce4bc338-bd91-4f2a-b7ed-d2dbf67a9670}</Project>
-      <Name>BlackMesa.Website.Resources</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Resources\Strings.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.de.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
