@@ -88,6 +88,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Back ähnelt.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back to top ähnelt.
         /// </summary>
         public static string BackToTop {
@@ -111,6 +120,24 @@ namespace BlackMesa.Website.Main.Resources {
         public static string ChangePassword {
             get {
                 return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comment ähnelt.
+        /// </summary>
+        public static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comments ähnelt.
+        /// </summary>
+        public static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
             }
         }
         
@@ -142,11 +169,38 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create ähnelt.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create folder ähnelt.
+        /// </summary>
+        public static string CreateFolder {
+            get {
+                return ResourceManager.GetString("CreateFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Create local account ähnelt.
         /// </summary>
         public static string CreateLocalAccount {
             get {
                 return ResourceManager.GetString("CreateLocalAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create subfolder ähnelt.
+        /// </summary>
+        public static string CreateSubFolder {
+            get {
+                return ResourceManager.GetString("CreateSubFolder", resourceCulture);
             }
         }
         
@@ -219,6 +273,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string FilterByTag {
             get {
                 return ResourceManager.GetString("FilterByTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Folder ähnelt.
+        /// </summary>
+        public static string Folder {
+            get {
+                return ResourceManager.GetString("Folder", resourceCulture);
             }
         }
         
@@ -556,7 +619,7 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Blog_Tags ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Tags ähnelt.
         /// </summary>
         public static string Tags {
             get {

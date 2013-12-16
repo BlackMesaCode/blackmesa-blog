@@ -1,0 +1,14 @@
+﻿@using BlackMesa.Website.Main.Resources
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.FolderListItemViewModel
+
+<div id="folder-list-item">
+    <li>@Model.Name @Model.Id @Html.ActionLink(Strings.CreateFolder, "Create", "Folder", new { parentFolderId = Model.Id }, null)</li>
+    
+    <ul>
+        @foreach (var subfolder in Model.SubFolders)
+        {
+            @Html.Partial("_FolderListItem", subfolder)
+        }
+    </ul>
+
+</div>

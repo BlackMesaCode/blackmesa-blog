@@ -188,10 +188,14 @@
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
     <Compile Include="Areas\Identity\IdentityAreaRegistration.cs" />
     <Compile Include="Areas\Learning\Api\Controllers\FoldersController.cs" />
-    <Compile Include="Areas\Learning\Controllers\FoldersController.cs" />
+    <Compile Include="Areas\Learning\Controllers\FolderController.cs" />
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\Learning\ViewModels\CreateEditFolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\FolderIndexViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\FolderListItemViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\FolderViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -202,12 +206,22 @@
     <Compile Include="Controllers\CssTestController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="DataLayer\DbContext.cs" />
+    <Compile Include="DataLayer\LearningRepository.cs" />
+    <Compile Include="Migrations\201312161747131_Init.cs" />
+    <Compile Include="Migrations\201312161747131_Init.Designer.cs">
+      <DependentUpon>201312161747131_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312161934155_AddedParentFolder.cs" />
+    <Compile Include="Migrations\201312161934155_AddedParentFolder.Designer.cs">
+      <DependentUpon>201312161934155_AddedParentFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
     <Compile Include="Models\Blog\Entry.cs" />
     <Compile Include="Models\Blog\Tag.cs" />
     <Compile Include="Models\Identity\User.cs" />
     <Compile Include="Models\Learning\Folder.cs" />
-    <Compile Include="Models\Learning\FreeText.cs" />
+    <Compile Include="Models\Learning\StandardUnit.cs" />
     <Compile Include="Models\Learning\Unit.cs" />
     <Compile Include="Resources\Strings.de.Designer.cs">
       <DependentUpon>Strings.de.resx</DependentUpon>
@@ -259,9 +273,12 @@
     <Content Include="Areas\Blog\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Identity\Views\web.config" />
     <Content Include="Areas\Identity\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Learning\Views\Folders\Index.cshtml" />
     <Content Include="Areas\Learning\Views\web.config" />
     <Content Include="Areas\Learning\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\Create.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\_CreateEditFieldset.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\Index.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\_FolderListItem.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -346,7 +363,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Blog\Models\" />
     <Folder Include="Areas\Identity\Models\" />
-    <Folder Include="Areas\Learning\Models\" />
     <Folder Include="Content\custom\scripts\" />
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +371,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312161747131_Init.resx">
+      <DependentUpon>201312161747131_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312161934155_AddedParentFolder.resx">
+      <DependentUpon>201312161934155_AddedParentFolder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.de.Designer.cs</LastGenOutput>

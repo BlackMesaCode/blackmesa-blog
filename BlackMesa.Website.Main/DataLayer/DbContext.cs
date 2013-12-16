@@ -22,12 +22,14 @@ namespace BlackMesa.Website.Main.DataLayer
 
         // Identity Entities
 
+        // DbSets for Identity come with the inherited IdentityDbContext<User>
+
 
         // Learning Entities
 
         public DbSet<Folder> Learning_Folders { get; set; }
         public DbSet<Unit> Learning_Units { get; set; }
-        public DbSet<FreeTextUnit> Learning_FreeTextUnits { get; set; }
+        public DbSet<StandardUnit> Learning_StandardUnits { get; set; }
 
 
 
@@ -47,6 +49,7 @@ namespace BlackMesa.Website.Main.DataLayer
                     x.MapRightKey("Entry_Id");
                 });
 
+
             // Identity
 
             modelBuilder.Entity<IdentityUserRole>().ToTable("Identity_UserRoles");
@@ -57,6 +60,8 @@ namespace BlackMesa.Website.Main.DataLayer
             modelBuilder.Entity<IdentityUser>().ToTable("Identity_Users");
             modelBuilder.Entity<User>().ToTable("Identity_Users");
 
+
+            // Learning
 
         }
 

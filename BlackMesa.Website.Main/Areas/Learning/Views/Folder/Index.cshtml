@@ -1,0 +1,22 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.FolderIndexViewModel
+    
+<section id="folder-index">
+    
+    
+    <ul>
+        @foreach (var subFolder in Model.Folders)
+        {
+            @Html.Partial("_FolderListItem", subFolder)
+        }
+    </ul>
+    
+
+    @if (Request.IsAuthenticated)
+    {
+        <i class="fa fa-plus-circle"></i> <a href="@Url.Action("Create")">@Strings.Create</a>
+    }
+
+
+</section>

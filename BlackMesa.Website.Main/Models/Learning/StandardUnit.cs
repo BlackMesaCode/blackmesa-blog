@@ -2,8 +2,8 @@
 
 namespace BlackMesa.Website.Main.Models.Learning
 {
-    [Table("Learning_FreeTextUnits")]
-    public class FreeTextUnit : Unit
+    [Table("Learning_StandardUnits")]
+    public class StandardUnit : Unit
     {
         public string Question { get; set; }
 

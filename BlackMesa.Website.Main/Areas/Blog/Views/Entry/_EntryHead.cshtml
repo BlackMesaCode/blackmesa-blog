@@ -51,7 +51,7 @@
                     
                 @if (Model.Tags.Count > 0)
                 {
-                    <i class="fa fa-tags"></i> @:Blog_Tags:
+                    <i class="fa fa-tags"></i> @:Tags:
                     foreach(var tag in Model.Tags)
                     {
                         @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTag = tag.Name }, null)

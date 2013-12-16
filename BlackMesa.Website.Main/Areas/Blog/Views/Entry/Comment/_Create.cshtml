@@ -1,4 +1,5 @@
-﻿@model BlackMesa.Website.Main.Models.Blog.Comment
+﻿@using BlackMesa.Website.Main.Resources
+@model BlackMesa.Website.Main.Models.Blog.Comment
 
 <section id="comment-create">
 
@@ -7,15 +8,15 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Create Comment</legend>
+    <h1>@Strings.Comment @Strings.Create</h1>
+    
+    @Html.Partial("/Comment/_CreateEditFieldset", Model)
+    
+    <p>
+        <input type="submit" value="@Strings.Create" />
+        <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink(Strings.Back, "Index")
+    </p>
 
-        @Html.Partial("~/Views/Entry/Comment/_CreateEditFieldset.cshtml", Model)
-        <p>
-            <input class="btn btn-primary" type="submit" value="Create" />
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
-        </p>
-    </fieldset>
 }
  
 </section>

@@ -265,7 +265,7 @@
     <value>Tag</value>
   </data>
   <data name="Tags" xml:space="preserve">
-    <value>Blog_Tags</value>
+    <value>Tags</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Text</value>
@@ -302,5 +302,26 @@
   </data>
   <data name="Learning" xml:space="preserve">
     <value>Lernen</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Erstellen</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Kommentar</value>
+  </data>
+  <data name="Folder" xml:space="preserve">
+    <value>Verzeichnis</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Kommentare</value>
+  </data>
+  <data name="CreateFolder" xml:space="preserve">
+    <value>Verzeichnis erstellen</value>
+  </data>
+  <data name="CreateSubFolder" xml:space="preserve">
+    <value>Unterverzeichnis erstellen</value>
   </data>
 </root>

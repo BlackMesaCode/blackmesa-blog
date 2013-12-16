@@ -19,7 +19,7 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
 
     public class EntryController : BaseController
     {
-        private readonly BlackMesaDbContext _blogContext = new BlackMesaDbContext();
+        private readonly BlackMesaDbContext _dbContext = new BlackMesaDbContext();
 
         [AllowAnonymous]
         public ActionResult IndexClean(int? page, string orderBy)
@@ -33,7 +33,7 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
         {
             var language = ViewBag.CurrentLanguage as string;
 
-            var model = User.IsInRole("Admin") ? _blogContext.Blog_Entries.Where(e => e.Language == language) : _blogContext.Blog_Entries.Where(e => e.Published && e.Language == language);
+            var model = User.IsInRole("Admin") ? _dbContext.Blog_Entries.Where(e => e.Language == language) : _dbContext.Blog_Entries.Where(e => e.Published && e.Language == language);
 
             // Filter
             if (!String.IsNullOrEmpty(selectedTag)) // by tag
@@ -97,7 +97,7 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
         [AllowAnonymous]
         public ActionResult Details(string title, int id = 0)
         {
-            Entry entry = _blogContext.Blog_Entries.Find(id);
+            Entry entry = _dbContext.Blog_Entries.Find(id);
 
             if (entry == null || (!entry.Published && !User.IsInRole("Admin")))
             {
@@ -125,12 +125,12 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
 
             if (ModelState.IsValid)
             {
-                _blogContext.Blog_Comments.Add(comment);
-                _blogContext.SaveChanges();
+                _dbContext.Blog_Comments.Add(comment);
+                _dbContext.SaveChanges();
                 return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
             }
 
-            return View("Details", _blogContext.Blog_Entries.Single(c => c.Id == comment.EntryId));
+            return View("Details", _dbContext.Blog_Entries.Single(c => c.Id == comment.EntryId));
         }
 
 
@@ -158,8 +158,8 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
             if (ModelState.IsValid)
             {
                 AddTags(entry.TagsAsString, entry);
-                _blogContext.Blog_Entries.Add(entry);
-                _blogContext.SaveChanges();
+                _dbContext.Blog_Entries.Add(entry);
+                _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -169,7 +169,7 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id = 0)
         {
-            Entry entry = _blogContext.Blog_Entries.Find(id);
+            Entry entry = _dbContext.Blog_Entries.Find(id);
 
             if (entry == null)
             {
@@ -188,17 +188,17 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dbEntry = _blogContext.Blog_Entries.Find(entry.Id);
+                var dbEntry = _dbContext.Blog_Entries.Find(entry.Id);
 
                 TryUpdateModel(dbEntry);  // tries to map the new values from the modelbinded entry to the passed dbmodel - this is the lazy way to go, instead of manually mapping all the properties
 
                 AddTags(entry.TagsAsString, dbEntry);
                 
-                _blogContext.SaveChanges();
+                _dbContext.SaveChanges();
 
                 DeleteTagsWithNoEntries();
 
-                _blogContext.SaveChanges();
+                _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(entry);
@@ -217,15 +217,15 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
             {
                 var trimmedTag = tag.TrimStart().TrimEnd(); // Remove leading and ending spaces from string
 
-                if (!_blogContext.Blog_Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(trimmedTag))
+                if (!_dbContext.Blog_Tags.Where(t => t.Language == entry.Language).Select(t => t.Name).Contains(trimmedTag))
                 {
                     var newTag = new Tag { Name = trimmedTag, Language = entry.Language };
-                    _blogContext.Blog_Tags.Add(newTag);
+                    _dbContext.Blog_Tags.Add(newTag);
                     entry.Tags.Add(newTag);
                 }
                 else
                 {
-                    entry.Tags.Add(_blogContext.Blog_Tags.Single(t => t.Name == trimmedTag && t.Language == entry.Language));
+                    entry.Tags.Add(_dbContext.Blog_Tags.Single(t => t.Name == trimmedTag && t.Language == entry.Language));
                 }
             }
         }
@@ -233,17 +233,17 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
 
         private void DeleteTagsWithNoEntries()
         {
-            var tagsToDelete = _blogContext.Blog_Tags.Where(tag => tag.Entries.Count == 0);
+            var tagsToDelete = _dbContext.Blog_Tags.Where(tag => tag.Entries.Count == 0);
             foreach (var tag in tagsToDelete)
             {
-                _blogContext.Blog_Tags.Remove(tag);
+                _dbContext.Blog_Tags.Remove(tag);
             }
         }
 
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id = 0)
         {
-            Entry entry = _blogContext.Blog_Entries.Find(id);
+            Entry entry = _dbContext.Blog_Entries.Find(id);
             if (entry == null)
             {
                 return HttpNotFound();
@@ -258,12 +258,12 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Entry entry = _blogContext.Blog_Entries.Find(id);
-            _blogContext.Blog_Entries.Remove(entry);
-            _blogContext.SaveChanges();
+            Entry entry = _dbContext.Blog_Entries.Find(id);
+            _dbContext.Blog_Entries.Remove(entry);
+            _dbContext.SaveChanges();
 
             DeleteTagsWithNoEntries();
-            _blogContext.SaveChanges();
+            _dbContext.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -274,7 +274,7 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
             var language = RouteData.Values["language"].ToString();
             var viewModel = new EntryArchiveViewModel()
             {
-                AvailableYears = _blogContext.Blog_Entries.Where(e => e.Language == language).Select(e => e.DateCreated.Year).Distinct().ToList().Select(year =>
+                AvailableYears = _dbContext.Blog_Entries.Where(e => e.Language == language).Select(e => e.DateCreated.Year).Distinct().ToList().Select(year =>
                                     new SelectListItem
                                     {
                                         Selected = false,
@@ -290,7 +290,7 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
                                         Value = !String.IsNullOrEmpty(month) ? DateTime.ParseExact(month, "MMMM", CultureInfo.CurrentCulture).Month.ToString() : String.Empty,
                                     }
                                     ),
-                Tags = _blogContext.Blog_Tags.Where(e => e.Language == language).OrderByDescending(tag => tag.Entries.Count).
+                Tags = _dbContext.Blog_Tags.Where(e => e.Language == language).OrderByDescending(tag => tag.Entries.Count).
                                     ToDictionary(tag => tag.Name, tag => tag.Entries.Count),
 
             };
@@ -302,7 +302,7 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
         public ActionResult Rss()
         {
             var language = RouteData.Values["language"].ToString();
-            var entries = _blogContext.Blog_Entries.Where(e => e.Language == language).OrderBy(e => e.DateCreated).Take(25).ToList()
+            var entries = _dbContext.Blog_Entries.Where(e => e.Language == language).OrderBy(e => e.DateCreated).Take(25).ToList()
                 .Select(e => new SyndicationItem
                 {
                     Title = new TextSyndicationContent(e.Title),
@@ -324,7 +324,7 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            _blogContext.Dispose();
+            _dbContext.Dispose();
             base.Dispose(disposing);
         }
     }

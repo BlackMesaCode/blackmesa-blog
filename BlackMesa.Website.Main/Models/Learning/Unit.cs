@@ -14,6 +14,8 @@ namespace BlackMesa.Website.Main.Models.Learning
         public DateTime DateCreated { get; set; }
 
         public int FolderId { get; set; }  // Having both the ForeignKey and the navigation property in place, will make FolderId a not nullable ForeignKey in the database
+        
         public virtual Folder Entry { get; set; }
+
     }
 }

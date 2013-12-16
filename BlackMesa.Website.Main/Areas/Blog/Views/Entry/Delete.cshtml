@@ -1,29 +1,24 @@
-﻿@model BlackMesa.Website.Main.Models.Blog.Entry
+﻿@using BlackMesa.Website.Main.Resources
+@model BlackMesa.Website.Main.Models.Blog.Entry
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = Strings.Entry + " " + Strings.Delete;
 }
 
-<fieldset>
-    <legend>Delete Entry</legend>
+<h1>@ViewBag.Title</h1>
 
-    <p>Are you sure you want to delete this?</p>
+<p>Are you sure you want to delete this?</p>
 
-    <div class="display-field">
-        <strong>@Html.DisplayFor(model => model.Title)</strong>
-    </div>
+<strong>@Html.DisplayFor(model => model.Title)</strong>
 
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateCreated)
-    </div>
-</fieldset>
+@Html.DisplayFor(model => model.DateCreated)
 
 <br/>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input class="btn btn-primary" type="submit" value="Delete" />
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+        <input type="submit" value="@Strings.Delete" />
+        <i class="fa fa-arrow-circle-o-left"></i>  @Html.ActionLink(Strings.Back, "Index")
     </p>
 }

@@ -1,30 +1,16 @@
 ﻿@model BlackMesa.Website.Main.Models.Blog.Comment      
 
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.Name)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Name)
-    @Html.ValidationMessageFor(model => model.Name)
-</div>
+@Html.ValidationSummary()
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.Email)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Email)
-    @Html.ValidationMessageFor(model => model.Email)
-</div>
+@Html.LabelFor(model => model.Name)
+@Html.EditorFor(model => model.Name)
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.Content)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Content)
-    @Html.ValidationMessageFor(model => model.Content)
-</div>
+@Html.LabelFor(model => model.Email)
+@Html.EditorFor(model => model.Email)
 
+@Html.LabelFor(model => model.Content)
+@Html.EditorFor(model => model.Content)
 
 
 @Html.HiddenFor(model => model.Id)
