@@ -21,13 +21,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Blog.Model", "Bla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Website.Resources", "BlackMesa.Website.Ressources\BlackMesa.Website.Resources.csproj", "{CE4BC338-BD91-4F2A-B7ED-D2DBF67A9670}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Gallery.Model", "BlackMesa.Gallery.Model\BlackMesa.Gallery.Model.csproj", "{7F9B8B79-3D2F-47C1-A876-BF55A8BD2BD6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Blog.DataLayer", "BlackMesa.Blog.DataLayer\BlackMesa.Blog.DataLayer.csproj", "{F41F6D9D-7AAF-4BF5-BB6C-66C043AE942F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Identity.DataLayer", "BlackMesa.Identity.DataLayer\BlackMesa.Identity.DataLayer.csproj", "{890E00C1-F7AF-4877-B472-2BAE1AEC13C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Identity.Model", "BlackMesa.Identity.Model\BlackMesa.Identity.Model.csproj", "{9EF466D7-D2C2-405E-9F4D-72246C3BBB5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Learning.Model", "BlackMesa.Learning.Model\BlackMesa.Learning.Model.csproj", "{2A09B23E-B5CA-40C3-ACDB-5F923EB69305}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMesa.Learning.DataLayer", "BlackMesa.Learning.DataLayer\BlackMesa.Learning.DataLayer.csproj", "{106D8FBF-3452-47E1-8787-A3B043C82BB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +49,6 @@ Global
 		{CE4BC338-BD91-4F2A-B7ED-D2DBF67A9670}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE4BC338-BD91-4F2A-B7ED-D2DBF67A9670}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE4BC338-BD91-4F2A-B7ED-D2DBF67A9670}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F9B8B79-3D2F-47C1-A876-BF55A8BD2BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F9B8B79-3D2F-47C1-A876-BF55A8BD2BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F9B8B79-3D2F-47C1-A876-BF55A8BD2BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F9B8B79-3D2F-47C1-A876-BF55A8BD2BD6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F41F6D9D-7AAF-4BF5-BB6C-66C043AE942F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F41F6D9D-7AAF-4BF5-BB6C-66C043AE942F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F41F6D9D-7AAF-4BF5-BB6C-66C043AE942F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +61,14 @@ Global
 		{9EF466D7-D2C2-405E-9F4D-72246C3BBB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EF466D7-D2C2-405E-9F4D-72246C3BBB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EF466D7-D2C2-405E-9F4D-72246C3BBB5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A09B23E-B5CA-40C3-ACDB-5F923EB69305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A09B23E-B5CA-40C3-ACDB-5F923EB69305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A09B23E-B5CA-40C3-ACDB-5F923EB69305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A09B23E-B5CA-40C3-ACDB-5F923EB69305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{106D8FBF-3452-47E1-8787-A3B043C82BB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{106D8FBF-3452-47E1-8787-A3B043C82BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{106D8FBF-3452-47E1-8787-A3B043C82BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{106D8FBF-3452-47E1-8787-A3B043C82BB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

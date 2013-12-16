@@ -346,10 +346,6 @@
       <Project>{6b4803be-c717-47d0-b243-621bc92ddcf2}</Project>
       <Name>BlackMesa.Blog.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BlackMesa.Gallery.Model\BlackMesa.Gallery.Model.csproj">
-      <Project>{7f9b8b79-3d2f-47c1-a876-bf55a8bd2bd6}</Project>
-      <Name>BlackMesa.Gallery.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BlackMesa.Identity.DataLayer\BlackMesa.Identity.DataLayer.csproj">
       <Project>{890e00c1-f7af-4877-b472-2bae1aec13c5}</Project>
       <Name>BlackMesa.Identity.DataLayer</Name>
