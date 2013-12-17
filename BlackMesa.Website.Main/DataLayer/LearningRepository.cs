@@ -19,14 +19,14 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void AddFolder(string name, string ownerId, int? parentFolderId = null)
+        public void AddFolder(string name, string ownerId, string parentFolderId)
         {
 
             // todo check for valid parentFolderId
 
             Folder parentFolder = null;
-            if (parentFolderId.HasValue)
-                parentFolder = _dbContext.Learning_Folders.Find(parentFolderId);
+            if (!String.IsNullOrEmpty(parentFolderId))
+                parentFolder = _dbContext.Learning_Folders.Find(new Guid(parentFolderId));
 
             var owner = _dbContext.Users.Find(ownerId);
             var newFolder = new Folder
@@ -38,7 +38,7 @@ namespace BlackMesa.Website.Main.DataLayer
                 Level = parentFolder != null ? parentFolder.Level + 1 : 1,
             };
 
-            if (parentFolderId.HasValue)
+            if (parentFolder != null)
                 parentFolder.SubFolders.Add(newFolder);
 
             _dbContext.Learning_Folders.Add(newFolder);
@@ -46,55 +46,53 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public IEnumerable<Folder> GetFoldersWithoutSubFolders(string userId)
+        //public void EditFolder(Folder newFolder)
+        //{
+        //    var currentFolder = _dbContext.Learning_Folders.Find(newFolder.Id);
+
+        //}
+
+
+        public IEnumerable<Folder> GetFolders(string userId)
         {
             return _dbContext.Learning_Folders.Where(f => f.Owner.Id == userId && f.Level == 1).AsEnumerable();
         }
 
-        public IEnumerable<Folder> GetFoldersWithAllSubfolders(string userId)
-        {
-            var result = _dbContext.Learning_Folders.Where(f => f.Owner.Id == userId && f.Level == 1)
-                .Include(f => f.SubFolders).Include(f => f.SubFolders).Include(f => f.SubFolders)
-                    .AsEnumerable();
 
-            //Utilities.Utilities.EnumerateAllIncludesList(_dbContext, result);
-            return result;
-        }
-
-        public IEnumerable<Folder> GetFolder(string userId, int folderId)
+        public Folder GetFolder(string userId, string folderId)
         {
             // todo check for users rights e.g. if he is owner
 
-            return _dbContext.Learning_Folders.Where(f => f.Owner.Id == userId && f.Id == folderId).AsEnumerable();
+            return _dbContext.Learning_Folders.SingleOrDefault(f => f.Owner.Id == userId && f.Id == new Guid(folderId));
         }
 
-        public void RemoveFolder(int folderId)
+        public void RemoveFolder(string folderId)
         {
             // todo check for users rights e.g. if he is owner
 
-            var folderToDelete = _dbContext.Learning_Folders.Find(folderId);
+            var folderToDelete = _dbContext.Learning_Folders.Find(new Guid(folderId));
             _dbContext.Learning_Folders.Remove(folderToDelete);
             _dbContext.SaveChanges();
         }
 
-        public void ChangeFolderName(int folderId, string newName)
+        public void ChangeFolderName(string folderId, string newName)
         {
             // todo check for users rights e.g. if he is owner
 
-            var folder = _dbContext.Learning_Folders.Find(folderId);
+            var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
             folder.Name = newName;
             // EntityState.Modified ???
             _dbContext.SaveChanges();
         }
 
-        public void ChangeParentFolder(int folderId, int newParentFolderId)
+        public void ChangeParentFolder(string folderId, string newParentFolderId)
         {
 
             // todo check for users rights e.g. if he is owner
 
-            var folder = _dbContext.Learning_Folders.Find(folderId);
+            var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
             var oldParentFolder = folder.ParentFolder;
-            var newParentFolder = _dbContext.Learning_Folders.Find(newParentFolderId);
+            var newParentFolder = _dbContext.Learning_Folders.Find(new Guid(newParentFolderId));
 
             // Remove Folder from the subfolders List of the old parent folder
             oldParentFolder.SubFolders.Remove(folder);

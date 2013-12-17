@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using BlackMesa.Website.Main.Models.Identity;
@@ -9,7 +10,9 @@ namespace BlackMesa.Website.Main.Models.Learning
     public class Folder
     {
 
-        public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
 
         public string OwnerId { get; set; }
         public virtual User Owner { get; set; }

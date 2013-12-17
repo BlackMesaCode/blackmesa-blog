@@ -5,15 +5,10 @@
     @Html.ValidationSummary()
 
     @Html.HiddenFor(model => model.Id)
-
-    @Html.LabelFor(model => model.ParentFolderId)
-    @Html.EditorFor(model => model.ParentFolderId)
+    @Html.HiddenFor(model => model.ParentFolderId)
 
     @Html.LabelFor(model => model.Name)
     @Html.EditorFor(model => model.Name)
-
-    @Html.LabelFor(model => model.DateCreated)
-    @Html.EditorFor(model => model.DateCreated)
 
 
 </div>

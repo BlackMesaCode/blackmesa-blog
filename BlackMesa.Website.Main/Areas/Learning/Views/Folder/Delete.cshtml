@@ -1,12 +1,12 @@
 ﻿@using BlackMesa.Website.Main.Resources
 
-@model BlackMesa.Website.Main.Areas.Learning.ViewModels.CreateEditFolderViewModel
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.DeleteFolderViewModel
 
 @{
-    ViewBag.Title = Strings.Folder + " " + Strings.Create;
+    ViewBag.Title = Strings.Folder + ": " + Strings.Delete;
 }
 
-<section id="folder-create">
+<section id="folder-delete">
 
     @using (Html.BeginForm())
     {
@@ -15,11 +15,14 @@
 
         <h1>@ViewBag.Title</h1>
 
-        @Html.Partial("_CreateEditFieldset")
-
+        <p>
+            <strong>@Model.Name</strong>
+            @Html.HiddenFor(model => model.Id)
+        </p>
+        
         <p>
             <button type="submit">
-                @Strings.Save
+                @Strings.Delete
             </button>
             <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink(Strings.Back, "Index")
         </p>

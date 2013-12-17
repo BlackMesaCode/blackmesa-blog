@@ -54,18 +54,17 @@ namespace BlackMesa.Website.Main.Migrations
                 "dbo.Learning_Folders",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        OwnerId = c.Int(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true),
+                        OwnerId = c.String(maxLength: 128),
                         Name = c.String(nullable: false),
                         Level = c.Int(nullable: false),
-                        Owner_Id = c.String(maxLength: 128),
-                        Folder_Id = c.Int(),
+                        ParentFolder_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Identity_Users", t => t.Owner_Id)
-                .ForeignKey("dbo.Learning_Folders", t => t.Folder_Id)
-                .Index(t => t.Owner_Id)
-                .Index(t => t.Folder_Id);
+                .ForeignKey("dbo.Identity_Users", t => t.OwnerId)
+                .ForeignKey("dbo.Learning_Folders", t => t.ParentFolder_Id)
+                .Index(t => t.OwnerId)
+                .Index(t => t.ParentFolder_Id);
             
             CreateTable(
                 "dbo.Learning_Units",
@@ -74,10 +73,11 @@ namespace BlackMesa.Website.Main.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         DateCreated = c.DateTime(nullable: false),
                         FolderId = c.Int(nullable: false),
+                        Entry_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Learning_Folders", t => t.FolderId, cascadeDelete: true)
-                .Index(t => t.FolderId);
+                .ForeignKey("dbo.Learning_Folders", t => t.Entry_Id)
+                .Index(t => t.Entry_Id);
             
             CreateTable(
                 "dbo.Identity_Users",
@@ -168,24 +168,24 @@ namespace BlackMesa.Website.Main.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Learning_StandardUnits", "Id", "dbo.Learning_Units");
-            DropForeignKey("dbo.Learning_Folders", "Folder_Id", "dbo.Learning_Folders");
-            DropForeignKey("dbo.Learning_Folders", "Owner_Id", "dbo.Identity_Users");
+            DropForeignKey("dbo.Learning_Folders", "ParentFolder_Id", "dbo.Learning_Folders");
+            DropForeignKey("dbo.Learning_Folders", "OwnerId", "dbo.Identity_Users");
             DropForeignKey("dbo.Identity_UserClaims", "User_Id", "dbo.Identity_Users");
             DropForeignKey("dbo.Identity_UserRoles", "UserId", "dbo.Identity_Users");
             DropForeignKey("dbo.Identity_UserRoles", "RoleId", "dbo.Identity_Roles");
             DropForeignKey("dbo.Identity_UserLogins", "UserId", "dbo.Identity_Users");
-            DropForeignKey("dbo.Learning_Units", "FolderId", "dbo.Learning_Folders");
+            DropForeignKey("dbo.Learning_Units", "Entry_Id", "dbo.Learning_Folders");
             DropForeignKey("dbo.Blog_TagEntries", "Entry_Id", "dbo.Blog_Entries");
             DropForeignKey("dbo.Blog_TagEntries", "Tag_Id", "dbo.Blog_Tags");
             DropForeignKey("dbo.Blog_Comments", "EntryId", "dbo.Blog_Entries");
             DropIndex("dbo.Learning_StandardUnits", new[] { "Id" });
-            DropIndex("dbo.Learning_Folders", new[] { "Folder_Id" });
-            DropIndex("dbo.Learning_Folders", new[] { "Owner_Id" });
+            DropIndex("dbo.Learning_Folders", new[] { "ParentFolder_Id" });
+            DropIndex("dbo.Learning_Folders", new[] { "OwnerId" });
             DropIndex("dbo.Identity_UserClaims", new[] { "User_Id" });
             DropIndex("dbo.Identity_UserRoles", new[] { "UserId" });
             DropIndex("dbo.Identity_UserRoles", new[] { "RoleId" });
             DropIndex("dbo.Identity_UserLogins", new[] { "UserId" });
-            DropIndex("dbo.Learning_Units", new[] { "FolderId" });
+            DropIndex("dbo.Learning_Units", new[] { "Entry_Id" });
             DropIndex("dbo.Blog_TagEntries", new[] { "Entry_Id" });
             DropIndex("dbo.Blog_TagEntries", new[] { "Tag_Id" });
             DropIndex("dbo.Blog_Comments", new[] { "EntryId" });

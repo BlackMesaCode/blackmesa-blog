@@ -4,18 +4,23 @@
     
 <section id="folder-index">
     
+    <div id="folder-index-submenu">
+        <span id="folder-index-count"><i class="fa fa-list"></i>@Model.TotalLearningUnits @(Model.TotalLearningUnits == 1 ? Strings.LearningUnit : Strings.LearningUnits)</span>
+        <span id="folder-index-search"><i class="fa fa-search"></i>@Html.ActionLink(Strings.ToSearch, "Search", "Entry")</span>
+        <hr />
+    </div>
     
-    <ul>
-        @foreach (var subFolder in Model.Folders)
-        {
-            @Html.Partial("_FolderListItem", subFolder)
-        }
-    </ul>
+
+    @foreach (var subFolder in Model.Folders)
+    {
+        @Html.Partial("_FolderListItem", subFolder)
+    }
+
     
 
     @if (Request.IsAuthenticated)
     {
-        <i class="fa fa-plus-circle"></i> <a href="@Url.Action("Create")">@Strings.CreateFolder</a>
+        <i class="fa fa-plus-square"></i> <a href="@Url.Action("Create")">@Strings.CreateFolder</a>
     }
 
 

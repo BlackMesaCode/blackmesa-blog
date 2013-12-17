@@ -333,4 +333,13 @@
   <data name="MoveFolder" xml:space="preserve">
     <value>Move folder</value>
   </data>
+  <data name="Folders" xml:space="preserve">
+    <value>Folders</value>
+  </data>
+  <data name="LearningUnit" xml:space="preserve">
+    <value>Learning unit</value>
+  </data>
+  <data name="LearningUnits" xml:space="preserve">
+    <value>Learning units</value>
+  </data>
 </root>

@@ -304,6 +304,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Folders ähnelt.
+        /// </summary>
+        public static string Folders {
+            get {
+                return ResourceManager.GetString("Folders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Except where otherwise noted, content on this site is licensed under  ähnelt.
         /// </summary>
         public static string FooterLicence {
@@ -336,6 +345,24 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Learning {
             get {
                 return ResourceManager.GetString("Learning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Learning unit ähnelt.
+        /// </summary>
+        public static string LearningUnit {
+            get {
+                return ResourceManager.GetString("LearningUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Learning units ähnelt.
+        /// </summary>
+        public static string LearningUnits {
+            get {
+                return ResourceManager.GetString("LearningUnits", resourceCulture);
             }
         }
         

@@ -20,25 +20,27 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Index()
         {
-            var folders = _learningRepo.GetFoldersWithAllSubfolders(User.Identity.GetUserId());
+            var folders = _learningRepo.GetFolders(User.Identity.GetUserId());
 
             var viewModel = new FolderIndexViewModel
             {
                 Folders = new List<FolderListItemViewModel>(),
             };
 
-
+            int totalLearningUnits = 0;
             foreach (var folder in folders)
             {
                 viewModel.Folders.Add(CreateFolderListItemViewModel(folder));
+                totalLearningUnits += GetNumberOfLearningUnitsInAllSubfolders(folder);
             }
+            viewModel.TotalLearningUnits = totalLearningUnits;
 
             return View(viewModel);
         }
 
         private FolderListItemViewModel CreateFolderListItemViewModel(Folder folder)
         {
-            int? parentFolderId;
+            string parentFolderId;
             int level;
             if (folder.ParentFolder == null)
             {
@@ -47,13 +49,13 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             }
             else
             {
-                parentFolderId = folder.ParentFolder.Id;
+                parentFolderId = folder.ParentFolder.Id.ToString();
                 level = folder.ParentFolder.Level + 1;
             }
 
             var viewModel = new FolderListItemViewModel()
             {
-                Id = folder.Id,
+                Id = folder.Id.ToString(),
                 Name = folder.Name,
                 ParentFolderId = parentFolderId,
                 Level = level,
@@ -62,18 +64,34 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return viewModel;
         }
 
-        public ActionResult Details(int id)
+
+        private int GetNumberOfLearningUnitsInAllSubfolders(Folder folder, int result = 0)
         {
-            return View();
+            foreach (var subFolder in folder.SubFolders)
+            {
+                result += GetNumberOfLearningUnitsInAllSubfolders(subFolder, result + folder.LearningUnits.Count);
+            }
+
+            return result;
+        }
+
+        public ActionResult Details(string id)
+        {
+            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var viewModel = new FolderDetailsViewModel
+            {
+                Id = folder.Id.ToString(),
+                Name = folder.Name,
+            };
+            return View(viewModel);
         }
 
 
-        public ActionResult Create(int? parentFolderId)
+        public ActionResult Create(string parentFolderId)
         {
             var viewModel = new CreateEditFolderViewModel()
             {
                 ParentFolderId = parentFolderId,
-                DateCreated = DateTime.Now,
             };
 
             return View(viewModel);
@@ -92,47 +110,55 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var viewModel = new CreateEditFolderViewModel
+            {
+                Id = folder.Id.ToString(),
+                ParentFolderId = folder.ParentFolder.Id.ToString(),
+                Name = folder.Name,
+            };
+            return View(viewModel);
         }
 
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(CreateEditFolderViewModel viewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), viewModel.Id);
+                TryUpdateModel(folder);
+                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+        return View();
         }
 
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var viewModel = new DeleteFolderViewModel
+            {
+                Id = id,
+                Name = folder.Name,
+            };
+            return View(viewModel);
         }
 
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(DeleteFolderViewModel viewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
                 // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
+
         }
 
     }

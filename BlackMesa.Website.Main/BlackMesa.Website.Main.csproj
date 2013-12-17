@@ -193,6 +193,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\Learning\ViewModels\CreateEditFolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\FolderDetailsViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\DeleteFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\FolderIndexViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\FolderListItemViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\FolderViewModel.cs" />
@@ -207,13 +209,9 @@
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="DataLayer\DbContext.cs" />
     <Compile Include="DataLayer\LearningRepository.cs" />
-    <Compile Include="Migrations\201312161747131_Init.cs" />
-    <Compile Include="Migrations\201312161747131_Init.Designer.cs">
-      <DependentUpon>201312161747131_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201312161934155_AddedParentFolder.cs" />
-    <Compile Include="Migrations\201312161934155_AddedParentFolder.Designer.cs">
-      <DependentUpon>201312161934155_AddedParentFolder.cs</DependentUpon>
+    <Compile Include="Migrations\201312171437096_Init.cs" />
+    <Compile Include="Migrations\201312171437096_Init.Designer.cs">
+      <DependentUpon>201312171437096_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
@@ -275,10 +273,13 @@
     <Content Include="Areas\Identity\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Learning\Views\web.config" />
     <Content Include="Areas\Learning\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Learning\Views\Folder\Create.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\Edit.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\_CreateEditFieldset.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Index.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\_FolderListItem.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\Create.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\Delete.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\Details.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -371,11 +372,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312161747131_Init.resx">
-      <DependentUpon>201312161747131_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312161934155_AddedParentFolder.resx">
-      <DependentUpon>201312161934155_AddedParentFolder.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312171437096_Init.resx">
+      <DependentUpon>201312171437096_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
