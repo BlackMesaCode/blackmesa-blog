@@ -342,4 +342,10 @@
   <data name="LearningUnits" xml:space="preserve">
     <value>Learning units</value>
   </data>
+  <data name="TextCard" xml:space="preserve">
+    <value>Text card</value>
+  </data>
+  <data name="CreateTextCard" xml:space="preserve">
+    <value>Create text card</value>
+  </data>
 </root>

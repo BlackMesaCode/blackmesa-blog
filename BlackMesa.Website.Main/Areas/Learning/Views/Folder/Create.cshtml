@@ -1,6 +1,6 @@
 ﻿@using BlackMesa.Website.Main.Resources
 
-@model BlackMesa.Website.Main.Areas.Learning.ViewModels.CreateEditFolderViewModel
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.CreateFolderViewModel
 
 @{
     ViewBag.Title = Strings.Folder + " " + Strings.Create;
@@ -15,7 +15,11 @@
 
         <h1>@ViewBag.Title</h1>
 
-        @Html.Partial("_CreateEditFieldset")
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ParentFolderId)
+
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
 
         <p>
             <button type="submit">

@@ -46,11 +46,38 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        //public void EditFolder(Folder newFolder)
-        //{
-        //    var currentFolder = _dbContext.Learning_Folders.Find(newFolder.Id);
+        public void AddTextCard(string folderId, string ownerId, string question, string answer)
+        {
 
-        //}
+            var owner = _dbContext.Users.Find(ownerId);
+            var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
+
+            var newStandardUnit = new TextCard
+            {
+                FolderId = new Guid(folderId),
+                OwnerId = ownerId,
+                Owner = owner,
+                Question = question,
+                Answer = answer,
+                DateCreated = DateTime.Now,
+                DateEdited = DateTime.Now,
+            };
+
+            folder.LearningUnits.Add(newStandardUnit);
+
+            //_dbContext.Learning_StandardUnits.Add(newStandardUnit);
+
+            _dbContext.SaveChanges();
+        }
+
+
+        public void EditFolder(string folderId, string newFolderName)
+        {
+            var currentFolder = _dbContext.Learning_Folders.Find(new Guid(folderId));
+            currentFolder.Name = newFolderName;
+            _dbContext.SaveChanges();
+
+        }
 
 
         public IEnumerable<Folder> GetFolders(string userId)

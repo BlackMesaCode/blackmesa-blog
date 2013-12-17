@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels;
+using BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
@@ -27,11 +28,11 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Folders = new List<FolderListItemViewModel>(),
             };
 
-            int totalLearningUnits = 0;
+            var totalLearningUnits = 0;
             foreach (var folder in folders)
             {
                 viewModel.Folders.Add(CreateFolderListItemViewModel(folder));
-                totalLearningUnits += GetNumberOfLearningUnitsInAllSubfolders(folder);
+                GetAllContainingLearningUnits(folder, ref totalLearningUnits);
             }
             viewModel.TotalLearningUnits = totalLearningUnits;
 
@@ -53,26 +54,31 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 level = folder.ParentFolder.Level + 1;
             }
 
+            int totalLearningUnits = 0;
+            GetAllContainingLearningUnits(folder, ref totalLearningUnits);
+
             var viewModel = new FolderListItemViewModel()
             {
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
                 ParentFolderId = parentFolderId,
                 Level = level,
+                NumberOfLearningUnitsInSameFolder = folder.LearningUnits.Count,
+                NumberOfLearningUnitsIncludingAllSubfolders = totalLearningUnits,
                 SubFolders = folder.SubFolders.Select(f => CreateFolderListItemViewModel(f)).ToList(),
             };
             return viewModel;
         }
 
 
-        private int GetNumberOfLearningUnitsInAllSubfolders(Folder folder, int result = 0)
+        private void GetAllContainingLearningUnits(Folder folder, ref int totalLearningUnits)
         {
+            totalLearningUnits += folder.LearningUnits.Count;
+
             foreach (var subFolder in folder.SubFolders)
             {
-                result += GetNumberOfLearningUnitsInAllSubfolders(subFolder, result + folder.LearningUnits.Count);
+                GetAllContainingLearningUnits(subFolder, ref totalLearningUnits);
             }
-
-            return result;
         }
 
         public ActionResult Details(string id)
@@ -82,6 +88,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
+                SubFolders = folder.SubFolders.Select(f => CreateFolderListItemViewModel(f)).ToList(),
+                TextCards = folder.LearningUnits.OfType<TextCard>(),
             };
             return View(viewModel);
         }
@@ -89,7 +97,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Create(string parentFolderId)
         {
-            var viewModel = new CreateEditFolderViewModel()
+            var viewModel = new CreateFolderViewModel()
             {
                 ParentFolderId = parentFolderId,
             };
@@ -99,7 +107,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(CreateEditFolderViewModel viewModel)
+        public ActionResult Create(CreateFolderViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -113,10 +121,9 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult Edit(string id)
         {
             var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
-            var viewModel = new CreateEditFolderViewModel
+            var viewModel = new EditFolderViewModel
             {
                 Id = folder.Id.ToString(),
-                ParentFolderId = folder.ParentFolder.Id.ToString(),
                 Name = folder.Name,
             };
             return View(viewModel);
@@ -124,13 +131,13 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit(CreateEditFolderViewModel viewModel)
+        public ActionResult Edit(EditFolderViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), viewModel.Id);
-                TryUpdateModel(folder);
-                 return RedirectToAction("Index");
+                _learningRepo.EditFolder(viewModel.Id, viewModel.Name);
+                return RedirectToAction("Index");
             }
         return View();
         }

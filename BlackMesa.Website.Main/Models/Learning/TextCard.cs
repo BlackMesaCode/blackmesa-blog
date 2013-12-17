@@ -2,8 +2,8 @@
 
 namespace BlackMesa.Website.Main.Models.Learning
 {
-    [Table("Learning_StandardUnits")]
-    public class StandardUnit : Unit
+    [Table("Learning_TextCards")]
+    public class TextCard : Unit
     {
         public string Question { get; set; }
 

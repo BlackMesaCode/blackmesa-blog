@@ -205,6 +205,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create text card ähnelt.
+        /// </summary>
+        public static string CreateTextCard {
+            get {
+                return ResourceManager.GetString("CreateTextCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current password ähnelt.
         /// </summary>
         public static string CurrentPassword {
@@ -687,6 +696,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Text {
             get {
                 return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Text card ähnelt.
+        /// </summary>
+        public static string TextCard {
+            get {
+                return ResourceManager.GetString("TextCard", resourceCulture);
             }
         }
         

@@ -188,16 +188,20 @@
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
     <Compile Include="Areas\Identity\IdentityAreaRegistration.cs" />
     <Compile Include="Areas\Learning\Api\Controllers\FoldersController.cs" />
+    <Compile Include="Areas\Learning\Controllers\TextCardController.cs" />
     <Compile Include="Areas\Learning\Controllers\FolderController.cs" />
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\Learning\ViewModels\CreateEditFolderViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\FolderDetailsViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\DeleteFolderViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\FolderIndexViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\FolderListItemViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\FolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\EditFolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\CreateFolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\FolderDetailsViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\DeleteFolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\FolderIndexViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\FolderListItemViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\FolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\LearningUnit\CreateLearningUnitViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\TextCard\CreateTextCardViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -209,9 +213,9 @@
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="DataLayer\DbContext.cs" />
     <Compile Include="DataLayer\LearningRepository.cs" />
-    <Compile Include="Migrations\201312171437096_Init.cs" />
-    <Compile Include="Migrations\201312171437096_Init.Designer.cs">
-      <DependentUpon>201312171437096_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201312172019461_Init.cs" />
+    <Compile Include="Migrations\201312172019461_Init.Designer.cs">
+      <DependentUpon>201312172019461_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
@@ -219,7 +223,7 @@
     <Compile Include="Models\Blog\Tag.cs" />
     <Compile Include="Models\Identity\User.cs" />
     <Compile Include="Models\Learning\Folder.cs" />
-    <Compile Include="Models\Learning\StandardUnit.cs" />
+    <Compile Include="Models\Learning\TextCard.cs" />
     <Compile Include="Models\Learning\Unit.cs" />
     <Compile Include="Resources\Strings.de.Designer.cs">
       <DependentUpon>Strings.de.resx</DependentUpon>
@@ -274,12 +278,13 @@
     <Content Include="Areas\Learning\Views\web.config" />
     <Content Include="Areas\Learning\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Edit.cshtml" />
-    <Content Include="Areas\Learning\Views\Folder\_CreateEditFieldset.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Index.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\_FolderListItem.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Create.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Delete.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Details.cshtml" />
+    <Content Include="Areas\Learning\Views\TextCard\Create.cshtml" />
+    <Content Include="Areas\Learning\Views\Shared\_CreateEditLearningUnit.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -372,8 +377,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312171437096_Init.resx">
-      <DependentUpon>201312171437096_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312172019461_Init.resx">
+      <DependentUpon>201312172019461_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

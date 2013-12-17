@@ -1,0 +1,34 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.TextCard.CreateTextCardViewModel
+
+@{
+    ViewBag.Title = Strings.TextCard + " " + Strings.Create;
+}
+
+<section id="text-card-create">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <h1>@ViewBag.Title</h1>
+
+        @Html.Partial("_CreateEditLearningUnit")
+        
+        @Html.LabelFor(model => model.Question)
+        @Html.EditorFor(model => model.Question)
+
+        @Html.LabelFor(model => model.Answer)
+        @Html.EditorFor(model => model.Answer)
+        
+        <p>
+            <button type="submit">
+                @Strings.Save
+            </button>
+            <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink(Strings.Back, "Details", "Folder", new { id = Model.FolderId}, null)
+        </p>
+    }
+
+</section>

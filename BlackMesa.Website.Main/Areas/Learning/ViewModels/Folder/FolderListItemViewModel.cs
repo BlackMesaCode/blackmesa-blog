@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace BlackMesa.Website.Main.Areas.Learning.ViewModels
+namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder
 {
     public class FolderListItemViewModel
     {
@@ -14,6 +11,10 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels
         public string Name { get; set; }
 
         public int Level { get; set; }
+
+        public int NumberOfLearningUnitsInSameFolder { get; set; }
+
+        public int NumberOfLearningUnitsIncludingAllSubfolders { get; set; }
 
         public List<FolderListItemViewModel> SubFolders { get; set; }
 

@@ -67,19 +67,6 @@ namespace BlackMesa.Website.Main.Migrations
                 .Index(t => t.ParentFolder_Id);
             
             CreateTable(
-                "dbo.Learning_Units",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        DateCreated = c.DateTime(nullable: false),
-                        FolderId = c.Int(nullable: false),
-                        Entry_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Learning_Folders", t => t.Entry_Id)
-                .Index(t => t.Entry_Id);
-            
-            CreateTable(
                 "dbo.Identity_Users",
                 c => new
                     {
@@ -139,6 +126,22 @@ namespace BlackMesa.Website.Main.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Learning_Units",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false, identity: true),
+                        OwnerId = c.String(maxLength: 128),
+                        DateCreated = c.DateTime(nullable: false),
+                        DateEdited = c.DateTime(nullable: false),
+                        FolderId = c.Guid(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Learning_Folders", t => t.FolderId, cascadeDelete: true)
+                .ForeignKey("dbo.Identity_Users", t => t.OwnerId)
+                .Index(t => t.FolderId)
+                .Index(t => t.OwnerId);
+            
+            CreateTable(
                 "dbo.Blog_TagEntries",
                 c => new
                     {
@@ -152,10 +155,10 @@ namespace BlackMesa.Website.Main.Migrations
                 .Index(t => t.Entry_Id);
             
             CreateTable(
-                "dbo.Learning_StandardUnits",
+                "dbo.Learning_TextCards",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
+                        Id = c.Guid(nullable: false),
                         Question = c.String(),
                         Answer = c.String(),
                     })
@@ -167,36 +170,38 @@ namespace BlackMesa.Website.Main.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Learning_StandardUnits", "Id", "dbo.Learning_Units");
+            DropForeignKey("dbo.Learning_TextCards", "Id", "dbo.Learning_Units");
             DropForeignKey("dbo.Learning_Folders", "ParentFolder_Id", "dbo.Learning_Folders");
             DropForeignKey("dbo.Learning_Folders", "OwnerId", "dbo.Identity_Users");
+            DropForeignKey("dbo.Learning_Units", "OwnerId", "dbo.Identity_Users");
             DropForeignKey("dbo.Identity_UserClaims", "User_Id", "dbo.Identity_Users");
             DropForeignKey("dbo.Identity_UserRoles", "UserId", "dbo.Identity_Users");
             DropForeignKey("dbo.Identity_UserRoles", "RoleId", "dbo.Identity_Roles");
             DropForeignKey("dbo.Identity_UserLogins", "UserId", "dbo.Identity_Users");
-            DropForeignKey("dbo.Learning_Units", "Entry_Id", "dbo.Learning_Folders");
+            DropForeignKey("dbo.Learning_Units", "FolderId", "dbo.Learning_Folders");
             DropForeignKey("dbo.Blog_TagEntries", "Entry_Id", "dbo.Blog_Entries");
             DropForeignKey("dbo.Blog_TagEntries", "Tag_Id", "dbo.Blog_Tags");
             DropForeignKey("dbo.Blog_Comments", "EntryId", "dbo.Blog_Entries");
-            DropIndex("dbo.Learning_StandardUnits", new[] { "Id" });
+            DropIndex("dbo.Learning_TextCards", new[] { "Id" });
             DropIndex("dbo.Learning_Folders", new[] { "ParentFolder_Id" });
             DropIndex("dbo.Learning_Folders", new[] { "OwnerId" });
+            DropIndex("dbo.Learning_Units", new[] { "OwnerId" });
             DropIndex("dbo.Identity_UserClaims", new[] { "User_Id" });
             DropIndex("dbo.Identity_UserRoles", new[] { "UserId" });
             DropIndex("dbo.Identity_UserRoles", new[] { "RoleId" });
             DropIndex("dbo.Identity_UserLogins", new[] { "UserId" });
-            DropIndex("dbo.Learning_Units", new[] { "Entry_Id" });
+            DropIndex("dbo.Learning_Units", new[] { "FolderId" });
             DropIndex("dbo.Blog_TagEntries", new[] { "Entry_Id" });
             DropIndex("dbo.Blog_TagEntries", new[] { "Tag_Id" });
             DropIndex("dbo.Blog_Comments", new[] { "EntryId" });
-            DropTable("dbo.Learning_StandardUnits");
+            DropTable("dbo.Learning_TextCards");
             DropTable("dbo.Blog_TagEntries");
+            DropTable("dbo.Learning_Units");
             DropTable("dbo.Identity_Roles");
             DropTable("dbo.Identity_UserRoles");
             DropTable("dbo.Identity_UserLogins");
             DropTable("dbo.Identity_UserClaims");
             DropTable("dbo.Identity_Users");
-            DropTable("dbo.Learning_Units");
             DropTable("dbo.Learning_Folders");
             DropTable("dbo.Blog_Tags");
             DropTable("dbo.Blog_Entries");
