@@ -324,4 +324,13 @@
   <data name="CreateSubFolder" xml:space="preserve">
     <value>Unterverzeichnis erstellen</value>
   </data>
+  <data name="DeleteFolder" xml:space="preserve">
+    <value>Verzeichnis löschen</value>
+  </data>
+  <data name="EditFolder" xml:space="preserve">
+    <value>Verzeichnis bearbeiten</value>
+  </data>
+  <data name="MoveFolder" xml:space="preserve">
+    <value>Verzeichnis verschieben</value>
+  </data>
 </root>

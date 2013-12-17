@@ -241,11 +241,29 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete folder ähnelt.
+        /// </summary>
+        public static string DeleteFolder {
+            get {
+                return ResourceManager.GetString("DeleteFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edit ähnelt.
         /// </summary>
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edit folder ähnelt.
+        /// </summary>
+        public static string EditFolder {
+            get {
+                return ResourceManager.GetString("EditFolder", resourceCulture);
             }
         }
         
@@ -372,6 +390,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Month {
             get {
                 return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Move folder ähnelt.
+        /// </summary>
+        public static string MoveFolder {
+            get {
+                return ResourceManager.GetString("MoveFolder", resourceCulture);
             }
         }
         

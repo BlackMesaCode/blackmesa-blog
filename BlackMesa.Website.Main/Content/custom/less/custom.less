@@ -437,6 +437,57 @@ body{
             margin-bottom: 15px;
         }
     }
+
+
+
+    #folder-index {
+
+        .folder-list-item {
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items:center;
+
+            padding-top: 2px;
+            padding-bottom: 2px;
+
+            &:hover {
+                background-color: whitesmoke;
+            }
+
+            .indent {
+                width: 20px;
+            }
+
+            .folder-name {
+
+            }
+
+            .folder-options {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: flex-end;
+
+                a {
+                    margin-left: 10px;
+                }
+
+                .create-sub-folder {
+
+                }
+
+            }
+
+
+        }
+
+    }
+
+
+
 }
 
 

@@ -13,6 +13,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels
         
         public string Name { get; set; }
 
+        public int Level { get; set; }
+
         public List<FolderListItemViewModel> SubFolders { get; set; }
 
     }

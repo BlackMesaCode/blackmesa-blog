@@ -1,14 +1,30 @@
 ﻿@using BlackMesa.Website.Main.Resources
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.FolderListItemViewModel
 
-<div id="folder-list-item">
-    <li>@Model.Name @Model.Id @Html.ActionLink(Strings.CreateFolder, "Create", "Folder", new { parentFolderId = Model.Id }, null)</li>
-    
-    <ul>
-        @foreach (var subfolder in Model.SubFolders)
-        {
-            @Html.Partial("_FolderListItem", subfolder)
-        }
-    </ul>
+<div class="folder-list-item">
+
+    @for (int i = 1; i < Model.Level; i++)
+    {
+        <span class="indent"></span>
+    }
+
+    <span class="folder-name"><i class="fa fa-folder"></i> @Html.ActionLink(Model.Name, "Details", "Folder", new { id = Model.Id }, null)</span>
+
+    <span class="folder-options">
+        <a href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id }, null)" title="@Strings.CreateSubFolder" class="create-sub-folder"><i class="fa fa-plus-square"></i></a>
+        <a href="@Url.Action("Edit", "Folder", new { id = Model.Id }, null)" title="@Strings.EditFolder" class="edit-folder"><i class="fa fa-pencil"></i></a>
+        <a href="@Url.Action("Delete", "Folder", new { id = Model.Id }, null)" title="@Strings.DeleteFolder" class="delete-folder"><i class="fa fa-trash-o"></i></a>
+        <a href="@Url.Action("Move", "Folder", new { id = Model.Id }, null)" title="@Strings.MoveFolder" class="move-folder"><i class="fa fa-arrows"></i></a>
+    </span>
 
 </div>
+
+@if (Model.SubFolders.Count > 0)
+{
+    foreach (var subfolder in Model.SubFolders)
+    {
+        @Html.Partial("_FolderListItem", subfolder)
+    }
+}
+
+
