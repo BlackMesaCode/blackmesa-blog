@@ -1,41 +1,114 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using BlackMesa.Website.Main.Areas.Blog.ViewModels;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Blog;
+using BlackMesa.Website.Main.Models.Identity;
+using BlackMesa.Website.Main.Resources;
+using Microsoft.AspNet.Identity;
 
 namespace BlackMesa.Website.Main.Areas.Blog.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class CommentController : BaseController
     {
+
         private readonly BlackMesaDbContext _db = new BlackMesaDbContext();
 
-        [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(int entryId)
         {
-            var comments = _db.Blog_Comments.OrderByDescending(comment => comment.DateCreated).Take(3);
-            return PartialView(comments.ToList());
+            var comments = _db.Blog_Comments.Where(c => c.EntryId == entryId).OrderBy(comment => comment.DateCreated).AsEnumerable();
+            return PartialView("_Index", comments);
         }
 
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Create(int entryId)
         {
-            var comment = _db.Blog_Comments.Find(id);
-            if (comment == null)
+            var viewModel = new CreateCommentViewModel()
             {
-                return HttpNotFound();
-            }
-
-            return View(comment);
+                EntryId = entryId,
+                Name = User.Identity.GetUserName(),
+            };
+            return PartialView("Create", viewModel);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Comment comment)
+        [AllowAnonymous]
+        public ActionResult Create(CreateCommentViewModel commentViewModel)
         {
+            var newComment = new Comment
+            {
+                Id = commentViewModel.Id,
+                Name = commentViewModel.Name,
+                Content = commentViewModel.Content,
+                DateCreated = DateTime.Now,
+                DateEdited = DateTime.Now,
+                EntryId = commentViewModel.EntryId,
+            };
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = _db.Users.Find(User.Identity.GetUserId());
+                
+                if (user == null)
+                    return new HttpUnauthorizedResult();
+
+                newComment.Owner = user;
+                newComment.OwnerId = user.Id;
+                newComment.Name = user.UserName;
+            }
+
+            if (!User.Identity.IsAuthenticated && _db.Users.Select(u => u.UserName).Contains(commentViewModel.Name))
+                ModelState.AddModelError("NameAlreadyTaken", Strings.NameAlreadyTaken);
+
+
+            if (ModelState.IsValid)
+            {
+                _db.Blog_Comments.Add(newComment);
+                _db.SaveChanges();
+                return RedirectToAction("Details", "Entry", new { Id = commentViewModel.EntryId });
+            }
+
+            return View("Create", commentViewModel);
+        }
+
+        public ActionResult Edit(int id = 0)
+        {
+            var comment = _db.Blog_Comments.Find(id);
+
+            if (comment == null)
+                return HttpNotFound();
+
+            var viewModel = new EditCommentViewModel
+            {
+                Id = comment.Id,
+                Content = comment.Content,
+                EntryId = comment.EntryId,
+            };
+
+            return View(viewModel);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditCommentViewModel viewModel)
+        {
+            var comment = _db.Blog_Comments.Find(viewModel.Id);
+
+            if (comment == null)
+                return HttpNotFound();
+
+            if (!User.IsInRole("Admin") && (String.IsNullOrEmpty(comment.OwnerId) || User.Identity.GetUserId() != comment.OwnerId))
+                return new HttpUnauthorizedResult();
+
+            comment.Content = viewModel.Content;
+            comment.DateEdited = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 _db.Entry(comment).State = EntityState.Modified;
@@ -43,17 +116,16 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
                 return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
             }
 
-            return View(comment);
+            return View(viewModel);
         }
 
 
         public ActionResult Delete(int id = 0)
         {
-            Comment comment = _db.Blog_Comments.Find(id);
+            var comment = _db.Blog_Comments.Find(id);
             if (comment == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(comment);
         }
 
@@ -62,7 +134,14 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Comment comment = _db.Blog_Comments.Find(id);
+            var comment = _db.Blog_Comments.Find(id);
+
+            if (comment == null)
+                return HttpNotFound();
+
+            if (!User.IsInRole("Admin") && (String.IsNullOrEmpty(comment.OwnerId) || User.Identity.GetUserId() != comment.OwnerId))
+                return new HttpUnauthorizedResult();
+
             _db.Blog_Comments.Remove(comment);
             _db.SaveChanges();
             return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });

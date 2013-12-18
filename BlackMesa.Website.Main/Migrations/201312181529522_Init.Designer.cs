@@ -13,7 +13,7 @@ namespace BlackMesa.Website.Main.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201312172019461_Init"; }
+            get { return "201312181529522_Init"; }
         }
         
         string IMigrationMetadata.Source

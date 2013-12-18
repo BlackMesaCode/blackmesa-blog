@@ -1,4 +1,5 @@
-﻿@model BlackMesa.Website.Main.Models.Blog.Entry
+﻿@using BlackMesa.Website.Main.Models.Blog
+@model BlackMesa.Website.Main.Models.Blog.Entry
 
 @{
     ViewBag.Title = Model.Title;
@@ -14,11 +15,18 @@
         <div id="article-body">
             @Html.Raw(Model.Content)
         </div>
-        
-         @*@Html.Partial("Comment/_Index", Model.Blog_Comments)*@ 
-        
+
+        <hr />
+        <br />
+
+        @Html.Action("Index", "Comment", new { entryId = Model.Id })
+
     </article>
 
-     @*@Html.Partial("Comment/_Create", new Comment{ EntryId = Model.Id } )*@ 
-    
+    <hr />
+    <br />
+
+    @Html.Action("Create", "Comment", new { entryId = Model.Id })
+
 </section>
+

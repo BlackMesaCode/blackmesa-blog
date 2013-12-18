@@ -40,18 +40,17 @@ namespace BlackMesa.Website.Main.Migrations
 
             var userManager = new UserManager<User>(new UserStore<User>(context));
 
+            var adminInDb = userManager.FindByName("Admin");
 
-            var admin = new User
+            if (adminInDb == null)
             {
-                UserName = "Tester",
-            };
-
-
-            if (userManager.FindByName("Tester") == null)
+                var admin = new User
+                {
+                    UserName = "Admin",
+                };
                 userManager.Create(admin, "test123");
-
-            if (!userManager.IsInRole(admin.Id, "Admin"))
                 userManager.AddToRole(admin.Id, "Admin");
+            }  
 
 
         }

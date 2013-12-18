@@ -348,4 +348,22 @@
   <data name="CreateTextCard" xml:space="preserve">
     <value>Create text card</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="WroteOn" xml:space="preserve">
+    <value>wrote on</value>
+  </data>
+  <data name="NameAlreadyTaken" xml:space="preserve">
+    <value>This name is already taken.</value>
+  </data>
+  <data name="PleaseConfirm" xml:space="preserve">
+    <value>Please confirm:</value>
+  </data>
+  <data name="YourComment" xml:space="preserve">
+    <value>Your comment</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>Your name</value>
+  </data>
 </root>

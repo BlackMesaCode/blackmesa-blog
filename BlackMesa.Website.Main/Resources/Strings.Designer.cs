@@ -439,6 +439,24 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die This name is already taken. ähnelt.
+        /// </summary>
+        public static string NameAlreadyTaken {
+            get {
+                return ResourceManager.GetString("NameAlreadyTaken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die New password ähnelt.
         /// </summary>
         public static string NewPassword {
@@ -489,6 +507,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string PasswordsDontMatch {
             get {
                 return ResourceManager.GetString("PasswordsDontMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Please confirm: ähnelt.
+        /// </summary>
+        public static string PleaseConfirm {
+            get {
+                return ResourceManager.GetString("PleaseConfirm", resourceCulture);
             }
         }
         
@@ -745,11 +772,38 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die wrote on ähnelt.
+        /// </summary>
+        public static string WroteOn {
+            get {
+                return ResourceManager.GetString("WroteOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Year ähnelt.
         /// </summary>
         public static string Year {
             get {
                 return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Your comment ähnelt.
+        /// </summary>
+        public static string YourComment {
+            get {
+                return ResourceManager.GetString("YourComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Your name ähnelt.
+        /// </summary>
+        public static string YourName {
+            get {
+                return ResourceManager.GetString("YourName", resourceCulture);
             }
         }
     }

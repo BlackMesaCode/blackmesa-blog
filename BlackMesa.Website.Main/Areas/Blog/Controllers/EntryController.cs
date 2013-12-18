@@ -115,24 +115,6 @@ namespace BlackMesa.Website.Main.Areas.Blog.Controllers
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public ActionResult Details(Comment comment)
-        {
-            comment.DateCreated = DateTime.Now;
-            comment.DateEdited = DateTime.Now;
-
-            if (ModelState.IsValid)
-            {
-                _dbContext.Blog_Comments.Add(comment);
-                _dbContext.SaveChanges();
-                return RedirectToAction("Details", "Entry", new { Id = comment.EntryId });
-            }
-
-            return View("Details", _dbContext.Blog_Entries.Single(c => c.Id == comment.EntryId));
-        }
-
 
         [HttpGet]
         [Authorize(Roles = "Admin")]

@@ -342,6 +342,43 @@ body{
         article {
             .article;
         }
+
+        .comment-detail {
+            
+            &:hover {
+                background-color: whitesmoke;
+            }
+
+            .comment-header {
+                font-size: 11px;
+            }
+
+            .comment-actions {
+                font-size: 11px;
+                margin-left: 20px;
+                i {
+                    margin-right: 5px;
+                }
+                a {
+                    margin-right: 10px;
+                }
+            }
+            
+        }
+
+    }
+
+    #comment-edit, #comment-create {
+
+       label[for=Name] {
+           display: inline;
+           margin-right: 15px;
+       }
+
+        #Content {
+            width: 100%
+        }
+
     }
 
     // Entry edit

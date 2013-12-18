@@ -1,50 +1,27 @@
-﻿@model BlackMesa.Website.Main.Models.Blog.Comment
+﻿@using BlackMesa.Website.Main.Resources
+@model BlackMesa.Website.Main.Models.Blog.Comment
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = Strings.Comment + " " + Strings.Delete;
 }
 
 <section id="comment-delete">
-
-<fieldset>
-    <legend>Delete Comment</legend>
     
-    <p>Are you sure you want to delete this?</p>
+    <h1>@ViewBag.Title</h1>
+    
+    @Strings.PleaseConfirm
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Content)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Content)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Email)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Email)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateCreated)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateCreated)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateEdited)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateEdited)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Details", "Entry", new { Id = Model.EntryId }, new { @class = "btn" })
-    </p>
-}
+    @using (Html.BeginForm()) {
+        
+        @Html.AntiForgeryToken()
+        
+        @Html.HiddenFor(model => model.Id)
+        
+        <p>
+            <input type="submit" value="@Strings.Delete" />
+            <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink(Strings.Back, "Details", "Entry", new { Id = Model.EntryId }, null)
+        </p>
+        
+    }
     
 </section>
