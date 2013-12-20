@@ -252,57 +252,80 @@ textarea {
 }
 
 
+html, body {
+    height: 100%;
+}
 
 #container {
     .clearfix;
     margin-left: auto;
     margin-right: auto;
-    // max-width: 960px; /* 960px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
+    max-width: 960px; /* 960px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
     height: 100%;
-    max-height: 600px;
     padding: 10px;
-
-
-    .flex;
-    flex-direction: row;
-    flex-wrap: wrap;
 }
 
 
+
+@media (orientation: landscape) {
+
+    #sidebar {
+        top: 0;
+        right: 0;
+    }
+
+    #content {
+        margin-right: 80px;
+    }
+}
+
+@media (orientation: portrait) {
+
+    #sidebar {
+        left: 0;
+        bottom: 0;
+        background-image: url("../images/pattern.png");
+        width: 100%;
+    }
+
+    #content {
+        display: block;
+        height: 100%;
+        overflow: scroll;
+        margin-bottom: 70px;
+    }
+
+    .nav-tile-container {
+        display: inline-block;
+    }
+}
 
 
 #content {
-    flex-grow: 1;
+
 }
 
 #sidebar {
-    .flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    position: fixed;
+    padding: 10px;
 }
 
 
 
 .nav-tile-container {
-    width: 100%;
-    padding-bottom: 100%;
-    position: relative;
-    flex-grow: 1;
+
 }
 
 .nav-tile {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+
+    width: 40px;
+    height: 40px;
     padding: 10px;
     margin: 10px;
-    font-size: 200%;
 
     .flex;
-        justify-content: center;
-        align-items: center;
+    justify-content: center;
+    align-items: center;
 
 
 }
@@ -310,6 +333,9 @@ textarea {
 
 .tile-container {
     padding: 10px;
+    h1 {
+        margin: 0px;
+    }
 }
 
 .tile {
