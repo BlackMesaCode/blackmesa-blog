@@ -11,6 +11,13 @@
             <span id="folder-index-search"><i class="fa fa-search"></i>@Html.ActionLink(Strings.ToSearch, "Search", "Entry")</span>
             <hr />
         </div>*@
+        
+        
+        <div class="tile-container">
+            <div class="tile gray-darkest">
+                <h1><i class="fi-folder"></i> Your folders</h1>
+            </div>
+        </div>
 
 
         @foreach (var subFolder in Model.Folders)

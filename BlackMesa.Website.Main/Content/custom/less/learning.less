@@ -43,6 +43,15 @@
     background-color: @gray-darker;
 }
 
+.gray-darkest {
+    background-color: @gray-darkest;
+    color: @gray-light;
+}
+
+.heading {
+
+}
+
 
 
 
@@ -94,7 +103,6 @@ body {
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @gray-darkest;
-  //background-color: @text-color;
   background-image: url("../images/pattern.png");
 }
 
@@ -255,25 +263,22 @@ textarea {
     padding: 10px;
 
 
-    //.flex;
-    //flex-direction: row;
-    //flex-wrap: wrap;
+    .flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 
 
 
 #content {
-    //flex-grow: 8;
-    width: 90%;
-    float:right;
+    flex-grow: 1;
 }
 
 #sidebar {
-    //flex-grow: 1;
-    float:left;
-    width: 10%;
-    position: fixed;
+    .flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
 
 
@@ -281,7 +286,8 @@ textarea {
 .nav-tile-container {
     width: 100%;
     padding-bottom: 100%;
-    position: relative
+    position: relative;
+    flex-grow: 1;
 }
 
 .nav-tile {
