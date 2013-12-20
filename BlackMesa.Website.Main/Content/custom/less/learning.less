@@ -259,10 +259,6 @@ html, body {
 
 
 #container {
-    //.clearfix;
-    //margin-left: auto;
-    //margin-right: auto;
-    //max-width: 960px; /* 960px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
     height: 100%;
     overflow: hidden;
 }
@@ -287,12 +283,12 @@ html, body {
     }
 
     #content {
-        flex-grow: 1;
+        flex-grow: 9;
         overflow-y: auto;
     }
 
     #sidebar {
-        width: 80px;
+        flex-grow: 1;
 
         .flex;
         flex-direction: column;
@@ -309,7 +305,6 @@ html, body {
                  .flex;
 
                 .nav-tile {
-                    width: 40px;
 
                     padding: 10px;
                     margin: 10px;
@@ -340,12 +335,12 @@ html, body {
     }
 
     #content {
-        flex-grow: 1;
+        flex-grow: 9;
         overflow-y: auto;
     }
 
     #sidebar {
-        height: 80px;
+        flex-grow: 1;
         .flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -361,7 +356,6 @@ html, body {
                  .flex;
 
                 .nav-tile {
-                    height: 40px;
 
                     padding: 10px;
                     margin: 10px;
