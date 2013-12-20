@@ -256,11 +256,21 @@ html, body {
     height: 100%;
 }
 
+
+
 #container {
     .clearfix;
     margin-left: auto;
     margin-right: auto;
     max-width: 960px; /* 960px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
+}
+
+#content {
+    padding: 10px;
+}
+
+#sidebar {
+    position: fixed;
     padding: 10px;
 }
 
@@ -280,15 +290,25 @@ html, body {
 
 @media (orientation: portrait) {
 
-    #sidebar {
-        left: 0;
-        bottom: 0;
-        background-image: url("../images/pattern.png");
-        width: 100%;
+    #container {
+    //height: calc(~'100% - 60px');
+        height: 100%;
+        overflow: hidden;
+        .flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
     }
 
+    #sidebar {
+        height: 80px;
+        flex-shrink: 0;
+        position: static;
+    }
+
+
     #content {
-        height: calc(~'100% - 100px');
+        flex-grow: 1;
+        overflow-y: auto;
     }
 
     .nav-tile-container {
@@ -297,14 +317,7 @@ html, body {
 }
 
 
-#content {
 
-}
-
-#sidebar {
-    position: fixed;
-    padding: 10px;
-}
 
 
 
