@@ -1,0 +1,27 @@
+﻿@using System.Web.Configuration
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link rel="shortcut icon" href="@Url.Content("~/Content/custom/images/favicon.ico")" type="image/x-icon" />
+    <link rel="icon" href="@Url.Content("~/Content/custom/images/favicon.jpg")" type="image/png" />
+
+    <title>@ViewBag.Title | @WebConfigurationManager.AppSettings.Get("SiteTitle")</title>
+
+    <link href="~/Content/normalize/normalize.css" rel="stylesheet" />
+    <link href="~/Content/foundation-icons/foundation-icons.css" rel="stylesheet" />
+    <link href="~/Content/custom/less/learning.less" rel="stylesheet" />
+    
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div id="container">
+        @RenderBody()
+    </div>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

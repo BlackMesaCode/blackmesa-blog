@@ -2,26 +2,52 @@
 
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.FolderIndexViewModel
     
-<section id="folder-index">
-    
-    <div id="folder-index-submenu">
-        <span id="folder-index-count"><i class="fa fa-list"></i>@Model.TotalLearningUnits @(Model.TotalLearningUnits == 1 ? Strings.LearningUnit : Strings.LearningUnits)</span>
-        <span id="folder-index-search"><i class="fa fa-search"></i>@Html.ActionLink(Strings.ToSearch, "Search", "Entry")</span>
-        <hr />
-    </div>
-    
 
-    @foreach (var subFolder in Model.Folders)
-    {
-        @Html.Partial("_FolderListItem", subFolder)
-    }
+<div id="content">
+    <section id="folder-index">
 
-    
+        @*<div id="folder-index-submenu">
+            <span id="folder-index-count"><i class="fa fa-list"></i>@Model.TotalLearningUnits @(Model.TotalLearningUnits == 1 ? Strings.LearningUnit : Strings.LearningUnits)</span>
+            <span id="folder-index-search"><i class="fa fa-search"></i>@Html.ActionLink(Strings.ToSearch, "Search", "Entry")</span>
+            <hr />
+        </div>*@
+
+
+        @foreach (var subFolder in Model.Folders)
+        {
+            <div class="tile-container">
+                <div class="tile gray-light">
+                    <i class="fi-folder"></i> @subFolder.Name
+                </div>
+            </div>
+        }
+
+    </section>
+</div>
+
+
+<div id="sidebar">
 
     @if (Request.IsAuthenticated)
     {
-        <i class="fa fa-plus-square"></i> <a href="@Url.Action("Create")">@Strings.CreateFolder</a>
+        <div class="nav-tile-container">
+            <div class="nav-tile red">
+                <a href="@Url.Action("Create")" title="@Strings.CreateFolder"><i class="fi-folder-add"></i></a>
+            </div>
+        </div>
     }
 
+    <div class="nav-tile-container">
+        <div class="nav-tile red">
+            <i class="fi-widget"></i>
+        </div>
+    </div>
 
-</section>
+    <div class="nav-tile-container">
+        <div class="nav-tile red">
+            <i class="fi-graph-bar"></i>
+        </div>
+    </div>
+</div>
+
+

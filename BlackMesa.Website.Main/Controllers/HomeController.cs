@@ -7,7 +7,8 @@ namespace BlackMesa.Website.Main.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToActionPermanent("Index", "Entry", new { area = "Blog" });
+            return RedirectToActionPermanent("Index", "Folder", new { area = "Learning" });
+            //return RedirectToActionPermanent("Index", "Entry", new { area = "Blog" });
         }
 
     }
