@@ -47,17 +47,22 @@
     }
 
     <div class="nav-tile-container">
-        <div class="nav-tile red">
-            <i class="fi-widget"></i>
-        </div>
-    </div>
+        <a href="@Url.Action("Create")" title="@Strings.CreateFolder">
+            <div class="nav-tile red">
+                <i class="fi-widget"></i>
+            </div>
+        </a>
+</div>
 
 
     <div class="nav-tile-container">
-        <div class="nav-tile red">
-            <i class="fi-graph-bar"></i>
-        </div>
+        <a href="@Url.Action("Create")" title="@Strings.CreateFolder">
+            <div class="nav-tile red">
+                <i class="fi-graph-bar"></i>
+            </div>
+        </a>
     </div>
+
 
     <div class="nav-tile-container">
         <a href="@Url.Action("Login", "Account", new { area = "Identity"})" title="@Strings.LogIn">

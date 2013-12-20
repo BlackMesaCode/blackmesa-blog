@@ -259,10 +259,12 @@ html, body {
 
 
 #container {
-    .clearfix;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 960px; /* 960px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
+    //.clearfix;
+    //margin-left: auto;
+    //margin-right: auto;
+    //max-width: 960px; /* 960px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
+    height: 100%;
+    overflow: hidden;
 }
 
 #content {
@@ -270,71 +272,117 @@ html, body {
 }
 
 #sidebar {
-    position: fixed;
     padding: 10px;
+    flex-shrink: 0;
 }
 
 
 
 @media (orientation: landscape) {
 
-    #sidebar {
-        top: 0;
-        right: 0;
-    }
-
-    #content {
-        margin-right: 80px;
-    }
-}
-
-@media (orientation: portrait) {
-
     #container {
-    //height: calc(~'100% - 60px');
-        height: 100%;
-        overflow: hidden;
-        .flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-    }
-
-    #sidebar {
-        height: 80px;
-        flex-shrink: 0;
-        position: static;
-
         .flex;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
-
 
     #content {
         flex-grow: 1;
         overflow-y: auto;
     }
+
+    #sidebar {
+        width: 80px;
+
+        .flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        .nav-tile-container {
+            flex-grow: 1;
+
+            .flex;
+            flex-direction: column;
+
+            a {
+                 flex-grow: 1;
+                 .flex;
+
+                .nav-tile {
+                    width: 40px;
+
+                    padding: 10px;
+                    margin: 10px;
+
+                    flex-grow: 1;
+
+                    .flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+        }
+
+
+
+    }
+
+
+}
+
+@media (orientation: portrait) {
+
+    #container {
+        .flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    #content {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+
+    #sidebar {
+        height: 80px;
+        .flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .nav-tile-container {
+            flex-grow: 1;
+
+            .flex;
+            flex-direction: row;
+
+            a {
+                 flex-grow: 1;
+                 .flex;
+
+                .nav-tile {
+                    height: 40px;
+
+                    padding: 10px;
+                    margin: 10px;
+
+                    flex-grow: 1;
+
+                    .flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+        }
+
+
+
+    }
 }
 
 
 
-
-
-
-.nav-tile-container {
-    flex-grow: 1;
-}
-
-.nav-tile {
-    height: 40px;
-    padding: 10px;
-    margin: 10px;
-
-    .flex;
-    justify-content: center;
-    align-items: center;
-
-}
 
 
 .tile-container {
