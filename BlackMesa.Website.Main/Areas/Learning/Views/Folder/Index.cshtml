@@ -31,9 +31,11 @@
     @if (Request.IsAuthenticated)
     {
         <div class="nav-tile-container">
-            <div class="nav-tile red">
-                <a href="@Url.Action("Create")" title="@Strings.CreateFolder"><i class="fi-folder-add"></i></a>
-            </div>
+            <a href="@Url.Action("Create")" title="@Strings.CreateFolder">
+                <div class="nav-tile red">
+                    <i class="fi-folder-add"></i>
+                </div>
+            </a>
         </div>
     }
 
@@ -47,6 +49,14 @@
         <div class="nav-tile red">
             <i class="fi-graph-bar"></i>
         </div>
+    </div>
+    
+    <div class="nav-tile-container">
+        <a href="@Url.Action("Login", "Account", new { area = "Identity"})" title="@Strings.LogIn">
+            <div class="nav-tile red">
+                <i class="fi-torso"></i>
+            </div>
+        </a>
     </div>
 </div>
 

@@ -16,6 +16,15 @@
 .red {
     background-color: @red;
     color: whitesmoke;
+
+    a {
+        color: whitesmoke !important;
+    }
+
+    &:hover {
+        background-color: @red-light;
+        color: whitesmoke;
+    }
 }
 
 .gray-light {
@@ -57,7 +66,7 @@
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          14px;
+@font-size-base:          1.3em;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
@@ -84,8 +93,9 @@ body {
   font-family: @font-family-base;
   font-size: @font-size-base;
   line-height: @line-height-base;
-  color: @gray-darker;
-  background-color: @gray-darker;
+  color: @gray-darkest;
+  //background-color: @text-color;
+  background-image: url("../images/pattern.png");
 }
 
 
@@ -248,12 +258,6 @@ textarea {
     //.flex;
     //flex-direction: row;
     //flex-wrap: wrap;
-}
-
-
-
-html,body {
-    height:100%;
 }
 
 
