@@ -6,27 +6,75 @@
     ViewBag.Title = Strings.Folder + " " + Strings.Create;
 }
 
-<section id="folder-create">
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+@* ------------------- Content ------------------- *@
 
-        <h1>@ViewBag.Title</h1>
+<div id="content">
+    <section id="folder-create">
 
-        @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.ParentFolderId)
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.ParentFolderId)
+            
+            <div class="tile gray-darkest">
+                <h2>@ViewBag.Title</h2>
+            </div>
 
-        @Html.LabelFor(model => model.Name)
-        @Html.EditorFor(model => model.Name)
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
+            
 
-        <p>
-            <button type="submit">
-                @Strings.Save
-            </button>
-            <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink(Strings.Back, "Index")
-        </p>
-    }
 
-</section>
+            <div class="form-element-container">
+                @Html.TextBoxFor(model => model.Name, new { @placeholder = Strings.Name })
+            </div>
+            
+
+            <div class="form-element-container">
+                <button class="gray-darker" type="submit">
+                    @Strings.Save
+                </button>
+            </div>
+            
+
+        }
+
+    </section>
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
+        <i class="fi-home"></i>
+    </a>
+    
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
+        <i class="fi-arrow-left"></i>
+    </a>
+
+
+</nav>
+
+
+
+@* ------------------- Submenu ------------------- *@
+
+<nav class="submenu">
+
+</nav>
+
+
+
+
