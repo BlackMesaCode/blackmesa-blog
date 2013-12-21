@@ -13,7 +13,7 @@
 @text-color: #595959;
 
 
-.red {
+.red-hover {
     background-color: @red;
     color: whitesmoke;
 
@@ -30,6 +30,17 @@
 .gray-light {
     background-color: @gray-light;
 }
+
+.gray-light-hover {
+    background-color: @gray-light;
+
+    &:hover {
+        background-color: white;
+    }
+
+}
+
+
 
 .gray {
     background-color: @gray;
@@ -264,9 +275,24 @@ html, body {
     padding: 10px;
 }
 
-#sidebar {
+#menu {
+
     padding: 10px;
+    flex-grow: 1;
     flex-shrink: 0;
+
+    .flex;
+
+    a {
+        flex-grow: 1;
+        .flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        padding: 10px;
+        margin: 10px;
+    }
 }
 
 
@@ -285,32 +311,7 @@ html, body {
     }
 
     #menu {
-        flex-grow: 1;
-
-        .flex;
         flex-direction: column;
-        flex-wrap: nowrap;
-
-        a {
-            flex-grow: 1;
-            .flex;
-
-            .nav-tile {
-
-                padding: 10px;
-                margin: 10px;
-
-                flex-grow: 1;
-
-                .flex;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-
-
-
-
     }
 
 
@@ -330,35 +331,12 @@ html, body {
     }
 
     #menu {
-        flex-grow: 1;
-        flex-shrink: 0;
-
-        .flex;
         flex-direction: row;
         flex-wrap: wrap;
-
-        a {
-            flex-grow: 1;
-            
-            .flex;
-
-            .nav-tile {
-
-                padding: 10px;
-                margin: 10px;
-
-                flex-grow: 1;
-
-                .flex;
-                justify-content: center;
-                align-items: center;
-
-            }
-        }
+    }
+}
 
 
-    } // end of #menu
-} // end of portrait
 
 
 

@@ -20,15 +20,10 @@
             <h1><i class="fi-folder"></i> Your folders</h1>
         </div>
 
-        
-
-
         @foreach (var subFolder in Model.Folders)
         {
-            <div class="tile-container">
-                <div class="tile gray-light">
-                    <i class="fi-folder"></i> @subFolder.Name
-                </div>
+            <div class="tile gray-light-hover">
+                <i class="fi-folder"></i> @subFolder.Name
             </div>
         }
 
@@ -44,38 +39,25 @@
     @if (Request.IsAuthenticated)
     {
 
-        <a href="@Url.Action("Create")" title="@Strings.CreateFolder">
-            <div class="nav-tile red">
-                <i class="fi-folder-add"></i>
-            </div>
+        <a class="red-hover" href="@Url.Action("Create")" title="@Strings.CreateFolder">
+            <i class="fi-folder-add"></i>
         </a>
 
     }
 
 
-    <a href="@Url.Action("Create")" title="@Strings.CreateFolder">
-        <div class="nav-tile red">
-            <i class="fi-widget"></i>
-        </div>
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
+        <i class="fi-home"></i>
     </a>
 
 
-
-
-
-    <a href="@Url.Action("Create")" title="@Strings.CreateFolder">
-        <div class="nav-tile red">
-            <i class="fi-graph-bar"></i>
-        </div>
+    <a class="red-hover" href="@Url.Action("Create")" title="@Strings.CreateFolder">
+        <i class="fi-graph-bar"></i>
     </a>
 
-    
 
-
-    <a href="@Url.Action("Login", "Account", new { area = "Identity"})" title="@Strings.LogIn">
-        <div class="nav-tile red">
-            <i class="fi-torso"></i>
-        </div>
+    <a class="red-hover" href="@Url.Action("Login", "Account", new { area = "Identity"})" title="@Strings.LogIn">
+        <i class="fi-torso"></i>
     </a>
 
    
@@ -86,6 +68,6 @@
 
 @* ------------------- Submenu ------------------- *@
 
-@*<nav id="submenu">
+<nav class="submenu">
     
-</nav>*@
+</nav>
