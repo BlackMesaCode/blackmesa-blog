@@ -3,6 +3,8 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.FolderIndexViewModel
     
 
+@* ------------------- Content ------------------- *@
+
 <div id="content">
     <section id="folder-index">
 
@@ -13,11 +15,12 @@
         </div>*@
         
         
-        <div class="tile-container">
-            <div class="tile gray-darkest">
-                <h1><i class="fi-folder"></i> Your folders</h1>
-            </div>
+
+        <div class="tile gray-darkest">
+            <h1><i class="fi-folder"></i> Your folders</h1>
         </div>
+
+        
 
 
         @foreach (var subFolder in Model.Folders)
@@ -33,7 +36,10 @@
 </div>
 
 
-<div id="sidebar">
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
 
     @if (Request.IsAuthenticated)
     {
@@ -52,7 +58,8 @@
                 <i class="fi-widget"></i>
             </div>
         </a>
-</div>
+    </div>
+
 
 
     <div class="nav-tile-container">
@@ -62,7 +69,7 @@
             </div>
         </a>
     </div>
-
+    
 
     <div class="nav-tile-container">
         <a href="@Url.Action("Login", "Account", new { area = "Identity"})" title="@Strings.LogIn">
@@ -70,9 +77,15 @@
                 <i class="fi-torso"></i>
             </div>
         </a>
-
     </div>
-</div>
+   
+
+</nav>
 
 
 
+@* ------------------- Submenu ------------------- *@
+
+<nav id="submenu">
+    
+</nav>
