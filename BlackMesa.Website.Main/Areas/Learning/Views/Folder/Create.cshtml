@@ -19,8 +19,8 @@
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.ParentFolderId)
             
-            <div class="tile gray-darkest">
-                <h2>@ViewBag.Title</h2>
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
             </div>
 
             if (!ViewData.ModelState.IsValid)
@@ -38,7 +38,7 @@
             
 
             <div class="form-element-container">
-                <button class="gray-darker" type="submit">
+                <button class="gray-darker-hover" type="submit">
                     @Strings.Save
                 </button>
             </div>

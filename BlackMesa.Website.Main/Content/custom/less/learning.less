@@ -8,6 +8,7 @@
 @gray: #E5E5E5;
 @gray-dark: #DCDCDC;
 @gray-darker: #323232;
+@gray-darker-hover: #1a1a1a;
 @gray-darkest: #1a1a1a;
 
 @text-color: #595959;
@@ -55,6 +56,15 @@
     color: @gray-light;
 }
 
+.gray-darker-hover {
+    background-color: @gray-darker;
+    color: @gray-light;
+
+    &:hover {
+        background-color: @gray-darker-hover;
+    }
+}
+
 .gray-darkest {
     background-color: @gray-darkest;
     color: @gray-light;
@@ -87,16 +97,16 @@
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          1.3em;
+@font-size-base:          1.0em;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
-@font-size-h1:            floor(@font-size-base * 2.6); // ~36px
-@font-size-h2:            floor(@font-size-base * 2.15); // ~30px
-@font-size-h3:            ceil(@font-size-base * 1.7); // ~24px
-@font-size-h4:            ceil(@font-size-base * 1.25); // ~18px
-@font-size-h5:            @font-size-base;
-@font-size-h6:            ceil(@font-size-base * 0.85); // ~12px
+//@font-size-h1:            floor(@font-size-base * 2.6); // ~36px
+@font-size-h1:            floor(@font-size-base * 2.15); // ~30px
+@font-size-h2:            ceil(@font-size-base * 1.7); // ~24px
+@font-size-h3:            ceil(@font-size-base * 1.25); // ~18px
+@font-size-h4:            @font-size-base;
+@font-size-h5:            ceil(@font-size-base * 0.85); // ~12px
 
 @line-height-base:        1.428571429; // 20/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
@@ -147,7 +157,6 @@ h3 {
 }
 h4 { font-size: @font-size-h4; }
 h5 { font-size: @font-size-h5; }
-h6 { font-size: @font-size-h6; }
 
 
 
@@ -155,18 +164,18 @@ h6 { font-size: @font-size-h6; }
 // Links
 
 a {
-  color: @red;
+  color: @gray-darkest;
   text-decoration: none;
 
   &:hover,
   &:focus {
-    color: @red-light;
+    color: @gray-darkest;
     text-decoration: none;
   }
 
   &:focus {
       // Default
-        outline: thin dotted @red;
+        outline: thin dotted @gray-darkest;
       // WebKit
         outline: 5px auto -webkit-focus-ring-color;
         outline-offset: -2px;
@@ -300,7 +309,7 @@ html, body {
     padding: 10px;
 }
 
-#menu {
+#menu, #submenu {
 
     padding: 10px;
     flex-grow: 1;
@@ -355,7 +364,7 @@ html, body {
         overflow-y: auto;
     }
 
-    #menu {
+    #menu, #submenu {
         flex-direction: row;
         flex-wrap: wrap;
     }
@@ -363,11 +372,7 @@ html, body {
 
 
 
-
-
 #folder-submenu {
-    display: none;
-    flex-grow: 1;
     flex-shrink: 0;
 }
 
@@ -376,4 +381,5 @@ html, body {
 .tile {
      padding: 10px;
      margin: 10px;
+
 }

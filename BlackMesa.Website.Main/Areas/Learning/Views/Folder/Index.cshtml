@@ -22,10 +22,13 @@
 
         @foreach (var subFolder in Model.Folders)
         {
-            <div class="tile gray-light-hover">
-                <i class="fi-folder"></i> @subFolder.Name
-            </div>
+            <a href="@Url.Action("Details", "Folder", new { id = subFolder.Id })">
+                <div class="tile gray-light-hover">
+                    <i class="fi-folder"></i> @subFolder.Name
+                </div>
+            </a>
         }
+
 
     </section>
 </div>

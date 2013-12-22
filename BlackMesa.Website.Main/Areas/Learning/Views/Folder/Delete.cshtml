@@ -3,29 +3,69 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.DeleteFolderViewModel
 
 @{
-    ViewBag.Title = Strings.Folder + ": " + Strings.Delete;
+    ViewBag.Title = Strings.Folder + " " + Strings.Delete;
 }
 
-<section id="folder-delete">
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+@* ------------------- Content ------------------- *@
 
-        <h1>@ViewBag.Title</h1>
+<div id="content">
+    
 
-        <p>
-            <strong>@Model.Name</strong>
+    <section id="folder-delete">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
             @Html.HiddenFor(model => model.Id)
-        </p>
-        
-        <p>
-            <button type="submit">
-                @Strings.Delete
-            </button>
-            <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink(Strings.Back, "Index")
-        </p>
-    }
+            
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
 
-</section>
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
+            </div>
+
+            <div class="tile gray-light">
+                "<strong>@Model.Name</strong>" @Strings.Delete?
+            </div>
+            
+            
+            
+            @*<p>
+                <strong>@Model.Name</strong>
+                
+            </p>*@
+
+            <div class="form-element-container">
+                <button class="gray-darker-hover" type="submit">
+                    @Strings.Delete
+                </button>
+            </div>
+        }
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
+        <i class="fi-home"></i>
+    </a>
+
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
+        <i class="fi-arrow-left"></i>
+    </a>
+
+
+</nav>

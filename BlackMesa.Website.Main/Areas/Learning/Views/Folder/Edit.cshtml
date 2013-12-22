@@ -5,26 +5,60 @@
     ViewBag.Title = Strings.Folder + " " + Strings.Edit;
 }
 
-<section id="folder-edit">
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+@* ------------------- Content ------------------- *@
 
-        <h1>@ViewBag.Title</h1>
+<div id="content">
+    
+    <section id="folder-edit">
 
-        @Html.HiddenFor(model => model.Id)
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
+            </div>
 
-        @Html.LabelFor(model => model.Name)
-        @Html.EditorFor(model => model.Name)
-        
-        <p>
-            <button type="submit">
-                @Strings.Save
-            </button>
-            <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink(Strings.Back, "Index")
-        </p>
-    }
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
+            
+            
+            <div class="form-element-container">
+                @Html.TextBoxFor(model => model.Name)
+            </div>
 
-</section>
+
+            <div class="form-element-container">
+                <button class="gray-darker-hover" type="submit">
+                    @Strings.Save
+                </button>
+            </div>
+        }
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
+        <i class="fi-home"></i>
+    </a>
+
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
+        <i class="fi-arrow-left"></i>
+    </a>
+
+
+</nav>
