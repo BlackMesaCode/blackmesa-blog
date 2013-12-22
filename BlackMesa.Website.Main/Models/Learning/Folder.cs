@@ -24,8 +24,8 @@ namespace BlackMesa.Website.Main.Models.Learning
         public int Level { get; set; }
 
         public virtual Folder ParentFolder { get; set; }
-        public virtual ICollection<Folder> SubFolders { get; set; }
-        public virtual ICollection<Unit> LearningUnits { get; set; }
+        public virtual List<Folder> SubFolders { get; set; }
+        public virtual List<Unit> LearningUnits { get; set; }
 
     }
 }

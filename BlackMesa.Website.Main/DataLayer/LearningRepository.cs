@@ -46,30 +46,6 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void AddTextCard(string folderId, string ownerId, string question, string answer)
-        {
-
-            var owner = _dbContext.Users.Find(ownerId);
-            var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
-
-            var newStandardUnit = new TextCard
-            {
-                FolderId = new Guid(folderId),
-                OwnerId = ownerId,
-                Owner = owner,
-                Question = question,
-                Answer = answer,
-                DateCreated = DateTime.Now,
-                DateEdited = DateTime.Now,
-            };
-
-            folder.LearningUnits.Add(newStandardUnit);
-
-            //_dbContext.Learning_StandardUnits.Add(newStandardUnit);
-
-            _dbContext.SaveChanges();
-        }
-
 
         public void EditFolder(string folderId, string newFolderName)
         {
@@ -88,16 +64,34 @@ namespace BlackMesa.Website.Main.DataLayer
 
         public Folder GetFolder(string userId, string folderId)
         {
-            // todo check for users rights e.g. if he is owner
-
             return _dbContext.Learning_Folders.SingleOrDefault(f => f.Owner.Id == userId && f.Id == new Guid(folderId));
         }
 
         public void RemoveFolder(string folderId)
         {
-            // todo check for users rights e.g. if he is owner
-
             var folderToDelete = _dbContext.Learning_Folders.Find(new Guid(folderId));
+
+            //foreach (var learningUnit in folderToDelete.LearningUnits)
+            //{
+            //    RemoveLearningUnit(learningUnit.Id.ToString());
+            //}
+
+            for (var i = folderToDelete.LearningUnits.Count-1; i >= 0; i--)
+            {
+                RemoveLearningUnit(folderToDelete.LearningUnits[i].Id.ToString());
+            }
+
+
+            for (var i = folderToDelete.SubFolders.Count - 1; i >= 0; i--)
+            {
+                RemoveFolder(folderToDelete.SubFolders[i].Id.ToString());
+            }
+
+            //foreach (var subFolder in folderToDelete.SubFolders)
+            //{
+            //    RemoveFolder(subFolder.Id.ToString());
+            //}
+
             _dbContext.Learning_Folders.Remove(folderToDelete);
             _dbContext.SaveChanges();
         }
@@ -135,6 +129,41 @@ namespace BlackMesa.Website.Main.DataLayer
 
             _dbContext.SaveChanges();
         }
+
+
+
+        public void AddTextCard(string folderId, string ownerId, string question, string answer)
+        {
+
+            var owner = _dbContext.Users.Find(ownerId);
+            var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
+
+            var newStandardUnit = new TextCard
+            {
+                FolderId = new Guid(folderId),
+                OwnerId = ownerId,
+                Owner = owner,
+                Question = question,
+                Answer = answer,
+                DateCreated = DateTime.Now,
+                DateEdited = DateTime.Now,
+            };
+
+            folder.LearningUnits.Add(newStandardUnit);
+
+            //_dbContext.Learning_StandardUnits.Add(newStandardUnit);
+
+            _dbContext.SaveChanges();
+        }
+
+
+        public void RemoveLearningUnit(string id)
+        {
+            var learningUnit = _dbContext.Learning_Units.Find(new Guid(id));
+            _dbContext.Learning_Units.Remove(learningUnit);
+            _dbContext.SaveChanges();
+        }
+
 
 
 

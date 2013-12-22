@@ -112,6 +112,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             if (ModelState.IsValid)
             {
                 _learningRepo.AddFolder(viewModel.Name, User.Identity.GetUserId(), viewModel.ParentFolderId);
+                if (!String.IsNullOrEmpty(viewModel.ParentFolderId))
+                    return RedirectToAction("Details", "Folder", new { id = viewModel.ParentFolderId });
                 return RedirectToAction("Index");
             }
             return View(viewModel);
@@ -137,6 +139,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), viewModel.Id);
                 _learningRepo.EditFolder(viewModel.Id, viewModel.Name);
+                if (folder.ParentFolder != null)
+                    return RedirectToAction("Details", "Folder", new { id = folder.ParentFolder.Id });
                 return RedirectToAction("Index");
             }
         return View();
@@ -160,8 +164,14 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             if (ModelState.IsValid)
             {
-                // TODO: Add delete logic here
+                var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), viewModel.Id);
+                var parentFolderId = String.Empty;
+                if (folder.ParentFolder != null)
+                    parentFolderId = folder.ParentFolder.Id.ToString();
+                _learningRepo.RemoveFolder(viewModel.Id);
 
+                if (!String.IsNullOrEmpty(parentFolderId))
+                    return RedirectToAction("Details", "Folder", new { id = parentFolderId });
                 return RedirectToAction("Index");
             }
             return View();

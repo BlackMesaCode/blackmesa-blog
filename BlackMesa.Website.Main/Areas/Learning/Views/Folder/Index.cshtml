@@ -17,14 +17,14 @@
         
 
         <div class="tile gray-darkest">
-            <h1><i class="fi-folder"></i> Your folders</h1>
+            <h1><i class="fa fa-home"></i> @Strings.YourFolders</h1>
         </div>
 
         @foreach (var subFolder in Model.Folders)
         {
             <a href="@Url.Action("Details", "Folder", new { id = subFolder.Id })">
                 <div class="tile gray-light-hover">
-                    <i class="fi-folder"></i> @subFolder.Name
+                    <i class="fa fa-folder"></i> @subFolder.Name
                 </div>
             </a>
         }

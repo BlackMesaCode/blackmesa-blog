@@ -366,4 +366,13 @@
   <data name="YourName" xml:space="preserve">
     <value>Ihr Name</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Antwort</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Frage</value>
+  </data>
+  <data name="YourFolders" xml:space="preserve">
+    <value>Deine Verzeichnisse</value>
+  </data>
 </root>

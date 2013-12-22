@@ -20,17 +20,19 @@
         @foreach (var subFolder in Model.SubFolders)
         {
 
-            <div class="tile gray-light">
-                <i class="fa fa-folder"></i> @subFolder.Name
-            </div>
-
+            <a href="@Url.Action("Details", "Folder", new { id = subFolder.Id })">
+                <div class="tile gray-light-hover">
+                    <i class="fa fa-folder"></i> @subFolder.Name
+                </div>
+            </a>
+            
         }
 
 
         @foreach (var textCard in Model.TextCards)
         {
             <div class="tile gray-light">
-                @textCard.Question
+               <i class="fa fa-file"></i> @textCard.Question
             </div>
 
         }
@@ -55,10 +57,10 @@
         <i class="fa fa-arrow-circle-o-left"></i>
     </a>
     
-
-    <a class="red-hover" href="@Url.Action("Create", "TextCard")" title="@Strings.CreateTextCard">
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
         <i class="fa fa-plus-circle"></i>
     </a>
+
 
 </nav>
 
@@ -77,6 +79,19 @@
 
 </nav>
 
+
+@* ------------------- Submenu ------------------- *@
+
+<nav id="submenu">
+
+    <a class="red-hover" href="@Url.Action("Create", "TextCard", new { folderId = Model.Id })" title="@Strings.CreateTextCard">
+        <i class="fa fa-file"></i>
+    </a>
+    <a class="red-hover" href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id })" title="@Strings.CreateSubFolder">
+        <i class="fa fa-folder"></i>
+    </a>
+
+</nav>
 
 
 
