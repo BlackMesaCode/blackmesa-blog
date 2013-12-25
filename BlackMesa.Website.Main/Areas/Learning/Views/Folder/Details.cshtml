@@ -3,7 +3,7 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.FolderDetailsViewModel
 
 @{
-    ViewBag.Title = Strings.Folder + ": " + Model.Name;
+    ViewBag.Title = Model.Name;
 }
 
 
@@ -14,7 +14,7 @@
     <section id="folder-details">
 
         <div class="tile gray-darker">
-            <h1>@ViewBag.Title</h1>
+            <h1><i class="fa fa-folder"></i> @ViewBag.Title</h1>
         </div>
 
         @foreach (var subFolder in Model.SubFolders)
@@ -44,6 +44,42 @@
 </div>
 
 
+
+@* ------------------- Submenu ------------------- *@
+
+<nav id="folder-submenu" class="submenu">
+    <a class="red-hover" href="@Url.Action("Edit", "Folder", new { id = Model.Id })" title="@Strings.Edit">
+        <i class="fa fa-pencil"></i>
+    </a>
+
+    <a class="red-hover" href="@Url.Action("Delete", "Folder", new { id = Model.Id })" title="@Strings.Delete">
+        <i class="fa fa-trash-o"></i>
+    </a>
+    
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Back">
+        <i class="fa fa-reply"></i>
+    </a>
+
+</nav>
+
+
+@* ------------------- Submenu ------------------- *@
+
+<nav id="create-submenu" class="submenu">
+
+    <a class="red-hover" href="@Url.Action("Create", "TextCard", new { folderId = Model.Id })" title="@Strings.CreateTextCard">
+        <i class="fa fa-file"></i>
+    </a>
+    <a class="red-hover" href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id })" title="@Strings.CreateSubFolder">
+        <i class="fa fa-folder"></i>
+    </a>
+    
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Back">
+        <i class="fa fa-reply"></i>
+    </a>
+</nav>
+
+
 @* ------------------- Menu ------------------- *@
 
 <nav id="menu">
@@ -53,11 +89,15 @@
         <i class="fa fa-home"></i>
     </a>
 
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
-        <i class="fa fa-arrow-circle-o-left"></i>
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.YourFolders">
+        <i class="fa fa-list"></i>
     </a>
     
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
+    <a id="folder-submenu-tile" class="submenu-tile red-hover" href="#" title="@Strings.Folder">
+        <i class="fa fa-folder"></i>
+    </a>
+
+    <a id="create-submenu-tile" class="submenu-tile red-hover" href="#" title="@Strings.Create">
         <i class="fa fa-plus-circle"></i>
     </a>
 
@@ -65,33 +105,61 @@
 </nav>
 
 
+@section Scripts {
 
-@* ------------------- Submenu ------------------- *@
+    <script type="text/javascript">
+        var subMenus = document.getElementsByClassName("submenu");
 
-<nav id="submenu">
-    <a class="red-hover" href="@Url.Action("Edit", "Folder", new { id = Model.Id })" title="@Strings.Edit">
-        <i class="fa fa-pencil"></i>
-    </a>
+        for (var i = 0, max = subMenus.length; i < max; i++) {
+            subMenus[i].style.display = "none";
+        }
 
-    <a class="red-hover" href="@Url.Action("Delete", "Folder", new { id = Model.Id })" title="@Strings.Delete">
-        <i class="fa fa-trash-o"></i>
-    </a>
+        var subMenuTiles = document.getElementsByClassName('submenu-tile');
 
-</nav>
+        var menu = document.getElementById('menu');
+        var menuToggle = function(e) {
+            if (menu.style.display == "none") {
+                menu.style.display = "flex";
+            } else {
+                menu.style.display = "none";
+            }
+        };
 
+        
+        //for (var i = 0, max = subMenuTiles.length; i < max; i++) {
+        //    subMenuTiles[i].onclick = menuToggle;
+        //}
 
-@* ------------------- Submenu ------------------- *@
+        //toggle menu on submenu-tile click
+        //document.getElementsByClassName('submenu-tile').onclick = function (e) {
+        //    var menu = document.getElementById('menu');
+        //    if (menu.style.display == "flex") {
+        //        menu.style.display = "none";
+        //    } else {
+        //        menu.style.display = "flex";
+        //    }
+        //};
 
-<nav id="submenu">
+        //create-submenu toggle
+        document.getElementById('create-submenu-tile').onclick = function (e) {
+            menuToggle();
+            var createSubMenu = document.getElementById('create-submenu');
+            if (createSubMenu.style.display == "none") {
+                createSubMenu.style.display = "flex";
+            } else {
+                createSubMenu.style.display = "none";
+            }
+        };
 
-    <a class="red-hover" href="@Url.Action("Create", "TextCard", new { folderId = Model.Id })" title="@Strings.CreateTextCard">
-        <i class="fa fa-file"></i>
-    </a>
-    <a class="red-hover" href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id })" title="@Strings.CreateSubFolder">
-        <i class="fa fa-folder"></i>
-    </a>
+        //folder-submenu toggle
+        document.getElementById('folder-submenu-tile').onclick = function (e) {
+            menuToggle();
+            var folderSubMenu = document.getElementById('folder-submenu');
+            if (folderSubMenu.style.display == "none") {
+                folderSubMenu.style.display = "flex";
+            } else
+                folderSubMenu.style.display = "none";
+        };
+    </script>
 
-</nav>
-
-
-
+    }

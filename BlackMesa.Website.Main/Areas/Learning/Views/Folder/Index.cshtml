@@ -3,6 +3,10 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.FolderIndexViewModel
     
 
+@{
+    ViewBag.Title = Strings.YourFolders;
+}
+
 @* ------------------- Content ------------------- *@
 
 <div id="content">
@@ -16,8 +20,8 @@
         
         
 
-        <div class="tile gray-darkest">
-            <h1><i class="fa fa-home"></i> @Strings.YourFolders</h1>
+        <div class="tile gray-darker">
+            <h1><i class="fa fa-list"></i> @ViewBag.Title</h1>
         </div>
 
         @foreach (var subFolder in Model.Folders)
@@ -39,14 +43,9 @@
 
 <nav id="menu">
 
-    @if (Request.IsAuthenticated)
-    {
-
-        <a class="red-hover" href="@Url.Action("Create")" title="@Strings.CreateFolder">
-            <i class="fi-folder-add"></i>
-        </a>
-
-    }
+    <a class="red-hover" href="@Url.Action("Create")" title="@Strings.CreateFolder">
+        <i class="fi-folder-add"></i>
+    </a>
 
 
     <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
@@ -65,12 +64,4 @@
 
    
 
-</nav>
-
-
-
-@* ------------------- Submenu ------------------- *@
-
-<nav class="submenu">
-    
 </nav>
