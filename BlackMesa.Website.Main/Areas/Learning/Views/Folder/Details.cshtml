@@ -29,12 +29,13 @@
         }
 
 
-        @foreach (var IndexCard in Model.IndexCards)
+        @foreach (var indexCard in Model.IndexCards)
         {
-            <div class="tile gray-light">
-               <i class="icon-indexcard"> </i>@IndexCard.Question
-            </div>
-
+            <a href="@Url.Action("Details", "IndexCard", new { id = indexCard.Id })">
+                <div class="tile gray-light-hover">
+                    <i class="icon-indexcard"> </i>@indexCard.Question
+                </div>
+            </a>
         }
 
 

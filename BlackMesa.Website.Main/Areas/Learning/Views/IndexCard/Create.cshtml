@@ -10,13 +10,14 @@
 
 <div id="content">
     
-
-    <section id="text-card-create">
+    <section id="indexcard-create">
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
+            @Html.Partial("_CreateEditLearningUnit")
+            
             if (!ViewData.ModelState.IsValid)
             {
                 <div class="tile gray-light">
@@ -28,8 +29,6 @@
             <div class="tile gray-darker">
                 <h1>@ViewBag.Title</h1>
             </div>
-
-            @Html.Partial("_CreateEditLearningUnit")
 
     
             <div class="form-element-container">

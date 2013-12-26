@@ -1,10 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using BlackMesa.Website.Main.Areas.Learning.ViewModels.LearningUnit;
 
 namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard
 {
-    public class CreateIndexCardViewModel : CreateLearningUnitViewModel
+    public class EditIndexCardViewModel
     {
+
+        [Required]
+        public string Id { get; set; }
+
+        [Required]
+        public string FolderId { get; set; }
 
         [StringLength(255)]
         public string Question { get; set; }
@@ -22,6 +27,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard
 
         [StringLength(2083)]
         public string ImageUrl { get; set; }
+
+
 
     }
 }

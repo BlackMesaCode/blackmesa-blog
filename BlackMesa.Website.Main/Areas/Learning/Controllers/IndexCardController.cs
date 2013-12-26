@@ -20,7 +20,22 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         private readonly LearningRepository _learningRepo = new LearningRepository(new BlackMesaDbContext());
 
+        public ActionResult Details(string id)
+        {
+            var indexCard = _learningRepo.GetIndexCard(id);
+            var viewModel = new IndexCardDetailsViewModel()
+            {
+                Id = indexCard.Id.ToString(),
+                FolderId = indexCard.FolderId.ToString(),
+                Question = indexCard.Question,
+                Answer = indexCard.Answer,
+                Hint = indexCard.Hint,
+                CodeSnipped = indexCard.CodeSnipped,
+                ImageUrl = indexCard.ImageUrl,
+            };
 
+            return View(viewModel);
+        }
 
         public ActionResult Create(string folderId)
         {
@@ -45,55 +60,60 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
-        //public ActionResult Edit(string id)
-        //{
-        //    var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
-        //    var viewModel = new EditFolderViewModel
-        //    {
-        //        Id = folder.Id.ToString(),
-        //        Name = folder.Name,
-        //    };
-        //    return View(viewModel);
-        //}
+        public ActionResult Edit(string id)
+        {
+            var indexCard = _learningRepo.GetIndexCard(id);
+            var viewModel = new EditIndexCardViewModel
+            {
+                Id = indexCard.Id.ToString(),
+                FolderId = indexCard.FolderId.ToString(),
+                Question = indexCard.Question,
+                Answer = indexCard.Answer,
+                Hint = indexCard.Hint,
+                CodeSnipped = indexCard.CodeSnipped,
+                ImageUrl = indexCard.ImageUrl,
+            };
+            return View(viewModel);
+        }
 
 
-        //[HttpPost]
-        //public ActionResult Edit(EditFolderViewModel viewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), viewModel.Id);
-        //        _learningRepo.EditFolder(viewModel.Id, viewModel.Name);
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View();
-        //}
+        [HttpPost]
+        public ActionResult Edit(EditIndexCardViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var indexCard = _learningRepo.GetIndexCard(viewModel.Id);
+                _learningRepo.EditIndexCard(viewModel.Id, viewModel.Question, viewModel.Answer, viewModel.Hint, viewModel.CodeSnipped, viewModel.ImageUrl);
+                return RedirectToAction("Details", "Folder", new  { id = indexCard.FolderId });
+            }
+            return View(viewModel);
+        }
 
 
-        //public ActionResult Delete(string id)
-        //{
-        //    var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
-        //    var viewModel = new DeleteFolderViewModel
-        //    {
-        //        Id = id,
-        //        Name = folder.Name,
-        //    };
-        //    return View(viewModel);
-        //}
+        public ActionResult Delete(string id)
+        {
+            var indexCard = _learningRepo.GetIndexCard(id);
+            var viewModel = new DeleteIndexCardViewModel
+            {
+                Id = indexCard.Id.ToString(),
+                FolderId = indexCard.FolderId.ToString(),
+                Question = indexCard.Question,
+            };
+            return View(viewModel);
+        }
 
 
-        //[HttpPost]
-        //public ActionResult Delete(DeleteFolderViewModel viewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        // TODO: Add delete logic here
+        [HttpPost]
+        public ActionResult Delete(DeleteIndexCardViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _learningRepo.RemoveLearningUnit(viewModel.Id);
+                return RedirectToAction("Details", "Folder", new { id = viewModel.FolderId });
+            }
+            return View(viewModel);
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View();
-
-        //}
+        }
 
     }
 }

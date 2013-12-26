@@ -62,9 +62,9 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public Folder GetFolder(string userId, string folderId)
+        public Folder GetFolder(string folderId)
         {
-            return _dbContext.Learning_Folders.SingleOrDefault(f => f.Owner.Id == userId && f.Id == new Guid(folderId));
+            return _dbContext.Learning_Folders.SingleOrDefault(f => f.Id == new Guid(folderId));
         }
 
         public void RemoveFolder(string folderId)
@@ -132,6 +132,12 @@ namespace BlackMesa.Website.Main.DataLayer
 
 
 
+        public IndexCard GetIndexCard(string cardId)
+        {
+            return _dbContext.Learning_IndexCards.SingleOrDefault(f => f.Id == new Guid(cardId));
+        }
+
+
         public void AddIndexCard(string folderId, string ownerId, string question, string answer)
         {
 
@@ -150,8 +156,19 @@ namespace BlackMesa.Website.Main.DataLayer
             };
 
             folder.LearningUnits.Add(newStandardUnit);
+            _dbContext.SaveChanges();
+        }
 
-            //_dbContext.Learning_StandardUnits.Add(newStandardUnit);
+        public void EditIndexCard(string id, string newQuestion, string newAnswer, string newHint, 
+            string newCodeSnipped, string newImageUrl)
+        {
+            var currentIndexCard = _dbContext.Learning_IndexCards.Find(new Guid(id));
+
+            currentIndexCard.Question = newQuestion;
+            currentIndexCard.Answer = newAnswer;
+            currentIndexCard.Hint = newHint;
+            currentIndexCard.CodeSnipped = newCodeSnipped;
+            currentIndexCard.ImageUrl = newImageUrl;
 
             _dbContext.SaveChanges();
         }

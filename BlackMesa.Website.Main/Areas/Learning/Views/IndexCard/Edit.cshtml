@@ -1,0 +1,87 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard.EditIndexCardViewModel
+@{
+    ViewBag.Title = Strings.IndexCard + " " + Strings.Edit;
+}
+
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    
+    <section id="indexcard-edit">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.FolderId)
+            
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
+            </div>
+
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
+            
+            <div class="form-element-container">
+                @Html.TextBoxFor(model => model.Question, new { @autocomplete = "off" })
+            </div>
+
+
+            <div class="form-element-container">
+                @Html.TextAreaFor(model => model.Answer, new { @autocomplete = "off" })
+            </div>
+            
+            
+            if (!String.IsNullOrEmpty(Model.Hint))
+            {
+                 <div class="form-element-container">
+                     @Html.TextAreaFor(model => model.Hint, new { @autocomplete = "off" })
+                 </div>
+            }
+
+            if (!String.IsNullOrEmpty(Model.CodeSnipped))
+            {
+                <div class="form-element-container">
+                    @Html.TextAreaFor(model => model.CodeSnipped, new {@autocomplete = "off"})
+                </div>
+            }
+
+            if (!String.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <div class="form-element-container">
+                    @Html.TextBoxFor(model => model.ImageUrl, new {@autocomplete = "off"})
+                </div>
+            }
+
+
+            <div class="form-element-container">
+                <button class="gray-darker-hover" type="submit">
+                    @Strings.Save
+                </button>
+            </div>
+        }
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Abort">
+        <i class="icon-abort"></i>
+    </a>
+
+
+</nav>

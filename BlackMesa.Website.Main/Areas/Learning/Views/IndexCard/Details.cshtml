@@ -1,0 +1,142 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard.IndexCardDetailsViewModel
+    
+
+@{
+    ViewBag.Title = Model.Question;
+}
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    <section id="indexcard-details">
+        
+
+        <div class="tile gray-darker">
+            <h1>@ViewBag.Title</h1>
+        </div>
+
+        <div class="tile gray-light">
+            <h1>@Model.Answer</h1>
+        </div>
+        
+        @if (!String.IsNullOrEmpty(Model.Hint))
+        {
+        <div class="tile gray-light">
+            <h1>@Model.Hint</h1>
+        </div>
+        }
+            
+        @if (!String.IsNullOrEmpty(Model.CodeSnipped))
+        {
+            <div class="tile gray-light">
+                <h1>@Model.CodeSnipped</h1>
+            </div>
+        }
+
+        @if (!String.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div class="tile gray-light">
+                <h1>@Model.ImageUrl</h1>
+            </div>
+        }
+
+    </section>
+</div>
+
+
+@* ------------------- Submenu ------------------- *@
+
+<nav id="indexcard-submenu" class="submenu">
+
+    <a class="red-hover" href="@Url.Action("Edit", "IndexCard", new { id = Model.Id })" title="@Strings.Edit">
+        <i class="icon-edit"></i>
+    </a>
+
+    <a class="red-hover" href="@Url.Action("Move", "IndexCard", new { id = Model.Id })" title="@Strings.Move">
+        <i class="icon-move"></i>
+    </a>
+
+    <a class="red-hover" href="@Url.Action("Delete", "IndexCard", new { id = Model.Id })" title="@Strings.Delete">
+        <i class="icon-delete"></i>
+    </a>
+
+    <a class="back-tile gray-light-hover" href="#" title="@Strings.Back">
+        <i class="icon-back"></i>
+    </a>
+
+</nav>
+
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+    
+    <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Home">
+        <i class="icon-home"></i>
+    </a>
+    
+
+    <a id="indexcard-submenu-tile" class="red-hover" href="#" title="@Strings.Create">
+        <i class="icon-indexcard"></i>
+    </a>
+
+    
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Back">
+        <i class="icon-back"></i>
+    </a>
+
+   
+
+</nav>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+        var backTiles = document.getElementsByClassName('back-tile');
+        var subMenus = document.getElementsByClassName("submenu");
+
+
+
+        var hideSubmenus = function () {
+            for (var i = 0, max = subMenus.length; i < max; i++) {
+                subMenus[i].style.display = "none";
+            }
+        };
+        hideSubmenus();
+
+        var menu = document.getElementById('menu');
+        var menuToggle = function (e) {
+            if (menu.style.display == "none") {
+                menu.style.display = "flex";
+            } else {
+                menu.style.display = "none";
+            }
+        };
+
+
+        for (var i = 0, max = backTiles.length; i < max; i++) {
+            backTiles[i].onclick = function () {
+                hideSubmenus();
+                menuToggle();
+            };
+
+
+        }
+
+        //indexcard-submenu toggle
+        document.getElementById('indexcard-submenu-tile').onclick = function (e) {
+            menuToggle();
+            var folderSubMenu = document.getElementById('indexcard-submenu');
+            if (folderSubMenu.style.display == "none") {
+                folderSubMenu.style.display = "flex";
+            } else
+                folderSubMenu.style.display = "none";
+        };
+    </script>
+
+}

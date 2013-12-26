@@ -84,7 +84,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Details(string id)
         {
-            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var folder = _learningRepo.GetFolder(id);
             var viewModel = new FolderDetailsViewModel
             {
                 Id = folder.Id.ToString(),
@@ -123,7 +123,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Edit(string id)
         {
-            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var folder = _learningRepo.GetFolder(id);
             var viewModel = new EditFolderViewModel
             {
                 Id = folder.Id.ToString(),
@@ -138,7 +138,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             if (ModelState.IsValid)
             {
-                var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), viewModel.Id);
+                var folder = _learningRepo.GetFolder(viewModel.Id);
                 _learningRepo.EditFolder(viewModel.Id, viewModel.Name);
                 if (folder.ParentFolder != null)
                     return RedirectToAction("Details", "Folder", new { id = folder.ParentFolder.Id });
@@ -150,7 +150,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Delete(string id)
         {
-            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var folder = _learningRepo.GetFolder(id);
             var viewModel = new DeleteFolderViewModel
             {
                 Id = id,
@@ -166,7 +166,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             if (ModelState.IsValid)
             {
-                var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), viewModel.Id);
+                var folder = _learningRepo.GetFolder(viewModel.Id);
                 var parentFolderId = String.Empty;
                 if (folder.ParentFolder != null)
                     parentFolderId = folder.ParentFolder.Id.ToString();
@@ -183,7 +183,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Move(string id)
         {
-            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var folder = _learningRepo.GetFolder(id);
             var viewModel = new MoveFolderViewModel();
             return View(viewModel);
         }
@@ -191,7 +191,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Search(string id)
         {
-            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var folder = _learningRepo.GetFolder(id);
             var viewModel = new SearchFolderViewModel();
             return View(viewModel);
         }

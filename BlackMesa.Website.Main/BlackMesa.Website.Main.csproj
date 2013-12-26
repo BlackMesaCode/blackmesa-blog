@@ -206,6 +206,9 @@
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderIndexViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderListItemViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\IndexCard\DeleteIndexCardViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\IndexCard\IndexCardDetailsViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\IndexCard\EditIndexCardViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\LearningUnit\CreateLearningUnitViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\IndexCard\CreateIndexCardViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\AdjustQueryViewModel.cs" />
@@ -594,6 +597,9 @@
     <Content Include="Areas\Learning\Views\Folder\Move.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Adjust.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Start.cshtml" />
+    <Content Include="Areas\Learning\Views\IndexCard\Edit.cshtml" />
+    <Content Include="Areas\Learning\Views\IndexCard\Delete.cshtml" />
+    <Content Include="Areas\Learning\Views\IndexCard\Details.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
