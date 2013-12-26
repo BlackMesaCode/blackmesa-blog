@@ -15,9 +15,10 @@ namespace BlackMesa.Website.Main.Areas.Learning
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "LearningDefault",
-                "{culture}/Learning/{controller}/{action}/{id}",
-                new { culture = "de-DE", controller = "Learning_Folders", action = "Index", id = UrlParameter.Optional }
+                name: "LearningDefault",
+                url: "{culture}/Learning/{controller}/{action}/{id}",
+                defaults: new { culture = "de-DE", controller = "Learning_Folders", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "BlackMesa.Website.Main.Areas.Learning.Controllers" }
             );
         }
     }

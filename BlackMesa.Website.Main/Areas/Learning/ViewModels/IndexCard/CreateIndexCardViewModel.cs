@@ -1,8 +1,8 @@
 ﻿using BlackMesa.Website.Main.Areas.Learning.ViewModels.LearningUnit;
 
-namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.TextCard
+namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard
 {
-    public class CreateTextCardViewModel : CreateLearningUnitViewModel
+    public class CreateIndexCardViewModel : CreateLearningUnitViewModel
     {
         public string Question { get; set; }
 

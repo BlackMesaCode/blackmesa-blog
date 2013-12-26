@@ -1,0 +1,54 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.FolderIndexViewModel
+
+
+@{
+    ViewBag.Title = Strings.Learning;
+}
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    <section id="folder-index">
+
+        <div class="tile gray-darker">
+            <h1>@ViewBag.Title</h1>
+        </div>
+
+
+    </section>
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+    
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.YourFolders">
+        <i class="icon-list"></i>
+    </a>
+    
+    <a class="red-hover" href="@Url.Action("Stats", "Home")" title="@Strings.Statistics">
+        <i class="icon-stats"></i>
+    </a>
+
+    <a class="red-hover" href="@Url.Action("Settings", "Home")" title="@Strings.Settings">
+        <i class="icon-config"></i>
+    </a>
+    
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a class="red-hover" href="@Url.Action("Index", "Entry", new {area = "Blog"})" title="@Strings.Logout">
+            <i class="icon-logout"></i>
+        </a>
+    }
+    else
+    {
+        <a class="red-hover" href="@Url.Action("Login", "Account", new { area = "Identity"})" title="@Strings.LogIn">
+            <i class="icon-login"></i>
+        </a>
+    }
+
+</nav>

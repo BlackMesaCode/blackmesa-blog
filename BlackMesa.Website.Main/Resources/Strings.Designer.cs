@@ -61,6 +61,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Abort ähnelt.
+        /// </summary>
+        public static string Abort {
+            get {
+                return ResourceManager.GetString("Abort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die About ähnelt.
         /// </summary>
         public static string About {
@@ -196,6 +205,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create index card ähnelt.
+        /// </summary>
+        public static string CreateIndexCard {
+            get {
+                return ResourceManager.GetString("CreateIndexCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Create local account ähnelt.
         /// </summary>
         public static string CreateLocalAccount {
@@ -213,14 +231,6 @@ namespace BlackMesa.Website.Main.Resources {
             }
         }
         
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Create text card ähnelt.
-        /// </summary>
-        public static string CreateTextCard {
-            get {
-                return ResourceManager.GetString("CreateTextCard", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current password ähnelt.
@@ -358,6 +368,24 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Index card ähnelt.
+        /// </summary>
+        public static string IndexCard {
+            get {
+                return ResourceManager.GetString("IndexCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Index cards ähnelt.
+        /// </summary>
+        public static string IndexCards {
+            get {
+                return ResourceManager.GetString("IndexCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Learning ähnelt.
         /// </summary>
         public static string Learning {
@@ -435,6 +463,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Month {
             get {
                 return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Move ähnelt.
+        /// </summary>
+        public static string Move {
+            get {
+                return ResourceManager.GetString("Move", resourceCulture);
             }
         }
         
@@ -709,6 +746,24 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Statistics ähnelt.
+        /// </summary>
+        public static string Statistics {
+            get {
+                return ResourceManager.GetString("Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Stay signed in ähnelt.
         /// </summary>
         public static string StaySignedIn {
@@ -744,14 +799,6 @@ namespace BlackMesa.Website.Main.Resources {
             }
         }
         
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Text card ähnelt.
-        /// </summary>
-        public static string TextCard {
-            get {
-                return ResourceManager.GetString("TextCard", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Search ähnelt.

@@ -13,6 +13,7 @@ using WebGrease.Css.Extensions;
 
 namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 {
+    [Authorize]
     public class FolderController : BaseController
     {
 
@@ -89,7 +90,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
                 SubFolders = folder.SubFolders.Select(f => CreateFolderListItemViewModel(f)).ToList(),
-                TextCards = folder.LearningUnits.OfType<TextCard>(),
+                IndexCards = folder.LearningUnits.OfType<IndexCard>(),
             };
             return View(viewModel);
         }
@@ -154,6 +155,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 Id = id,
                 Name = folder.Name,
+                ParentFolderId = folder.ParentFolder != null ? folder.ParentFolder.Id.ToString() : String.Empty,
             };
             return View(viewModel);
         }
@@ -177,6 +179,23 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return View();
 
         }
+
+
+        public ActionResult Move(string id)
+        {
+            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var viewModel = new MoveFolderViewModel();
+            return View(viewModel);
+        }
+
+
+        public ActionResult Search(string id)
+        {
+            var folder = _learningRepo.GetFolder(User.Identity.GetUserId(), id);
+            var viewModel = new SearchFolderViewModel();
+            return View(viewModel);
+        }
+
 
     }
 }

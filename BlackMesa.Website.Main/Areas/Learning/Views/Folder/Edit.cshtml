@@ -30,7 +30,7 @@
             
             
             <div class="form-element-container">
-                @Html.TextBoxFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name, new { @autocomplete = "off" })
             </div>
 
 
@@ -52,12 +52,8 @@
 <nav id="menu">
 
 
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
-        <i class="fi-home"></i>
-    </a>
-
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
-        <i class="fi-arrow-left"></i>
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Abort">
+        <i class="icon-abort"></i>
     </a>
 
 

@@ -132,13 +132,13 @@ namespace BlackMesa.Website.Main.DataLayer
 
 
 
-        public void AddTextCard(string folderId, string ownerId, string question, string answer)
+        public void AddIndexCard(string folderId, string ownerId, string question, string answer)
         {
 
             var owner = _dbContext.Users.Find(ownerId);
             var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
 
-            var newStandardUnit = new TextCard
+            var newStandardUnit = new IndexCard
             {
                 FolderId = new Guid(folderId),
                 OwnerId = ownerId,

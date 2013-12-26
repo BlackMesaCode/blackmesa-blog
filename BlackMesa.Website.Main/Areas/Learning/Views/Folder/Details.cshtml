@@ -14,7 +14,7 @@
     <section id="folder-details">
 
         <div class="tile gray-darker">
-            <h1><i class="fa fa-folder"></i> @ViewBag.Title</h1>
+            <h1>@ViewBag.Title</h1>
         </div>
 
         @foreach (var subFolder in Model.SubFolders)
@@ -22,17 +22,17 @@
 
             <a href="@Url.Action("Details", "Folder", new { id = subFolder.Id })">
                 <div class="tile gray-light-hover">
-                    <i class="fa fa-folder"></i> @subFolder.Name
+                    <i class="icon-folder"> </i>@subFolder.Name
                 </div>
             </a>
             
         }
 
 
-        @foreach (var textCard in Model.TextCards)
+        @foreach (var IndexCard in Model.IndexCards)
         {
             <div class="tile gray-light">
-               <i class="fa fa-file"></i> @textCard.Question
+               <i class="icon-indexcard"> </i>@IndexCard.Question
             </div>
 
         }
@@ -48,16 +48,25 @@
 @* ------------------- Submenu ------------------- *@
 
 <nav id="folder-submenu" class="submenu">
+    
     <a class="red-hover" href="@Url.Action("Edit", "Folder", new { id = Model.Id })" title="@Strings.Edit">
-        <i class="fa fa-pencil"></i>
+        <i class="icon-edit"></i>
+    </a>
+    
+    <a class="red-hover" href="@Url.Action("Move", "Folder", new { id = Model.Id })" title="@Strings.Move">
+        <i class="icon-move"></i>
+    </a>
+    
+    <a class="red-hover" href="@Url.Action("Search", "Folder", new { id = Model.Id })" title="@Strings.Search">
+        <i class="icon-search"></i>
     </a>
 
     <a class="red-hover" href="@Url.Action("Delete", "Folder", new { id = Model.Id })" title="@Strings.Delete">
-        <i class="fa fa-trash-o"></i>
+        <i class="icon-delete"></i>
     </a>
     
-    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Back">
-        <i class="fa fa-reply"></i>
+    <a class="back-tile gray-light-hover" href="#" title="@Strings.Back">
+        <i class="icon-back"></i>
     </a>
 
 </nav>
@@ -67,15 +76,16 @@
 
 <nav id="create-submenu" class="submenu">
 
-    <a class="red-hover" href="@Url.Action("Create", "TextCard", new { folderId = Model.Id })" title="@Strings.CreateTextCard">
-        <i class="fa fa-file"></i>
+    <a class="red-hover" href="@Url.Action("Create", "IndexCard", new { folderId = Model.Id })" title="@Strings.CreateIndexCard">
+        <i class="icon-indexcard"></i>
     </a>
+
     <a class="red-hover" href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id })" title="@Strings.CreateSubFolder">
-        <i class="fa fa-folder"></i>
+        <i class="icon-folder"></i>
     </a>
     
-    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Back">
-        <i class="fa fa-reply"></i>
+    <a class="back-tile gray-light-hover" href="#" title="@Strings.Back">
+        <i class="icon-back"></i>
     </a>
 </nav>
 
@@ -85,20 +95,24 @@
 <nav id="menu">
 
 
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
-        <i class="fa fa-home"></i>
+    <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Home">
+        <i class="icon-home"></i>
     </a>
 
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.YourFolders">
-        <i class="fa fa-list"></i>
-    </a>
+    @*<a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.YourFolders">
+        <i class="icon-list"></i>
+    </a>*@
     
     <a id="folder-submenu-tile" class="submenu-tile red-hover" href="#" title="@Strings.Folder">
-        <i class="fa fa-folder"></i>
+        <i class="icon-folder"></i>
     </a>
 
     <a id="create-submenu-tile" class="submenu-tile red-hover" href="#" title="@Strings.Create">
-        <i class="fa fa-plus-circle"></i>
+        <i class="icon-plus"></i>
+    </a>
+    
+    <a class="red-hover" href="@Url.Action("Start", "Query")" title="@Strings.YourFolders">
+        <i class="icon-rocket"></i>
     </a>
 
 
@@ -108,13 +122,17 @@
 @section Scripts {
 
     <script type="text/javascript">
+        var backTiles = document.getElementsByClassName('back-tile');
         var subMenus = document.getElementsByClassName("submenu");
 
-        for (var i = 0, max = subMenus.length; i < max; i++) {
-            subMenus[i].style.display = "none";
-        }
+        
 
-        var subMenuTiles = document.getElementsByClassName('submenu-tile');
+        var hideSubmenus = function() {
+            for (var i = 0, max = subMenus.length; i < max; i++) {
+                subMenus[i].style.display = "none";
+            }
+        };
+        hideSubmenus();
 
         var menu = document.getElementById('menu');
         var menuToggle = function(e) {
@@ -126,19 +144,14 @@
         };
 
         
-        //for (var i = 0, max = subMenuTiles.length; i < max; i++) {
-        //    subMenuTiles[i].onclick = menuToggle;
-        //}
+        for (var i = 0, max = backTiles.length; i < max; i++) {
+            backTiles[i].onclick = function() {
+                hideSubmenus();
+                menuToggle();
+            };
 
-        //toggle menu on submenu-tile click
-        //document.getElementsByClassName('submenu-tile').onclick = function (e) {
-        //    var menu = document.getElementById('menu');
-        //    if (menu.style.display == "flex") {
-        //        menu.style.display = "none";
-        //    } else {
-        //        menu.style.display = "flex";
-        //    }
-        //};
+
+        }
 
         //create-submenu toggle
         document.getElementById('create-submenu-tile').onclick = function (e) {

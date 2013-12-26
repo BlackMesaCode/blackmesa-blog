@@ -3,6 +3,9 @@
 <ul>
     <li><a href="@Url.Action("IndexClean", "Entry", new { area = "Blog"})"><i class="fa fa-book"></i> <span>@Strings.Blog</span></a></li>
     @*<li><a href="@Url.Action("Index", "About")"><i class="fa fa-user"></i> <span>@Strings.About</span></a></li>*@
-    <li><a href="@Url.Action("Index", "Folder", new { area = "Learning" })"><i class="fa fa-coffee"></i> <span>@Strings.Learning</span></a></li>
+    @if (User.IsInRole("Admin"))
+    {
+        <li><a href="@Url.Action("Index", "Home", new { area = "Learning" })"><i class="fa fa-coffee"></i> <span>@Strings.Learning</span></a></li>
+    }
     @*<li><a href="@Url.Action("Index", "LegalNotice")"><i class="fa fa-legal"></i> <span>@Strings.LegalNotice</span></a></li>*@
 </ul>

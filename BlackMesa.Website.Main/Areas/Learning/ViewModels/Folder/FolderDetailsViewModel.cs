@@ -9,6 +9,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder
 
         public List<FolderListItemViewModel> SubFolders { get; set; }
 
-        public IEnumerable<BlackMesa.Website.Main.Models.Learning.TextCard> TextCards { get; set; }
+        public IEnumerable<BlackMesa.Website.Main.Models.Learning.IndexCard> IndexCards { get; set; }
     }
 }

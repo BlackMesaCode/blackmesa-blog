@@ -190,11 +190,15 @@
     <Compile Include="Areas\Blog\ViewModels\CreateCommentViewModel.cs" />
     <Compile Include="Areas\Identity\IdentityAreaRegistration.cs" />
     <Compile Include="Areas\Learning\Api\Controllers\FoldersController.cs" />
-    <Compile Include="Areas\Learning\Controllers\TextCardController.cs" />
+    <Compile Include="Areas\Learning\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Learning\Controllers\QueryController.cs" />
+    <Compile Include="Areas\Learning\Controllers\IndexCardController.cs" />
     <Compile Include="Areas\Learning\Controllers\FolderController.cs" />
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\Learning\ViewModels\Folder\SearchFolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\MoveFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\EditFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\CreateFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderDetailsViewModel.cs" />
@@ -203,7 +207,9 @@
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderListItemViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\LearningUnit\CreateLearningUnitViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\TextCard\CreateTextCardViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\IndexCard\CreateIndexCardViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\AdjustQueryViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\StartQueryViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -215,13 +221,9 @@
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="DataLayer\DbContext.cs" />
     <Compile Include="DataLayer\LearningRepository.cs" />
-    <Compile Include="Migrations\201312181529522_Init.cs" />
-    <Compile Include="Migrations\201312181529522_Init.Designer.cs">
-      <DependentUpon>201312181529522_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201312181550113_Updates.cs" />
-    <Compile Include="Migrations\201312181550113_Updates.Designer.cs">
-      <DependentUpon>201312181550113_Updates.cs</DependentUpon>
+    <Compile Include="Migrations\201312261910503_Init.cs" />
+    <Compile Include="Migrations\201312261910503_Init.Designer.cs">
+      <DependentUpon>201312261910503_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
@@ -229,7 +231,8 @@
     <Compile Include="Models\Blog\Tag.cs" />
     <Compile Include="Models\Identity\User.cs" />
     <Compile Include="Models\Learning\Folder.cs" />
-    <Compile Include="Models\Learning\TextCard.cs" />
+    <Compile Include="Models\Learning\Query.cs" />
+    <Compile Include="Models\Learning\IndexCard.cs" />
     <Compile Include="Models\Learning\Unit.cs" />
     <Compile Include="Resources\Strings.de.Designer.cs">
       <DependentUpon>Strings.de.resx</DependentUpon>
@@ -258,6 +261,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Start\EntityFrameworkProfilerBootstrapper.vb" />
+    <None Include="Areas\Learning\Less\normalize.less" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.svg" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\custom\images\address.png" />
@@ -575,7 +579,7 @@
     <Content Include="Areas\Learning\Views\Folder\Create.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Delete.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Details.cshtml" />
-    <Content Include="Areas\Learning\Views\TextCard\Create.cshtml" />
+    <Content Include="Areas\Learning\Views\IndexCard\Create.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_CreateEditLearningUnit.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_Layout.cshtml" />
     <Content Include="Content\foundation-icons\.DS_Store" />
@@ -583,7 +587,13 @@
     <Content Include="Content\foundation-icons\foundation-icons.eot" />
     <Content Include="Content\foundation-icons\foundation-icons.ttf" />
     <Content Include="Content\foundation-icons\foundation-icons.woff" />
-    <Content Include="Content\custom\less\learning.less" />
+    <Content Include="Areas\Learning\Less\learning.less" />
+    <Content Include="Areas\Learning\Less\utilities.less" />
+    <Content Include="Areas\Learning\Less\fonts.less" />
+    <Content Include="Areas\Learning\Views\Folder\Search.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\Move.cshtml" />
+    <Content Include="Areas\Learning\Views\Query\Adjust.cshtml" />
+    <Content Include="Areas\Learning\Views\Query\Start.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -659,13 +669,14 @@
     <Content Include="Areas\Identity\Views\Account\_RemoveAccountPartial.cshtml" />
     <Content Include="Areas\Identity\Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Areas\Learning\Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Blog\Models\" />
     <Folder Include="Areas\Identity\Models\" />
     <Folder Include="Content\custom\scripts\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -673,11 +684,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312181529522_Init.resx">
-      <DependentUpon>201312181529522_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312181550113_Updates.resx">
-      <DependentUpon>201312181550113_Updates.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312261910503_Init.resx">
+      <DependentUpon>201312261910503_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

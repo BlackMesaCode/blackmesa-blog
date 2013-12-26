@@ -1,0 +1,43 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.SearchFolderViewModel
+
+@{
+    ViewBag.Title = Strings.Folder + " " + Strings.Search;
+}
+
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    
+
+    <section id="folder-search">
+
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+
+    @if (String.IsNullOrEmpty(Model.ParentFolderId))
+    {
+        <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
+            <i class="icon-abort"></i>
+        </a>
+    }
+    else
+    {
+        <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.ParentFolderId })" title="@Strings.Abort">
+            <i class="icon-abort"></i>
+        </a>
+    }
+
+
+</nav>

@@ -19,21 +19,24 @@ namespace BlackMesa.Website.Main.Areas.Blog
                 name: "EntryWithLanguage",
                 url: "{culture}/Blog/Entry/{id}/{title}",
                 defaults: new { culture = "de-DE", controller = "Entry", action = "Details", title = UrlParameter.Optional},
-                constraints: new { culture = Global.CultureConstraints, id = Global.IdConstraints }
+                constraints: new { culture = Global.CultureConstraints, id = Global.IdConstraints },
+                namespaces: new[] { "BlackMesa.Website.Main.Areas.Blog.Controllers" }
             );
 
             context.MapRoute(
                 name: "TagWithLanguage",
                 url: "{culture}/Blog/Tag/{selectedTag}",
                 defaults: new { culture="de-DE", controller = "Entry", action = "Index", page = UrlParameter.Optional, orderBy = UrlParameter.Optional },
-                constraints: new { culture = Global.CultureConstraints }
+                constraints: new { culture = Global.CultureConstraints },
+                namespaces: new[] { "BlackMesa.Website.Main.Areas.Blog.Controllers" }
             );
 
 
             context.MapRoute(
                 name: "BlogDefault",
                 url: "{culture}/Blog/{controller}/{action}/{id}",
-                defaults: new { culture = "de-DE", controller = "Entry", action = "Index", id = UrlParameter.Optional }
+                defaults: new { culture = "de-DE", controller = "Entry", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "BlackMesa.Website.Main.Areas.Blog.Controllers" }
             );
         }
     }

@@ -342,10 +342,10 @@
   <data name="LearningUnits" xml:space="preserve">
     <value>Learning units</value>
   </data>
-  <data name="TextCard" xml:space="preserve">
+  <data name="IndexCard" xml:space="preserve">
     <value>Text card</value>
   </data>
-  <data name="CreateTextCard" xml:space="preserve">
+  <data name="CreateIndexCard" xml:space="preserve">
     <value>Create text card</value>
   </data>
   <data name="Name" xml:space="preserve">
@@ -374,5 +374,26 @@
   </data>
   <data name="YourFolders" xml:space="preserve">
     <value>Your folders</value>
+  </data>
+  <data name="Abort" xml:space="preserve">
+    <value>Abort</value>
+  </data>
+  <data name="CreateIndexCard" xml:space="preserve">
+    <value>Create index card</value>
+  </data>
+  <data name="IndexCard" xml:space="preserve">
+    <value>Index card</value>
+  </data>
+  <data name="IndexCards" xml:space="preserve">
+    <value>Index cards</value>
+  </data>
+  <data name="Move" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
   </data>
 </root>

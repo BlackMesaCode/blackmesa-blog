@@ -59,13 +59,18 @@
 <nav id="menu">
 
 
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
-        <i class="fi-home"></i>
-    </a>
-
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
-        <i class="fi-arrow-left"></i>
-    </a>
+    @if (String.IsNullOrEmpty(Model.ParentFolderId))
+    {
+        <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
+            <i class="icon-abort"></i>
+        </a>
+    }
+    else
+    {
+        <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.ParentFolderId })" title="@Strings.Abort">
+            <i class="icon-abort"></i>
+        </a>
+    }
 
 
 </nav>

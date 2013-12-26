@@ -29,7 +29,7 @@ namespace BlackMesa.Website.Main.DataLayer
 
         public DbSet<Folder> Learning_Folders { get; set; }
         public DbSet<Unit> Learning_Units { get; set; }
-        public DbSet<TextCard> Learning_TextCards { get; set; }
+        public DbSet<IndexCard> Learning_IndexCards { get; set; }
 
 
 

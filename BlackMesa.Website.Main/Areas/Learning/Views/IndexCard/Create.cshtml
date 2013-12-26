@@ -1,0 +1,135 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard.CreateIndexCardViewModel
+
+@{
+    ViewBag.Title = Strings.IndexCard + " " + Strings.Create;
+}
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    
+
+    <section id="text-card-create">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
+
+
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
+            </div>
+
+            @Html.Partial("_CreateEditLearningUnit")
+
+    
+            <div class="form-element-container">
+                @Html.TextBoxFor(model => model.Question, new { @placeholder = Strings.Question, @autocomplete = "off" })
+            </div>
+
+
+            <div class="form-element-container">
+                @Html.TextAreaFor(model => model.Answer, new { @placeholder = Strings.Answer, @autocomplete = "off" })
+            </div>
+
+            
+            <div class="form-element-container">
+                <button class="gray-darker-hover" type="submit">
+                    @Strings.Save
+                </button>
+            </div>
+    }
+
+    </section>
+
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Abort">
+        <i class="icon-abort"></i>
+    </a>
+
+
+</nav>
+
+@section Scripts {
+    
+    <script type="text/javascript">
+        
+        var observe;
+        if (window.attachEvent) {
+            observe = function (element, event, handler) {
+                element.attachEvent('on' + event, handler);
+            };
+        }
+        else {
+            observe = function (element, event, handler) {
+                element.addEventListener(event, handler, false);
+            };
+        }
+    
+        function AutoSize(elementId) {
+            var text = document.getElementById(elementId);
+            function resize() {
+                text.style.height = 'auto';
+                text.style.height = text.scrollHeight + 'px';
+            }
+            /* 0-timeout to get the already changed text */
+            function delayedResize() {
+                window.setTimeout(resize, 0);
+            }
+            observe(text, 'change', resize);
+            observe(text, 'cut', delayedResize);
+            observe(text, 'paste', delayedResize);
+            observe(text, 'drop', delayedResize);
+            observe(text, 'keydown', delayedResize);
+
+            text.focus();
+            text.select();
+            resize();
+        }
+
+        AutoSize('Answer');
+    
+
+
+        document.querySelector("textarea").addEventListener('keydown', function (e) {
+            if (e.keyCode === 9) { // tab was pressed
+                // get caret position/selection
+                var start = this.selectionStart;
+                var end = this.selectionEnd;
+
+                var target = e.target;
+                var value = target.value;
+
+                // set textarea value to: text before caret + tab + text after caret
+                target.value = value.substring(0, start)
+                    + "\t"
+                    + value.substring(end);
+
+                // put caret at right position again (add one for the tab)
+                this.selectionStart = this.selectionEnd = start + 1;
+
+                // prevent the focus lose
+                e.preventDefault();
+            }
+        }, false);
+
+    </script>
+
+}
