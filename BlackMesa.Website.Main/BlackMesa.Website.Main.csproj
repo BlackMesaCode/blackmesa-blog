@@ -265,6 +265,10 @@
   <ItemGroup>
     <Content Include="App_Start\EntityFrameworkProfilerBootstrapper.vb" />
     <None Include="Areas\Learning\Less\normalize.less" />
+    <Content Include="Areas\Learning\Javascript\create-edit-indexcard.js" />
+    <Content Include="Areas\Learning\Javascript\folder-details.js" />
+    <Content Include="Areas\Learning\Javascript\indexcard-details.js" />
+    <Content Include="Areas\Learning\Javascript\learning.js" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.svg" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\custom\images\address.png" />
@@ -600,6 +604,7 @@
     <Content Include="Areas\Learning\Views\IndexCard\Edit.cshtml" />
     <Content Include="Areas\Learning\Views\IndexCard\Delete.cshtml" />
     <Content Include="Areas\Learning\Views\IndexCard\Details.cshtml" />
+    <Content Include="Areas\Learning\Views\Shared\_Path.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />

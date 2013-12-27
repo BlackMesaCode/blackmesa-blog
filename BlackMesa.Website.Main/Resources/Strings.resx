@@ -343,10 +343,10 @@
     <value>Learning units</value>
   </data>
   <data name="IndexCard" xml:space="preserve">
-    <value>Text card</value>
+    <value>Index card</value>
   </data>
   <data name="CreateIndexCard" xml:space="preserve">
-    <value>Create text card</value>
+    <value>Create index card</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -378,12 +378,6 @@
   <data name="Abort" xml:space="preserve">
     <value>Abort</value>
   </data>
-  <data name="CreateIndexCard" xml:space="preserve">
-    <value>Create index card</value>
-  </data>
-  <data name="IndexCard" xml:space="preserve">
-    <value>Index card</value>
-  </data>
   <data name="IndexCards" xml:space="preserve">
     <value>Index cards</value>
   </data>
@@ -395,5 +389,8 @@
   </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistics</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
   </data>
 </root>

@@ -85,16 +85,30 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult Details(string id)
         {
             var folder = _learningRepo.GetFolder(id);
+            var path = new Dictionary<string, string>();
+            GetFolderPath(folder, ref path);
+            path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
             var viewModel = new FolderDetailsViewModel
             {
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
                 SubFolders = folder.SubFolders.Select(f => CreateFolderListItemViewModel(f)).ToList(),
                 IndexCards = folder.LearningUnits.OfType<IndexCard>(),
+                Path = path,
             };
             return View(viewModel);
         }
 
+
+        private void GetFolderPath(Folder folder, ref  Dictionary<string, string> path)
+        {
+            if (folder.ParentFolder != null)
+            {
+                path.Add(folder.ParentFolder.Name, folder.ParentFolder.Id.ToString());
+                GetFolderPath(folder.ParentFolder, ref path);
+            }
+            
+        }
 
         public ActionResult Create(string parentFolderId)
         {

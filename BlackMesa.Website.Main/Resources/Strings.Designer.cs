@@ -88,6 +88,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die All ähnelt.
+        /// </summary>
+        public static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Answer ähnelt.
         /// </summary>
         public static string Answer {
@@ -230,7 +239,6 @@ namespace BlackMesa.Website.Main.Resources {
                 return ResourceManager.GetString("CreateSubFolder", resourceCulture);
             }
         }
-        
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current password ähnelt.
@@ -798,7 +806,6 @@ namespace BlackMesa.Website.Main.Resources {
                 return ResourceManager.GetString("Text", resourceCulture);
             }
         }
-        
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Search ähnelt.

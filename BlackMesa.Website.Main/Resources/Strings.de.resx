@@ -343,10 +343,10 @@
     <value>Lerneinheiten</value>
   </data>
   <data name="IndexCard" xml:space="preserve">
-    <value>Textkartei</value>
+    <value>Karteikarte</value>
   </data>
   <data name="CreateIndexCard" xml:space="preserve">
-    <value>Textkartei erstellen</value>
+    <value>Karteikarte erstellen</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -378,12 +378,6 @@
   <data name="Abort" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="CreateIndexCard" xml:space="preserve">
-    <value>Karteikarte erstellen</value>
-  </data>
-  <data name="IndexCard" xml:space="preserve">
-    <value>Karteikarte</value>
-  </data>
   <data name="IndexCards" xml:space="preserve">
     <value>Karteikarten</value>
   </data>
@@ -395,5 +389,8 @@
   </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistik</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Alle</value>
   </data>
 </root>

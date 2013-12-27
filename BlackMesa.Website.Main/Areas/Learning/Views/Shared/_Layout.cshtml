@@ -10,7 +10,7 @@
 
     <title>@ViewBag.Title | @WebConfigurationManager.AppSettings.Get("SiteTitle")</title>
 
-    @*<link href="~/Content/normalize/normalize.css" rel="stylesheet" />*@
+    
     <link href="~/Areas/Learning/Less/learning.less" rel="stylesheet" />
 
     @RenderSection("Styles", required: false)
@@ -19,7 +19,7 @@
     <div id="container">
         @RenderBody()
     </div>
-
+    @*<script src="~/Areas/Learning/Javascript/learning.js"></script>*@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
