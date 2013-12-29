@@ -210,8 +210,10 @@
     <Compile Include="Areas\Learning\ViewModels\IndexCard\EditIndexCardViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\LearningUnit\CreateLearningUnitViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\IndexCard\CreateIndexCardViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\QueryBaseViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\QueryResultViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\SetupQueryViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\StartQueryViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\QueryViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -599,11 +601,12 @@
     <Content Include="Areas\Learning\Views\Folder\Search.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Move.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Setup.cshtml" />
-    <Content Include="Areas\Learning\Views\Query\Start.cshtml" />
+    <Content Include="Areas\Learning\Views\Query\Show.cshtml" />
     <Content Include="Areas\Learning\Views\IndexCard\Edit.cshtml" />
     <Content Include="Areas\Learning\Views\IndexCard\Delete.cshtml" />
     <Content Include="Areas\Learning\Views\IndexCard\Details.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_Path.cshtml" />
+    <Content Include="Areas\Learning\Views\Query\Finish.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />

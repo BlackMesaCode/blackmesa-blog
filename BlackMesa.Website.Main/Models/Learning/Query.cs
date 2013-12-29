@@ -15,13 +15,13 @@ namespace BlackMesa.Website.Main.Models.Learning
         public QueryResult Result { get; set; }
 
         [Required]
-        public DateTime QuestionDate { get; set; }
+        public DateTime QuestionTime { get; set; }
 
         [Required]
-        public DateTime AnswerDate { get; set; }
+        public DateTime AnswerTime { get; set; }
 
         [NotMapped]
-        public TimeSpan AnswerDuration { get { return AnswerDate - QuestionDate; } }
+        public TimeSpan AnswerDuration { get { return AnswerTime - QuestionTime; } }
 
         public Guid UnitId { get; set; }
 

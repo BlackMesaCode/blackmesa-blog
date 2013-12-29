@@ -61,6 +61,16 @@ namespace BlackMesa.Website.Main.DataLayer
             return _dbContext.Learning_Folders.Where(f => f.Owner.Id == userId && f.Level == 1).AsEnumerable();
         }
 
+        public void GetAllSubfolders(string folderId, ref List<Folder> subfolders)
+        {
+            var folder = GetFolder(folderId);
+            foreach (var subfolder in folder.SubFolders)
+            {
+                subfolders.Add(subfolder);
+                GetAllSubfolders(subfolder.Id.ToString(), ref subfolders);
+            }
+        }
+
 
         public Folder GetFolder(string folderId)
         {
@@ -130,6 +140,16 @@ namespace BlackMesa.Website.Main.DataLayer
             _dbContext.SaveChanges();
         }
 
+
+        public void GetLearningUnitsIncludingSubfolders(string folderId, ref List<Unit> units)
+        {
+            var folder = GetFolder(folderId);
+            units.AddRange(folder.LearningUnits);
+            foreach (var subfolder in folder.SubFolders)
+            {
+                GetLearningUnitsIncludingSubfolders(subfolder.Id.ToString(), ref units);
+            }
+        }
 
 
         public IndexCard GetIndexCard(string cardId)
