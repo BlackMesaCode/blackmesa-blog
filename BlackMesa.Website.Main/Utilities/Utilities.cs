@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net;
+using System.Reflection;
+using System.Security.Principal;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using System.Web.Script.Serialization;
 
 namespace BlackMesa.Website.Main.Utilities
@@ -16,7 +23,8 @@ namespace BlackMesa.Website.Main.Utilities
 
         public static HtmlHelper GetHtmlHelper(this Controller controller)
         {
-            var viewContext = new ViewContext(controller.ControllerContext, new FakeView(), controller.ViewData, controller.TempData, TextWriter.Null);
+            var viewContext = new ViewContext(controller.ControllerContext, new FakeView(), controller.ViewData,
+                controller.TempData, TextWriter.Null);
             return new HtmlHelper(viewContext, new ViewPage());
         }
 
@@ -29,11 +37,11 @@ namespace BlackMesa.Website.Main.Utilities
         }
 
         private static readonly long DatetimeMinTimeTicks =
-           (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).Ticks;
+            (new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).Ticks;
 
         public static long ToJavaScriptMilliseconds(this DateTime dt)
         {
-            return (long)((dt.ToUniversalTime().Ticks - DatetimeMinTimeTicks) / 10000);
+            return (long) ((dt.ToUniversalTime().Ticks - DatetimeMinTimeTicks)/10000);
         }
 
         public static string ToJson(this object obj)
@@ -90,11 +98,11 @@ namespace BlackMesa.Website.Main.Utilities
                 else if (c >= 'A' && c <= 'Z')
                 {
                     // tricky way to convert to lowercase
-                    sb.Append((char)(c | 32));
+                    sb.Append((char) (c | 32));
                     prevdash = false;
                 }
                 else if (c == ' ' || c == ',' || c == '.' || c == '/' ||
-                    c == '\\' || c == '-' || c == '_' || c == '=')
+                         c == '\\' || c == '-' || c == '_' || c == '=')
                 {
                     if (!prevdash && sb.Length > 0)
                     {
@@ -102,7 +110,7 @@ namespace BlackMesa.Website.Main.Utilities
                         prevdash = true;
                     }
                 }
-                else if ((int)c >= 128)
+                else if ((int) c >= 128)
                 {
                     int prevlen = sb.Length;
                     sb.Append(RemapInternationalCharToAscii(c));
@@ -197,6 +205,53 @@ namespace BlackMesa.Website.Main.Utilities
             {
                 return "";
             }
+        }
+
+
+
+        public static MvcHtmlString RadioButtonForEnum<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression)
+        {
+            var metaData = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
+            var enumType = metaData.ModelType;
+            var names = Enum.GetNames(enumType);
+            
+            var sb = new StringBuilder();
+            foreach (var name in names)
+            {
+                var localizedName = name;
+                
+                MemberInfo member = enumType.GetMember(name)[0];
+                var attrs = member.GetCustomAttributes(typeof(DisplayAttribute), false);
+
+                if (attrs.Any())
+                {
+                    localizedName = ((DisplayAttribute)attrs[0]).Name;
+
+                    if (((DisplayAttribute)attrs[0]).ResourceType != null)
+                    {
+                        localizedName = ((DisplayAttribute)attrs[0]).GetName();
+                    }
+                    
+                }
+
+                var id = string.Format(
+                    "{0}_{1}_{2}",
+                    htmlHelper.ViewData.TemplateInfo.HtmlFieldPrefix,
+                    metaData.PropertyName,
+                    name
+                    );
+
+                var radio = htmlHelper.RadioButtonFor(expression, name, new { id = id }).ToHtmlString();
+                sb.AppendFormat(
+                    "<label class=\"tile gray-light-hover\" for=\"{0}\">{2} {1}</label>",
+                    id,
+                    HttpUtility.HtmlEncode(localizedName),
+                    radio
+                    );
+            }
+            return MvcHtmlString.Create(sb.ToString());
         }
 
 

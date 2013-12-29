@@ -1,0 +1,92 @@
+﻿@using BlackMesa.Website.Main.Resources
+@using BlackMesa.Website.Main.Utilities
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Query.SetupQueryViewModel
+
+@{
+    ViewBag.Title = Strings.Query + " " + Strings.Setup;
+}
+
+<div id="content">
+
+    <section id="query-setup">
+
+        @using (Html.BeginForm("Start", "Query"))
+        {
+            @Html.AntiForgeryToken()
+            
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
+            </div>
+
+            <div class="tile gray-dark">
+                <h3>@Strings.SelectedFolders</h3>
+            </div>
+            
+
+            foreach (var folder in Model.SelectedFolders)
+            {
+                <div class="tile gray-light">
+                    <i class="icon-folder"> </i>@folder.Name
+                </div>
+            }
+
+            //@Html.LabelFor(model => model.InludeSubfolders, new { @class="tile gray-light-hover" })
+            <label class="tile gray-light-hover" for="test">
+                @Html.CheckBoxFor(model => model.InludeSubfolders, new { @id = "test"}) @Strings.IncludeSubfolders
+            </label>
+
+            <div class="tile gray-dark">
+                <h3>@Html.LabelFor(model => Model.OrderType)</h3>
+            </div>
+            
+
+            @Html.RadioButtonForEnum(model => model.OrderType)
+
+            <div class="tile gray-dark">
+                <h3>@Html.LabelFor(model => Model.QueryType)</h3>
+            </div>
+            
+            
+            @Html.RadioButtonForEnum(model => model.QueryType)
+            
+
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
+
+            <div class="form-element-container">
+                <button class="gray-dark-hover" type="submit">
+                    @Strings.StartQuery
+                </button>
+            </div>
+        }
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+
+    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
+        <i class="icon-home"></i>
+    </a>
+
+</nav>
+
+
+@section Scripts {
+
+    
+
+}
+
+

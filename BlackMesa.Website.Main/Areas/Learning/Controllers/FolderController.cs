@@ -122,6 +122,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreateFolderViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -148,6 +149,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(EditFolderViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -176,6 +178,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(DeleteFolderViewModel viewModel)
         {
             if (ModelState.IsValid)

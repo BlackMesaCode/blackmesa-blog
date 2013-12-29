@@ -393,4 +393,46 @@
   <data name="All" xml:space="preserve">
     <value>All</value>
   </data>
+  <data name="Query" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="Setup" xml:space="preserve">
+    <value>Setup</value>
+  </data>
+  <data name="SelectedFolder" xml:space="preserve">
+    <value>Selected folder</value>
+  </data>
+  <data name="SelectedFolders" xml:space="preserve">
+    <value>Selected folders</value>
+  </data>
+  <data name="IncludeSubfolders" xml:space="preserve">
+    <value>Include subfolders</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="QueryType" xml:space="preserve">
+    <value>Query type</value>
+  </data>
+  <data name="StartQuery" xml:space="preserve">
+    <value>Start query</value>
+  </data>
+  <data name="QueryTypeLeitner" xml:space="preserve">
+    <value>Leitner Algorithm</value>
+  </data>
+  <data name="QueryTypeNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="QueryTypeSinglePass" xml:space="preserve">
+    <value>Single pass</value>
+  </data>
+  <data name="OrderTypeOrdered" xml:space="preserve">
+    <value>Ordered</value>
+  </data>
+  <data name="OrderTypeReversed" xml:space="preserve">
+    <value>Reversed</value>
+  </data>
+  <data name="OrderTypeShuffled" xml:space="preserve">
+    <value>Shuffled</value>
+  </data>
 </root>

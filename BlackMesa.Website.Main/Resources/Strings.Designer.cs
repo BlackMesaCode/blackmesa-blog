@@ -376,6 +376,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Include subfolders ähnelt.
+        /// </summary>
+        public static string IncludeSubfolders {
+            get {
+                return ResourceManager.GetString("IncludeSubfolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Index card ähnelt.
         /// </summary>
         public static string IndexCard {
@@ -538,6 +547,42 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Order ähnelt.
+        /// </summary>
+        public static string Order {
+            get {
+                return ResourceManager.GetString("Order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ordered ähnelt.
+        /// </summary>
+        public static string OrderTypeOrdered {
+            get {
+                return ResourceManager.GetString("OrderTypeOrdered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reversed ähnelt.
+        /// </summary>
+        public static string OrderTypeReversed {
+            get {
+                return ResourceManager.GetString("OrderTypeReversed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Shuffled ähnelt.
+        /// </summary>
+        public static string OrderTypeShuffled {
+            get {
+                return ResourceManager.GetString("OrderTypeShuffled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Password ähnelt.
         /// </summary>
         public static string Password {
@@ -597,6 +642,51 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Published {
             get {
                 return ResourceManager.GetString("Published", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Query ähnelt.
+        /// </summary>
+        public static string Query {
+            get {
+                return ResourceManager.GetString("Query", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Query type ähnelt.
+        /// </summary>
+        public static string QueryType {
+            get {
+                return ResourceManager.GetString("QueryType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Leitner Algorithm ähnelt.
+        /// </summary>
+        public static string QueryTypeLeitner {
+            get {
+                return ResourceManager.GetString("QueryTypeLeitner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Normal ähnelt.
+        /// </summary>
+        public static string QueryTypeNormal {
+            get {
+                return ResourceManager.GetString("QueryTypeNormal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Single pass ähnelt.
+        /// </summary>
+        public static string QueryTypeSinglePass {
+            get {
+                return ResourceManager.GetString("QueryTypeSinglePass", resourceCulture);
             }
         }
         
@@ -745,6 +835,24 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Selected folder ähnelt.
+        /// </summary>
+        public static string SelectedFolder {
+            get {
+                return ResourceManager.GetString("SelectedFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Selected folders ähnelt.
+        /// </summary>
+        public static string SelectedFolders {
+            get {
+                return ResourceManager.GetString("SelectedFolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set password for local account ähnelt.
         /// </summary>
         public static string SetPassForLocalAccount {
@@ -759,6 +867,24 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Setup ähnelt.
+        /// </summary>
+        public static string Setup {
+            get {
+                return ResourceManager.GetString("Setup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start query ähnelt.
+        /// </summary>
+        public static string StartQuery {
+            get {
+                return ResourceManager.GetString("StartQuery", resourceCulture);
             }
         }
         
