@@ -23,21 +23,32 @@
         @if (!String.IsNullOrEmpty(Model.Hint))
         {
         <div class="tile gray-light">
-            <h1>@Model.Hint</h1>
+            @Model.Hint
         </div>
         }
             
         @if (!String.IsNullOrEmpty(Model.CodeSnipped))
         {
             <div class="tile gray-light">
-                <h1>@Model.CodeSnipped</h1>
+                @Model.CodeSnipped
             </div>
         }
 
         @if (!String.IsNullOrEmpty(Model.ImageUrl))
         {
             <div class="tile gray-light">
-                <h1>@Model.ImageUrl</h1>
+                @Model.ImageUrl
+            </div>
+        }
+        
+        <div class="tile gray-dark">
+            <h3>@Strings.QueryHistory</h3>
+        </div>
+        
+        @foreach (var query in Model.Queries)
+        {
+            <div class="tile gray-light">
+                @query.Result vom @query.QuestionTime
             </div>
         }
 

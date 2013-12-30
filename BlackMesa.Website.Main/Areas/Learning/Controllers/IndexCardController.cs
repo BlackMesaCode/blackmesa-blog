@@ -32,6 +32,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Hint = indexCard.Hint,
                 CodeSnipped = indexCard.CodeSnipped,
                 ImageUrl = indexCard.ImageUrl,
+                Queries = _learningRepo.GetQueries(id),
             };
 
             return View(viewModel);

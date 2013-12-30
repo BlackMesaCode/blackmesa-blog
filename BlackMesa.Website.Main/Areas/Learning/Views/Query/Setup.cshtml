@@ -23,13 +23,11 @@
                 <h3>@Strings.SelectedFolders</h3>
             </div>
             
-
-            foreach (var folder in Model.SelectedFolders)
-            {
-                <div class="tile gray-light">
-                    <i class="icon-folder"> </i>@folder.Name
-                </div>
-            }
+            <div class="tile gray-light">
+                <i class="icon-folder"> </i>@Model.SelectedFolderName
+            </div>
+            
+            @Html.HiddenFor(model => model.SelectedFolderId)
 
             //@Html.LabelFor(model => model.InludeSubfolders, new { @class="tile gray-light-hover" })
             <label class="tile gray-light-hover" for="test">

@@ -8,6 +8,7 @@ using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
 using BlackMesa.Website.Main.Utilities;
+using dotless.Core.Utils;
 
 namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 {
@@ -19,45 +20,34 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult Setup(string folderId)
         {
             var folder = _learningRepo.GetFolder(folderId);
-            var selectedFolders = new List<Folder> { folder };
 
             var viewModel = new SetupQueryViewModel
             {
                 InludeSubfolders = true,
                 OrderType = OrderType.Ordered,
                 QueryType = QueryType.Normal,
-                SelectedFolders = selectedFolders,
+                SelectedFolderId = folder.Id.ToString(),
+                SelectedFolderName = folder.Name,
             };
 
             return View(viewModel);
 
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Setup(SetupQueryViewModel viewModel)
-        {
-            
-
-            return View();
-
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Start(SetupQueryViewModel viewModel)
         {
             var selectedLearningUnits = new List<Unit>();
+            var folder = _learningRepo.GetFolder(viewModel.SelectedFolderId);
 
             // Selection
+            if (viewModel.InludeSubfolders)
+                _learningRepo.GetLearningUnitsIncludingSubfolders(folder.Id.ToString(), ref selectedLearningUnits);
+            else
+                selectedLearningUnits.AddRange(_learningRepo.GetFolder(folder.Id.ToString()).LearningUnits);
 
-            foreach (var folder in viewModel.SelectedFolders)
-            {
-                if (viewModel.InludeSubfolders)
-                    _learningRepo.GetLearningUnitsIncludingSubfolders(folder.Id.ToString(), ref selectedLearningUnits);
-                else
-                    selectedLearningUnits.AddRange(_learningRepo.GetFolder(folder.Id.ToString()).LearningUnits);
-            }
 
             // Ordering
             selectedLearningUnits.Reverse(); // We reverse order by default as we enumerate backwards
@@ -67,74 +57,84 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             else if (viewModel.OrderType == OrderType.Shuffled)
                 selectedLearningUnits.Shuffle();
 
-            var initialQueryResult = new QueryResultViewModel
+            var firstUnit = _learningRepo.GetIndexCard(selectedLearningUnits.Last().Id.ToString());
+
+            var initialQueryViewModel = new QueryViewModel
             {
-                SelectedLearningUnits = selectedLearningUnits.Select(u => u.Id.ToString()).ToList(),
-                RemainingLearningUnits = selectedLearningUnits.Select(u => u.Id.ToString()).ToList(),
-                Position = selectedLearningUnits.Count,
+                FolderId = viewModel.SelectedFolderId,
+                SelectedLearningUnits = selectedLearningUnits.Select(u => u.Id.ToString()).JoinStrings(","),
+                RemainingLearningUnits = selectedLearningUnits.Select(u => u.Id.ToString()).JoinStrings(","),
+                Position = selectedLearningUnits.Count-1,
                 QueryType = viewModel.QueryType,
-                IsInitialQuery = true,
+
+                QuestionTime = DateTime.Now,
+
+                Question = firstUnit.Question,
+                Answer = firstUnit.Answer,
+                Hint = firstUnit.Hint,
+                CodeSnipped = firstUnit.CodeSnipped,
+                ImageUrl = firstUnit.ImageUrl,
             };
 
-            return RedirectToAction("Show", new { initialQueryResult });
+            return View("Show", initialQueryViewModel);
         }
 
 
+        
         [HttpPost]
-        public ActionResult Show(QueryResultViewModel result)
+        [ValidateAntiForgeryToken]
+        public ActionResult Show(QueryViewModel resultViewModel)
         {
+            ModelState.Clear();
             var currentTime = DateTime.Now;
+            var remainingLearningUnits = resultViewModel.RemainingLearningUnits.Split(new[] {','}).ToList();
 
-            if (!result.IsInitialQuery) // if we already have an answered index card
+            // Parsing "old" query result
+
+            var oldUnitId = remainingLearningUnits[resultViewModel.Position];
+            var oldIndexCard = _learningRepo.GetIndexCard(oldUnitId);
+
+            _learningRepo.AddQuery(oldUnitId, oldIndexCard, resultViewModel.QuestionTime, currentTime, resultViewModel.Result);
+
+
+            // Adjusting RemainingIndexCards
+
+            if (resultViewModel.QueryType == QueryType.Normal)
             {
-                // Parsing "old" query result
-
-                var oldUnitId = result.RemainingLearningUnits[result.Position];
-                var oldIndexCard = _learningRepo.GetIndexCard(oldUnitId);
-
-                var query = new Query
-                {
-                    Unit = oldIndexCard,
-                    UnitId = new Guid(oldUnitId),
-                    QuestionTime = result.QuestionTime,
-                    AnswerTime = currentTime,
-                    Result = result.Result,
-                };
-
-                oldIndexCard.Queries.Add(query);
-
-
-                // Adjusting RemainingIndexCards
-
-                if (result.QueryType == QueryType.Normal)
-                {
-                    if (result.Result == QueryResult.Correct)
-                        result.RemainingLearningUnits.Remove(oldUnitId);
-                }
+                if (resultViewModel.Result == QueryResult.Correct)
+                    remainingLearningUnits.Remove(oldUnitId);
             }
 
+            if (resultViewModel.QueryType == QueryType.SinglePass)
+            {
+                remainingLearningUnits.Remove(oldUnitId);
+            }
+
+
             // Decreasing position
-            var nextPosition = result.Position - 1;
+            var nextPosition = resultViewModel.Position - 1;
 
 
             // If there are remaining learning units
-            if (result.RemainingLearningUnits.Count > 0)
+            if (remainingLearningUnits.Count > 0)
             {
                 // if query type is normal and we reached the end of a cycle
-                if (result.QueryType == QueryType.Normal && nextPosition == -1 && result.RemainingLearningUnits.Count > 0) 
-                    result.Position = result.RemainingLearningUnits.Count - 1;  // resetting the position for another cycle
+                if (resultViewModel.QueryType == QueryType.Normal && nextPosition == -1 &&
+                    remainingLearningUnits.Count > 0)
+                    nextPosition = remainingLearningUnits.Count - 1; // resetting the position for another cycle
 
 
                 // Preparing new query viewmodel
 
-                var nextUnitId = result.RemainingLearningUnits[nextPosition];
+                var nextUnitId = remainingLearningUnits[nextPosition];
                 var nextIndexCard = _learningRepo.GetIndexCard(nextUnitId);
 
 
                 var viewModel = new QueryViewModel
                 {
-                    SelectedLearningUnits = result.SelectedLearningUnits,
-                    RemainingLearningUnits = result.RemainingLearningUnits,
+                    FolderId = resultViewModel.FolderId,
+                    SelectedLearningUnits = resultViewModel.SelectedLearningUnits,
+                    RemainingLearningUnits = remainingLearningUnits.JoinStrings(","),
                     Position = nextPosition,
                     QuestionTime = DateTime.Now,
 
@@ -145,22 +145,31 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                     ImageUrl = nextIndexCard.ImageUrl,
                 };
 
-                if (result.IsInitialQuery)
-                    viewModel.IsInitialQuery = false;
-
                 return View(viewModel);
 
             }
             else // no more remaining learning units
-                return RedirectToAction("Finish", new { result });
+            {
+                var selectedLearningUnits = resultViewModel.SelectedLearningUnits.Split(new[] { ',' }).ToList();
+                var queries = new List<Query>();
+                foreach (var unitId in selectedLearningUnits)
+                {
+                    queries.Add(_learningRepo.GetIndexCard(unitId).Queries.Last());
+                }
+
+                var viewModel = new QueryCompletedViewModel
+                {
+                    FolderId = resultViewModel.FolderId,
+                    TotalCount = selectedLearningUnits.Count,
+                    CorrectCount = queries.Count(q => q.Result == QueryResult.Correct),
+                    PartlyCorrectCount = queries.Count(q => q.Result == QueryResult.PartlyCorrect),
+                    WrongCount = queries.Count(q => q.Result == QueryResult.Wrong),
+                };
+                return View("Completed", viewModel);
+            }
 
         }
 
-
-        public ActionResult Finish(QueryResultViewModel result)
-        {
-            return View();
-        }
 
     }
 }

@@ -210,8 +210,7 @@
     <Compile Include="Areas\Learning\ViewModels\IndexCard\EditIndexCardViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\LearningUnit\CreateLearningUnitViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\IndexCard\CreateIndexCardViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\QueryBaseViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\QueryResultViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\QueryCompletedViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\SetupQueryViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\QueryViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -225,9 +224,9 @@
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="DataLayer\DbContext.cs" />
     <Compile Include="DataLayer\LearningRepository.cs" />
-    <Compile Include="Migrations\201312261910503_Init.cs" />
-    <Compile Include="Migrations\201312261910503_Init.Designer.cs">
-      <DependentUpon>201312261910503_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201312292049280_Init.cs" />
+    <Compile Include="Migrations\201312292049280_Init.Designer.cs">
+      <DependentUpon>201312292049280_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
@@ -268,6 +267,7 @@
     <None Include="Areas\Learning\Less\normalize.less" />
     <Content Include="Areas\Learning\Javascript\create-edit-indexcard.js" />
     <Content Include="Areas\Learning\Javascript\folder-details.js" />
+    <Content Include="Areas\Learning\Javascript\query-show.js" />
     <Content Include="Areas\Learning\Javascript\indexcard-details.js" />
     <Content Include="Areas\Learning\Javascript\learning.js" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.svg" />
@@ -606,7 +606,7 @@
     <Content Include="Areas\Learning\Views\IndexCard\Delete.cshtml" />
     <Content Include="Areas\Learning\Views\IndexCard\Details.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_Path.cshtml" />
-    <Content Include="Areas\Learning\Views\Query\Finish.cshtml" />
+    <Content Include="Areas\Learning\Views\Query\Completed.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -697,8 +697,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312261910503_Init.resx">
-      <DependentUpon>201312261910503_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312292049280_Init.resx">
+      <DependentUpon>201312292049280_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

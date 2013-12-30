@@ -1,1 +1,87 @@
-﻿
+﻿@using BlackMesa.Website.Main.Resources
+@using BlackMesa.Website.Main.Utilities
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Query.QueryViewModel
+
+@{
+    ViewBag.Title = Model.Question;
+}
+
+<div id="content">
+
+    <section id="query-show">
+
+        @using (Html.BeginForm("Show", "Query"))
+        {
+            @Html.AntiForgeryToken()
+            
+            @Html.HiddenFor(model => model.Position)
+            
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
+            
+            @Html.HiddenFor(model => model.FolderId)
+            @Html.HiddenFor(model => model.SelectedLearningUnits)
+            @Html.HiddenFor(model => model.RemainingLearningUnits)
+            
+            @Html.HiddenFor(model => model.QueryType)
+            
+            @Html.HiddenFor(model => model.QuestionTime)
+            
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
+            </div>
+
+            <a id="show-answer" href="#">
+                <div class="tile gray-light-hover">
+                    <h3>@Strings.ShowAnswer</h3>
+                </div>
+            </a>
+
+            <div id="answer">
+
+                <div class="tile gray-light">
+                    <pre>@Model.Answer</pre>
+                </div>
+
+                <div class="tile gray-dark">
+                    <h3>@Strings.Result</h3>
+                </div>
+
+                @Html.RadioButtonForEnum(model => model.Result)
+
+                <div class="form-element-container">
+                    <button class="gray-dark-hover" type="submit">
+                        @Strings.Next
+                    </button>
+                </div>
+            </div>
+        }
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Abort">
+        <i class="icon-abort"></i>
+    </a>
+
+</nav>
+
+
+@section Scripts {
+    <script src="~/Areas/Learning/Javascript/query-show.js"></script>
+}
+
+

@@ -435,4 +435,37 @@
   <data name="OrderTypeShuffled" xml:space="preserve">
     <value>Zufällig</value>
   </data>
+  <data name="QueryResultCorrect" xml:space="preserve">
+    <value>Richtig</value>
+  </data>
+  <data name="QueryResultPartlyCorrect" xml:space="preserve">
+    <value>Teilweise richtig</value>
+  </data>
+  <data name="QueryResultWrong" xml:space="preserve">
+    <value>Falsch</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Ergebnis</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="ShowAnswer" xml:space="preserve">
+    <value>Antwort anzeigen</value>
+  </data>
+  <data name="QueryHistory" xml:space="preserve">
+    <value>Abfrageverlauf</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Abgeschlossen</value>
+  </data>
+  <data name="FirstPassResults" xml:space="preserve">
+    <value>Ergebnisse des ersten Durchlaufs</value>
+  </data>
+  <data name="QueriedUnits" xml:space="preserve">
+    <value>Abgefragte Einheiten</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Ergebnisse</value>
+  </data>
 </root>

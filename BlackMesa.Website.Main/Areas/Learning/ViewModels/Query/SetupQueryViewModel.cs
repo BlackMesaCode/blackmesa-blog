@@ -9,8 +9,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
 {
     public class SetupQueryViewModel
     {
-        public List<BlackMesa.Website.Main.Models.Learning.Folder> SelectedFolders { get; set; }
-
+        public string SelectedFolderId { get; set; }
+        public string SelectedFolderName { get; set; }
         public bool InludeSubfolders { get; set; }
 
         [Display(ResourceType = typeof(Strings), Name = "Order")]

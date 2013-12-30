@@ -133,8 +133,8 @@ namespace BlackMesa.Website.Main.Migrations
                     {
                         Id = c.Guid(nullable: false, identity: true),
                         Result = c.Int(nullable: false),
-                        QuestionDate = c.DateTime(nullable: false),
-                        AnswerDate = c.DateTime(nullable: false),
+                        QuestionTime = c.DateTime(nullable: false),
+                        AnswerTime = c.DateTime(nullable: false),
                         UnitId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

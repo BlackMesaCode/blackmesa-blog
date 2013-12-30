@@ -169,6 +169,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Completed ähnelt.
+        /// </summary>
+        public static string Completed {
+            get {
+                return ResourceManager.GetString("Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Confirm password ähnelt.
         /// </summary>
         public static string ConfirmPassword {
@@ -327,6 +336,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string FilterByTag {
             get {
                 return ResourceManager.GetString("FilterByTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Results of the first pass ähnelt.
+        /// </summary>
+        public static string FirstPassResults {
+            get {
+                return ResourceManager.GetString("FirstPassResults", resourceCulture);
             }
         }
         
@@ -529,6 +547,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Next ähnelt.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die No entries found ähnelt.
         /// </summary>
         public static string NoEntriesFound {
@@ -646,11 +673,56 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Queried units ähnelt.
+        /// </summary>
+        public static string QueriedUnits {
+            get {
+                return ResourceManager.GetString("QueriedUnits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Query ähnelt.
         /// </summary>
         public static string Query {
             get {
                 return ResourceManager.GetString("Query", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Query history ähnelt.
+        /// </summary>
+        public static string QueryHistory {
+            get {
+                return ResourceManager.GetString("QueryHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Correct ähnelt.
+        /// </summary>
+        public static string QueryResultCorrect {
+            get {
+                return ResourceManager.GetString("QueryResultCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Partly correct ähnelt.
+        /// </summary>
+        public static string QueryResultPartlyCorrect {
+            get {
+                return ResourceManager.GetString("QueryResultPartlyCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wrong ähnelt.
+        /// </summary>
+        public static string QueryResultWrong {
+            get {
+                return ResourceManager.GetString("QueryResultWrong", resourceCulture);
             }
         }
         
@@ -741,6 +813,24 @@ namespace BlackMesa.Website.Main.Resources {
         public static string ReparseAll {
             get {
                 return ResourceManager.GetString("ReparseAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Result ähnelt.
+        /// </summary>
+        public static string Result {
+            get {
+                return ResourceManager.GetString("Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Results ähnelt.
+        /// </summary>
+        public static string Results {
+            get {
+                return ResourceManager.GetString("Results", resourceCulture);
             }
         }
         
@@ -876,6 +966,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Setup {
             get {
                 return ResourceManager.GetString("Setup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Show answer ähnelt.
+        /// </summary>
+        public static string ShowAnswer {
+            get {
+                return ResourceManager.GetString("ShowAnswer", resourceCulture);
             }
         }
         

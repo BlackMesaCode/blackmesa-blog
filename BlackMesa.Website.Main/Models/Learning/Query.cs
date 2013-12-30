@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BlackMesa.Website.Main.Resources;
 
 namespace BlackMesa.Website.Main.Models.Learning
 {
@@ -31,8 +32,11 @@ namespace BlackMesa.Website.Main.Models.Learning
 
     public enum QueryResult
     {
-        Wrong,
-        PartlyCorrect,
+        [Display(Name = "QueryResultCorrect", ResourceType = typeof(Strings))]
         Correct,
+        [Display(Name = "QueryResultPartlyCorrect", ResourceType = typeof(Strings))]
+        PartlyCorrect,
+        [Display(Name = "QueryResultWrong", ResourceType = typeof(Strings))]
+        Wrong,
     }
 }

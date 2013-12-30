@@ -1,0 +1,60 @@
+﻿@using BlackMesa.Website.Main.Resources
+@using BlackMesa.Website.Main.Utilities
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Query.QueryCompletedViewModel
+
+@{
+    ViewBag.Title = Strings.Query + " " + Strings.Completed;
+}
+
+<div id="content">
+
+    <section id="query-completed">
+        
+        <div class="tile gray-darker">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        
+        <div class="tile gray-light">
+            @Strings.QueriedUnits @Model.TotalCount
+        </div>
+        
+        <div class="tile gray-dark">
+            @Strings.Results
+        </div>
+        
+        <div class="tile gray-light">
+            @Strings.QueryResultCorrect: @Model.CorrectCount
+        </div>
+        
+        <div class="tile gray-light">
+            @Strings.QueryResultPartlyCorrect: @Model.PartlyCorrectCount
+        </div>
+
+        <div class="tile gray-light">
+            @Strings.QueryResultWrong: @Model.WrongCount
+        </div> 
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Home">
+        <i class="icon-home"></i>
+    </a>
+
+</nav>
+
+
+@section Scripts {
+    
+}
+
+
