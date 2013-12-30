@@ -96,27 +96,32 @@
 @* ------------------- Menu ------------------- *@
 
 <nav id="menu">
-
-
-    <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Home">
-        <i class="icon-home"></i>
-    </a>
-
-    @*<a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.YourFolders">
-        <i class="icon-list"></i>
-    </a>*@
-    
-    <a id="folder-submenu-tile" class="submenu-tile red-hover" href="#" title="@Strings.Folder">
-        <i class="icon-folder"></i>
-    </a>
-
-    <a id="create-submenu-tile" class="submenu-tile red-hover" href="#" title="@Strings.Create">
-        <i class="icon-plus"></i>
-    </a>
     
     <a class="red-hover" href="@Url.Action("Setup", "Query", new { folderId = Model.Id })" title="@Strings.StartQuery">
         <i class="icon-rocket"></i>
     </a>
+    
+    <a class="red-hover" href="@Url.Action("Create", "IndexCard", new { folderId = Model.Id })" title="@Strings.CreateIndexCard">
+        <i class="icon-plus prefix-icon"></i><i class="icon-indexcard"></i>
+    </a>
+
+    <a class="red-hover" href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id })" title="@Strings.CreateSubFolder">
+        <i class="icon-plus prefix-icon"></i><i class="icon-folder"></i>
+    </a>
+    
+    <a class="red-hover" href="@Url.Action("Options", "Folder", new { id = Model.Id })" title="@Strings.Options">
+        <i class="icon-wrench"></i>
+    </a>
+
+    @*<a id="folder-submenu-tile" class="submenu-tile red-hover" href="#" title="@Strings.Folder">
+        <i class="icon-folder"></i>
+    </a>*@
+
+    @*<a id="create-submenu-tile" class="submenu-tile red-hover" href="#" title="@Strings.Create">
+        <i class="icon-plus"></i>
+    </a>*@
+    
+
 
 
 </nav>

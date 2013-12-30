@@ -72,10 +72,9 @@
 @* ------------------- Menu ------------------- *@
 
 <nav id="menu">
-
-
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Home">
-        <i class="icon-home"></i>
+    
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.SelectedFolderId })" title="@Strings.Back">
+        <i class="icon-back"></i>
     </a>
 
 </nav>

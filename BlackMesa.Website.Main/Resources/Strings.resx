@@ -468,4 +468,19 @@
   <data name="Results" xml:space="preserve">
     <value>Results</value>
   </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Examine" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="PasteSelectedItems" xml:space="preserve">
+    <value>Paste selected items here</value>
+  </data>
+  <data name="YourSelectedItems" xml:space="preserve">
+    <value>Your selected items</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
 </root>

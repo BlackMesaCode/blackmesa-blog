@@ -331,6 +331,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search ähnelt.
+        /// </summary>
+        public static string Examine {
+            get {
+                return ResourceManager.GetString("Examine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Filter by tag ähnelt.
         /// </summary>
         public static string FilterByTag {
@@ -574,6 +583,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Options ähnelt.
+        /// </summary>
+        public static string Options {
+            get {
+                return ResourceManager.GetString("Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Order ähnelt.
         /// </summary>
         public static string Order {
@@ -633,6 +651,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string PasswordsDontMatch {
             get {
                 return ResourceManager.GetString("PasswordsDontMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Paste selected items here ähnelt.
+        /// </summary>
+        public static string PasteSelectedItems {
+            get {
+                return ResourceManager.GetString("PasteSelectedItems", resourceCulture);
             }
         }
         
@@ -925,6 +952,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Select ähnelt.
+        /// </summary>
+        public static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Selected folder ähnelt.
         /// </summary>
         public static string SelectedFolder {
@@ -1110,6 +1146,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string YourName {
             get {
                 return ResourceManager.GetString("YourName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Your selected items ähnelt.
+        /// </summary>
+        public static string YourSelectedItems {
+            get {
+                return ResourceManager.GetString("YourSelectedItems", resourceCulture);
             }
         }
     }

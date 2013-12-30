@@ -56,54 +56,29 @@
 </div>
 
 
-@* ------------------- Submenu ------------------- *@
+@* ------------------- Menu ------------------- *@
 
-<nav id="indexcard-submenu" class="submenu">
+<nav id="menu"> 
 
     <a class="red-hover" href="@Url.Action("Edit", "IndexCard", new { id = Model.Id })" title="@Strings.Edit">
         <i class="icon-edit"></i>
     </a>
 
-    <a class="red-hover" href="@Url.Action("Move", "IndexCard", new { id = Model.Id })" title="@Strings.Move">
-        <i class="icon-move"></i>
+    <a class="red-hover" href="@Url.Action("Select", "IndexCard", new { id = Model.Id })" title="@Strings.Select">
+        <i class="icon-select"></i>
     </a>
 
     <a class="red-hover" href="@Url.Action("Delete", "IndexCard", new { id = Model.Id })" title="@Strings.Delete">
         <i class="icon-delete"></i>
     </a>
-
-    <a class="back-tile gray-light-hover" href="#" title="@Strings.Back">
-        <i class="icon-back"></i>
-    </a>
-
-</nav>
-
-
-
-
-@* ------------------- Menu ------------------- *@
-
-<nav id="menu">
-    
-    <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Home">
-        <i class="icon-home"></i>
-    </a>
-    
-
-    <a id="indexcard-submenu-tile" class="red-hover" href="#" title="@Strings.IndexCard">
-        <i class="icon-indexcard"></i>
-    </a>
-
     
     <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Back">
         <i class="icon-back"></i>
     </a>
 
-   
-
 </nav>
 
 
 @section Scripts {
-    <script src="~/Areas/Learning/Javascript/indexcard-details.js"></script>
+    
 }

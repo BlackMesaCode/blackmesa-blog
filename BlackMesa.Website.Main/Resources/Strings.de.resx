@@ -271,7 +271,7 @@
     <value>Text</value>
   </data>
   <data name="ToSearch" xml:space="preserve">
-    <value>Search</value>
+    <value>Suchen</value>
   </data>
   <data name="UseLocalAccount" xml:space="preserve">
     <value>Lokales Konto verwenden</value>
@@ -467,5 +467,20 @@
   </data>
   <data name="Results" xml:space="preserve">
     <value>Ergebnisse</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="Examine" xml:space="preserve">
+    <value>Durchsuchen</value>
+  </data>
+  <data name="PasteSelectedItems" xml:space="preserve">
+    <value>Ausgewählte Elemente hier einfügen</value>
+  </data>
+  <data name="YourSelectedItems" xml:space="preserve">
+    <value>Deine ausgewählten Elemente</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Auswählen</value>
   </data>
 </root>

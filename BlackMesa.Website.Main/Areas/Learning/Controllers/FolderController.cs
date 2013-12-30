@@ -197,6 +197,21 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         }
 
+        public ActionResult Options(string id)
+        {
+            var folder = _learningRepo.GetFolder(id);
+            var path = new Dictionary<string, string>();
+            GetFolderPath(folder, ref path);
+            path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
+            var viewModel = new FolderOptionsViewModel
+            {
+                Id = folder.Id.ToString(),
+                Name = folder.Name,
+                Path = path,
+            };
+            return View(viewModel);
+        }
+
 
         public ActionResult Move(string id)
         {

@@ -32,7 +32,15 @@
                 </div>
             </a>
         }
-
+        
+        @if (Model.Folders.Count == 0)
+        {
+            <a href="@Url.Action("Create")">
+                <div class="tile gray-light-hover">
+                    <i class="icon-plus"> </i>@Strings.CreateFolder
+                </div>
+            </a>
+        }
 
     </section>
 </div>
@@ -42,19 +50,19 @@
 @* ------------------- Menu ------------------- *@
 
 <nav id="menu">
-    
-    <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Home">
-        <i class="icon-home"></i>
-    </a>
-    
 
     <a class="red-hover" href="@Url.Action("Create")" title="@Strings.CreateFolder">
-        <i class="icon-folder-add"></i>
+        <i class="icon-plus prefix-icon"></i><i class="icon-folder"></i>
     </a>
 
     
-    <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Back">
-        <i class="icon-back"></i>
+    <a class="red-hover" href="@Url.Action("Stats", "Home")" title="@Strings.Statistics">
+        <i class="icon-stats"></i>
+    </a>
+
+
+    <a class="red-hover" href="@Url.Action("Settings", "Home")" title="@Strings.Settings">
+        <i class="icon-cogs"></i>
     </a>
 
    

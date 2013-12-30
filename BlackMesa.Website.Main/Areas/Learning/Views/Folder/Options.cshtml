@@ -1,0 +1,69 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.FolderOptionsViewModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    <section id="folder-options">
+        
+        @Html.Partial("_Path", Model.Path)
+
+        <div class="tile gray-darker">
+            <h1>@ViewBag.Title</h1>
+        </div>
+
+        <a href="@Url.Action("Edit", "Folder", new { id = Model.Id })">
+            <div class="tile gray-light-hover">
+                <i class="icon-edit"></i>@Strings.Edit
+            </div>
+        </a>
+
+        <a href="@Url.Action("Search", "Folder", new { id = Model.Id })">
+            <div class="tile gray-light-hover">
+                <i class="icon-search"></i>@Strings.Examine
+            </div>
+        </a>
+
+        <a href="@Url.Action("Delete", "Folder", new { id = Model.Id })">
+            
+            <div class="tile gray-light-hover">
+                <i class="icon-delete"></i>@Strings.Delete
+            </div>
+        </a>
+        
+        <a href="@Url.Action("Paste", "Selection", new { targetFolder = Model.Id })">
+            <div class="tile gray-light-hover">
+                <i class="icon-selected"></i>@Strings.PasteSelectedItems
+            </div>
+        </a>
+        
+
+    </section>
+
+    
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Back">
+        <i class="icon-back"></i>
+    </a>
+
+</nav>
+
+
+@section Scripts {
+
+
+}

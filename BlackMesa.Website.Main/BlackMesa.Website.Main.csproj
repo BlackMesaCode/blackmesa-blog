@@ -190,6 +190,7 @@
     <Compile Include="Areas\Blog\ViewModels\CreateCommentViewModel.cs" />
     <Compile Include="Areas\Identity\IdentityAreaRegistration.cs" />
     <Compile Include="Areas\Learning\Api\Controllers\FoldersController.cs" />
+    <Compile Include="Areas\Learning\Controllers\SelectionController.cs" />
     <Compile Include="Areas\Learning\Controllers\HomeController.cs" />
     <Compile Include="Areas\Learning\Controllers\QueryController.cs" />
     <Compile Include="Areas\Learning\Controllers\IndexCardController.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\Learning\ViewModels\Folder\FolderOptionsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\SearchFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\MoveFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\EditFolderViewModel.cs" />
@@ -607,6 +609,10 @@
     <Content Include="Areas\Learning\Views\IndexCard\Details.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_Path.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Completed.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\Options.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\Index.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\Paste.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\Options.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />

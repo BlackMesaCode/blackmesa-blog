@@ -1,0 +1,47 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.FolderOptionsViewModel
+
+@{
+    ViewBag.Title = Strings.YourSelectedItems;
+}
+
+
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    <section id="selection-paste">
+        
+        <div class="tile gray-darker">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        
+        Möchten sie wirklich folgende Items in folgenden Ordner verschieben?
+
+    </section>
+
+    
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+    <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Home">
+        <i class="icon-home"></i>
+    </a>
+    
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Back">
+        <i class="icon-back"></i>
+    </a>
+
+</nav>
+
+
+@section Scripts {
+
+
+}
