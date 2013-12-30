@@ -104,8 +104,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 if (resultViewModel.Result == QueryResult.Correct)
                     remainingLearningUnits.Remove(oldUnitId);
             }
-
-            if (resultViewModel.QueryType == QueryType.SinglePass)
+            else if (resultViewModel.QueryType == QueryType.SinglePass)
             {
                 remainingLearningUnits.Remove(oldUnitId);
             }
@@ -133,6 +132,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 var viewModel = new QueryViewModel
                 {
                     FolderId = resultViewModel.FolderId,
+                    QueryType = resultViewModel.QueryType,
                     SelectedLearningUnits = resultViewModel.SelectedLearningUnits,
                     RemainingLearningUnits = remainingLearningUnits.JoinStrings(","),
                     Position = nextPosition,

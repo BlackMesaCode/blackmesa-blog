@@ -16,11 +16,11 @@
         </div>
         
         <div class="tile gray-light">
-            @Strings.QueriedUnits @Model.TotalCount
+            @Strings.QueriedUnits: @Model.TotalCount
         </div>
         
         <div class="tile gray-dark">
-            @Strings.Results
+            <h3>@Strings.Results</h3>
         </div>
         
         <div class="tile gray-light">
@@ -46,8 +46,8 @@
 <nav id="menu">
 
 
-    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Home">
-        <i class="icon-home"></i>
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Back">
+        <i class="icon-back"></i>
     </a>
 
 </nav>
