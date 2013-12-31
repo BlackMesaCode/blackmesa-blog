@@ -12,6 +12,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard
         [Required]
         public string FolderId { get; set; }
 
+        public Dictionary<string, string> Path { get; set; }
+
         [StringLength(255)]
         public string Question { get; set; }
 

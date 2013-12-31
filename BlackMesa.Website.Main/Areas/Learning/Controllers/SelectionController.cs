@@ -25,6 +25,20 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return View();
         }
 
+
+        public ActionResult AddFolder(string folderId, string returnFolderId)
+        {
+            // Set Folder selected attribute
+            // auto select all subfolders and subitems
+            return RedirectToAction("Details", "Folder", new {id = returnFolderId});
+        }
+
+        public ActionResult AddUnit(string unitId, string returnFolderId)
+        {
+            // Set unit selected attribute
+            return RedirectToAction("Details", "Folder", new { id = returnFolderId });
+        }
+
         public ActionResult Paste()
         {
 

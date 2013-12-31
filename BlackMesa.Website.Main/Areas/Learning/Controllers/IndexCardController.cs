@@ -23,10 +23,16 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult Details(string id)
         {
             var indexCard = _learningRepo.GetIndexCard(id);
+
+            var path = new Dictionary<string, string>();
+            _learningRepo.GetFolderPath(indexCard.Folder, ref path);
+            path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
+
             var viewModel = new IndexCardDetailsViewModel()
             {
                 Id = indexCard.Id.ToString(),
                 FolderId = indexCard.FolderId.ToString(),
+                Path = path,
                 Question = indexCard.Question,
                 Answer = indexCard.Answer,
                 Hint = indexCard.Hint,

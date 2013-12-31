@@ -77,6 +77,17 @@ namespace BlackMesa.Website.Main.DataLayer
             return _dbContext.Learning_Folders.SingleOrDefault(f => f.Id == new Guid(folderId));
         }
 
+
+        public void GetFolderPath(Folder folder, ref  Dictionary<string, string> path)
+        {
+            path.Add(folder.Name, folder.Id.ToString());
+            if (folder.ParentFolder != null)
+            {
+                GetFolderPath(folder.ParentFolder, ref path);
+            }
+        }
+
+
         public void RemoveFolder(string folderId)
         {
             var folderToDelete = _dbContext.Learning_Folders.Find(new Guid(folderId));
