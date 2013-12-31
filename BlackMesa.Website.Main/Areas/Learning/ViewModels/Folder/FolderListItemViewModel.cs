@@ -12,6 +12,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder
 
         public int Level { get; set; }
 
+        public bool IsSelected { get; set; }
+
         public int NumberOfLearningUnitsInSameFolder { get; set; }
 
         public int NumberOfLearningUnitsIncludingAllSubfolders { get; set; }

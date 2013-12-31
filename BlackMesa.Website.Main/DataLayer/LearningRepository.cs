@@ -163,6 +163,11 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
+        public Unit GetUnit(string unitId)
+        {
+            return _dbContext.Learning_Units.SingleOrDefault(f => f.Id == new Guid(unitId));
+        }
+
         public IndexCard GetIndexCard(string cardId)
         {
             return _dbContext.Learning_IndexCards.SingleOrDefault(f => f.Id == new Guid(cardId));
@@ -234,6 +239,50 @@ namespace BlackMesa.Website.Main.DataLayer
             _dbContext.SaveChanges();  
         }
 
+
+        public void SelectUnit(string unitId)
+        {
+            var unit = GetUnit(unitId);
+            unit.IsSelected = true;
+            _dbContext.SaveChanges();
+        }
+
+        public void DeSelectUnit(string unitId)
+        {
+            var unit = GetUnit(unitId);
+            unit.IsSelected = false;
+            _dbContext.SaveChanges();
+        }
+
+        public void SelectFolder(string folderId)
+        {
+            var folder = GetFolder(folderId);
+            folder.IsSelected = true;
+            foreach (var unit in folder.LearningUnits)
+            {
+                unit.IsSelected = true;
+            }
+            foreach (var subfolder in folder.SubFolders)
+            {
+                SelectFolder(subfolder.Id.ToString());
+            }
+            _dbContext.SaveChanges();
+        }
+
+        public void DeSelectFolder(string folderId)
+        {
+            var folder = GetFolder(folderId);
+            folder.IsSelected = false;
+            foreach (var unit in folder.LearningUnits)
+            {
+                unit.IsSelected = false;
+            }
+            foreach (var subfolder in folder.SubFolders)
+            {
+                DeSelectFolder(subfolder.Id.ToString());
+            }
+            _dbContext.SaveChanges();
+        }
 
     }
 }

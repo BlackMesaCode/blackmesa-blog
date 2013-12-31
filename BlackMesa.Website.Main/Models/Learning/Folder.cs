@@ -23,6 +23,8 @@ namespace BlackMesa.Website.Main.Models.Learning
         [Required]
         public int Level { get; set; }
 
+        public bool IsSelected { get; set; }
+
         public virtual Folder ParentFolder { get; set; }
         public virtual List<Folder> SubFolders { get; set; }
         public virtual List<Unit> LearningUnits { get; set; }

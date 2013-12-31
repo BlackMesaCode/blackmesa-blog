@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BlackMesa.Website.Main.Areas.Learning.ViewModels;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
 using Microsoft.AspNet.Identity;
-using WebGrease.Css.Extensions;
 
 namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 {
@@ -64,6 +62,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Name = folder.Name,
                 ParentFolderId = parentFolderId,
                 Level = level,
+                IsSelected = folder.IsSelected,
                 NumberOfLearningUnitsInSameFolder = folder.LearningUnits.Count,
                 NumberOfLearningUnitsIncludingAllSubfolders = totalLearningUnits,
                 SubFolders = folder.SubFolders.Select(f => CreateFolderListItemViewModel(f)).ToList(),
@@ -89,10 +88,13 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             _learningRepo.GetFolderPath(folder, ref path);
             path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
             path.Remove(path.Last().Key);
+
             var viewModel = new FolderDetailsViewModel
             {
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
+                IsSelected = folder.IsSelected,
+                HasAnySelection = (folder.IsSelected || folder.LearningUnits.Any(u => u.IsSelected) || folder.SubFolders.Any(f => f.IsSelected)),
                 SubFolders = folder.SubFolders.Select(f => CreateFolderListItemViewModel(f)).ToList(),
                 IndexCards = folder.LearningUnits.OfType<IndexCard>(),
                 Path = path,

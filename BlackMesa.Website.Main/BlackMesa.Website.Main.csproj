@@ -230,6 +230,14 @@
     <Compile Include="Migrations\201312292049280_Init.Designer.cs">
       <DependentUpon>201312292049280_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312311230085_Added IsSelected.cs" />
+    <Compile Include="Migrations\201312311230085_Added IsSelected.Designer.cs">
+      <DependentUpon>201312311230085_Added IsSelected.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312311233035_Added IsSelected to Folder.cs" />
+    <Compile Include="Migrations\201312311233035_Added IsSelected to Folder.Designer.cs">
+      <DependentUpon>201312311233035_Added IsSelected to Folder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
     <Compile Include="Models\Blog\Entry.cs" />
@@ -266,6 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Start\EntityFrameworkProfilerBootstrapper.vb" />
+    <Content Include="Areas\Learning\Less\icons.less" />
     <None Include="Areas\Learning\Less\normalize.less" />
     <Content Include="Areas\Learning\Javascript\create-edit-indexcard.js" />
     <Content Include="Areas\Learning\Javascript\folder-details.js" />
@@ -705,6 +714,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201312292049280_Init.resx">
       <DependentUpon>201312292049280_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312311230085_Added IsSelected.resx">
+      <DependentUpon>201312311230085_Added IsSelected.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312311233035_Added IsSelected to Folder.resx">
+      <DependentUpon>201312311233035_Added IsSelected to Folder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
