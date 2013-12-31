@@ -13,7 +13,7 @@
 @gray-dark: #666666;
 @gray-dark-hover: #969696;
 @gray-darker: #323232;
-@gray-darker-hover: #1a1a1a;
+@gray-darker-hover: #666666;
 @gray-darkest: #1a1a1a;
 
 @text-color: #595959;
@@ -73,21 +73,22 @@
 
 .gray-darker {
     background-color: @gray-darker;
-    color: @gray-light;
+    color: whitesmoke;
 }
 
 .gray-darker-hover {
     background-color: @gray-darker;
-    color: @gray-light;
+    color: whitesmoke;
 
     &:hover {
         background-color: @gray-darker-hover;
+        color: whitesmoke;
     }
 }
 
 .gray-darkest {
     background-color: @gray-darkest;
-    color: @gray-light;
+    color: whitesmoke;
 }
 
 
@@ -164,6 +165,7 @@ h1 {
     font-size: @font-size-h1;
     i {
         font-size: 0.8em;
+        margin-left: 4px;
         margin-right: 8px;
     }
 }
@@ -323,6 +325,7 @@ html, body {
     flex-wrap: nowrap;
     overflow-y: auto;
     padding: @offset;
+    padding-right: 15px;
 }
 
 #menu, .submenu {
@@ -437,8 +440,8 @@ html, body {
     
 
     i {
-        margin-right: 0px;
-        margin-left: 2px;  
+        margin-right: 5px;
+        margin-left: 7px;  
     }
 
     &:hover {
@@ -470,8 +473,8 @@ html, body {
     }
 
     i {
-        margin-right: 0px;
-        margin-left: 2px;
+        margin-right: 5px;
+        margin-left: 7px;
     }
 
     &:hover {
@@ -523,3 +526,6 @@ html, body {
 }
 
 
+#folder-items {
+    /*margin-left: 15px;*/
+}

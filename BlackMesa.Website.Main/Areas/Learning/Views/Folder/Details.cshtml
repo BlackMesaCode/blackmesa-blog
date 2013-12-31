@@ -16,9 +16,9 @@
         @Html.Partial("_Path", Model.Path)
 
         <div class="tile-splitter">
-            <div class="tile gray-darker">
-                <h1>@ViewBag.Title</h1>
-            </div>
+            <a class="tile gray-darker-hover" href="@Url.Action("Edit", "Folder", new { id = Model.Id })">
+                <h1><i class="icon-folder-open"></i>@ViewBag.Title</h1>
+            </a>
 
             @if (Model.IsSelected)
             {
@@ -34,102 +34,58 @@
             }
         </div>
 
+        <div id="folder-items">
 
-        @foreach (var subFolder in Model.SubFolders)
-        {
-            <div class="tile-splitter">
-                <a class="tile gray-light-hover" href="@Url.Action("Details", "Folder", new { id = subFolder.Id })">
-                    <i class="icon-folder"> </i>@subFolder.Name
-                </a>
-
-                @if (subFolder.IsSelected)
-                {
-                    <a class="tile gray-light-hover checked" href="@Url.Action("RemoveFolder", "Selection", new { folderId = subFolder.Id, returnFolderId = Model.Id })">
-                        <i class="icon-checked-square"></i>
+            @foreach (var subFolder in Model.SubFolders)
+            {
+                <div class="tile-splitter">
+                    <a class="tile gray-light-hover" href="@Url.Action("Details", "Folder", new { id = subFolder.Id })">
+                        <i class="icon-folder"> </i>@subFolder.Name
                     </a>
-                }
-                else
-                {
-                    <a class="tile gray-light-hover unchecked" href="@Url.Action("AddFolder", "Selection", new { folderId = subFolder.Id, returnFolderId = Model.Id })">
-                        <i class="icon-unchecked-square"></i>
+
+                    @if (subFolder.IsSelected)
+                    {
+                        <a class="tile gray-light-hover checked" href="@Url.Action("RemoveFolder", "Selection", new { folderId = subFolder.Id, returnFolderId = Model.Id })">
+                            <i class="icon-checked-square"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="tile gray-light-hover unchecked" href="@Url.Action("AddFolder", "Selection", new { folderId = subFolder.Id, returnFolderId = Model.Id })">
+                            <i class="icon-unchecked-square"></i>
+                        </a>
+                    }
+                </div>
+            }
+
+
+            @foreach (var indexCard in Model.IndexCards)
+            {
+                <div class="tile-splitter">
+                    <a class="tile gray-light-hover" href="@Url.Action("Edit", "IndexCard", new { id = indexCard.Id })">
+                        <i class="icon-indexcard"> </i>@indexCard.Question
                     </a>
-                }
-            </div>
-        }
 
+                    @if (indexCard.IsSelected)
+                    {
+                        <a class="tile gray-light-hover checked" href="@Url.Action("RemoveUnit", "Selection", new { unitId = indexCard.Id, returnFolderId = Model.Id })">
+                            <i class="icon-checked-square"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="tile gray-light-hover unchecked" href="@Url.Action("AddUnit", "Selection", new { unitId = indexCard.Id, returnFolderId = Model.Id })">
+                            <i class="icon-unchecked-square"></i>
+                        </a>
+                    }
+                </div>
+            }
 
-        @foreach (var indexCard in Model.IndexCards)
-        {
-            <div class="tile-splitter">
-                <a class="tile gray-light-hover" href="@Url.Action("Details", "IndexCard", new { id = indexCard.Id })">
-                    <i class="icon-indexcard"> </i>@indexCard.Question
-                </a>
-
-                @if (indexCard.IsSelected)
-                {
-                    <a class="tile gray-light-hover checked" href="@Url.Action("RemoveUnit", "Selection", new { unitId = indexCard.Id, returnFolderId = Model.Id })">
-                        <i class="icon-checked-square"></i>
-                    </a>
-                }
-                else
-                {
-                    <a class="tile gray-light-hover unchecked" href="@Url.Action("AddUnit", "Selection", new { unitId = indexCard.Id, returnFolderId = Model.Id })">
-                        <i class="icon-unchecked-square"></i>
-                    </a>
-                }
-            </div>
-        }
-
+        </div>
     </section>
 
     
 </div>
-
-
-
-@* ------------------- Submenu ------------------- *@
-
-<nav id="folder-submenu" class="submenu">
-    
-    <a class="red-hover" href="@Url.Action("Edit", "Folder", new { id = Model.Id })" title="@Strings.Edit">
-        <i class="icon-edit"></i>
-    </a>
-    
-    <a class="red-hover" href="@Url.Action("Move", "Folder", new { id = Model.Id })" title="@Strings.Move">
-        <i class="icon-move"></i>
-    </a>
-    
-    <a class="red-hover" href="@Url.Action("Search", "Folder", new { id = Model.Id })" title="@Strings.Search">
-        <i class="icon-search"></i>
-    </a>
-
-    <a class="red-hover" href="@Url.Action("Delete", "Folder", new { id = Model.Id })" title="@Strings.Delete">
-        <i class="icon-delete"></i>
-    </a>
-    
-    <a class="back-tile gray-light-hover" href="#" title="@Strings.Back">
-        <i class="icon-back"></i>
-    </a>
-
-</nav>
-
-
-@* ------------------- Submenu ------------------- *@
-
-<nav id="create-submenu" class="submenu">
-
-    <a class="red-hover" href="@Url.Action("Create", "IndexCard", new { folderId = Model.Id })" title="@Strings.CreateIndexCard">
-        <i class="icon-indexcard"></i>
-    </a>
-
-    <a class="red-hover" href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id })" title="@Strings.CreateSubFolder">
-        <i class="icon-folder"></i>
-    </a>
-    
-    <a class="back-tile gray-light-hover" href="#" title="@Strings.Back">
-        <i class="icon-back"></i>
-    </a>
-</nav>
 
 
 @* ------------------- Menu ------------------- *@
@@ -163,9 +119,9 @@
         <a class="red-hover" href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id })" title="@Strings.CreateSubFolder">
             <i class="icon-plus prefix-icon"></i><i class="icon-folder"></i>
         </a>
-    
-        <a class="red-hover" href="@Url.Action("Options", "Folder", new { id = Model.Id })" title="@Strings.Options">
-            <i class="icon-wrench"></i>
+
+        <a class="red-hover" href="@Url.Action("Search", "Folder", new { id = Model.Id })" title="@Strings.ToSearch">
+            <i class="icon-search"></i>
         </a>
     }
 

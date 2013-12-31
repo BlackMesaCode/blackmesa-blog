@@ -91,7 +91,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 var indexCard = _learningRepo.GetIndexCard(viewModel.Id);
                 _learningRepo.EditIndexCard(viewModel.Id, viewModel.Question, viewModel.Answer, viewModel.Hint, viewModel.CodeSnipped, viewModel.ImageUrl);
-                return RedirectToAction("Details", "IndexCard", new  { id = indexCard.Id });
+                return RedirectToAction("Details", "Folder", new  { id = indexCard.FolderId });
             }
             return View(viewModel);
         }
