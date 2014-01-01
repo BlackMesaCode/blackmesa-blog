@@ -33,6 +33,37 @@ function AutoSize(elementId) {
     resize();
 }
 
+
+
+function AutoSizeAll{
+    var text = document.getElementById(elementId);
+
+    function resize() {
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight + 'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize() {
+        window.setTimeout(resize, 0);
+    }
+    observe(text, 'change', resize);
+    observe(text, 'cut', delayedResize);
+    observe(text, 'paste', delayedResize);
+    observe(text, 'drop', delayedResize);
+    observe(text, 'keydown', delayedResize);
+
+    text.focus();
+    text.select();
+    resize();
+}
+
+
+
+
+
+
+
+
 AutoSize('Answer');
 
 // Adds Tab-Functionality to TextAreas

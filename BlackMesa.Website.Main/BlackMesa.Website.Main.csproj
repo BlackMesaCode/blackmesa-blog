@@ -238,6 +238,10 @@
     <Compile Include="Migrations\201312311233035_Added IsSelected to Folder.Designer.cs">
       <DependentUpon>201312311233035_Added IsSelected to Folder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201401011453360_Changed Question Answer Names.cs" />
+    <Compile Include="Migrations\201401011453360_Changed Question Answer Names.Designer.cs">
+      <DependentUpon>201401011453360_Changed Question Answer Names.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
     <Compile Include="Models\Blog\Entry.cs" />
@@ -720,6 +724,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312311233035_Added IsSelected to Folder.resx">
       <DependentUpon>201312311233035_Added IsSelected to Folder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401011453360_Changed Question Answer Names.resx">
+      <DependentUpon>201401011453360_Changed Question Answer Names.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

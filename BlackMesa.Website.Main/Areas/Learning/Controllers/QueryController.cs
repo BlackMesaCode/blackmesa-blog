@@ -59,6 +59,10 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
             var firstUnit = _learningRepo.GetIndexCard(selectedLearningUnits.Last().Id.ToString());
 
+            // ReverseSides if option has been chosen
+            var frontSide = viewModel.ReverseSides ? firstUnit.BackSide : firstUnit.FrontSide;
+            var backSide = viewModel.ReverseSides ? firstUnit.FrontSide : firstUnit.BackSide;
+
             var initialQueryViewModel = new QueryViewModel
             {
                 FolderId = viewModel.SelectedFolderId,
@@ -69,8 +73,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
                 QuestionTime = DateTime.Now,
 
-                Question = firstUnit.Question,
-                Answer = firstUnit.Answer,
+                FrontSide = frontSide,
+                BackSide = backSide,
                 Hint = firstUnit.Hint,
                 CodeSnipped = firstUnit.CodeSnipped,
                 ImageUrl = firstUnit.ImageUrl,
@@ -129,6 +133,11 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 var nextIndexCard = _learningRepo.GetIndexCard(nextUnitId);
 
 
+                // ReverseSides if option has been chosen
+                var frontSide = resultViewModel.ReverseSides ? nextIndexCard.BackSide : nextIndexCard.FrontSide;
+                var backSide = resultViewModel.ReverseSides ? nextIndexCard.FrontSide : nextIndexCard.BackSide;
+
+
                 var viewModel = new QueryViewModel
                 {
                     FolderId = resultViewModel.FolderId,
@@ -138,8 +147,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                     Position = nextPosition,
                     QuestionTime = DateTime.Now,
 
-                    Question = nextIndexCard.Question,
-                    Answer = nextIndexCard.Answer,
+                    FrontSide = frontSide,
+                    BackSide = backSide,
                     Hint = nextIndexCard.Hint,
                     CodeSnipped = nextIndexCard.CodeSnipped,
                     ImageUrl = nextIndexCard.ImageUrl,

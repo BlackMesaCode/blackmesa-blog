@@ -32,12 +32,12 @@
 
     
             <div class="form-element-container">
-                @Html.TextBoxFor(model => model.Question, new { @placeholder = Strings.Question, @autocomplete = "off" })
+                @Html.TextBoxFor(model => model.FrontSide, new { @placeholder = Strings.FrontSide, @autocomplete = "off" })
             </div>
 
 
             <div class="form-element-container">
-                @Html.TextAreaFor(model => model.Answer, new { @placeholder = Strings.Answer, @autocomplete = "off" })
+                @Html.TextAreaFor(model => model.BackSide, new { @placeholder = Strings.BackSide, @autocomplete = "off" })
             </div>
 
             

@@ -483,4 +483,13 @@
   <data name="Select" xml:space="preserve">
     <value>Select</value>
   </data>
+  <data name="ReverseSides" xml:space="preserve">
+    <value>Reverse front and backside</value>
+  </data>
+  <data name="BackSide" xml:space="preserve">
+    <value>Backside</value>
+  </data>
+  <data name="FrontSide" xml:space="preserve">
+    <value>Frontside</value>
+  </data>
 </root>

@@ -30,9 +30,15 @@
             @Html.HiddenFor(model => model.SelectedFolderId)
 
             //@Html.LabelFor(model => model.InludeSubfolders, new { @class="tile gray-light-hover" })
-            <label class="tile gray-light-hover" for="test">
-                @Html.CheckBoxFor(model => model.InludeSubfolders, new { @id = "test"}) @Strings.IncludeSubfolders
+            <label class="tile gray-light-hover" for="_IncludeSubfolders">
+                @Html.CheckBoxFor(model => model.InludeSubfolders, new { @id = "_IncludeSubfolders" }) @Strings.IncludeSubfolders
             </label>
+
+            <label class="tile gray-light-hover" for="_ReverseSides">
+                @Html.CheckBoxFor(model => model.ReverseSides, new { @id = "_ReverseSides" }) @Strings.ReverseSides
+            </label>
+
+
 
             <div class="tile gray-dark">
                 <h3>@Html.LabelFor(model => Model.OrderType)</h3>

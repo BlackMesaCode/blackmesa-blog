@@ -483,4 +483,13 @@
   <data name="Select" xml:space="preserve">
     <value>Auswählen</value>
   </data>
+  <data name="ReverseSides" xml:space="preserve">
+    <value>Vorder- und Rückseite vertauschen</value>
+  </data>
+  <data name="BackSide" xml:space="preserve">
+    <value>Rückseite</value>
+  </data>
+  <data name="FrontSide" xml:space="preserve">
+    <value>Vorderseite</value>
+  </data>
 </root>

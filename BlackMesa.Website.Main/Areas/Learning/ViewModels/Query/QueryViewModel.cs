@@ -14,10 +14,9 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
         public DateTime QuestionTime { get; set; }
         public int Position { get; set; }
         public QueryType QueryType { get; set; }
-
-
-        public string Question { get; set; }
-        public string Answer { get; set; }
+        public bool ReverseSides { get; set; }
+        public string FrontSide { get; set; }
+        public string BackSide { get; set; }
         public string Hint { get; set; }
         public string CodeSnipped { get; set; }
         public string ImageUrl { get; set; }

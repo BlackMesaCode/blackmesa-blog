@@ -7,11 +7,11 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard
     {
 
         [StringLength(255)]
-        public string Question { get; set; }
+        public string FrontSide { get; set; }
 
         [StringLength(10000)]
         [DataType(DataType.MultilineText)]
-        public string Answer { get; set; }
+        public string BackSide { get; set; }
 
         [StringLength(255)]
         [DataType(DataType.MultilineText)]

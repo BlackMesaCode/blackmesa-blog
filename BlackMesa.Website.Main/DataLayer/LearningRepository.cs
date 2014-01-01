@@ -185,8 +185,8 @@ namespace BlackMesa.Website.Main.DataLayer
                 FolderId = new Guid(folderId),
                 OwnerId = ownerId,
                 Owner = owner,
-                Question = question,
-                Answer = answer,
+                FrontSide = question,
+                BackSide = answer,
                 DateCreated = DateTime.Now,
                 DateEdited = DateTime.Now,
             };
@@ -200,8 +200,8 @@ namespace BlackMesa.Website.Main.DataLayer
         {
             var currentIndexCard = _dbContext.Learning_IndexCards.Find(new Guid(id));
 
-            currentIndexCard.Question = newQuestion;
-            currentIndexCard.Answer = newAnswer;
+            currentIndexCard.FrontSide = newQuestion;
+            currentIndexCard.BackSide = newAnswer;
             currentIndexCard.Hint = newHint;
             currentIndexCard.CodeSnipped = newCodeSnipped;
             currentIndexCard.ImageUrl = newImageUrl;

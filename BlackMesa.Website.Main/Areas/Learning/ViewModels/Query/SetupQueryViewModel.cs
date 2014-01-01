@@ -12,6 +12,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
         public string SelectedFolderId { get; set; }
         public string SelectedFolderName { get; set; }
         public bool InludeSubfolders { get; set; }
+        public bool ReverseSides { get; set; }
 
         [Display(ResourceType = typeof(Strings), Name = "Order")]
         public OrderType OrderType { get; set; }

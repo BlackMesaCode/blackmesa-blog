@@ -124,6 +124,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Backside ähnelt.
+        /// </summary>
+        public static string BackSide {
+            get {
+                return ResourceManager.GetString("BackSide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back to top ähnelt.
         /// </summary>
         public static string BackToTop {
@@ -381,6 +390,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string FooterLicence {
             get {
                 return ResourceManager.GetString("FooterLicence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frontside ähnelt.
+        /// </summary>
+        public static string FrontSide {
+            get {
+                return ResourceManager.GetString("FrontSide", resourceCulture);
             }
         }
         
@@ -858,6 +876,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Results {
             get {
                 return ResourceManager.GetString("Results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reverse front and backside ähnelt.
+        /// </summary>
+        public static string ReverseSides {
+            get {
+                return ResourceManager.GetString("ReverseSides", resourceCulture);
             }
         }
         

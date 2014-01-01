@@ -4,7 +4,7 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Query.QueryViewModel
 
 @{
-    ViewBag.Title = Model.Question;
+    ViewBag.Title = Model.FrontSide;
 }
 
 <div id="content">
@@ -29,6 +29,7 @@
             @Html.HiddenFor(model => model.RemainingLearningUnits)
             
             @Html.HiddenFor(model => model.QueryType)
+            @Html.HiddenFor(model => model.ReverseSides)
             
             @Html.HiddenFor(model => model.QuestionTime)
             
@@ -45,7 +46,7 @@
             <div id="answer">
 
                 <div class="tile gray-light">
-                    <pre>@Model.Answer</pre>
+                    <pre>@Model.BackSide</pre>
                 </div>
 
                 <div class="tile gray-dark">

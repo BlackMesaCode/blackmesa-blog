@@ -33,8 +33,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Id = indexCard.Id.ToString(),
                 FolderId = indexCard.FolderId.ToString(),
                 Path = path,
-                Question = indexCard.Question,
-                Answer = indexCard.Answer,
+                Question = indexCard.FrontSide,
+                Answer = indexCard.BackSide,
                 Hint = indexCard.Hint,
                 CodeSnipped = indexCard.CodeSnipped,
                 ImageUrl = indexCard.ImageUrl,
@@ -60,7 +60,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             if (ModelState.IsValid)
             {
-                _learningRepo.AddIndexCard(viewModel.FolderId, User.Identity.GetUserId(), viewModel.Question, viewModel.Answer);
+                _learningRepo.AddIndexCard(viewModel.FolderId, User.Identity.GetUserId(), viewModel.FrontSide, viewModel.BackSide);
                 return RedirectToAction("Details", "Folder", new { id = viewModel.FolderId });
             }
             return View(viewModel);
@@ -74,8 +74,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 Id = indexCard.Id.ToString(),
                 FolderId = indexCard.FolderId.ToString(),
-                Question = indexCard.Question,
-                Answer = indexCard.Answer,
+                FrontSide = indexCard.FrontSide,
+                BackSide = indexCard.BackSide,
                 Hint = indexCard.Hint,
                 CodeSnipped = indexCard.CodeSnipped,
                 ImageUrl = indexCard.ImageUrl,
@@ -90,7 +90,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             if (ModelState.IsValid)
             {
                 var indexCard = _learningRepo.GetIndexCard(viewModel.Id);
-                _learningRepo.EditIndexCard(viewModel.Id, viewModel.Question, viewModel.Answer, viewModel.Hint, viewModel.CodeSnipped, viewModel.ImageUrl);
+                _learningRepo.EditIndexCard(viewModel.Id, viewModel.FrontSide, viewModel.BackSide, viewModel.Hint, viewModel.CodeSnipped, viewModel.ImageUrl);
                 return RedirectToAction("Details", "Folder", new  { id = indexCard.FolderId });
             }
             return View(viewModel);
@@ -104,7 +104,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 Id = indexCard.Id.ToString(),
                 FolderId = indexCard.FolderId.ToString(),
-                Question = indexCard.Question,
+                Question = indexCard.FrontSide,
             };
             return View(viewModel);
         }
