@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder;
+using BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
@@ -203,14 +204,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Name = folder.Name,
                 Path = path,
             };
-            return View(viewModel);
-        }
-
-
-        public ActionResult Move(string id)
-        {
-            var folder = _learningRepo.GetFolder(id);
-            var viewModel = new MoveFolderViewModel();
             return View(viewModel);
         }
 

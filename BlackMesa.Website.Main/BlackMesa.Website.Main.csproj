@@ -200,7 +200,7 @@
     </Compile>
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderOptionsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\SearchFolderViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Folder\MoveFolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\SetMoveTargetViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\EditFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\CreateFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderDetailsViewModel.cs" />
@@ -226,21 +226,9 @@
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="DataLayer\DbContext.cs" />
     <Compile Include="DataLayer\LearningRepository.cs" />
-    <Compile Include="Migrations\201312292049280_Init.cs" />
-    <Compile Include="Migrations\201312292049280_Init.Designer.cs">
-      <DependentUpon>201312292049280_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201312311230085_Added IsSelected.cs" />
-    <Compile Include="Migrations\201312311230085_Added IsSelected.Designer.cs">
-      <DependentUpon>201312311230085_Added IsSelected.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201312311233035_Added IsSelected to Folder.cs" />
-    <Compile Include="Migrations\201312311233035_Added IsSelected to Folder.Designer.cs">
-      <DependentUpon>201312311233035_Added IsSelected to Folder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401011453360_Changed Question Answer Names.cs" />
-    <Compile Include="Migrations\201401011453360_Changed Question Answer Names.Designer.cs">
-      <DependentUpon>201401011453360_Changed Question Answer Names.cs</DependentUpon>
+    <Compile Include="Migrations\201401011747034_Init.cs" />
+    <Compile Include="Migrations\201401011747034_Init.Designer.cs">
+      <DependentUpon>201401011747034_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
@@ -599,7 +587,7 @@
     <Content Include="Areas\Learning\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Edit.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Index.cshtml" />
-    <Content Include="Areas\Learning\Views\Folder\_FolderListItem.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\_FolderListItem.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Create.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Delete.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Details.cshtml" />
@@ -615,7 +603,6 @@
     <Content Include="Areas\Learning\Less\utilities.less" />
     <Content Include="Areas\Learning\Less\fonts.less" />
     <Content Include="Areas\Learning\Views\Folder\Search.cshtml" />
-    <Content Include="Areas\Learning\Views\Folder\Move.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Setup.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Show.cshtml" />
     <Content Include="Areas\Learning\Views\IndexCard\Edit.cshtml" />
@@ -625,7 +612,7 @@
     <Content Include="Areas\Learning\Views\Query\Completed.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Options.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\Index.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\Paste.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\SetMoveTarget.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\Options.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
@@ -717,17 +704,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312292049280_Init.resx">
-      <DependentUpon>201312292049280_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312311230085_Added IsSelected.resx">
-      <DependentUpon>201312311230085_Added IsSelected.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312311233035_Added IsSelected to Folder.resx">
-      <DependentUpon>201312311233035_Added IsSelected to Folder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401011453360_Changed Question Answer Names.resx">
-      <DependentUpon>201401011453360_Changed Question Answer Names.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201401011747034_Init.resx">
+      <DependentUpon>201401011747034_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

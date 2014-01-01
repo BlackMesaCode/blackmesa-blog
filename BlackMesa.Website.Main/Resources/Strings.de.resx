@@ -492,4 +492,7 @@
   <data name="FrontSide" xml:space="preserve">
     <value>Vorderseite</value>
   </data>
+  <data name="Selection" xml:space="preserve">
+    <value>Auswahl</value>
+  </data>
 </root>

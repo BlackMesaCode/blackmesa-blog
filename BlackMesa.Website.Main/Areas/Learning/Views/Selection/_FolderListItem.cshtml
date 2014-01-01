@@ -1,0 +1,38 @@
+﻿@using BlackMesa.Website.Main.Resources
+@model BlackMesa.Website.Main.Models.Learning.Folder
+
+<div class="folder-list-item">
+
+    @for (int i = 1; i < Model.Level; i++)
+    {
+        <span class="indent"></span>
+    }
+
+
+    <div class="tile gray-light-hover">
+        <span class="folder-name">
+            <i class="icon-folder"></i>
+            @Html.ActionLink(Model.Name, "Move", "Selection",
+                new { sourceFolderId = ViewBag.SourceFolderId, targetFolderId = Model.Id }, null)
+        </span>
+    </div>
+
+
+
+</div>
+
+
+
+@if (Model.SubFolders.Count > 0)
+{
+    foreach (var subfolder in Model.SubFolders)
+    {
+
+        // positive condition: subfolder is folder or descendent of sourceFOlder and selected
+
+        if (!(subfolder.IsSelected && (subfolder.Id.ToString() == ViewBag.SourceFolderId) || (Model.SubFolders.Contains(subfolder))))
+        {
+            @Html.Partial("_FolderListItem", subfolder)
+        }
+    }
+}

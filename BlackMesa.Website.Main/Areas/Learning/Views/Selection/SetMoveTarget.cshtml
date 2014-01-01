@@ -1,0 +1,56 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.SetMoveTargetViewModel
+
+@{
+    ViewBag.Title = Strings.Move + " " + Strings.Selection;
+    ViewBag.SourceFolderId = Model.SourceFolderId;
+}
+
+
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    <section id="selection-move">
+        
+        <div class="tile gray-darker">
+            <h1>@ViewBag.Title</h1>
+        </div>
+
+        <div class="tile gray-dark">
+            <h3>Choose Target Folder</h3>
+        </div>
+        
+        @foreach (var folder in Model.Folders)
+        {
+            // positive condition: folder is folder or descendent of sourceFolder and selected
+            
+            if (!(folder.IsSelected && (folder.Id.ToString() == ViewBag.SourceFolderId) || (Model.SourceFolder.SubFolders.Contains(folder))))
+            {
+                @Html.Partial("_FolderListItem", folder)    
+            }
+            
+        }
+
+    </section>
+    
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+    
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.SourceFolderId })" title="@Strings.Abort">
+        <i class="icon-abort"></i>
+    </a>
+
+</nav>
+
+
+@section Scripts {
+
+
+}

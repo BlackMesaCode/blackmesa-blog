@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder;
+using BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
@@ -67,7 +68,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 var selectedLearningUnits = folder.LearningUnits.Where(u => u.IsSelected).ToList();
                 foreach (var selectedUnit in selectedLearningUnits)
                 {
-                    _learningRepo.RemoveLearningUnit(selectedUnit.Id.ToString());
+                    _learningRepo.RemoveUnit(selectedUnit.Id.ToString());
                 }
                 //for (int i = selectedLearningUnits.Count(u => u.IsSelected) - 1; i >= 0; i--)
                 //{
@@ -83,17 +84,52 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             }
         }
 
-        public ActionResult Move(string sourceFolder)
+        public ActionResult SetMoveTarget(string sourceFolderId)
         {
-
-            return View();
+            var folder = _learningRepo.GetFolder(sourceFolderId);
+            var viewModel = new SetMoveTargetViewModel
+            {
+                SourceFolder = folder,
+                SourceFolderId = folder.Id.ToString(),
+                Folders = _learningRepo.GetFolders(User.Identity.GetUserId())
+            };
+            return View(viewModel);
         }
 
-        [HttpPost]
+
         public ActionResult Move(string sourceFolderId, string targetFolderId)
         {
+            var sourceFolder = _learningRepo.GetFolder(sourceFolderId);
 
-            return View();
+            // move sourcefolder
+            if (sourceFolder.IsSelected)
+            {
+                _learningRepo.MoveFolder(sourceFolderId, targetFolderId);
+                _learningRepo.DeSelectFolder(sourceFolderId);
+
+                return RedirectToAction("Details", "Folder", new { id = targetFolderId }); // todo adjust redirect if necessary
+            }
+            else
+            {
+                // move subfolders
+                var selectedSubfolders = sourceFolder.SubFolders.Where(s => s.IsSelected);
+                foreach (var subFolder in selectedSubfolders)
+                {
+                    _learningRepo.MoveFolder(subFolder.Id.ToString(), targetFolderId);
+                    _learningRepo.DeSelectFolder(subFolder.Id.ToString());
+                }
+
+                // move units
+                foreach (var unit in sourceFolder.LearningUnits)
+                {
+                    _learningRepo.MoveUnit(unit.Id.ToString(), targetFolderId);
+                    _learningRepo.DeSelectUnit(unit.Id.ToString());
+                }
+                return RedirectToAction("Details", "Folder", new { id = sourceFolderId });
+            }
+
+
+            
         }
 
     }

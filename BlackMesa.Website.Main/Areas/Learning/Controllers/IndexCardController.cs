@@ -115,7 +115,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             if (ModelState.IsValid)
             {
-                _learningRepo.RemoveLearningUnit(viewModel.Id);
+                _learningRepo.RemoveUnit(viewModel.Id);
                 return RedirectToAction("Details", "Folder", new { id = viewModel.FolderId });
             }
             return View(viewModel);

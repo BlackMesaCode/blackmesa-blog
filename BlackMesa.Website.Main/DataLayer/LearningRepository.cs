@@ -99,7 +99,7 @@ namespace BlackMesa.Website.Main.DataLayer
 
             for (var i = folderToDelete.LearningUnits.Count-1; i >= 0; i--)
             {
-                RemoveLearningUnit(folderToDelete.LearningUnits[i].Id.ToString());
+                RemoveUnit(folderToDelete.LearningUnits[i].Id.ToString());
             }
 
 
@@ -127,17 +127,20 @@ namespace BlackMesa.Website.Main.DataLayer
             _dbContext.SaveChanges();
         }
 
-        public void ChangeParentFolder(string folderId, string newParentFolderId)
+        public void MoveFolder(string folderId, string newParentFolderId)
         {
-
-            // todo check for users rights e.g. if he is owner
-
             var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
             var oldParentFolder = folder.ParentFolder;
             var newParentFolder = _dbContext.Learning_Folders.Find(new Guid(newParentFolderId));
 
-            // Remove Folder from the subfolders List of the old parent folder
-            oldParentFolder.SubFolders.Remove(folder);
+            // Remove Folder from the subfolders List of the old parent folder if there is one existing
+            if (oldParentFolder != null)
+            {
+                oldParentFolder.SubFolders.Remove(folder);
+            }
+
+            // Add Folder to the subfolders list of the new parent folder 
+            newParentFolder.SubFolders.Add(folder);
 
             // Adjust its new parent folder
             folder.ParentFolder = newParentFolder;  // todo check if null is assigned if there is no new parentFolder
@@ -145,8 +148,6 @@ namespace BlackMesa.Website.Main.DataLayer
             // Adjust its level
             folder.Level = folder.ParentFolder != null ? folder.ParentFolder.Level + 1 : 1;  //todo add level calculation to property getter
 
-            // Add Folder to the subfolders list of the new parent folder 
-            newParentFolder.SubFolders.Add(folder);
 
             _dbContext.SaveChanges();
         }
@@ -209,8 +210,30 @@ namespace BlackMesa.Website.Main.DataLayer
             _dbContext.SaveChanges();
         }
 
+        public void MoveUnit(string unitId, string newFolderId)
+        {
+            var unit = _dbContext.Learning_Units.Find(new Guid(unitId));
+            var oldFolder = unit.Folder;
+            var newFolder = _dbContext.Learning_Folders.Find(new Guid(newFolderId));
 
-        public void RemoveLearningUnit(string id)
+            unit.FolderId = new Guid(newFolderId);
+            unit.Folder = newFolder;
+
+
+
+            // todo check if following instructions are necessary with code first
+
+            // Remove unit from the list of learning units from the old folder
+            oldFolder.LearningUnits.Remove(unit);
+
+            // Add unit to the list of learning units of the new folder
+            newFolder.LearningUnits.Add(unit);
+
+            _dbContext.SaveChanges();
+        }
+
+
+        public void RemoveUnit(string id)
         {
             var learningUnit = _dbContext.Learning_Units.Find(new Guid(id));
             _dbContext.Learning_Units.Remove(learningUnit);

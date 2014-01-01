@@ -94,7 +94,7 @@
     
     @if (Model.HasAnySelection)
     {
-        <a class="red-hover" href="@Url.Action("Move", "Selection", new { id = Model.Id })" title="@Strings.Move">
+        <a class="red-hover" href="@Url.Action("SetMoveTarget", "Selection", new { sourceFolderId = Model.Id })" title="@Strings.Move">
             <i class="icon-move"></i>
         </a>
     
