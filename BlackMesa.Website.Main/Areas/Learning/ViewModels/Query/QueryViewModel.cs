@@ -11,7 +11,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
         public string FolderId { get; set; }
         public string SelectedLearningUnits { get; set; }
         public string RemainingLearningUnits { get; set; }
-        public DateTime QuestionTime { get; set; }
+        public DateTime StartTime { get; set; }
         public int Position { get; set; }
         public QueryType QueryType { get; set; }
         public bool ReverseSides { get; set; }

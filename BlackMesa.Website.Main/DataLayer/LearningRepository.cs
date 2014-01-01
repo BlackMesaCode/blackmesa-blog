@@ -218,20 +218,20 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public List<Query> GetQueries(string indexCardId)
+        public List<QueryItem> GetQueries(string indexCardId)
         {
             return _dbContext.Learning_IndexCards.Find(new Guid(indexCardId)).Queries;
         }
 
         public void AddQuery(string unitId, Unit unit, DateTime questionTime, DateTime answerTime, QueryResult result)
         {
-            var query = new Query
+            var query = new QueryItem
             {
                 UnitId = new Guid(unitId),
                 Unit = unit,
 
-                QuestionTime = questionTime,
-                AnswerTime = answerTime,
+                StartTime = questionTime,
+                EndTime = answerTime,
                 Result = result,
             };
 

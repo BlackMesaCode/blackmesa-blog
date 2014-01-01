@@ -71,7 +71,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Position = selectedLearningUnits.Count-1,
                 QueryType = viewModel.QueryType,
 
-                QuestionTime = DateTime.Now,
+                StartTime = DateTime.Now,
 
                 FrontSide = frontSide,
                 BackSide = backSide,
@@ -98,7 +98,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var oldUnitId = remainingLearningUnits[resultViewModel.Position];
             var oldIndexCard = _learningRepo.GetIndexCard(oldUnitId);
 
-            _learningRepo.AddQuery(oldUnitId, oldIndexCard, resultViewModel.QuestionTime, currentTime, resultViewModel.Result);
+            _learningRepo.AddQuery(oldUnitId, oldIndexCard, resultViewModel.StartTime, currentTime, resultViewModel.Result);
 
 
             // Adjusting RemainingIndexCards
@@ -145,7 +145,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                     SelectedLearningUnits = resultViewModel.SelectedLearningUnits,
                     RemainingLearningUnits = remainingLearningUnits.JoinStrings(","),
                     Position = nextPosition,
-                    QuestionTime = DateTime.Now,
+                    StartTime = DateTime.Now,
 
                     FrontSide = frontSide,
                     BackSide = backSide,
@@ -160,7 +160,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             else // no more remaining learning units
             {
                 var selectedLearningUnits = resultViewModel.SelectedLearningUnits.Split(new[] { ',' }).ToList();
-                var queries = new List<Query>();
+                var queries = new List<QueryItem>();
                 foreach (var unitId in selectedLearningUnits)
                 {
                     queries.Add(_learningRepo.GetIndexCard(unitId).Queries.Last());

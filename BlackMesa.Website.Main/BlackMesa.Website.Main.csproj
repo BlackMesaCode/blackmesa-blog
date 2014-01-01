@@ -249,6 +249,7 @@
     <Compile Include="Models\Identity\User.cs" />
     <Compile Include="Models\Learning\Folder.cs" />
     <Compile Include="Models\Learning\Query.cs" />
+    <Compile Include="Models\Learning\QueryItem.cs" />
     <Compile Include="Models\Learning\IndexCard.cs" />
     <Compile Include="Models\Learning\Unit.cs" />
     <Compile Include="Resources\Strings.de.Designer.cs">

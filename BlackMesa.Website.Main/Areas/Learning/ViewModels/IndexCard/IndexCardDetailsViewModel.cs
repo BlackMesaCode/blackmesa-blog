@@ -31,7 +31,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard
         [StringLength(2083)]
         public string ImageUrl { get; set; }
 
-        public List<BlackMesa.Website.Main.Models.Learning.Query> Queries { get; set; }
+        public List<BlackMesa.Website.Main.Models.Learning.QueryItem> Queries { get; set; }
     }
 
 }

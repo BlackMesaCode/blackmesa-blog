@@ -32,7 +32,7 @@ namespace BlackMesa.Website.Main.Models.Learning
         
         public virtual Folder Folder { get; set; }
 
-        public virtual List<Query> Queries { get; set; }
+        public virtual List<QueryItem> Queries { get; set; }
 
     }
 }

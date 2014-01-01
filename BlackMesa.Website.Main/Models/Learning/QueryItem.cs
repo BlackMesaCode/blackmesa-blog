@@ -1,31 +1,19 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using BlackMesa.Website.Main.Areas.Learning.ViewModels.Query;
 using BlackMesa.Website.Main.Resources;
 
 namespace BlackMesa.Website.Main.Models.Learning
 {
-    [Table("Learning_Queries")]
-    public class Query
+    [Table("Learning_QueryItems")]
+    public class QueryItem
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        public bool InludeSubfolders { get; set; }
-        public bool ReverseSides { get; set; }
-
-        [Display(ResourceType = typeof(Strings), Name = "Order")]
-        public OrderType OrderType { get; set; }
-
-        [Display(ResourceType = typeof(Strings), Name = "QueryType")]
-        public QueryType QueryType { get; set; }
-
-
-        public string SelectedLearningUnits { get; set; }
-        public string RemainingLearningUnits { get; set; }
-
+        [Required]
+        public QueryResult Result { get; set; }
 
         [Required]
         public DateTime StartTime { get; set; }
@@ -42,4 +30,13 @@ namespace BlackMesa.Website.Main.Models.Learning
 
     }
 
+    public enum QueryResult
+    {
+        [Display(Name = "QueryResultCorrect", ResourceType = typeof(Strings))]
+        Correct,
+        [Display(Name = "QueryResultPartlyCorrect", ResourceType = typeof(Strings))]
+        PartlyCorrect,
+        [Display(Name = "QueryResultWrong", ResourceType = typeof(Strings))]
+        Wrong,
+    }
 }
