@@ -547,6 +547,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Move selection ähnelt.
+        /// </summary>
+        public static string MoveSelection {
+            get {
+                return ResourceManager.GetString("MoveSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
         /// </summary>
         public static string Name {
@@ -1020,6 +1029,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Selection {
             get {
                 return ResourceManager.GetString("Selection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Select target folder ähnelt.
+        /// </summary>
+        public static string SelectTargetFolder {
+            get {
+                return ResourceManager.GetString("SelectTargetFolder", resourceCulture);
             }
         }
         

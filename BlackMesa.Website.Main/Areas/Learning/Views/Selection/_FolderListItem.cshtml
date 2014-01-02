@@ -9,18 +9,13 @@
         <span class="indent"></span>
     }
 
-
-    <div class="tile gray-light-hover">
-        <span class="folder-name">
-            <i class="icon-folder"></i>
-            @Html.ActionLink(Model.Name, "Move", "Selection",
-                new { sourceFolderId = ViewBag.SourceFolderId, targetFolderId = Model.Id }, null)
-        </span>
-    </div>
-
-
+    <a class="tile gray-light-hover" href="@Url.Action("Move", "Selection",
+                new { sourceFolderId = ViewBag.SourceFolderId, targetFolderId = Model.Id })">
+        <i class="icon-folder"></i>@Model.Name
+    </a>
 
 </div>
+
 
 @if (Model.SubFolders.Count > 0)
 {

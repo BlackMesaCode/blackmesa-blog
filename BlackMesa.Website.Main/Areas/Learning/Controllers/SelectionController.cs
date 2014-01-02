@@ -70,10 +70,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 {
                     _learningRepo.RemoveUnit(selectedUnit.Id.ToString());
                 }
-                //for (int i = selectedLearningUnits.Count(u => u.IsSelected) - 1; i >= 0; i--)
-                //{
-                //    _learningRepo.RemoveLearningUnit(selectedUnit.Id.ToString());
-                //}
 
                 var selectedSubFolders = folder.SubFolders.Where(f => f.IsSelected).ToList();
                 foreach (var selectedSubFolder in selectedSubFolders)

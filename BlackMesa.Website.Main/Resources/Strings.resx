@@ -498,4 +498,10 @@
   <data name="Root" xml:space="preserve">
     <value>Root</value>
   </data>
+  <data name="MoveSelection" xml:space="preserve">
+    <value>Move selection</value>
+  </data>
+  <data name="SelectTargetFolder" xml:space="preserve">
+    <value>Select target folder</value>
+  </data>
 </root>
