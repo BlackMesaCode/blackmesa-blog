@@ -8,6 +8,7 @@ using BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
+using BlackMesa.Website.Main.Resources;
 using Microsoft.AspNet.Identity;
 
 namespace BlackMesa.Website.Main.Areas.Learning.Controllers
@@ -21,54 +22,15 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Index()
         {
-            var folders = _learningRepo.GetFolders(User.Identity.GetUserId());
+            var rootFolder = _learningRepo.GetRootFolder(User.Identity.GetUserId());
 
-            var viewModel = new FolderIndexViewModel
+            if (rootFolder == null)
             {
-                Folders = new List<FolderListItemViewModel>(),
-            };
-
-            var totalLearningUnits = 0;
-            foreach (var folder in folders)
-            {
-                viewModel.Folders.Add(CreateFolderListItemViewModel(folder));
-                GetAllContainingLearningUnits(folder, ref totalLearningUnits);
-            }
-            viewModel.TotalLearningUnits = totalLearningUnits;
-
-            return View(viewModel);
-        }
-
-        private FolderListItemViewModel CreateFolderListItemViewModel(Folder folder)
-        {
-            string parentFolderId;
-            int level;
-            if (folder.ParentFolder == null)
-            {
-                parentFolderId = null;
-                level = 1;
-            }
-            else
-            {
-                parentFolderId = folder.ParentFolder.Id.ToString();
-                level = folder.ParentFolder.Level + 1;
+                _learningRepo.CreateRootFolder(Strings.Root, User.Identity.GetUserId());
+                rootFolder = _learningRepo.GetRootFolder(User.Identity.GetUserId());
             }
 
-            int totalLearningUnits = 0;
-            GetAllContainingLearningUnits(folder, ref totalLearningUnits);
-
-            var viewModel = new FolderListItemViewModel()
-            {
-                Id = folder.Id.ToString(),
-                Name = folder.Name,
-                ParentFolderId = parentFolderId,
-                Level = level,
-                IsSelected = folder.IsSelected,
-                NumberOfLearningUnitsInSameFolder = folder.LearningUnits.Count,
-                NumberOfLearningUnitsIncludingAllSubfolders = totalLearningUnits,
-                SubFolders = folder.SubFolders.Select(f => CreateFolderListItemViewModel(f)).ToList(),
-            };
-            return viewModel;
+            return RedirectToAction("Details", "Folder", new {id = rootFolder.Id.ToString()});
         }
 
 
@@ -95,8 +57,9 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
                 IsSelected = folder.IsSelected,
+                Level = folder.Level,
                 HasAnySelection = (folder.IsSelected || folder.LearningUnits.Any(u => u.IsSelected) || folder.SubFolders.Any(f => f.IsSelected)),
-                SubFolders = folder.SubFolders.Select(f => CreateFolderListItemViewModel(f)).ToList(),
+                SubFolders = folder.SubFolders,
                 IndexCards = folder.LearningUnits.OfType<IndexCard>(),
                 Path = path,
             };

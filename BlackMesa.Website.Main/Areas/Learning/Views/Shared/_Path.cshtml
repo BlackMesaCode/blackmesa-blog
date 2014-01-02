@@ -3,12 +3,6 @@
 @model Dictionary<string,string>
 
 <div id="folder-path">
-    <a href="@Url.Action("Index", "Folder")">
-        <div class="tile gray-dark-hover">
-            @Strings.All<i class="icon-right"></i>
-        </div>
-    </a>
-
     @for (int i = 0; i < Model.Count; i++)
     {
         string id = String.Empty;

@@ -71,6 +71,27 @@ namespace BlackMesa.Website.Main.DataLayer
             }
         }
 
+        public Folder GetRootFolder(string userId)
+        {
+            return _dbContext.Learning_Folders.SingleOrDefault(f => f.Owner.Id == userId && f.ParentFolder == null);;
+        }
+
+        public void CreateRootFolder(string name, string ownerId)
+        {
+            var owner = _dbContext.Users.Find(ownerId);
+            var newFolder = new Folder
+            {
+                Name = name,
+                OwnerId = ownerId,
+                Owner = owner,
+                ParentFolder = null,
+                Level = 1,
+            };
+
+            _dbContext.Learning_Folders.Add(newFolder);
+            _dbContext.SaveChanges();
+        }
+
 
         public Folder GetFolder(string folderId)
         {

@@ -1,4 +1,5 @@
-﻿@using BlackMesa.Website.Main.Resources
+﻿@using BlackMesa.Website.Main.Models.Learning
+@using BlackMesa.Website.Main.Resources
 @model BlackMesa.Website.Main.Models.Learning.Folder
 
 <div class="folder-list-item">
@@ -21,18 +22,15 @@
 
 </div>
 
-
-
 @if (Model.SubFolders.Count > 0)
 {
-    foreach (var subfolder in Model.SubFolders)
+    foreach (var subFolder in Model.SubFolders)
     {
-
-        // positive condition: subfolder is folder or descendent of sourceFOlder and selected
-
-        if (!(subfolder.IsSelected && (subfolder.Id.ToString() == ViewBag.SourceFolderId) || (Model.SubFolders.Contains(subfolder))))
+        if (!(ViewBag.SourceFolder as Folder).SubFolders.Where(s => s.IsSelected).Contains(subFolder) &&
+            ((subFolder == ViewBag.SourceFolder && !(ViewBag.SourceFolder as Folder).IsSelected) ||
+            subFolder != ViewBag.SourceFolder))
         {
-            @Html.Partial("_FolderListItem", subfolder)
+            @Html.Partial("_FolderListItem", subFolder)
         }
     }
 }

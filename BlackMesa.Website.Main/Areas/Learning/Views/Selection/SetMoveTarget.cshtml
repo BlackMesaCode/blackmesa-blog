@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = Strings.Move + " " + Strings.Selection;
     ViewBag.SourceFolderId = Model.SourceFolderId;
+    ViewBag.SourceFolder = Model.SourceFolder;
 }
 
 
@@ -21,17 +22,8 @@
         <div class="tile gray-dark">
             <h3>Choose Target Folder</h3>
         </div>
-        
-        @foreach (var folder in Model.Folders)
-        {
-            // positive condition: folder is folder or descendent of sourceFolder and selected
-            
-            if (!(folder.IsSelected && (folder.Id.ToString() == ViewBag.SourceFolderId) || (Model.SourceFolder.SubFolders.Contains(folder))))
-            {
-                @Html.Partial("_FolderListItem", folder)    
-            }
-            
-        }
+
+        @Html.Partial("_FolderListItem", Model.RootFolder)
 
     </section>
     

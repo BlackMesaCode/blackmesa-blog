@@ -91,7 +91,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 SourceFolder = folder,
                 SourceFolderId = folder.Id.ToString(),
-                Folders = _learningRepo.GetFolders(User.Identity.GetUserId())
+                RootFolder = _learningRepo.GetRootFolder(User.Identity.GetUserId()),
             };
             return View(viewModel);
         }
@@ -107,12 +107,12 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 _learningRepo.MoveFolder(sourceFolderId, targetFolderId);
                 _learningRepo.DeSelectFolder(sourceFolderId);
 
-                return RedirectToAction("Details", "Folder", new { id = targetFolderId }); // todo adjust redirect if necessary
+                return RedirectToAction("Details", "Folder", new { id = targetFolderId });
             }
             else
             {
                 // move subfolders
-                var selectedSubfolders = sourceFolder.SubFolders.Where(s => s.IsSelected);
+                var selectedSubfolders = sourceFolder.SubFolders.Where(s => s.IsSelected).ToList();
                 foreach (var subFolder in selectedSubfolders)
                 {
                     _learningRepo.MoveFolder(subFolder.Id.ToString(), targetFolderId);
@@ -120,12 +120,13 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 }
 
                 // move units
-                foreach (var unit in sourceFolder.LearningUnits)
+                var learningUnits = sourceFolder.LearningUnits.Where(u => u.IsSelected).ToList();
+                foreach (var unit in learningUnits)
                 {
                     _learningRepo.MoveUnit(unit.Id.ToString(), targetFolderId);
                     _learningRepo.DeSelectUnit(unit.Id.ToString());
                 }
-                return RedirectToAction("Details", "Folder", new { id = sourceFolderId });
+                return RedirectToAction("Details", "Folder", new { id = targetFolderId });
             }
 
 

@@ -495,4 +495,7 @@
   <data name="Selection" xml:space="preserve">
     <value>Auswahl</value>
   </data>
+  <data name="Root" xml:space="preserve">
+    <value>Stamm</value>
+  </data>
 </root>

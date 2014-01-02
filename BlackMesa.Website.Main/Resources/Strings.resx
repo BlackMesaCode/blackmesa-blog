@@ -495,4 +495,7 @@
   <data name="Selection" xml:space="preserve">
     <value>Selection</value>
   </data>
+  <data name="Root" xml:space="preserve">
+    <value>Root</value>
+  </data>
 </root>
