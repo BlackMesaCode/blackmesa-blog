@@ -199,7 +199,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderOptionsViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Folder\SearchFolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\SearchSelectionViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\SearchResultsViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\SearchResultViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SetMoveTargetViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\EditFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\CreateFolderViewModel.cs" />
@@ -595,7 +597,7 @@
     <Content Include="Areas\Learning\Less\learning.less" />
     <Content Include="Areas\Learning\Less\utilities.less" />
     <Content Include="Areas\Learning\Less\fonts.less" />
-    <Content Include="Areas\Learning\Views\Folder\Search.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\Search.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Setup.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Show.cshtml" />
     <Content Include="Areas\Learning\Views\IndexCard\Edit.cshtml" />
@@ -606,6 +608,8 @@
     <Content Include="Areas\Learning\Views\Folder\Statistics.cshtml" />
     <Content Include="Areas\Learning\Views\Home\Settings.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\Delete.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\SearchResults.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\_SearchResult.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />

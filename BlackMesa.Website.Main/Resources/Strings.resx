@@ -543,4 +543,31 @@
   <data name="SelectionAffection" xml:space="preserve">
     <value>Including subfolders your selection affects</value>
   </data>
+  <data name="FilterOptions" xml:space="preserve">
+    <value>Filter options</value>
+  </data>
+  <data name="SearchBackSide" xml:space="preserve">
+    <value>on the backside of the index cards</value>
+  </data>
+  <data name="SearchFrontSide" xml:space="preserve">
+    <value>on the frontside of the index cards</value>
+  </data>
+  <data name="SearchPeriod" xml:space="preserve">
+    <value>Search period</value>
+  </data>
+  <data name="SearchPlaces" xml:space="preserve">
+    <value>Search places</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>Search text</value>
+  </data>
+  <data name="SearchWhat" xml:space="preserve">
+    <value>What are you looking for?</value>
+  </data>
+  <data name="SearchWhen" xml:space="preserve">
+    <value>In which period?</value>
+  </data>
+  <data name="SearchWhere" xml:space="preserve">
+    <value>Where shell we look?</value>
+  </data>
 </root>

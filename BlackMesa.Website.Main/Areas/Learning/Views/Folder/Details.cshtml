@@ -98,6 +98,13 @@
             <i class="icon-move"></i>
         </a>
     
+        if (Model.HasAnyFolderSelection)
+        {
+            <a class="red-hover" href="@Url.Action("Search", "Selection", new { folderId = Model.Id })" title="@Strings.Examine">
+                <i class="icon-search"></i>
+            </a>
+         }
+        
         <a class="red-hover" href="@Url.Action("Delete", "Selection", new { folderId = Model.Id })" title="@Strings.Delete">
             <i class="icon-delete"></i>
         </a>

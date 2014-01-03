@@ -49,6 +49,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 IsSelected = folder.IsSelected,
                 Level = folder.Level,
                 HasAnySelection = (folder.IsSelected || folder.LearningUnits.Any(u => u.IsSelected) || folder.SubFolders.Any(f => f.IsSelected)),
+                HasAnyFolderSelection = folder.SubFolders.Any(f => f.IsSelected),
                 SubFolders = folder.SubFolders,
                 IndexCards = folder.LearningUnits.OfType<IndexCard>(),
                 Path = path,
@@ -131,7 +132,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult Search(string id)
         {
             var folder = _learningRepo.GetFolder(id);
-            var viewModel = new SearchFolderViewModel();
+            var viewModel = new SearchResultViewModel();
             return View(viewModel);
         }
 

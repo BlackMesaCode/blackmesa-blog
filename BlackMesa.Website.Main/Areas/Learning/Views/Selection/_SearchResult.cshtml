@@ -1,0 +1,17 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.SearchResultViewModel
+
+<div id="folder-search-result">
+
+    @Html.Partial("_Path", Model.Path)
+    
+    <a class="tile gray-dark-hover" href="@Url.Action("Edit", "IndexCard", new { id = Model.Id })">
+        <i class="icon-indexcard"> </i>@Model.FrontSide
+    </a>
+    
+    <div class="tile gray-light">
+        @Model.BackSide
+    </div>
+
+</div>

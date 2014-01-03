@@ -412,6 +412,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Filter options ähnelt.
+        /// </summary>
+        public static string FilterOptions {
+            get {
+                return ResourceManager.GetString("FilterOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Results of the first pass ähnelt.
         /// </summary>
         public static string FirstPassResults {
@@ -1033,6 +1042,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die on the backside of the index cards ähnelt.
+        /// </summary>
+        public static string SearchBackSide {
+            get {
+                return ResourceManager.GetString("SearchBackSide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Search by date ähnelt.
         /// </summary>
         public static string SearchByDate {
@@ -1078,6 +1096,33 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die on the frontside of the index cards ähnelt.
+        /// </summary>
+        public static string SearchFrontSide {
+            get {
+                return ResourceManager.GetString("SearchFrontSide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search period ähnelt.
+        /// </summary>
+        public static string SearchPeriod {
+            get {
+                return ResourceManager.GetString("SearchPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search places ähnelt.
+        /// </summary>
+        public static string SearchPlaces {
+            get {
+                return ResourceManager.GetString("SearchPlaces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Search result ähnelt.
         /// </summary>
         public static string SearchResult {
@@ -1092,6 +1137,42 @@ namespace BlackMesa.Website.Main.Resources {
         public static string SearchResults {
             get {
                 return ResourceManager.GetString("SearchResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search text ähnelt.
+        /// </summary>
+        public static string SearchText {
+            get {
+                return ResourceManager.GetString("SearchText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die What are you looking for? ähnelt.
+        /// </summary>
+        public static string SearchWhat {
+            get {
+                return ResourceManager.GetString("SearchWhat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die In which period? ähnelt.
+        /// </summary>
+        public static string SearchWhen {
+            get {
+                return ResourceManager.GetString("SearchWhen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Where shell we look? ähnelt.
+        /// </summary>
+        public static string SearchWhere {
+            get {
+                return ResourceManager.GetString("SearchWhere", resourceCulture);
             }
         }
         

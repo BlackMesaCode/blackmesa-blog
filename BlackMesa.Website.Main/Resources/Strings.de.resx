@@ -543,4 +543,31 @@
   <data name="SelectionAffection" xml:space="preserve">
     <value>Inklusive aller Unterverzeichnisse umfasst deine Auswahl</value>
   </data>
+  <data name="FilterOptions" xml:space="preserve">
+    <value>Filter-Optionen</value>
+  </data>
+  <data name="SearchBackSide" xml:space="preserve">
+    <value>auf der Rückseite der Karteikarten</value>
+  </data>
+  <data name="SearchFrontSide" xml:space="preserve">
+    <value>auf der Vorderseite der Karteikarten</value>
+  </data>
+  <data name="SearchPeriod" xml:space="preserve">
+    <value>Suchzeitraum</value>
+  </data>
+  <data name="SearchPlaces" xml:space="preserve">
+    <value>Suchorte</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>Suchtext</value>
+  </data>
+  <data name="SearchWhat" xml:space="preserve">
+    <value>Was suchst du?</value>
+  </data>
+  <data name="SearchWhen" xml:space="preserve">
+    <value>In welchen Zeitraum?</value>
+  </data>
+  <data name="SearchWhere" xml:space="preserve">
+    <value>Wo sollen wir suchen?</value>
+  </data>
 </root>
