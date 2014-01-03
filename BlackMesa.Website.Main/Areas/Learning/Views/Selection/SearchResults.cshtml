@@ -3,7 +3,16 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.SearchResultsViewModel
 
 @{
-    ViewBag.Title = Strings.SearchResults;
+    var results = "";
+    if (Model.SearchResults.Count == 1)
+    {
+        results = Strings.SearchResult;
+    }
+    else
+    {
+        results = Strings.SearchResults;
+    }
+    ViewBag.Title = Model.SearchResults.Count + " " + results;
 }
 
 
@@ -15,10 +24,6 @@
 
         <div class="tile gray-darker">
             <h1>@ViewBag.Title</h1>
-        </div>
-
-        <div class="tile gray-dark">
-            <h3>@Model.SearchResults.Count @(Model.SearchResults.Count == 1 ? Strings.SearchResult : Strings.SearchResults)</h3>
         </div>
 
 
