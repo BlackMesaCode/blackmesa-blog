@@ -504,4 +504,43 @@
   <data name="SelectTargetFolder" xml:space="preserve">
     <value>Zielordner auswählen</value>
   </data>
+  <data name="DeleteIndexCard" xml:space="preserve">
+    <value>Karteikarte löschen</value>
+  </data>
+  <data name="EditIndexCard" xml:space="preserve">
+    <value>Karteikarte editieren</value>
+  </data>
+  <data name="DeleteSelection" xml:space="preserve">
+    <value>Ausgewählte Elemente löschen</value>
+  </data>
+  <data name="FolderStats" xml:space="preserve">
+    <value>Verzeichnis-Statistik</value>
+  </data>
+  <data name="PerformDeletion" xml:space="preserve">
+    <value>Löschung durchführen</value>
+  </data>
+  <data name="QueryCompleted" xml:space="preserve">
+    <value>Abfrage abgeschlossen</value>
+  </data>
+  <data name="SearchFolder" xml:space="preserve">
+    <value>Verzeichnis durchsuchen</value>
+  </data>
+  <data name="SetupQuery" xml:space="preserve">
+    <value>Abfrage einrichten</value>
+  </data>
+  <data name="AffectedFolders" xml:space="preserve">
+    <value>Betroffene Verzeichnisse</value>
+  </data>
+  <data name="AffectedIndexCards" xml:space="preserve">
+    <value>Betroffene Karteikarten</value>
+  </data>
+  <data name="AffectedLearningUnits" xml:space="preserve">
+    <value>Betroffene Lerneinheiten</value>
+  </data>
+  <data name="IncludingSubfolders" xml:space="preserve">
+    <value>Einschließlich Unterverzeichnisse</value>
+  </data>
+  <data name="SelectionAffection" xml:space="preserve">
+    <value>Inklusive aller Unterverzeichnisse umfasst deine Auswahl</value>
+  </data>
 </root>

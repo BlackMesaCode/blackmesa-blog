@@ -4,7 +4,7 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Query.SetupQueryViewModel
 
 @{
-    ViewBag.Title = Strings.Query + " " + Strings.Setup;
+    ViewBag.Title = Strings.SetupQuery;
 }
 
 <div id="content">
@@ -18,6 +18,13 @@
             <div class="tile gray-darker">
                 <h1>@ViewBag.Title</h1>
             </div>
+            
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
 
             <div class="tile gray-dark">
                 <h3>@Strings.SelectedFolder</h3>
@@ -29,7 +36,6 @@
             
             @Html.HiddenFor(model => model.SelectedFolderId)
 
-            //@Html.LabelFor(model => model.InludeSubfolders, new { @class="tile gray-light-hover" })
             <label class="tile gray-light-hover" for="_IncludeSubfolders">
                 @Html.CheckBoxFor(model => model.InludeSubfolders, new { @id = "_IncludeSubfolders" }) @Strings.IncludeSubfolders
             </label>
@@ -37,7 +43,6 @@
             <label class="tile gray-light-hover" for="_ReverseSides">
                 @Html.CheckBoxFor(model => model.ReverseSides, new { @id = "_ReverseSides" }) @Strings.ReverseSides
             </label>
-
 
 
             <div class="tile gray-dark">
@@ -53,14 +58,6 @@
             
             
             @Html.RadioButtonForEnum(model => model.QueryType)
-            
-
-            if (!ViewData.ModelState.IsValid)
-            {
-                <div class="tile gray-light">
-                    @Html.ValidationSummary()
-                </div>
-            }
 
             <div class="form-element-container">
                 <button class="gray-dark-hover" type="submit">

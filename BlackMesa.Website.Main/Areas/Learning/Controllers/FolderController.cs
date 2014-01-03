@@ -34,16 +34,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
-        private void GetAllContainingLearningUnits(Folder folder, ref int totalLearningUnits)
-        {
-            totalLearningUnits += folder.LearningUnits.Count;
-
-            foreach (var subFolder in folder.SubFolders)
-            {
-                GetAllContainingLearningUnits(subFolder, ref totalLearningUnits);
-            }
-        }
-
         public ActionResult Details(string id)
         {
             var folder = _learningRepo.GetFolder(id);
@@ -121,39 +111,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
-        public ActionResult Delete(string id)
-        {
-            var folder = _learningRepo.GetFolder(id);
-            var viewModel = new DeleteFolderViewModel
-            {
-                Id = id,
-                Name = folder.Name,
-                ParentFolderId = folder.ParentFolder != null ? folder.ParentFolder.Id.ToString() : String.Empty,
-            };
-            return View(viewModel);
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(DeleteFolderViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var folder = _learningRepo.GetFolder(viewModel.Id);
-                var parentFolderId = String.Empty;
-                if (folder.ParentFolder != null)
-                    parentFolderId = folder.ParentFolder.Id.ToString();
-                _learningRepo.RemoveFolder(viewModel.Id);
-
-                if (!String.IsNullOrEmpty(parentFolderId))
-                    return RedirectToAction("Details", "Folder", new { id = parentFolderId });
-                return RedirectToAction("Index");
-            }
-            return View();
-
-        }
-
         public ActionResult Options(string id)
         {
             var folder = _learningRepo.GetFolder(id);
@@ -176,6 +133,12 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var folder = _learningRepo.GetFolder(id);
             var viewModel = new SearchFolderViewModel();
             return View(viewModel);
+        }
+
+        public ActionResult Statistics(string id)
+        {
+            
+            return View();
         }
 
 

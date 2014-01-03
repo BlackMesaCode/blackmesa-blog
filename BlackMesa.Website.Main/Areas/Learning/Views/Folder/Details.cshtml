@@ -120,18 +120,11 @@
             <i class="icon-plus prefix-icon"></i><i class="icon-folder"></i>
         </a>
 
-        <a class="red-hover" href="@Url.Action("Search", "Folder", new { id = Model.Id })" title="@Strings.ToSearch">
-            <i class="icon-search"></i>
+        <a class="red-hover" href="@Url.Action("Options", "Folder", new { id = Model.Id })" title="@Strings.Options">
+            <i class="icon-wrench"></i>
         </a>
     }
 
     
 
 </nav>
-
-
-@section Scripts {
-
-    <script src="~/Areas/Learning/Javascript/folder-details.js"></script>
-
-}

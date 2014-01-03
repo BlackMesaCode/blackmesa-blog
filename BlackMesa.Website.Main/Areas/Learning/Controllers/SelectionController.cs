@@ -20,12 +20,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         private readonly LearningRepository _learningRepo = new LearningRepository(new BlackMesaDbContext());
 
-        public ActionResult Index()
-        {
-
-            return View();
-        }
-
 
         public ActionResult AddFolder(string folderId, string returnFolderId)
         {
@@ -51,13 +45,49 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return RedirectToAction("Details", "Folder", new { id = returnFolderId });
         }
 
+
         public ActionResult Delete(string folderId)
         {
             var folder = _learningRepo.GetFolder(folderId);
+
+            var selectedFolders = new List<Folder>();
+            var selectedIndexCards = new List<IndexCard>();
+
+            if (folder.IsSelected)
+                selectedFolders.Add(folder);
+            else
+            {
+                selectedFolders = folder.SubFolders.Where(f => f.IsSelected).ToList();
+                selectedIndexCards = folder.LearningUnits.OfType<IndexCard>().Where(u => u.IsSelected).ToList();
+            }
+
+            int affectedFolders = 0;
+            int affectedIndexCards = 0;
+
+            _learningRepo.GetFolderCount(folder, ref affectedFolders, true, true);
+            _learningRepo.GetUnitCount<IndexCard>(folder, ref affectedIndexCards, true, true);
+
+            var viewModel = new DeleteSelectionViewModel
+            {
+                Id = folder.Id.ToString(),
+                SelectedFolders = selectedFolders,
+                SelectedIndexCards = selectedIndexCards,
+                AffectedFolders = affectedFolders,
+                AffectedIndexCards = affectedIndexCards,
+            };
+            return View(viewModel);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(DeleteSelectionViewModel viewModel)
+        {
+            var folder = _learningRepo.GetFolder(viewModel.Id);
             var parentFolderId = folder.ParentFolder != null ? folder.ParentFolder.Id.ToString() : String.Empty;
             if (folder.IsSelected)
             {
-                _learningRepo.RemoveFolder(folderId);
+                _learningRepo.RemoveFolder(folder.Id.ToString());
                 if (!String.IsNullOrEmpty(parentFolderId))
                     return RedirectToAction("Details", "Folder", new {id = parentFolderId});
                 else
@@ -76,7 +106,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 {
                     _learningRepo.RemoveFolder(selectedSubFolder.Id.ToString());
                 }
-                return RedirectToAction("Details", "Folder", new { id = folderId });
+                return RedirectToAction("Details", "Folder", new { id = folder.Id.ToString() });
             }
         }
 

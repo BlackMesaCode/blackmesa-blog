@@ -88,6 +88,33 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Affected folders ähnelt.
+        /// </summary>
+        public static string AffectedFolders {
+            get {
+                return ResourceManager.GetString("AffectedFolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Affected index cards ähnelt.
+        /// </summary>
+        public static string AffectedIndexCards {
+            get {
+                return ResourceManager.GetString("AffectedIndexCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Affected learning units ähnelt.
+        /// </summary>
+        public static string AffectedLearningUnits {
+            get {
+                return ResourceManager.GetString("AffectedLearningUnits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die All ähnelt.
         /// </summary>
         public static string All {
@@ -304,6 +331,24 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete index card ähnelt.
+        /// </summary>
+        public static string DeleteIndexCard {
+            get {
+                return ResourceManager.GetString("DeleteIndexCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete selected items ähnelt.
+        /// </summary>
+        public static string DeleteSelection {
+            get {
+                return ResourceManager.GetString("DeleteSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edit ähnelt.
         /// </summary>
         public static string Edit {
@@ -318,6 +363,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string EditFolder {
             get {
                 return ResourceManager.GetString("EditFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edit index card ähnelt.
+        /// </summary>
+        public static string EditIndexCard {
+            get {
+                return ResourceManager.GetString("EditIndexCard", resourceCulture);
             }
         }
         
@@ -385,6 +439,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Folder statistics ähnelt.
+        /// </summary>
+        public static string FolderStats {
+            get {
+                return ResourceManager.GetString("FolderStats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Except where otherwise noted, content on this site is licensed under  ähnelt.
         /// </summary>
         public static string FooterLicence {
@@ -426,6 +489,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string IncludeSubfolders {
             get {
                 return ResourceManager.GetString("IncludeSubfolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Including subfolders ähnelt.
+        /// </summary>
+        public static string IncludingSubfolders {
+            get {
+                return ResourceManager.GetString("IncludingSubfolders", resourceCulture);
             }
         }
         
@@ -691,6 +763,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Perform deletionn ähnelt.
+        /// </summary>
+        public static string PerformDeletion {
+            get {
+                return ResourceManager.GetString("PerformDeletion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Please confirm: ähnelt.
         /// </summary>
         public static string PleaseConfirm {
@@ -741,6 +822,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Query {
             get {
                 return ResourceManager.GetString("Query", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Query completed ähnelt.
+        /// </summary>
+        public static string QueryCompleted {
+            get {
+                return ResourceManager.GetString("QueryCompleted", resourceCulture);
             }
         }
         
@@ -979,6 +1069,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search folder ähnelt.
+        /// </summary>
+        public static string SearchFolder {
+            get {
+                return ResourceManager.GetString("SearchFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Search result ähnelt.
         /// </summary>
         public static string SearchResult {
@@ -1033,6 +1132,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Including subfolders your selection affects ähnelt.
+        /// </summary>
+        public static string SelectionAffection {
+            get {
+                return ResourceManager.GetString("SelectionAffection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Select target folder ähnelt.
         /// </summary>
         public static string SelectTargetFolder {
@@ -1065,6 +1173,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Setup {
             get {
                 return ResourceManager.GetString("Setup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Setup query ähnelt.
+        /// </summary>
+        public static string SetupQuery {
+            get {
+                return ResourceManager.GetString("SetupQuery", resourceCulture);
             }
         }
         

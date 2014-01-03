@@ -3,7 +3,7 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard.CreateIndexCardViewModel
 
 @{
-    ViewBag.Title = Strings.IndexCard + " " + Strings.Create;
+    ViewBag.Title = Strings.CreateIndexCard;
 }
 
 @* ------------------- Content ------------------- *@
@@ -32,7 +32,7 @@
 
     
             <div class="form-element-container">
-                @Html.TextBoxFor(model => model.FrontSide, new { @placeholder = Strings.FrontSide, @autocomplete = "off" })
+                @Html.TextAreaFor(model => model.FrontSide, new { @placeholder = Strings.FrontSide, @autocomplete = "off" })
             </div>
 
 

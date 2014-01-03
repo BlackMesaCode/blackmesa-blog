@@ -2,7 +2,10 @@
 {
     public class SearchFolderViewModel
     {
-        public string Id { get; set; }
-        public string ParentFolderId { get; set; }
+        public string SelectedFolderId { get; set; }
+        public string SelectedFolderName { get; set; }
+        public bool InludeSubfolders { get; set; }
+
+
     }
 }

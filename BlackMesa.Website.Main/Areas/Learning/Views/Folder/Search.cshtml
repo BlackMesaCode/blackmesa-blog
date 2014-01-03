@@ -3,7 +3,7 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.SearchFolderViewModel
 
 @{
-    ViewBag.Title = Strings.Folder + " " + Strings.Search;
+    ViewBag.Title = Strings.SearchFolder;
 }
 
 
@@ -12,8 +12,46 @@
 <div id="content">
     
 
-    <section id="folder-search">
+    <section id="folder-search">   
+        
+        @using (Html.BeginForm())
+        {
+            
+            @Html.AntiForgeryToken()
 
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
+            
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
+            </div>
+
+            <div class="tile gray-dark">
+                <h3>@Strings.SelectedFolder</h3>
+            </div>
+
+            <div class="tile gray-light">
+                <i class="icon-folder"> </i>@Model.SelectedFolderName
+            </div>
+
+            @Html.HiddenFor(model => model.SelectedFolderId)
+
+            <label class="tile gray-light-hover" for="_IncludeSubfolders">
+                @Html.CheckBoxFor(model => model.InludeSubfolders, new { @id = "_IncludeSubfolders" }) @Strings.IncludeSubfolders
+            </label>
+
+
+            <div class="form-element-container">
+                <button class="gray-dark-hover" type="submit">
+                    @Strings.ToSearch
+                </button>
+            </div>
+        }
+        
 
     </section>
 
@@ -25,19 +63,8 @@
 
 <nav id="menu">
 
-
-    @if (String.IsNullOrEmpty(Model.ParentFolderId))
-    {
-        <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
-            <i class="icon-abort"></i>
-        </a>
-    }
-    else
-    {
-        <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.ParentFolderId })" title="@Strings.Abort">
-            <i class="icon-abort"></i>
-        </a>
-    }
-
+    <a class="red-hover" href="@Url.Action("Options", "Folder", new { id = Model.Id })" title="@Strings.Back">
+        <i class="icon-back"></i>
+    </a>
 
 </nav>

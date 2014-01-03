@@ -1,0 +1,84 @@
+﻿@using BlackMesa.Website.Main.Resources
+@using Microsoft.Ajax.Utilities
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.DeleteSelectionViewModel
+
+@{
+    ViewBag.Title = Strings.DeleteSelection;
+}
+
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    
+
+    <section id="selection-delete">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            
+            @Html.HiddenFor(model => model.Id)
+            
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            
+            if (!ViewData.ModelState.IsValid)
+            {
+                <div class="tile gray-light">
+                    @Html.ValidationSummary()
+                </div>
+            }
+                
+            if (Model.SelectedFolders.Count > 0)
+            {
+                foreach (var folder in Model.SelectedFolders)
+                {
+                     <div class="tile gray-light">
+                        <i class="icon-folder"></i>@folder.Name
+                    </div>
+                }
+            }
+
+            
+            if (Model.SelectedIndexCards.Count > 0)
+            {
+                foreach (var unit in Model.SelectedIndexCards)
+                {
+                    <div class="tile gray-light">
+                        <i class="icon-indexcard"></i>@unit.FrontSide
+                    </div>
+                }
+            }
+            
+            if (Model.AffectedIndexCards > Model.SelectedIndexCards.Count)
+            {
+                <div class="tile gray-dark">
+                    @Strings.SelectionAffection: @Model.AffectedIndexCards @(Model.AffectedIndexCards == 1 ? Strings.IndexCard : Strings.IndexCards)
+                </div>
+            }
+
+            <div class="form-element-container">
+                <button class="gray-dark-hover" type="submit">
+                    <i class="icon-warning"></i>@Strings.PerformDeletion
+                </button>
+            </div>
+        }
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Abort">
+        <i class="icon-abort"></i>
+    </a>
+
+</nav>

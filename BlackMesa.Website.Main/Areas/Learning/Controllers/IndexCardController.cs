@@ -20,30 +20,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         private readonly LearningRepository _learningRepo = new LearningRepository(new BlackMesaDbContext());
 
-        public ActionResult Details(string id)
-        {
-            var indexCard = _learningRepo.GetIndexCard(id);
-
-            var path = new Dictionary<string, string>();
-            _learningRepo.GetFolderPath(indexCard.Folder, ref path);
-            path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
-
-            var viewModel = new IndexCardDetailsViewModel()
-            {
-                Id = indexCard.Id.ToString(),
-                FolderId = indexCard.FolderId.ToString(),
-                Path = path,
-                Question = indexCard.FrontSide,
-                Answer = indexCard.BackSide,
-                Hint = indexCard.Hint,
-                CodeSnipped = indexCard.CodeSnipped,
-                ImageUrl = indexCard.ImageUrl,
-                Queries = _learningRepo.GetQueries(id),
-            };
-
-            return View(viewModel);
-        }
-
         public ActionResult Create(string folderId)
         {
             var viewModel = new CreateIndexCardViewModel()
@@ -96,31 +72,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return View(viewModel);
         }
 
-
-        public ActionResult Delete(string id)
-        {
-            var indexCard = _learningRepo.GetIndexCard(id);
-            var viewModel = new DeleteIndexCardViewModel
-            {
-                Id = indexCard.Id.ToString(),
-                FolderId = indexCard.FolderId.ToString(),
-                Question = indexCard.FrontSide,
-            };
-            return View(viewModel);
-        }
-
-
-        [HttpPost]
-        public ActionResult Delete(DeleteIndexCardViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                _learningRepo.RemoveUnit(viewModel.Id);
-                return RedirectToAction("Details", "Folder", new { id = viewModel.FolderId });
-            }
-            return View(viewModel);
-
-        }
 
     }
 }

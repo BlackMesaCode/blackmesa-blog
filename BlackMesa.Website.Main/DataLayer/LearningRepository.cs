@@ -71,6 +71,49 @@ namespace BlackMesa.Website.Main.DataLayer
             }
         }
 
+        public void GetFolderCount(Folder folder, ref int folderCount, bool includeSubfolders = true, bool countOnlySelected = false)
+        {
+            if (countOnlySelected)
+            {
+                folderCount += folder.SubFolders.Count(f => f.IsSelected);
+            }
+            else
+            {
+                folderCount += folder.SubFolders.Count;
+            }
+            
+
+            if (includeSubfolders)
+            {
+                foreach (var subFolder in folder.SubFolders)
+                {
+                    GetFolderCount(subFolder, ref folderCount, includeSubfolders, countOnlySelected);
+                }
+            }
+        }
+
+
+        public void GetUnitCount<T>(Folder folder, ref int unitCount, bool includeSubfolders = true, bool countOnlySelected = false) where T : Unit
+        {
+            if (countOnlySelected)
+            {
+                unitCount += folder.LearningUnits.OfType<T>().Count(u => u.IsSelected);
+            }
+            else
+            {
+                unitCount += folder.LearningUnits.OfType<T>().Count();
+            }
+
+            if (includeSubfolders)
+            {
+                foreach (var subFolder in folder.SubFolders)
+                {
+                    GetUnitCount<T>(subFolder, ref unitCount, includeSubfolders, countOnlySelected);
+                }
+            }
+        }
+
+
         public Folder GetRootFolder(string userId)
         {
             return _dbContext.Learning_Folders.SingleOrDefault(f => f.Owner.Id == userId && f.ParentFolder == null);;
@@ -288,13 +331,31 @@ namespace BlackMesa.Website.Main.DataLayer
         {
             var unit = GetUnit(unitId);
             unit.IsSelected = true;
+
+            //if (!unit.Folder.IsSelected && AllChildsSelected(unit.Folder))
+            //    unit.Folder.IsSelected = true;
+
             _dbContext.SaveChanges();
+        }
+
+        public bool AllChildsSelected(Folder folder)
+        {
+            if (folder.SubFolders.Any(subFolder => !subFolder.IsSelected))
+                return false;
+            if (folder.LearningUnits.Any(unit => !unit.IsSelected))
+                return false;
+
+            return true;
         }
 
         public void DeSelectUnit(string unitId)
         {
             var unit = GetUnit(unitId);
             unit.IsSelected = false;
+
+            if (unit.Folder.IsSelected)
+                unit.Folder.IsSelected = false;
+
             _dbContext.SaveChanges();
         }
 
@@ -310,6 +371,11 @@ namespace BlackMesa.Website.Main.DataLayer
             {
                 SelectFolder(subfolder.Id.ToString());
             }
+
+
+            //if (folder.ParentFolder!= null && !folder.ParentFolder.IsSelected && AllChildsSelected(folder.ParentFolder))
+            //    folder.ParentFolder.IsSelected = true;
+
             _dbContext.SaveChanges();
         }
 
@@ -317,6 +383,13 @@ namespace BlackMesa.Website.Main.DataLayer
         {
             var folder = GetFolder(folderId);
             folder.IsSelected = false;
+
+            if (folder.ParentFolder != null)
+            {
+                if (folder.ParentFolder.IsSelected)
+                    folder.ParentFolder.IsSelected = false;
+            }
+
             foreach (var unit in folder.LearningUnits)
             {
                 unit.IsSelected = false;

@@ -11,6 +11,7 @@
 @* ------------------- Content ------------------- *@
 
 <div id="content">
+    
     <section id="folder-options">
         
         @Html.Partial("_Path", Model.Path)
@@ -19,29 +20,17 @@
             <h1>@ViewBag.Title</h1>
         </div>
 
-        <a href="@Url.Action("Edit", "Folder", new { id = Model.Id })">
-            <div class="tile gray-light-hover">
-                <i class="icon-edit"></i>@Strings.Edit
-            </div>
+        <a class="tile gray-light-hover" href="@Url.Action("Search", "Folder", new { id = Model.Id })">
+            <i class="icon-search"></i>@Strings.Examine
         </a>
-
-        <a href="@Url.Action("Search", "Folder", new { id = Model.Id })">
-            <div class="tile gray-light-hover">
-                <i class="icon-search"></i>@Strings.Examine
-            </div>
-        </a>
-
-        <a href="@Url.Action("Delete", "Folder", new { id = Model.Id })">
-            
-            <div class="tile gray-light-hover">
-                <i class="icon-delete"></i>@Strings.Delete
-            </div>
+        
+        <a class="tile gray-light-hover" href="@Url.Action("Statistics", "Folder", new { id = Model.Id })">
+            <i class="icon-stats"></i>@Strings.Statistics
         </a>
         
 
     </section>
 
-    
 </div>
 
 
@@ -55,9 +44,3 @@
     </a>
 
 </nav>
-
-
-@section Scripts {
-
-
-}

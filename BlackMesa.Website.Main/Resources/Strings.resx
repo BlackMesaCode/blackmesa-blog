@@ -504,4 +504,43 @@
   <data name="SelectTargetFolder" xml:space="preserve">
     <value>Select target folder</value>
   </data>
+  <data name="DeleteIndexCard" xml:space="preserve">
+    <value>Delete index card</value>
+  </data>
+  <data name="EditIndexCard" xml:space="preserve">
+    <value>Edit index card</value>
+  </data>
+  <data name="QueryCompleted" xml:space="preserve">
+    <value>Query completed</value>
+  </data>
+  <data name="SetupQuery" xml:space="preserve">
+    <value>Setup query</value>
+  </data>
+  <data name="DeleteSelection" xml:space="preserve">
+    <value>Delete selected items</value>
+  </data>
+  <data name="FolderStats" xml:space="preserve">
+    <value>Folder statistics</value>
+  </data>
+  <data name="PerformDeletion" xml:space="preserve">
+    <value>Perform deletionn</value>
+  </data>
+  <data name="SearchFolder" xml:space="preserve">
+    <value>Search folder</value>
+  </data>
+  <data name="AffectedFolders" xml:space="preserve">
+    <value>Affected folders</value>
+  </data>
+  <data name="AffectedIndexCards" xml:space="preserve">
+    <value>Affected index cards</value>
+  </data>
+  <data name="AffectedLearningUnits" xml:space="preserve">
+    <value>Affected learning units</value>
+  </data>
+  <data name="IncludingSubfolders" xml:space="preserve">
+    <value>Including subfolders</value>
+  </data>
+  <data name="SelectionAffection" xml:space="preserve">
+    <value>Including subfolders your selection affects</value>
+  </data>
 </root>

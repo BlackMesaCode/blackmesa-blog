@@ -9,8 +9,7 @@
         <span class="indent"></span>
     }
 
-    <a class="tile gray-light-hover" href="@Url.Action("Move", "Selection",
-                new { sourceFolderId = ViewBag.SourceFolderId, targetFolderId = Model.Id })">
+    <a class="tile gray-light-hover" href="@Url.Action("Move", "Selection", new { sourceFolderId = ViewBag.SourceFolderId, targetFolderId = Model.Id })">
         <i class="icon-folder"></i>@Model.Name
     </a>
 
