@@ -430,6 +430,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Flip card ähnelt.
+        /// </summary>
+        public static string FlipCard {
+            get {
+                return ResourceManager.GetString("FlipCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Folder ähnelt.
         /// </summary>
         public static string Folder {

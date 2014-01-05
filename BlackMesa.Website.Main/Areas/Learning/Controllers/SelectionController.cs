@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Razor.Parser.SyntaxTree;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection;
@@ -125,6 +127,9 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Move(string sourceFolderId, string targetFolderId)
         {
+            if (sourceFolderId == targetFolderId)
+                return RedirectToAction("Details", "Folder", new { id = sourceFolderId });
+
             var sourceFolder = _learningRepo.GetFolder(sourceFolderId); 
 
             // move sourcefolder
@@ -201,14 +206,49 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
             foreach (var unit in folderToSearch.LearningUnits.OfType<IndexCard>().Where(u => u.IsSelected))
             {
-                if ((searchFrontSide && unit.FrontSide.ToLower().Contains(searchText)) || (searchBackSide && unit.BackSide.ToLower().Contains(searchText)))
+                var frontSide = unit.FrontSide.ToLower();
+                var backSide = unit.BackSide.ToLower();
+
+                if ((searchFrontSide && frontSide.Contains(searchText)) || (searchBackSide && backSide.Contains(searchText)))
                 {
+
+                    const string prefix = "<span class=\"marked-search-text\">";
+                    const string suffix = "</span>";
+
+                    if (searchFrontSide && frontSide.Contains(searchText))
+                    {
+                        var matches = Regex.Matches(frontSide, searchText).Cast<Match>();
+                        var offset = 0;
+                        foreach (var match in matches)
+                        {
+                            frontSide = unit.FrontSide.Insert(match.Index + offset, prefix);
+                            offset += prefix.Length;
+                            frontSide = frontSide.Insert(match.Index + match.Length + offset, suffix);
+                            offset += suffix.Length;
+                        }
+                    }
+
+
+                    if (searchBackSide && backSide.Contains(searchText))
+                    {
+                        var matches = Regex.Matches(backSide, searchText).Cast<Match>();
+                        var offset = 0;
+                        foreach (var match in matches)
+                        {
+                            backSide = unit.BackSide.Insert(match.Index + offset, prefix);
+                            offset += prefix.Length;
+                            backSide = backSide.Insert(match.Index + match.Length + offset, suffix);
+                            offset += suffix.Length;
+                        }
+                    }
+
+
                     var searchResult = new SearchResultViewModel
                     {
                         Id = unit.Id.ToString(),
                         Path = path,
-                        FrontSide = unit.FrontSide,
-                        BackSide = unit.BackSide,
+                        FrontSide = frontSide,
+                        BackSide = backSide,
                     };
                     searchResults.Add(searchResult);
                 }

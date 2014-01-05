@@ -576,4 +576,7 @@
   <data name="SearchSelection" xml:space="preserve">
     <value>Auswahl durchsuchen</value>
   </data>
+  <data name="FlipCard" xml:space="preserve">
+    <value>Karte umdrehen</value>
+  </data>
 </root>
