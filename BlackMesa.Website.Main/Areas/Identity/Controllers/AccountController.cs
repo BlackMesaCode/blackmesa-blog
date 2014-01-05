@@ -283,10 +283,7 @@ namespace BlackMesa.Website.Main.Areas.Identity.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();

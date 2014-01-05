@@ -570,4 +570,7 @@
   <data name="SearchWhere" xml:space="preserve">
     <value>Where shell we look?</value>
   </data>
+  <data name="YourSimpleFlashCardApp" xml:space="preserve">
+    <value>Your simple flashcard app</value>
+  </data>
 </root>

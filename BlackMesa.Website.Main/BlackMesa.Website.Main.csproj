@@ -272,6 +272,7 @@
     <Content Include="Areas\Learning\Javascript\query-show.js" />
     <Content Include="Areas\Learning\Javascript\learning.js" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.svg" />
+    <Content Include="Content\custom\images\simca_logo.png" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\custom\images\address.png" />
     <Content Include="Content\custom\images\asp_dotnet_logo_gray.png" />

@@ -570,4 +570,7 @@
   <data name="SearchWhere" xml:space="preserve">
     <value>Wo sollen wir suchen?</value>
   </data>
+  <data name="YourSimpleFlashCardApp" xml:space="preserve">
+    <value>Deine umkomplizierte Karteikarten App</value>
+  </data>
 </root>

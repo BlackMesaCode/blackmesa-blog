@@ -1418,5 +1418,14 @@ namespace BlackMesa.Website.Main.Resources {
                 return ResourceManager.GetString("YourSelectedItems", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Your simple flashcard app ähnelt.
+        /// </summary>
+        public static string YourSimpleFlashCardApp {
+            get {
+                return ResourceManager.GetString("YourSimpleFlashCardApp", resourceCulture);
+            }
+        }
     }
 }

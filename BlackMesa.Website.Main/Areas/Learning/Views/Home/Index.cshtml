@@ -8,29 +8,33 @@
 @* ------------------- Content ------------------- *@
 
 <div id="content">
-    <section id="folder-index">
+    <section id="home-index">
+        
+        <div id="logo" class="tile gray-darker center">
+            <img src="~/Content/custom/images/simca_logo_inverted.png" />
+        </div>
 
-        <div class="tile gray-darker">
-            <h1>@ViewBag.Title</h1>
+        <div class="tile gray-light center">
+            <h3>@Strings.YourSimpleFlashCardApp</h3>
         </div>
 
     </section>
 </div>
 
-
-
-@* ------------------- Menu ------------------- *@
-
 <nav id="menu">
-    
-    <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.YourFolders">
-        <i class="icon-list"></i>
-    </a>
-    
+
     @if (User.Identity.IsAuthenticated)
     {
-        <a class="red-hover" href="@Url.Action("Index", "Entry", new {area = "Blog"})" title="@Strings.Logout">
+        <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.YourFolders">
+            <i class="icon-list"></i>
+        </a>
+        
+        <a class="red-hover" href="@Url.Action("LogOff", "Account", new { area = "Identity" })" title="@Strings.Logout">
             <i class="icon-logout"></i>
+        </a>
+        
+        <a class="red-hover" href="@Url.Action("Manage", "Account", new { area = "Identity" })" title="@Strings.Manage">
+            <i class="icon-cogs"></i>
         </a>
     }
     else
@@ -38,6 +42,34 @@
         <a class="red-hover" href="@Url.Action("Login", "Account", new { area = "Identity"})" title="@Strings.LogIn">
             <i class="icon-login"></i>
         </a>
+        
+        <a class="red-hover" href="@Url.Action("Register", "Account", new { area = "Identity"})" title="@Strings.Register">
+            <i class="icon-register"></i>
+        </a>
     }
 
 </nav>
+
+
+
+@*<nav>
+
+    @if (user.identity.isauthenticated)
+    {
+        <a class="tile red-hover" href="@url.action("index", "folder")">
+            <h3><i class="icon-list"></i>@strings.yourfolders</h3>
+        </a>
+
+        <a class="tile red-hover" href="@url.action("index", "entry", new {area = "blog"})">
+            <h3><i class="icon-logout"></i>@strings.logout</h3>
+        </a>
+    }
+    else
+    {
+        <a class="tile red-hover" href="@url.action("login", "account", new { area = "identity"})">
+            <h3><i class="icon-login"></i>@strings.login</h3>
+        </a>
+    }
+
+</nav>*@
+
