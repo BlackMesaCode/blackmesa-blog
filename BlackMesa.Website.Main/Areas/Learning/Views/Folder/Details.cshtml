@@ -94,27 +94,37 @@
     
     @if (Model.HasAnySelection)
     {
-        <a class="red-hover" href="@Url.Action("SetMoveTarget", "Selection", new { sourceFolderId = Model.Id })" title="@Strings.Move">
-            <i class="icon-move"></i>
-        </a>
-    
+        if (!Model.HasRootFolderSelected)
+        { 
+            <a class="red-hover" href="@Url.Action("SetMoveTarget", "Selection", new { sourceFolderId = Model.Id })" title="@Strings.Move">
+                <i class="icon-move"></i>
+            </a>
+        }
+        
         if (Model.HasAnyFolderSelection)
         {
             <a class="red-hover" href="@Url.Action("Search", "Selection", new { folderId = Model.Id })" title="@Strings.Examine">
                 <i class="icon-search"></i>
             </a>
-         }
-        
-        <a class="red-hover" href="@Url.Action("Delete", "Selection", new { folderId = Model.Id })" title="@Strings.Delete">
-            <i class="icon-delete"></i>
-        </a>
+        }
 
+        if (!Model.HasRootFolderSelected)
+        {
+            <a class="red-hover" href="@Url.Action("Delete", "Selection", new {folderId = Model.Id})" title="@Strings.Delete">
+                <i class="icon-delete"></i>
+            </a>
+        }
+        
         <a class="red-hover" href="@Url.Action("RemoveFolder", "Selection", new { folderId = Model.Id, returnFolderId = Model.Id })" title="@Strings.Abort">
             <i class="icon-abort"></i>
         </a>
     }
     else
     {
+        <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Home">
+            <i class="icon-home"></i>
+        </a>
+        
         <a class="red-hover" href="@Url.Action("Setup", "Query", new { folderId = Model.Id })" title="@Strings.StartQuery">
             <i class="icon-rocket"></i>
         </a>
@@ -127,9 +137,6 @@
             <i class="icon-plus prefix-icon"></i><i class="icon-folder"></i>
         </a>
 
-        <a class="red-hover" href="@Url.Action("Options", "Folder", new { id = Model.Id })" title="@Strings.Options">
-            <i class="icon-wrench"></i>
-        </a>
     }
 
     

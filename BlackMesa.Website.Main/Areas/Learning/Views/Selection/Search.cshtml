@@ -4,7 +4,7 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.SearchSelectionViewModel
 
 @{
-    ViewBag.Title = Strings.SearchFolder;
+    ViewBag.Title = Strings.SearchSelection;
 }
 
 
@@ -12,7 +12,6 @@
 
 <div id="content">
     
-
     <section id="folder-search">   
         
         @using (Html.BeginForm())
@@ -31,27 +30,14 @@
             
             <div class="tile gray-darker">
                 <h1>@ViewBag.Title</h1>
-            </div>
-
-
-            <div class="tile gray-dark">
-                <h3>@(Model.SelectedFolders.Count == 1 ? Strings.SelectedFolder : Strings.SelectedFolders)</h3>
-            </div>
-
-            foreach (var folder in Model.SelectedFolders)
-            {
-                <div class="tile gray-light">
-                    <i class="icon-folder"> </i>@folder.Name
-                </div>
-            } 
-            
+            </div>  
             
             <div class="tile gray-dark">
                 <h3>@Strings.SearchWhat</h3>
             </div>
             
             <div class="form-element-container">
-                @Html.TextBoxFor(model => model.SearchText, new { @placeholder = Strings.Name, @autocomplete = "off" })
+                @Html.TextBoxFor(model => model.SearchText, new { @placeholder = Strings.SearchText, @autocomplete = "off" })
             </div>
 
             <div class="tile gray-dark">
@@ -65,10 +51,6 @@
             <label class="tile gray-light-hover" for="_SearchBackSide">
                 @Html.CheckBoxFor(model => model.SearchBackSide, new { @id = "_SearchBackSide" }) @Strings.SearchBackSide
             </label>
-            
-            <div class="tile gray-dark">
-                <h3>@Strings.SearchWhen</h3>
-            </div>
 
             <div class="form-element-container">
                 <button class="gray-dark-hover" type="submit">

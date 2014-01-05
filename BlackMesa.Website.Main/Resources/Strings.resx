@@ -523,7 +523,7 @@
     <value>Folder statistics</value>
   </data>
   <data name="PerformDeletion" xml:space="preserve">
-    <value>Perform deletionn</value>
+    <value>Perform deletion</value>
   </data>
   <data name="SearchFolder" xml:space="preserve">
     <value>Search folder</value>
@@ -541,7 +541,7 @@
     <value>Including subfolders</value>
   </data>
   <data name="SelectionAffection" xml:space="preserve">
-    <value>Including subfolders your selection affects</value>
+    <value>Your selection affects a total of</value>
   </data>
   <data name="FilterOptions" xml:space="preserve">
     <value>Filter options</value>
@@ -572,5 +572,8 @@
   </data>
   <data name="YourSimpleFlashCardApp" xml:space="preserve">
     <value>Your simple flashcard app</value>
+  </data>
+  <data name="SearchSelection" xml:space="preserve">
+    <value>Search in selection</value>
   </data>
 </root>

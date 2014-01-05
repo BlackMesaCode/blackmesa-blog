@@ -26,6 +26,9 @@
             <h1>@ViewBag.Title</h1>
         </div>
 
+        <div class="tile gray-light">
+            @Strings.SearchText: @Model.SearchText
+        </div>
 
         @foreach (var result in Model.SearchResults)
         {
@@ -41,7 +44,7 @@
 
 <nav id="menu">
 
-    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Back">
+    <a class="red-hover" href="@Url.Action("Search", "Selection", new { folderId = Model.Id })" title="@Strings.Back">
         <i class="icon-back"></i>
     </a>
 

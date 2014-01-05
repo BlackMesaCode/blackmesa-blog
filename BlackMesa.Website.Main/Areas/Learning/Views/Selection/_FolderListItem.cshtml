@@ -15,13 +15,15 @@
 
 </div>
 
+@*// selectedfolder != sourceFolder || selectedFolder == sourceFolder && sourceFolder.SubFolders.All(s => !s.IsSelected)*@
 
 @if (Model.SubFolders.Count > 0)
 {
     foreach (var subFolder in Model.SubFolders)
     {
         if (!(ViewBag.SourceFolder as Folder).SubFolders.Where(s => s.IsSelected).Contains(subFolder) &&
-            ((subFolder == ViewBag.SourceFolder && !(ViewBag.SourceFolder as Folder).IsSelected) ||
+            ((subFolder == ViewBag.SourceFolder && 
+            (!(ViewBag.SourceFolder as Folder).IsSelected && (ViewBag.SourceFolder as Folder).SubFolders.Any(s => !s.IsSelected))) ||
             subFolder != ViewBag.SourceFolder))
         {
             @Html.Partial("_FolderListItem", subFolder)

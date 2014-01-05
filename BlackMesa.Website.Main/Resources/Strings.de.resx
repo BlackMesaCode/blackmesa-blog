@@ -541,7 +541,7 @@
     <value>Einschließlich Unterverzeichnisse</value>
   </data>
   <data name="SelectionAffection" xml:space="preserve">
-    <value>Inklusive aller Unterverzeichnisse umfasst deine Auswahl</value>
+    <value>Deine Auswahl umfasst ingesamt</value>
   </data>
   <data name="FilterOptions" xml:space="preserve">
     <value>Filter-Optionen</value>
@@ -572,5 +572,8 @@
   </data>
   <data name="YourSimpleFlashCardApp" xml:space="preserve">
     <value>Deine umkomplizierte Karteikarten App</value>
+  </data>
+  <data name="SearchSelection" xml:space="preserve">
+    <value>Auswahl durchsuchen</value>
   </data>
 </root>

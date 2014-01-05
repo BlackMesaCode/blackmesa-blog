@@ -156,10 +156,8 @@ namespace BlackMesa.Website.Main.DataLayer
         {
             var folderToDelete = _dbContext.Learning_Folders.Find(new Guid(folderId));
 
-            //foreach (var learningUnit in folderToDelete.LearningUnits)
-            //{
-            //    RemoveLearningUnit(learningUnit.Id.ToString());
-            //}
+            if (folderToDelete.ParentFolder == null)
+                throw new Exception("Root folder must not be deleted.");
 
             for (var i = folderToDelete.LearningUnits.Count-1; i >= 0; i--)
             {
@@ -171,11 +169,6 @@ namespace BlackMesa.Website.Main.DataLayer
             {
                 RemoveFolder(folderToDelete.SubFolders[i].Id.ToString());
             }
-
-            //foreach (var subFolder in folderToDelete.SubFolders)
-            //{
-            //    RemoveFolder(subFolder.Id.ToString());
-            //}
 
             _dbContext.Learning_Folders.Remove(folderToDelete);
             _dbContext.SaveChanges();
@@ -194,14 +187,15 @@ namespace BlackMesa.Website.Main.DataLayer
         public void MoveFolder(string folderId, string newParentFolderId)
         {
             var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
+
+            if (folder.ParentFolder == null)
+                throw new Exception("Root folder must not be moved.");
+
             var oldParentFolder = folder.ParentFolder;
             var newParentFolder = _dbContext.Learning_Folders.Find(new Guid(newParentFolderId));
 
             // Remove Folder from the subfolders List of the old parent folder if there is one existing
-            if (oldParentFolder != null)
-            {
-                oldParentFolder.SubFolders.Remove(folder);
-            }
+            oldParentFolder.SubFolders.Remove(folder);
 
             // Add Folder to the subfolders list of the new parent folder 
             newParentFolder.SubFolders.Add(folder);

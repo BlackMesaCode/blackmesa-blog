@@ -772,7 +772,7 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Perform deletionn ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Perform deletion ähnelt.
         /// </summary>
         public static string PerformDeletion {
             get {
@@ -1141,6 +1141,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search in selection ähnelt.
+        /// </summary>
+        public static string SearchSelection {
+            get {
+                return ResourceManager.GetString("SearchSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Search text ähnelt.
         /// </summary>
         public static string SearchText {
@@ -1213,7 +1222,7 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Including subfolders your selection affects ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Your selection affects a total of ähnelt.
         /// </summary>
         public static string SelectionAffection {
             get {

@@ -10,6 +10,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder
         public int Level { get; set; }
         public bool HasAnySelection { get; set; }
         public bool HasAnyFolderSelection { get; set; }
+        public bool HasRootFolderSelected { get; set; }
         public Dictionary<string, string> Path { get; set; }
         public List<BlackMesa.Website.Main.Models.Learning.Folder> SubFolders { get; set; }
         public IEnumerable<BlackMesa.Website.Main.Models.Learning.IndexCard> IndexCards { get; set; }

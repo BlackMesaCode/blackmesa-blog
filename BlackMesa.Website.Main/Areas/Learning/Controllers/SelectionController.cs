@@ -125,7 +125,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Move(string sourceFolderId, string targetFolderId)
         {
-            var sourceFolder = _learningRepo.GetFolder(sourceFolderId);
+            var sourceFolder = _learningRepo.GetFolder(sourceFolderId); 
 
             // move sourcefolder
             if (sourceFolder.IsSelected)
@@ -161,16 +161,9 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             var folder = _learningRepo.GetFolder(folderId);
 
-            var selectedFolders = new List<Folder>();
-            if (folder.IsSelected)
-                selectedFolders.Add(folder);
-            else
-                selectedFolders = folder.SubFolders.Where(f => f.IsSelected).ToList();
-
             var viewModel = new SearchSelectionViewModel
             {
                 FolderId = folder.Id.ToString(),
-                SelectedFolders = selectedFolders,
                 SearchFrontSide = true,
                 SearchBackSide = true,
             };
@@ -185,15 +178,16 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var folder = _learningRepo.GetFolder(viewModel.FolderId);
             var searchResult = new List<SearchResultViewModel>();
 
-            foreach (var selectedFolder in folder.SubFolders.Where(f => f.IsSelected))
-            {
-                SearchInFolder(selectedFolder, viewModel.SearchText, viewModel.SearchFrontSide, viewModel.SearchBackSide,
-                    ref searchResult);
+            if (!String.IsNullOrEmpty(viewModel.SearchText) && (viewModel.SearchFrontSide || viewModel.SearchBackSide))
+            { 
+                SearchInFolder(folder, viewModel.SearchText.ToLower(), viewModel.SearchFrontSide, viewModel.SearchBackSide,
+                       ref searchResult);
             }
 
             var result = new SearchResultsViewModel
             {
                 Id = viewModel.FolderId,
+                SearchText = viewModel.SearchText,
                 SearchResults = searchResult,
             };
             return View("SearchResults", result);
@@ -201,14 +195,13 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public void SearchInFolder(Folder folderToSearch, string searchText, bool searchFrontSide, bool searchBackSide, ref List<SearchResultViewModel> searchResults)
         {
-
             var path = new Dictionary<string, string>();
             _learningRepo.GetFolderPath(folderToSearch, ref path);
             path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
 
-            foreach (var unit in folderToSearch.LearningUnits.OfType<IndexCard>())
+            foreach (var unit in folderToSearch.LearningUnits.OfType<IndexCard>().Where(u => u.IsSelected))
             {
-                if ((searchFrontSide && unit.FrontSide.Contains(searchText)) || (searchBackSide && unit.BackSide.Contains(searchText)))
+                if ((searchFrontSide && unit.FrontSide.ToLower().Contains(searchText)) || (searchBackSide && unit.BackSide.ToLower().Contains(searchText)))
                 {
                     var searchResult = new SearchResultViewModel
                     {
@@ -221,7 +214,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 }
             }
 
-            foreach (var subFolder in folderToSearch.SubFolders)
+            foreach (var subFolder in folderToSearch.SubFolders.Where(f => f.IsSelected))
             {
                 SearchInFolder(subFolder, searchText, searchFrontSide, searchBackSide, ref searchResults);
             }
