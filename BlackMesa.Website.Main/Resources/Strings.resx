@@ -337,13 +337,10 @@
     <value>Folders</value>
   </data>
   <data name="Card" xml:space="preserve">
-    <value>Learning card</value>
+    <value>Index card</value>
   </data>
   <data name="Cards" xml:space="preserve">
-    <value>Learning cards</value>
-  </data>
-  <data name="Card" xml:space="preserve">
-    <value>Index card</value>
+    <value>Index cards</value>
   </data>
   <data name="CreateCard" xml:space="preserve">
     <value>Create index card</value>
@@ -377,9 +374,6 @@
   </data>
   <data name="Abort" xml:space="preserve">
     <value>Abort</value>
-  </data>
-  <data name="Cards" xml:space="preserve">
-    <value>Index cards</value>
   </data>
   <data name="Move" xml:space="preserve">
     <value>Move</value>
@@ -532,9 +526,6 @@
     <value>Affected folders</value>
   </data>
   <data name="AffectedCards" xml:space="preserve">
-    <value>Affected index cards</value>
-  </data>
-  <data name="AffectedCards" xml:space="preserve">
     <value>Affected learning cards</value>
   </data>
   <data name="IncludingSubfolders" xml:space="preserve">
@@ -582,7 +573,7 @@
   <data name="ChangeOrder" xml:space="preserve">
     <value>Change order</value>
   </data>
-  <data name="SelectCardToInsertAfter" xml:space="preserve">
-    <value>Select the flash card after which you want to insert your selection</value>
+  <data name="SetInsertAfterCard" xml:space="preserve">
+    <value>Below which card do you want to insert your selection?</value>
   </data>
 </root>

@@ -88,20 +88,20 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Affected learning cards ähnelt.
+        /// </summary>
+        public static string AffectedCards {
+            get {
+                return ResourceManager.GetString("AffectedCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Affected folders ähnelt.
         /// </summary>
         public static string AffectedFolders {
             get {
                 return ResourceManager.GetString("AffectedFolders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Affected index cards ähnelt.
-        /// </summary>
-        public static string AffectedCards {
-            get {
-                return ResourceManager.GetString("AffectedCards", resourceCulture);
             }
         }
         
@@ -165,6 +165,24 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Blog {
             get {
                 return ResourceManager.GetString("Blog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Index card ähnelt.
+        /// </summary>
+        public static string Card {
+            get {
+                return ResourceManager.GetString("Card", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Index cards ähnelt.
+        /// </summary>
+        public static string Cards {
+            get {
+                return ResourceManager.GetString("Cards", resourceCulture);
             }
         }
         
@@ -250,20 +268,20 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Create folder ähnelt.
-        /// </summary>
-        public static string CreateFolder {
-            get {
-                return ResourceManager.GetString("CreateFolder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Create index card ähnelt.
         /// </summary>
         public static string CreateCard {
             get {
                 return ResourceManager.GetString("CreateCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create folder ähnelt.
+        /// </summary>
+        public static string CreateFolder {
+            get {
+                return ResourceManager.GetString("CreateFolder", resourceCulture);
             }
         }
         
@@ -322,20 +340,20 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Delete folder ähnelt.
-        /// </summary>
-        public static string DeleteFolder {
-            get {
-                return ResourceManager.GetString("DeleteFolder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Delete index card ähnelt.
         /// </summary>
         public static string DeleteCard {
             get {
                 return ResourceManager.GetString("DeleteCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete folder ähnelt.
+        /// </summary>
+        public static string DeleteFolder {
+            get {
+                return ResourceManager.GetString("DeleteFolder", resourceCulture);
             }
         }
         
@@ -358,20 +376,20 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Edit folder ähnelt.
-        /// </summary>
-        public static string EditFolder {
-            get {
-                return ResourceManager.GetString("EditFolder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edit index card ähnelt.
         /// </summary>
         public static string EditCard {
             get {
                 return ResourceManager.GetString("EditCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edit folder ähnelt.
+        /// </summary>
+        public static string EditFolder {
+            get {
+                return ResourceManager.GetString("EditFolder", resourceCulture);
             }
         }
         
@@ -516,24 +534,6 @@ namespace BlackMesa.Website.Main.Resources {
         public static string IncludingSubfolders {
             get {
                 return ResourceManager.GetString("IncludingSubfolders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Index card ähnelt.
-        /// </summary>
-        public static string Card {
-            get {
-                return ResourceManager.GetString("Card", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Index cards ähnelt.
-        /// </summary>
-        public static string Cards {
-            get {
-                return ResourceManager.GetString("Cards", resourceCulture);
             }
         }
         
@@ -1204,15 +1204,6 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select the flash card after which you want to insert your selection ähnelt.
-        /// </summary>
-        public static string SelectCardToInsertAfter {
-            get {
-                return ResourceManager.GetString("SelectCardToInsertAfter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Selection ähnelt.
         /// </summary>
         public static string Selection {
@@ -1236,6 +1227,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string SelectTargetFolder {
             get {
                 return ResourceManager.GetString("SelectTargetFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Below which card do you want to insert your selection? ähnelt.
+        /// </summary>
+        public static string SetInsertAfterCard {
+            get {
+                return ResourceManager.GetString("SetInsertAfterCard", resourceCulture);
             }
         }
         

@@ -608,7 +608,7 @@
     <Content Include="Areas\Learning\Views\Selection\Delete.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\SearchResults.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\_SearchResult.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\SetNewOrder.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\SetInsertAfterCard.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />

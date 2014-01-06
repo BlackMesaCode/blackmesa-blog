@@ -312,40 +312,40 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void ChangeCardOrder(string sourceFolderId, string cardIdToInsertAfter)
+        public void ChangeCardOrder(string sourceFolderId, string insertAfterCardId)
         {
             var folder = GetFolder(sourceFolderId);
-            var cardToInsertAfter = GetCard(cardIdToInsertAfter);
+            var insertAfterCard = GetCard(insertAfterCardId);
             var selectedCards = folder.Cards.Where(u => u.IsSelected).OrderBy(c => c.Position).ToList();
 
             for (int i = 0; i < selectedCards.Count(); i++)
             {
-                ChangeCardPosition(folder.Cards.Single(c => c.Position == (cardToInsertAfter.Position + i)), selectedCards.ElementAt(i));
+                ChangeCardPosition(folder.Cards.Single(c => c.Position == (insertAfterCard.Position + i)), selectedCards.ElementAt(i));
             }
 
             _dbContext.SaveChanges();
         }
 
-        private void ChangeCardPosition(Card cardToInsertAfter, Card card)
+        private void ChangeCardPosition(Card insertAfterCard, Card card)
         {
             card.Position = -1;
-            var cardsBefore = cardToInsertAfter.Folder.Cards.Where(c => c.Position <= cardToInsertAfter.Position && c.Position >= 0).OrderBy(c => c.Position).ToList();
-            var cardsAfter = cardToInsertAfter.Folder.Cards.Where(c => c.Position > cardToInsertAfter.Position).OrderBy(c => c.Position).ToList();
+            var cardsBefore = insertAfterCard.Folder.Cards.Where(c => c.Position <= insertAfterCard.Position && c.Position >= 0).OrderBy(c => c.Position).ToList();
+            var cardsAfter = insertAfterCard.Folder.Cards.Where(c => c.Position > insertAfterCard.Position).OrderBy(c => c.Position).ToList();
 
             int b = 0;
             foreach (var cardBefore in cardsBefore)
             {
-                cardToInsertAfter.Folder.Cards.Find(c => c.Id == cardBefore.Id).Position = b;
+                insertAfterCard.Folder.Cards.Find(c => c.Id == cardBefore.Id).Position = b;
                 b++;
             }
 
-            int a = cardToInsertAfter.Position + 2;
+            int a = insertAfterCard.Position + 2;
             foreach (var cardAfter in cardsAfter)
             {
-                cardToInsertAfter.Folder.Cards.Find(c => c.Id == cardAfter.Id).Position = a;
+                insertAfterCard.Folder.Cards.Find(c => c.Id == cardAfter.Id).Position = a;
                 a++;
             }
-            card.Position = cardToInsertAfter.Position + 1;
+            card.Position = insertAfterCard.Position + 1;
 
             _dbContext.SaveChanges();
         }

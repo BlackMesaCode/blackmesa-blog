@@ -113,7 +113,7 @@
         
         if (Model.HasOnlyCardsSelected)
         { 
-            <a class="red-hover" href="@Url.Action("SetNewOrder", "Selection", new { sourceFolderId = Model.Id })" title="@Strings.ChangeOrder">
+            <a class="red-hover" href="@Url.Action("SetInsertAfterCard", "Selection", new { sourceFolderId = Model.Id })" title="@Strings.ChangeOrder">
                 <i class="icon-ol"></i>
             </a>
         }

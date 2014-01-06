@@ -163,7 +163,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
-        public ActionResult SetNewOrder(string sourceFolderId)
+        public ActionResult SetInsertAfterCard(string sourceFolderId)
         {
             var folder = _learningRepo.GetFolder(sourceFolderId);
             var viewModel = new SetNewOrderViewModel
@@ -175,9 +175,9 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return View(viewModel);
         }
 
-        public ActionResult ChangeOrder(string sourceFolderId, string cardIdToInsertAfter)
+        public ActionResult ChangeOrder(string sourceFolderId, string insertAfterCardId)
         {
-            _learningRepo.ChangeCardOrder(sourceFolderId, cardIdToInsertAfter);
+            _learningRepo.ChangeCardOrder(sourceFolderId, insertAfterCardId);
 
             return RedirectToAction("Details", "Folder", new { id = sourceFolderId });
         }

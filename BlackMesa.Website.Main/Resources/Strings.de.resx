@@ -337,13 +337,10 @@
     <value>Verzeichnisse</value>
   </data>
   <data name="Card" xml:space="preserve">
-    <value>Lerneinheit</value>
+    <value>Karteikarte</value>
   </data>
   <data name="Cards" xml:space="preserve">
-    <value>Lerneinheiten</value>
-  </data>
-  <data name="Card" xml:space="preserve">
-    <value>Karteikarte</value>
+    <value>Karteikarten</value>
   </data>
   <data name="CreateCard" xml:space="preserve">
     <value>Karteikarte erstellen</value>
@@ -377,9 +374,6 @@
   </data>
   <data name="Abort" xml:space="preserve">
     <value>Abbrechen</value>
-  </data>
-  <data name="Cards" xml:space="preserve">
-    <value>Karteikarten</value>
   </data>
   <data name="Move" xml:space="preserve">
     <value>Verschieben</value>
@@ -532,9 +526,6 @@
     <value>Betroffene Verzeichnisse</value>
   </data>
   <data name="AffectedCards" xml:space="preserve">
-    <value>Betroffene Karteikarten</value>
-  </data>
-  <data name="AffectedCards" xml:space="preserve">
     <value>Betroffene Lerneinheiten</value>
   </data>
   <data name="IncludingSubfolders" xml:space="preserve">
@@ -582,7 +573,7 @@
   <data name="ChangeOrder" xml:space="preserve">
     <value>Reihenfolge verändern</value>
   </data>
-  <data name="SelectCardToInsertAfter" xml:space="preserve">
-    <value>Wähle diejenige Karteikarte aus, hinter der du deine Auswahl einfügen möchtest</value>
+  <data name="SetInsertAfterCard" xml:space="preserve">
+    <value>Unter welcher Karte willst du deine Auswahl einfügen?</value>
   </data>
 </root>
