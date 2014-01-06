@@ -19,6 +19,10 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
+
+
+        // ================================ Folders ================================ //
+
         public void AddFolder(string name, string ownerId, string parentFolderId)
         {
 
@@ -65,6 +69,7 @@ namespace BlackMesa.Website.Main.DataLayer
             return _dbContext.Learning_Folders.Where(f => f.Owner.Id == userId && f.Level == 1).AsEnumerable();
         }
 
+
         public void GetAllSubfolders(string folderId, ref List<Folder> subfolders)
         {
             var folder = GetFolder(folderId);
@@ -74,6 +79,7 @@ namespace BlackMesa.Website.Main.DataLayer
                 GetAllSubfolders(subfolder.Id.ToString(), ref subfolders);
             }
         }
+
 
         public void GetFolderCount(Folder folder, ref int folderCount, bool includeSubfolders = true, bool countOnlySelected = false)
         {
@@ -97,31 +103,11 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void GetCardCount(Folder folder, ref int cardCount, bool includeSubfolders = true, bool countOnlySelected = false)
-        {
-            if (countOnlySelected)
-            {
-                cardCount += folder.Cards.Count(u => u.IsSelected);
-            }
-            else
-            {
-                cardCount += folder.Cards.Count();
-            }
-
-            if (includeSubfolders)
-            {
-                foreach (var subFolder in folder.SubFolders)
-                {
-                    GetCardCount(subFolder, ref cardCount, includeSubfolders, countOnlySelected);
-                }
-            }
-        }
-
-
         public Folder GetRootFolder(string userId)
         {
             return _dbContext.Learning_Folders.SingleOrDefault(f => f.Owner.Id == userId && f.ParentFolder == null);;
         }
+
 
         public void CreateRootFolder(string name, string ownerId)
         {
@@ -178,6 +164,7 @@ namespace BlackMesa.Website.Main.DataLayer
             _dbContext.SaveChanges();
         }
 
+
         public void MoveFolder(string folderId, string newParentFolderId)
         {
             var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
@@ -205,6 +192,15 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
+        // ================================ Cards ================================ //
+
+
+        public Card GetCard(string cardId)
+        {
+            return _dbContext.Learning_Cards.SingleOrDefault(f => f.Id == new Guid(cardId));
+        }
+
+
         public void GetCardsIncludingSubfolders(string folderId, ref List<Card> cards)
         {
             var folder = GetFolder(folderId);
@@ -216,9 +212,24 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public Card GetCard(string cardId)
+        public void GetCardCount(Folder folder, ref int cardCount, bool includeSubfolders = true, bool countOnlySelected = false)
         {
-            return _dbContext.Learning_Cards.SingleOrDefault(f => f.Id == new Guid(cardId));
+            if (countOnlySelected)
+            {
+                cardCount += folder.Cards.Count(u => u.IsSelected);
+            }
+            else
+            {
+                cardCount += folder.Cards.Count();
+            }
+
+            if (includeSubfolders)
+            {
+                foreach (var subFolder in folder.SubFolders)
+                {
+                    GetCardCount(subFolder, ref cardCount, includeSubfolders, countOnlySelected);
+                }
+            }
         }
 
 
@@ -233,6 +244,8 @@ namespace BlackMesa.Website.Main.DataLayer
                 FolderId = new Guid(folderId),
                 OwnerId = ownerId,
                 Owner = owner,
+                IsSelected = false,
+                Position = folder.Cards.Count,
                 FrontSide = question,
                 BackSide = answer,
                 DateCreated = DateTime.Now,
@@ -242,6 +255,7 @@ namespace BlackMesa.Website.Main.DataLayer
             folder.Cards.Add(newStandardCard);
             _dbContext.SaveChanges();
         }
+
 
         public void EditCard(string id, string newQuestion, string newAnswer, string newHint, 
             string newCodeSnipped, string newImageUrl)
@@ -263,8 +277,11 @@ namespace BlackMesa.Website.Main.DataLayer
             var oldFolder = card.Folder;
             var newFolder = _dbContext.Learning_Folders.Find(new Guid(newFolderId));
 
+            DecreasePositionOfSubsequentCards(oldFolder, card, 1);
+
             card.FolderId = new Guid(newFolderId);
             card.Folder = newFolder;
+            card.Position = newFolder.Cards.Count;
 
             // Remove card from the list of learning cards from the old folder
             oldFolder.Cards.Remove(card);
@@ -276,42 +293,79 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void ChangeOrder(string sourceFolderId, string cardIdToInsertAfter)
+        private void IncreasePositionOfSubsequentCards(Folder folder, Card card, int offset)
+        {
+            var affectedCards = folder.Cards.Where(c => c.Position > card.Position);
+            foreach (var affectedCard in affectedCards)
+            {
+                affectedCard.Position = affectedCard.Position + offset;
+            }
+        }
+
+        private void DecreasePositionOfSubsequentCards(Folder folder, Card card, int offset)
+        {
+            var affectedCards = folder.Cards.Where(c => c.Position > card.Position);
+            foreach (var affectedCard in affectedCards)
+            {
+                affectedCard.Position = affectedCard.Position - offset;
+            }
+        }
+
+
+        public void ChangeCardOrder(string sourceFolderId, string cardIdToInsertAfter)
         {
             var folder = GetFolder(sourceFolderId);
             var cardToInsertAfter = GetCard(cardIdToInsertAfter);
-            var selectedCards = folder.Cards.Where(u => u.IsSelected).ToList();
+            var selectedCards = folder.Cards.Where(u => u.IsSelected).OrderBy(c => c.Position).ToList();
 
-            foreach (var card in selectedCards)
+            for (int i = 0; i < selectedCards.Count(); i++)
             {
-                RemoveCard(card.Id.ToString());
+                ChangeCardPosition(folder.Cards.Single(c => c.Position == (cardToInsertAfter.Position + i)), selectedCards.ElementAt(i));
             }
-
-            var newIndex = folder.Cards.IndexOf(cardToInsertAfter) + 1;
-
-            for (int i = 0; i < selectedCards.Count; i++)
-            {
-                
-            }
-
-            folder.Cards.InsertRange(newIndex, selectedCards);
 
             _dbContext.SaveChanges();
         }
 
+        private void ChangeCardPosition(Card cardToInsertAfter, Card card)
+        {
+            card.Position = -1;
+            var cardsBefore = cardToInsertAfter.Folder.Cards.Where(c => c.Position <= cardToInsertAfter.Position && c.Position >= 0).OrderBy(c => c.Position).ToList();
+            var cardsAfter = cardToInsertAfter.Folder.Cards.Where(c => c.Position > cardToInsertAfter.Position).OrderBy(c => c.Position).ToList();
+
+            int b = 0;
+            foreach (var cardBefore in cardsBefore)
+            {
+                cardToInsertAfter.Folder.Cards.Find(c => c.Id == cardBefore.Id).Position = b;
+                b++;
+            }
+
+            int a = cardToInsertAfter.Position + 2;
+            foreach (var cardAfter in cardsAfter)
+            {
+                cardToInsertAfter.Folder.Cards.Find(c => c.Id == cardAfter.Id).Position = a;
+                a++;
+            }
+            card.Position = cardToInsertAfter.Position + 1;
+
+            _dbContext.SaveChanges();
+        }
 
 
         public void RemoveCard(string id)
         {
             var card = _dbContext.Learning_Cards.Find(new Guid(id));
+            DecreasePositionOfSubsequentCards(card.Folder, card, 1);
             _dbContext.Learning_Cards.Remove(card);
             _dbContext.SaveChanges();
         }
 
 
+        // ================================ Queries ================================ //
+
+
         public List<QueryItem> GetQueries(string cardId)
         {
-            return _dbContext.Learning_Cards.Find(new Guid(cardId)).Queries;
+            return _dbContext.Learning_Cards.Find(new Guid(cardId)).QueryItems;
         }
 
         public void AddQuery(string cardId, Card card, DateTime questionTime, DateTime answerTime, QueryResult result)
@@ -326,9 +380,12 @@ namespace BlackMesa.Website.Main.DataLayer
                 Result = result,
             };
 
-            card.Queries.Add(query);
+            card.QueryItems.Add(query);
             _dbContext.SaveChanges();  
         }
+
+
+        // ================================ Selections ================================ //
 
 
         public void SelectCard(string cardId)
@@ -342,6 +399,7 @@ namespace BlackMesa.Website.Main.DataLayer
             _dbContext.SaveChanges();
         }
 
+
         public bool AllChildsSelected(Folder folder)
         {
             if (folder.SubFolders.Any(subFolder => !subFolder.IsSelected))
@@ -351,6 +409,7 @@ namespace BlackMesa.Website.Main.DataLayer
 
             return true;
         }
+
 
         public void DeSelectCard(string cardId)
         {
@@ -362,6 +421,7 @@ namespace BlackMesa.Website.Main.DataLayer
 
             _dbContext.SaveChanges();
         }
+
 
         public void SelectFolder(string folderId)
         {
@@ -376,12 +436,12 @@ namespace BlackMesa.Website.Main.DataLayer
                 SelectFolder(subfolder.Id.ToString());
             }
 
-
             //if (folder.ParentFolder!= null && !folder.ParentFolder.IsSelected && AllChildsSelected(folder.ParentFolder))
             //    folder.ParentFolder.IsSelected = true;
 
             _dbContext.SaveChanges();
         }
+
 
         public void DeSelectFolder(string folderId)
         {
@@ -404,6 +464,8 @@ namespace BlackMesa.Website.Main.DataLayer
             }
             _dbContext.SaveChanges();
         }
+
+
 
     }
 }

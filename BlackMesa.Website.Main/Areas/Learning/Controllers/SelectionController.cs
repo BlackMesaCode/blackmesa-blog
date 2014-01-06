@@ -170,14 +170,14 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 SourceFolder = folder,
                 SourceFolderId = folder.Id.ToString(),
-                Cards = folder.Cards.Where(u => !u.IsSelected).ToList(),
+                Cards = folder.Cards.Where(u => !u.IsSelected).OrderBy(c => c.Position).ToList(),
             };
             return View(viewModel);
         }
 
         public ActionResult ChangeOrder(string sourceFolderId, string cardIdToInsertAfter)
         {
-            _learningRepo.ChangeOrder(sourceFolderId, cardIdToInsertAfter);
+            _learningRepo.ChangeCardOrder(sourceFolderId, cardIdToInsertAfter);
 
             return RedirectToAction("Details", "Folder", new { id = sourceFolderId });
         }

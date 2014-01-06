@@ -34,7 +34,7 @@ namespace BlackMesa.Website.Main.Models.Learning
 
         public virtual Folder Folder { get; set; }
 
-        public virtual List<QueryItem> Queries { get; set; }
+        public virtual List<QueryItem> QueryItems { get; set; }
 
         [StringLength(255)]
         public string FrontSide { get; set; }

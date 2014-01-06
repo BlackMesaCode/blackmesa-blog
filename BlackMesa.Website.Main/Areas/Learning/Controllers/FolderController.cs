@@ -59,7 +59,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 HasRootFolderSelected = (folder.ParentFolder == null && folder.IsSelected),
                 HasOnlyCardsSelected = (folder.Cards.Any(u => u.IsSelected) && !folder.IsSelected && !folder.SubFolders.Any(f => f.IsSelected)),
                 SubFolders = folder.SubFolders,
-                Cards = folder.Cards,
+                Cards = folder.Cards.OrderBy(c => c.Position),
                 Path = path,
             };
             return View(viewModel);

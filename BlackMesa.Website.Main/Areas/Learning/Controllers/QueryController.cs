@@ -163,7 +163,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 var queries = new List<QueryItem>();
                 foreach (var cardId in selectedCards)
                 {
-                    queries.Add(_learningRepo.GetCard(cardId).Queries.Last());
+                    queries.Add(_learningRepo.GetCard(cardId).QueryItems.Last());
                 }
 
                 var viewModel = new QueryCompletedViewModel
