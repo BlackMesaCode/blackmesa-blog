@@ -193,7 +193,7 @@
     <Compile Include="Areas\Learning\Controllers\SelectionController.cs" />
     <Compile Include="Areas\Learning\Controllers\HomeController.cs" />
     <Compile Include="Areas\Learning\Controllers\QueryController.cs" />
-    <Compile Include="Areas\Learning\Controllers\IndexCardController.cs" />
+    <Compile Include="Areas\Learning\Controllers\CardController.cs" />
     <Compile Include="Areas\Learning\Controllers\FolderController.cs" />
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
       <SubType>Code</SubType>
@@ -208,10 +208,9 @@
     <Compile Include="Areas\Learning\ViewModels\Folder\CreateFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderDetailsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\DeleteSelectionViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\IndexCard\DeleteIndexCardViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\IndexCard\EditIndexCardViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\LearningUnit\CreateLearningUnitViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\IndexCard\CreateIndexCardViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Card\DeleteCardViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Card\EditCardViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Card\CreateCardViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\QueryCompletedViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\SetupQueryViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\QueryViewModel.cs" />
@@ -226,9 +225,9 @@
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="DataLayer\DbContext.cs" />
     <Compile Include="DataLayer\LearningRepository.cs" />
-    <Compile Include="Migrations\201401011747034_Init.cs" />
-    <Compile Include="Migrations\201401011747034_Init.Designer.cs">
-      <DependentUpon>201401011747034_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201401061839168_Init.cs" />
+    <Compile Include="Migrations\201401061839168_Init.Designer.cs">
+      <DependentUpon>201401061839168_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
@@ -238,8 +237,7 @@
     <Compile Include="Models\Learning\Folder.cs" />
     <Compile Include="Models\Learning\Query.cs" />
     <Compile Include="Models\Learning\QueryItem.cs" />
-    <Compile Include="Models\Learning\IndexCard.cs" />
-    <Compile Include="Models\Learning\Unit.cs" />
+    <Compile Include="Models\Learning\Card.cs" />
     <Compile Include="Resources\Strings.de.Designer.cs">
       <DependentUpon>Strings.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -269,7 +267,7 @@
     <Content Include="App_Start\EntityFrameworkProfilerBootstrapper.vb" />
     <Content Include="Areas\Learning\Less\icons.less" />
     <None Include="Areas\Learning\Less\normalize.less" />
-    <Content Include="Areas\Learning\Javascript\create-edit-indexcard.js" />
+    <Content Include="Areas\Learning\Javascript\create-edit-card.js" />
     <Content Include="Areas\Learning\Javascript\query-show.js" />
     <Content Include="Areas\Learning\Javascript\learning.js" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.svg" />
@@ -588,8 +586,7 @@
     <Content Include="Areas\Learning\Views\Selection\_FolderListItem.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Create.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Details.cshtml" />
-    <Content Include="Areas\Learning\Views\IndexCard\Create.cshtml" />
-    <Content Include="Areas\Learning\Views\Shared\_CreateEditLearningUnit.cshtml" />
+    <Content Include="Areas\Learning\Views\Card\Create.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_Layout.cshtml" />
     <Content Include="Content\foundation-icons\.DS_Store" />
     <Content Include="Content\foundation-icons\.fontcustom-data" />
@@ -602,7 +599,7 @@
     <Content Include="Areas\Learning\Views\Selection\Search.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Setup.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Show.cshtml" />
-    <Content Include="Areas\Learning\Views\IndexCard\Edit.cshtml" />
+    <Content Include="Areas\Learning\Views\Card\Edit.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_Path.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Completed.cshtml" />
     <Content Include="Areas\Learning\Views\Folder\Options.cshtml" />
@@ -702,8 +699,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201401011747034_Init.resx">
-      <DependentUpon>201401011747034_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201401061839168_Init.resx">
+      <DependentUpon>201401061839168_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

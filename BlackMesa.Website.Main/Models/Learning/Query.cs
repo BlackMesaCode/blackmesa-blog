@@ -23,8 +23,8 @@ namespace BlackMesa.Website.Main.Models.Learning
         public QueryType QueryType { get; set; }
 
 
-        public string SelectedLearningUnits { get; set; }
-        public string RemainingLearningUnits { get; set; }
+        public string SelectedCards { get; set; }
+        public string RemainingCards { get; set; }
 
 
         [Required]
@@ -36,9 +36,9 @@ namespace BlackMesa.Website.Main.Models.Learning
         [NotMapped]
         public TimeSpan AnswerDuration { get { return EndTime - StartTime; } }
 
-        public Guid UnitId { get; set; }
+        public Guid CardId { get; set; }
 
-        public virtual Unit Unit { get; set; }
+        public virtual Card Card { get; set; }
 
     }
 

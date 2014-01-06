@@ -1,22 +1,22 @@
 ﻿@using BlackMesa.Website.Main.Resources
 
-@model BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard.CreateIndexCardViewModel
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Card.CreateCardViewModel
 
 @{
-    ViewBag.Title = Strings.CreateIndexCard;
+    ViewBag.Title = Strings.CreateCard;
 }
 
 @* ------------------- Content ------------------- *@
 
 <div id="content">
     
-    <section id="indexcard-create">
+    <section id="card-create">
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
-            @Html.Partial("_CreateEditLearningUnit")
+            @Html.HiddenFor(model => model.FolderId)
             
             if (!ViewData.ModelState.IsValid)
             {
@@ -68,6 +68,6 @@
 
 @section Scripts {
 
-    <script src="~/Areas/Learning/Javascript/create-edit-indexcard.js"></script>
+    <script src="~/Areas/Learning/Javascript/create-edit-card.js"></script>
 
 }

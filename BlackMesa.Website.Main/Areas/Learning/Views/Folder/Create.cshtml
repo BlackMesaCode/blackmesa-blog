@@ -15,7 +15,7 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            
+
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.ParentFolderId)
             
@@ -55,24 +55,18 @@
 
 <nav id="menu">
 
-    
-    @if (String.IsNullOrEmpty(Model.ParentFolderId))
-    {
-        <a class="red-hover" href="@Url.Action("Index", "Folder")" title="@Strings.Back">
-            <i class="icon-abort"></i>
-        </a>
-    }
-    else
-    {
-        <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.ParentFolderId })" title="@Strings.Abort">
-            <i class="icon-abort"></i>
-        </a>
-    }
-
-
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.ParentFolderId })" title="@Strings.Abort">
+        <i class="icon-abort"></i>
+    </a>
 
 </nav>
 
+
+@section Scripts {
+
+    <script src="~/Areas/Learning/Javascript/create-edit-card.js"></script>
+
+}
 
 
 

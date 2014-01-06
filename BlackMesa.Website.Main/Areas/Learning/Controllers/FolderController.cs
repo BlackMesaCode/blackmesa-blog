@@ -54,12 +54,12 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 IsSelected = folder.IsSelected,
                 IsRootFolder = (folder.ParentFolder == null),
                 Level = folder.Level,
-                HasAnySelection = (folder.IsSelected || folder.LearningUnits.Any(u => u.IsSelected) || folder.SubFolders.Any(f => f.IsSelected)),
+                HasAnySelection = (folder.IsSelected || folder.Cards.Any(u => u.IsSelected) || folder.SubFolders.Any(f => f.IsSelected)),
                 HasAnyFolderSelection = (folder.IsSelected || folder.SubFolders.Any(f => f.IsSelected)),
                 HasRootFolderSelected = (folder.ParentFolder == null && folder.IsSelected),
-                HasOnlyIndexCardsSelected = (folder.LearningUnits.Any(u => u.IsSelected) && !folder.IsSelected && !folder.SubFolders.Any(f => f.IsSelected)),
+                HasOnlyCardsSelected = (folder.Cards.Any(u => u.IsSelected) && !folder.IsSelected && !folder.SubFolders.Any(f => f.IsSelected)),
                 SubFolders = folder.SubFolders,
-                IndexCards = folder.LearningUnits.OfType<IndexCard>(),
+                Cards = folder.Cards,
                 Path = path,
             };
             return View(viewModel);

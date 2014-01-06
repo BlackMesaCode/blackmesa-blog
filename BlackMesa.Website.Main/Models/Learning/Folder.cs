@@ -27,7 +27,7 @@ namespace BlackMesa.Website.Main.Models.Learning
 
         public virtual Folder ParentFolder { get; set; }
         public virtual List<Folder> SubFolders { get; set; }
-        public virtual List<Unit> LearningUnits { get; set; }
+        public virtual List<Card> Cards { get; set; }
 
     }
 }

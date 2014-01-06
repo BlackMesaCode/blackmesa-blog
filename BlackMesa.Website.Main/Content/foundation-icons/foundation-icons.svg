@@ -15,7 +15,7 @@ Created by Jordan Humphreys with FontForge 2.0 (http://fontforge.sf.net)
     font-family="fontcustom"
     font-weight="500"
     font-stretch="normal"
-    units-per-em="512"
+    cards-per-em="512"
     panose-1="2 0 6 3 0 0 0 0 0 0"
     ascent="448"
     descent="-64"

@@ -6,8 +6,8 @@
 
     @Html.Partial("_Path", Model.Path)
     
-    <a class="tile gray-dark-hover" href="@Url.Action("Edit", "IndexCard", new { id = Model.Id })">
-        <i class="icon-indexcard"> </i>@Html.Raw(Model.FrontSide)
+    <a class="tile gray-dark-hover" href="@Url.Action("Edit", "Card", new { id = Model.Id })">
+        <i class="icon-card"> </i>@Html.Raw(Model.FrontSide)
     </a>
     
     <div class="tile gray-light">

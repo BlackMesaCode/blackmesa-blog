@@ -21,14 +21,14 @@
         </div>
 
         <div class="tile gray-dark">
-            <h3>@Strings.SelectIndexCardToInsertAfter</h3>
+            <h3>@Strings.SelectCardToInsertAfter</h3>
         </div>
 
-        @foreach (var unit in Model.Units)
+        @foreach (var card in Model.Cards)
         {
                   
-            <a class="tile gray-light-hover" href="@Url.Action("ChangeOrder", "Selection", new { sourceFolderId = Model.SourceFolderId, indexCardIdToInsertAfter = unit.Id })">
-                <i class="icon-indexcard"></i>@unit.FrontSide
+            <a class="tile gray-light-hover" href="@Url.Action("ChangeOrder", "Selection", new { sourceFolderId = Model.SourceFolderId, cardIdToInsertAfter = card.Id })">
+                <i class="icon-card"></i>@card.FrontSide
             </a>
         }
 

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder;
-using BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard;
+using BlackMesa.Website.Main.Areas.Learning.ViewModels.Card;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
@@ -15,14 +15,14 @@ using WebGrease.Css.Extensions;
 namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 {
     [Authorize]
-    public class IndexCardController : BaseController
+    public class CardController : BaseController
     {
 
         private readonly LearningRepository _learningRepo = new LearningRepository(new BlackMesaDbContext());
 
         public ActionResult Create(string folderId)
         {
-            var viewModel = new CreateIndexCardViewModel()
+            var viewModel = new CreateCardViewModel()
             {
                 FolderId = folderId,
             };
@@ -32,11 +32,11 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(CreateIndexCardViewModel viewModel)
+        public ActionResult Create(CreateCardViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _learningRepo.AddIndexCard(viewModel.FolderId, User.Identity.GetUserId(), viewModel.FrontSide, viewModel.BackSide);
+                _learningRepo.AddCard(viewModel.FolderId, User.Identity.GetUserId(), viewModel.FrontSide, viewModel.BackSide);
                 return RedirectToAction("Details", "Folder", new { id = viewModel.FolderId });
             }
             return View(viewModel);
@@ -45,29 +45,29 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Edit(string id)
         {
-            var indexCard = _learningRepo.GetIndexCard(id);
-            var viewModel = new EditIndexCardViewModel
+            var card = _learningRepo.GetCard(id);
+            var viewModel = new EditCardViewModel
             {
-                Id = indexCard.Id.ToString(),
-                FolderId = indexCard.FolderId.ToString(),
-                FrontSide = indexCard.FrontSide,
-                BackSide = indexCard.BackSide,
-                Hint = indexCard.Hint,
-                CodeSnipped = indexCard.CodeSnipped,
-                ImageUrl = indexCard.ImageUrl,
+                Id = card.Id.ToString(),
+                FolderId = card.FolderId.ToString(),
+                FrontSide = card.FrontSide,
+                BackSide = card.BackSide,
+                Hint = card.Hint,
+                CodeSnipped = card.CodeSnipped,
+                ImageUrl = card.ImageUrl,
             };
             return View(viewModel);
         }
 
 
         [HttpPost]
-        public ActionResult Edit(EditIndexCardViewModel viewModel)
+        public ActionResult Edit(EditCardViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                var indexCard = _learningRepo.GetIndexCard(viewModel.Id);
-                _learningRepo.EditIndexCard(viewModel.Id, viewModel.FrontSide, viewModel.BackSide, viewModel.Hint, viewModel.CodeSnipped, viewModel.ImageUrl);
-                return RedirectToAction("Details", "Folder", new  { id = indexCard.FolderId });
+                var card = _learningRepo.GetCard(viewModel.Id);
+                _learningRepo.EditCard(viewModel.Id, viewModel.FrontSide, viewModel.BackSide, viewModel.Hint, viewModel.CodeSnipped, viewModel.ImageUrl);
+                return RedirectToAction("Details", "Folder", new  { id = card.FolderId });
             }
             return View(viewModel);
         }

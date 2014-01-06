@@ -35,15 +35,15 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return RedirectToAction("Details", "Folder", new { id = returnFolderId, deSelect = false });
         }
 
-        public ActionResult AddUnit(string unitId, string returnFolderId)
+        public ActionResult AddCard(string cardId, string returnFolderId)
         {
-            _learningRepo.SelectUnit(unitId);
+            _learningRepo.SelectCard(cardId);
             return RedirectToAction("Details", "Folder", new { id = returnFolderId, deSelect = false });
         }
 
-        public ActionResult RemoveUnit(string unitId, string returnFolderId)
+        public ActionResult RemoveCard(string cardId, string returnFolderId)
         {
-            _learningRepo.DeSelectUnit(unitId);
+            _learningRepo.DeSelectCard(cardId);
             return RedirectToAction("Details", "Folder", new { id = returnFolderId, deSelect = false });
         }
 
@@ -53,29 +53,29 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var folder = _learningRepo.GetFolder(folderId);
 
             var selectedFolders = new List<Folder>();
-            var selectedIndexCards = new List<IndexCard>();
+            var selectedCards = new List<Card>();
 
             if (folder.IsSelected)
                 selectedFolders.Add(folder);
             else
             {
                 selectedFolders = folder.SubFolders.Where(f => f.IsSelected).ToList();
-                selectedIndexCards = folder.LearningUnits.OfType<IndexCard>().Where(u => u.IsSelected).ToList();
+                selectedCards = folder.Cards.Where(u => u.IsSelected).ToList();
             }
 
             int affectedFolders = 0;
-            int affectedIndexCards = 0;
+            int affectedCards = 0;
 
             _learningRepo.GetFolderCount(folder, ref affectedFolders, true, true);
-            _learningRepo.GetUnitCount<IndexCard>(folder, ref affectedIndexCards, true, true);
+            _learningRepo.GetCardCount(folder, ref affectedCards, true, true);
 
             var viewModel = new DeleteSelectionViewModel
             {
                 Id = folder.Id.ToString(),
                 SelectedFolders = selectedFolders,
-                SelectedIndexCards = selectedIndexCards,
+                SelectedCards = selectedCards,
                 AffectedFolders = affectedFolders,
-                AffectedIndexCards = affectedIndexCards,
+                AffectedCards = affectedCards,
             };
             return View(viewModel);
         }
@@ -97,10 +97,10 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             }
             else
             {
-                var selectedLearningUnits = folder.LearningUnits.Where(u => u.IsSelected).ToList();
-                foreach (var selectedUnit in selectedLearningUnits)
+                var selectedCards = folder.Cards.Where(u => u.IsSelected).ToList();
+                foreach (var selectedCard in selectedCards)
                 {
-                    _learningRepo.RemoveUnit(selectedUnit.Id.ToString());
+                    _learningRepo.RemoveCard(selectedCard.Id.ToString());
                 }
 
                 var selectedSubFolders = folder.SubFolders.Where(f => f.IsSelected).ToList();
@@ -150,12 +150,12 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                     _learningRepo.DeSelectFolder(subFolder.Id.ToString());
                 }
 
-                // move units
-                var learningUnits = sourceFolder.LearningUnits.Where(u => u.IsSelected).ToList();
-                foreach (var unit in learningUnits)
+                // move cards
+                var cards = sourceFolder.Cards.Where(c => c.IsSelected).ToList();
+                foreach (var card in cards)
                 {
-                    _learningRepo.MoveUnit(unit.Id.ToString(), targetFolderId);
-                    _learningRepo.DeSelectUnit(unit.Id.ToString());
+                    _learningRepo.MoveCard(card.Id.ToString(), targetFolderId);
+                    _learningRepo.DeSelectCard(card.Id.ToString());
                 }
                 return RedirectToAction("Details", "Folder", new { id = targetFolderId });
             }
@@ -170,14 +170,14 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 SourceFolder = folder,
                 SourceFolderId = folder.Id.ToString(),
-                Units = folder.LearningUnits.OfType<IndexCard>().Where(u => !u.IsSelected).ToList(),
+                Cards = folder.Cards.Where(u => !u.IsSelected).ToList(),
             };
             return View(viewModel);
         }
 
-        public ActionResult ChangeOrder(string sourceFolderId, string indexCardIdToInsertAfter)
+        public ActionResult ChangeOrder(string sourceFolderId, string cardIdToInsertAfter)
         {
-            _learningRepo.ChangeOrder(sourceFolderId, indexCardIdToInsertAfter);
+            _learningRepo.ChangeOrder(sourceFolderId, cardIdToInsertAfter);
 
             return RedirectToAction("Details", "Folder", new { id = sourceFolderId });
         }
@@ -225,10 +225,10 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             _learningRepo.GetFolderPath(folderToSearch, ref path);
             path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
 
-            foreach (var unit in folderToSearch.LearningUnits.OfType<IndexCard>().Where(u => u.IsSelected))
+            foreach (var card in folderToSearch.Cards.Where(u => u.IsSelected))
             {
-                var frontSide = unit.FrontSide.ToLower();
-                var backSide = unit.BackSide.ToLower();
+                var frontSide = card.FrontSide.ToLower();
+                var backSide = card.BackSide.ToLower();
 
                 if ((searchFrontSide && frontSide.Contains(searchText)) || (searchBackSide && backSide.Contains(searchText)))
                 {
@@ -242,7 +242,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                         var offset = 0;
                         foreach (var match in matches)
                         {
-                            frontSide = unit.FrontSide.Insert(match.Index + offset, prefix);
+                            frontSide = card.FrontSide.Insert(match.Index + offset, prefix);
                             offset += prefix.Length;
                             frontSide = frontSide.Insert(match.Index + match.Length + offset, suffix);
                             offset += suffix.Length;
@@ -256,7 +256,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                         var offset = 0;
                         foreach (var match in matches)
                         {
-                            backSide = unit.BackSide.Insert(match.Index + offset, prefix);
+                            backSide = card.BackSide.Insert(match.Index + offset, prefix);
                             offset += prefix.Length;
                             backSide = backSide.Insert(match.Index + match.Length + offset, suffix);
                             offset += suffix.Length;
@@ -266,7 +266,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
                     var searchResult = new SearchResultViewModel
                     {
-                        Id = unit.Id.ToString(),
+                        Id = card.Id.ToString(),
                         Path = path,
                         FrontSide = frontSide,
                         BackSide = backSide,

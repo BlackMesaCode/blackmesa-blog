@@ -9,8 +9,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
     public class QueryViewModel
     {
         public string FolderId { get; set; }
-        public string SelectedLearningUnits { get; set; }
-        public string RemainingLearningUnits { get; set; }
+        public string SelectedCards { get; set; }
+        public string RemainingCards { get; set; }
         public DateTime StartTime { get; set; }
         public int Position { get; set; }
         public QueryType QueryType { get; set; }

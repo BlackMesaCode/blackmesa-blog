@@ -43,20 +43,20 @@
             }
 
             
-            if (Model.SelectedIndexCards.Count > 0)
+            if (Model.SelectedCards.Count > 0)
             {
-                foreach (var unit in Model.SelectedIndexCards)
+                foreach (var card in Model.SelectedCards)
                 {
                     <div class="tile gray-light">
-                        <i class="icon-indexcard"></i>@unit.FrontSide
+                        <i class="icon-card"></i>@card.FrontSide
                     </div>
                 }
             }
             
-            if (Model.AffectedIndexCards > Model.SelectedIndexCards.Count)
+            if (Model.AffectedCards > Model.SelectedCards.Count)
             {
                 <div class="tile gray-dark">
-                    @Strings.SelectionAffection: @Model.AffectedIndexCards @(Model.AffectedIndexCards == 1 ? Strings.IndexCard : Strings.IndexCards)
+                    @Strings.SelectionAffection: @Model.AffectedCards @(Model.AffectedCards == 1 ? Strings.Card : Strings.Cards)
                 </div>
             }
 

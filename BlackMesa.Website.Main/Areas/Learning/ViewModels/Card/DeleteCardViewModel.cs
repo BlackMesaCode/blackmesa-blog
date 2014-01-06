@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard
+namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Card
 {
-    public class DeleteIndexCardViewModel
+    public class DeleteCardViewModel
     {
 
         [Required]

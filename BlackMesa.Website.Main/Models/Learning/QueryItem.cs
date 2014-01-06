@@ -24,9 +24,9 @@ namespace BlackMesa.Website.Main.Models.Learning
         [NotMapped]
         public TimeSpan AnswerDuration { get { return EndTime - StartTime; } }
 
-        public Guid UnitId { get; set; }
+        public Guid CardId { get; set; }
 
-        public virtual Unit Unit { get; set; }
+        public virtual Card Card { get; set; }
 
     }
 

@@ -69,22 +69,22 @@
             }
 
 
-            @foreach (var indexCard in Model.IndexCards)
+            @foreach (var card in Model.Cards)
             {
                 <div class="tile-splitter">
-                    <a class="tile gray-light-hover" href="@Url.Action("Edit", "IndexCard", new { id = indexCard.Id })">
-                        <i class="icon-indexcard"> </i>@indexCard.FrontSide
+                    <a class="tile gray-light-hover" href="@Url.Action("Edit", "Card", new { id = card.Id })">
+                        <i class="icon-card"> </i>@card.FrontSide
                     </a>
 
-                    @if (indexCard.IsSelected)
+                    @if (card.IsSelected)
                     {
-                        <a class="tile gray-light-hover checked" href="@Url.Action("RemoveUnit", "Selection", new { unitId = indexCard.Id, returnFolderId = Model.Id })">
+                        <a class="tile gray-light-hover checked" href="@Url.Action("RemoveCard", "Selection", new { cardId = card.Id, returnFolderId = Model.Id })">
                             <i class="icon-checked-square"></i>
                         </a>
                     }
                     else
                     {
-                        <a class="tile gray-light-hover unchecked" href="@Url.Action("AddUnit", "Selection", new { unitId = indexCard.Id, returnFolderId = Model.Id })">
+                        <a class="tile gray-light-hover unchecked" href="@Url.Action("AddCard", "Selection", new { cardId = card.Id, returnFolderId = Model.Id })">
                             <i class="icon-unchecked-square"></i>
                         </a>
                     }
@@ -111,7 +111,7 @@
             </a>
         }
         
-        if (Model.HasOnlyIndexCardsSelected)
+        if (Model.HasOnlyCardsSelected)
         { 
             <a class="red-hover" href="@Url.Action("SetNewOrder", "Selection", new { sourceFolderId = Model.Id })" title="@Strings.ChangeOrder">
                 <i class="icon-ol"></i>
@@ -147,8 +147,8 @@
             <i class="icon-rocket"></i>
         </a>
     
-        <a class="red-hover" href="@Url.Action("Create", "IndexCard", new { folderId = Model.Id })" title="@Strings.CreateIndexCard">
-            <i class="icon-plus prefix-icon"></i><i class="icon-indexcard"></i>
+        <a class="red-hover" href="@Url.Action("Create", "Card", new { folderId = Model.Id })" title="@Strings.CreateCard">
+            <i class="icon-plus prefix-icon"></i><i class="icon-card"></i>
         </a>
 
         <a class="red-hover" href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id })" title="@Strings.CreateSubFolder">

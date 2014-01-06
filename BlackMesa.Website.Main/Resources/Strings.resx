@@ -336,16 +336,16 @@
   <data name="Folders" xml:space="preserve">
     <value>Folders</value>
   </data>
-  <data name="LearningUnit" xml:space="preserve">
-    <value>Learning unit</value>
+  <data name="Card" xml:space="preserve">
+    <value>Learning card</value>
   </data>
-  <data name="LearningUnits" xml:space="preserve">
-    <value>Learning units</value>
+  <data name="Cards" xml:space="preserve">
+    <value>Learning cards</value>
   </data>
-  <data name="IndexCard" xml:space="preserve">
+  <data name="Card" xml:space="preserve">
     <value>Index card</value>
   </data>
-  <data name="CreateIndexCard" xml:space="preserve">
+  <data name="CreateCard" xml:space="preserve">
     <value>Create index card</value>
   </data>
   <data name="Name" xml:space="preserve">
@@ -378,7 +378,7 @@
   <data name="Abort" xml:space="preserve">
     <value>Abort</value>
   </data>
-  <data name="IndexCards" xml:space="preserve">
+  <data name="Cards" xml:space="preserve">
     <value>Index cards</value>
   </data>
   <data name="Move" xml:space="preserve">
@@ -462,8 +462,8 @@
   <data name="FirstPassResults" xml:space="preserve">
     <value>Results of the first pass</value>
   </data>
-  <data name="QueriedUnits" xml:space="preserve">
-    <value>Queried units</value>
+  <data name="QueriedCards" xml:space="preserve">
+    <value>Queried cards</value>
   </data>
   <data name="Results" xml:space="preserve">
     <value>Results</value>
@@ -504,10 +504,10 @@
   <data name="SelectTargetFolder" xml:space="preserve">
     <value>Select target folder</value>
   </data>
-  <data name="DeleteIndexCard" xml:space="preserve">
+  <data name="DeleteCard" xml:space="preserve">
     <value>Delete index card</value>
   </data>
-  <data name="EditIndexCard" xml:space="preserve">
+  <data name="EditCard" xml:space="preserve">
     <value>Edit index card</value>
   </data>
   <data name="QueryCompleted" xml:space="preserve">
@@ -531,11 +531,11 @@
   <data name="AffectedFolders" xml:space="preserve">
     <value>Affected folders</value>
   </data>
-  <data name="AffectedIndexCards" xml:space="preserve">
+  <data name="AffectedCards" xml:space="preserve">
     <value>Affected index cards</value>
   </data>
-  <data name="AffectedLearningUnits" xml:space="preserve">
-    <value>Affected learning units</value>
+  <data name="AffectedCards" xml:space="preserve">
+    <value>Affected learning cards</value>
   </data>
   <data name="IncludingSubfolders" xml:space="preserve">
     <value>Including subfolders</value>
@@ -582,7 +582,7 @@
   <data name="ChangeOrder" xml:space="preserve">
     <value>Change order</value>
   </data>
-  <data name="SelectIndexCardToInsertAfter" xml:space="preserve">
+  <data name="SelectCardToInsertAfter" xml:space="preserve">
     <value>Select the flash card after which you want to insert your selection</value>
   </data>
 </root>

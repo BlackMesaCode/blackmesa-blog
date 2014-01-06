@@ -336,16 +336,16 @@
   <data name="Folders" xml:space="preserve">
     <value>Verzeichnisse</value>
   </data>
-  <data name="LearningUnit" xml:space="preserve">
+  <data name="Card" xml:space="preserve">
     <value>Lerneinheit</value>
   </data>
-  <data name="LearningUnits" xml:space="preserve">
+  <data name="Cards" xml:space="preserve">
     <value>Lerneinheiten</value>
   </data>
-  <data name="IndexCard" xml:space="preserve">
+  <data name="Card" xml:space="preserve">
     <value>Karteikarte</value>
   </data>
-  <data name="CreateIndexCard" xml:space="preserve">
+  <data name="CreateCard" xml:space="preserve">
     <value>Karteikarte erstellen</value>
   </data>
   <data name="Name" xml:space="preserve">
@@ -378,7 +378,7 @@
   <data name="Abort" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="IndexCards" xml:space="preserve">
+  <data name="Cards" xml:space="preserve">
     <value>Karteikarten</value>
   </data>
   <data name="Move" xml:space="preserve">
@@ -462,7 +462,7 @@
   <data name="FirstPassResults" xml:space="preserve">
     <value>Ergebnisse des ersten Durchlaufs</value>
   </data>
-  <data name="QueriedUnits" xml:space="preserve">
+  <data name="QueriedCards" xml:space="preserve">
     <value>Abgefragte Einheiten</value>
   </data>
   <data name="Results" xml:space="preserve">
@@ -504,10 +504,10 @@
   <data name="SelectTargetFolder" xml:space="preserve">
     <value>Zielordner auswählen</value>
   </data>
-  <data name="DeleteIndexCard" xml:space="preserve">
+  <data name="DeleteCard" xml:space="preserve">
     <value>Karteikarte löschen</value>
   </data>
-  <data name="EditIndexCard" xml:space="preserve">
+  <data name="EditCard" xml:space="preserve">
     <value>Karteikarte editieren</value>
   </data>
   <data name="DeleteSelection" xml:space="preserve">
@@ -531,10 +531,10 @@
   <data name="AffectedFolders" xml:space="preserve">
     <value>Betroffene Verzeichnisse</value>
   </data>
-  <data name="AffectedIndexCards" xml:space="preserve">
+  <data name="AffectedCards" xml:space="preserve">
     <value>Betroffene Karteikarten</value>
   </data>
-  <data name="AffectedLearningUnits" xml:space="preserve">
+  <data name="AffectedCards" xml:space="preserve">
     <value>Betroffene Lerneinheiten</value>
   </data>
   <data name="IncludingSubfolders" xml:space="preserve">
@@ -582,7 +582,7 @@
   <data name="ChangeOrder" xml:space="preserve">
     <value>Reihenfolge verändern</value>
   </data>
-  <data name="SelectIndexCardToInsertAfter" xml:space="preserve">
+  <data name="SelectCardToInsertAfter" xml:space="preserve">
     <value>Wähle diejenige Karteikarte aus, hinter der du deine Auswahl einfügen möchtest</value>
   </data>
 </root>

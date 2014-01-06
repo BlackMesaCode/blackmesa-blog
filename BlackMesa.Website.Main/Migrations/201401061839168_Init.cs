@@ -112,6 +112,29 @@ namespace BlackMesa.Website.Main.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Learning_Cards",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false, identity: true),
+                        OwnerId = c.String(maxLength: 128),
+                        DateCreated = c.DateTime(nullable: false),
+                        DateEdited = c.DateTime(nullable: false),
+                        IsSelected = c.Boolean(nullable: false),
+                        Position = c.Int(nullable: false),
+                        FolderId = c.Guid(nullable: false),
+                        FrontSide = c.String(maxLength: 255),
+                        BackSide = c.String(),
+                        Hint = c.String(maxLength: 255),
+                        CodeSnipped = c.String(),
+                        ImageUrl = c.String(maxLength: 2083),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Learning_Folders", t => t.FolderId, cascadeDelete: true)
+                .ForeignKey("dbo.Identity_Users", t => t.OwnerId)
+                .Index(t => t.FolderId)
+                .Index(t => t.OwnerId);
+            
+            CreateTable(
                 "dbo.Learning_Folders",
                 c => new
                     {
@@ -136,28 +159,11 @@ namespace BlackMesa.Website.Main.Migrations
                         Result = c.Int(nullable: false),
                         StartTime = c.DateTime(nullable: false),
                         EndTime = c.DateTime(nullable: false),
-                        UnitId = c.Guid(nullable: false),
+                        CardId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Learning_Units", t => t.UnitId, cascadeDelete: true)
-                .Index(t => t.UnitId);
-            
-            CreateTable(
-                "dbo.Learning_Units",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false, identity: true),
-                        OwnerId = c.String(maxLength: 128),
-                        DateCreated = c.DateTime(nullable: false),
-                        DateEdited = c.DateTime(nullable: false),
-                        IsSelected = c.Boolean(nullable: false),
-                        FolderId = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Learning_Folders", t => t.FolderId, cascadeDelete: true)
-                .ForeignKey("dbo.Identity_Users", t => t.OwnerId)
-                .Index(t => t.FolderId)
-                .Index(t => t.OwnerId);
+                .ForeignKey("dbo.Learning_Cards", t => t.CardId, cascadeDelete: true)
+                .Index(t => t.CardId);
             
             CreateTable(
                 "dbo.Learning_Queries",
@@ -168,15 +174,15 @@ namespace BlackMesa.Website.Main.Migrations
                         ReverseSides = c.Boolean(nullable: false),
                         OrderType = c.Int(nullable: false),
                         QueryType = c.Int(nullable: false),
-                        SelectedLearningUnits = c.String(),
-                        RemainingLearningUnits = c.String(),
+                        SelectedCards = c.String(),
+                        RemainingCards = c.String(),
                         StartTime = c.DateTime(nullable: false),
                         EndTime = c.DateTime(nullable: false),
-                        UnitId = c.Guid(nullable: false),
+                        CardId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Learning_Units", t => t.UnitId, cascadeDelete: true)
-                .Index(t => t.UnitId);
+                .ForeignKey("dbo.Learning_Cards", t => t.CardId, cascadeDelete: true)
+                .Index(t => t.CardId);
             
             CreateTable(
                 "dbo.Blog_TagEntries",
@@ -191,32 +197,16 @@ namespace BlackMesa.Website.Main.Migrations
                 .Index(t => t.Tag_Id)
                 .Index(t => t.Entry_Id);
             
-            CreateTable(
-                "dbo.Learning_IndexCards",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        FrontSide = c.String(maxLength: 255),
-                        BackSide = c.String(),
-                        Hint = c.String(maxLength: 255),
-                        CodeSnipped = c.String(),
-                        ImageUrl = c.String(maxLength: 2083),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Learning_Units", t => t.Id)
-                .Index(t => t.Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Learning_IndexCards", "Id", "dbo.Learning_Units");
-            DropForeignKey("dbo.Learning_Queries", "UnitId", "dbo.Learning_Units");
+            DropForeignKey("dbo.Learning_Queries", "CardId", "dbo.Learning_Cards");
+            DropForeignKey("dbo.Learning_QueryItems", "CardId", "dbo.Learning_Cards");
+            DropForeignKey("dbo.Learning_Cards", "OwnerId", "dbo.Identity_Users");
             DropForeignKey("dbo.Learning_Folders", "ParentFolder_Id", "dbo.Learning_Folders");
             DropForeignKey("dbo.Learning_Folders", "OwnerId", "dbo.Identity_Users");
-            DropForeignKey("dbo.Learning_QueryItems", "UnitId", "dbo.Learning_Units");
-            DropForeignKey("dbo.Learning_Units", "OwnerId", "dbo.Identity_Users");
-            DropForeignKey("dbo.Learning_Units", "FolderId", "dbo.Learning_Folders");
+            DropForeignKey("dbo.Learning_Cards", "FolderId", "dbo.Learning_Folders");
             DropForeignKey("dbo.Blog_Comments", "OwnerId", "dbo.Identity_Users");
             DropForeignKey("dbo.Identity_UserClaims", "User_Id", "dbo.Identity_Users");
             DropForeignKey("dbo.Identity_UserRoles", "UserId", "dbo.Identity_Users");
@@ -225,13 +215,12 @@ namespace BlackMesa.Website.Main.Migrations
             DropForeignKey("dbo.Blog_TagEntries", "Entry_Id", "dbo.Blog_Entries");
             DropForeignKey("dbo.Blog_TagEntries", "Tag_Id", "dbo.Blog_Tags");
             DropForeignKey("dbo.Blog_Comments", "EntryId", "dbo.Blog_Entries");
-            DropIndex("dbo.Learning_IndexCards", new[] { "Id" });
-            DropIndex("dbo.Learning_Queries", new[] { "UnitId" });
+            DropIndex("dbo.Learning_Queries", new[] { "CardId" });
+            DropIndex("dbo.Learning_QueryItems", new[] { "CardId" });
+            DropIndex("dbo.Learning_Cards", new[] { "OwnerId" });
             DropIndex("dbo.Learning_Folders", new[] { "ParentFolder_Id" });
             DropIndex("dbo.Learning_Folders", new[] { "OwnerId" });
-            DropIndex("dbo.Learning_QueryItems", new[] { "UnitId" });
-            DropIndex("dbo.Learning_Units", new[] { "OwnerId" });
-            DropIndex("dbo.Learning_Units", new[] { "FolderId" });
+            DropIndex("dbo.Learning_Cards", new[] { "FolderId" });
             DropIndex("dbo.Blog_Comments", new[] { "OwnerId" });
             DropIndex("dbo.Identity_UserClaims", new[] { "User_Id" });
             DropIndex("dbo.Identity_UserRoles", new[] { "UserId" });
@@ -240,12 +229,11 @@ namespace BlackMesa.Website.Main.Migrations
             DropIndex("dbo.Blog_TagEntries", new[] { "Entry_Id" });
             DropIndex("dbo.Blog_TagEntries", new[] { "Tag_Id" });
             DropIndex("dbo.Blog_Comments", new[] { "EntryId" });
-            DropTable("dbo.Learning_IndexCards");
             DropTable("dbo.Blog_TagEntries");
             DropTable("dbo.Learning_Queries");
-            DropTable("dbo.Learning_Units");
             DropTable("dbo.Learning_QueryItems");
             DropTable("dbo.Learning_Folders");
+            DropTable("dbo.Learning_Cards");
             DropTable("dbo.Identity_Roles");
             DropTable("dbo.Identity_UserRoles");
             DropTable("dbo.Identity_UserLogins");

@@ -39,45 +39,45 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Start(SetupQueryViewModel viewModel)
         {
-            var selectedLearningUnits = new List<Unit>();
+            var selectedCards = new List<Card>();
             var folder = _learningRepo.GetFolder(viewModel.SelectedFolderId);
 
             // Selection
             if (viewModel.InludeSubfolders)
-                _learningRepo.GetLearningUnitsIncludingSubfolders(folder.Id.ToString(), ref selectedLearningUnits);
+                _learningRepo.GetCardsIncludingSubfolders(folder.Id.ToString(), ref selectedCards);
             else
-                selectedLearningUnits.AddRange(_learningRepo.GetFolder(folder.Id.ToString()).LearningUnits);
+                selectedCards.AddRange(_learningRepo.GetFolder(folder.Id.ToString()).Cards);
 
 
             // Ordering
-            selectedLearningUnits.Reverse(); // We reverse order by default as we enumerate backwards
+            selectedCards.Reverse(); // We reverse order by default as we enumerate backwards
 
             if (viewModel.OrderType == OrderType.Reversed)
-                selectedLearningUnits.Reverse();
+                selectedCards.Reverse();
             else if (viewModel.OrderType == OrderType.Shuffled)
-                selectedLearningUnits.Shuffle();
+                selectedCards.Shuffle();
 
-            var firstUnit = _learningRepo.GetIndexCard(selectedLearningUnits.Last().Id.ToString());
+            var firstCard = _learningRepo.GetCard(selectedCards.Last().Id.ToString());
 
             // ReverseSides if option has been chosen
-            var frontSide = viewModel.ReverseSides ? firstUnit.BackSide : firstUnit.FrontSide;
-            var backSide = viewModel.ReverseSides ? firstUnit.FrontSide : firstUnit.BackSide;
+            var frontSide = viewModel.ReverseSides ? firstCard.BackSide : firstCard.FrontSide;
+            var backSide = viewModel.ReverseSides ? firstCard.FrontSide : firstCard.BackSide;
 
             var initialQueryViewModel = new QueryViewModel
             {
                 FolderId = viewModel.SelectedFolderId,
-                SelectedLearningUnits = selectedLearningUnits.Select(u => u.Id.ToString()).JoinStrings(","),
-                RemainingLearningUnits = selectedLearningUnits.Select(u => u.Id.ToString()).JoinStrings(","),
-                Position = selectedLearningUnits.Count-1,
+                SelectedCards = selectedCards.Select(u => u.Id.ToString()).JoinStrings(","),
+                RemainingCards = selectedCards.Select(u => u.Id.ToString()).JoinStrings(","),
+                Position = selectedCards.Count-1,
                 QueryType = viewModel.QueryType,
 
                 StartTime = DateTime.Now,
 
                 FrontSide = frontSide,
                 BackSide = backSide,
-                Hint = firstUnit.Hint,
-                CodeSnipped = firstUnit.CodeSnipped,
-                ImageUrl = firstUnit.ImageUrl,
+                Hint = firstCard.Hint,
+                CodeSnipped = firstCard.CodeSnipped,
+                ImageUrl = firstCard.ImageUrl,
             };
 
             return View("Show", initialQueryViewModel);
@@ -91,26 +91,26 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             ModelState.Clear();
             var currentTime = DateTime.Now;
-            var remainingLearningUnits = resultViewModel.RemainingLearningUnits.Split(new[] {','}).ToList();
+            var remainingCards = resultViewModel.RemainingCards.Split(new[] {','}).ToList();
 
             // Parsing "old" query result
 
-            var oldUnitId = remainingLearningUnits[resultViewModel.Position];
-            var oldIndexCard = _learningRepo.GetIndexCard(oldUnitId);
+            var oldCardId = remainingCards[resultViewModel.Position];
+            var oldCard = _learningRepo.GetCard(oldCardId);
 
-            _learningRepo.AddQuery(oldUnitId, oldIndexCard, resultViewModel.StartTime, currentTime, resultViewModel.Result);
+            _learningRepo.AddQuery(oldCardId, oldCard, resultViewModel.StartTime, currentTime, resultViewModel.Result);
 
 
-            // Adjusting RemainingIndexCards
+            // Adjusting RemainingCards
 
             if (resultViewModel.QueryType == QueryType.Normal)
             {
                 if (resultViewModel.Result == QueryResult.Correct)
-                    remainingLearningUnits.Remove(oldUnitId);
+                    remainingCards.Remove(oldCardId);
             }
             else if (resultViewModel.QueryType == QueryType.SinglePass)
             {
-                remainingLearningUnits.Remove(oldUnitId);
+                remainingCards.Remove(oldCardId);
             }
 
 
@@ -118,58 +118,58 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var nextPosition = resultViewModel.Position - 1;
 
 
-            // If there are remaining learning units
-            if (remainingLearningUnits.Count > 0)
+            // If there are remaining learning cards
+            if (remainingCards.Count > 0)
             {
                 // if query type is normal and we reached the end of a cycle
                 if (resultViewModel.QueryType == QueryType.Normal && nextPosition == -1 &&
-                    remainingLearningUnits.Count > 0)
-                    nextPosition = remainingLearningUnits.Count - 1; // resetting the position for another cycle
+                    remainingCards.Count > 0)
+                    nextPosition = remainingCards.Count - 1; // resetting the position for another cycle
 
 
                 // Preparing new query viewmodel
 
-                var nextUnitId = remainingLearningUnits[nextPosition];
-                var nextIndexCard = _learningRepo.GetIndexCard(nextUnitId);
+                var nextCardId = remainingCards[nextPosition];
+                var nextCard = _learningRepo.GetCard(nextCardId);
 
 
                 // ReverseSides if option has been chosen
-                var frontSide = resultViewModel.ReverseSides ? nextIndexCard.BackSide : nextIndexCard.FrontSide;
-                var backSide = resultViewModel.ReverseSides ? nextIndexCard.FrontSide : nextIndexCard.BackSide;
+                var frontSide = resultViewModel.ReverseSides ? nextCard.BackSide : nextCard.FrontSide;
+                var backSide = resultViewModel.ReverseSides ? nextCard.FrontSide : nextCard.BackSide;
 
 
                 var viewModel = new QueryViewModel
                 {
                     FolderId = resultViewModel.FolderId,
                     QueryType = resultViewModel.QueryType,
-                    SelectedLearningUnits = resultViewModel.SelectedLearningUnits,
-                    RemainingLearningUnits = remainingLearningUnits.JoinStrings(","),
+                    SelectedCards = resultViewModel.SelectedCards,
+                    RemainingCards = remainingCards.JoinStrings(","),
                     Position = nextPosition,
                     StartTime = DateTime.Now,
 
                     FrontSide = frontSide,
                     BackSide = backSide,
-                    Hint = nextIndexCard.Hint,
-                    CodeSnipped = nextIndexCard.CodeSnipped,
-                    ImageUrl = nextIndexCard.ImageUrl,
+                    Hint = nextCard.Hint,
+                    CodeSnipped = nextCard.CodeSnipped,
+                    ImageUrl = nextCard.ImageUrl,
                 };
 
                 return View(viewModel);
 
             }
-            else // no more remaining learning units
+            else // no more remaining learning cards
             {
-                var selectedLearningUnits = resultViewModel.SelectedLearningUnits.Split(new[] { ',' }).ToList();
+                var selectedCards = resultViewModel.SelectedCards.Split(new[] { ',' }).ToList();
                 var queries = new List<QueryItem>();
-                foreach (var unitId in selectedLearningUnits)
+                foreach (var cardId in selectedCards)
                 {
-                    queries.Add(_learningRepo.GetIndexCard(unitId).Queries.Last());
+                    queries.Add(_learningRepo.GetCard(cardId).Queries.Last());
                 }
 
                 var viewModel = new QueryCompletedViewModel
                 {
                     FolderId = resultViewModel.FolderId,
-                    TotalCount = selectedLearningUnits.Count,
+                    TotalCount = selectedCards.Count,
                     CorrectCount = queries.Count(q => q.Result == QueryResult.Correct),
                     PartlyCorrectCount = queries.Count(q => q.Result == QueryResult.PartlyCorrect),
                     WrongCount = queries.Count(q => q.Result == QueryResult.Wrong),

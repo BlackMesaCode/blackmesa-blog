@@ -1,8 +1,8 @@
 ﻿@using BlackMesa.Website.Main.Resources
 
-@model BlackMesa.Website.Main.Areas.Learning.ViewModels.IndexCard.EditIndexCardViewModel
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Card.EditCardViewModel
 @{
-    ViewBag.Title = Strings.EditIndexCard;
+    ViewBag.Title = Strings.EditCard;
 }
 
 
@@ -10,7 +10,7 @@
 
 <div id="content">
     
-    <section id="indexcard-edit">
+    <section id="card-edit">
 
         @using (Html.BeginForm())
         {
@@ -88,6 +88,6 @@
 
 @section Scripts {
 
-    <script src="~/Areas/Learning/Javascript/create-edit-indexcard.js"></script>
+    <script src="~/Areas/Learning/Javascript/create-edit-card.js"></script>
 
 }
