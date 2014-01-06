@@ -496,7 +496,7 @@
     <value>Selection</value>
   </data>
   <data name="Root" xml:space="preserve">
-    <value>Root</value>
+    <value>\</value>
   </data>
   <data name="MoveSelection" xml:space="preserve">
     <value>Move selection</value>
@@ -578,5 +578,11 @@
   </data>
   <data name="FlipCard" xml:space="preserve">
     <value>Flip card</value>
+  </data>
+  <data name="ChangeOrder" xml:space="preserve">
+    <value>Change order</value>
+  </data>
+  <data name="SelectIndexCardToInsertAfter" xml:space="preserve">
+    <value>Select the flash card after which you want to insert your selection</value>
   </data>
 </root>

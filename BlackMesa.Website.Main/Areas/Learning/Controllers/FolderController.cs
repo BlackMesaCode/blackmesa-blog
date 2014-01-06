@@ -34,23 +34,30 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
-        public ActionResult Details(string id)
+        public ActionResult Details(string id, bool deSelect = true)
         {
             var folder = _learningRepo.GetFolder(id);
             var path = new Dictionary<string, string>();
+
             _learningRepo.GetFolderPath(folder, ref path);
             path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
             path.Remove(path.Last().Key);
+
+            if (deSelect)
+                _learningRepo.DeSelectFolder(id);
+            
 
             var viewModel = new FolderDetailsViewModel
             {
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
                 IsSelected = folder.IsSelected,
+                IsRootFolder = (folder.ParentFolder == null),
                 Level = folder.Level,
                 HasAnySelection = (folder.IsSelected || folder.LearningUnits.Any(u => u.IsSelected) || folder.SubFolders.Any(f => f.IsSelected)),
                 HasAnyFolderSelection = (folder.IsSelected || folder.SubFolders.Any(f => f.IsSelected)),
                 HasRootFolderSelected = (folder.ParentFolder == null && folder.IsSelected),
+                HasOnlyIndexCardsSelected = (folder.LearningUnits.Any(u => u.IsSelected) && !folder.IsSelected && !folder.SubFolders.Any(f => f.IsSelected)),
                 SubFolders = folder.SubFolders,
                 IndexCards = folder.LearningUnits.OfType<IndexCard>(),
                 Path = path,
@@ -129,19 +136,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return View(viewModel);
         }
 
-
-        public ActionResult Search(string id)
-        {
-            var folder = _learningRepo.GetFolder(id);
-            var viewModel = new SearchResultViewModel();
-            return View(viewModel);
-        }
-
-        public ActionResult Statistics(string id)
-        {
-            
-            return View();
-        }
 
 
     }

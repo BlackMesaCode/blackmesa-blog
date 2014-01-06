@@ -178,6 +178,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Change order ähnelt.
+        /// </summary>
+        public static string ChangeOrder {
+            get {
+                return ResourceManager.GetString("ChangeOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Change password ähnelt.
         /// </summary>
         public static string ChangePassword {
@@ -1015,7 +1024,7 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Root ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die \ ähnelt.
         /// </summary>
         public static string Root {
             get {
@@ -1218,6 +1227,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string SelectedFolders {
             get {
                 return ResourceManager.GetString("SelectedFolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Select the flash card after which you want to insert your selection ähnelt.
+        /// </summary>
+        public static string SelectIndexCardToInsertAfter {
+            get {
+                return ResourceManager.GetString("SelectIndexCardToInsertAfter", resourceCulture);
             }
         }
         

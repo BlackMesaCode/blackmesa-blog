@@ -49,8 +49,12 @@ namespace BlackMesa.Website.Main.DataLayer
 
         public void EditFolder(string folderId, string newFolderName)
         {
-            var currentFolder = _dbContext.Learning_Folders.Find(new Guid(folderId));
-            currentFolder.Name = newFolderName;
+            var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
+
+            if (folder.ParentFolder == null)
+                throw new Exception("Root folders name must not be changed.");
+
+            folder.Name = newFolderName;
             _dbContext.SaveChanges();
 
         }
@@ -174,16 +178,6 @@ namespace BlackMesa.Website.Main.DataLayer
             _dbContext.SaveChanges();
         }
 
-        public void ChangeFolderName(string folderId, string newName)
-        {
-            // todo check for users rights e.g. if he is owner
-
-            var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
-            folder.Name = newName;
-            // EntityState.Modified ???
-            _dbContext.SaveChanges();
-        }
-
         public void MoveFolder(string folderId, string newParentFolderId)
         {
             var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
@@ -277,10 +271,6 @@ namespace BlackMesa.Website.Main.DataLayer
             unit.FolderId = new Guid(newFolderId);
             unit.Folder = newFolder;
 
-
-
-            // todo check if following instructions are necessary with code first
-
             // Remove unit from the list of learning units from the old folder
             oldFolder.LearningUnits.Remove(unit);
 
@@ -289,6 +279,31 @@ namespace BlackMesa.Website.Main.DataLayer
 
             _dbContext.SaveChanges();
         }
+
+
+        public void ChangeOrder(string sourceFolderId, string indexCardIdToInsertAfter)
+        {
+            var folder = GetFolder(sourceFolderId);
+            var unitToInsertAfter = GetUnit(indexCardIdToInsertAfter);
+            var selectedIndexCards = folder.LearningUnits.OfType<IndexCard>().Where(u => u.IsSelected).ToList();
+
+            foreach (var indexCard in selectedIndexCards)
+            {
+                RemoveUnit(indexCard.Id.ToString());
+            }
+
+            var newIndex = folder.LearningUnits.IndexOf(unitToInsertAfter) + 1;
+
+            for (int i = 0; i < selectedIndexCards.Count; i++)
+            {
+                
+            }
+
+            folder.LearningUnits.InsertRange(newIndex, selectedIndexCards);
+
+            _dbContext.SaveChanges();
+        }
+
 
 
         public void RemoveUnit(string id)

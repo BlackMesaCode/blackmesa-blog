@@ -1,0 +1,49 @@
+﻿@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.SetNewOrderViewModel
+
+@{
+    ViewBag.Title = Strings.ChangeOrder;
+    ViewBag.SourceFolderId = Model.SourceFolderId;
+    ViewBag.SourceFolder = Model.SourceFolder;
+}
+
+
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    
+    <section id="selection-change-order">
+        
+        <div class="tile gray-darker">
+            <h1>@ViewBag.Title</h1>
+        </div>
+
+        <div class="tile gray-dark">
+            <h3>@Strings.SelectIndexCardToInsertAfter</h3>
+        </div>
+
+        @foreach (var unit in Model.Units)
+        {
+                  
+            <a class="tile gray-light-hover" href="@Url.Action("ChangeOrder", "Selection", new { sourceFolderId = Model.SourceFolderId, indexCardIdToInsertAfter = unit.Id })">
+                <i class="icon-indexcard"></i>@unit.FrontSide
+            </a>
+        }
+
+    </section>
+    
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.SourceFolderId })" title="@Strings.Abort">
+        <i class="icon-abort"></i>
+    </a>
+
+</nav>

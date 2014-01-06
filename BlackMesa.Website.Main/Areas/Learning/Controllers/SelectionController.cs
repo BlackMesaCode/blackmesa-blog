@@ -26,25 +26,25 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult AddFolder(string folderId, string returnFolderId)
         {
             _learningRepo.SelectFolder(folderId);
-            return RedirectToAction("Details", "Folder", new {id = returnFolderId});
+            return RedirectToAction("Details", "Folder", new {id = returnFolderId, deSelect = false });
         }
 
         public ActionResult RemoveFolder(string folderId, string returnFolderId)
         {
             _learningRepo.DeSelectFolder(folderId);
-            return RedirectToAction("Details", "Folder", new { id = returnFolderId });
+            return RedirectToAction("Details", "Folder", new { id = returnFolderId, deSelect = false });
         }
 
         public ActionResult AddUnit(string unitId, string returnFolderId)
         {
             _learningRepo.SelectUnit(unitId);
-            return RedirectToAction("Details", "Folder", new { id = returnFolderId });
+            return RedirectToAction("Details", "Folder", new { id = returnFolderId, deSelect = false });
         }
 
         public ActionResult RemoveUnit(string unitId, string returnFolderId)
         {
             _learningRepo.DeSelectUnit(unitId);
-            return RedirectToAction("Details", "Folder", new { id = returnFolderId });
+            return RedirectToAction("Details", "Folder", new { id = returnFolderId, deSelect = false });
         }
 
 
@@ -161,6 +161,27 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             }
             
         }
+
+
+        public ActionResult SetNewOrder(string sourceFolderId)
+        {
+            var folder = _learningRepo.GetFolder(sourceFolderId);
+            var viewModel = new SetNewOrderViewModel
+            {
+                SourceFolder = folder,
+                SourceFolderId = folder.Id.ToString(),
+                Units = folder.LearningUnits.OfType<IndexCard>().Where(u => !u.IsSelected).ToList(),
+            };
+            return View(viewModel);
+        }
+
+        public ActionResult ChangeOrder(string sourceFolderId, string indexCardIdToInsertAfter)
+        {
+            _learningRepo.ChangeOrder(sourceFolderId, indexCardIdToInsertAfter);
+
+            return RedirectToAction("Details", "Folder", new { id = sourceFolderId });
+        }
+
 
         public ActionResult Search(string folderId)
         {

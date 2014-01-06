@@ -16,9 +16,19 @@
         @Html.Partial("_Path", Model.Path)
 
         <div class="tile-splitter">
-            <a class="tile gray-darker-hover" href="@Url.Action("Edit", "Folder", new { id = Model.Id })">
-                <h1><i class="icon-folder-open"></i>@ViewBag.Title</h1>
-            </a>
+            @if (Model.IsRootFolder)
+            {
+                <div class="tile gray-darker">
+                    <h1><i class="icon-folder-open"></i>@ViewBag.Title</h1>
+                </div>
+            }
+            else
+            {
+                <a class="tile gray-darker-hover" href="@Url.Action("Edit", "Folder", new { id = Model.Id })">
+                    <h1><i class="icon-folder-open"></i>@ViewBag.Title</h1>
+                </a>
+            }
+            
 
             @if (Model.IsSelected)
             {
@@ -100,6 +110,14 @@
                 <i class="icon-move"></i>
             </a>
         }
+        
+        if (Model.HasOnlyIndexCardsSelected)
+        { 
+            <a class="red-hover" href="@Url.Action("SetNewOrder", "Selection", new { sourceFolderId = Model.Id })" title="@Strings.ChangeOrder">
+                <i class="icon-ol"></i>
+            </a>
+        }
+        
         
         if (Model.HasAnyFolderSelection)
         {
