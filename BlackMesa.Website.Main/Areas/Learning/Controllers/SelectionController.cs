@@ -227,22 +227,24 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
             foreach (var card in folderToSearch.Cards.Where(u => u.IsSelected))
             {
-                var frontSide = card.FrontSide.ToLower();
-                var backSide = card.BackSide.ToLower();
+                var frontSide = card.FrontSide;
+                var frontSideLowered = card.FrontSide.ToLower();
+                var backSide = card.BackSide;
+                var backSideLowered = card.BackSide.ToLower();
 
-                if ((searchFrontSide && frontSide.Contains(searchText)) || (searchBackSide && backSide.Contains(searchText)))
+                if ((searchFrontSide && frontSideLowered.Contains(searchText)) || (searchBackSide && backSideLowered.Contains(searchText)))
                 {
 
                     const string prefix = "<span class=\"marked-search-text\">";
                     const string suffix = "</span>";
 
-                    if (searchFrontSide && frontSide.Contains(searchText))
+                    if (searchFrontSide && frontSideLowered.Contains(searchText))
                     {
-                        var matches = Regex.Matches(frontSide, searchText).Cast<Match>();
+                        var matches = Regex.Matches(frontSideLowered, searchText).Cast<Match>();
                         var offset = 0;
                         foreach (var match in matches)
                         {
-                            frontSide = card.FrontSide.Insert(match.Index + offset, prefix);
+                            frontSide = frontSide.Insert(match.Index + offset, prefix);
                             offset += prefix.Length;
                             frontSide = frontSide.Insert(match.Index + match.Length + offset, suffix);
                             offset += suffix.Length;
@@ -250,13 +252,13 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                     }
 
 
-                    if (searchBackSide && backSide.Contains(searchText))
+                    if (searchBackSide && backSideLowered.Contains(searchText))
                     {
-                        var matches = Regex.Matches(backSide, searchText).Cast<Match>();
+                        var matches = Regex.Matches(backSideLowered, searchText).Cast<Match>();
                         var offset = 0;
                         foreach (var match in matches)
                         {
-                            backSide = card.BackSide.Insert(match.Index + offset, prefix);
+                            backSide = backSide.Insert(match.Index + offset, prefix);
                             offset += prefix.Length;
                             backSide = backSide.Insert(match.Index + match.Length + offset, suffix);
                             offset += suffix.Length;
