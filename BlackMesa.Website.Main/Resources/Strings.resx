@@ -381,8 +381,8 @@
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="Statistics" xml:space="preserve">
-    <value>Statistics</value>
+  <data name="Statistic" xml:space="preserve">
+    <value>Statistic</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
@@ -575,5 +575,20 @@
   </data>
   <data name="SetInsertAfterCard" xml:space="preserve">
     <value>Below which card do you want to insert your selection?</value>
+  </data>
+  <data name="ClearSelection" xml:space="preserve">
+    <value>Clear selection</value>
+  </data>
+  <data name="CreateStatistic" xml:space="preserve">
+    <value>Create statistic</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>and</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>more</value>
+  </data>
+  <data name="WhatToDoWithThem" xml:space="preserve">
+    <value>What do you want to do with them?</value>
   </data>
 </root>

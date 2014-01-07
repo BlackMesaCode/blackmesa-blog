@@ -55,12 +55,10 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 IsRootFolder = (folder.ParentFolder == null),
                 Level = folder.Level,
                 HasAnySelection = (folder.IsSelected || folder.Cards.Any(u => u.IsSelected) || folder.SubFolders.Any(f => f.IsSelected)),
-                HasAnyFolderSelection = (folder.IsSelected || folder.SubFolders.Any(f => f.IsSelected)),
-                HasRootFolderSelected = (folder.ParentFolder == null && folder.IsSelected),
-                HasOnlyCardsSelected = (folder.Cards.Any(u => u.IsSelected) && !folder.IsSelected && !folder.SubFolders.Any(f => f.IsSelected)),
-                SubFolders = folder.SubFolders,
+                SubFolders = folder.SubFolders.OrderBy(f => f.Name),
                 Cards = folder.Cards.OrderBy(c => c.Position),
                 Path = path,
+                ParentFolderId = (folder.ParentFolder != null ? folder.ParentFolder.Id.ToString() : String.Empty),
             };
             return View(viewModel);
         }
@@ -118,24 +116,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             }
         return View();
         }
-
-
-        public ActionResult Options(string id)
-        {
-            var folder = _learningRepo.GetFolder(id);
-            var path = new Dictionary<string, string>();
-            _learningRepo.GetFolderPath(folder, ref path);
-            path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
-            path.Remove(path.Last().Key);
-            var viewModel = new FolderOptionsViewModel
-            {
-                Id = folder.Id.ToString(),
-                Name = folder.Name,
-                Path = path,
-            };
-            return View(viewModel);
-        }
-
 
 
     }

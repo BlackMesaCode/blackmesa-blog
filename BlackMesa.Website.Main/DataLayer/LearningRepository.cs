@@ -293,15 +293,6 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        private void IncreasePositionOfSubsequentCards(Folder folder, Card card, int offset)
-        {
-            var affectedCards = folder.Cards.Where(c => c.Position > card.Position);
-            foreach (var affectedCard in affectedCards)
-            {
-                affectedCard.Position = affectedCard.Position + offset;
-            }
-        }
-
         private void DecreasePositionOfSubsequentCards(Folder folder, Card card, int offset)
         {
             var affectedCards = folder.Cards.Where(c => c.Position > card.Position);

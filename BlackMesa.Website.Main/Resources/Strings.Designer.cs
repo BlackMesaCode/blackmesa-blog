@@ -115,6 +115,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die and ähnelt.
+        /// </summary>
+        public static string And {
+            get {
+                return ResourceManager.GetString("And", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Answer ähnelt.
         /// </summary>
         public static string Answer {
@@ -205,6 +214,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Clear selection ähnelt.
+        /// </summary>
+        public static string ClearSelection {
+            get {
+                return ResourceManager.GetString("ClearSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comment ähnelt.
         /// </summary>
         public static string Comment {
@@ -291,6 +309,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string CreateLocalAccount {
             get {
                 return ResourceManager.GetString("CreateLocalAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create statistic ähnelt.
+        /// </summary>
+        public static string CreateStatistic {
+            get {
+                return ResourceManager.GetString("CreateStatistic", resourceCulture);
             }
         }
         
@@ -597,6 +624,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Month {
             get {
                 return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die more ähnelt.
+        /// </summary>
+        public static string More {
+            get {
+                return ResourceManager.GetString("More", resourceCulture);
             }
         }
         
@@ -1294,11 +1330,11 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Statistics ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Statistic ähnelt.
         /// </summary>
-        public static string Statistics {
+        public static string Statistic {
             get {
-                return ResourceManager.GetString("Statistics", resourceCulture);
+                return ResourceManager.GetString("Statistic", resourceCulture);
             }
         }
         
@@ -1371,6 +1407,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string UseThirdPartyAccount {
             get {
                 return ResourceManager.GetString("UseThirdPartyAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die What do you want to do with them? ähnelt.
+        /// </summary>
+        public static string WhatToDoWithThem {
+            get {
+                return ResourceManager.GetString("WhatToDoWithThem", resourceCulture);
             }
         }
         

@@ -104,48 +104,29 @@
     
     @if (Model.HasAnySelection)
     {
-        if (!Model.HasRootFolderSelected)
-        { 
-            <a class="red-hover" href="@Url.Action("SetMoveTarget", "Selection", new { sourceFolderId = Model.Id })" title="@Strings.Move">
-                <i class="icon-move"></i>
-            </a>
-        }
-        
-        if (Model.HasOnlyCardsSelected)
-        { 
-            <a class="red-hover" href="@Url.Action("SetInsertAfterCard", "Selection", new { sourceFolderId = Model.Id })" title="@Strings.ChangeOrder">
-                <i class="icon-ol"></i>
-            </a>
-        }
-        
-        
-        if (Model.HasAnyFolderSelection)
-        {
-            <a class="red-hover" href="@Url.Action("Search", "Selection", new { folderId = Model.Id })" title="@Strings.Examine">
-                <i class="icon-search"></i>
-            </a>
-        }
+        <a class="red-hover" href="@Url.Action("Options", "Selection", new { id = Model.Id })" title="@Strings.Options">
+            <i class="icon-wrench"></i>
+        </a>
 
-        if (!Model.HasRootFolderSelected)
-        {
-            <a class="red-hover" href="@Url.Action("Delete", "Selection", new {folderId = Model.Id})" title="@Strings.Delete">
-                <i class="icon-delete"></i>
-            </a>
-        }
-        
-        <a class="red-hover" href="@Url.Action("RemoveFolder", "Selection", new { folderId = Model.Id, returnFolderId = Model.Id })" title="@Strings.Abort">
+        <a class="red-hover" href="@Url.Action("RemoveFolder", "Selection", new { folderId = Model.Id, returnFolderId = Model.Id })" title="@Strings.ClearSelection">
             <i class="icon-abort"></i>
         </a>
     }
     else
     {
-        <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Home">
-            <i class="icon-home"></i>
-        </a>
+        if (Model.IsRootFolder)
+        {
+            <a class="red-hover" href="@Url.Action("Index", "Home")" title="@Strings.Home">
+                <i class="icon-home"></i>
+            </a>
+        }
+        else
+        {
+            <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.ParentFolderId })" title="@Strings.Back">
+                <i class="icon-back"></i>
+            </a>
+        }
         
-        <a class="red-hover" href="@Url.Action("Setup", "Query", new { folderId = Model.Id })" title="@Strings.StartQuery">
-            <i class="icon-rocket"></i>
-        </a>
     
         <a class="red-hover" href="@Url.Action("Create", "Card", new { folderId = Model.Id })" title="@Strings.CreateCard">
             <i class="icon-plus prefix-icon"></i><i class="icon-card"></i>

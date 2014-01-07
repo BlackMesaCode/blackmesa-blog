@@ -282,5 +282,41 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 SearchInFolder(subFolder, searchText, searchFrontSide, searchBackSide, ref searchResults);
             }
         }
+
+        public ActionResult Options(string id)
+        {
+            var folder = _learningRepo.GetFolder(id);
+
+            var hasOnlyCardsSelected = !folder.IsSelected && !folder.SubFolders.Any(f => f.IsSelected);
+            var hasOneCardSelected = (folder.Cards.Count(c => c.IsSelected) == 1);
+
+            var hasOnlyFoldersSelected = !folder.Cards.Any(c => c.IsSelected);
+            var hasOneFolderSelected = ((folder.SubFolders.Count(c => c.IsSelected) + (folder.IsSelected ? 1 : 0)) == 1);
+
+            var viewModel = new SelectionOptionsViewModel
+            {
+                Id = folder.Id.ToString(),
+                Folder = folder,
+                HasAnyFolderSelected = (folder.IsSelected || folder.SubFolders.Any(f => f.IsSelected)),
+                HasRootFolderSelected = (folder.ParentFolder == null && folder.IsSelected),
+                HasOnlyCardsSelected = hasOnlyCardsSelected,
+                HasOnlyOneCardSelected = hasOnlyCardsSelected && hasOneCardSelected,
+                CardId = (folder.Cards.Count(c => c.IsSelected) == 1) ? folder.Cards.Find(c => c.IsSelected).Id.ToString() : String.Empty,
+                HasOnlyFoldersSelected = hasOnlyFoldersSelected,
+                HasOnlyOneFolderSelected = hasOneFolderSelected && hasOnlyFoldersSelected,
+                FolderId = ((folder.SubFolders.Count(c => c.IsSelected) + (folder.IsSelected ? 1 : 0)) == 1) ? (folder.IsSelected ? folder.Id.ToString() : folder.SubFolders.Find(f => f.IsSelected).Id.ToString()) : String.Empty,
+            };
+
+            return View(viewModel);
+        }
+
+        public ActionResult Statistics(string id)
+        {
+            var folder = _learningRepo.GetFolder(id);
+
+
+            return View();
+        }
+
     }
 }

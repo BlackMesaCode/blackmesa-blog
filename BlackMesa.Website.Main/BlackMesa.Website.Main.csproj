@@ -198,7 +198,7 @@
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\Learning\ViewModels\Folder\FolderOptionsViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\SelectionOptionsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SearchSelectionViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SearchResultsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SearchResultViewModel.cs" />
@@ -228,6 +228,10 @@
     <Compile Include="Migrations\201401061914175_Init.cs" />
     <Compile Include="Migrations\201401061914175_Init.Designer.cs">
       <DependentUpon>201401061914175_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401070038256_Updates.cs" />
+    <Compile Include="Migrations\201401070038256_Updates.Designer.cs">
+      <DependentUpon>201401070038256_Updates.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
@@ -602,13 +606,14 @@
     <Content Include="Areas\Learning\Views\Card\Edit.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_Path.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Completed.cshtml" />
-    <Content Include="Areas\Learning\Views\Folder\Options.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\Options.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\SetMoveTarget.cshtml" />
     <Content Include="Areas\Learning\Views\Home\Settings.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\Delete.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\SearchResults.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\_SearchResult.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\SetInsertAfterCard.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\Statistics.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -701,6 +706,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201401061914175_Init.resx">
       <DependentUpon>201401061914175_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401070038256_Updates.resx">
+      <DependentUpon>201401070038256_Updates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

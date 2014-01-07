@@ -1,0 +1,171 @@
+﻿@using BlackMesa.Website.Main.Models.Learning
+@using BlackMesa.Website.Main.Resources
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.SelectionOptionsViewModel
+
+@{
+    ViewBag.Title = Strings.YourSelectedItems;
+}
+
+
+
+@* ------------------- Content ------------------- *@
+
+<div id="content">
+    
+    <section id="selection-options">
+        
+        <div class="tile gray-darker">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        
+        @{
+            var subFolders = Model.Folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name);
+            var cards = Model.Folder.Cards.Where(c => c.IsSelected).OrderBy(c => c.Position);
+        }
+
+        @if (Model.Folder.IsSelected)
+        {
+            <div class="tile gray-light">
+                <i class="icon-folder"></i>@Model.Folder.Name
+            </div>
+        }
+
+        @for (int i = 0; i < subFolders.Count(); i++)
+        {
+            if (i < 3)
+            {
+                <div class="tree-item">
+                    @if (Model.Folder.IsSelected)
+                    {
+                        <span class="indent"></span>
+                        <span class="indent"></span>
+                    }
+                    <div class="tile gray-light">
+                        <i class="icon-folder"></i>@subFolders.ElementAt(i).Name
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="tree-item">
+                    @if (Model.Folder.IsSelected)
+                    {
+                        <span class="indent"></span>
+                        <span class="indent"></span>
+                    }
+                    <div class="tile gray-light">
+                        ... @Strings.And @(subFolders.Count() - i) @Strings.More @((subFolders.Count() - i > 1) ? Strings.Folders : Strings.Folder)
+                    </div>
+                </div>
+                break;
+            }
+        }
+
+
+        @for (int i = 0; i < cards.Count(); i++)
+        {
+            if (i < 3)
+            {
+                <div class="tree-item">
+                    @if (Model.Folder.IsSelected)
+                    {
+                        <span class="indent"></span>
+                        <span class="indent"></span>
+                    }
+                    <div class="tile gray-light">
+                        <i class="icon-card"></i>@cards.ElementAt(i).FrontSide
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="tree-item">
+                    @if (Model.Folder.IsSelected)
+                    {
+                        <span class="indent"></span>
+                        <span class="indent"></span>
+                    }
+                    <div class="tile gray-light">
+                        ... @Strings.And @(cards.Count() - i) @Strings.More @((cards.Count() - i > 1) ? Strings.Cards : Strings.Card)
+                    </div>
+                </div>
+                break;
+            }
+
+        }
+
+        
+        
+        <div class="tile gray-dark">
+            <h3>@Strings.WhatToDoWithThem</h3>
+        </div>
+        
+        
+        @if (!Model.HasRootFolderSelected)
+        {
+            <a class="tile gray-light-hover" href="@Url.Action("SetMoveTarget", "Selection", new { sourceFolderId = Model.Id })">
+                <i class="icon-move"></i>@Strings.Move
+            </a>
+        }
+
+        @if (Model.HasOnlyCardsSelected)
+        {
+            <a class="tile gray-light-hover" href="@Url.Action("SetInsertAfterCard", "Selection", new { sourceFolderId = Model.Id })">
+                <i class="icon-ol"></i>@Strings.ChangeOrder
+            </a>
+        }
+
+
+        @if (Model.HasAnyFolderSelected)
+        {
+            <a class="tile gray-light-hover" href="@Url.Action("Search", "Selection", new { folderId = Model.Id })">
+                <i class="icon-search"></i>@Strings.Examine
+            </a>
+        }
+  
+        @if (Model.HasOnlyOneFolderSelected)
+        {
+            <a class="tile gray-light-hover" href="@Url.Action("Edit", "Folder", new { id = Model.FolderId })">
+                <i class="icon-edit"></i>@Strings.Edit
+            </a>
+        }
+        
+        @if (Model.HasOnlyOneCardSelected)
+        {
+            <a class="tile gray-light-hover" href="@Url.Action("Edit", "Card", new { id = Model.CardId })">
+                <i class="icon-edit"></i>@Strings.Edit
+            </a>
+        }
+        
+        <a class="tile gray-light-hover" href="@Url.Action("Setup", "Query", new { folderId = Model.Id })">
+            <i class="icon-rocket"></i>@Strings.StartQuery
+        </a>
+        
+
+        <a class="tile gray-light-hover" href="@Url.Action("Statistics", "Selection", new { id = Model.Id })">
+            <i class="icon-stats"></i>@Strings.CreateStatistic
+        </a>
+        
+        @if (!Model.HasRootFolderSelected)
+        {
+            <a class="tile gray-light-hover" href="@Url.Action("Delete", "Selection", new {folderId = Model.Id})">
+                <i class="icon-delete"></i>@Strings.Delete
+            </a>
+        }
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.Id })" title="@Strings.Back">
+        <i class="icon-back"></i>
+    </a>
+
+</nav>
