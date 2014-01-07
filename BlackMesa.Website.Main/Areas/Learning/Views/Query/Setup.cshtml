@@ -26,18 +26,15 @@
                 </div>
             }
 
-            <div class="tile gray-dark">
-                <h3>@Strings.SelectedFolder</h3>
-            </div>
             
-            <div class="tile gray-light">
-                <i class="icon-folder"> </i>@Model.SelectedFolderName
-            </div>
-            
-            @Html.HiddenFor(model => model.SelectedFolderId)
+            @Html.HiddenFor(model => model.FolderId)
 
-            <label class="tile gray-light-hover" for="_IncludeSubfolders">
-                @Html.CheckBoxFor(model => model.InludeSubfolders, new { @id = "_IncludeSubfolders" }) @Strings.IncludeSubfolders
+            <div class="tile gray-dark">
+                <h3>@Strings.General</h3>
+            </div>
+
+            <label class="tile gray-light-hover" for="_QueryOnlyDueCards">
+                @Html.CheckBoxFor(model => model.QueryOnlyDueCards, new { @id = "_QueryOnlyDueCards" }) @Strings.QueryOnlyDueCards
             </label>
 
             <label class="tile gray-light-hover" for="_ReverseSides">
@@ -76,17 +73,9 @@
 
 <nav id="menu">
     
-    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.SelectedFolderId })" title="@Strings.Back">
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Back">
         <i class="icon-back"></i>
     </a>
 
 </nav>
-
-
-@section Scripts {
-
-    
-
-}
-
 

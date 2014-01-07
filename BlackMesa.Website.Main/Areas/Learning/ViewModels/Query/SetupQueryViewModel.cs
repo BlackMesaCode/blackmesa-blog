@@ -9,10 +9,11 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
 {
     public class SetupQueryViewModel
     {
-        public string SelectedFolderId { get; set; }
-        public string SelectedFolderName { get; set; }
-        public bool InludeSubfolders { get; set; }
+        public string FolderId { get; set; }
+
+        public bool QueryOnlyDueCards { get; set; }
         public bool ReverseSides { get; set; }
+
 
         [Display(ResourceType = typeof(Strings), Name = "Order")]
         public OrderType OrderType { get; set; }
@@ -27,8 +28,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
     {
         [Display(Name = "OrderTypeOrdered", ResourceType = typeof(Strings))]
         Ordered,
-        [Display(Name = "OrderTypeReversed", ResourceType = typeof(Strings))]
-        Reversed,
         [Display(Name = "OrderTypeShuffled", ResourceType = typeof(Strings))]
         Shuffled,
     }
@@ -39,7 +38,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
         Normal,
         [Display(Name = "QueryTypeSinglePass", ResourceType = typeof(Strings))]
         SinglePass,
-        [Display(Name = "QueryTypeLeitner", ResourceType = typeof(Strings))]
-        Leitner,
     }
+
 }

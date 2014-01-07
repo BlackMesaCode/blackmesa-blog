@@ -408,9 +408,6 @@
   <data name="StartQuery" xml:space="preserve">
     <value>Abfrage beginnen</value>
   </data>
-  <data name="QueryTypeLeitner" xml:space="preserve">
-    <value>Leitner Algorithmus</value>
-  </data>
   <data name="QueryTypeNormal" xml:space="preserve">
     <value>Normal</value>
   </data>
@@ -419,9 +416,6 @@
   </data>
   <data name="OrderTypeOrdered" xml:space="preserve">
     <value>Sortiert</value>
-  </data>
-  <data name="OrderTypeReversed" xml:space="preserve">
-    <value>Umgekehrt</value>
   </data>
   <data name="OrderTypeShuffled" xml:space="preserve">
     <value>Zufällig</value>
@@ -587,5 +581,11 @@
   </data>
   <data name="WhereDoYouWantToSearch" xml:space="preserve">
     <value>Wo willst du suchen?</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Allgemeines</value>
+  </data>
+  <data name="QueryOnlyDueCards" xml:space="preserve">
+    <value>Nur fällige Karten abfragen</value>
   </data>
 </root>

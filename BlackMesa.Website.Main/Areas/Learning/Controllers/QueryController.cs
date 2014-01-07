@@ -9,6 +9,7 @@ using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
 using BlackMesa.Website.Main.Utilities;
 using dotless.Core.Utils;
+using Microsoft.AspNet.Identity;
 
 namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 {
@@ -23,11 +24,11 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
             var viewModel = new SetupQueryViewModel
             {
-                InludeSubfolders = true,
+                FolderId = folder.Id.ToString(),
+                QueryOnlyDueCards = true,
+                ReverseSides = false,
                 OrderType = OrderType.Ordered,
                 QueryType = QueryType.Normal,
-                SelectedFolderId = folder.Id.ToString(),
-                SelectedFolderName = folder.Name,
             };
 
             return View(viewModel);
@@ -39,53 +40,86 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Start(SetupQueryViewModel viewModel)
         {
-            var selectedCards = new List<Card>();
-            var folder = _learningRepo.GetFolder(viewModel.SelectedFolderId);
+
+            var folder = _learningRepo.GetFolder(viewModel.FolderId);
 
             // Selection
-            if (viewModel.InludeSubfolders)
-                _learningRepo.GetCardsIncludingSubfolders(folder.Id.ToString(), ref selectedCards);
-            else
-                selectedCards.AddRange(_learningRepo.GetFolder(folder.Id.ToString()).Cards);
 
+            var cardsToQuery = new List<Card>();
+            _learningRepo.GetAllSelectedCardsInFolder(folder.Id.ToString(), ref cardsToQuery);
+
+            if (viewModel.QueryOnlyDueCards)
+            {
+                
+            }
 
             // Ordering
-            selectedCards.Reverse(); // We reverse order by default as we enumerate backwards
+            if (viewModel.OrderType == OrderType.Shuffled)
+                cardsToQuery.Shuffle();
 
-            if (viewModel.OrderType == OrderType.Reversed)
-                selectedCards.Reverse();
-            else if (viewModel.OrderType == OrderType.Shuffled)
-                selectedCards.Shuffle();
 
-            var firstCard = _learningRepo.GetCard(selectedCards.Last().Id.ToString());
+            // Create Query
 
-            // ReverseSides if option has been chosen
-            var frontSide = viewModel.ReverseSides ? firstCard.BackSide : firstCard.FrontSide;
-            var backSide = viewModel.ReverseSides ? firstCard.FrontSide : firstCard.BackSide;
+            var queryId = _learningRepo.AddQuery(User.Identity.GetUserId(), viewModel.QueryOnlyDueCards, viewModel.ReverseSides,
+                viewModel.OrderType, viewModel.QueryType, cardsToQuery, cardsToQuery);
 
-            var initialQueryViewModel = new QueryViewModel
-            {
-                FolderId = viewModel.SelectedFolderId,
-                SelectedCards = selectedCards.Select(u => u.Id.ToString()).JoinStrings(","),
-                RemainingCards = selectedCards.Select(u => u.Id.ToString()).JoinStrings(","),
-                Position = selectedCards.Count-1,
-                QueryType = viewModel.QueryType,
-
-                StartTime = DateTime.Now,
-
-                FrontSide = frontSide,
-                BackSide = backSide,
-            };
+            var initialQueryViewModel = GetQueryViewModel(queryId, 0, folder.Id.ToString());
 
             return View("Show", initialQueryViewModel);
         }
 
+
+        private QueryViewModel GetQueryViewModel(string queryId, int positionOffset, string folderId)
+        {
+            var query = _learningRepo.GetQuery(queryId);
+            var card = query.RemainingCards.ElementAt(query.Position + positionOffset);
+            var queryViewModel = new QueryViewModel
+            {
+                FolderId = folderId,
+                QueryId = queryId,
+                FrontSide = (query.ReverseSides ? card.BackSide : card.FrontSide),
+                BackSide = (query.ReverseSides ? card.FrontSide : card.BackSide),
+                StartTime = DateTime.Now,
+                Result = QueryResult.Correct,
+            };
+            return queryViewModel;
+        }
 
         
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Show(QueryViewModel resultViewModel)
         {
+            var currentTime = DateTime.Now;
+
+            var query = _learningRepo.GetQuery(resultViewModel.QueryId);
+            var queriedCard = query.RemainingCards.ElementAt(query.Position);
+
+            // Add QueryItem for the queriedCard
+
+            // todo add existence check  add or update
+            _learningRepo.AddQueryItem(queriedCard.Id.ToString(), queriedCard, resultViewModel.StartTime, 
+                currentTime, resultViewModel.Result);
+
+            // Update Query
+            // remaining cards
+            // position etc
+
+            // Prepare viewModel for new card
+
+            // todo call RedirectToAction GetCard(queryId, forward/backward)
+
+
+
+
+
+
+
+
+
+
+
+
             ModelState.Clear();
             var currentTime = DateTime.Now;
             var remainingCards = resultViewModel.RemainingCards.Split(new[] {','}).ToList();
@@ -95,7 +129,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var oldCardId = remainingCards[resultViewModel.Position];
             var oldCard = _learningRepo.GetCard(oldCardId);
 
-            _learningRepo.AddQuery(oldCardId, oldCard, resultViewModel.StartTime, currentTime, resultViewModel.Result);
+            _learningRepo.AddQueryItem(oldCardId, oldCard, resultViewModel.StartTime, currentTime, resultViewModel.Result);
 
 
             // Adjusting RemainingCards
@@ -138,10 +172,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 var viewModel = new QueryViewModel
                 {
                     FolderId = resultViewModel.FolderId,
-                    QueryType = resultViewModel.QueryType,
-                    SelectedCards = resultViewModel.SelectedCards,
-                    RemainingCards = remainingCards.JoinStrings(","),
-                    Position = nextPosition,
                     StartTime = DateTime.Now,
 
                     FrontSide = frontSide,

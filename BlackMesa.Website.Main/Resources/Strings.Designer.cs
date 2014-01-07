@@ -520,6 +520,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die General ähnelt.
+        /// </summary>
+        public static string General {
+            get {
+                return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Guest ähnelt.
         /// </summary>
         public static string Guest {
@@ -736,15 +745,6 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reversed ähnelt.
-        /// </summary>
-        public static string OrderTypeReversed {
-            get {
-                return ResourceManager.GetString("OrderTypeReversed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Shuffled ähnelt.
         /// </summary>
         public static string OrderTypeShuffled {
@@ -871,6 +871,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Query only due cards ähnelt.
+        /// </summary>
+        public static string QueryOnlyDueCards {
+            get {
+                return ResourceManager.GetString("QueryOnlyDueCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Correct ähnelt.
         /// </summary>
         public static string QueryResultCorrect {
@@ -903,15 +912,6 @@ namespace BlackMesa.Website.Main.Resources {
         public static string QueryType {
             get {
                 return ResourceManager.GetString("QueryType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Leitner Algorithm ähnelt.
-        /// </summary>
-        public static string QueryTypeLeitner {
-            get {
-                return ResourceManager.GetString("QueryTypeLeitner", resourceCulture);
             }
         }
         

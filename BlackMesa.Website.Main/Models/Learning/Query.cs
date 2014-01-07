@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Query;
+using BlackMesa.Website.Main.Models.Identity;
 using BlackMesa.Website.Main.Resources;
 
 namespace BlackMesa.Website.Main.Models.Learning
@@ -13,7 +15,11 @@ namespace BlackMesa.Website.Main.Models.Learning
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        public bool InludeSubfolders { get; set; }
+        public string OwnerId { get; set; }
+        public virtual User Owner { get; set; }
+
+
+        public bool QueryOnlyDueCards { get; set; }
         public bool ReverseSides { get; set; }
 
         [Display(ResourceType = typeof(Strings), Name = "Order")]
@@ -23,23 +29,28 @@ namespace BlackMesa.Website.Main.Models.Learning
         public QueryType QueryType { get; set; }
 
 
-        public string SelectedCards { get; set; }
-        public string RemainingCards { get; set; }
+        public virtual ICollection<Card> CardsToQuery { get; set; }
+        public virtual ICollection<Card> RemainingCards { get; set; }
+        public int Position { get; set; }
+        public virtual ICollection<QueryItem> QueryItems { get; set; }
 
 
-        [Required]
         public DateTime StartTime { get; set; }
-
-        [Required]
         public DateTime EndTime { get; set; }
 
         [NotMapped]
-        public TimeSpan BackSideDuration { get { return EndTime - StartTime; } }
+        public TimeSpan Duration { get { return EndTime - StartTime; } }
 
-        public Guid CardId { get; set; }
+        public QueryStatus QueryStatus { get; set; }
 
-        public virtual Card Card { get; set; }
+    }
 
+    public enum QueryStatus
+    {
+        InProgress,
+        Paused,
+        Completed,
+        Aborted,
     }
 
 }

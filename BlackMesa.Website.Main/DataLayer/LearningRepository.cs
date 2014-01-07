@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using BlackMesa.Website.Main.Areas.Learning.ViewModels.Query;
 using BlackMesa.Website.Main.Models.Learning;
 using WebGrease.Css.Extensions;
 
@@ -201,13 +202,13 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void GetCardsIncludingSubfolders(string folderId, ref List<Card> cards)
+        public void GetAllSelectedCardsInFolder(string folderId, ref List<Card> cards)
         {
             var folder = GetFolder(folderId);
-            cards.AddRange(folder.Cards);
-            foreach (var subfolder in folder.SubFolders)
+            cards.AddRange(folder.Cards.Where(c => c.IsSelected).OrderBy(c => c.Position));
+            foreach (var subfolder in folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name))
             {
-                GetCardsIncludingSubfolders(subfolder.Id.ToString(), ref cards);
+                GetAllSelectedCardsInFolder(subfolder.Id.ToString(), ref cards);
             }
         }
 
@@ -350,12 +351,12 @@ namespace BlackMesa.Website.Main.DataLayer
         // ================================ Queries ================================ //
 
 
-        public List<QueryItem> GetQueries(string cardId)
+        public List<QueryItem> GetQueryItems(string cardId)
         {
             return _dbContext.Learning_Cards.Find(new Guid(cardId)).QueryItems;
         }
 
-        public void AddQuery(string cardId, Card card, DateTime frontSideTime, DateTime backSideTime, QueryResult result)
+        public void AddQueryItem(string cardId, Card card, DateTime frontSideTime, DateTime backSideTime, QueryResult result)
         {
             var query = new QueryItem
             {
@@ -368,8 +369,41 @@ namespace BlackMesa.Website.Main.DataLayer
             };
 
             card.QueryItems.Add(query);
-            _dbContext.SaveChanges();  
+            _dbContext.SaveChanges();
         }
+
+        public Query GetQuery(string queryId)
+        {
+            return _dbContext.Learning_Queries.Find(new Guid(queryId));
+        }
+
+        public string AddQuery(string ownerId, bool queryOnlyDueCards, bool reverseSides, OrderType orderType, QueryType queryType, 
+            List<Card> cardsToQuery, List<Card> remainingCards)
+        {
+            var owner = _dbContext.Users.Find(ownerId);
+            var query = new Query
+            {
+                OwnerId = ownerId,
+                Owner = owner,
+                QueryOnlyDueCards = queryOnlyDueCards,
+                ReverseSides = reverseSides,
+                OrderType = orderType,
+                QueryType = queryType,
+                CardsToQuery = cardsToQuery,
+                RemainingCards = remainingCards,
+                Position = 0,
+                StartTime = DateTime.Now,
+                QueryStatus = QueryStatus.InProgress,
+            };
+
+            _dbContext.Learning_Queries.Add(query);
+            _dbContext.SaveChanges();
+
+            return query.Id.ToString();
+        }
+
+
+
 
 
         // ================================ Selections ================================ //

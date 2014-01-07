@@ -15,8 +15,6 @@
         {
             @Html.AntiForgeryToken()
             
-            @Html.HiddenFor(model => model.Position)
-            
             if (!ViewData.ModelState.IsValid)
             {
                 <div class="tile gray-light">
@@ -25,12 +23,7 @@
             }
             
             @Html.HiddenFor(model => model.FolderId)
-            @Html.HiddenFor(model => model.SelectedCards)
-            @Html.HiddenFor(model => model.RemainingCards)
-            
-            @Html.HiddenFor(model => model.QueryType)
-            @Html.HiddenFor(model => model.ReverseSides)
-            
+            @Html.HiddenFor(model => model.QueryId)
             @Html.HiddenFor(model => model.StartTime)
             
             <div class="tile gray-darker">
