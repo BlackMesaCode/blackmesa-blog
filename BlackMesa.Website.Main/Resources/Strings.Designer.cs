@@ -124,15 +124,6 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Answer ähnelt.
-        /// </summary>
-        public static string Answer {
-            get {
-                return ResourceManager.GetString("Answer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Archive ähnelt.
         /// </summary>
         public static string Archive {
@@ -943,15 +934,6 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Question ähnelt.
-        /// </summary>
-        public static string Question {
-            get {
-                return ResourceManager.GetString("Question", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Read more ähnelt.
         /// </summary>
         public static string ReadMore {
@@ -1312,11 +1294,11 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Show answer ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Show backSide ähnelt.
         /// </summary>
-        public static string ShowAnswer {
+        public static string ShowBackSide {
             get {
-                return ResourceManager.GetString("ShowAnswer", resourceCulture);
+                return ResourceManager.GetString("ShowBackSide", resourceCulture);
             }
         }
         
@@ -1416,6 +1398,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string WhatToDoWithThem {
             get {
                 return ResourceManager.GetString("WhatToDoWithThem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Where do you want to search? ähnelt.
+        /// </summary>
+        public static string WhereDoYouWantToSearch {
+            get {
+                return ResourceManager.GetString("WhereDoYouWantToSearch", resourceCulture);
             }
         }
         

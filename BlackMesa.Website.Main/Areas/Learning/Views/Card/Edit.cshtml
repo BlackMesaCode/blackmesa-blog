@@ -38,28 +38,6 @@
                 @Html.TextAreaFor(model => model.BackSide, new { @autocomplete = "off" })
             </div>
             
-            
-            if (!String.IsNullOrEmpty(Model.Hint))
-            {
-                 <div class="form-element-container">
-                     @Html.TextAreaFor(model => model.Hint, new { @autocomplete = "off" })
-                 </div>
-            }
-
-            if (!String.IsNullOrEmpty(Model.CodeSnipped))
-            {
-                <div class="form-element-container">
-                    @Html.TextAreaFor(model => model.CodeSnipped, new {@autocomplete = "off"})
-                </div>
-            }
-
-            if (!String.IsNullOrEmpty(Model.ImageUrl))
-            {
-                <div class="form-element-container">
-                    @Html.TextBoxFor(model => model.ImageUrl, new {@autocomplete = "off"})
-                </div>
-            }
-
 
             <div class="form-element-container">
                 <button class="gray-dark-hover" type="submit">

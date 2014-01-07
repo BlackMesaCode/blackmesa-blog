@@ -198,6 +198,7 @@
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\Learning\ViewModels\Selection\SelectionStatisticViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SelectionOptionsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SearchSelectionViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SearchResultsViewModel.cs" />
@@ -208,7 +209,6 @@
     <Compile Include="Areas\Learning\ViewModels\Folder\CreateFolderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\FolderDetailsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\DeleteSelectionViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Card\DeleteCardViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Card\EditCardViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Card\CreateCardViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\QueryCompletedViewModel.cs" />
@@ -613,7 +613,7 @@
     <Content Include="Areas\Learning\Views\Selection\SearchResults.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\_SearchResult.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\SetInsertAfterCard.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\Statistics.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\Statistic.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />

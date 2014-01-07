@@ -75,9 +75,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
                 FrontSide = frontSide,
                 BackSide = backSide,
-                Hint = firstCard.Hint,
-                CodeSnipped = firstCard.CodeSnipped,
-                ImageUrl = firstCard.ImageUrl,
             };
 
             return View("Show", initialQueryViewModel);
@@ -149,9 +146,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
                     FrontSide = frontSide,
                     BackSide = backSide,
-                    Hint = nextCard.Hint,
-                    CodeSnipped = nextCard.CodeSnipped,
-                    ImageUrl = nextCard.ImageUrl,
                 };
 
                 return View(viewModel);

@@ -59,8 +59,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 selectedFolders.Add(folder);
             else
             {
-                selectedFolders = folder.SubFolders.Where(f => f.IsSelected).ToList();
-                selectedCards = folder.Cards.Where(u => u.IsSelected).ToList();
+                selectedFolders = folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name).ToList();
+                selectedCards = folder.Cards.Where(u => u.IsSelected).OrderBy(c => c.Position).ToList();
             }
 
             int affectedFolders = 0;
@@ -310,12 +310,15 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Statistics(string id)
+        public ActionResult Statistic(string id)
         {
             var folder = _learningRepo.GetFolder(id);
 
+            var viewModel = new SelectionStatisticViewModel
+            {
 
-            return View();
+            };
+            return View(viewModel);
         }
 
     }

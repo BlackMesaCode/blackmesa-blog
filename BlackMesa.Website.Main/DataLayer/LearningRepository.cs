@@ -233,7 +233,7 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void AddCard(string folderId, string ownerId, string question, string answer)
+        public void AddCard(string folderId, string ownerId, string frontSide, string backSide)
         {
 
             var owner = _dbContext.Users.Find(ownerId);
@@ -246,8 +246,8 @@ namespace BlackMesa.Website.Main.DataLayer
                 Owner = owner,
                 IsSelected = false,
                 Position = folder.Cards.Count,
-                FrontSide = question,
-                BackSide = answer,
+                FrontSide = frontSide,
+                BackSide = backSide,
                 DateCreated = DateTime.Now,
                 DateEdited = DateTime.Now,
             };
@@ -257,16 +257,12 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void EditCard(string id, string newQuestion, string newAnswer, string newHint, 
-            string newCodeSnipped, string newImageUrl)
+        public void EditCard(string id, string newFrontSide, string newBackSide)
         {
             var currentCard = _dbContext.Learning_Cards.Find(new Guid(id));
 
-            currentCard.FrontSide = newQuestion;
-            currentCard.BackSide = newAnswer;
-            currentCard.Hint = newHint;
-            currentCard.CodeSnipped = newCodeSnipped;
-            currentCard.ImageUrl = newImageUrl;
+            currentCard.FrontSide = newFrontSide;
+            currentCard.BackSide = newBackSide;
 
             _dbContext.SaveChanges();
         }
@@ -359,15 +355,15 @@ namespace BlackMesa.Website.Main.DataLayer
             return _dbContext.Learning_Cards.Find(new Guid(cardId)).QueryItems;
         }
 
-        public void AddQuery(string cardId, Card card, DateTime questionTime, DateTime answerTime, QueryResult result)
+        public void AddQuery(string cardId, Card card, DateTime frontSideTime, DateTime backSideTime, QueryResult result)
         {
             var query = new QueryItem
             {
                 CardId = new Guid(cardId),
                 Card = card,
 
-                StartTime = questionTime,
-                EndTime = answerTime,
+                StartTime = frontSideTime,
+                EndTime = backSideTime,
                 Result = result,
             };
 

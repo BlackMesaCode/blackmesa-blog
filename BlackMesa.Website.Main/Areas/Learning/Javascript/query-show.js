@@ -1,8 +1,8 @@
-﻿var showAnswerTile = document.getElementById('show-answer');
-var answerArea = document.getElementById('answer');
-answerArea.style.display = "none";
+﻿var showBackSideTile = document.getElementById('show-backside');
+var backSideArea = document.getElementById('backside');
+backSideArea.style.display = "none";
 
-showAnswerTile.onclick = function(e) {
-    showAnswerTile.style.display = "none";
-    answerArea.style.display = "block";
+showBackSideTile.onclick = function(e) {
+    showBackSideTile.style.display = "none";
+    backSideArea.style.display = "block";
 };

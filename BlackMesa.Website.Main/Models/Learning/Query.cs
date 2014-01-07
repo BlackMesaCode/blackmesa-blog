@@ -34,7 +34,7 @@ namespace BlackMesa.Website.Main.Models.Learning
         public DateTime EndTime { get; set; }
 
         [NotMapped]
-        public TimeSpan AnswerDuration { get { return EndTime - StartTime; } }
+        public TimeSpan BackSideDuration { get { return EndTime - StartTime; } }
 
         public Guid CardId { get; set; }
 

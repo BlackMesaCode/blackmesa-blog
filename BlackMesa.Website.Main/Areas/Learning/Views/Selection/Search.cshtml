@@ -12,7 +12,7 @@
 
 <div id="content">
     
-    <section id="folder-search">   
+    <section id="selection-search">   
         
         @using (Html.BeginForm())
         {
@@ -41,7 +41,7 @@
             </div>
 
             <div class="tile gray-dark">
-                <h3>@Strings.SearchWhere</h3>
+                <h3>@Strings.WhereDoYouWantToSearch</h3>
             </div>
 
             <label class="tile gray-light-hover" for="_SearchFrontSide">
@@ -70,7 +70,7 @@
 
 <nav id="menu">
 
-    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Back">
+    <a class="red-hover" href="@Url.Action("Options", "Selection", new { id = Model.FolderId })" title="@Strings.Back">
         <i class="icon-back"></i>
     </a>
 

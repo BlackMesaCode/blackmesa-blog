@@ -52,9 +52,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 FolderId = card.FolderId.ToString(),
                 FrontSide = card.FrontSide,
                 BackSide = card.BackSide,
-                Hint = card.Hint,
-                CodeSnipped = card.CodeSnipped,
-                ImageUrl = card.ImageUrl,
             };
             return View(viewModel);
         }

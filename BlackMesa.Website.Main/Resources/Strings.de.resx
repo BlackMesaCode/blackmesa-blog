@@ -363,11 +363,8 @@
   <data name="YourName" xml:space="preserve">
     <value>Ihr Name</value>
   </data>
-  <data name="Answer" xml:space="preserve">
-    <value>Antwort</value>
-  </data>
-  <data name="Question" xml:space="preserve">
-    <value>Frage</value>
+  <data name="BackSide" xml:space="preserve">
+    <value>Rückseite</value>
   </data>
   <data name="YourFolders" xml:space="preserve">
     <value>Deine Verzeichnisse</value>
@@ -444,7 +441,7 @@
   <data name="Next" xml:space="preserve">
     <value>Weiter</value>
   </data>
-  <data name="ShowAnswer" xml:space="preserve">
+  <data name="ShowBackSide" xml:space="preserve">
     <value>Antwort anzeigen</value>
   </data>
   <data name="QueryHistory" xml:space="preserve">
@@ -479,9 +476,6 @@
   </data>
   <data name="ReverseSides" xml:space="preserve">
     <value>Vorder- und Rückseite vertauschen</value>
-  </data>
-  <data name="BackSide" xml:space="preserve">
-    <value>Rückseite</value>
   </data>
   <data name="FrontSide" xml:space="preserve">
     <value>Vorderseite</value>
@@ -590,5 +584,8 @@
   </data>
   <data name="WhatToDoWithThem" xml:space="preserve">
     <value>Was möchtest Du mit ihnen machen?</value>
+  </data>
+  <data name="WhereDoYouWantToSearch" xml:space="preserve">
+    <value>Wo willst du suchen?</value>
   </data>
 </root>
