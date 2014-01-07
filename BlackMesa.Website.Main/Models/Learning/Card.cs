@@ -36,10 +36,10 @@ namespace BlackMesa.Website.Main.Models.Learning
 
         public virtual List<QueryItem> QueryItems { get; set; }
 
-        [StringLength(255)]
+        //[StringLength(255)] // todo reactivate after population
         public string FrontSide { get; set; }
 
-        [StringLength(10000)]
+        //[StringLength(10000)] // todo reactivate after population
         [DataType(DataType.MultilineText)]
         public string BackSide { get; set; }
 
