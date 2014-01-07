@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201401070038256_Updates.Designer.cs">
       <DependentUpon>201401070038256_Updates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201401071646202_Updates1.cs" />
+    <Compile Include="Migrations\201401071646202_Updates1.Designer.cs">
+      <DependentUpon>201401071646202_Updates1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
     <Compile Include="Models\Blog\Entry.cs" />
@@ -709,6 +713,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201401070038256_Updates.resx">
       <DependentUpon>201401070038256_Updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401071646202_Updates1.resx">
+      <DependentUpon>201401071646202_Updates1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

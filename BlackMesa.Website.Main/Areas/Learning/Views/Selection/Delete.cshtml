@@ -31,35 +31,11 @@
                     @Html.ValidationSummary()
                 </div>
             }
-                
-            if (Model.SelectedFolders.Count > 0)
-            {
-                foreach (var folder in Model.SelectedFolders)
-                {
-                     <div class="tile gray-light">
-                        <i class="icon-folder"></i>@folder.Name
-                    </div>
-                }
-            }
 
-            
-            if (Model.SelectedCards.Count > 0)
-            {
-                foreach (var card in Model.SelectedCards)
-                {
-                    <div class="tile gray-light">
-                        <i class="icon-card"></i>@card.FrontSide
-                    </div>
-                }
-            }
-            
-            if (Model.AffectedCards > Model.SelectedCards.Count)
-            {
-                <div class="tile gray-dark">
-                    @Strings.SelectionAffection: @Model.AffectedCards @(Model.AffectedCards == 1 ? Strings.Card : Strings.Cards)
+            <div class="tile gray-light">
+                    @Strings.SelectionAffection: @Model.AffectedCardsCount @(Model.AffectedCardsCount == 1 ? Strings.Card : Strings.Cards)
                 </div>
-            }
-
+            
             <div class="form-element-container">
                 <button class="gray-dark-hover" type="submit">
                     <i class="icon-warning"></i>@Strings.PerformDeletion

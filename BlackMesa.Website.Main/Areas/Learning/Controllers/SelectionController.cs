@@ -52,30 +52,13 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             var folder = _learningRepo.GetFolder(folderId);
 
-            var selectedFolders = new List<Folder>();
-            var selectedCards = new List<Card>();
-
-            if (folder.IsSelected)
-                selectedFolders.Add(folder);
-            else
-            {
-                selectedFolders = folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name).ToList();
-                selectedCards = folder.Cards.Where(u => u.IsSelected).OrderBy(c => c.Position).ToList();
-            }
-
-            int affectedFolders = 0;
-            int affectedCards = 0;
-
-            _learningRepo.GetFolderCount(folder, ref affectedFolders, true, true);
-            _learningRepo.GetCardCount(folder, ref affectedCards, true, true);
+            int affectedCardsCount = 0;
+            _learningRepo.GetCardCount(folder, ref affectedCardsCount, true, true);
 
             var viewModel = new DeleteSelectionViewModel
             {
                 Id = folder.Id.ToString(),
-                SelectedFolders = selectedFolders,
-                SelectedCards = selectedCards,
-                AffectedFolders = affectedFolders,
-                AffectedCards = affectedCards,
+                AffectedCardsCount = affectedCardsCount,
             };
             return View(viewModel);
         }

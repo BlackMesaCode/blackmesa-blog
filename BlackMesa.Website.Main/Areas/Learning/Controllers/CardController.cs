@@ -63,7 +63,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             if (ModelState.IsValid)
             {
                 var card = _learningRepo.GetCard(viewModel.Id);
-                _learningRepo.EditCard(viewModel.Id, viewModel.FrontSide, viewModel.BackSide, viewModel.Hint, viewModel.CodeSnipped, viewModel.ImageUrl);
+                _learningRepo.EditCard(viewModel.Id, viewModel.FrontSide, viewModel.BackSide);
                 return RedirectToAction("Details", "Folder", new  { id = card.FolderId });
             }
             return View(viewModel);

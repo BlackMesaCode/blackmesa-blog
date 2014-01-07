@@ -28,8 +28,8 @@ function AutoSize(elementId) {
     observe(text, 'drop', delayedResize);
     observe(text, 'keydown', delayedResize);
 
-    text.focus();
-    text.select();
+    //text.focus();
+    //text.select();
     resize();
 }
 
