@@ -61,7 +61,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             // Create Query
 
             var queryId = _learningRepo.AddQuery(User.Identity.GetUserId(), viewModel.QueryOnlyDueCards, viewModel.ReverseSides,
-                viewModel.OrderType, viewModel.QueryType, cardsToQuery, cardsToQuery);
+                viewModel.OrderType, viewModel.QueryType, cardsToQuery);
 
             return RedirectToAction("GetQueryItem",
                 new
@@ -70,6 +70,15 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                     position = 0,
                     folderId = viewModel.FolderId
                 });
+        }
+
+        public ActionResult GetQueryItem(string queryId, string folderId, int positionOffset = 0)
+        {
+            var viewModel = GetQueryItemViewModel(queryId, folderId, positionOffset);
+            if (viewModel == null)
+                return RedirectToAction("Completed", "Query", new {queryId = queryId, folderId = folderId});
+
+            return View(viewModel);
         }
 
 
@@ -82,7 +91,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 var unqueriedCards = query.CardsToQuery.Where(c => !c.QueryItems.Exists(i => i.QueryId.ToString() == queryId));
                 if (unqueriedCards.Any()) // maybe this can be deleted
                 {
-                    card = unqueriedCards.First(); 
+                    card = unqueriedCards.First();
                 }
                 else if (query.QueryType == QueryType.Normal)
                 {
@@ -104,7 +113,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             }
             if (card != null)
             {
-
                 return new QueryItemViewModel
                 {
                     FolderId = folderId,
@@ -119,16 +127,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return null;
         }
 
-
-        public ActionResult GetQueryItem(string queryId, string folderId, int positionOffset = 0)
-        {
-            // update position?
-            var viewModel = GetQueryItemViewModel(queryId, folderId, positionOffset);
-            if (viewModel == null)
-                RedirectToAction("Completed", "Query", new {queryId = queryId, folderId = folderId});
-
-            return View(viewModel);
-        }
 
 
         [HttpPost]

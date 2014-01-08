@@ -398,10 +398,11 @@ namespace BlackMesa.Website.Main.DataLayer
             return _dbContext.Learning_Queries.Find(new Guid(queryId));
         }
 
-        public string AddQuery(string ownerId, bool queryOnlyDueCards, bool reverseSides, OrderType orderType, QueryType queryType, 
-            List<Card> cardsToQuery, List<Card> remainingCards)
+        public string AddQuery(string ownerId, bool queryOnlyDueCards, bool reverseSides, 
+            OrderType orderType, QueryType queryType, List<Card> cardsToQuery)
         {
             var owner = _dbContext.Users.Find(ownerId);
+            var currentTime = DateTime.Now;
             var query = new Query
             {
                 OwnerId = ownerId,
@@ -411,7 +412,8 @@ namespace BlackMesa.Website.Main.DataLayer
                 OrderType = orderType,
                 QueryType = queryType,
                 CardsToQuery = cardsToQuery,
-                StartTime = DateTime.Now,
+                StartTime = currentTime,
+                EndTime = currentTime,
                 QueryStatus = QueryStatus.InProgress,
             };
 

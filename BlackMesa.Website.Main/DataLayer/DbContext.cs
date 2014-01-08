@@ -64,6 +64,16 @@ namespace BlackMesa.Website.Main.DataLayer
 
             // Learning
 
+            modelBuilder.Entity<Card>()
+                .HasMany(x => x.Queries)
+                .WithMany(x => x.CardsToQuery)
+                .Map(x =>
+                {
+                    x.ToTable("Learning_CardQueries"); // name of association table
+                    x.MapLeftKey("Card_Id");
+                    x.MapRightKey("Query_Id");
+                });
+
         }
 
     }

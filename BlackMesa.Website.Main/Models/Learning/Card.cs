@@ -34,6 +34,8 @@ namespace BlackMesa.Website.Main.Models.Learning
 
         public virtual Folder Folder { get; set; }
 
+        public virtual List<Query> Queries { get; set; }
+
         public virtual List<QueryItem> QueryItems { get; set; }
 
         //[StringLength(255)] // todo reactivate after population
