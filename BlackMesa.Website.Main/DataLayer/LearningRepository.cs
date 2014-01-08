@@ -446,6 +446,16 @@ namespace BlackMesa.Website.Main.DataLayer
         // ================================ Selections ================================ //
 
 
+        public bool AllChildsSelected(Folder folder)
+        {
+            if (folder.SubFolders.Any(subFolder => !subFolder.IsSelected))
+                return false;
+            if (folder.Cards.Any(card => !card.IsSelected))
+                return false;
+
+            return true;
+        }
+
         public void SelectCard(Card card)
         {
             card.IsSelected = true;
@@ -457,22 +467,12 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public bool AllChildsSelected(Folder folder)
-        {
-            if (folder.SubFolders.Any(subFolder => !subFolder.IsSelected))
-                return false;
-            if (folder.Cards.Any(card => !card.IsSelected))
-                return false;
-
-            return true;
-        }
-
-
         public void DeSelectCard(Card card)
         {
             card.IsSelected = false;
 
-            if (card.Folder.IsSelected)
+            var cardsFolderIsSelected = _dbContext.Learning_Folders.Where(f => f.Id == card.FolderId).Select(f => f.IsSelected).Single();
+            if (cardsFolderIsSelected)
                 card.Folder.IsSelected = false;
 
             _dbContext.SaveChanges();
