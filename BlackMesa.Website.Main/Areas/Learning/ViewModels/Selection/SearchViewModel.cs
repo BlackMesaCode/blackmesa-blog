@@ -2,7 +2,7 @@
 
 namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection
 {
-    public class SearchSelectionViewModel
+    public class SearchViewModel
     {
         public string FolderId { get; set; }
         public string SearchText { get; set; }

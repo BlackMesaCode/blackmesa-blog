@@ -143,14 +143,14 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 _learningRepo.DeSelectFolder(id);
             
 
-            var viewModel = new FolderDetailsViewModel
+            var viewModel = new FolderViewModel
             {
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
                 IsSelected = folder.IsSelected,
                 IsRootFolder = (folder.ParentFolder == null),
                 Level = folder.Level,
-                HasAnySelection = (folder.IsSelected || folder.Cards.Any(u => u.IsSelected) || folder.SubFolders.Any(f => f.IsSelected)),
+                HasAnySelection = (folder.IsSelected || folder.SubFolders.Any(f => f.IsSelected) || folder.Cards.Any(u => u.IsSelected)),
                 SubFolders = folder.SubFolders.OrderBy(f => f.Name),
                 Cards = folder.Cards.OrderBy(c => c.Position),
                 Path = path,
@@ -162,7 +162,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Create(string parentFolderId)
         {
-            var viewModel = new CreateFolderViewModel()
+            var viewModel = new CreateViewModel()
             {
                 ParentFolderId = parentFolderId,
             };
@@ -173,7 +173,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateFolderViewModel viewModel)
+        public ActionResult Create(CreateViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -189,7 +189,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult Edit(string id)
         {
             var folder = _learningRepo.GetFolder(id);
-            var viewModel = new EditFolderViewModel
+            var viewModel = new EditViewModel
             {
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
@@ -200,7 +200,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EditFolderViewModel viewModel)
+        public ActionResult Edit(EditViewModel viewModel)
         {
             if (ModelState.IsValid)
             {

@@ -198,19 +198,21 @@
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\Learning\ViewModels\Selection\SelectionStatisticViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\SelectionOptionsViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\SearchSelectionViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\ImportViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\ExportViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\StatisticViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\OptionsViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\SearchViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SearchResultsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SearchResultViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SetNewOrderViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\SetMoveTargetViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Folder\EditFolderViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Folder\CreateFolderViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Folder\FolderDetailsViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\DeleteSelectionViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Card\EditCardViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Card\CreateCardViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\EditViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\CreateViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\FolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\DeleteViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Card\EditViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Card\CreateViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\QueryCompletedViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\SetupQueryViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\QueryItemViewModel.cs" />
@@ -610,6 +612,8 @@
     <Content Include="Areas\Learning\Views\Selection\_SearchResult.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\SetInsertAfterCard.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\Statistic.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\Export.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\Import.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />

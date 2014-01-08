@@ -2,7 +2,7 @@
 
 namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection
 {
-    public class SelectionOptionsViewModel
+    public class OptionsViewModel
     {
         public string Id { get; set; }
         public BlackMesa.Website.Main.Models.Learning.Folder Folder { get; set; }

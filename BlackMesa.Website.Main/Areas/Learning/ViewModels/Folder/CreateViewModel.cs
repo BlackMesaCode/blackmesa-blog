@@ -2,7 +2,7 @@
 
 namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder
 {
-    public class CreateFolderViewModel
+    public class CreateViewModel
     {
         public string Id { get; set; }
 

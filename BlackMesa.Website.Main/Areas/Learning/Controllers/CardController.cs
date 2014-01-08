@@ -11,6 +11,8 @@ using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
 using Microsoft.AspNet.Identity;
 using WebGrease.Css.Extensions;
+using CreateViewModel = BlackMesa.Website.Main.Areas.Learning.ViewModels.Card.CreateViewModel;
+using EditViewModel = BlackMesa.Website.Main.Areas.Learning.ViewModels.Card.EditViewModel;
 
 namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 {
@@ -22,7 +24,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Create(string folderId)
         {
-            var viewModel = new CreateCardViewModel()
+            var viewModel = new CreateViewModel()
             {
                 FolderId = folderId,
             };
@@ -32,7 +34,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(CreateCardViewModel viewModel)
+        public ActionResult Create(CreateViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -46,7 +48,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult Edit(string id)
         {
             var card = _learningRepo.GetCard(id);
-            var viewModel = new EditCardViewModel
+            var viewModel = new EditViewModel
             {
                 Id = card.Id.ToString(),
                 FolderId = card.FolderId.ToString(),
@@ -58,7 +60,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit(EditCardViewModel viewModel)
+        public ActionResult Edit(EditViewModel viewModel)
         {
             if (ModelState.IsValid)
             {

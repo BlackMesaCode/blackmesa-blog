@@ -55,7 +55,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             int affectedCardsCount = 0;
             _learningRepo.GetCardCount(folder, ref affectedCardsCount, true, true);
 
-            var viewModel = new DeleteSelectionViewModel
+            var viewModel = new DeleteViewModel
             {
                 Id = folder.Id.ToString(),
                 AffectedCardsCount = affectedCardsCount,
@@ -66,7 +66,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(DeleteSelectionViewModel viewModel)
+        public ActionResult Delete(DeleteViewModel viewModel)
         {
             var folder = _learningRepo.GetFolder(viewModel.Id);
             var parentFolderId = folder.ParentFolder != null ? folder.ParentFolder.Id.ToString() : String.Empty;
@@ -170,7 +170,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             var folder = _learningRepo.GetFolder(folderId);
 
-            var viewModel = new SearchSelectionViewModel
+            var viewModel = new SearchViewModel
             {
                 FolderId = folder.Id.ToString(),
                 SearchFrontSide = true,
@@ -182,7 +182,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Search(SearchSelectionViewModel viewModel)
+        public ActionResult Search(SearchViewModel viewModel)
         {
             var folder = _learningRepo.GetFolder(viewModel.FolderId);
             var searchResult = new List<SearchResultViewModel>();
@@ -276,7 +276,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var hasOnlyFoldersSelected = !folder.Cards.Any(c => c.IsSelected);
             var hasOneFolderSelected = ((folder.SubFolders.Count(c => c.IsSelected) + (folder.IsSelected ? 1 : 0)) == 1);
 
-            var viewModel = new SelectionOptionsViewModel
+            var viewModel = new OptionsViewModel
             {
                 Id = folder.Id.ToString(),
                 Folder = folder,
@@ -297,7 +297,31 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             var folder = _learningRepo.GetFolder(id);
 
-            var viewModel = new SelectionStatisticViewModel
+            var viewModel = new StatisticViewModel
+            {
+
+            };
+            return View(viewModel);
+        }
+
+
+        public ActionResult Import(string id)
+        {
+            var folder = _learningRepo.GetFolder(id);
+
+            var viewModel = new ImportViewModel
+            {
+
+            };
+            return View(viewModel);
+        }
+
+
+        public ActionResult Export(string id)
+        {
+            var folder = _learningRepo.GetFolder(id);
+
+            var viewModel = new ExportViewModel
             {
 
             };

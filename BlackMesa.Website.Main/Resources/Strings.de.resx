@@ -588,4 +588,10 @@
   <data name="QueryOnlyDueCards" xml:space="preserve">
     <value>Nur fällige Karten abfragen</value>
   </data>
+  <data name="Export" xml:space="preserve">
+    <value>Exportieren</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Importieren</value>
+  </data>
 </root>

@@ -1,6 +1,6 @@
 ﻿namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder
 {
-    public class EditFolderViewModel
+    public class EditViewModel
     {
 
         public string Id { get; set; }
