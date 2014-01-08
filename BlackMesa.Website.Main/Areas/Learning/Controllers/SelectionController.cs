@@ -142,7 +142,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 foreach (var card in cards)
                 {
                     _learningRepo.MoveCard(card.Id.ToString(), targetFolderId);
-                    _learningRepo.DeSelectCard(card.Id.ToString());
+                    _learningRepo.DeSelectCard(card);
                 }
                 return RedirectToAction("Details", "Folder", new { id = targetFolderId });
             }

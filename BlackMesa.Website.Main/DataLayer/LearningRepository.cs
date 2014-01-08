@@ -486,7 +486,7 @@ namespace BlackMesa.Website.Main.DataLayer
             {
                 card.IsSelected = true;
             }
-            foreach (var subfolder in folder.SubFolders)
+            foreach (var subfolder in folder.SubFolders.Where(f => !f.IsSelected))
             {
                 SelectFolder(subfolder);
             }
@@ -512,10 +512,12 @@ namespace BlackMesa.Website.Main.DataLayer
             {
                 card.IsSelected = false;
             }
-            foreach (var subfolder in folder.SubFolders)
+
+            foreach (var subfolder in folder.SubFolders.Where(f => f.IsSelected))
             {
                 DeSelectFolder(subfolder);
             }
+
             _dbContext.SaveChanges();
         }
 
