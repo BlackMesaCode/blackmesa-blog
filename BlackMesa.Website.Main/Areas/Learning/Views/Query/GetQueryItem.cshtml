@@ -1,7 +1,7 @@
 ﻿@using BlackMesa.Website.Main.Resources
 @using BlackMesa.Website.Main.Utilities
 
-@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Query.QueryViewModel
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Query.QueryItemViewModel
 
 @{
     ViewBag.Title = Model.FrontSide;
@@ -9,9 +9,9 @@
 
 <div id="content">
 
-    <section id="query-show">
+    <section id="query-item-show">
 
-        @using (Html.BeginForm("Show", "Query"))
+        @using (Html.BeginForm("SaveQueryItem", "Query"))
         {
             @Html.AntiForgeryToken()
             
@@ -24,6 +24,7 @@
             
             @Html.HiddenFor(model => model.FolderId)
             @Html.HiddenFor(model => model.QueryId)
+            @Html.HiddenFor(model => model.QueryItemId)
             @Html.HiddenFor(model => model.StartTime)
             
             <div class="tile gray-darker">

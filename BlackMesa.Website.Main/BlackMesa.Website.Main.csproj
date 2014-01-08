@@ -213,7 +213,7 @@
     <Compile Include="Areas\Learning\ViewModels\Card\CreateCardViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\QueryCompletedViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Query\SetupQueryViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\QueryViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\QueryItemViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -594,7 +594,7 @@
     <Content Include="Areas\Learning\Less\fonts.less" />
     <Content Include="Areas\Learning\Views\Selection\Search.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Setup.cshtml" />
-    <Content Include="Areas\Learning\Views\Query\Show.cshtml" />
+    <Content Include="Areas\Learning\Views\Query\GetQueryItem.cshtml" />
     <Content Include="Areas\Learning\Views\Card\Edit.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_Path.cshtml" />
     <Content Include="Areas\Learning\Views\Query\Completed.cshtml" />

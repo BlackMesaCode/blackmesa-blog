@@ -30,8 +30,6 @@ namespace BlackMesa.Website.Main.Models.Learning
 
 
         public virtual ICollection<Card> CardsToQuery { get; set; }
-        public virtual ICollection<Card> RemainingCards { get; set; }
-        public int Position { get; set; }
         public virtual ICollection<QueryItem> QueryItems { get; set; }
 
 

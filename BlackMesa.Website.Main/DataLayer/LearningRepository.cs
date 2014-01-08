@@ -356,19 +356,40 @@ namespace BlackMesa.Website.Main.DataLayer
             return _dbContext.Learning_Cards.Find(new Guid(cardId)).QueryItems;
         }
 
-        public void AddQueryItem(string cardId, Card card, DateTime frontSideTime, DateTime backSideTime, QueryResult result)
+        public QueryItem GetQueryItem(string queryItemId)
         {
-            var query = new QueryItem
+            return _dbContext.Learning_QueryItems.Find(new Guid(queryItemId));
+        }
+
+        public void AddQueryItem(string cardId, Card card, string queryId, Query query, DateTime startTime, DateTime endTime, QueryResult result)
+        {
+            var queryItem = new QueryItem
             {
                 CardId = new Guid(cardId),
                 Card = card,
 
-                StartTime = frontSideTime,
-                EndTime = backSideTime,
+                QueryId = new Guid(queryId),
+                Query = query,
+
+                StartTime = startTime,
+                EndTime = endTime,
                 Result = result,
             };
 
-            card.QueryItems.Add(query);
+            card.QueryItems.Add(queryItem);
+            _dbContext.SaveChanges();
+        }
+
+        public void EditQueryItem(string queryItemId, DateTime? startTime, DateTime? endTime, QueryResult result)
+        {
+            var queryItem = GetQueryItem(queryItemId);
+
+            if (startTime.HasValue)
+                queryItem.StartTime = startTime.Value;
+
+            if (endTime.HasValue)
+                queryItem.EndTime = endTime.Value;
+
             _dbContext.SaveChanges();
         }
 
@@ -390,8 +411,6 @@ namespace BlackMesa.Website.Main.DataLayer
                 OrderType = orderType,
                 QueryType = queryType,
                 CardsToQuery = cardsToQuery,
-                RemainingCards = remainingCards,
-                Position = 0,
                 StartTime = DateTime.Now,
                 QueryStatus = QueryStatus.InProgress,
             };
@@ -403,7 +422,17 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
+        public void EditQuery(string queryId, DateTime? startTime, DateTime? endTime, QueryStatus queryStatus)
+        {
+            var query = GetQuery(queryId);
+            if (startTime.HasValue)
+                query.StartTime = startTime.Value;
+            if(endTime.HasValue)
+                query.EndTime = endTime.Value;
+            query.QueryStatus = queryStatus;
 
+            _dbContext.SaveChanges();
+        }
 
 
         // ================================ Selections ================================ //

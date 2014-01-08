@@ -38,7 +38,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Start(SetupQueryViewModel viewModel)
+        public ActionResult Setup(SetupQueryViewModel viewModel)
         {
 
             var folder = _learningRepo.GetFolder(viewModel.FolderId);
@@ -63,146 +63,127 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var queryId = _learningRepo.AddQuery(User.Identity.GetUserId(), viewModel.QueryOnlyDueCards, viewModel.ReverseSides,
                 viewModel.OrderType, viewModel.QueryType, cardsToQuery, cardsToQuery);
 
-            var initialQueryViewModel = GetQueryViewModel(queryId, 0, folder.Id.ToString());
-
-            return View("Show", initialQueryViewModel);
+            return RedirectToAction("GetQueryItem",
+                new
+                {
+                    queryId = queryId,
+                    position = 0,
+                    folderId = viewModel.FolderId
+                });
         }
 
 
-        private QueryViewModel GetQueryViewModel(string queryId, int positionOffset, string folderId)
+        private QueryItemViewModel GetQueryItemViewModel(string queryId, string folderId, int positionOffset = 0)
         {
             var query = _learningRepo.GetQuery(queryId);
-            var card = query.RemainingCards.ElementAt(query.Position + positionOffset);
-            var queryViewModel = new QueryViewModel
+            Card card = null;
+            if (positionOffset == 0)
             {
-                FolderId = folderId,
-                QueryId = queryId,
-                FrontSide = (query.ReverseSides ? card.BackSide : card.FrontSide),
-                BackSide = (query.ReverseSides ? card.FrontSide : card.BackSide),
-                StartTime = DateTime.Now,
-                Result = QueryResult.Correct,
-            };
-            return queryViewModel;
+                var unqueriedCards = query.CardsToQuery.Where(c => !c.QueryItems.Exists(i => i.QueryId.ToString() == queryId));
+                if (unqueriedCards.Any()) // maybe this can be deleted
+                {
+                    card = unqueriedCards.First(); 
+                }
+                else if (query.QueryType == QueryType.Normal)
+                {
+                    var wrongCardsToRequery = query.CardsToQuery
+                        .Where(
+                            c =>
+                                c.QueryItems.Single(i => i.QueryId.ToString() == queryId).Result ==
+                                QueryResult.PartlyCorrect
+                                || c.QueryItems.Single(i => i.QueryId.ToString() == queryId).Result == QueryResult.Wrong);
+                    card = wrongCardsToRequery.First();
+                }
+            }
+            else
+            {
+                var lastQueriedCardsOrderedByStartTime = query.CardsToQuery.Where(c => c.QueryItems.Exists(i => i.QueryId.ToString() == queryId))
+                    .OrderBy(c => c.QueryItems.Single(i => i.QueryId.ToString() == queryId).StartTime);
+                card = lastQueriedCardsOrderedByStartTime.ElementAt(lastQueriedCardsOrderedByStartTime.Count() - positionOffset + 1);
+
+            }
+            if (card != null)
+            {
+
+                return new QueryItemViewModel
+                {
+                    FolderId = folderId,
+                    QueryId = queryId,
+                    CardId = card.Id.ToString(),
+                    FrontSide = (query.ReverseSides ? card.BackSide : card.FrontSide),
+                    BackSide = (query.ReverseSides ? card.FrontSide : card.BackSide),
+                    StartTime = DateTime.Now,
+                    Result = QueryResult.Correct,
+                };
+            }
+            return null;
         }
 
-        
+
+        public ActionResult GetQueryItem(string queryId, string folderId, int positionOffset = 0)
+        {
+            // update position?
+            var viewModel = GetQueryItemViewModel(queryId, folderId, positionOffset);
+            if (viewModel == null)
+                RedirectToAction("Completed", "Query", new {queryId = queryId, folderId = folderId});
+
+            return View(viewModel);
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Show(QueryViewModel resultViewModel)
+        public ActionResult SaveQueryItem(QueryItemViewModel resultViewModel)
         {
+            //ModelState.Clear();
             var currentTime = DateTime.Now;
 
             var query = _learningRepo.GetQuery(resultViewModel.QueryId);
-            var queriedCard = query.RemainingCards.ElementAt(query.Position);
+            var queriedCard = _learningRepo.GetCard(resultViewModel.CardId);
 
-            // Add QueryItem for the queriedCard
-
-            // todo add existence check  add or update
-            _learningRepo.AddQueryItem(queriedCard.Id.ToString(), queriedCard, resultViewModel.StartTime, 
-                currentTime, resultViewModel.Result);
-
-            // Update Query
-            // remaining cards
-            // position etc
-
-            // Prepare viewModel for new card
-
-            // todo call RedirectToAction GetCard(queryId, forward/backward)
-
-
-
-
-
-
-
-
-
-
-
-
-            ModelState.Clear();
-            var currentTime = DateTime.Now;
-            var remainingCards = resultViewModel.RemainingCards.Split(new[] {','}).ToList();
-
-            // Parsing "old" query result
-
-            var oldCardId = remainingCards[resultViewModel.Position];
-            var oldCard = _learningRepo.GetCard(oldCardId);
-
-            _learningRepo.AddQueryItem(oldCardId, oldCard, resultViewModel.StartTime, currentTime, resultViewModel.Result);
-
-
-            // Adjusting RemainingCards
-
-            if (resultViewModel.QueryType == QueryType.Normal)
+            var queryItem = queriedCard.QueryItems.SingleOrDefault(i => i.QueryId.ToString() == resultViewModel.QueryId);
+            if (queryItem != null)
             {
-                if (resultViewModel.Result == QueryResult.Correct)
-                    remainingCards.Remove(oldCardId);
+                _learningRepo.EditQueryItem(queryItem.Id.ToString(), resultViewModel.StartTime, currentTime, resultViewModel.Result);
             }
-            else if (resultViewModel.QueryType == QueryType.SinglePass)
+            else
             {
-                remainingCards.Remove(oldCardId);
+                _learningRepo.AddQueryItem(queriedCard.Id.ToString(), queriedCard, resultViewModel.QueryId, query,
+                    resultViewModel.StartTime, currentTime, resultViewModel.Result);
             }
+            
 
-
-            // Decreasing position
-            var nextPosition = resultViewModel.Position - 1;
-
-
-            // If there are remaining learning cards
-            if (remainingCards.Count > 0)
-            {
-                // if query type is normal and we reached the end of a cycle
-                if (resultViewModel.QueryType == QueryType.Normal && nextPosition == -1 &&
-                    remainingCards.Count > 0)
-                    nextPosition = remainingCards.Count - 1; // resetting the position for another cycle
-
-
-                // Preparing new query viewmodel
-
-                var nextCardId = remainingCards[nextPosition];
-                var nextCard = _learningRepo.GetCard(nextCardId);
-
-
-                // ReverseSides if option has been chosen
-                var frontSide = resultViewModel.ReverseSides ? nextCard.BackSide : nextCard.FrontSide;
-                var backSide = resultViewModel.ReverseSides ? nextCard.FrontSide : nextCard.BackSide;
-
-
-                var viewModel = new QueryViewModel
+            return RedirectToAction("GetQueryItem",
+                new
                 {
-                    FolderId = resultViewModel.FolderId,
-                    StartTime = DateTime.Now,
-
-                    FrontSide = frontSide,
-                    BackSide = backSide,
-                };
-
-                return View(viewModel);
-
-            }
-            else // no more remaining learning cards
-            {
-                var selectedCards = resultViewModel.SelectedCards.Split(new[] { ',' }).ToList();
-                var queries = new List<QueryItem>();
-                foreach (var cardId in selectedCards)
-                {
-                    queries.Add(_learningRepo.GetCard(cardId).QueryItems.Last());
-                }
-
-                var viewModel = new QueryCompletedViewModel
-                {
-                    FolderId = resultViewModel.FolderId,
-                    TotalCount = selectedCards.Count,
-                    CorrectCount = queries.Count(q => q.Result == QueryResult.Correct),
-                    PartlyCorrectCount = queries.Count(q => q.Result == QueryResult.PartlyCorrect),
-                    WrongCount = queries.Count(q => q.Result == QueryResult.Wrong),
-                };
-                return View("Completed", viewModel);
-            }
-
+                    queryId = resultViewModel.QueryId,
+                    folderId = resultViewModel.FolderId
+                });
         }
 
+        public ActionResult Aborted(string queryId, string folderId)
+        {
+            _learningRepo.EditQuery(queryId, null, DateTime.Now, QueryStatus.Aborted);
+
+            return RedirectToAction("Details", "Folder", new {id = folderId});
+        }
+
+
+        public ActionResult Completed(string queryId, string folderId)
+        {
+            _learningRepo.EditQuery(queryId, null, DateTime.Now, QueryStatus.Completed);
+            var query = _learningRepo.GetQuery(queryId);
+
+            var viewModel = new QueryCompletedViewModel
+            {
+                FolderId = folderId,
+                TotalCount = query.CardsToQuery.Count,
+                CorrectCount = 0,
+                PartlyCorrectCount = 0,
+                WrongCount = 0,
+            };
+            return View(viewModel);
+        }
 
     }
 }
