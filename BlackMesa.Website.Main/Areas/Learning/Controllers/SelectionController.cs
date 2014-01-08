@@ -25,25 +25,29 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult AddFolder(string folderId, string returnFolderId)
         {
-            _learningRepo.SelectFolder(folderId);
+            var folder = _learningRepo.GetFolder(folderId);
+            _learningRepo.SelectFolder(folder);
             return RedirectToAction("Details", "Folder", new {id = returnFolderId, deSelect = false });
         }
 
         public ActionResult RemoveFolder(string folderId, string returnFolderId)
         {
-            _learningRepo.DeSelectFolder(folderId);
+            var folder = _learningRepo.GetFolder(folderId);
+            _learningRepo.DeSelectFolder(folder);
             return RedirectToAction("Details", "Folder", new { id = returnFolderId, deSelect = false });
         }
 
         public ActionResult AddCard(string cardId, string returnFolderId)
         {
-            _learningRepo.SelectCard(cardId);
+            var card = _learningRepo.GetCard(cardId);
+            _learningRepo.SelectCard(card);
             return RedirectToAction("Details", "Folder", new { id = returnFolderId, deSelect = false });
         }
 
         public ActionResult RemoveCard(string cardId, string returnFolderId)
         {
-            _learningRepo.DeSelectCard(cardId);
+            var card = _learningRepo.GetCard(cardId);
+            _learningRepo.DeSelectCard(card);
             return RedirectToAction("Details", "Folder", new { id = returnFolderId, deSelect = false });
         }
 
@@ -119,7 +123,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             if (sourceFolder.IsSelected)
             {
                 _learningRepo.MoveFolder(sourceFolderId, targetFolderId);
-                _learningRepo.DeSelectFolder(sourceFolderId);
+                _learningRepo.DeSelectFolder(sourceFolder);
 
                 return RedirectToAction("Details", "Folder", new { id = targetFolderId });
             }
@@ -130,7 +134,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 foreach (var subFolder in selectedSubfolders)
                 {
                     _learningRepo.MoveFolder(subFolder.Id.ToString(), targetFolderId);
-                    _learningRepo.DeSelectFolder(subFolder.Id.ToString());
+                    _learningRepo.DeSelectFolder(subFolder);
                 }
 
                 // move cards

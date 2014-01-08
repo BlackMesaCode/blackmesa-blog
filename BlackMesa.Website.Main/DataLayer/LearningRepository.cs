@@ -446,9 +446,8 @@ namespace BlackMesa.Website.Main.DataLayer
         // ================================ Selections ================================ //
 
 
-        public void SelectCard(string cardId)
+        public void SelectCard(Card card)
         {
-            var card = GetCard(cardId);
             card.IsSelected = true;
 
             //if (!card.Folder.IsSelected && AllChildsSelected(card.Folder))
@@ -469,9 +468,8 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void DeSelectCard(string cardId)
+        public void DeSelectCard(Card card)
         {
-            var card = GetCard(cardId);
             card.IsSelected = false;
 
             if (card.Folder.IsSelected)
@@ -481,9 +479,8 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void SelectFolder(string folderId)
+        public void SelectFolder(Folder folder)
         {
-            var folder = GetFolder(folderId);
             folder.IsSelected = true;
             foreach (var card in folder.Cards)
             {
@@ -491,7 +488,7 @@ namespace BlackMesa.Website.Main.DataLayer
             }
             foreach (var subfolder in folder.SubFolders)
             {
-                SelectFolder(subfolder.Id.ToString());
+                SelectFolder(subfolder);
             }
 
             //if (folder.ParentFolder!= null && !folder.ParentFolder.IsSelected && AllChildsSelected(folder.ParentFolder))
@@ -501,9 +498,8 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void DeSelectFolder(string folderId)
+        public void DeSelectFolder(Folder folder)
         {
-            var folder = GetFolder(folderId);
             folder.IsSelected = false;
 
             if (folder.ParentFolder != null)
@@ -518,7 +514,7 @@ namespace BlackMesa.Website.Main.DataLayer
             }
             foreach (var subfolder in folder.SubFolders)
             {
-                DeSelectFolder(subfolder.Id.ToString());
+                DeSelectFolder(subfolder);
             }
             _dbContext.SaveChanges();
         }

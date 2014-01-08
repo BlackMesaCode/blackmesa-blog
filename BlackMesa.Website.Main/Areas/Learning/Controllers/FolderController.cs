@@ -123,8 +123,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 rootFolder = _learningRepo.GetRootFolder(User.Identity.GetUserId());
             }
 
-            var rootDir = new DirectoryInfo(@"D:\RootFolder");
-            WalkDirectoryTree(rootDir, true);
+            //var rootDir = new DirectoryInfo(@"D:\RootFolder");
+            //WalkDirectoryTree(rootDir, true);
 
             return RedirectToAction("Details", "Folder", new {id = rootFolder.Id.ToString()});
         }
@@ -140,7 +140,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             path.Remove(path.Last().Key);
 
             if (deSelect)
-                _learningRepo.DeSelectFolder(id);
+                _learningRepo.DeSelectFolder(folder);
             
 
             var viewModel = new FolderViewModel
