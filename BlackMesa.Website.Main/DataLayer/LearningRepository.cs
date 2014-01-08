@@ -24,7 +24,7 @@ namespace BlackMesa.Website.Main.DataLayer
 
         // ================================ Folders ================================ //
 
-        public void AddFolder(string name, string ownerId, string parentFolderId)
+        public string AddFolder(string name, string ownerId, string parentFolderId)
         {
 
             // todo check for valid parentFolderId
@@ -43,11 +43,13 @@ namespace BlackMesa.Website.Main.DataLayer
                 Level = parentFolder != null ? parentFolder.Level + 1 : 1,
             };
 
-            if (parentFolder != null)
-                parentFolder.SubFolders.Add(newFolder);
+            //if (parentFolder != null)
+            //    parentFolder.SubFolders.Add(newFolder);
 
             _dbContext.Learning_Folders.Add(newFolder);
             _dbContext.SaveChanges();
+
+            return newFolder.Id.ToString();
         }
 
 
@@ -243,17 +245,19 @@ namespace BlackMesa.Website.Main.DataLayer
             var newStandardCard = new Card
             {
                 FolderId = new Guid(folderId),
+                Folder = folder,
                 OwnerId = ownerId,
                 Owner = owner,
                 IsSelected = false,
-                Position = folder.Cards.Count,
+                Position = (folder.Cards != null ? folder.Cards.Count : 0),
                 FrontSide = frontSide,
                 BackSide = backSide,
                 DateCreated = DateTime.Now,
                 DateEdited = DateTime.Now,
             };
 
-            folder.Cards.Add(newStandardCard);
+            _dbContext.Learning_Cards.Add(newStandardCard);
+            //folder.Cards.Add(newStandardCard);
             _dbContext.SaveChanges();
         }
 
