@@ -89,19 +89,17 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             if (positionOffset == 0)
             {
                 var unqueriedCards = query.CardsToQuery.Where(c => !c.QueryItems.Exists(i => i.QueryId.ToString() == queryId));
-                if (unqueriedCards.Any()) // maybe this can be deleted
-                {
+                if (unqueriedCards.Any())
                     card = unqueriedCards.First();
-                }
                 else if (query.QueryType == QueryType.Normal)
                 {
                     var wrongCardsToRequery = query.CardsToQuery
                         .Where(
                             c =>
-                                c.QueryItems.Single(i => i.QueryId.ToString() == queryId).Result ==
-                                QueryResult.PartlyCorrect
-                                || c.QueryItems.Single(i => i.QueryId.ToString() == queryId).Result == QueryResult.Wrong);
-                    card = wrongCardsToRequery.First();
+                                c.QueryItems.Last(i => i.QueryId.ToString() == queryId).Result == QueryResult.PartlyCorrect
+                                || c.QueryItems.Last(i => i.QueryId.ToString() == queryId).Result == QueryResult.Wrong);
+                    if (wrongCardsToRequery.Any())
+                        card = wrongCardsToRequery.OrderBy(c => c.QueryItems.Last(i => i.QueryId.ToString() == queryId).StartTime).First();
                 }
             }
             else
@@ -133,22 +131,21 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SaveQueryItem(QueryItemViewModel resultViewModel)
         {
-            //ModelState.Clear();
             var currentTime = DateTime.Now;
 
             var query = _learningRepo.GetQuery(resultViewModel.QueryId);
             var queriedCard = _learningRepo.GetCard(resultViewModel.CardId);
 
-            var queryItem = queriedCard.QueryItems.SingleOrDefault(i => i.QueryId.ToString() == resultViewModel.QueryId);
-            if (queryItem != null)
-            {
-                _learningRepo.EditQueryItem(queryItem.Id.ToString(), resultViewModel.StartTime, currentTime, resultViewModel.Result);
-            }
-            else
-            {
+            //var queryItem = queriedCard.QueryItems.SingleOrDefault(i => i.QueryId.ToString() == resultViewModel.QueryId);
+            //if (queryItem != null)
+            //{
+            //    _learningRepo.EditQueryItem(queryItem.Id.ToString(), resultViewModel.StartTime, currentTime, resultViewModel.Result);
+            //}
+            //else
+            //{
                 _learningRepo.AddQueryItem(queriedCard.Id.ToString(), queriedCard, resultViewModel.QueryId, query,
                     resultViewModel.StartTime, currentTime, resultViewModel.Result);
-            }
+            //}
             
 
             return RedirectToAction("GetQueryItem",

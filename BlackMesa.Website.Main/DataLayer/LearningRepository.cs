@@ -390,6 +390,8 @@ namespace BlackMesa.Website.Main.DataLayer
             if (endTime.HasValue)
                 queryItem.EndTime = endTime.Value;
 
+            queryItem.Result = result;
+
             _dbContext.SaveChanges();
         }
 
