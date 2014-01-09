@@ -5,7 +5,7 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.ExportViewModel
 
 @{
-    ViewBag.Title = Strings.Export;
+    ViewBag.Title = Strings.ExportAsXmlFile;
 }
 
 
@@ -25,21 +25,13 @@
                 <h1>@ViewBag.Title</h1>
             </div>
 
-            <div class="tile gray-light">
-                Hinweise
-            </div>
-
             <div class="form-element-container">
-                @Html.TextAreaFor(model => model.SerializationResult, new {@autocomplete = "off", @autofocus = "", @autocorrect = "off"})
+                @Html.TextAreaFor(model => model.SerializationResult, new {@autocomplete = "off", @autofocus = "", @autocorrect = "off", @rows = 10})
             </div>
 
-            <div class="tile gray-dark-hover">
+            @*<div class="tile gray-dark-hover">
                 <h2><i class="icon-clipboard"></i>@Strings.CopyToClipboard</h2>
-            </div>
-
-            @*<a class="tile gray-dark-hover" href="@Url.Action("DownloadExport", "Selection", new {folderId = Model.FolderId})">
-                <h3><i class="icon-download"></i>@Strings.Download</h3>
-            </a>*@
+            </div>*@
             
             <div class="form-element-container">
                 <button class="gray-dark-hover" type="submit">

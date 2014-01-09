@@ -371,14 +371,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 doc.AppendChild(parentFolderElement);
             }
 
-            foreach (var selectedCard in folder.Cards.Where(c => c.IsSelected).OrderBy(f => f.Position))
-            {
-                var cardNode = doc.CreateElement("Card");
-                cardNode.SetAttribute("FrontSide", selectedCard.FrontSide);
-                cardNode.SetAttribute("BackSide", selectedCard.BackSide);
-                parentFolderElement.AppendChild(cardNode);
-            }
-
             foreach (var selectedSubFolder in folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name))
             {
                 var subFolderElement = doc.CreateElement("Folder");
@@ -386,7 +378,14 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 parentFolderElement.AppendChild(subFolderElement);
                 SerializeFolder(selectedSubFolder, subFolderElement, ref doc);
             }
-            
+
+            foreach (var selectedCard in folder.Cards.Where(c => c.IsSelected).OrderBy(f => f.Position))
+            {
+                var cardNode = doc.CreateElement("Card");
+                cardNode.SetAttribute("FrontSide", selectedCard.FrontSide);
+                cardNode.SetAttribute("BackSide", selectedCard.BackSide);
+                parentFolderElement.AppendChild(cardNode);
+            }
         }
 
 

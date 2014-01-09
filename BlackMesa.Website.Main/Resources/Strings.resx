@@ -600,4 +600,7 @@
   <data name="Download" xml:space="preserve">
     <value>Download</value>
   </data>
+  <data name="ExportAsXmlFile" xml:space="preserve">
+    <value>Export as XML File</value>
+  </data>
 </root>

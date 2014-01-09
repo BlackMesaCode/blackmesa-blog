@@ -466,6 +466,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export as XML File ähnelt.
+        /// </summary>
+        public static string ExportAsXmlFile {
+            get {
+                return ResourceManager.GetString("ExportAsXmlFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Filter by tag ähnelt.
         /// </summary>
         public static string FilterByTag {
