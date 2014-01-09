@@ -15,6 +15,7 @@ using BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
+using BlackMesa.Website.Main.Utilities;
 using dotless.Core.Parser.Infrastructure.Nodes;
 using Microsoft.AspNet.Identity;
 using WebGrease.Css.Extensions;
@@ -369,7 +370,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             
             var stringBuilder = new StringBuilder();
             var settings = new XmlWriterSettings();
-            settings.Encoding = Encoding.UTF8;
+            settings.Encoding = Encoding.Unicode;
             settings.Indent = true;
             settings.IndentChars = "  ";
             settings.NewLineChars = "\r\n";
@@ -396,7 +397,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DownloadExport(string folderId, string serializationResult)
         {
-            return Content(serializationResult, "text/xml", Encoding.UTF8);
+            //return Content(serializationResult, "application/octet-stream", Encoding.UTF8);
+            return new XmlActionResult(serializationResult, "MyStack.xml", EncodingType.UTF16);
         }
 
 

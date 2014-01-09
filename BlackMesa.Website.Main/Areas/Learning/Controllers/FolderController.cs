@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder;
-using BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
@@ -20,99 +17,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         private readonly LearningRepository _learningRepo = new LearningRepository(new BlackMesaDbContext());
 
-
-
-        public void WalkDirectoryTree(DirectoryInfo folder, bool isRootFolder = false)
-        {
-            System.IO.FileInfo[] files = null;
-            System.IO.DirectoryInfo[] subDirs = null;
-
-            var createdFolderId = "";
-            if (!isRootFolder)
-            {
-                createdFolderId = _learningRepo.AddFolder(folder.Name, User.Identity.GetUserId(),
-                    _learningRepo.GetRootFolder(User.Identity.GetUserId()).Id.ToString());
-            }
-
-
-            try
-            {
-                files = folder.GetFiles("*.*");
-            }
-            catch (UnauthorizedAccessException e)
-            {
-
-            }
-
-            catch (System.IO.DirectoryNotFoundException e)
-            {
-
-            }
-
-
-            if (files != null)
-            {
-                foreach (var file in files)
-                {
-                    var createdSubFolderId = _learningRepo.AddFolder(file.Name.Remove(file.Name.IndexOf(".txt"), 4), User.Identity.GetUserId(),
-                        createdFolderId);
-                    //using ()
-                    //{
-                    var stream = file.OpenRead();
-                    var reader = new StreamReader(stream);
-                    var text = reader.ReadToEnd();
-                    CreateNextCard(text, createdSubFolderId);
-                    stream.Close();
-                    //    stream.Dispose();
-                    //}
-                }
-
-
-                subDirs = folder.GetDirectories();
-
-                foreach (var subDir in subDirs)
-                {
-                    WalkDirectoryTree(subDir);
-                }
-            }
-        }
-
-
-        public void CreateNextCard(string text, string folderId)
-        {
-            var divider = "---------------------------------------------------------------------";
-            var positionOfFirstDivider = text.IndexOf(divider);
-
-            if (positionOfFirstDivider != -1)
-            {
-                var positionOfFrontSideStart = positionOfFirstDivider + divider.Length;
-                var positionOfSecondDivider = text.IndexOf(divider, positionOfFirstDivider + divider.Length);
-                var frontSide = text.Substring(positionOfFrontSideStart,
-                    positionOfSecondDivider - positionOfFrontSideStart)
-                    .Trim(new char[] { ' ', '\n', '\r', '\t' });
-                var positionOfBackSideStart = positionOfSecondDivider + divider.Length;
-                var positionOfThirdDivider = text.IndexOf(divider, positionOfSecondDivider + divider.Length);
-                var backSide = String.Empty;
-                if (positionOfThirdDivider == -1)
-                {
-                    backSide = text.Substring(positionOfBackSideStart).Trim(new char[] { ' ', '\n', '\r', '\t' });
-                }
-                else
-                {
-                    backSide = text.Substring(positionOfBackSideStart, positionOfThirdDivider - positionOfBackSideStart)
-                        .Trim(new char[] { ' ', '\n', '\r', '\t' });
-                }
-
-                _learningRepo.AddCard(folderId, User.Identity.GetUserId(), frontSide, backSide);
-
-                if (positionOfThirdDivider != -1)
-                    CreateNextCard(text.Substring(positionOfThirdDivider), folderId);
-            }
-
-        }
-
-
-
         public ActionResult Index()
         {
             var rootFolder = _learningRepo.GetRootFolder(User.Identity.GetUserId());
@@ -122,9 +26,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 _learningRepo.CreateRootFolder(Strings.Root, User.Identity.GetUserId());
                 rootFolder = _learningRepo.GetRootFolder(User.Identity.GetUserId());
             }
-
-            //var rootDir = new DirectoryInfo(@"D:\RootFolder");
-            //WalkDirectoryTree(rootDir, true);
 
             return RedirectToAction("Details", "Folder", new {id = rootFolder.Id.ToString()});
         }

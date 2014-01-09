@@ -252,6 +252,7 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\FeedResult.cs" />
+    <Compile Include="Utilities\XmlActionResult.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
