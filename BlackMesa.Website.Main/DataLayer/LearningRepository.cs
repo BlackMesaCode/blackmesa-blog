@@ -488,7 +488,7 @@ namespace BlackMesa.Website.Main.DataLayer
             }
             foreach (var subfolder in folder.SubFolders.Where(f => !f.IsSelected))
             {
-                SelectFolder(subfolder);
+                subfolder.IsSelected = true;
             }
 
             //if (folder.ParentFolder!= null && !folder.ParentFolder.IsSelected && AllChildsSelected(folder.ParentFolder))
@@ -515,7 +515,7 @@ namespace BlackMesa.Website.Main.DataLayer
 
             foreach (var subfolder in folder.SubFolders.Where(f => f.IsSelected))
             {
-                DeSelectFolder(subfolder);
+                subfolder.IsSelected = false;
             }
 
             _dbContext.SaveChanges();

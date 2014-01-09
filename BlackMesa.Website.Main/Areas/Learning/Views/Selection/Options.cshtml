@@ -19,7 +19,7 @@
             <h1>@ViewBag.Title</h1>
         </div>
         
-        @{
+        @*@{
             var subFolders = Model.Folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name);
             var cards = Model.Folder.Cards.Where(c => c.IsSelected).OrderBy(c => c.Position);
         }
@@ -93,7 +93,7 @@
                 break;
             }
 
-        }
+        }*@
 
         
         

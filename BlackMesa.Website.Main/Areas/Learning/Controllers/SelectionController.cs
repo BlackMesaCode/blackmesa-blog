@@ -200,7 +200,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             if (!String.IsNullOrEmpty(viewModel.SearchText) && (viewModel.SearchFrontSide || viewModel.SearchBackSide))
             { 
                 SearchInFolder(folder, viewModel.SearchText.ToLower(), viewModel.SearchFrontSide, viewModel.SearchBackSide,
-                       ref searchResult);
+                       ref searchResult, true);
             }
 
             var result = new SearchResultsViewModel
@@ -212,13 +212,13 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             return View("SearchResults", result);
         }
 
-        public void SearchInFolder(Folder folderToSearch, string searchText, bool searchFrontSide, bool searchBackSide, ref List<SearchResultViewModel> searchResults)
+        public void SearchInFolder(Folder folderToSearch, string searchText, bool searchFrontSide, bool searchBackSide, ref List<SearchResultViewModel> searchResults, bool onlySelected = false)
         {
             var path = new List<Folder>();
             _learningRepo.GetFolderPath(folderToSearch, ref path);
             path.Reverse();
 
-            foreach (var card in folderToSearch.Cards.Where(u => u.IsSelected))
+            foreach (var card in folderToSearch.Cards.Where(u => (onlySelected && u.IsSelected) || !onlySelected))
             {
                 var frontSide = card.FrontSide;
                 var frontSideLowered = card.FrontSide.ToLower();
@@ -270,7 +270,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 }
             }
 
-            foreach (var subFolder in folderToSearch.SubFolders.Where(f => f.IsSelected))
+            foreach (var subFolder in folderToSearch.SubFolders.Where(f => (onlySelected && f.IsSelected) || !onlySelected))
             {
                 SearchInFolder(subFolder, searchText, searchFrontSide, searchBackSide, ref searchResults);
             }
@@ -369,16 +369,18 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var folder = _learningRepo.GetFolder(folderId);
             
             var stringBuilder = new StringBuilder();
-            var settings = new XmlWriterSettings();
-            settings.Encoding = Encoding.Unicode;
-            settings.Indent = true;
-            settings.IndentChars = "  ";
-            settings.NewLineChars = "\r\n";
-            settings.NewLineHandling = NewLineHandling.Replace;
+            var settings = new XmlWriterSettings
+            {
+                Encoding = Encoding.Unicode,
+                Indent = true,
+                IndentChars = "  ",
+                NewLineChars = "\r\n",
+                NewLineHandling = NewLineHandling.Replace
+            };
             using (var writer = XmlWriter.Create(stringBuilder, settings))
             {
                 var doc = new XmlDocument();
-                SerializeFolder(folder, null, ref doc);
+                SerializeFolder(folder, null, ref doc, true);
                 doc.Save(writer);
             }
 
@@ -397,12 +399,12 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DownloadExport(string folderId, string serializationResult)
         {
-            //return Content(serializationResult, "application/octet-stream", Encoding.UTF8);
+            //return Content(serializationResult, "application/octet-stream", Encoding.UTF8);  // Alternative solution to display and browse xml result in browser
             return new XmlActionResult(serializationResult, "MyStack.xml", EncodingType.UTF16);
         }
 
 
-        private void SerializeFolder(Folder folder, XmlElement parentFolderElement, ref XmlDocument doc)
+        private void SerializeFolder(Folder folder, XmlElement parentFolderElement, ref XmlDocument doc, bool onlySelected = false)
         {
             if (parentFolderElement == null)
             {
@@ -411,7 +413,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 doc.AppendChild(parentFolderElement);
             }
 
-            foreach (var selectedSubFolder in folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name))
+            foreach (var selectedSubFolder in folder.SubFolders.Where(f => (onlySelected && f.IsSelected || !onlySelected)).OrderBy(f => f.Name))
             {
                 var subFolderElement = doc.CreateElement("Folder");
                 subFolderElement.SetAttribute("Name", selectedSubFolder.Name);
@@ -419,7 +421,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 SerializeFolder(selectedSubFolder, subFolderElement, ref doc);
             }
 
-            foreach (var selectedCard in folder.Cards.Where(c => c.IsSelected).OrderBy(f => f.Position))
+            foreach (var selectedCard in folder.Cards.Where(c => (onlySelected && c.IsSelected || !onlySelected)).OrderBy(f => f.Position))
             {
                 var cardNode = doc.CreateElement("Card");
                 cardNode.SetAttribute("FrontSide", selectedCard.FrontSide);
