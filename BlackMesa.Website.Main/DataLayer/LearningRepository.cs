@@ -372,8 +372,7 @@ namespace BlackMesa.Website.Main.DataLayer
                 CardId = new Guid(cardId),
                 Card = card,
 
-                QueryId = new Guid(queryId),
-                Query = query,
+                QueryId = queryId,
 
                 StartTime = startTime,
                 EndTime = endTime,
@@ -399,48 +398,6 @@ namespace BlackMesa.Website.Main.DataLayer
             _dbContext.SaveChanges();
         }
 
-        public Query GetQuery(string queryId)
-        {
-            return _dbContext.Learning_Queries.Find(new Guid(queryId));
-        }
-
-        public string AddQuery(string ownerId, bool queryOnlyDueCards, bool reverseSides, 
-            OrderType orderType, QueryType queryType, List<Card> cardsToQuery)
-        {
-            var owner = _dbContext.Users.Find(ownerId);
-            var currentTime = DateTime.Now;
-            var query = new Query
-            {
-                OwnerId = ownerId,
-                Owner = owner,
-                QueryOnlyDueCards = queryOnlyDueCards,
-                ReverseSides = reverseSides,
-                OrderType = orderType,
-                QueryType = queryType,
-                CardsToQuery = cardsToQuery,
-                StartTime = currentTime,
-                EndTime = currentTime,
-                QueryStatus = QueryStatus.InProgress,
-            };
-
-            _dbContext.Learning_Queries.Add(query);
-            _dbContext.SaveChanges();
-
-            return query.Id.ToString();
-        }
-
-
-        public void EditQuery(string queryId, DateTime? startTime, DateTime? endTime, QueryStatus queryStatus)
-        {
-            var query = GetQuery(queryId);
-            if (startTime.HasValue)
-                query.StartTime = startTime.Value;
-            if(endTime.HasValue)
-                query.EndTime = endTime.Value;
-            query.QueryStatus = queryStatus;
-
-            _dbContext.SaveChanges();
-        }
 
 
         // ================================ Selections ================================ //

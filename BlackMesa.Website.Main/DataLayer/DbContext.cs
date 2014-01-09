@@ -29,7 +29,6 @@ namespace BlackMesa.Website.Main.DataLayer
 
         public DbSet<Folder> Learning_Folders { get; set; }
         public DbSet<Card> Learning_Cards { get; set; }
-        public DbSet<Query> Learning_Queries { get; set; }
         public DbSet<QueryItem> Learning_QueryItems { get; set; }
 
 
@@ -64,15 +63,6 @@ namespace BlackMesa.Website.Main.DataLayer
 
             // Learning
 
-            modelBuilder.Entity<Card>()
-                .HasMany(x => x.Queries)
-                .WithMany(x => x.CardsToQuery)
-                .Map(x =>
-                {
-                    x.ToTable("Learning_CardQueries"); // name of association table
-                    x.MapLeftKey("Card_Id");
-                    x.MapRightKey("Query_Id");
-                });
 
         }
 

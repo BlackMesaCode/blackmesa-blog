@@ -29,9 +29,7 @@ namespace BlackMesa.Website.Main.Models.Learning
 
         public virtual Card Card { get; set; }
 
-        public Guid QueryId { get; set; }
-
-        public virtual Query Query { get; set; }
+        public string QueryId { get; set; }
     }
 
     public enum QueryResult

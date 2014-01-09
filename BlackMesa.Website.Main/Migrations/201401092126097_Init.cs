@@ -149,24 +149,6 @@ namespace BlackMesa.Website.Main.Migrations
                 .Index(t => t.ParentFolder_Id);
             
             CreateTable(
-                "dbo.Learning_Queries",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false, identity: true),
-                        OwnerId = c.String(maxLength: 128),
-                        QueryOnlyDueCards = c.Boolean(nullable: false),
-                        ReverseSides = c.Boolean(nullable: false),
-                        OrderType = c.Int(nullable: false),
-                        QueryType = c.Int(nullable: false),
-                        StartTime = c.DateTime(nullable: false),
-                        EndTime = c.DateTime(nullable: false),
-                        QueryStatus = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Identity_Users", t => t.OwnerId)
-                .Index(t => t.OwnerId);
-            
-            CreateTable(
                 "dbo.Learning_QueryItems",
                 c => new
                     {
@@ -175,13 +157,11 @@ namespace BlackMesa.Website.Main.Migrations
                         StartTime = c.DateTime(nullable: false),
                         EndTime = c.DateTime(nullable: false),
                         CardId = c.Guid(nullable: false),
-                        QueryId = c.Guid(nullable: false),
+                        QueryId = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Learning_Cards", t => t.CardId, cascadeDelete: true)
-                .ForeignKey("dbo.Learning_Queries", t => t.QueryId, cascadeDelete: true)
-                .Index(t => t.CardId)
-                .Index(t => t.QueryId);
+                .Index(t => t.CardId);
             
             CreateTable(
                 "dbo.Blog_TagEntries",
@@ -196,28 +176,11 @@ namespace BlackMesa.Website.Main.Migrations
                 .Index(t => t.Tag_Id)
                 .Index(t => t.Entry_Id);
             
-            CreateTable(
-                "dbo.Learning_CardQueries",
-                c => new
-                    {
-                        Card_Id = c.Guid(nullable: false),
-                        Query_Id = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Card_Id, t.Query_Id })
-                .ForeignKey("dbo.Learning_Cards", t => t.Card_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Learning_Queries", t => t.Query_Id, cascadeDelete: true)
-                .Index(t => t.Card_Id)
-                .Index(t => t.Query_Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Learning_CardQueries", "Query_Id", "dbo.Learning_Queries");
-            DropForeignKey("dbo.Learning_CardQueries", "Card_Id", "dbo.Learning_Cards");
-            DropForeignKey("dbo.Learning_QueryItems", "QueryId", "dbo.Learning_Queries");
             DropForeignKey("dbo.Learning_QueryItems", "CardId", "dbo.Learning_Cards");
-            DropForeignKey("dbo.Learning_Queries", "OwnerId", "dbo.Identity_Users");
             DropForeignKey("dbo.Learning_Cards", "OwnerId", "dbo.Identity_Users");
             DropForeignKey("dbo.Learning_Folders", "ParentFolder_Id", "dbo.Learning_Folders");
             DropForeignKey("dbo.Learning_Folders", "OwnerId", "dbo.Identity_Users");
@@ -230,11 +193,7 @@ namespace BlackMesa.Website.Main.Migrations
             DropForeignKey("dbo.Blog_TagEntries", "Entry_Id", "dbo.Blog_Entries");
             DropForeignKey("dbo.Blog_TagEntries", "Tag_Id", "dbo.Blog_Tags");
             DropForeignKey("dbo.Blog_Comments", "EntryId", "dbo.Blog_Entries");
-            DropIndex("dbo.Learning_CardQueries", new[] { "Query_Id" });
-            DropIndex("dbo.Learning_CardQueries", new[] { "Card_Id" });
-            DropIndex("dbo.Learning_QueryItems", new[] { "QueryId" });
             DropIndex("dbo.Learning_QueryItems", new[] { "CardId" });
-            DropIndex("dbo.Learning_Queries", new[] { "OwnerId" });
             DropIndex("dbo.Learning_Cards", new[] { "OwnerId" });
             DropIndex("dbo.Learning_Folders", new[] { "ParentFolder_Id" });
             DropIndex("dbo.Learning_Folders", new[] { "OwnerId" });
@@ -247,10 +206,8 @@ namespace BlackMesa.Website.Main.Migrations
             DropIndex("dbo.Blog_TagEntries", new[] { "Entry_Id" });
             DropIndex("dbo.Blog_TagEntries", new[] { "Tag_Id" });
             DropIndex("dbo.Blog_Comments", new[] { "EntryId" });
-            DropTable("dbo.Learning_CardQueries");
             DropTable("dbo.Blog_TagEntries");
             DropTable("dbo.Learning_QueryItems");
-            DropTable("dbo.Learning_Queries");
             DropTable("dbo.Learning_Folders");
             DropTable("dbo.Learning_Cards");
             DropTable("dbo.Identity_Roles");

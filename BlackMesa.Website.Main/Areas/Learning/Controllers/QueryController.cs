@@ -60,13 +60,25 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
             // Create Query
 
-            var queryId = _learningRepo.AddQuery(User.Identity.GetUserId(), viewModel.QueryOnlyDueCards, viewModel.ReverseSides,
-                viewModel.OrderType, viewModel.QueryType, cardsToQuery);
+            var query = new Query
+            {
+                Id = Guid.NewGuid(),
+                QueryOnlyDueCards = viewModel.QueryOnlyDueCards,
+                ReverseSides = viewModel.ReverseSides,
+                OrderType = viewModel.OrderType,
+                QueryType = viewModel.QueryType,
+                CardsToQuery = cardsToQuery,
+                QueryStatus = QueryStatus.InProgress,
+            };
+
+            // Save Query to User Session
+
+            Session["Query"] = query;
 
             return RedirectToAction("GetQueryItem",
                 new
                 {
-                    queryId = queryId,
+                    queryId = query.Id.ToString(),
                     position = 0,
                     folderId = viewModel.FolderId
                 });
@@ -84,28 +96,29 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         private QueryItemViewModel GetQueryItemViewModel(string queryId, string folderId, int positionOffset = 0)
         {
-            var query = _learningRepo.GetQuery(queryId);
+            var query = Session["Query"] as Query;
             Card card = null;
             if (positionOffset == 0)
             {
-                var unqueriedCards = query.CardsToQuery.Where(c => !c.QueryItems.Exists(i => i.QueryId.ToString() == queryId));
+                var dbCardsToQuery = query.CardsToQuery.Select(cardToQuery => _learningRepo.GetCard(cardToQuery.Id.ToString()));
+                var unqueriedCards = dbCardsToQuery.Where(c => !c.QueryItems.Exists(i => i.QueryId == queryId)); ;
                 if (unqueriedCards.Any())
                     card = unqueriedCards.First();
                 else if (query.QueryType == QueryType.Normal)
                 {
-                    var wrongCardsToRequery = query.CardsToQuery
+                    var wrongCardsToRequery = dbCardsToQuery
                         .Where(
                             c =>
-                                c.QueryItems.Last(i => i.QueryId.ToString() == queryId).Result == QueryResult.PartlyCorrect
-                                || c.QueryItems.Last(i => i.QueryId.ToString() == queryId).Result == QueryResult.Wrong);
+                                c.QueryItems.Last(i => i.QueryId == queryId).Result == QueryResult.PartlyCorrect
+                                || c.QueryItems.Last(i => i.QueryId == queryId).Result == QueryResult.Wrong);
                     if (wrongCardsToRequery.Any())
-                        card = wrongCardsToRequery.OrderBy(c => c.QueryItems.Last(i => i.QueryId.ToString() == queryId).StartTime).First();
+                        card = wrongCardsToRequery.OrderBy(c => c.QueryItems.Last(i => i.QueryId == queryId).StartTime).First();
                 }
             }
             else
             {
-                var lastQueriedCardsOrderedByStartTime = query.CardsToQuery.Where(c => c.QueryItems.Exists(i => i.QueryId.ToString() == queryId))
-                    .OrderBy(c => c.QueryItems.Single(i => i.QueryId.ToString() == queryId).StartTime);
+                var lastQueriedCardsOrderedByStartTime = query.CardsToQuery.Where(c => c.QueryItems.Exists(i => i.QueryId == queryId))
+                    .OrderBy(c => c.QueryItems.Single(i => i.QueryId == queryId).StartTime);
                 card = lastQueriedCardsOrderedByStartTime.ElementAt(lastQueriedCardsOrderedByStartTime.Count() - positionOffset + 1);
 
             }
@@ -133,21 +146,12 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             var currentTime = DateTime.Now;
 
-            var query = _learningRepo.GetQuery(resultViewModel.QueryId);
+            var query = Session["Query"] as Query;
             var queriedCard = _learningRepo.GetCard(resultViewModel.CardId);
 
-            //var queryItem = queriedCard.QueryItems.SingleOrDefault(i => i.QueryId.ToString() == resultViewModel.QueryId);
-            //if (queryItem != null)
-            //{
-            //    _learningRepo.EditQueryItem(queryItem.Id.ToString(), resultViewModel.StartTime, currentTime, resultViewModel.Result);
-            //}
-            //else
-            //{
-                _learningRepo.AddQueryItem(queriedCard.Id.ToString(), queriedCard, resultViewModel.QueryId, query,
-                    resultViewModel.StartTime, currentTime, resultViewModel.Result);
-            //}
+            _learningRepo.AddQueryItem(queriedCard.Id.ToString(), queriedCard, resultViewModel.QueryId, query,
+                resultViewModel.StartTime, currentTime, resultViewModel.Result);
             
-
             return RedirectToAction("GetQueryItem",
                 new
                 {
@@ -156,9 +160,10 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 });
         }
 
+
         public ActionResult Aborted(string queryId, string folderId)
         {
-            _learningRepo.EditQuery(queryId, null, DateTime.Now, QueryStatus.Aborted);
+            Session["Query"] = null;
 
             return RedirectToAction("Details", "Folder", new {id = folderId});
         }
@@ -166,8 +171,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public ActionResult Completed(string queryId, string folderId)
         {
-            _learningRepo.EditQuery(queryId, null, DateTime.Now, QueryStatus.Completed);
-            var query = _learningRepo.GetQuery(queryId);
+            var query = Session["Query"] as Query;
 
             var viewModel = new QueryCompletedViewModel
             {
@@ -177,6 +181,9 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 PartlyCorrectCount = 0,
                 WrongCount = 0,
             };
+
+            Session["Query"] = null;
+
             return View(viewModel);
         }
 

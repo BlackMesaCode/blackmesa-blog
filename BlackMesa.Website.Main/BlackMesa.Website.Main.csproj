@@ -227,9 +227,9 @@
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="DataLayer\DbContext.cs" />
     <Compile Include="DataLayer\LearningRepository.cs" />
-    <Compile Include="Migrations\201401081406066_Init.cs" />
-    <Compile Include="Migrations\201401081406066_Init.Designer.cs">
-      <DependentUpon>201401081406066_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201401092126097_Init.cs" />
+    <Compile Include="Migrations\201401092126097_Init.Designer.cs">
+      <DependentUpon>201401092126097_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
@@ -706,8 +706,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201401081406066_Init.resx">
-      <DependentUpon>201401081406066_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201401092126097_Init.resx">
+      <DependentUpon>201401092126097_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

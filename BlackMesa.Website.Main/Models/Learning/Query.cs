@@ -8,16 +8,10 @@ using BlackMesa.Website.Main.Resources;
 
 namespace BlackMesa.Website.Main.Models.Learning
 {
-    [Table("Learning_Queries")]
+    [Serializable]
     public class Query
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
-
-        public string OwnerId { get; set; }
-        public virtual User Owner { get; set; }
-
 
         public bool QueryOnlyDueCards { get; set; }
         public bool ReverseSides { get; set; }
@@ -28,16 +22,7 @@ namespace BlackMesa.Website.Main.Models.Learning
         [Display(ResourceType = typeof(Strings), Name = "QueryType")]
         public QueryType QueryType { get; set; }
 
-
-        public virtual ICollection<Card> CardsToQuery { get; set; }
-        public virtual ICollection<QueryItem> QueryItems { get; set; }
-
-
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-
-        [NotMapped]
-        public TimeSpan Duration { get { return EndTime - StartTime; } }
+        public List<Card> CardsToQuery { get; set; }
 
         public QueryStatus QueryStatus { get; set; }
 
