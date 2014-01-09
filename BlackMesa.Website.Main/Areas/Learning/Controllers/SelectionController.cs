@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Razor.Parser.SyntaxTree;
 using System.Xml;
+using System.Xml.Linq;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection;
@@ -212,9 +213,9 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
         public void SearchInFolder(Folder folderToSearch, string searchText, bool searchFrontSide, bool searchBackSide, ref List<SearchResultViewModel> searchResults)
         {
-            var path = new Dictionary<string, string>();
+            var path = new List<Folder>();
             _learningRepo.GetFolderPath(folderToSearch, ref path);
-            path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
+            path.Reverse();
 
             foreach (var card in folderToSearch.Cards.Where(u => u.IsSelected))
             {
@@ -313,16 +314,53 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
-        public ActionResult Import(string id)
+        public ActionResult Import(string folderId)
         {
-            var folder = _learningRepo.GetFolder(id);
-
             var viewModel = new ImportViewModel
             {
-
+                FolderId = folderId,
             };
             return View(viewModel);
         }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
+        public ActionResult Import(ImportViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var xDoc = XDocument.Parse(viewModel.SerializationResult);
+                    var rootElement = xDoc.Root;
+                    Deserialize(rootElement, viewModel.FolderId);
+                    return RedirectToAction("Details", "Folder", new {id = viewModel.FolderId});
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("Exception", e.ToString());
+                }
+            }
+            return View(viewModel);
+        }
+
+
+        private void Deserialize(XElement folder, string parentFolderId)
+        {
+            foreach (var card in folder.Elements("Card"))
+            {
+                _learningRepo.AddCard(parentFolderId, User.Identity.GetUserId(), card.Attribute("FrontSide").Value, card.Attribute("BackSide").Value);
+            }
+
+            foreach (var subFolder in folder.Elements("Folder"))
+            {
+                var folderId = _learningRepo.AddFolder(subFolder.Attribute("Name").Value, User.Identity.GetUserId(), parentFolderId);
+                Deserialize(subFolder, folderId);
+            }
+        }
+
 
 
         public ActionResult Export(string folderId)

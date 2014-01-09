@@ -133,11 +133,11 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult Details(string id, bool deSelect = true)
         {
             var folder = _learningRepo.GetFolder(id);
-            var path = new Dictionary<string, string>();
+            var path = new List<Folder>();
 
             _learningRepo.GetFolderPath(folder, ref path);
-            path = path.Reverse().ToDictionary(pair => pair.Key, pair => pair.Value);
-            path.Remove(path.Last().Key);
+            path.Reverse();
+            path.Remove(path.Last());
 
             if (deSelect)
                 _learningRepo.DeSelectFolder(folder);

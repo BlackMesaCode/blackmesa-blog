@@ -592,6 +592,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Import from XML File ähnelt.
+        /// </summary>
+        public static string ImportFromXML {
+            get {
+                return ResourceManager.GetString("ImportFromXML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Include subfolders ähnelt.
         /// </summary>
         public static string IncludeSubfolders {

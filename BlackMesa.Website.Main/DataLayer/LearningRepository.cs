@@ -135,9 +135,9 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void GetFolderPath(Folder folder, ref  Dictionary<string, string> path)
+        public void GetFolderPath(Folder folder, ref  List<Folder> path)
         {
-            path.Add(folder.Name, folder.Id.ToString());
+            path.Add(folder);
             if (folder.ParentFolder != null)
             {
                 GetFolderPath(folder.ParentFolder, ref path);

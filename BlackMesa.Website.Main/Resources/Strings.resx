@@ -603,4 +603,7 @@
   <data name="ExportAsXmlFile" xml:space="preserve">
     <value>Export as XML File</value>
   </data>
+  <data name="ImportFromXML" xml:space="preserve">
+    <value>Import from XML File</value>
+  </data>
 </root>
