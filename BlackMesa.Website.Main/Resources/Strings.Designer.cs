@@ -268,6 +268,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Copy to clipboard ähnelt.
+        /// </summary>
+        public static string CopyToClipboard {
+            get {
+                return ResourceManager.GetString("CopyToClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Create ähnelt.
         /// </summary>
         public static string Create {
@@ -381,6 +390,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string DeleteSelection {
             get {
                 return ResourceManager.GetString("DeleteSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Download ähnelt.
+        /// </summary>
+        public static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
             }
         }
         

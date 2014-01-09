@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Razor.Parser.SyntaxTree;
+using System.Xml;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder;
 using BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection;
 using BlackMesa.Website.Main.Controllers;
 using BlackMesa.Website.Main.DataLayer;
 using BlackMesa.Website.Main.Models.Learning;
+using dotless.Core.Parser.Infrastructure.Nodes;
 using Microsoft.AspNet.Identity;
 using WebGrease.Css.Extensions;
 
@@ -321,16 +325,70 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
-        public ActionResult Export(string id)
+        public ActionResult Export(string folderId)
         {
-            var folder = _learningRepo.GetFolder(id);
+            var folder = _learningRepo.GetFolder(folderId);
+            
+            var stringBuilder = new StringBuilder();
+            var settings = new XmlWriterSettings();
+            settings.Encoding = Encoding.UTF8;
+            settings.Indent = true;
+            settings.IndentChars = "  ";
+            settings.NewLineChars = "\r\n";
+            settings.NewLineHandling = NewLineHandling.Replace;
+            using (var writer = XmlWriter.Create(stringBuilder, settings))
+            {
+                var doc = new XmlDocument();
+                SerializeFolder(folder, null, ref doc);
+                doc.Save(writer);
+            }
 
             var viewModel = new ExportViewModel
             {
-
+                FolderId = folderId,
+                SerializationResult = stringBuilder.ToString(),
             };
+
             return View(viewModel);
         }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DownloadExport(string folderId, string serializationResult)
+        {
+            return Content(serializationResult, "text/xml", Encoding.UTF8);
+        }
+
+
+        private void SerializeFolder(Folder folder, XmlElement parentFolderElement, ref XmlDocument doc)
+        {
+            if (parentFolderElement == null)
+            {
+                parentFolderElement = doc.CreateElement("Folder");
+                parentFolderElement.SetAttribute("Name", folder.Name);
+                doc.AppendChild(parentFolderElement);
+            }
+
+            foreach (var selectedCard in folder.Cards.Where(c => c.IsSelected).OrderBy(f => f.Position))
+            {
+                var cardNode = doc.CreateElement("Card");
+                cardNode.SetAttribute("FrontSide", selectedCard.FrontSide);
+                cardNode.SetAttribute("BackSide", selectedCard.BackSide);
+                parentFolderElement.AppendChild(cardNode);
+            }
+
+            foreach (var selectedSubFolder in folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name))
+            {
+                var subFolderElement = doc.CreateElement("Folder");
+                subFolderElement.SetAttribute("Name", selectedSubFolder.Name);
+                parentFolderElement.AppendChild(subFolderElement);
+                SerializeFolder(selectedSubFolder, subFolderElement, ref doc);
+            }
+            
+        }
+
 
     }
 }

@@ -267,6 +267,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Start\EntityFrameworkProfilerBootstrapper.vb" />
+    <Content Include="Areas\Learning\Javascript\export.js" />
     <Content Include="Areas\Learning\Less\icons.less" />
     <None Include="Areas\Learning\Less\normalize.less" />
     <Content Include="Areas\Learning\Javascript\create-edit-card.js" />

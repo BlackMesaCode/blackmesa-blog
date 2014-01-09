@@ -147,6 +147,13 @@
             <i class="icon-stats"></i>@Strings.CreateStatistic
         </a>
         
+        @if (Model.HasRootFolderSelected)
+        {
+            <a class="tile gray-light-hover" href="@Url.Action("Export", "Selection", new { folderId = Model.Id })">
+                <i class="icon-export-unknown"></i>@Strings.Export
+            </a>
+        }
+
         @if (!Model.HasRootFolderSelected)
         {
             <a class="tile gray-light-hover" href="@Url.Action("Delete", "Selection", new {folderId = Model.Id})">

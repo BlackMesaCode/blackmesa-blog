@@ -15,17 +15,38 @@
 
     <section id="selection-export">
         
-        <div class="tile gray-darker">
-            <h1>@ViewBag.Title</h1>
-        </div>
-        
-        <div class="tile gray-dark">
-            <h3>Submenu</h3>
-        </div>
-        
-        <div class="tile gray-light">
-            Infos
-        </div>
+        @using (Html.BeginForm("DownloadExport", "Selection"))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(model => model.FolderId)
+            
+            <div class="tile gray-darker">
+                <h1>@ViewBag.Title</h1>
+            </div>
+
+            <div class="tile gray-light">
+                Hinweise
+            </div>
+
+            <div class="form-element-container">
+                @Html.TextAreaFor(model => model.SerializationResult, new {@autocomplete = "off", @autofocus = "", @autocorrect = "off"})
+            </div>
+
+            <div class="tile gray-dark-hover">
+                <h2><i class="icon-clipboard"></i>@Strings.CopyToClipboard</h2>
+            </div>
+
+            @*<a class="tile gray-dark-hover" href="@Url.Action("DownloadExport", "Selection", new {folderId = Model.FolderId})">
+                <h3><i class="icon-download"></i>@Strings.Download</h3>
+            </a>*@
+            
+            <div class="form-element-container">
+                <button class="gray-dark-hover" type="submit">
+                    <i class="icon-download"></i>@Strings.Download
+                </button>
+            </div>
+        }
 
     </section>
 
@@ -42,3 +63,10 @@
     </a>
 
 </nav>
+
+
+@section Scripts {
+
+    <script src="~/Areas/Learning/Javascript/export.js"></script>
+
+}

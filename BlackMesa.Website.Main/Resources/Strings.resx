@@ -594,4 +594,10 @@
   <data name="Import" xml:space="preserve">
     <value>Import</value>
   </data>
+  <data name="CopyToClipboard" xml:space="preserve">
+    <value>Copy to clipboard</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
 </root>
