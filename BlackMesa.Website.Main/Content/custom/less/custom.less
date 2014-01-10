@@ -1,4 +1,5 @@
-﻿@import "utilities.less";
+﻿@import "flexbox.less";
+@import "utilities.less";
 @import "colors.less";
 @import "variables.less";
 
@@ -22,10 +23,10 @@ body{
     letter-spacing: 1px;
 
     #top-header-bar {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        .flex();
+        .flex-direction(row);
+        .flex-wrap(wrap);
+        .justify-content(center);
         margin-top: 9px;
 
         color: @gray-light;
@@ -39,7 +40,7 @@ body{
         }
 
         #datetime {
-            flex-grow: 1;
+            .flex-grow(1);
         }
 
         #membership {
@@ -75,10 +76,10 @@ body{
 
 
     #bottom-header-bar {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
+        .flex();
+        .flex-direction(row);
+        .flex-wrap(wrap);
+        .align-items(center);
         margin-top: 30px;
         margin-bottom: 35px;
 
@@ -90,15 +91,15 @@ body{
         }
 
         nav {
-            flex-grow: 1;
+            .flex-grow(1);
             font-size: 20px;
             height: 40px;
 
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            align-items: center;
+            .flex();
+            .flex-direction(row);
+            .flex-wrap(wrap);
+            .justify-content(flex-end);
+            .align-items(center);
 
             ul {
 
@@ -144,29 +145,29 @@ body{
         margin-bottom: 40px;
 
         .article-head {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
+            .flex();
+            .flex-direction(row);
+            .flex-wrap(nowrap);
             line-height: 1;
             margin-bottom: 13px;
 
             .article-date {
                 font-family: 'bebas';
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap; // in case we choose wrap here: article date items can only wrap if the article-date container allows shrinking
+                .flex();
+                .flex-direction(row);
+                .flex-wrap(nowrap); // in case we choose wrap here: article date items can only wrap if the article-date container allows shrinking
                 margin-right: 17px;
-                flex-shrink: 0; 
+                .flex-shrink(0); 
 
                 .article-date-day {
-                    flex-shrink: 0;
+                    .flex-shrink(0);
                     font-size: 58px;
                     line-height: 0.9;
                     margin-right: 6px;
                 }
 
                 .article-month-year-container {
-                    flex-shrink: 0;
+                    .flex-shrink(0);
                     .article-date-month {
                         font-size: 30px;
                     }
@@ -178,7 +179,7 @@ body{
             }
 
             .article-title-subtitle-container {
-                flex-grow: 1;
+                .flex-grow(1);
 
                 .article-title {
                     font-size: 30px;
@@ -397,8 +398,8 @@ body{
             margin-bottom: 25px;
 
             #search-by-date-form {
-                display: flex;
-                flex-direction: row;
+                .flex();
+                .flex-direction(row);
                 flex-wrap:wrap;
 
                 #entry-archive-available-years {
@@ -430,9 +431,9 @@ body{
 
         #search-by-text {
             #search-by-text-form {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
+                .flex();
+                .flex-direction(row);
+                .flex-wrap(wrap);
 
                 #search-text-input {
                     margin-right: 30px;
@@ -478,10 +479,10 @@ body{
 
         .folder-list-item {
 
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            align-items:center;
+            .flex();
+            .flex-direction(row);
+            .flex-wrap(nowrap);
+            .align-items(center);
 
             padding-top: 2px;
             padding-bottom: 2px;
@@ -503,11 +504,11 @@ body{
             }
 
             .folder-list-item-container {
-                flex-grow: 1;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                justify-content: flex-end;
+                .flex-grow(1);
+                .flex();
+                .flex-direction(row);
+                .flex-wrap(nowrap);
+                .justify-content(flex-end);
 
                 .folder-options {
 

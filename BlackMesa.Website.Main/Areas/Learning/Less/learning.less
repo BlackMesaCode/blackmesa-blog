@@ -1,4 +1,5 @@
 ﻿@import "normalize.less";
+@import "flexbox.less";
 @import "utilities.less";
 @import "fonts.less";
 @import "icons.less";
@@ -336,8 +337,8 @@ html, body {
 }
 
 #content {
-    flex-grow: 9;
-    flex-wrap: nowrap;
+    .flex-grow(9);
+    .flex-wrap(nowrap);
     overflow-y: auto;
     padding: @offset;
     padding-right: 15px;
@@ -346,17 +347,17 @@ html, body {
 #menu, .submenu {
 
     padding: @offset;
-    /*flex-grow: 1;*/
-    flex-shrink: 0;
+    /*.flex-grow(1);*/
+    .flex-shrink(0);
 
-    .flex;
+    .flexbox();
 
     a {
-        flex-grow: 1;
-        .flex;
-        justify-content: center;
+        .flex-grow(1);
+        .flexbox();
+        .justify-content(center);
         align-content: center;
-        align-items: center;
+        .align-items(center);
 
         padding: @offset;
         margin: @offset;
@@ -370,9 +371,9 @@ html, body {
 @media (orientation: landscape) {
 
     #container {
-        .flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
+        .flexbox();
+        .flex-direction(row);
+        .flex-wrap(nowrap);
     }
 
     #content {
@@ -381,7 +382,7 @@ html, body {
 
     #menu, .submenu {
         width: @navsize;
-        flex-direction: column;
+        .flex-direction(column);
     }
 
 
@@ -390,9 +391,9 @@ html, body {
 @media (orientation: portrait) {
 
     #container {
-        .flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
+        .flexbox();
+        .flex-direction(column);
+        .flex-wrap(nowrap);
     }
 
     #content {
@@ -401,8 +402,8 @@ html, body {
 
     #menu, .submenu {
         height: @navsize;
-        flex-direction: row;
-        flex-wrap: wrap;
+        .flex-direction(row);
+        .flex-wrap(wrap);
     }
 }
 
@@ -412,25 +413,25 @@ html, body {
      padding: @offset;
      margin: @offset;
 
-    .flex;
-    align-items: center;
+    .flexbox();
+    .align-items(center);
 
     i { 
         margin-right: 6px; 
-        flex-shrink: 0;
+        .flex-shrink(0);
     }
 }
 
 .tile-splitter {
-    .flex;
-    flex-direction: row;
+    .flexbox();
+    .flex-direction(row);
 
     a:first-child {
-        flex-grow: 1;
+        .flex-grow(1);
     }
 
     div:first-child {
-        flex-grow: 1;
+        .flex-grow(1);
     }
 }
 
@@ -441,14 +442,14 @@ html, body {
 }
 
 .center {
-    justify-content: center;
+    .justify-content(center);
     text-align: center;
 }
 
 
 .unchecked {
 
-    flex-shrink: 0;
+    .flex-shrink(0);
     
     &.gray-light-hover {
         color: @gray !important;
@@ -482,7 +483,7 @@ html, body {
 
 .checked {
 
-    flex-shrink: 0;
+    .flex-shrink(0);
 
     &.gray-light-hover {
         color: @gray-dark !important;
@@ -507,7 +508,7 @@ html, body {
 
 #query-show {
     #show-backside {
-        justify-content: center;
+        .justify-content(center);
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -516,13 +517,13 @@ html, body {
 
 
 #folder-path {
-    .flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    .flexbox();
+    .flex-direction(row);
+    .flex-wrap(wrap);
 
     a {
-        flex-grow: 0;
-        flex-shrink: 0;
+        .flex-grow(0);
+        .flex-shrink(0);
 
         .tile {
             margin-bottom: 0px;
@@ -541,15 +542,15 @@ html, body {
     }
 
     #last-folder {
-        flex-grow: 0;
+        .flex-grow(0);
     }
 }
 
 
 
 .tree-item {
-    .flex;
-    flex-direction: row;
+    .flexbox();
+    .flex-direction(row);
 
     .indent {
         display: inline-block;
@@ -557,7 +558,7 @@ html, body {
     }
 
     .tile {
-        flex-grow: 1;
+        .flex-grow(1);
     }
 }
 
