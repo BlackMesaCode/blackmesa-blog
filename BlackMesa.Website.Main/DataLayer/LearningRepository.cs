@@ -217,20 +217,13 @@ namespace BlackMesa.Website.Main.DataLayer
 
         public void GetCardCount(Folder folder, ref int cardCount, bool includeSubfolders = true, bool countOnlySelected = false)
         {
-            if (countOnlySelected)
-            {
-                cardCount += folder.Cards.Count(u => u.IsSelected);
-            }
-            else
-            {
-                cardCount += folder.Cards.Count();
-            }
+            cardCount += folder.Cards.Count(u => (countOnlySelected && u.IsSelected) || !countOnlySelected);
 
             if (includeSubfolders)
             {
-                foreach (var subFolder in folder.SubFolders)
+                foreach (var subFolder in folder.SubFolders.Where(f => (countOnlySelected && f.IsSelected) || !countOnlySelected))
                 {
-                    GetCardCount(subFolder, ref cardCount, includeSubfolders, countOnlySelected);
+                    GetCardCount(subFolder, ref cardCount);
                 }
             }
         }

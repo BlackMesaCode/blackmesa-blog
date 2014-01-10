@@ -270,7 +270,7 @@
     <Content Include="App_Start\EntityFrameworkProfilerBootstrapper.vb" />
     <Content Include="Areas\Learning\Javascript\export.js" />
     <Content Include="Areas\Learning\Less\icons.less" />
-    <None Include="Areas\Learning\Less\normalize.less" />
+    <Content Include="Areas\Learning\Less\normalize.less" />
     <Content Include="Areas\Learning\Javascript\create-edit-card.js" />
     <Content Include="Areas\Learning\Javascript\query-show.js" />
     <Content Include="Areas\Learning\Javascript\learning.js" />
@@ -643,9 +643,6 @@
     <Content Include="Content\font-awesome\less\stacked.less" />
     <Content Include="Content\font-awesome\less\variables.less" />
     <Content Include="Content\custom\less\utilities.less" />
-    <None Include="Properties\PublishProfiles\blackmesa - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\blackmesa - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -692,6 +689,7 @@
     <Content Include="Areas\Identity\Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Learning\Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\Localhost.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
