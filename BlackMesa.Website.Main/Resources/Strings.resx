@@ -606,4 +606,16 @@
   <data name="ImportFromXML" xml:space="preserve">
     <value>Import from XML File</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="SelectedElements" xml:space="preserve">
+    <value>Selected elements</value>
+  </data>
+  <data name="SelectionOptions" xml:space="preserve">
+    <value>Selection options</value>
+  </data>
 </root>

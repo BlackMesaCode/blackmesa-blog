@@ -123,22 +123,15 @@
         else
         {
             <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.ParentFolderId })" title="@Strings.Back">
-                <i class="icon-back"></i>
+                <i class="icon-left-up"></i>
             </a>
         }
         
     
-        <a class="red-hover" href="@Url.Action("Create", "Card", new { folderId = Model.Id })" title="@Strings.CreateCard">
-            <i class="icon-plus prefix-icon"></i><i class="icon-card"></i>
+        <a class="red-hover" href="@Url.Action("AddOptions", "Folder", new { folderId = Model.Id })" title="@Strings.Insert">
+            <i class="icon-plus"></i>
         </a>
 
-        <a class="red-hover" href="@Url.Action("Create", "Folder", new { parentFolderId = Model.Id })" title="@Strings.CreateSubFolder">
-            <i class="icon-plus prefix-icon"></i><i class="icon-folder"></i>
-        </a>
-
-        <a class="red-hover" href="@Url.Action("Import", "Selection", new { folderId = Model.Id })" title="@Strings.ImportFromXML">
-            <i class="icon-plus prefix-icon"></i><i class="icon-import-unknown"></i>
-        </a>
     }
 
     

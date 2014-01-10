@@ -79,6 +79,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add ähnelt.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die AddEntry ähnelt.
         /// </summary>
         public static string AddEntry {
@@ -615,6 +624,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string IncludingSubfolders {
             get {
                 return ResourceManager.GetString("IncludingSubfolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Insert ähnelt.
+        /// </summary>
+        public static string Insert {
+            get {
+                return ResourceManager.GetString("Insert", resourceCulture);
             }
         }
         
@@ -1258,6 +1276,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Selected elements ähnelt.
+        /// </summary>
+        public static string SelectedElements {
+            get {
+                return ResourceManager.GetString("SelectedElements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Selected folder ähnelt.
         /// </summary>
         public static string SelectedFolder {
@@ -1290,6 +1317,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string SelectionAffection {
             get {
                 return ResourceManager.GetString("SelectionAffection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Selection options ähnelt.
+        /// </summary>
+        public static string SelectionOptions {
+            get {
+                return ResourceManager.GetString("SelectionOptions", resourceCulture);
             }
         }
         

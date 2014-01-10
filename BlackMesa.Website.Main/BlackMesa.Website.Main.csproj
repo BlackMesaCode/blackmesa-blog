@@ -198,6 +198,7 @@
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\Learning\ViewModels\Folder\AddOptionsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\ImportViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\ExportViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\StatisticViewModel.cs" />
@@ -616,6 +617,7 @@
     <Content Include="Areas\Learning\Views\Selection\Statistic.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\Export.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\Import.cshtml" />
+    <Content Include="Areas\Learning\Views\Folder\AddOptions.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />

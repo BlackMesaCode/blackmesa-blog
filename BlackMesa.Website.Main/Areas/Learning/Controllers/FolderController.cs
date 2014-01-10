@@ -115,5 +115,14 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
+        public ActionResult AddOptions(string folderId)
+        {
+            var viewModel = new AddOptionsViewModel
+            {
+                FolderId = folderId,
+            };
+            return View(viewModel);
+        }
+
     }
 }

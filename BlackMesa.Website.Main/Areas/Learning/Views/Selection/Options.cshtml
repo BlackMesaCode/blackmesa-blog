@@ -4,7 +4,7 @@
 @model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.OptionsViewModel
 
 @{
-    ViewBag.Title = Strings.YourSelectedItems;
+    ViewBag.Title = Strings.SelectionOptions;
 }
 
 
@@ -16,7 +16,7 @@
     <section id="selection-options">
         
         <div class="tile gray-darker">
-            <h1>@ViewBag.Title</h1>
+            <h1>@Strings.SelectedElements ...</h1>
         </div>
         
         @*@{
@@ -97,9 +97,9 @@
 
         
         
-        <div class="tile gray-dark">
+        @*<div class="tile gray-dark">
             <h3>@Strings.WhatToDoWithThem</h3>
-        </div>
+        </div>*@
         
         
         @if (!Model.HasRootFolderSelected)
