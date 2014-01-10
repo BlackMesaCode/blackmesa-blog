@@ -23,7 +23,7 @@ body{
     letter-spacing: 1px;
 
     #top-header-bar {
-        .flex();
+        .flexbox();
         .flex-direction(row);
         .flex-wrap(wrap);
         .justify-content(center);
@@ -76,7 +76,7 @@ body{
 
 
     #bottom-header-bar {
-        .flex();
+        .flexbox();
         .flex-direction(row);
         .flex-wrap(wrap);
         .align-items(center);
@@ -95,7 +95,7 @@ body{
             font-size: 20px;
             height: 40px;
 
-            .flex();
+            .flexbox();
             .flex-direction(row);
             .flex-wrap(wrap);
             .justify-content(flex-end);
@@ -145,7 +145,7 @@ body{
         margin-bottom: 40px;
 
         .article-head {
-            .flex();
+            .flexbox();
             .flex-direction(row);
             .flex-wrap(nowrap);
             line-height: 1;
@@ -153,7 +153,7 @@ body{
 
             .article-date {
                 font-family: 'bebas';
-                .flex();
+                .flexbox();
                 .flex-direction(row);
                 .flex-wrap(nowrap); // in case we choose wrap here: article date items can only wrap if the article-date container allows shrinking
                 margin-right: 17px;
@@ -398,9 +398,9 @@ body{
             margin-bottom: 25px;
 
             #search-by-date-form {
-                .flex();
+                .flexbox();
                 .flex-direction(row);
-                flex-wrap:wrap;
+                .flex-wrap(wrap);
 
                 #entry-archive-available-years {
                     margin-right: 30px;
@@ -431,7 +431,7 @@ body{
 
         #search-by-text {
             #search-by-text-form {
-                .flex();
+                .flexbox();
                 .flex-direction(row);
                 .flex-wrap(wrap);
 
@@ -479,7 +479,7 @@ body{
 
         .folder-list-item {
 
-            .flex();
+            .flexbox();
             .flex-direction(row);
             .flex-wrap(nowrap);
             .align-items(center);
@@ -505,7 +505,7 @@ body{
 
             .folder-list-item-container {
                 .flex-grow(1);
-                .flex();
+                .flexbox();
                 .flex-direction(row);
                 .flex-wrap(nowrap);
                 .justify-content(flex-end);
