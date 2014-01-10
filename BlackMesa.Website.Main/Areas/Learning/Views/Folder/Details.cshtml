@@ -105,7 +105,8 @@
     @if (Model.HasAnySelection)
     {
         <a class="red-hover" href="@Url.Action("Options", "Selection", new { id = Model.Id })" title="@Strings.Options">
-            <i class="icon-wrench"></i>
+            @*<i class="icon-wrench"></i>*@
+            <i class="icon-checked-square"></i>
         </a>
 
         <a class="red-hover" href="@Url.Action("RemoveFolder", "Selection", new { folderId = Model.Id, returnFolderId = Model.Id })" title="@Strings.ClearSelection">
