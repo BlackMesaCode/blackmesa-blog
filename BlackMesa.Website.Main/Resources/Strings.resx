@@ -618,4 +618,13 @@
   <data name="SelectionOptions" xml:space="preserve">
     <value>Selection options</value>
   </data>
+  <data name="TimeNeeded" xml:space="preserve">
+    <value>Time needed</value>
+  </data>
+  <data name="CardsLeft" xml:space="preserve">
+    <value>Cards left</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>Remaining</value>
+  </data>
 </root>

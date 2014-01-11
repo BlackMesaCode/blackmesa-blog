@@ -149,7 +149,7 @@ namespace BlackMesa.Website.Main.DataLayer
         {
             var folderToDelete = _dbContext.Learning_Folders.Find(new Guid(folderId));
 
-            if (folderToDelete.ParentFolder == null)
+            if (folderToDelete.IsRootFolder)
                 throw new Exception("Root folder must not be deleted.");
 
             for (var i = folderToDelete.Cards.Count-1; i >= 0; i--)

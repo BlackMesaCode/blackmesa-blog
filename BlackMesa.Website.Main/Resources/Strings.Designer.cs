@@ -196,6 +196,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cards left ähnelt.
+        /// </summary>
+        public static string CardsLeft {
+            get {
+                return ResourceManager.GetString("CardsLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Change order ähnelt.
         /// </summary>
         public static string ChangeOrder {
@@ -1024,6 +1033,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remaining ähnelt.
+        /// </summary>
+        public static string Remaining {
+            get {
+                return ResourceManager.GetString("Remaining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Remember me? ähnelt.
         /// </summary>
         public static string RememberMe {
@@ -1443,6 +1461,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Text {
             get {
                 return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Time needed ähnelt.
+        /// </summary>
+        public static string TimeNeeded {
+            get {
+                return ResourceManager.GetString("TimeNeeded", resourceCulture);
             }
         }
         

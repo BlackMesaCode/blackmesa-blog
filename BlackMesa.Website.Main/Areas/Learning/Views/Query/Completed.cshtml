@@ -34,6 +34,10 @@
         <div class="tile gray-light">
             @Strings.QueryResultWrong: @Model.WrongCount
         </div> 
+        
+        <div class="tile gray-light">
+            @Strings.TimeNeeded: @Model.Duration
+        </div>
 
     </section>
 
@@ -47,7 +51,7 @@
 
 
     <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Back">
-        <i class="icon-back"></i>
+        <i class="icon-list"></i>
     </a>
 
 </nav>

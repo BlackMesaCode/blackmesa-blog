@@ -13,6 +13,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
         public int CorrectCount { get; set; }
         public int PartlyCorrectCount { get; set; }
         public int WrongCount { get; set; }
+        public TimeSpan Duration { get; set; }
 
     }
 }

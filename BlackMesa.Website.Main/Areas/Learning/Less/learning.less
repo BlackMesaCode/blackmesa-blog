@@ -424,6 +424,7 @@ html, body {
 
 .tile-splitter {
     .flexbox();
+    .flex-wrap(nowrap);
     .flex-direction(row);
 
     a:first-child {
@@ -573,5 +574,35 @@ html, body {
 #selection-export, #selection-import {
     textarea {
         overflow: auto;
+    }
+}
+
+#query-item-show  {
+
+    .tile {
+        justify-content: center;
+        text-align: center;
+    }
+
+    pre {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 1.3em;
+    }
+
+    #result-buttons {
+        .flexbox();
+        .flex-direction(row);
+        .flex-wrap(wrap);
+
+        .form-element-container {
+            .flex-grow(1);
+            .flex-shrink(0);
+            margin: @offset;
+            button {
+                text-align: center;
+            }
+        }
     }
 }

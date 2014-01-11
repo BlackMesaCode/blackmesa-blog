@@ -448,7 +448,7 @@
     <value>Ergebnisse des ersten Durchlaufs</value>
   </data>
   <data name="QueriedCards" xml:space="preserve">
-    <value>Abgefragte Einheiten</value>
+    <value>Abgefragte Karten</value>
   </data>
   <data name="Results" xml:space="preserve">
     <value>Ergebnisse</value>
@@ -617,5 +617,14 @@
   </data>
   <data name="SelectionOptions" xml:space="preserve">
     <value>Auswahloptionen</value>
+  </data>
+  <data name="TimeNeeded" xml:space="preserve">
+    <value>Benötigte Zeit</value>
+  </data>
+  <data name="CardsLeft" xml:space="preserve">
+    <value>Verbleibende Karten</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>Verbleibend</value>
   </data>
 </root>

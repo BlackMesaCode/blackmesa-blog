@@ -26,6 +26,7 @@ namespace BlackMesa.Website.Main.Models.Learning
 
         public QueryStatus QueryStatus { get; set; }
 
+        public DateTime StartTime { get; set; }
     }
 
     public enum QueryStatus

@@ -15,6 +15,6 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
         public string BackSide { get; set; }
         public DateTime StartTime { get; set; }
         public QueryResult Result { get; set; }
-
+        public int CardsLeft { get; set; }
     }
 }
