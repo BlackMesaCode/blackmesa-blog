@@ -36,7 +36,7 @@
         </div> 
         
         <div class="tile gray-light">
-            @Strings.TimeNeeded: @Model.Duration
+            @Strings.TimeNeeded: @Utilities.PrintTimeSpan(Model.Duration.Seconds)
         </div>
 
     </section>
