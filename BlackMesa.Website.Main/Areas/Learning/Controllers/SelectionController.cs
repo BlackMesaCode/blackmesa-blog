@@ -332,17 +332,10 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    var xDoc = XDocument.Parse(viewModel.SerializationResult);
-                    var rootElement = xDoc.Root;
-                    Deserialize(rootElement, viewModel.FolderId);
-                    return RedirectToAction("Details", "Folder", new {id = viewModel.FolderId});
-                }
-                catch (Exception e)
-                {
-                    ModelState.AddModelError("Exception", e.ToString());
-                }
+                var xDoc = XDocument.Parse(viewModel.SerializationResult);
+                var rootElement = xDoc.Root;
+                Deserialize(rootElement, viewModel.FolderId);
+                return RedirectToAction("Details", "Folder", new { id = viewModel.FolderId });
             }
             return View(viewModel);
         }
@@ -352,7 +345,19 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         {
             foreach (var card in folder.Elements("Card"))
             {
-                _learningRepo.AddCard(parentFolderId, User.Identity.GetUserId(), card.Attribute("FrontSide").Value, card.Attribute("BackSide").Value);
+                var cardId = _learningRepo.AddCard(parentFolderId, User.Identity.GetUserId(), card.Attribute("FrontSide").Value, 
+                    card.Attribute("BackSide").Value, DateTime.Parse(card.Attribute("DateCreated").Value), 
+                    DateTime.Parse(card.Attribute("DateEdited").Value));
+
+                if (card.Elements("QueryItems").Any())
+                {
+                    foreach (var queryItem in card.Elements("QueryItems").Single().Elements("QueryItem"))
+                    {
+                        _learningRepo.AddQueryItem(cardId, String.Empty, DateTime.Parse(queryItem.Attribute("StartTime").Value),
+                            DateTime.Parse(queryItem.Attribute("EndTime").Value),
+                            (QueryResult)Enum.Parse(typeof(QueryResult), queryItem.Attribute("Result").Value));
+                    }
+                }
             }
 
             foreach (var subFolder in folder.Elements("Folder"))
@@ -380,7 +385,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             using (var writer = XmlWriter.Create(stringBuilder, settings))
             {
                 var doc = new XmlDocument();
-                SerializeFolder(folder, null, ref doc, true);
+                SerializeFolder(folder, null, ref doc, true, true);
                 doc.Save(writer);
             }
 
@@ -404,7 +409,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
-        private void SerializeFolder(Folder folder, XmlElement parentFolderElement, ref XmlDocument doc, bool onlySelected = false)
+        private void SerializeFolder(Folder folder, XmlElement parentFolderElement, ref XmlDocument doc, bool onlySelected = false, bool includeQueryItems = true)
         {
             if (parentFolderElement == null)
             {
@@ -418,14 +423,32 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 var subFolderElement = doc.CreateElement("Folder");
                 subFolderElement.SetAttribute("Name", selectedSubFolder.Name);
                 parentFolderElement.AppendChild(subFolderElement);
-                SerializeFolder(selectedSubFolder, subFolderElement, ref doc);
+                SerializeFolder(selectedSubFolder, subFolderElement, ref doc, false, includeQueryItems);
             }
 
             foreach (var selectedCard in folder.Cards.Where(c => (onlySelected && c.IsSelected || !onlySelected)).OrderBy(f => f.Position))
             {
                 var cardNode = doc.CreateElement("Card");
+
                 cardNode.SetAttribute("FrontSide", selectedCard.FrontSide);
                 cardNode.SetAttribute("BackSide", selectedCard.BackSide);
+                cardNode.SetAttribute("DateCreated", selectedCard.DateCreated.ToString());
+                cardNode.SetAttribute("DateEdited", selectedCard.DateEdited.ToString());
+
+                if (includeQueryItems && selectedCard.QueryItems.Any())
+                {
+                    var queryItemsNode = doc.CreateElement("QueryItems");
+                    cardNode.AppendChild(queryItemsNode);
+                    foreach (var queryItem in selectedCard.QueryItems)
+                    {
+                        var queryItemNode = doc.CreateElement("QueryItem");
+                        queryItemNode.SetAttribute("Result", queryItem.Result.ToString());
+                        queryItemNode.SetAttribute("StartTime", queryItem.StartTime.ToString());
+                        queryItemNode.SetAttribute("EndTime", queryItem.EndTime.ToString());
+                        queryItemNode.SetAttribute("Result", queryItem.Result.ToString());
+                        queryItemsNode.AppendChild(queryItemNode);
+                    }
+                }
                 parentFolderElement.AppendChild(cardNode);
             }
         }

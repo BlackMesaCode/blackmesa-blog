@@ -229,13 +229,13 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void AddCard(string folderId, string ownerId, string frontSide, string backSide)
+        public string AddCard(string folderId, string ownerId, string frontSide, string backSide, DateTime? dateCreated = null, DateTime? dateEdited = null)
         {
 
             var owner = _dbContext.Users.Find(ownerId);
             var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
 
-            var newStandardCard = new Card
+            var card = new Card
             {
                 FolderId = new Guid(folderId),
                 Folder = folder,
@@ -245,13 +245,15 @@ namespace BlackMesa.Website.Main.DataLayer
                 Position = (folder.Cards != null ? folder.Cards.Count : 0),
                 FrontSide = frontSide,
                 BackSide = backSide,
-                DateCreated = DateTime.Now,
-                DateEdited = DateTime.Now,
+                DateCreated = dateCreated ?? DateTime.Now,
+                DateEdited = dateEdited ?? DateTime.Now,
             };
 
-            _dbContext.Learning_Cards.Add(newStandardCard);
-            //folder.Cards.Add(newStandardCard);
+            _dbContext.Learning_Cards.Add(card);
+
             _dbContext.SaveChanges();
+
+            return card.Id.ToString();
         }
 
 
@@ -358,12 +360,11 @@ namespace BlackMesa.Website.Main.DataLayer
             return _dbContext.Learning_QueryItems.Find(new Guid(queryItemId));
         }
 
-        public void AddQueryItem(string cardId, Card card, string queryId, Query query, DateTime startTime, DateTime endTime, QueryResult result)
+        public void AddQueryItem(string cardId, string queryId, DateTime startTime, DateTime endTime, QueryResult result)
         {
             var queryItem = new QueryItem
             {
                 CardId = new Guid(cardId),
-                Card = card,
 
                 QueryId = queryId,
 
@@ -372,7 +373,8 @@ namespace BlackMesa.Website.Main.DataLayer
                 Result = result,
             };
 
-            card.QueryItems.Add(queryItem);
+            _dbContext.Learning_QueryItems.Add(queryItem);
+
             _dbContext.SaveChanges();
         }
 

@@ -162,7 +162,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             var query = Session["Query"] as Query;
             var queriedCard = _learningRepo.GetCard(resultViewModel.CardId);
 
-            _learningRepo.AddQueryItem(queriedCard.Id.ToString(), queriedCard, resultViewModel.QueryId, query,
+            _learningRepo.AddQueryItem(queriedCard.Id.ToString(), resultViewModel.QueryId,
                 resultViewModel.StartTime, currentTime, resultViewModel.Result);
             
             return RedirectToAction("GetQueryItem",
