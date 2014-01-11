@@ -25,6 +25,14 @@ namespace BlackMesa.Website.Main.Models.Learning
 
         public bool IsSelected { get; set; }
 
+        [NotMapped]
+        public bool IsRootFolder {
+            get
+            {
+                return (ParentFolder == null);
+            } 
+        }
+
         public virtual Folder ParentFolder { get; set; }
         public virtual List<Folder> SubFolders { get; set; }
         public virtual List<Card> Cards { get; set; }

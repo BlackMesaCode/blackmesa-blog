@@ -19,89 +19,6 @@
             <h1>@Strings.SelectedElements</h1>
         </div>
         
-        @*@{
-            var subFolders = Model.Folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name);
-            var cards = Model.Folder.Cards.Where(c => c.IsSelected).OrderBy(c => c.Position);
-        }
-
-        @if (Model.Folder.IsSelected)
-        {
-            <div class="tile gray-light">
-                <i class="icon-folder"></i>@Model.Folder.Name
-            </div>
-        }
-
-        @for (int i = 0; i < subFolders.Count(); i++)
-        {
-            if (i < 3)
-            {
-                <div class="tree-item">
-                    @if (Model.Folder.IsSelected)
-                    {
-                        <span class="indent"></span>
-                        <span class="indent"></span>
-                    }
-                    <div class="tile gray-light">
-                        <i class="icon-folder"></i>@subFolders.ElementAt(i).Name
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div class="tree-item">
-                    @if (Model.Folder.IsSelected)
-                    {
-                        <span class="indent"></span>
-                        <span class="indent"></span>
-                    }
-                    <div class="tile gray-light">
-                        ... @Strings.And @(subFolders.Count() - i) @Strings.More @((subFolders.Count() - i > 1) ? Strings.Folders : Strings.Folder)
-                    </div>
-                </div>
-                break;
-            }
-        }
-
-
-        @for (int i = 0; i < cards.Count(); i++)
-        {
-            if (i < 3)
-            {
-                <div class="tree-item">
-                    @if (Model.Folder.IsSelected)
-                    {
-                        <span class="indent"></span>
-                        <span class="indent"></span>
-                    }
-                    <div class="tile gray-light">
-                        <i class="icon-card"></i>@cards.ElementAt(i).FrontSide
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div class="tree-item">
-                    @if (Model.Folder.IsSelected)
-                    {
-                        <span class="indent"></span>
-                        <span class="indent"></span>
-                    }
-                    <div class="tile gray-light">
-                        ... @Strings.And @(cards.Count() - i) @Strings.More @((cards.Count() - i > 1) ? Strings.Cards : Strings.Card)
-                    </div>
-                </div>
-                break;
-            }
-
-        }*@
-
-        
-        
-        @*<div class="tile gray-dark">
-            <h3>@Strings.WhatToDoWithThem</h3>
-        </div>*@
-        
-        
         @if (!Model.HasRootFolderSelected)
         {
             <a class="tile gray-light-hover" href="@Url.Action("SetMoveTarget", "Selection", new { sourceFolderId = Model.Id })">
@@ -151,13 +68,10 @@
             <i class="icon-export-unknown"></i>@Strings.ExportAsXmlFile
         </a>
 
+        <a class="tile gray-light-hover" href="@Url.Action("Delete", "Selection", new {folderId = Model.Id})">
+            <i class="icon-delete"></i>@Strings.Delete
+        </a>
 
-        @if (!Model.HasRootFolderSelected)
-        {
-            <a class="tile gray-light-hover" href="@Url.Action("Delete", "Selection", new {folderId = Model.Id})">
-                <i class="icon-delete"></i>@Strings.Delete
-            </a>
-        }
 
     </section>
 

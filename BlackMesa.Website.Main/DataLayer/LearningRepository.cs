@@ -58,7 +58,7 @@ namespace BlackMesa.Website.Main.DataLayer
         {
             var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
 
-            if (folder.ParentFolder == null)
+            if (folder.IsRootFolder)
                 throw new Exception("Root folders name must not be changed.");
 
             folder.Name = newFolderName;
@@ -138,7 +138,7 @@ namespace BlackMesa.Website.Main.DataLayer
         public void GetFolderPath(Folder folder, ref  List<Folder> path)
         {
             path.Add(folder);
-            if (folder.ParentFolder != null)
+            if (!folder.IsRootFolder)
             {
                 GetFolderPath(folder.ParentFolder, ref path);
             }
@@ -172,7 +172,7 @@ namespace BlackMesa.Website.Main.DataLayer
         {
             var folder = _dbContext.Learning_Folders.Find(new Guid(folderId));
 
-            if (folder.ParentFolder == null)
+            if (folder.IsRootFolder)
                 throw new Exception("Root folder must not be moved.");
 
             var oldParentFolder = folder.ParentFolder;
@@ -188,7 +188,7 @@ namespace BlackMesa.Website.Main.DataLayer
             folder.ParentFolder = newParentFolder;  // todo check if null is assigned if there is no new parentFolder
 
             // Adjust its level
-            folder.Level = folder.ParentFolder != null ? folder.ParentFolder.Level + 1 : 1;  //todo add level calculation to property getter
+            folder.Level = !folder.IsRootFolder ? folder.ParentFolder.Level + 1 : 1;  //todo add level calculation to property getter
 
 
             _dbContext.SaveChanges();
@@ -452,7 +452,7 @@ namespace BlackMesa.Website.Main.DataLayer
         {
             folder.IsSelected = false;
 
-            if (folder.ParentFolder != null)
+            if (!folder.IsRootFolder)
             {
                 if (folder.ParentFolder.IsSelected)
                     folder.ParentFolder.IsSelected = false;

@@ -79,8 +79,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult Delete(DeleteViewModel viewModel)
         {
             var folder = _learningRepo.GetFolder(viewModel.Id);
-            var parentFolderId = folder.ParentFolder != null ? folder.ParentFolder.Id.ToString() : String.Empty;
-            if (folder.IsSelected)
+            var parentFolderId = !folder.IsRootFolder ? folder.ParentFolder.Id.ToString() : String.Empty;
+            if (folder.IsSelected && !folder.IsRootFolder)
             {
                 _learningRepo.RemoveFolder(folder.Id.ToString());
                 if (!String.IsNullOrEmpty(parentFolderId))
@@ -291,7 +291,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Id = folder.Id.ToString(),
                 Folder = folder,
                 HasAnyFolderSelected = (folder.IsSelected || folder.SubFolders.Any(f => f.IsSelected)),
-                HasRootFolderSelected = (folder.ParentFolder == null && folder.IsSelected),
+                HasRootFolderSelected = (folder.IsRootFolder && folder.IsSelected),
                 HasOnlyCardsSelected = hasOnlyCardsSelected,
                 HasOnlyOneCardSelected = hasOnlyCardsSelected && hasOneCardSelected,
                 CardId = (folder.Cards.Count(c => c.IsSelected) == 1) ? folder.Cards.Find(c => c.IsSelected).Id.ToString() : String.Empty,

@@ -55,7 +55,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 SubFolders = folder.SubFolders.OrderBy(f => f.Name),
                 Cards = folder.Cards.OrderBy(c => c.Position),
                 Path = path,
-                ParentFolderId = (folder.ParentFolder != null ? folder.ParentFolder.Id.ToString() : String.Empty),
+                ParentFolderId = (!folder.IsRootFolder ? folder.ParentFolder.Id.ToString() : String.Empty),
             };
             return View(viewModel);
         }
@@ -107,7 +107,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             {
                 var folder = _learningRepo.GetFolder(viewModel.Id);
                 _learningRepo.EditFolder(viewModel.Id, viewModel.Name);
-                if (folder.ParentFolder != null)
+                if (!folder.IsRootFolder)
                     return RedirectToAction("Details", "Folder", new { id = folder.ParentFolder.Id });
                 return RedirectToAction("Index");
             }
