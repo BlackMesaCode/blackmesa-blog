@@ -192,7 +192,7 @@
     <Compile Include="Areas\Learning\Api\Controllers\FoldersController.cs" />
     <Compile Include="Areas\Learning\Controllers\SelectionController.cs" />
     <Compile Include="Areas\Learning\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Learning\Controllers\QueryController.cs" />
+    <Compile Include="Areas\Learning\Controllers\TestController.cs" />
     <Compile Include="Areas\Learning\Controllers\CardController.cs" />
     <Compile Include="Areas\Learning\Controllers\FolderController.cs" />
     <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
@@ -200,7 +200,7 @@
     </Compile>
     <Compile Include="Areas\Learning\ViewModels\Folder\AddOptionsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\BrowseViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\ResetQueryResultsViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\ResetTestResultsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\ImportViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\ExportViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\StatisticViewModel.cs" />
@@ -216,9 +216,9 @@
     <Compile Include="Areas\Learning\ViewModels\Selection\DeleteViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Card\EditViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Card\CreateViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\QueryCompletedViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\SetupQueryViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\QueryItemViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\TestCompletedViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\SetupTestViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Query\TestItemViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -234,6 +234,10 @@
     <Compile Include="Migrations\201401092126097_Init.Designer.cs">
       <DependentUpon>201401092126097_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201401121805555_upd.cs" />
+    <Compile Include="Migrations\201401121805555_upd.Designer.cs">
+      <DependentUpon>201401121805555_upd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
     <Compile Include="Models\Blog\Entry.cs" />
@@ -241,8 +245,8 @@
     <Compile Include="Models\Identity\User.cs" />
     <Compile Include="Models\Learning\BrowseList.cs" />
     <Compile Include="Models\Learning\Folder.cs" />
-    <Compile Include="Models\Learning\Query.cs" />
-    <Compile Include="Models\Learning\QueryItem.cs" />
+    <Compile Include="Models\Learning\Test.cs" />
+    <Compile Include="Models\Learning\TestItem.cs" />
     <Compile Include="Models\Learning\Card.cs" />
     <Compile Include="Resources\Strings.de.Designer.cs">
       <DependentUpon>Strings.de.resx</DependentUpon>
@@ -276,7 +280,7 @@
     <Content Include="Areas\Learning\Less\icons.less" />
     <Content Include="Areas\Learning\Less\normalize.less" />
     <Content Include="Areas\Learning\Javascript\create-edit-card.js" />
-    <Content Include="Areas\Learning\Javascript\query-show.js" />
+    <Content Include="Areas\Learning\Javascript\test-show.js" />
     <Content Include="Areas\Learning\Javascript\learning.js" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.svg" />
     <Content Include="Content\custom\images\mystack_logo_inverted.png" />
@@ -605,11 +609,11 @@
     <Content Include="Areas\Learning\Less\utilities.less" />
     <Content Include="Areas\Learning\Less\fonts.less" />
     <Content Include="Areas\Learning\Views\Selection\Search.cshtml" />
-    <Content Include="Areas\Learning\Views\Query\Setup.cshtml" />
-    <Content Include="Areas\Learning\Views\Query\GetQueryItem.cshtml" />
+    <Content Include="Areas\Learning\Views\Test\Setup.cshtml" />
+    <Content Include="Areas\Learning\Views\Test\GetTestItem.cshtml" />
     <Content Include="Areas\Learning\Views\Card\Edit.cshtml" />
     <Content Include="Areas\Learning\Views\Shared\_Path.cshtml" />
-    <Content Include="Areas\Learning\Views\Query\Completed.cshtml" />
+    <Content Include="Areas\Learning\Views\Test\Completed.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\Options.cshtml" />
     <Content Include="Areas\Learning\Views\Selection\SetMoveTarget.cshtml" />
     <Content Include="Areas\Learning\Views\Home\Settings.cshtml" />
@@ -624,7 +628,7 @@
     <Content Include="Areas\Learning\Less\flexbox.less" />
     <Content Include="Content\custom\less\flexbox.less" />
     <Content Include="Areas\Learning\Views\Selection\Browse.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\ResetQueryResults.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\ResetTestResults.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -715,6 +719,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201401092126097_Init.resx">
       <DependentUpon>201401092126097_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401121805555_upd.resx">
+      <DependentUpon>201401121805555_upd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

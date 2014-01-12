@@ -6,15 +6,15 @@ using BlackMesa.Website.Main.Resources;
 
 namespace BlackMesa.Website.Main.Models.Learning
 {
-    [Table("Learning_QueryItems")]
-    public class QueryItem
+    [Table("Learning_TestItems")]
+    public class TestItem
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]
-        public QueryResult Result { get; set; }
+        public TestResult Result { get; set; }
 
         [Required]
         public DateTime StartTime { get; set; }
@@ -29,16 +29,16 @@ namespace BlackMesa.Website.Main.Models.Learning
 
         public virtual Card Card { get; set; }
 
-        public string QueryId { get; set; }
+        public string TestId { get; set; }
     }
 
-    public enum QueryResult
+    public enum TestResult
     {
-        [Display(Name = "QueryResultCorrect", ResourceType = typeof(Strings))]
+        [Display(Name = "TestResultCorrect", ResourceType = typeof(Strings))]
         Correct,
-        [Display(Name = "QueryResultPartlyCorrect", ResourceType = typeof(Strings))]
+        [Display(Name = "TestResultPartlyCorrect", ResourceType = typeof(Strings))]
         PartlyCorrect,
-        [Display(Name = "QueryResultWrong", ResourceType = typeof(Strings))]
+        [Display(Name = "TestResultWrong", ResourceType = typeof(Strings))]
         Wrong,
     }
 }

@@ -39,7 +39,7 @@ AutoSize('BackSide');
 
 // Adds Tab-Functionality to TextAreas
 
-//document.querySelector("textarea").addEventListener('keydown', function (e) {
+//document.testSelector("textarea").addEventListener('keydown', function (e) {
 //    if (e.keyCode === 9) { // tab was pressed
 //        // get caret position/selection
 //        var start = this.selectionStart;

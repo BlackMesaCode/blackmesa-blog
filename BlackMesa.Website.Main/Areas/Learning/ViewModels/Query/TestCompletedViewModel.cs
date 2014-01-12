@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using BlackMesa.Website.Main.Models.Learning;
 
-namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Query
+namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Test
 {
-    public class QueryCompletedViewModel
+    public class TestCompletedViewModel
     {
         public string FolderId { get; set; }
         public int TotalCount { get; set; }

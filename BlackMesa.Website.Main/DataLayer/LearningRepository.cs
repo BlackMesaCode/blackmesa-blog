@@ -351,62 +351,62 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        // ================================ QueryItems ================================ //
+        // ================================ TestItems ================================ //
 
 
-        public List<QueryItem> GetQueryItems(string cardId)
+        public List<TestItem> GetTestItems(string cardId)
         {
-            return _dbContext.Learning_Cards.Find(new Guid(cardId)).QueryItems;
+            return _dbContext.Learning_Cards.Find(new Guid(cardId)).TestItems;
         }
 
-        public QueryItem GetQueryItem(string queryItemId)
+        public TestItem GetTestItem(string testItemId)
         {
-            return _dbContext.Learning_QueryItems.Find(new Guid(queryItemId));
+            return _dbContext.Learning_TestItems.Find(new Guid(testItemId));
         }
 
-        public void AddQueryItem(string cardId, string queryId, DateTime startTime, DateTime endTime, QueryResult result)
+        public void AddTestItem(string cardId, string testId, DateTime startTime, DateTime endTime, TestResult result)
         {
-            var queryItem = new QueryItem
+            var testItem = new TestItem
             {
                 CardId = new Guid(cardId),
 
-                QueryId = queryId,
+                TestId = testId,
 
                 StartTime = startTime,
                 EndTime = endTime,
                 Result = result,
             };
 
-            _dbContext.Learning_QueryItems.Add(queryItem);
+            _dbContext.Learning_TestItems.Add(testItem);
 
             _dbContext.SaveChanges();
         }
 
-        public void EditQueryItem(string queryItemId, DateTime? startTime, DateTime? endTime, QueryResult result)
+        public void EditTestItem(string testItemId, DateTime? startTime, DateTime? endTime, TestResult result)
         {
-            var queryItem = GetQueryItem(queryItemId);
+            var testItem = GetTestItem(testItemId);
 
             if (startTime.HasValue)
-                queryItem.StartTime = startTime.Value;
+                testItem.StartTime = startTime.Value;
 
             if (endTime.HasValue)
-                queryItem.EndTime = endTime.Value;
+                testItem.EndTime = endTime.Value;
 
-            queryItem.Result = result;
+            testItem.Result = result;
 
             _dbContext.SaveChanges();
         }
 
-        public void RemoveQueryItem(string queryItemId, QueryItem queryItem = null)
+        public void RemoveTestItem(string testItemId, TestItem testItem = null)
         {
-            _dbContext.Learning_QueryItems.Remove(queryItem ?? GetQueryItem(queryItemId));
+            _dbContext.Learning_TestItems.Remove(testItem ?? GetTestItem(testItemId));
             _dbContext.SaveChanges();
         }
 
 
-        public void RemoveQueryItems(string cardId, Card card = null)
+        public void RemoveTestItems(string cardId, Card card = null)
         {
-            _dbContext.Learning_QueryItems.RemoveRange(card != null ? card.QueryItems : GetCard(cardId).QueryItems);
+            _dbContext.Learning_TestItems.RemoveRange(card != null ? card.TestItems : GetCard(cardId).TestItems);
             _dbContext.SaveChanges();
         }
 

@@ -952,105 +952,6 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Queried cards ähnelt.
-        /// </summary>
-        public static string QueriedCards {
-            get {
-                return ResourceManager.GetString("QueriedCards", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Query ähnelt.
-        /// </summary>
-        public static string Query {
-            get {
-                return ResourceManager.GetString("Query", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Query completed ähnelt.
-        /// </summary>
-        public static string QueryCompleted {
-            get {
-                return ResourceManager.GetString("QueryCompleted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Query history ähnelt.
-        /// </summary>
-        public static string QueryHistory {
-            get {
-                return ResourceManager.GetString("QueryHistory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Query only due cards ähnelt.
-        /// </summary>
-        public static string QueryOnlyDueCards {
-            get {
-                return ResourceManager.GetString("QueryOnlyDueCards", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Correct ähnelt.
-        /// </summary>
-        public static string QueryResultCorrect {
-            get {
-                return ResourceManager.GetString("QueryResultCorrect", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Partly correct ähnelt.
-        /// </summary>
-        public static string QueryResultPartlyCorrect {
-            get {
-                return ResourceManager.GetString("QueryResultPartlyCorrect", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Wrong ähnelt.
-        /// </summary>
-        public static string QueryResultWrong {
-            get {
-                return ResourceManager.GetString("QueryResultWrong", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Query type ähnelt.
-        /// </summary>
-        public static string QueryType {
-            get {
-                return ResourceManager.GetString("QueryType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Normal ähnelt.
-        /// </summary>
-        public static string QueryTypeNormal {
-            get {
-                return ResourceManager.GetString("QueryTypeNormal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Single pass ähnelt.
-        /// </summary>
-        public static string QueryTypeSinglePass {
-            get {
-                return ResourceManager.GetString("QueryTypeSinglePass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Read more ähnelt.
         /// </summary>
         public static string ReadMore {
@@ -1105,11 +1006,11 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reset query results ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reset test results ähnelt.
         /// </summary>
-        public static string ResetQueryResults {
+        public static string ResetTestResults {
             get {
-                return ResourceManager.GetString("ResetQueryResults", resourceCulture);
+                return ResourceManager.GetString("ResetTestResults", resourceCulture);
             }
         }
         
@@ -1438,11 +1339,11 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Setup query ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Setup test ähnelt.
         /// </summary>
-        public static string SetupQuery {
+        public static string SetupTest {
             get {
-                return ResourceManager.GetString("SetupQuery", resourceCulture);
+                return ResourceManager.GetString("SetupTest", resourceCulture);
             }
         }
         
@@ -1456,11 +1357,11 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Start query ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start test ähnelt.
         /// </summary>
-        public static string StartQuery {
+        public static string StartTest {
             get {
-                return ResourceManager.GetString("StartQuery", resourceCulture);
+                return ResourceManager.GetString("StartTest", resourceCulture);
             }
         }
         
@@ -1497,6 +1398,105 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Tags {
             get {
                 return ResourceManager.GetString("Tags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Test ähnelt.
+        /// </summary>
+        public static string Test {
+            get {
+                return ResourceManager.GetString("Test", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Test completed ähnelt.
+        /// </summary>
+        public static string TestCompleted {
+            get {
+                return ResourceManager.GetString("TestCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Tested cards ähnelt.
+        /// </summary>
+        public static string TestedCards {
+            get {
+                return ResourceManager.GetString("TestedCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Test history ähnelt.
+        /// </summary>
+        public static string TestHistory {
+            get {
+                return ResourceManager.GetString("TestHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Test only due cards ähnelt.
+        /// </summary>
+        public static string TestOnlyDueCards {
+            get {
+                return ResourceManager.GetString("TestOnlyDueCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Correct ähnelt.
+        /// </summary>
+        public static string TestResultCorrect {
+            get {
+                return ResourceManager.GetString("TestResultCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Partly correct ähnelt.
+        /// </summary>
+        public static string TestResultPartlyCorrect {
+            get {
+                return ResourceManager.GetString("TestResultPartlyCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wrong ähnelt.
+        /// </summary>
+        public static string TestResultWrong {
+            get {
+                return ResourceManager.GetString("TestResultWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Test type ähnelt.
+        /// </summary>
+        public static string TestType {
+            get {
+                return ResourceManager.GetString("TestType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Normal ähnelt.
+        /// </summary>
+        public static string TestTypeNormal {
+            get {
+                return ResourceManager.GetString("TestTypeNormal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Single pass ähnelt.
+        /// </summary>
+        public static string TestTypeSinglePass {
+            get {
+                return ResourceManager.GetString("TestTypeSinglePass", resourceCulture);
             }
         }
         
@@ -1623,15 +1623,6 @@ namespace BlackMesa.Website.Main.Resources {
         public static string YourSelectedItems {
             get {
                 return ResourceManager.GetString("YourSelectedItems", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Your simple flashcard app ähnelt.
-        /// </summary>
-        public static string YourSimpleFlashCardApp {
-            get {
-                return ResourceManager.GetString("YourSimpleFlashCardApp", resourceCulture);
             }
         }
     }

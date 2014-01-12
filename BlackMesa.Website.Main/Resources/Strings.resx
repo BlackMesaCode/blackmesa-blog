@@ -384,8 +384,8 @@
   <data name="All" xml:space="preserve">
     <value>All</value>
   </data>
-  <data name="Query" xml:space="preserve">
-    <value>Query</value>
+  <data name="Test" xml:space="preserve">
+    <value>Test</value>
   </data>
   <data name="Setup" xml:space="preserve">
     <value>Setup</value>
@@ -402,16 +402,16 @@
   <data name="Order" xml:space="preserve">
     <value>Order</value>
   </data>
-  <data name="QueryType" xml:space="preserve">
-    <value>Query type</value>
+  <data name="TestType" xml:space="preserve">
+    <value>Test type</value>
   </data>
-  <data name="StartQuery" xml:space="preserve">
-    <value>Start query</value>
+  <data name="StartTest" xml:space="preserve">
+    <value>Start test</value>
   </data>
-  <data name="QueryTypeNormal" xml:space="preserve">
+  <data name="TestTypeNormal" xml:space="preserve">
     <value>Normal</value>
   </data>
-  <data name="QueryTypeSinglePass" xml:space="preserve">
+  <data name="TestTypeSinglePass" xml:space="preserve">
     <value>Single pass</value>
   </data>
   <data name="OrderTypeOrdered" xml:space="preserve">
@@ -420,13 +420,13 @@
   <data name="OrderTypeShuffled" xml:space="preserve">
     <value>Shuffled</value>
   </data>
-  <data name="QueryResultCorrect" xml:space="preserve">
+  <data name="TestResultCorrect" xml:space="preserve">
     <value>Correct</value>
   </data>
-  <data name="QueryResultPartlyCorrect" xml:space="preserve">
+  <data name="TestResultPartlyCorrect" xml:space="preserve">
     <value>Partly correct</value>
   </data>
-  <data name="QueryResultWrong" xml:space="preserve">
+  <data name="TestResultWrong" xml:space="preserve">
     <value>Wrong</value>
   </data>
   <data name="Result" xml:space="preserve">
@@ -438,8 +438,8 @@
   <data name="ShowBackSide" xml:space="preserve">
     <value>Show backSide</value>
   </data>
-  <data name="QueryHistory" xml:space="preserve">
-    <value>Query history</value>
+  <data name="TestHistory" xml:space="preserve">
+    <value>Test history</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Completed</value>
@@ -447,8 +447,8 @@
   <data name="FirstPassResults" xml:space="preserve">
     <value>Results of the first pass</value>
   </data>
-  <data name="QueriedCards" xml:space="preserve">
-    <value>Queried cards</value>
+  <data name="TestedCards" xml:space="preserve">
+    <value>Tested cards</value>
   </data>
   <data name="Results" xml:space="preserve">
     <value>Results</value>
@@ -492,11 +492,11 @@
   <data name="EditCard" xml:space="preserve">
     <value>Edit index card</value>
   </data>
-  <data name="QueryCompleted" xml:space="preserve">
-    <value>Query completed</value>
+  <data name="TestCompleted" xml:space="preserve">
+    <value>Test completed</value>
   </data>
-  <data name="SetupQuery" xml:space="preserve">
-    <value>Setup query</value>
+  <data name="SetupTest" xml:space="preserve">
+    <value>Setup test</value>
   </data>
   <data name="DeleteSelection" xml:space="preserve">
     <value>Delete selected items</value>
@@ -549,9 +549,6 @@
   <data name="SearchWhere" xml:space="preserve">
     <value>Where shell we look?</value>
   </data>
-  <data name="YourSimpleFlashCardApp" xml:space="preserve">
-    <value>Your simple flashcard app</value>
-  </data>
   <data name="SearchSelection" xml:space="preserve">
     <value>Search in selection</value>
   </data>
@@ -585,8 +582,8 @@
   <data name="General" xml:space="preserve">
     <value>General</value>
   </data>
-  <data name="QueryOnlyDueCards" xml:space="preserve">
-    <value>Query only due cards</value>
+  <data name="TestOnlyDueCards" xml:space="preserve">
+    <value>Test only due cards</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
@@ -639,7 +636,7 @@
   <data name="PerformReset" xml:space="preserve">
     <value>Perform reset</value>
   </data>
-  <data name="ResetQueryResults" xml:space="preserve">
-    <value>Reset query results</value>
+  <data name="ResetTestResults" xml:space="preserve">
+    <value>Reset test results</value>
   </data>
 </root>

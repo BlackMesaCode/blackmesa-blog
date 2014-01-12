@@ -59,8 +59,8 @@
             <i class="icon-browse"></i>@Strings.Browse
         </a>
 
-        <a class="tile gray-light-hover" href="@Url.Action("Setup", "Query", new { folderId = Model.Id })">
-            <i class="icon-rocket"></i>@Strings.StartQuery
+        <a class="tile gray-light-hover" href="@Url.Action("Setup", "Test", new { folderId = Model.Id })">
+            <i class="icon-rocket"></i>@Strings.StartTest
         </a>
         
 
@@ -72,8 +72,8 @@
             <i class="icon-export-unknown"></i>@Strings.ExportAsXmlFile
         </a>
         
-        <a class="tile gray-light-hover" href="@Url.Action("ResetQueryResults", "Selection", new { folderId = Model.Id })">
-            <i class="icon-eraser"></i>@Strings.ResetQueryResults
+        <a class="tile gray-light-hover" href="@Url.Action("ResetTestResults", "Selection", new { folderId = Model.Id })">
+            <i class="icon-eraser"></i>@Strings.ResetTestResults
         </a>
 
         <a class="tile gray-light-hover" href="@Url.Action("Delete", "Selection", new {folderId = Model.Id})">

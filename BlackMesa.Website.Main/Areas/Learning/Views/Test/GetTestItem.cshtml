@@ -1,17 +1,17 @@
 ﻿@using BlackMesa.Website.Main.Resources
 @using BlackMesa.Website.Main.Utilities
 
-@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Query.QueryItemViewModel
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Test.TestItemViewModel
 
 @{
-    ViewBag.Title = Strings.Query;
+    ViewBag.Title = Strings.Test;
 }
 
 <div id="content">
 
-    <section id="query-item-show">
+    <section id="test-item-show">
 
-        @using (Html.BeginForm("SaveQueryItem", "Query"))
+        @using (Html.BeginForm("SaveTestItem", "Test"))
         {
             @Html.AntiForgeryToken()
 
@@ -23,7 +23,7 @@
             }
 
             @Html.HiddenFor(model => model.FolderId)
-            @Html.HiddenFor(model => model.QueryId)
+            @Html.HiddenFor(model => model.TestId)
             @Html.HiddenFor(model => model.CardId)
             @Html.HiddenFor(model => model.StartTime)
 
@@ -77,21 +77,21 @@
 
                 <div class="form-element-container">
                     <button class="gray-dark-hover" type="submit" id="result" name="result" value="0">
-                        <i class="icon-happy"></i>@Strings.QueryResultCorrect
+                        <i class="icon-happy"></i>@Strings.TestResultCorrect
                     </button>
                 </div>
 
 
                 <div class="form-element-container">
                     <button class="gray-dark-hover" type="submit" id="result" name="result" value="1">
-                        <i class="icon-neutral"></i>@Strings.QueryResultPartlyCorrect
+                        <i class="icon-neutral"></i>@Strings.TestResultPartlyCorrect
                     </button>
                 </div>
 
 
                 <div class="form-element-container">
                     <button class="gray-dark-hover" type="submit" id="result" name="result" value="2">
-                        <i class="icon-unhappy"></i>@Strings.QueryResultWrong
+                        <i class="icon-unhappy"></i>@Strings.TestResultWrong
                     </button>
                 </div>
 
@@ -118,7 +118,7 @@
 
 
 @section Scripts {
-    <script src="~/Areas/Learning/Javascript/query-show.js"></script>
+    <script src="~/Areas/Learning/Javascript/test-show.js"></script>
 }
 
 

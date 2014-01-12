@@ -1,15 +1,15 @@
 ﻿@using BlackMesa.Website.Main.Resources
 @using BlackMesa.Website.Main.Utilities
 
-@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Query.SetupQueryViewModel
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Test.SetupTestViewModel
 
 @{
-    ViewBag.Title = Strings.SetupQuery;
+    ViewBag.Title = Strings.SetupTest;
 }
 
 <div id="content">
 
-    <section id="query-setup">
+    <section id="test-setup">
 
         @using (Html.BeginForm())
         {
@@ -33,8 +33,8 @@
                 <h3>@Strings.General</h3>
             </div>
 
-            <label class="tile gray-light-hover" for="_QueryOnlyDueCards">
-                @Html.CheckBoxFor(model => model.QueryOnlyDueCards, new { @id = "_QueryOnlyDueCards" }) @Strings.QueryOnlyDueCards
+            <label class="tile gray-light-hover" for="_TestOnlyDueCards">
+                @Html.CheckBoxFor(model => model.TestOnlyDueCards, new { @id = "_TestOnlyDueCards" }) @Strings.TestOnlyDueCards
             </label>
 
             <label class="tile gray-light-hover" for="_ReverseSides">
@@ -50,15 +50,15 @@
             @Html.RadioButtonForEnum(model => model.OrderType)
 
             <div class="tile gray-dark">
-                <h3>@Html.LabelFor(model => Model.QueryType)</h3>
+                <h3>@Html.LabelFor(model => Model.TestType)</h3>
             </div>
             
             
-            @Html.RadioButtonForEnum(model => model.QueryType)
+            @Html.RadioButtonForEnum(model => model.TestType)
 
             <div class="form-element-container">
                 <button class="gray-dark-hover" type="submit">
-                    @Strings.StartQuery
+                    @Strings.StartTest
                 </button>
             </div>
         }
