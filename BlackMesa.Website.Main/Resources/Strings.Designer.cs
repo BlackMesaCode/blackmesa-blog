@@ -178,6 +178,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Browse ähnelt.
+        /// </summary>
+        public static string Browse {
+            get {
+                return ResourceManager.GetString("Browse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Index card ähnelt.
         /// </summary>
         public static string Card {
@@ -799,6 +808,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die of ähnelt.
+        /// </summary>
+        public static string Of {
+            get {
+                return ResourceManager.GetString("Of", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Options ähnelt.
         /// </summary>
         public static string Options {
@@ -880,6 +898,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Perform reset ähnelt.
+        /// </summary>
+        public static string PerformReset {
+            get {
+                return ResourceManager.GetString("PerformReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Please confirm: ähnelt.
         /// </summary>
         public static string PleaseConfirm {
@@ -894,6 +921,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string Preview {
             get {
                 return ResourceManager.GetString("Preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Previous ähnelt.
+        /// </summary>
+        public static string Previous {
+            get {
+                return ResourceManager.GetString("Previous", resourceCulture);
             }
         }
         
@@ -1065,6 +1101,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string ReparseAll {
             get {
                 return ResourceManager.GetString("ReparseAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reset query results ähnelt.
+        /// </summary>
+        public static string ResetQueryResults {
+            get {
+                return ResourceManager.GetString("ResetQueryResults", resourceCulture);
             }
         }
         

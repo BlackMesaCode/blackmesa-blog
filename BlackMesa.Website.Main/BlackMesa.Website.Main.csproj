@@ -199,6 +199,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\Learning\ViewModels\Folder\AddOptionsViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\BrowseViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Selection\ResetQueryResultsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\ImportViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\ExportViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\StatisticViewModel.cs" />
@@ -237,6 +239,7 @@
     <Compile Include="Models\Blog\Entry.cs" />
     <Compile Include="Models\Blog\Tag.cs" />
     <Compile Include="Models\Identity\User.cs" />
+    <Compile Include="Models\Learning\BrowseList.cs" />
     <Compile Include="Models\Learning\Folder.cs" />
     <Compile Include="Models\Learning\Query.cs" />
     <Compile Include="Models\Learning\QueryItem.cs" />
@@ -620,6 +623,8 @@
     <Content Include="Areas\Learning\Views\Folder\AddOptions.cshtml" />
     <Content Include="Areas\Learning\Less\flexbox.less" />
     <Content Include="Content\custom\less\flexbox.less" />
+    <Content Include="Areas\Learning\Views\Selection\Browse.cshtml" />
+    <Content Include="Areas\Learning\Views\Selection\ResetQueryResults.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />

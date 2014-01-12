@@ -43,9 +43,6 @@ namespace BlackMesa.Website.Main.DataLayer
                 Level = parentFolder != null ? parentFolder.Level + 1 : 1,
             };
 
-            //if (parentFolder != null)
-            //    parentFolder.SubFolders.Add(newFolder);
-
             _dbContext.Learning_Folders.Add(newFolder);
             _dbContext.SaveChanges();
 
@@ -204,13 +201,13 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void GetAllSelectedCardsInFolder(string folderId, ref List<Card> cards)
+        public void GetAllCardsInFolder(string folderId, ref List<Card> cards, bool countOnlySelected = false)
         {
             var folder = GetFolder(folderId);
-            cards.AddRange(folder.Cards.Where(c => c.IsSelected).OrderBy(c => c.Position));
-            foreach (var subfolder in folder.SubFolders.Where(f => f.IsSelected).OrderBy(f => f.Name))
+            cards.AddRange(folder.Cards.Where(c => (countOnlySelected && c.IsSelected) || !countOnlySelected).OrderBy(c => c.Position));
+            foreach (var subfolder in folder.SubFolders.Where(f => (countOnlySelected && f.IsSelected) || !countOnlySelected).OrderBy(f => f.Name))
             {
-                GetAllSelectedCardsInFolder(subfolder.Id.ToString(), ref cards);
+                GetAllCardsInFolder(subfolder.Id.ToString(), ref cards);
             }
         }
 
@@ -347,7 +344,7 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        // ================================ Queries ================================ //
+        // ================================ QueryItems ================================ //
 
 
         public List<QueryItem> GetQueryItems(string cardId)
@@ -390,6 +387,12 @@ namespace BlackMesa.Website.Main.DataLayer
 
             queryItem.Result = result;
 
+            _dbContext.SaveChanges();
+        }
+
+        public void RemoveQueryItem(string queryItemId, QueryItem queryItem = null)
+        {
+            _dbContext.Learning_QueryItems.Remove(queryItem ?? GetQueryItem(queryItemId));
             _dbContext.SaveChanges();
         }
 

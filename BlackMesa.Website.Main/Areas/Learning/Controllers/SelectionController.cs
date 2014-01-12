@@ -454,5 +454,74 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         }
 
 
+        public ActionResult Browse(string folderId, int position, bool doInit = false)
+        {
+
+            if (doInit)
+            {
+                var cards = new List<Card>();
+                _learningRepo.GetAllCardsInFolder(folderId, ref cards, true);
+
+                var newBrowseList = new BrowseList
+                {
+                    Cards = cards,
+                    CardsCount = cards.Count,
+                };
+
+                Session["BrowseList"] = newBrowseList;
+            }
+
+
+            var browseList = Session["BrowseList"] as BrowseList;
+            var viewModel = new BrowseViewModel
+            {
+                FolderId = folderId,
+                FrontSide = browseList.Cards.ElementAt(position).FrontSide,
+                BackSide = browseList.Cards.ElementAt(position).BackSide,
+                CardsCount = browseList.CardsCount,
+                Position = position,
+            };
+            return View(viewModel);
+        }
+
+
+        public ActionResult ResetQueryResults(string folderId)
+        {
+            var cards = new List<Card>();
+            _learningRepo.GetAllCardsInFolder(folderId, ref cards, true);
+
+            var viewModel = new ResetQueryResultsViewModel
+            {
+                FolderId = folderId,
+                AffectedCardsCount = cards.Count,
+            };
+
+            return View(viewModel);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetQueryResults(ResetQueryResultsViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var cards = new List<Card>();
+                _learningRepo.GetAllCardsInFolder(viewModel.FolderId, ref cards, true);
+
+                foreach (var card in cards)
+                {
+                    var queryItems = card.QueryItems.ToList();
+                    foreach (var queryItem in queryItems)
+                    {
+                        _learningRepo.RemoveQueryItem(queryItem.Id.ToString(), queryItem);
+                    }
+                }
+                return RedirectToAction("Details", "Folder", new {id = viewModel.FolderId});
+            }
+            return View(viewModel);
+        }
+
+
     }
 }

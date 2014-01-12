@@ -46,7 +46,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
             // Selection
 
             var cardsToQuery = new List<Card>();
-            _learningRepo.GetAllSelectedCardsInFolder(folder.Id.ToString(), ref cardsToQuery);
+            _learningRepo.GetAllCardsInFolder(folder.Id.ToString(), ref cardsToQuery, true);
 
             if (viewModel.QueryOnlyDueCards)
             {

@@ -1,0 +1,56 @@
+﻿@using BlackMesa.Website.Main.Resources
+@using BlackMesa.Website.Main.Utilities
+
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Selection.BrowseViewModel
+
+@{
+    ViewBag.Title = Strings.Card + " " + (Model.Position + 1) + " " + Strings.Of + " " + Model.CardsCount;
+}
+
+<div id="content">
+
+    <section id="selection-browse">
+        
+        <div class="tile gray-darker">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        
+        <div class="tile gray-light">
+            <pre>@Model.FrontSide</pre>
+        </div>
+        
+        <div class="tile gray-light">
+            <pre>@Model.BackSide</pre>
+        </div>
+
+    </section>
+
+</div>
+
+
+
+@* ------------------- Menu ------------------- *@
+
+<nav id="menu">
+    
+    @if (Model.Position > 0)
+    {
+        <a class="red-hover" href="@Url.Action("Browse", "Selection", new { folderId = Model.FolderId, position = Model.Position - 1 })" title="@Strings.Back">
+            <i class="icon-left"></i>
+        </a>
+    }
+
+    <a class="red-hover" href="@Url.Action("Details", "Folder", new { id = Model.FolderId })" title="@Strings.Abort">
+        <i class="icon-abort"></i>
+    </a>
+
+    @if (Model.Position < Model.CardsCount-1)
+    {
+        <a class="red-hover" href="@Url.Action("Browse", "Selection", new { folderId = Model.FolderId, position = Model.Position + 1 })" title="@Strings.Next">
+            <i class="icon-right"></i>
+        </a>
+    }
+
+
+</nav>
+

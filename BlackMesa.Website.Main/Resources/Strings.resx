@@ -627,4 +627,19 @@
   <data name="Remaining" xml:space="preserve">
     <value>Remaining</value>
   </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="PerformReset" xml:space="preserve">
+    <value>Perform reset</value>
+  </data>
+  <data name="ResetQueryResults" xml:space="preserve">
+    <value>Reset query results</value>
+  </data>
 </root>
