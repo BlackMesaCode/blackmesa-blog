@@ -147,17 +147,13 @@ p {
 
 //Pre-Formatted Text
 pre {
+    white-space: pre-wrap;
     font-family: @font-family-base;
     font-size: @font-size-base;
     line-height: @line-height-base;
-    color: @gray-darkest;
+    color: inherit;
     margin: 0;
     padding: 0;
-
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-    white-space: pre-wrap;
 }
 
 
@@ -588,6 +584,12 @@ html, body {
         justify-content: center;
     }
 
+    pre {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+    }
+
     #result-buttons {
         .flexbox();
         .flex-direction(row);
@@ -601,5 +603,14 @@ html, body {
                 text-align: center;
             }
         }
+    }
+}
+
+#selection-browse {
+
+    pre {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1.2em;
     }
 }

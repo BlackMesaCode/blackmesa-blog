@@ -5,13 +5,14 @@
 <div id="folder-search-result">
 
     @Html.Partial("_Path", Model.Path)
-    
+
     <a class="tile gray-dark-hover" href="@Url.Action("Edit", "Card", new { id = Model.Id })">
-        <i class="icon-card"> </i>@Html.Raw(Model.FrontSide)
+        <i class="icon-card"> </i>
+        <pre>@Html.Raw(Model.FrontSide)</pre>
     </a>
-    
+
     <div class="tile gray-light">
-        @Html.Raw(Model.BackSide)
+        <pre>@Html.Raw(Model.BackSide)</pre>
     </div>
 
 </div>
