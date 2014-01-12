@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using BlackMesa.Website.Main.Areas.Learning.ViewModels.Query;
+using BlackMesa.Website.Main.Models.Identity;
 using BlackMesa.Website.Main.Models.Learning;
-using WebGrease.Css.Extensions;
 
 namespace BlackMesa.Website.Main.DataLayer
 {
@@ -18,8 +15,6 @@ namespace BlackMesa.Website.Main.DataLayer
         {
             _dbContext = dbContext;
         }
-
-
 
 
         // ================================ Folders ================================ //
@@ -120,6 +115,7 @@ namespace BlackMesa.Website.Main.DataLayer
                 ParentFolder = null,
                 Level = 1,
             };
+            //_dbContext.Users.Find(ownerId).
 
             _dbContext.Learning_Folders.Add(newFolder);
             _dbContext.SaveChanges();
@@ -201,13 +197,24 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void GetAllCardsInFolder(string folderId, ref List<Card> cards, bool countOnlySelected = false)
+        public void GetAllCardsInFolder(Folder folder, ref List<Card> cards, bool countOnlySelected = false)
         {
-            var folder = GetFolder(folderId);
             cards.AddRange(folder.Cards.Where(c => (countOnlySelected && c.IsSelected) || !countOnlySelected).OrderBy(c => c.Position));
+            
             foreach (var subfolder in folder.SubFolders.Where(f => (countOnlySelected && f.IsSelected) || !countOnlySelected).OrderBy(f => f.Name))
             {
-                GetAllCardsInFolder(subfolder.Id.ToString(), ref cards);
+                GetAllCardsInFolder(subfolder, ref cards);
+            }
+        }
+
+
+        public void GetAllCardsIdsInFolder(Folder folder, ref List<string> cardIds, bool countOnlySelected = false)
+        {
+            cardIds.AddRange(folder.Cards.Where(c => (countOnlySelected && c.IsSelected) || !countOnlySelected).OrderBy(c => c.Position).Select(c => c.Id.ToString()));
+
+            foreach (var subfolder in folder.SubFolders.Where(f => (countOnlySelected && f.IsSelected) || !countOnlySelected).OrderBy(f => f.Name))
+            {
+                GetAllCardsIdsInFolder(subfolder, ref cardIds);
             }
         }
 
@@ -396,6 +403,12 @@ namespace BlackMesa.Website.Main.DataLayer
             _dbContext.SaveChanges();
         }
 
+
+        public void RemoveQueryItems(string cardId, Card card = null)
+        {
+            _dbContext.Learning_QueryItems.RemoveRange(card != null ? card.QueryItems : GetCard(cardId).QueryItems);
+            _dbContext.SaveChanges();
+        }
 
 
         // ================================ Selections ================================ //
