@@ -508,6 +508,26 @@ html, body {
 }
 
 
+.has-due-cards {
+    .flex-shrink(0);
+    color: @gray-darker-hover !important;
+    &.gray-darker {
+        color: @gray !important;
+    }
+}
+
+.no-due-cards {
+    .flex-shrink(0);
+    color: @gray-darker-hover !important;
+    i {
+        margin-right: 0;
+    }
+    &.gray-darker {
+        color: @gray !important;
+    }
+}
+
+
 #test-show {
     #show-backside {
         .justify-content(center);

@@ -212,7 +212,7 @@
     <Compile Include="Areas\Learning\ViewModels\Selection\SetMoveTargetViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\EditViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Folder\CreateViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Folder\FolderViewModel.cs" />
+    <Compile Include="Areas\Learning\ViewModels\Folder\DetailsViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Selection\DeleteViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Card\EditViewModel.cs" />
     <Compile Include="Areas\Learning\ViewModels\Card\CreateViewModel.cs" />

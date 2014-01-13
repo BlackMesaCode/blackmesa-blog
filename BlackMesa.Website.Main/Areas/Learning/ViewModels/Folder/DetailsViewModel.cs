@@ -2,7 +2,7 @@
 
 namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder
 {
-    public class FolderViewModel
+    public class DetailsViewModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -14,5 +14,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder
         public List<BlackMesa.Website.Main.Models.Learning.Folder> Path { get; set; }
         public IEnumerable<BlackMesa.Website.Main.Models.Learning.Folder> SubFolders { get; set; }
         public IEnumerable<BlackMesa.Website.Main.Models.Learning.Card> Cards { get; set; }
+        public int DueCards { get; set; }
+        public Dictionary<string, int> DueCardsPerSubfolder{ get; set; }
     }
 }

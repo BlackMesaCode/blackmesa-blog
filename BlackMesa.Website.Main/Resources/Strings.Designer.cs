@@ -790,6 +790,15 @@ namespace BlackMesa.Website.Main.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No due cards ähnelt.
+        /// </summary>
+        public static string NoDueCards {
+            get {
+                return ResourceManager.GetString("NoDueCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die No entries found ähnelt.
         /// </summary>
         public static string NoEntriesFound {
@@ -804,6 +813,15 @@ namespace BlackMesa.Website.Main.Resources {
         public static string NoLocalAccount {
             get {
                 return ResourceManager.GetString("NoLocalAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Number of due cards ähnelt.
+        /// </summary>
+        public static string NumberOfDueCards {
+            get {
+                return ResourceManager.GetString("NumberOfDueCards", resourceCulture);
             }
         }
         

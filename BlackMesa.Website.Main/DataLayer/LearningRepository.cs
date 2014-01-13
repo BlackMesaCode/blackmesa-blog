@@ -219,9 +219,9 @@ namespace BlackMesa.Website.Main.DataLayer
         }
 
 
-        public void GetCardCount(Folder folder, ref int cardCount, bool includeSubfolders = true, bool countOnlySelected = false)
+        public void GetCardCount(Folder folder, ref int cardCount, bool includeSubfolders = true, bool countOnlySelected = false, bool countOnlyDue = false)
         {
-            cardCount += folder.Cards.Count(u => (countOnlySelected && u.IsSelected) || !countOnlySelected);
+            cardCount += folder.Cards.Count(u => ((countOnlySelected && u.IsSelected) || !countOnlySelected) && ((countOnlyDue && u.IsDue) || !countOnlyDue));
 
             if (includeSubfolders)
             {

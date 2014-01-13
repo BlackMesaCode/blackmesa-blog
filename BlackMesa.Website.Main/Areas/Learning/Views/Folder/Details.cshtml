@@ -1,6 +1,6 @@
 ﻿@using BlackMesa.Website.Main.Resources
 
-@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.FolderViewModel
+@model BlackMesa.Website.Main.Areas.Learning.ViewModels.Folder.DetailsViewModel
 
 @{
     ViewBag.Title = Model.Name;
@@ -29,6 +29,19 @@
                 </a>
             }
             
+            @if (Model.DueCards > 0)
+            {
+                <div class="tile gray-darker has-due-cards" title="@Strings.NumberOfDueCards">
+                    <i class="icon-bell"></i>@Model.DueCards
+                </div>
+            }
+            else
+            {
+                <div class="tile gray-darker no-due-cards" title="@Strings.NoDueCards">
+                    <i class="icon-thumbs-up"></i>
+                </div>
+            }
+            
 
             @if (Model.IsSelected)
             {
@@ -52,6 +65,22 @@
                     <a class="tile gray-light-hover" href="@Url.Action("Details", "Folder", new { id = subFolder.Id })">
                         <i class="icon-folder"> </i>@subFolder.Name
                     </a>
+                    @{
+                        var dueCardsInFolder = Model.DueCardsPerSubfolder[subFolder.Id.ToString()];
+                    }
+                    @if (dueCardsInFolder > 0)
+                    {
+                        <div class="tile gray-light has-due-cards" title="@Strings.NumberOfDueCards">
+                            <i class="icon-bell"></i>@dueCardsInFolder
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="tile gray-light no-due-cards" title="@Strings.NoDueCards">
+                            <i class="icon-thumbs-up"></i>
+                        </div>
+                    }
+                    
 
                     @if (subFolder.IsSelected)
                     {

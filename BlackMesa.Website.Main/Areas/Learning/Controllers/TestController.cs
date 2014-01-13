@@ -47,7 +47,7 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
             if (viewModel.TestOnlyDueCards)
             {
-                
+                cardsToTest = cardsToTest.Where(c => c.IsDue).ToList();
             }
 
             // Ordering

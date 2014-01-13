@@ -33,6 +33,16 @@ namespace BlackMesa.Website.Main.Models.Learning
             } 
         }
 
+        [NotMapped]
+        public int DueCards
+        {
+            get
+            {
+
+                return 0;
+            }
+        }
+
         public virtual Folder ParentFolder { get; set; }
         public virtual List<Folder> SubFolders { get; set; }
         public virtual List<Card> Cards { get; set; }

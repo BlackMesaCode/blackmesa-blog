@@ -639,4 +639,10 @@
   <data name="ResetTestResults" xml:space="preserve">
     <value>Abfrageergebnisse zurücksetzen</value>
   </data>
+  <data name="NumberOfDueCards" xml:space="preserve">
+    <value>Anzahl fälliger Karten</value>
+  </data>
+  <data name="NoDueCards" xml:space="preserve">
+    <value>Keine fälligen Karten</value>
+  </data>
 </root>

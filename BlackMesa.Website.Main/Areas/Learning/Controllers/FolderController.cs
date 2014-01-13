@@ -42,9 +42,20 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
 
             if (deSelect)
                 _learningRepo.DeSelectFolder(folder);
-            
 
-            var viewModel = new FolderViewModel
+            var dueCardsPerFolder = new Dictionary<string, int>();
+            foreach (var subFolder in folder.SubFolders)
+            {
+                var cardCount = 0;
+                _learningRepo.GetCardCount(subFolder, ref cardCount, true, false, true);
+                dueCardsPerFolder.Add(subFolder.Id.ToString(), cardCount);
+            }
+
+            var dueCards = 0;
+            _learningRepo.GetCardCount(folder, ref dueCards, false, false, true);
+            dueCards += dueCardsPerFolder.Values.Sum();
+
+            var viewModel = new DetailsViewModel
             {
                 Id = folder.Id.ToString(),
                 Name = folder.Name,
@@ -56,6 +67,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
                 Cards = folder.Cards.OrderBy(c => c.Position),
                 Path = path,
                 ParentFolderId = (!folder.IsRootFolder ? folder.ParentFolder.Id.ToString() : String.Empty),
+                DueCards = dueCards,
+                DueCardsPerSubfolder = dueCardsPerFolder,
             };
             return View(viewModel);
         }
