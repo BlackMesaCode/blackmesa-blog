@@ -398,7 +398,8 @@ namespace BlackMesa.Website.Main.Areas.Learning.Controllers
         public ActionResult DownloadExport(string folderId, string serializationResult)
         {
             //return Content(serializationResult, "application/octet-stream", Encoding.UTF8);  // Alternative solution to display and browse xml result in browser
-            return new XmlActionResult(serializationResult, "MyStack.xml", EncodingType.UTF16);
+            var fileName = "MyStack-" + DateTime.Now.ToString("dd.MM.yyyy-HH:mm:ss") + ".xml";
+            return new XmlActionResult(serializationResult, fileName, EncodingType.UTF16);
         }
 
 
