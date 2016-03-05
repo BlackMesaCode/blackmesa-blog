@@ -7,13 +7,13 @@ namespace BlackMesa.Website.Main.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.1-21010")]
-    public sealed partial class upd : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(upd));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201401121805555_upd"; }
+            get { return "201603050917162_Init"; }
         }
         
         string IMigrationMetadata.Source

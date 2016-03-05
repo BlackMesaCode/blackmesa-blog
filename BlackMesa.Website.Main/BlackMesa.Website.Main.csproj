@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FCBFD8B5-6A41-4342-8BA4-D504F867EA48}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BlackMesa.Website.Main</RootNamespace>
@@ -24,6 +24,7 @@
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,9 +59,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="HibernatingRhinos.Profiler.Appender">
-      <HintPath>..\packages\EntityFrameworkProfiler.2.0.2217.0\lib\HibernatingRhinos.Profiler.Appender.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -180,7 +178,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\EntityFrameworkProfilerBootstrapper.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -189,36 +186,6 @@
     <Compile Include="Areas\Blog\ViewModels\EditCommentViewModel.cs" />
     <Compile Include="Areas\Blog\ViewModels\CreateCommentViewModel.cs" />
     <Compile Include="Areas\Identity\IdentityAreaRegistration.cs" />
-    <Compile Include="Areas\Learning\Api\Controllers\FoldersController.cs" />
-    <Compile Include="Areas\Learning\Controllers\SelectionController.cs" />
-    <Compile Include="Areas\Learning\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Learning\Controllers\TestController.cs" />
-    <Compile Include="Areas\Learning\Controllers\CardController.cs" />
-    <Compile Include="Areas\Learning\Controllers\FolderController.cs" />
-    <Compile Include="Areas\Learning\LearningAreaRegistration.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\Learning\ViewModels\Folder\AddOptionsViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\BrowseViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\ResetTestResultsViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\ImportViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\ExportViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\StatisticViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\OptionsViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\SearchViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\SearchResultsViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\SearchResultViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\SetNewOrderViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\SetMoveTargetViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Folder\EditViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Folder\CreateViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Folder\DetailsViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Selection\DeleteViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Card\EditViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Card\CreateViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\TestCompletedViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\SetupTestViewModel.cs" />
-    <Compile Include="Areas\Learning\ViewModels\Query\TestItemViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -229,25 +196,15 @@
     <Compile Include="Controllers\CssTestController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="DataLayer\DbContext.cs" />
-    <Compile Include="DataLayer\LearningRepository.cs" />
-    <Compile Include="Migrations\201401092126097_Init.cs" />
-    <Compile Include="Migrations\201401092126097_Init.Designer.cs">
-      <DependentUpon>201401092126097_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401121805555_upd.cs" />
-    <Compile Include="Migrations\201401121805555_upd.Designer.cs">
-      <DependentUpon>201401121805555_upd.cs</DependentUpon>
+    <Compile Include="Migrations\201603050917162_Init.cs" />
+    <Compile Include="Migrations\201603050917162_Init.Designer.cs">
+      <DependentUpon>201603050917162_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog\Comment.cs" />
     <Compile Include="Models\Blog\Entry.cs" />
     <Compile Include="Models\Blog\Tag.cs" />
     <Compile Include="Models\Identity\User.cs" />
-    <Compile Include="Models\Learning\BrowseList.cs" />
-    <Compile Include="Models\Learning\Folder.cs" />
-    <Compile Include="Models\Learning\Test.cs" />
-    <Compile Include="Models\Learning\TestItem.cs" />
-    <Compile Include="Models\Learning\Card.cs" />
     <Compile Include="Resources\Strings.de.Designer.cs">
       <DependentUpon>Strings.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -275,13 +232,6 @@
     <Compile Include="ViewModels\EntryIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Start\EntityFrameworkProfilerBootstrapper.vb" />
-    <Content Include="Areas\Learning\Javascript\export.js" />
-    <Content Include="Areas\Learning\Less\icons.less" />
-    <Content Include="Areas\Learning\Less\normalize.less" />
-    <Content Include="Areas\Learning\Javascript\create-edit-card.js" />
-    <Content Include="Areas\Learning\Javascript\test-show.js" />
-    <Content Include="Areas\Learning\Javascript\learning.js" />
     <Content Include="Content\custom\fonts\bebasneue-webfont.svg" />
     <Content Include="Content\custom\images\mystack_logo_inverted.png" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -592,43 +542,12 @@
     <Content Include="Areas\Blog\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Identity\Views\web.config" />
     <Content Include="Areas\Identity\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Learning\Views\web.config" />
-    <Content Include="Areas\Learning\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Learning\Views\Folder\Edit.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\_FolderListItem.cshtml" />
-    <Content Include="Areas\Learning\Views\Folder\Create.cshtml" />
-    <Content Include="Areas\Learning\Views\Folder\Details.cshtml" />
-    <Content Include="Areas\Learning\Views\Card\Create.cshtml" />
-    <Content Include="Areas\Learning\Views\Shared\_Layout.cshtml" />
     <Content Include="Content\foundation-icons\.DS_Store" />
     <Content Include="Content\foundation-icons\.fontcustom-data" />
     <Content Include="Content\foundation-icons\foundation-icons.eot" />
     <Content Include="Content\foundation-icons\foundation-icons.ttf" />
     <Content Include="Content\foundation-icons\foundation-icons.woff" />
-    <Content Include="Areas\Learning\Less\learning.less" />
-    <Content Include="Areas\Learning\Less\utilities.less" />
-    <Content Include="Areas\Learning\Less\fonts.less" />
-    <Content Include="Areas\Learning\Views\Selection\Search.cshtml" />
-    <Content Include="Areas\Learning\Views\Test\Setup.cshtml" />
-    <Content Include="Areas\Learning\Views\Test\GetTestItem.cshtml" />
-    <Content Include="Areas\Learning\Views\Card\Edit.cshtml" />
-    <Content Include="Areas\Learning\Views\Shared\_Path.cshtml" />
-    <Content Include="Areas\Learning\Views\Test\Completed.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\Options.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\SetMoveTarget.cshtml" />
-    <Content Include="Areas\Learning\Views\Home\Settings.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\Delete.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\SearchResults.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\_SearchResult.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\SetInsertAfterCard.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\Statistic.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\Export.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\Import.cshtml" />
-    <Content Include="Areas\Learning\Views\Folder\AddOptions.cshtml" />
-    <Content Include="Areas\Learning\Less\flexbox.less" />
     <Content Include="Content\custom\less\flexbox.less" />
-    <Content Include="Areas\Learning\Views\Selection\Browse.cshtml" />
-    <Content Include="Areas\Learning\Views\Selection\ResetTestResults.cshtml" />
     <None Include="Content\pagedlist\PagedList.less" />
     <Content Include="Content\custom\less\custom.less" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -701,7 +620,6 @@
     <Content Include="Areas\Identity\Views\Account\_RemoveAccountPartial.cshtml" />
     <Content Include="Areas\Identity\Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Areas\Learning\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Localhost.pubxml" />
   </ItemGroup>
   <ItemGroup>
@@ -717,11 +635,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201401092126097_Init.resx">
-      <DependentUpon>201401092126097_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401121805555_upd.resx">
-      <DependentUpon>201401121805555_upd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603050917162_Init.resx">
+      <DependentUpon>201603050917162_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

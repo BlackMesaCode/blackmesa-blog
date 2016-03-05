@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
 using BlackMesa.Website.Main.Models.Blog;
 using BlackMesa.Website.Main.Models.Identity;
-using BlackMesa.Website.Main.Models.Learning;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BlackMesa.Website.Main.DataLayer
@@ -23,14 +22,6 @@ namespace BlackMesa.Website.Main.DataLayer
         // Identity Entities
 
         // DbSets for Identity come with the inherited IdentityDbContext<User>
-
-
-        // Learning Entities
-
-        public DbSet<Folder> Learning_Folders { get; set; }
-        public DbSet<Card> Learning_Cards { get; set; }
-        public DbSet<TestItem> Learning_TestItems { get; set; }
-
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -59,9 +50,6 @@ namespace BlackMesa.Website.Main.DataLayer
 
             modelBuilder.Entity<IdentityUser>().ToTable("Identity_Users");
             modelBuilder.Entity<User>().ToTable("Identity_Users");
-
-
-            // Learning
 
 
         }
