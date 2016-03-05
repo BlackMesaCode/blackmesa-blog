@@ -1,0 +1,12 @@
+﻿@using BlackMesa.Blog.Resources
+@model IEnumerable<BlackMesa.Blog.Models.Blog.Comment>
+
+<section id="comment-index">
+    <h1>@Strings.Comments (@Model.Count())</h1>
+
+    @foreach(var comment in Model)
+    {
+        @Html.Partial("_Comment", comment)
+    }
+
+</section>

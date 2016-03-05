@@ -1,0 +1,32 @@
+﻿@using BlackMesa.Blog.Models.Blog
+@model BlackMesa.Blog.Models.Blog.Entry
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<section id="entry-details">
+
+    <article>
+        <header>
+            @Html.Partial("_EntryHead", Model)
+            @Model.Preview
+        </header>
+        <div id="article-body">
+            @Html.Raw(Model.Content)
+        </div>
+
+        <hr />
+        <br />
+
+        @Html.Action("Index", "Comment", new { entryId = Model.Id })
+
+    </article>
+
+    <hr />
+    <br />
+
+    @Html.Action("Create", "Comment", new { entryId = Model.Id })
+
+</section>
+

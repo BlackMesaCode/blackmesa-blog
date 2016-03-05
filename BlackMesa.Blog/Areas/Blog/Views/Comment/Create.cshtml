@@ -1,0 +1,46 @@
+﻿@using BlackMesa.Blog.Resources
+@model BlackMesa.Blog.Areas.Blog.ViewModels.CreateCommentViewModel
+
+@{
+    ViewBag.Title = Strings.Comment + " " + Strings.Create;
+}
+
+<section id="comment-create">
+
+@using (Html.BeginForm("Create", "Comment")) {
+    
+    @Html.AntiForgeryToken()
+
+    <h1>@ViewBag.Title</h1>
+    
+    @Html.ValidationSummary()
+
+    @Html.LabelFor(model => model.Name)
+    
+    if (HttpContext.Current.Request.IsAuthenticated)
+    {
+        @Html.DisplayFor(model => model.Name)
+        @Html.HiddenFor(model => model.Name)
+        <br/>
+        <br/>
+    }
+    else
+    {
+        @Html.EditorFor(model => model.Name)
+    }
+
+    @Html.LabelFor(model => model.Content)
+    @Html.EditorFor(model => model.Content)
+
+
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.EntryId)
+    
+    <p>
+        <input type="submit" value="@Strings.Create" />
+        <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink(Strings.Back, "Details", "Entry", new { id = Model.EntryId }, null)
+    </p>
+
+}
+ 
+</section>

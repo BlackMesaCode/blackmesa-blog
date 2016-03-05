@@ -1,0 +1,19 @@
+﻿@using BlackMesa.Blog.Utilities
+@using BlackMesa.Blog.Resources
+
+@model BlackMesa.Blog.Models.Blog.Entry
+
+<article>
+    
+    @Html.Partial("_EntryHead", Model)
+
+    <div class="preview-article-body">
+        
+        @Html.Raw(Model.Preview)
+
+        <span class="read-more"><i class="fa fa-angle-double-right"></i>
+            @Html.ActionLink(Strings.ReadMore, "Details", new { Id = Model.Id, Title = Utilities.MakeUrlFriendly(Model.Title) })
+        </span>
+    </div>
+
+</article>

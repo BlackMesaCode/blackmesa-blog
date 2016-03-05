@@ -1,0 +1,28 @@
+﻿@using System.Activities.Statements
+@using BlackMesa.Blog.Resources
+@using Microsoft.AspNet.Identity
+
+@model BlackMesa.Blog.Models.Blog.Comment
+
+<article class="comment-detail">
+    
+
+    <span class="comment-header">@Model.Name @Strings.WroteOn @Model.DateCreated.ToString("g"):</span>
+    
+    @*<span class="comment-date-edited">@Model.DateEdited.ToString("g")</span>*@
+    
+    <span class="comment-actions">
+
+        @if ((!String.IsNullOrEmpty(Model.OwnerId) && User.Identity.GetUserId() == Model.OwnerId) || User.IsInRole("Admin"))
+        {
+            <i class="fa fa-pencil"></i><a href="@Url.Action("Edit", "Comment", new { id = Model.Id })">@Strings.Edit</a>
+            <i class="fa fa-trash-o"></i><a href="@Url.Action("Delete", "Comment", new { id = Model.Id })">@Strings.Delete</a>
+        }
+
+    </span>
+    
+    <br />
+    
+    @Model.Content
+
+</article>

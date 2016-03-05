@@ -1,0 +1,30 @@
+﻿
+@using BlackMesa.Blog.Resources
+@model BlackMesa.Blog.Models.Blog.Entry
+
+@{
+    ViewBag.Title = Strings.Entry + " " + Strings.Edit;
+}
+
+<section id="entry-edit">
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <h1>@ViewBag.Title</h1>
+        
+        @Html.HiddenFor(model => model.Id)
+
+        @Html.Partial("_CreateEditFieldset")
+
+        <p>
+            <button type="submit">
+                @Strings.Save
+            </button>
+            <i class="fa fa-arrow-circle-o-left"></i> @Html.ActionLink(Strings.Back, "Index")
+        </p>
+        
+    }
+
+</section>

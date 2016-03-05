@@ -1,0 +1,55 @@
+﻿@using BlackMesa.Blog.Resources
+@{
+    ViewBag.Title = Strings.Search;
+}
+@model BlackMesa.Blog.ViewModels.EntryArchiveViewModel
+
+<section id="entry-archive">
+    <h1>@ViewBag.Title</h1>
+    
+    @if(Model.AvailableYears.Any())
+    {
+        <section id="search-by-date">
+            <h3>@Strings.SearchByDate</h3>
+            @using (Html.BeginForm("Index", "Entry", FormMethod.Post, new {id = "search-by-date-form"}))
+            {
+                @Html.AntiForgeryToken()
+
+                <div id="entry-archive-available-years">
+                    @Html.DropDownListFor(model => model.SelectedYear, Model.AvailableYears)
+                </div>
+            
+                <div id="entry-archive-available-months">
+                    @Html.DropDownListFor(model => model.SelectedMonth, Model.AvailableMonths)
+                </div>
+
+                <input id="entry-archive-submit-button" type="submit" value="@Strings.ToSearch" />
+            }
+        </section>
+    }
+    
+    @if (Model.Tags.Any())
+    {
+        <section id="search-by-tag">
+            <h3>@Strings.SearchByTag</h3>
+            @foreach (var tag in Model.Tags)
+            {
+                <span class="tag">
+                    @Html.ActionLink(tag.Key + tag.Value, "Index", "Entry", new {selectedTag = tag.Key}, null)
+                    <span class="tag-count">(@tag.Value)</span>
+                </span>
+            }
+        </section>
+    }
+    
+    <section id="search-by-text">
+        <h3>@Strings.SearchByText</h3>
+        @using (Html.BeginForm("Index", "Entry", FormMethod.Post, new { id = "search-by-text-form" }))
+        {
+            @Html.AntiForgeryToken()
+            <input name="searchText" id="search-text-input"/>
+            <input id="search-text-submit-button" type="submit" value="@Strings.ToSearch" />
+            
+        }
+    </section>
+</section>

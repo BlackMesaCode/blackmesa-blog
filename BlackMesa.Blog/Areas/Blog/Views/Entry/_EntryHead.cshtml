@@ -1,0 +1,63 @@
+﻿@using System.Globalization
+@using BlackMesa.Blog.Utilities
+@using BlackMesa.Blog.Resources
+
+@model BlackMesa.Blog.Models.Blog.Entry
+
+<div class="article-head">
+    <div class="article-date">
+        <div class="article-date-day">
+            @Model.DateCreated.ToString("dd")
+        </div>
+            <div class="article-month-year-container">
+                <div class="article-date-month">
+                    @CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Model.DateCreated.Month)
+                </div>
+            <div class="article-date-year">
+                @Model.DateCreated.Year
+            </div>
+        </div>
+    </div>
+    <div class="article-title-subtitle-container">
+        <div class="article-title">
+            @Html.ActionLink(Model.Title, "Details", "Entry", new { id = Model.Id, title = Utilities.MakeUrlFriendly(Model.Title)  }, null )
+        </div>
+
+        <div class="article-subtitle">
+            @*
+                <i class="fa fa-comment"></i>
+                @Model.Blog_Comments.Count  Todo optimize database call
+                *@
+            @if(!Model.Published)
+            {
+                <i class="fa fa-eye-slash"></i>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <i class="fa fa-pencil"></i><a href="@Url.Action("Edit", "Entry", new { id=Model.Id })">@Strings.Edit</a>
+                <i class="fa fa-trash-o"></i><a href="@Url.Action("Delete", "Entry", new { id=Model.Id })">@Strings.Delete</a>
+            }
+                
+                
+            @if (Model.DateCreated != Model.DateEdited)
+            {
+                <span class="revised-on">
+                    <i class="fa fa-edit"></i> @(Strings.RevisedOn +": " + Model.DateEdited.ToShortDateString())
+                </span>
+            }
+                
+
+            <span class="tags">
+                    
+                @if (Model.Tags.Count > 0)
+                {
+                    <i class="fa fa-tags"></i> @:Tags:
+                    foreach(var tag in Model.Tags)
+                    {
+                        @Html.ActionLink(tag.Name, "Index", "Entry", new { SelectedTag = tag.Name }, null)
+                    }
+                }
+            </span>
+        </div>
+    </div>
+</div>

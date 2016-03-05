@@ -1,0 +1,635 @@
+﻿@import "flexbox.less";
+@import "utilities.less";
+@import "colors.less";
+@import "variables.less";
+
+
+body{
+    background-image: url("../images/pattern.png");
+    /*background-color: @gray-lighter;*/
+}
+
+.container {
+    .clearfix;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 960px; /* 960px is wide enough to be viewed on all desktops and on tablets in landscape mode  */
+}
+
+
+
+#header {
+    font-family: 'bebas';
+    letter-spacing: 1px;
+
+    #top-header-bar {
+        .flexbox();
+        .flex-direction(row);
+        .flex-wrap(wrap);
+        margin-top: 9px;
+
+        color: @gray-light;
+
+        i {
+            margin-right: 3px;
+        }
+
+        #language-selection {
+            margin-right: 30px;
+        }
+
+        #datetime {
+            .flex-grow(1);
+        }
+
+        #membership {
+            #user-name {
+                margin-right: 10px;
+            }
+
+            #login {
+                margin-right: 5px;
+            }
+
+            #manage {
+                margin-right: 5px;
+            }
+
+            #logout-form {
+                button {
+                    background-color: transparent;
+                    border: 0;
+                    margin: 0;
+                    padding: 0;
+                    display: inline;
+                    color: @blue;
+                    font-family: inherit;
+                    letter-spacing: inherit;
+                    &:hover {
+                            color: @blue-light;
+                        }
+                }
+            }
+        }
+    }
+
+
+    #bottom-header-bar {
+        .flexbox();
+        .flex-direction(row);
+        .flex-wrap(wrap);
+        .align-items(center);
+        margin-top: 30px;
+        margin-bottom: 35px;
+
+        #logo {
+            img {
+                height: auto;
+                max-width: 100%;
+            }
+        }
+
+        nav {
+            .flex-grow(1);
+            font-size: 20px;
+            height: 40px;
+
+            .flexbox();
+            .flex-direction(row);
+            .flex-wrap(wrap);
+            .justify-content(end);
+            .align-items(center);
+
+            ul {
+
+                margin: 0px;
+                padding: 0px;
+                list-style-type: none;
+
+                li {
+                    display: inline-block;
+                    margin-right: 10px;
+
+                    a {
+                        span {
+                            color: @orange;
+                        }
+
+                        display: block;
+                        color: @gray-darker;
+
+                        &:hover {
+                            text-decoration: none;
+
+                            span {
+                                color: @orange-light;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            } // end of ul
+        } // end of nav
+    } // end of bottom-header-bar
+} // end of header
+
+
+
+/* Content  (RenderBody) */
+
+
+#content {
+
+    .article {
+        margin-bottom: 40px;
+
+        .article-head {
+            .flexbox();
+            .flex-direction(row);
+            .flex-wrap(nowrap);
+            line-height: 1;
+            margin-bottom: 13px;
+
+            .article-date {
+                font-family: 'bebas';
+                .flexbox();
+                .flex-direction(row);
+                .flex-wrap(nowrap); // in case we choose wrap here: article date items can only wrap if the article-date container allows shrinking
+                margin-right: 17px;
+                .flex-shrink(0); 
+
+                .article-date-day {
+                    .flex-shrink(0);
+                    font-size: 58px;
+                    line-height: 0.9;
+                    margin-right: 6px;
+                }
+
+                .article-month-year-container {
+                    .flex-shrink(0);
+                    .article-date-month {
+                        font-size: 30px;
+                    }
+
+                    .article-date-year {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .article-title-subtitle-container {
+                .flex-grow(1);
+
+                .article-title {
+                    font-size: 30px;
+                    font-family: 'bebas';
+                    margin-bottom: 3px;
+                }
+
+                .article-subtitle {
+                    font-size: 11px;
+
+                    i {
+                        margin-right: 5px;
+                    }
+
+                    a {
+                        color: @gray-darker;
+                        text-decoration: underline;
+                        margin-right: 7px;
+
+                        &:hover {
+                            color: @gray-darker;
+                            text-decoration: none;
+                        }
+                    }
+
+                    .fa-eye-slash {
+                        margin-right: 7px;
+                    }
+
+                    .revised-on {
+                        display: inline-block;
+                        margin-right: 7px;
+                    }
+
+                    .tags {
+                        display: inline-block;
+                    }
+                }
+            }
+            // end of .article-title-subtitle-container
+        }// end of .article-head
+        
+
+        #article-body {
+            margin-top: 4px;
+            margin-bottom: 60px;
+
+            h2, h3, h4 {
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+        }
+
+        .preview-article-body {
+
+            .read-more {
+                display: inline-block;
+
+                .read-more-icon {
+                    margin-left: 5px;
+                }
+            }
+        }
+
+    }
+    // end of .article
+    #entry-create-edit {
+
+        input, textarea {
+            width: 100%;
+        }
+
+        #Preview {
+            height: 100px;
+        }
+
+        #Content {
+            height: 400px;
+        }
+
+        input[type='checkbox'] { 
+            width: auto;
+        }
+
+    }
+
+    // Entry index
+    #entry-index {
+        .clearfix;
+
+
+        #entry-index-submenu {
+            .clearfix();
+            font-family: 'bebas';
+            letter-spacing: 1px;
+
+            margin-bottom: 20px;
+
+            i {
+                margin-right: 5px;
+            }
+
+            #entry-index-count {
+                margin-right: 15px;
+            }
+
+            #entry-index-criteria {
+                margin-right: 10px;
+            }
+
+            #entry-index-rss {
+                float: right;
+                margin-right: 10px;
+            }
+
+            #entry-index-search {
+                float: right;
+                margin-right: 15px;
+            }
+
+            hr {
+                margin-top: 5px;
+            }
+        }
+
+        #entry-index-articles {
+
+            article {
+                .article;
+            }
+
+            #no-entries-found {
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom: 40px;
+            }
+        }
+
+
+        #entries-bottom-bar {
+            .clearfix;
+            margin-top: 10px;
+
+            i {
+                margin-right: 5px;
+            }
+
+            #add-entry-button {
+                float: left;
+                margin-right: 15px;
+            }
+
+            .pagination {
+                float: right;
+            }
+        }
+    }
+
+    // Entry details
+    #entry-details {
+        article {
+            .article;
+        }
+
+        .comment-detail {
+            
+            &:hover {
+                background-color: whitesmoke;
+            }
+
+            .comment-header {
+                font-size: 11px;
+            }
+
+            .comment-actions {
+                font-size: 11px;
+                margin-left: 20px;
+                i {
+                    margin-right: 5px;
+                }
+                a {
+                    margin-right: 10px;
+                }
+            }
+            
+        }
+
+    }
+
+    #comment-edit, #comment-create {
+
+       label[for=Name] {
+           display: inline;
+           margin-right: 15px;
+       }
+
+        #Content {
+            width: 100%
+        }
+
+    }
+
+    // Entry edit
+    #entry-edit {
+    }
+
+    // Entry delete
+    #entry-delete {
+    }
+
+    // Entry Archive
+    #entry-archive {
+
+        #search-by-date {
+
+            margin-bottom: 25px;
+
+            #search-by-date-form {
+                .flexbox();
+                .flex-direction(row);
+                .flex-wrap(wrap);
+
+                #entry-archive-available-years {
+                    margin-right: 30px;
+                }
+
+               #entry-archive-available-months {
+                    margin-right: 30px;
+                }
+
+                #entry-archive-submit-button {
+                    margin: 0;
+                }
+            }
+        }
+
+
+        #search-by-tag {
+
+            margin-bottom: 25px;
+
+            .tag {
+                margin-right: 20px;
+                .tag-count {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        #search-by-text {
+            #search-by-text-form {
+                .flexbox();
+                .flex-direction(row);
+                .flex-wrap(wrap);
+
+                #search-text-input {
+                    margin-right: 30px;
+                }
+            }
+        }
+
+    }
+
+    #login {
+        #local-login {
+            margin-bottom: 30px;
+        }
+    }
+
+
+
+    #register {
+        #register-local-account {
+            margin-bottom: 30px;
+        }
+    }
+
+
+    #legal-notice-index {
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+    }
+
+
+
+    #folder-index {
+
+        #folder-index-submenu {
+
+
+            hr {
+                margin-top: 5px;
+            }
+        }
+
+        .folder-list-item {
+
+            .flexbox();
+            .flex-direction(row);
+            .flex-wrap(nowrap);
+            .align-items(center);
+
+            padding-top: 2px;
+            padding-bottom: 2px;
+
+            &:hover {
+                background-color: whitesmoke;
+            }
+
+            .indent {
+                width: 20px;
+            }
+
+            .folder-name {
+
+            }
+
+            .learning-cards-name {
+
+            }
+
+            .folder-list-item-container {
+                .flex-grow(1);
+                .flexbox();
+                .flex-direction(row);
+                .flex-wrap(nowrap);
+                .justify-content(end);
+
+                .folder-options {
+
+
+                    a {
+                        margin-left: 10px;
+                    }
+
+                    .create-sub-folder {
+
+                    }
+                }
+
+                .learning-cards-count {
+                    width: 40px;
+                    text-align: right;
+                }
+
+            }
+
+
+
+        }
+
+    }
+
+
+
+}
+
+
+/* Footer */
+
+#footer {
+    margin-top: 15px;
+    color: #999999;
+    font-family: 'bebas';
+    font-size: 13px;
+    letter-spacing: 1px;
+    width: 100%;
+
+    span {
+        display: inline-block;
+        padding: 5px;
+    }
+
+    #legal-notice {
+        i {
+            margin-right: 5px;
+        }
+    }
+
+    #powered-by {
+        float: right !important;
+
+        span {
+            margin-right: 5px;
+        }
+    }
+
+    #azure-logo {
+        display: inline-block;
+        vertical-align: middle;
+        width: 109px;
+        height: 20px;
+        background-image: url(/Content/custom/images/azure_logo_gray.png);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        &:hover {
+            background-position: top;
+        }
+    }
+
+    #asp-dotnet-logo {
+        display: inline-block;
+        vertical-align: middle;
+        width: 64px;
+        height: 16px;
+        margin-right: 5px;
+        background-repeat: no-repeat;
+        background-image: url(/Content/custom/images/asp_dotnet_logo_gray.png);
+        background-position: bottom;
+        &:hover {
+            background-position: top;
+        }
+    }
+
+
+    #back-to-top {
+        margin-right: 30px;
+        i {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+
+}
+
+
+
+input[type=checkbox] {
+    display: inline-block;
+    -webkit-appearance: checkbox;
+}
+
+
+
+@media (min-width: 960px) {
+    html {
+        overflow-y: scroll;
+    }
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 960px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }

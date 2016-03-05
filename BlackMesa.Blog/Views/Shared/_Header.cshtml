@@ -1,0 +1,72 @@
+﻿@using System.Globalization
+@using System.Threading
+@using BlackMesa.Blog
+@using BlackMesa.Blog.Resources
+
+<div id="top-header-bar">
+    <div id="language-selection">
+        <div class="dropdown-menu align-right">
+            <a class="btn-gray-light" href="#">
+                <i class="fa fa-globe"></i> @Thread.CurrentThread.CurrentCulture.NativeName
+                <span class="fa fa-caret-down"></span>
+            </a>
+            <ul>
+                @foreach (var language in Global.AllowedLanguages.Where(l => l != ViewBag.CurrentLanguage))
+                {
+                    var culture = CultureInfo.CreateSpecificCulture(language);
+
+                    var newCulture = culture.ToString();
+                    var newArea = ViewContext.RouteData.DataTokens["Area"] != null ? ViewContext.RouteData.DataTokens["Area"].ToString() : String.Empty;
+                    var newController = ViewContext.RouteData.Values["Controller"] != null ? ViewContext.RouteData.Values["Controller"].ToString() : String.Empty;
+                    var newAction = ViewContext.RouteData.Values["Action"] != null ? ViewContext.RouteData.Values["Action"].ToString() : String.Empty;
+                    var newId = ViewContext.RouteData.Values["Id"] != null ? ViewContext.RouteData.Values["Id"].ToString() : String.Empty;
+                    
+                    <li><a href="@Url.Action(newAction, newController, new { area = newArea, culture = newCulture, id = newId })"> @culture.EnglishName</a></li>
+                }
+            </ul>
+        </div>
+
+    </div>
+    
+    <div id="datetime">
+        <i class="fa fa-clock-o"></i> @DateTime.Now.ToLongDateString(), @DateTime.Now.ToShortTimeString()
+    </div>
+
+    
+    <div id="membership">
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", new { area = "Identity" }, FormMethod.Post, new {id = "logout-form"}))
+            {
+                @Html.AntiForgeryToken()
+
+                
+                <span id="user-name"><i class="fa fa-unlock"></i>@User.Identity.Name<text>: </text></span>
+                <span id="manage"><i class="fa fa-cogs"></i><a href="@Url.Action("Manage", "Account", new { area = "Identity" })">@Strings.Manage</a></span>
+                <i class="fa fa-sign-out"></i><button type="submit">@Strings.Logout</button>
+            }
+        }
+        else
+        {
+            <span id="user-name"><i class="fa fa-lock"></i>@Strings.Guest<text>: </text></span>
+            <span id="login"><i class="fa fa-sign-out"></i><a href="@Url.Action("Login", "Account", new { area = "Identity" })">@Strings.LogIn</a></span>
+            <i class="fa fa-pencil-square-o"></i>@Html.ActionLink(Strings.Register, "Register", "Account", new { area = "Identity" }, null)
+        }
+    </div>
+</div>
+
+<hr/>
+
+
+
+
+<div id="bottom-header-bar">
+    <div id="logo">
+        <a href="@Url.Action("IndexClean", "Entry", new { area = "Blog"})"><img src="/Content/custom/images/blackmesa_logo.png" alt="BlackMesa Logo" /></a>
+    </div>
+
+    <nav>
+        @Html.Partial("_Navigation")
+    </nav>
+</div>
+
