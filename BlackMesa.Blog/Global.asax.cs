@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
-using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using BlackMesa.Blog.App_Start;
@@ -29,7 +28,6 @@ namespace BlackMesa.Blog
             //Database.SetInitializer(new CreateDatabaseIfNotExists<IdentityContext>());
             //Database.SetInitializer(new CreateDatabaseIfNotExists<BlogContext>());  
 
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
